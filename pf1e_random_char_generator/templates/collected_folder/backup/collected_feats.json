@@ -1,0 +1,578 @@
+[
+  {
+    "img": "icons/svg/book.svg",
+    "name": "Deadly Aim",
+    "system": {
+      "description": {
+        "value": "<p><em>You can make exceptionally deadly ranged attacks by pinpointing a foe's weak spot, at the expense of making the attack less likely to succeed.</em></p><p><strong>Prerequisites</strong>: Dex 13, base attack bonus +1.</p><p><strong>Benefits</strong>: You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.</p><h3>Combat Trick</h3><p>When using this feat, you can spend 4 stamina points to reduce the penalty to attack rolls imposed by the feat by 1 until the beginning of your next turn. You can't reduce the penalty below 0.</p><p><b>Usage</b>: select Conditional Modifier when performing a ranged attack.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "114, 121"
+        }
+      ],
+      "subtype": "feat"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": ""
+      },
+      "scene-packer": {
+        "hash": "9bfc3b6096a5d77056b4d3c7a2afe7d6bcdcb808"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734934189704,
+      "modifiedTime": 1734934189704,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "Q4GSyrpVXX9CNA86",
+    "folder": null,
+    "sort": 100000,
+    "id": 1
+  },
+  {
+    "img": "icons/svg/book.svg",
+    "name": "Scholar",
+    "system": {
+      "description": {
+        "value": "<p><em>You can make exceptionally deadly ranged attacks by pinpointing a foe's weak spot, at the expense of making the attack less likely to succeed.</em></p><p><strong>Prerequisites</strong>: Dex 13, base attack bonus +1.</p><p><strong>Benefits</strong>: You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.</p><h3>Combat Trick</h3><p>When using this feat, you can spend 4 stamina points to reduce the penalty to attack rolls imposed by the feat by 1 until the beginning of your next turn. You can't reduce the penalty below 0.</p><p><b>Usage</b>: select Conditional Modifier when performing a ranged attack.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "114, 121"
+        }
+      ],
+      "subtype": "feat"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": ""
+      },
+      "scene-packer": {
+        "hash": "9bfc3b6096a5d77056b4d3c7a2afe7d6bcdcb808"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734934189704,
+      "modifiedTime": 1734934189704,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "Dfwth68DKghO1xl8",
+    "folder": null,
+    "sort": 100000,
+    "id": 2
+  },
+  {
+    "img": "icons/svg/book.svg",
+    "name": "Deft Hands",
+    "system": {
+      "description": {
+        "value": "<p><em>You can make exceptionally deadly ranged attacks by pinpointing a foe's weak spot, at the expense of making the attack less likely to succeed.</em></p><p><strong>Prerequisites</strong>: Dex 13, base attack bonus +1.</p><p><strong>Benefits</strong>: You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.</p><h3>Combat Trick</h3><p>When using this feat, you can spend 4 stamina points to reduce the penalty to attack rolls imposed by the feat by 1 until the beginning of your next turn. You can't reduce the penalty below 0.</p><p><b>Usage</b>: select Conditional Modifier when performing a ranged attack.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "114, 121"
+        }
+      ],
+      "subtype": "feat"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": ""
+      },
+      "scene-packer": {
+        "hash": "9bfc3b6096a5d77056b4d3c7a2afe7d6bcdcb808"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734934189704,
+      "modifiedTime": 1734934189704,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "4M6wsaY7V3StOPs1",
+    "folder": null,
+    "sort": 100000,
+    "id": 3
+  },
+  {
+    "img": "icons/svg/book.svg",
+    "name": "Weapon Focus",
+    "system": {
+      "description": {
+        "value": "<p><em>You can make exceptionally deadly ranged attacks by pinpointing a foe's weak spot, at the expense of making the attack less likely to succeed.</em></p><p><strong>Prerequisites</strong>: Dex 13, base attack bonus +1.</p><p><strong>Benefits</strong>: You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.</p><h3>Combat Trick</h3><p>When using this feat, you can spend 4 stamina points to reduce the penalty to attack rolls imposed by the feat by 1 until the beginning of your next turn. You can't reduce the penalty below 0.</p><p><b>Usage</b>: select Conditional Modifier when performing a ranged attack.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "114, 121"
+        }
+      ],
+      "subtype": "feat"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": ""
+      },
+      "scene-packer": {
+        "hash": "9bfc3b6096a5d77056b4d3c7a2afe7d6bcdcb808"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734934189704,
+      "modifiedTime": 1734934189704,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "rOLQEINOhextbWOM",
+    "folder": null,
+    "sort": 100000,
+    "id": 4
+  },
+  {
+    "img": "icons/svg/book.svg",
+    "name": "Alertness",
+    "system": {
+      "description": {
+        "value": "<p><em>You can make exceptionally deadly ranged attacks by pinpointing a foe's weak spot, at the expense of making the attack less likely to succeed.</em></p><p><strong>Prerequisites</strong>: Dex 13, base attack bonus +1.</p><p><strong>Benefits</strong>: You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.</p><h3>Combat Trick</h3><p>When using this feat, you can spend 4 stamina points to reduce the penalty to attack rolls imposed by the feat by 1 until the beginning of your next turn. You can't reduce the penalty below 0.</p><p><b>Usage</b>: select Conditional Modifier when performing a ranged attack.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "114, 121"
+        }
+      ],
+      "subtype": "feat"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": ""
+      },
+      "scene-packer": {
+        "hash": "9bfc3b6096a5d77056b4d3c7a2afe7d6bcdcb808"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734934189704,
+      "modifiedTime": 1734934189704,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "wXIecBhH01h72GN8",
+    "folder": null,
+    "sort": 100000,
+    "id": 5
+  },
+  {
+    "img": "icons/svg/book.svg",
+    "name": "Deceitful",
+    "system": {
+      "description": {
+        "value": "<p><em>You can make exceptionally deadly ranged attacks by pinpointing a foe's weak spot, at the expense of making the attack less likely to succeed.</em></p><p><strong>Prerequisites</strong>: Dex 13, base attack bonus +1.</p><p><strong>Benefits</strong>: You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.</p><h3>Combat Trick</h3><p>When using this feat, you can spend 4 stamina points to reduce the penalty to attack rolls imposed by the feat by 1 until the beginning of your next turn. You can't reduce the penalty below 0.</p><p><b>Usage</b>: select Conditional Modifier when performing a ranged attack.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "114, 121"
+        }
+      ],
+      "subtype": "feat"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": ""
+      },
+      "scene-packer": {
+        "hash": "9bfc3b6096a5d77056b4d3c7a2afe7d6bcdcb808"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734934189704,
+      "modifiedTime": 1734934189704,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "dAB4jk2uAV12TVUv",
+    "folder": null,
+    "sort": 100000,
+    "id": 6
+  }
+]

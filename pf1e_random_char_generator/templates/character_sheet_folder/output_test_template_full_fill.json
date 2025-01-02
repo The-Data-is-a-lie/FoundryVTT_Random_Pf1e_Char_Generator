@@ -1,0 +1,4098 @@
+{
+    "folder": "EYSudMag4S2FZBC4",
+    "name": "Hogara Stormstrike",
+    "type": "character",
+    "img": "icons/svg/mystery-man.svg",
+    "system": {
+        "abilities": {
+            "str": {
+                "value": 65,
+                "damage": 0,
+                "drain": 0,
+                "userPenalty": 0
+            },
+            "dex": {
+                "value": 64,
+                "damage": 0,
+                "drain": 0,
+                "userPenalty": 0
+            },
+            "con": {
+                "value": 55,
+                "damage": 0,
+                "drain": 0,
+                "userPenalty": 0
+            },
+            "int": {
+                "value": 39,
+                "damage": 0,
+                "drain": 0,
+                "userPenalty": 0
+            },
+            "wis": {
+                "value": 46,
+                "damage": 0,
+                "drain": 0,
+                "userPenalty": 0
+            },
+            "cha": {
+                "value": 49,
+                "damage": 0,
+                "drain": 0,
+                "userPenalty": 0
+            }
+        },
+        "attributes": {
+            "hpAbility": "con",
+            "cmbAbility": "str",
+            "naturalAC": 0,
+            "ac": {
+                "normal": {
+                    "ability": "dex"
+                },
+                "touch": {
+                    "ability": "dex"
+                },
+                "flatFooted": {}
+            },
+            "cmd": {
+                "strAbility": "str",
+                "dexAbility": "dex"
+            },
+            "sr": {
+                "formula": ""
+            },
+            "clCheck": false,
+            "saveNotes": "",
+            "acNotes": "",
+            "cmdNotes": "",
+            "srNotes": "",
+            "attack": {
+                "meleeAbility": "str",
+                "rangedAbility": "dex"
+            },
+            "energyDrain": 0,
+            "quadruped": null,
+            "savingThrows": {
+                "fort": {
+                    "base": 7,
+                    "ability": "con"
+                },
+                "ref": {
+                    "ability": "dex"
+                },
+                "will": {
+                    "ability": "wis"
+                }
+            },
+            "hp": {
+                "base": 67,
+                "temp": 0,
+                "nonlethal": 0,
+                "offset": 0
+            },
+            "wounds": {
+                "base": 0,
+                "offset": 0
+            },
+            "vigor": {
+                "temp": 0,
+                "base": 0,
+                "offset": 0
+            },
+            "init": {
+                "value": 0,
+                "ability": "dex"
+            },
+            "speed": {
+                "land": {
+                    "base": 20
+                },
+                "climb": {
+                    "base": null
+                },
+                "swim": {
+                    "base": null
+                },
+                "burrow": {
+                    "base": null
+                },
+                "fly": {
+                    "base": null,
+                    "maneuverability": "average"
+                },
+                "flyManeuverability": {
+                    "base": ""
+                }
+            },
+            "spells": {
+                "spellbooks": {
+                    "primary": {
+                        "name": "",
+                        "inUse": false,
+                        "castPerDayAllOffsetFormula": "",
+                        "preparedAllOffsetFormula": "",
+                        "casterType": "high",
+                        "class": "",
+                        "cl": {
+                            "formula": ""
+                        },
+                        "concentrationFormula": "",
+                        "concentrationNotes": "",
+                        "clNotes": "",
+                        "ability": "int",
+                        "autoSpellLevelCalculation": true,
+                        "autoSpellLevels": true,
+                        "psychic": false,
+                        "arcaneSpellFailure": true,
+                        "hasCantrips": true,
+                        "spellPreparationMode": "spontaneous",
+                        "baseDCFormula": "10 + @sl + @ablMod",
+                        "spellPoints": {
+                            "useSystem": false,
+                            "value": 0,
+                            "maxFormula": "",
+                            "restoreFormula": ""
+                        },
+                        "spells": {
+                            "spell0": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell1": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell2": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell3": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell4": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell5": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell6": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell7": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell8": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell9": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            }
+                        },
+                        "spellSlotAbilityBonusFormula": "",
+                        "domainSlotValue": 1
+                    },
+                    "secondary": {
+                        "name": "",
+                        "inUse": false,
+                        "castPerDayAllOffsetFormula": "",
+                        "preparedAllOffsetFormula": "",
+                        "casterType": "high",
+                        "class": "",
+                        "cl": {
+                            "formula": ""
+                        },
+                        "concentrationFormula": "",
+                        "concentrationNotes": "",
+                        "clNotes": "",
+                        "ability": "int",
+                        "autoSpellLevelCalculation": true,
+                        "autoSpellLevels": true,
+                        "psychic": false,
+                        "arcaneSpellFailure": true,
+                        "hasCantrips": true,
+                        "spellPreparationMode": "spontaneous",
+                        "baseDCFormula": "10 + @sl + @ablMod",
+                        "spellPoints": {
+                            "useSystem": false,
+                            "value": 0,
+                            "maxFormula": "",
+                            "restoreFormula": ""
+                        },
+                        "spells": {
+                            "spell0": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell1": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell2": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell3": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell4": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell5": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell6": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell7": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell8": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell9": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            }
+                        },
+                        "spellSlotAbilityBonusFormula": "",
+                        "domainSlotValue": 1
+                    },
+                    "tertiary": {
+                        "name": "",
+                        "inUse": false,
+                        "castPerDayAllOffsetFormula": "",
+                        "preparedAllOffsetFormula": "",
+                        "casterType": "high",
+                        "class": "",
+                        "cl": {
+                            "formula": ""
+                        },
+                        "concentrationFormula": "",
+                        "concentrationNotes": "",
+                        "clNotes": "",
+                        "ability": "int",
+                        "autoSpellLevelCalculation": true,
+                        "autoSpellLevels": true,
+                        "psychic": false,
+                        "arcaneSpellFailure": true,
+                        "hasCantrips": true,
+                        "spellPreparationMode": "spontaneous",
+                        "baseDCFormula": "10 + @sl + @ablMod",
+                        "spellPoints": {
+                            "useSystem": false,
+                            "value": 0,
+                            "maxFormula": "",
+                            "restoreFormula": ""
+                        },
+                        "spells": {
+                            "spell0": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell1": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell2": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell3": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell4": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell5": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell6": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell7": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell8": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell9": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            }
+                        },
+                        "spellSlotAbilityBonusFormula": "",
+                        "domainSlotValue": 1
+                    },
+                    "spelllike": {
+                        "name": "",
+                        "inUse": false,
+                        "castPerDayAllOffsetFormula": "",
+                        "preparedAllOffsetFormula": "",
+                        "casterType": "high",
+                        "class": "_hd",
+                        "cl": {
+                            "formula": ""
+                        },
+                        "concentrationFormula": "",
+                        "concentrationNotes": "",
+                        "clNotes": "",
+                        "ability": "cha",
+                        "autoSpellLevelCalculation": true,
+                        "autoSpellLevels": true,
+                        "psychic": false,
+                        "arcaneSpellFailure": true,
+                        "hasCantrips": true,
+                        "spellPreparationMode": "spontaneous",
+                        "baseDCFormula": "10 + @sl + @ablMod",
+                        "spellPoints": {
+                            "useSystem": false,
+                            "value": 0,
+                            "maxFormula": "",
+                            "restoreFormula": ""
+                        },
+                        "spells": {
+                            "spell0": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell1": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell2": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell3": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell4": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell5": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell6": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell7": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell8": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            },
+                            "spell9": {
+                                "castPerDayOffsetFormula": "",
+                                "preparedOffsetFormula": ""
+                            }
+                        },
+                        "spellSlotAbilityBonusFormula": "",
+                        "domainSlotValue": 1
+                    }
+                }
+            },
+            "woundThresholds": {
+                "override": -1
+            }
+        },
+        "details": {
+            "height": 69,
+            "weight": 208,
+            "gender": "Female",
+            "deity": [
+                "Lissala"
+            ],
+            "age": 38,
+            "alignment": "Lawful Evil",
+            "biography": {
+                "value": "<p> you have 0 younger brothers</p><p></p><p> you have 1 younger sisters</p><p></p><p> you have 0 older brothers</p><p></p><p> you have 0 older sisters</p><p></p><p>absent father, loving mother</p><p></p><p>Smirks,Bursts into laughter</p><p></p><p>Varicose Veins</p><p></p><p>Touseled</p><p></p><p>Black</p><p></p><p>Brown</p><p></p><p>Sickly</p><p></p><p>Winter’s Soul,Beast Bully,Surface Stranger,Nontraditional Native</p><p></p><p>Ieso</p><p></p>"
+            },
+            "bonusFeatFormula": "",
+            "bonusSkillRankFormula": "",
+            "tooltip": {
+                "name": "",
+                "hideHeld": false,
+                "hideArmor": false,
+                "hideBuffs": false,
+                "hideConditions": false,
+                "hideClothing": false,
+                "hideName": false
+            },
+            "carryCapacity": {
+                "bonus": {
+                    "user": 0
+                },
+                "multiplier": {
+                    "base": 1,
+                    "user": 0
+                }
+            },
+            "notes": {
+                "value": "<p>notes section</p><p></p>"
+            },
+            "xp": {
+                "value": 2000
+            }
+        },
+        "skills": {
+            "acr": {
+                "ability": "dex",
+                "rt": false,
+                "acp": true,
+                "rank": 0
+            },
+            "apr": {
+                "ability": "int",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "art": {
+                "ability": "int",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "blf": {
+                "ability": "cha",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "clm": {
+                "ability": "str",
+                "rt": false,
+                "acp": true,
+                "rank": 0
+            },
+            "crf": {
+                "ability": "int",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "dip": {
+                "ability": "cha",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "dev": {
+                "ability": "dex",
+                "rt": true,
+                "acp": true,
+                "rank": 0
+            },
+            "dis": {
+                "ability": "cha",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "esc": {
+                "ability": "dex",
+                "rt": false,
+                "acp": true,
+                "rank": 0
+            },
+            "fly": {
+                "ability": "dex",
+                "rt": false,
+                "acp": true,
+                "rank": 0
+            },
+            "han": {
+                "ability": "cha",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "hea": {
+                "ability": "wis",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "int": {
+                "ability": "cha",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "kar": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "kdu": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "ken": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "kge": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "khi": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "klo": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "kna": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "kno": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "kpl": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "kre": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "lin": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "lor": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "per": {
+                "ability": "wis",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "prf": {
+                "ability": "cha",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "pro": {
+                "ability": "wis",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "rid": {
+                "ability": "dex",
+                "rt": false,
+                "acp": true,
+                "rank": 0
+            },
+            "sen": {
+                "ability": "wis",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "slt": {
+                "ability": "dex",
+                "rt": true,
+                "acp": true,
+                "rank": 0
+            },
+            "spl": {
+                "ability": "int",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            },
+            "ste": {
+                "ability": "dex",
+                "rt": false,
+                "acp": true,
+                "rank": 0
+            },
+            "sur": {
+                "ability": "wis",
+                "rt": false,
+                "acp": false,
+                "rank": 0
+            },
+            "swm": {
+                "ability": "str",
+                "rt": false,
+                "acp": true,
+                "rank": 0
+            },
+            "umd": {
+                "ability": "cha",
+                "rt": true,
+                "acp": false,
+                "rank": 0
+            }
+        },
+        "traits": {
+            "size": "med",
+            "senses": {
+                "dv": 0,
+                "ts": 0,
+                "bs": 0,
+                "bse": 0,
+                "ll": {
+                    "enabled": false,
+                    "multiplier": {
+                        "dim": 2,
+                        "bright": 2
+                    }
+                },
+                "sid": false,
+                "tr": 0,
+                "si": false,
+                "sc": 0,
+                "custom": ""
+            },
+            "hardness": 0,
+            "dr": {
+                "value": [],
+                "custom": ""
+            },
+            "eres": {
+                "value": [],
+                "custom": ""
+            },
+            "cres": "",
+            "regen": "",
+            "fastHealing": "",
+            "languages": {
+                "value": [
+                    "Gnoll",
+                    "Giant",
+                    "Undercommon",
+                    "Goblin",
+                    "Dwarven"
+                ],
+                "custom": []
+            },
+            "di": {
+                "value": [],
+                "custom": []
+            },
+            "dv": {
+                "value": [],
+                "custom": []
+            },
+            "ci": {
+                "value": [],
+                "custom": []
+            },
+            "stature": "tall",
+            "weaponProf": {
+                "value": [],
+                "custom": []
+            },
+            "armorProf": {
+                "value": [],
+                "custom": []
+            },
+            "aura": {
+                "custom": ""
+            }
+        },
+        "currency": {
+            "pp": 999910212,
+            "gp": 0,
+            "sp": 0,
+            "cp": 0
+        },
+        "altCurrency": {
+            "pp": 0,
+            "gp": 0,
+            "sp": 0,
+            "cp": 0
+        }
+    },
+    "prototypeToken": {
+        "name": "rando_mcgee",
+        "displayName": 30,
+        "actorLink": true,
+        "appendNumber": true,
+        "prependAdjective": true,
+        "texture": {
+            "src": "icons/svg/mystery-man.svg",
+            "scaleX": 1,
+            "scaleY": 1,
+            "offsetX": 0,
+            "offsetY": 0,
+            "rotation": 0
+        },
+        "width": 1,
+        "height": 1,
+        "lockRotation": false,
+        "rotation": 0,
+        "alpha": 1,
+        "disposition": 1,
+        "displayBars": 50,
+        "bar1": {
+            "attribute": "attributes.hp"
+        },
+        "bar2": {
+            "attribute": null
+        },
+        "light": {
+            "alpha": 0.5,
+            "angle": 360,
+            "bright": 1000,
+            "coloration": 1,
+            "dim": 50,
+            "attenuation": 0.5,
+            "luminosity": 0.5,
+            "saturation": 0,
+            "contrast": 0,
+            "shadows": 0,
+            "animation": {
+                "type": null,
+                "speed": 5,
+                "intensity": 5,
+                "reverse": false
+            },
+            "darkness": {
+                "min": 0,
+                "max": 1
+            }
+        },
+        "sight": {
+            "enabled": true,
+            "range": 1000,
+            "angle": 360,
+            "visionMode": "basic",
+            "color": null,
+            "attenuation": 0.1,
+            "brightness": 1,
+            "saturation": 0,
+            "contrast": 0
+        },
+        "detectionModes": [
+            {
+                "id": "basicSight",
+                "range": 1000,
+                "enabled": true
+            }
+        ],
+        "flags": {
+            "pf1": {
+                "customVisionRules": true
+            },
+            "monks-tokenbar": {
+                "include": "default"
+            },
+            "barbrawl": {
+                "resourceBars": {
+                    "bar1": {
+                        "order": 0,
+                        "id": "bar1",
+                        "attribute": "attributes.hp",
+                        "mincolor": "#FF0000",
+                        "maxcolor": "#80FF00",
+                        "position": "bottom-inner",
+                        "otherVisibility": 0,
+                        "ownerVisibility": 10,
+                        "gmVisibility": -1,
+                        "hideFull": false,
+                        "hideEmpty": false,
+                        "hideCombat": false,
+                        "hideNoCombat": false,
+                        "indentLeft": null,
+                        "indentRight": null,
+                        "shareHeight": false,
+                        "style": "user",
+                        "label": "",
+                        "invert": false,
+                        "subdivisions": null,
+                        "subdivisionsOwner": false,
+                        "fgImage": "",
+                        "bgImage": "",
+                        "opacity": null,
+                        "invertDirection": false
+                    }
+                }
+            },
+            "token-auras": {
+                "aura1": {
+                    "permission": "all",
+                    "colour": "#ffffff",
+                    "opacity": 0.5,
+                    "distance": null,
+                    "square": false
+                },
+                "aura2": {
+                    "permission": "all",
+                    "colour": "#ffffff",
+                    "opacity": 0.5,
+                    "distance": null,
+                    "square": false
+                }
+            },
+            "about-face": {
+                "indicatorDisabled": false,
+                "flipOrRotate": "global",
+                "facingDirection": "global",
+                "rotationOffset": 0
+            },
+            "wall-height": {
+                "tokenHeight": 5
+            },
+            "monks-enhanced-journal": {
+                "chatbubble": ""
+            },
+            "arms-reach": {
+                "range": 0
+            }
+        },
+        "randomImg": false
+    },
+    "items": [
+        {
+            "name": "class feature 1",
+            "type": "feat",
+            "_id": "PfqsGu8ActmuoATU",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "classFeat",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "0f1c751e7f1157597fd50bb5794aad8d28b1d242"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772898033,
+                "modifiedTime": 1734772910755,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "feat 1",
+            "type": "feat",
+            "_id": "Wi0ZtFx35O4TUIFu",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "feat",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "d4f4acbb9b1bfbf2c754adcc9aa6e23d87401c41"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772906020,
+                "modifiedTime": 1734772908472,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "combat talent 1",
+            "type": "feat",
+            "_id": "8fnKQiasq9YuhQlf",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "combatTalent",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "3b333b23308e170e4546bc9b165b57cf945b97bd"
+                },
+                "pf1spheres": {
+                    "sphere": "alchemy",
+                    "countExcluded": false
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772912954,
+                "modifiedTime": 1734772917919,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "magic talent 1",
+            "type": "feat",
+            "_id": "9SC626bjt9mUYJZo",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "magicTalent",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "52d4f320937c38400123c260015404e8b8a61229"
+                },
+                "pf1spheres": {
+                    "sphere": "alteration",
+                    "countExcluded": false
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772919985,
+                "modifiedTime": 1734772922955,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "skill talent 1",
+            "type": "feat",
+            "_id": "7iLZow80L7biYzLU",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "skillTalent",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "541fe76677e441962f56b6cd12cef5ff2c8157ce"
+                },
+                "pf1spheres": {
+                    "sphere": "artifice",
+                    "countExcluded": false
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772926637,
+                "modifiedTime": 1734772929765,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "trait 1",
+            "type": "feat",
+            "_id": "FG9G1MKJ4xFBpMxN",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "trait",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "3585c78ac6b9d6e62664f418f5b8673614cfee30"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772932270,
+                "modifiedTime": 1734772934250,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "racial trait 1",
+            "type": "feat",
+            "_id": "e8WILbI4ocEjmAbm",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "racial",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "6ce9b57cd9d2f53694a40cdc64ca4f0f9999224e"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772936787,
+                "modifiedTime": 1734772939067,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "template 1",
+            "type": "feat",
+            "_id": "iPLrFmDYYUjkal6X",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "template",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "04c185384ecbd98660bb1a5e9066637fe7ed37fc"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772941880,
+                "modifiedTime": 1734772944049,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "misc 1",
+            "type": "feat",
+            "_id": "6dxUHIJqvRFy84oF",
+            "img": "icons/svg/book.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "misc",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": []
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {
+                    "acr": false,
+                    "apr": false,
+                    "art": false,
+                    "blf": false,
+                    "clm": false,
+                    "crf": false,
+                    "dip": false,
+                    "dev": false,
+                    "dis": false,
+                    "esc": false,
+                    "fly": false,
+                    "han": false,
+                    "hea": false,
+                    "int": false,
+                    "kar": false,
+                    "kdu": false,
+                    "ken": false,
+                    "kge": false,
+                    "khi": false,
+                    "klo": false,
+                    "kna": false,
+                    "kno": false,
+                    "kpl": false,
+                    "kre": false,
+                    "lin": false,
+                    "lor": false,
+                    "per": false,
+                    "prf": false,
+                    "pro": false,
+                    "rid": false,
+                    "sen": false,
+                    "slt": false,
+                    "spl": false,
+                    "ste": false,
+                    "sur": false,
+                    "swm": false,
+                    "umd": false
+                },
+                "class": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "d35019f023f038d64d96b7256de8cb3ac22f326d"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734772946411,
+                "modifiedTime": 1734772948444,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "temp_buff",
+            "type": "buff",
+            "_id": "Y1C8H99ZdhClbHS9",
+            "img": "icons/svg/ice-aura.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "temp",
+                "active": false,
+                "level": 0,
+                "duration": {
+                    "value": null,
+                    "units": ""
+                },
+                "conditions": {
+                    "value": [],
+                    "custom": []
+                },
+                "hideFromToken": false,
+                "showInQuickbar": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "91f7520a9f95e4c8e4d3e20dffdcf3b79e39752c"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819476045,
+                "modifiedTime": 1734819478954,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "spell_buff",
+            "type": "buff",
+            "_id": "QWJktrRLFH07knVX",
+            "img": "icons/svg/ice-aura.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "spell",
+                "active": false,
+                "level": 0,
+                "duration": {
+                    "value": null,
+                    "units": ""
+                },
+                "conditions": {
+                    "value": [],
+                    "custom": []
+                },
+                "hideFromToken": false,
+                "showInQuickbar": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "9f4432791b665c177de8a528436c6cc91f1fbb6e"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819481267,
+                "modifiedTime": 1734819509522,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "item_buff",
+            "type": "buff",
+            "_id": "vC5Dpgspm8aLmzRt",
+            "img": "icons/svg/ice-aura.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "item",
+                "active": false,
+                "level": 0,
+                "duration": {
+                    "value": null,
+                    "units": ""
+                },
+                "conditions": {
+                    "value": [],
+                    "custom": []
+                },
+                "hideFromToken": false,
+                "showInQuickbar": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "e56f85bf54c561f03b526ae452e034d92dc24dff"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819486352,
+                "modifiedTime": 1734819488947,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "feature_buff",
+            "type": "buff",
+            "_id": "WBKPzmh4SIHeoiRo",
+            "img": "icons/svg/ice-aura.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "feat",
+                "active": false,
+                "level": 0,
+                "duration": {
+                    "value": null,
+                    "units": ""
+                },
+                "conditions": {
+                    "value": [],
+                    "custom": []
+                },
+                "hideFromToken": false,
+                "showInQuickbar": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "edaefa002b738df620571a7b53a8735e4d289df9"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819491657,
+                "modifiedTime": 1734819494493,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "perm_buff",
+            "type": "buff",
+            "_id": "7SCsRvrzQ3OOdD1w",
+            "img": "icons/svg/ice-aura.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "perm",
+                "active": false,
+                "level": 0,
+                "duration": {
+                    "value": null,
+                    "units": ""
+                },
+                "conditions": {
+                    "value": [],
+                    "custom": []
+                },
+                "hideFromToken": false,
+                "showInQuickbar": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "54e8d2956c5cf9be9c4dbb7e0a2d7371713c2143"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819497370,
+                "modifiedTime": 1734819499775,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "misc_buff",
+            "type": "buff",
+            "_id": "QVnBfH4tFCUbbETl",
+            "img": "icons/svg/ice-aura.svg",
+            "system": {
+                "description": {
+                    "value": ""
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "misc",
+                "active": false,
+                "level": 0,
+                "duration": {
+                    "value": null,
+                    "units": ""
+                },
+                "conditions": {
+                    "value": [],
+                    "custom": []
+                },
+                "hideFromToken": false,
+                "showInQuickbar": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "9f34ce079589d3b0db294235ea7bf235697f770a"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819502234,
+                "modifiedTime": 1734819504909,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "img": "systems/pf1/icons/items/weapons/greatsword.PNG",
+            "name": "Greatsword",
+            "system": {
+                "description": {
+                    "value": "<p>This immense two-handed sword is about 5 feet in length. A greatsword may have a dulled lower blade that can be gripped.</p>",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 8
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 50,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 0,
+                "aura": {
+                    "custom": false,
+                    "school": ""
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 10,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [
+                    {
+                        "_id": "137kuv1fu5ds6swb",
+                        "ability": {
+                            "attack": "str",
+                            "critRange": 19,
+                            "damage": "str"
+                        },
+                        "actionType": "mwak",
+                        "activation": {
+                            "type": "attack",
+                            "unchained": {
+                                "type": "attack"
+                            }
+                        },
+                        "damage": {
+                            "parts": [
+                                {
+                                    "formula": "sizeRoll(2, 6, @size)",
+                                    "type": {
+                                        "custom": "",
+                                        "values": [
+                                            "slashing"
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "duration": {
+                            "units": "inst"
+                        },
+                        "extraAttacks": {
+                            "type": "standard"
+                        },
+                        "name": "Attack",
+                        "range": {
+                            "units": "melee",
+                            "value": "0"
+                        }
+                    }
+                ],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "2h",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "martial",
+                "weaponSubtype": "2h",
+                "baseTypes": [
+                    "Greatsword"
+                ],
+                "weaponGroups": {
+                    "value": [
+                        "bladesHeavy"
+                    ],
+                    "custom": []
+                },
+                "material": {
+                    "base": {
+                        "value": "steel",
+                        "custom": false
+                    },
+                    "normal": {
+                        "value": "",
+                        "custom": false
+                    },
+                    "addon": []
+                },
+                "properties": {},
+                "showInQuickbar": true,
+                "sources": [
+                    {
+                        "id": "PZO1110",
+                        "pages": "143, 146"
+                    },
+                    {
+                        "id": "PZO1123",
+                        "pages": "18"
+                    }
+                ]
+            },
+            "type": "weapon",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.weapons-and-ammo.Item.oyUApQSVsAqzyjdz"
+                },
+                "scene-packer": {
+                    "hash": "689392465be6107dadce33081cb68d2f79e24958"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819532265,
+                "modifiedTime": 1734819532265,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "_id": "qKcG7dZlVlm7WMoE",
+            "folder": null,
+            "sort": 0
+        },
+        {
+            "img": "systems/pf1/icons/items/armor/fullplate.PNG",
+            "name": "Full Plate",
+            "system": {
+                "description": {
+                    "value": "<p>This metal suit comprises multiple pieces of interconnected and overlaying metal plates, incorporating the benefits of numerous types of lesser armor. A complete suit of full plate (or platemail, as it is often called) includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800 (2d4 x 100) gold pieces.</p>",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 50
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 1500,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 0,
+                "aura": {
+                    "custom": false,
+                    "school": ""
+                },
+                "hp": {
+                    "max": 45,
+                    "value": 45
+                },
+                "broken": false,
+                "hardness": 10,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "armor",
+                "slot": "armor",
+                "equipmentSubtype": "heavyArmor",
+                "baseTypes": [
+                    "Full Plate"
+                ],
+                "armor": {
+                    "value": 9,
+                    "dex": 1,
+                    "acp": 6,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "steel",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "addon": []
+                    }
+                },
+                "spellFailure": 35,
+                "showInQuickbar": false,
+                "sources": [
+                    {
+                        "id": "PZO1110",
+                        "pages": "150, 151"
+                    }
+                ]
+            },
+            "type": "equipment",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.armors-and-shields.Item.h65qEp22nsyRoeRa"
+                },
+                "scene-packer": {
+                    "hash": "cfa91724a1ae6baabec1367d98077282583b1842"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819537201,
+                "modifiedTime": 1734819537201,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "_id": "E18wih563TCQK6hB",
+            "folder": null,
+            "sort": 0
+        },
+        {
+            "img": "icons/equipment/finger/ring-cabochon-silver-gold-red.webp",
+            "name": "Headband of Alluring Charisma +6",
+            "system": {
+                "description": {
+                    "value": "<p>This attractive silver headband is decorated with a number of small red and orange gemstones.</p><p>The headband grants the wearer an <em>enhancement bonus</em> to <em>Charisma</em> of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the headband is worn.</p><h3>Construction</h3><p><strong>Requirements</strong> @UUID[Compendium.pf1.feats.Item.tD76K8QGco9scT0r]{Craft Wondrous Item}, @UUID[Compendium.pf1.spells.Item.d4oubr5bdoo8w1ev]{Eagle's Splendor}; <strong>Cost</strong> 18,000 gp</p>",
+                    "unidentified": "<p>This attractive silver headband is decorated with a number of small red and orange gemstones.</p>"
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 1
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 36000,
+                "size": "med",
+                "resizing": true,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": "Headband"
+                },
+                "cursed": false,
+                "cl": 8,
+                "aura": {
+                    "custom": false,
+                    "school": "trs"
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [
+                    {
+                        "_id": "ApIgfP1K",
+                        "formula": "6",
+                        "target": "cha",
+                        "type": "enh"
+                    }
+                ],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "wondrous",
+                "slot": "headband",
+                "equipmentSubtype": "lightArmor",
+                "baseTypes": [],
+                "armor": {
+                    "value": 0,
+                    "dex": null,
+                    "acp": 0,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "leather",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "leather",
+                            "custom": false
+                        },
+                        "addon": []
+                    }
+                },
+                "spellFailure": 0,
+                "showInQuickbar": false,
+                "sources": [
+                    {
+                        "id": "PZO1123",
+                        "pages": "248"
+                    },
+                    {
+                        "id": "PZO1110",
+                        "pages": "516"
+                    }
+                ]
+            },
+            "type": "equipment",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.items.Item.3jgVeXbVIQdRutRM"
+                },
+                "scene-packer": {
+                    "hash": "ac5434ec9284764e525136c11387081f6432b4ff"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819559200,
+                "modifiedTime": 1734819559200,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "_id": "4vh9FukcS8IbcED9",
+            "folder": null,
+            "sort": 0
+        },
+        {
+            "img": "systems/pf1/icons/races/oread.png",
+            "name": "Oread",
+            "system": {
+                "description": {
+                    "value": "<h2>Starting Age</h2><table><thead><tr><th>Adulthood</th><th>Intuitive<sup>1</sup></th><th>Self-Taught<sup>2</sup></th><th>Trained<sup>3</sup></th></tr></thead><tbody><tr><td>60 years</td><td><p>+4d6 years<br />(64 – 84 years)</p></td><td><p>+6d6 years<br />(66 – 96 years)</p></td><td><p>+8d6 years<br />(68 – 108 years)</p></td></tr></tbody></table><p><sup>1</sup> This category includes barbarians, oracles, rogues, and sorcerers.<br /><sup>2</sup> This category includes bards, cavaliers, fighters, gunslingers, paladins, rangers, summoners, and witches.<br /><sup>3</sup> This category includes alchemists, clerics, druids, inquisitors, magi, monks, and wizards.</p><h2>Height and Weight</h2><table><thead><tr><th>Gender</th><th>Base Height</th><th>Height Modifier</th><th>Base Weight</th><th>Weight Modifier</th></tr></thead><tbody><tr><td>Male</td><td>4 ft. 0 in.</td><td><p>+2d6 in.<br />(4 ft. 2 in. – 5 ft.)</p></td><td>150 lbs.</td><td><p>+(2d6×7 lbs.)<br />(164 – 234 lbs.)</p></td></tr><tr><td>Female</td><td>3 ft. 9 in.</td><td><p>+2d6 in.<br />(3 ft. 11 in. – 4 ft. 9 in.)</p></td><td>120 lbs.</td><td><p>+(2d6×7 lbs.)<br />(134 – 204 lbs.)</p></td></tr></tbody></table><h2>Standard Racial Traits</h2><ul><li><strong>Ability Score Modifiers</strong>: Oreads are strong, solid, stable, and stoic. They gain +2 <em>Strength</em>, +2 <em>Wisdom</em>, and –2 <em>Charisma</em>.</li><li><strong>Type</strong>: Oreads are <em>outsiders</em> with the <em>native</em> subtype.</li><li><strong>Size</strong>: Oreads are Medium creatures and thus have no bonuses or penalties due to their size.</li><li><strong>Base Speed</strong>: Oreads have a base speed of 20 feet.</li><li><strong>Languages</strong>: Oreads begin play speaking Common and Terran. Oreads with high <em>Intelligence</em> scores can choose from the following: Aquan, Auran, Dwarven, Elven, Gnome, Halfling, Ignan, and Undercommon.</li></ul><h3>Defense Racial Traits</h3><ul><li><strong>Energy Resistance</strong>: Oreads have <em>acid resistance</em> 5.</li></ul><h3>Magical Racial Traits</h3><ul><li><strong>Spell-Like Ability (Sp)</strong> Oread can use @Compendium[pf1.spells.fv9mgob508qv99zz]{Magic Stone} 1/day (<em>caster level</em> equals the <em>oread</em>'s total level; DC 11 + <em>Charisma</em> modifier).</li><li><strong>Earth Affinity</strong>: Oread @Compendium[pf1.classes.AoWSbnuTSGIxmv61]{sorcerers} with the @Compendium[pf1.class-abilities.hBjfCZYv4qwZr101]{elemental (earth) bloodline} treat their <em>Charisma</em> score as 2 points higher for all <em>sorcerer</em> spells and class abilities. Oread @Compendium[pf1.classes.SjFqQceVeVBzBwgn]{clerics} with the @Compendium[pf1.class-abilities.IXqYkTnaEgHG2ui3]{earth domain} use their domain powers and spells at +1 <em>caster level</em>.</li></ul><h3>Senses Racial Traits</h3><ul><li><strong>Darkvision</strong>: Oreads can see perfectly in the dark up to 60 feet.</li></ul>"
+                },
+                "tags": [
+                    "Uncommon",
+                    "Planetouched",
+                    "Geniekin",
+                    "Eastern (Casmaron)"
+                ],
+                "changes": [
+                    {
+                        "_id": "PD6hKf82",
+                        "formula": "2",
+                        "target": "str",
+                        "type": "racial"
+                    },
+                    {
+                        "_id": "aZjNtj4E",
+                        "formula": "2",
+                        "target": "wis",
+                        "type": "racial"
+                    },
+                    {
+                        "_id": "JO2nGNns",
+                        "formula": "-2",
+                        "target": "cha",
+                        "type": "racial"
+                    }
+                ],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": []
+                },
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [
+                        "common",
+                        "terran"
+                    ],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "creatureType": "outsider",
+                "size": "med",
+                "speeds": {
+                    "land": 20,
+                    "fly": null,
+                    "flyManeuverability": "",
+                    "swim": null,
+                    "climb": null,
+                    "burrow": null
+                },
+                "subTypes": [
+                    "Native"
+                ],
+                "sources": [
+                    {
+                        "id": "PZO9280",
+                        "pages": "247"
+                    }
+                ]
+            },
+            "type": "race",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.races.Item.4qEXPDlfIj1cIvCe"
+                },
+                "scene-packer": {
+                    "hash": "8b62d02a5b77c79ab3b737616b4561b984e800a5"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734819591389,
+                "modifiedTime": 1734819591389,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "_id": "fxyniy7D72goGqkB",
+            "folder": null,
+            "sort": 0
+        },
+        {
+            "img": "systems/pf1/icons/skills/yellow_37.jpg",
+            "name": "Fighter",
+            "system": {
+                "description": {
+                    "value": "<p><strong>Role</strong>: Fighters excel at combat—defeating their enemies, controlling the flow of battle, and surviving such sorties themselves. While their specific weapons and methods grant them a wide variety of tactics, few can match fighters for sheer battle prowess.</p><h2>Class Skills</h2><p>The fighter’s class skills are Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha), Knowledge (dungeoneering) (Int), Knowledge (engineering) (Int), Profession (Wis), Ride (Dex), Survival (Wis), and Swim (Str).</p>"
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "classAssociations": [
+                        {
+                            "level": 1,
+                            "uuid": "Compendium.pf1.class-abilities.CV8BsY3ciUb9TA1Y"
+                        },
+                        {
+                            "level": 2,
+                            "uuid": "Compendium.pf1.class-abilities.h0Brxw6khcjlEf1T"
+                        },
+                        {
+                            "level": 3,
+                            "uuid": "Compendium.pf1.class-abilities.5JFfSqLMCpbRmERa"
+                        },
+                        {
+                            "level": 5,
+                            "uuid": "Compendium.pf1.class-abilities.RzEzudurxQFirFoF"
+                        },
+                        {
+                            "level": 7,
+                            "uuid": "Compendium.pf1.class-abilities.Item.iqeyCQIIVnNt0p3h"
+                        },
+                        {
+                            "level": 20,
+                            "uuid": "Compendium.pf1.class-abilities.McXAM1BoPHZLO1n4"
+                        }
+                    ]
+                },
+                "tag": "fighter",
+                "armorProf": {
+                    "value": [
+                        "lgt",
+                        "med",
+                        "hvy",
+                        "shl",
+                        "twr"
+                    ],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [
+                        "simple",
+                        "martial"
+                    ],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "base",
+                "level": 10,
+                "hd": 10,
+                "hp": 10,
+                "bab": "high",
+                "skillsPerLevel": 2,
+                "savingThrows": {
+                    "fort": {
+                        "value": "high"
+                    },
+                    "ref": {
+                        "value": "low"
+                    },
+                    "will": {
+                        "value": "low"
+                    }
+                },
+                "fc": {
+                    "hp": {
+                        "value": 0
+                    },
+                    "skill": {
+                        "value": 0
+                    },
+                    "alt": {
+                        "value": 0,
+                        "notes": ""
+                    }
+                },
+                "wealth": "5d6 * 10",
+                "alignment": "",
+                "classSkills": {
+                    "art": true,
+                    "clm": true,
+                    "crf": true,
+                    "han": true,
+                    "int": true,
+                    "kdu": true,
+                    "ken": true,
+                    "lor": true,
+                    "pro": true,
+                    "rid": true,
+                    "sur": true,
+                    "swm": true
+                },
+                "sources": [
+                    {
+                        "id": "PZO1110",
+                        "pages": "55-56"
+                    }
+                ]
+            },
+            "type": "class",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.classes.Item.WLqBCT5DqmGAx8Wd"
+                },
+                "scene-packer": {
+                    "hash": "5fd7ea937a5a8a0f9d6a29ba162dc3e44fabefa4"
+                },
+                "pf1": {
+                    "links": {
+                        "classAssociations": {
+                            "vw90mn4c7RXkbSum": 1
+                        }
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734821786379,
+                "modifiedTime": 1734821786841,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "_id": "IVfXRIeSYINHmNAp",
+            "folder": null,
+            "sort": 1100000
+        },
+        {
+            "img": "systems/pf1/icons/skills/affliction_18.jpg",
+            "name": "Bonus Feats (FGT)",
+            "system": {
+                "description": {
+                    "value": "<p>At 1st level, and at every even level thereafter, a fighter gains a bonus feat in addition to those gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as <em>Combat Feats</em>, sometimes also called “fighter bonus feats.”</p>\n<p>Upon reaching 4th level, and every four levels thereafter (8th, 12th, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he has already learned. In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or other ability. A fighter can only change one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.</p>"
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [
+                    {
+                        "_id": "hTa3rUaM",
+                        "formula": "1 + floor(@class.level / 2)",
+                        "target": "bonusFeats",
+                        "type": "untyped"
+                    }
+                ],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "classFeat",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": [
+                        "Fighter"
+                    ]
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {},
+                "sources": [
+                    {
+                        "id": "PZO1110",
+                        "pages": "55"
+                    }
+                ],
+                "class": "fighter"
+            },
+            "type": "feat",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.class-abilities.Item.CV8BsY3ciUb9TA1Y"
+                },
+                "scene-packer": {
+                    "hash": "b10f488018694d06f26a4b95c278d1c7d012fd88"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734821786682,
+                "modifiedTime": 1734821786682,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "sort": 5000000,
+            "_id": "vw90mn4c7RXkbSum",
+            "folder": null
+        },
+        {
+            "name": "Unmodified Weapon",
+            "type": "weapon",
+            "_id": "ZrdSYucuesbr1Dg8",
+            "img": "icons/svg/sword.svg",
+            "system": {
+                "description": {
+                    "value": "",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 0
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 0,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 0,
+                "aura": {
+                    "custom": false,
+                    "school": ""
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "simple",
+                "weaponSubtype": "light",
+                "baseTypes": [],
+                "weaponGroups": {
+                    "value": [],
+                    "custom": []
+                },
+                "material": {
+                    "base": {
+                        "value": "",
+                        "custom": false
+                    },
+                    "normal": {
+                        "value": "",
+                        "custom": false
+                    },
+                    "addon": []
+                },
+                "properties": {
+                    "ato": false,
+                    "blc": false,
+                    "brc": false,
+                    "dea": false,
+                    "dis": false,
+                    "dst": false,
+                    "dbl": false,
+                    "fin": false,
+                    "frg": false,
+                    "grp": false,
+                    "imp": false,
+                    "mnk": false,
+                    "nnl": false,
+                    "prf": false,
+                    "rch": false,
+                    "sct": false,
+                    "sma": false,
+                    "slf": false,
+                    "spc": false,
+                    "snd": false,
+                    "thr": false,
+                    "trp": false
+                },
+                "showInQuickbar": true,
+                "alignments": {
+                    "lawful": false,
+                    "chaotic": false,
+                    "good": false,
+                    "evil": false
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "c59c995f60f3f2ac96042cc8eb25130f7068e463"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734933596746,
+                "modifiedTime": 1734933602691,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "Unmodifed Armor",
+            "type": "equipment",
+            "_id": "C6w4soEmagAvKqEw",
+            "img": "icons/svg/combat.svg",
+            "system": {
+                "description": {
+                    "value": "",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 0
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 0,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 0,
+                "aura": {
+                    "custom": false,
+                    "school": ""
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "armor",
+                "slot": "armor",
+                "equipmentSubtype": "lightArmor",
+                "baseTypes": [],
+                "armor": {
+                    "value": 0,
+                    "dex": null,
+                    "acp": 0,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "addon": []
+                    }
+                },
+                "spellFailure": 0,
+                "showInQuickbar": false,
+                "nonlethal": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 100000,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "5719096ae13382ffbb3a324be62601c57a7ad2eb"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734933607467,
+                "modifiedTime": 1734933611202,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "name": "Unmodified Equipment",
+            "type": "equipment",
+            "_id": "RueRF8ilVW0st0CP",
+            "img": "icons/svg/combat.svg",
+            "system": {
+                "description": {
+                    "value": "",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 0
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 0,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 0,
+                "aura": {
+                    "custom": false,
+                    "school": ""
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "wondrous",
+                "slot": "slotless",
+                "equipmentSubtype": "lightArmor",
+                "baseTypes": [],
+                "armor": {
+                    "value": 0,
+                    "dex": null,
+                    "acp": 0,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "addon": []
+                    }
+                },
+                "spellFailure": 0,
+                "showInQuickbar": false,
+                "nonlethal": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 100000,
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "scene-packer": {
+                    "hash": "107e40bfdab9307f6255df54359ed5c1f56c76cb"
+                },
+                "lilhelper": {
+                    "item": {
+                        "hideAttacks": false,
+                        "autoPowerAttack": false,
+                        "keen": false,
+                        "skipDialog": 0,
+                        "rollmodeOverride": "",
+                        "rollOverride": ""
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734933613829,
+                "modifiedTime": 1734933618609,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            }
+        },
+        {
+            "img": "systems/pf1/icons/skills/yellow_37.jpg",
+            "name": "Fighter",
+            "system": {
+                "description": {
+                    "value": "<p><strong>Role</strong>: Fighters excel at combat—defeating their enemies, controlling the flow of battle, and surviving such sorties themselves. While their specific weapons and methods grant them a wide variety of tactics, few can match fighters for sheer battle prowess.</p><h2>Class Skills</h2><p>The fighter’s class skills are Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha), Knowledge (dungeoneering) (Int), Knowledge (engineering) (Int), Profession (Wis), Ride (Dex), Survival (Wis), and Swim (Str).</p>"
+                },
+                "tags": [],
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "classAssociations": [
+                        {
+                            "level": 1,
+                            "uuid": "Compendium.pf1.class-abilities.CV8BsY3ciUb9TA1Y"
+                        },
+                        {
+                            "level": 2,
+                            "uuid": "Compendium.pf1.class-abilities.h0Brxw6khcjlEf1T"
+                        },
+                        {
+                            "level": 3,
+                            "uuid": "Compendium.pf1.class-abilities.5JFfSqLMCpbRmERa"
+                        },
+                        {
+                            "level": 5,
+                            "uuid": "Compendium.pf1.class-abilities.RzEzudurxQFirFoF"
+                        },
+                        {
+                            "level": 7,
+                            "uuid": "Compendium.pf1.class-abilities.Item.iqeyCQIIVnNt0p3h"
+                        },
+                        {
+                            "level": 20,
+                            "uuid": "Compendium.pf1.class-abilities.McXAM1BoPHZLO1n4"
+                        }
+                    ]
+                },
+                "tag": "fighter",
+                "armorProf": {
+                    "value": [
+                        "lgt",
+                        "med",
+                        "hvy",
+                        "shl",
+                        "twr"
+                    ],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [
+                        "simple",
+                        "martial"
+                    ],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "base",
+                "level": 10,
+                "hd": 10,
+                "hp": 10,
+                "bab": "high",
+                "skillsPerLevel": 2,
+                "savingThrows": {
+                    "fort": {
+                        "value": "high"
+                    },
+                    "ref": {
+                        "value": "low"
+                    },
+                    "will": {
+                        "value": "low"
+                    }
+                },
+                "fc": {
+                    "hp": {
+                        "value": 0
+                    },
+                    "skill": {
+                        "value": 0
+                    },
+                    "alt": {
+                        "value": 0,
+                        "notes": ""
+                    }
+                },
+                "wealth": "5d6 * 10",
+                "alignment": "",
+                "classSkills": {
+                    "art": true,
+                    "clm": true,
+                    "crf": true,
+                    "han": true,
+                    "int": true,
+                    "kdu": true,
+                    "ken": true,
+                    "lor": true,
+                    "pro": true,
+                    "rid": true,
+                    "sur": true,
+                    "swm": true
+                },
+                "sources": [
+                    {
+                        "id": "PZO1110",
+                        "pages": "55-56"
+                    }
+                ]
+            },
+            "type": "class",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.classes.Item.WLqBCT5DqmGAx8Wd"
+                },
+                "scene-packer": {
+                    "hash": "5fd7ea937a5a8a0f9d6a29ba162dc3e44fabefa4"
+                },
+                "pf1": {
+                    "links": {
+                        "classAssociations": {
+                            "vw90mn4c7RXkbSum": 1
+                        }
+                    }
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734821786379,
+                "modifiedTime": 1734821786841,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "_id": "IVfXRIeSYINHmNAp",
+            "folder": null,
+            "sort": 1100000
+        },
+        {
+            "img": "systems/pf1/icons/skills/affliction_18.jpg",
+            "name": "Bonus Feats (FGT)",
+            "system": {
+                "description": {
+                    "value": "<p>At 1st level, and at every even level thereafter, a fighter gains a bonus feat in addition to those gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as <em>Combat Feats</em>, sometimes also called “fighter bonus feats.”</p>\n<p>Upon reaching 4th level, and every four levels thereafter (8th, 12th, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he has already learned. In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or other ability. A fighter can only change one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.</p>"
+                },
+                "tags": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "changes": [
+                    {
+                        "_id": "hTa3rUaM",
+                        "formula": "1 + floor(@class.level / 2)",
+                        "target": "bonusFeats",
+                        "type": "untyped"
+                    }
+                ],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "",
+                "armorProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "weaponProf": {
+                    "value": [],
+                    "custom": []
+                },
+                "languages": {
+                    "value": [],
+                    "custom": []
+                },
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "subType": "classFeat",
+                "traitType": "",
+                "traitCategory": "",
+                "racePoints": null,
+                "abilityType": "na",
+                "associations": {
+                    "classes": [
+                        "Fighter"
+                    ]
+                },
+                "showInQuickbar": false,
+                "crOffset": "",
+                "disabled": false,
+                "classSkills": {},
+                "sources": [
+                    {
+                        "id": "PZO1110",
+                        "pages": "55"
+                    }
+                ],
+                "class": "fighter"
+            },
+            "type": "feat",
+            "effects": [],
+            "ownership": {
+                "default": 0,
+                "un4oEQ6U0Aq044EO": 3
+            },
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.pf1.class-abilities.Item.CV8BsY3ciUb9TA1Y"
+                },
+                "scene-packer": {
+                    "hash": "b10f488018694d06f26a4b95c278d1c7d012fd88"
+                }
+            },
+            "_stats": {
+                "systemId": "pf1",
+                "systemVersion": "10.8",
+                "coreVersion": "11.315",
+                "createdTime": 1734821786682,
+                "modifiedTime": 1734821786682,
+                "lastModifiedBy": "un4oEQ6U0Aq044EO"
+            },
+            "sort": 5000000,
+            "_id": "vw90mn4c7RXkbSum",
+            "folder": null
+        }
+    ],
+    "effects": [],
+    "flags": {
+        "scene-packer": {
+            "hash": "4a3957297a21f7662d7d4a5b06546c1b0b531b0d",
+            "sourceId": "Actor.2cAQsokZI9rBSH3G"
+        },
+        "exportSource": {
+            "world": "zolnore",
+            "system": "pf1",
+            "coreVersion": "11.315",
+            "systemVersion": "10.8"
+        }
+    },
+    "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1734770776385,
+        "modifiedTime": 1734933644831,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    }
+}

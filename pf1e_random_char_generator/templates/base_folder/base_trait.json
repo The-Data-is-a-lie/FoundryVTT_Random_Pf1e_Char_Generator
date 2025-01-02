@@ -1,0 +1,134 @@
+{
+    "name": "Trait 1",
+    "type": "feat",
+    "_id": "J8SkFBwXYNFugDHC",
+    "img": "icons/svg/book.svg",
+    "system": {
+      "description": {
+        "value": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "trait",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {
+        "acr": false,
+        "apr": false,
+        "art": false,
+        "blf": false,
+        "clm": false,
+        "crf": false,
+        "dip": false,
+        "dev": false,
+        "dis": false,
+        "esc": false,
+        "fly": false,
+        "han": false,
+        "hea": false,
+        "int": false,
+        "kar": false,
+        "kdu": false,
+        "ken": false,
+        "kge": false,
+        "khi": false,
+        "klo": false,
+        "kna": false,
+        "kno": false,
+        "kpl": false,
+        "kre": false,
+        "lin": false,
+        "lor": false,
+        "per": false,
+        "prf": false,
+        "pro": false,
+        "rid": false,
+        "sen": false,
+        "slt": false,
+        "spl": false,
+        "ste": false,
+        "sur": false,
+        "swm": false,
+        "umd": false
+      },
+      "class": ""
+    },
+    "effects": [],
+    "folder": null,
+    "sort": 0,
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "scene-packer": {
+        "hash": "3585c78ac6b9d6e62664f418f5b8673614cfee30"
+      },
+      "lilhelper": {
+        "item": {
+          "hideAttacks": false,
+          "autoPowerAttack": false,
+          "keen": false,
+          "skipDialog": 0,
+          "rollmodeOverride": "",
+          "rollOverride": ""
+        }
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1735016685873,
+      "modifiedTime": 1735016688593,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    }
+  }

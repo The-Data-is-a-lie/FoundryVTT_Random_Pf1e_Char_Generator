@@ -1,0 +1,964 @@
+[
+  {
+    "name": "Spell Specialization",
+    "type": "feat",
+    "img": "systems/pf1/icons/items/inventory/scroll-magic.jpg",
+    "system": {
+      "description": {
+        "value": "<p><em>Select one spell. You cast that spell with greater than normal power.</em></p><p><strong>Prerequisites</strong>: Int 13, Spell Focus.</p><p><strong>Benefits</strong>: Select one spell of a school for which you have taken the Spell Focus feat. Treat your caster level as being two higher for all level-variable effects of the spell.</p><p>Every time you gain an even level in the spellcasting class you chose your spell from, you can choose a new spell to replace the spell selected with this feat, and that spell becomes your specialized spell.</p><p><strong>Special</strong>: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a different spell.</p>"
+      },
+      "tags": [
+        "General"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "spellSpecialization",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Dazing Spell",
+    "type": "feat",
+    "img": "systems/pf1/icons/spells/light-sky-2.jpg",
+    "system": {
+      "description": {
+        "value": "<p><em>You can daze creatures with the power of your spells.</em></p><p><strong>Benefits</strong>: You can modify a spell to daze a creature damaged by the spell. When a creature takes damage from this spell, they become dazed for a number of rounds equal to the original level of the spell. If the spell allows a saving throw, a successful save negates the daze effect. If the spell does not allow a save, the target can make a Will save to negate the daze effect. If the spell effect also causes the creature to become dazed, the duration of this metamagic effect is added to the duration of the spell. A dazing spell uses up a spell slot three levels higher than the spell's actual level. Spells that do not inflict damage do not benefit from this feat.</p>"
+      },
+      "tags": [
+        "Metamagic"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "dazingSpell",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Extend Spell",
+    "type": "feat",
+    "img": "icons/svg/item-bag.svg",
+    "system": {
+      "description": {
+        "value": "<p><strong>Benefit:</strong> An extended talent lasts twice as long as normal. A talent with a duration of concentration, instantaneous, or permanent is not affected by this effect, but you may choose to activate this metamagic effect when spending a spell point to make a talent you are concentrating on last without concentration, rather than when you initially cast the sphere effect.</p>\n<p><strong>Cost:</strong> +1 spell point</p>\n",
+        "unidentified": ""
+      },
+      "tags": [
+        "Metamagic"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": null,
+        "autoDeductChargesCost": "1",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "extendSpell",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "ability": {
+        "attack": null,
+        "critMult": 2,
+        "critRange": 20,
+        "damage": null,
+        "damageMult": 1
+      },
+      "actionType": null,
+      "attackBonus": "",
+      "attackName": "",
+      "attackParts": [],
+      "critConfirmBonus": "",
+      "damage": {
+        "critParts": [],
+        "nonCritParts": [],
+        "parts": []
+      },
+      "duration": {
+        "units": "",
+        "value": null
+      },
+      "formula": "",
+      "formulaicAttacks": {
+        "bonus": {
+          "formula": ""
+        },
+        "count": {
+          "formula": ""
+        },
+        "label": null
+      },
+      "nonlethal": false,
+      "save": {
+        "dc": 0,
+        "description": "",
+        "type": ""
+      },
+      "soundEffect": "",
+      "target": {
+        "value": ""
+      }
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {
+      "pf1": {}
+    },
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Greater Spell Focus",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/greater-spell-focus.jpg",
+    "system": {
+      "description": {
+        "value": "<p><em>Choose a school of magic to which you have already applied the Spell Focus feat. Any spells you cast of this school are very hard to resist.</em></p><p><strong>Prerequisites</strong>: @UUID[Compendium.pf1.feats.Item.V2zY7BltkpSXwejy]{Spell Focus}.</p><p><strong>Benefits</strong>: Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select. This bonus stacks with the bonus from Spell Focus.</p><p><strong>Special</strong>: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school to which you already have applied the Spell Focus feat.</p>"
+      },
+      "tags": [
+        "General",
+        "Magic"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "greaterSpellFocus",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "116, 125"
+        }
+      ]
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Run",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/run.jpg",
+    "system": {
+      "description": {
+        "value": "<p><em>You are swift of foot.</em><p><strong>Benefits</strong>: When running, you move five times your normal speed (if wearing medium, light, or no armor and carrying no more than a medium load) or four times your speed (if wearing heavy armor or carrying a heavy load). If you make a jump after a running start (see the Acrobatics skill description), you gain a +4 bonus on your Acrobatics check. While running, you retain your Dexterity bonus to your Armor Class.<p><strong>Normal</strong>: You move four times your speed while running (if wearing medium, light, or no armor and carrying no more than a medium load) or three times your speed (if wearing heavy armor or carrying a heavy load), and you lose your Dexterity bonus to AC.</p>"
+      },
+      "tags": [
+        "General"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [
+        {
+          "text": "+[[4]] to jump after a running start",
+          "target": "skill.acr"
+        }
+      ],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "run",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "116, 132"
+        }
+      ]
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Dodge (WiS)",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/dodge.jpg",
+    "system": {
+      "description": {
+        "value": "<p><em>Your training and reflexes allow you to react swiftly to avoid an opponents' attacks.</em></p><p><strong>Prerequisites</strong></p><p>Dex 13.</p><p><strong>Benefits</strong></p><p>You gain a +1 dodge bonus to your AC. A condition that makes you lose your Dex bonus to AC also makes you lose the benefits of this feat.</p><p>You get a +4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a threatened area. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses.</p><p>Dodge bonuses stack with each other, unlike most types of bonuses.</p>"
+      },
+      "tags": [
+        "Combat",
+        "World is Square"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [
+        {
+          "_id": "9onhsept",
+          "formula": "1",
+          "target": "ac",
+          "type": "dodge",
+          "operator": "add",
+          "priority": 0,
+          "value": 0
+        }
+      ],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [
+        {
+          "text": "+4 dodge bonus against AoO",
+          "target": "ac"
+        }
+      ],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "dodgeWis",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Spell Penetration",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/spell-penetration.jpg",
+    "system": {
+      "description": {
+        "value": "<i>Your spells break through spell resistance more easily than most.</i><p><strong>Benefits</strong>: You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance.</p>"
+      },
+      "tags": [
+        "General",
+        "Magic"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [
+        {
+          "text": "+[[2]] spell penetration",
+          "target": "cl"
+        }
+      ],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "spellPenetration",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "116, 134"
+        }
+      ]
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Spell Focus",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/spell-focus.jpg",
+    "system": {
+      "description": {
+        "value": "<i>Choose a school of magic. Any spells you cast of that school are more difficult to resist.</i><p><strong>Benefits</strong>: Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.</p><p><strong>Special</strong>: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic.</p>"
+      },
+      "tags": [
+        "General",
+        "Magic"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "spellFocus",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "116, 134"
+        }
+      ]
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Great Fortitude",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/great-fortitude.jpg",
+    "system": {
+      "description": {
+        "value": "<i>You are resistant to poisons, diseases, and other maladies.</i>\n<p><b>Benefits</b></p>\n<p>You get a +2 bonus on all Fortitude saving throws.</p>"
+      },
+      "tags": [
+        "General",
+        "Saving Throw",
+        "Defensive"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [
+        {
+          "_id": "0rubibb4",
+          "formula": "2",
+          "target": "fort",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0,
+          "value": 0
+        }
+      ],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "greatFortitude",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "115, 124"
+        }
+      ]
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  },
+  {
+    "name": "Toughness",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/toughness.jpg",
+    "system": {
+      "description": {
+        "value": "<i>You have enhanced physical stamina.</i><p><strong>Benefits</strong>: You gain +3 hit points. For every Hit Die you possess beyond 3, you gain an additional +1 hit point. If you have more than 3 Hit Dice, you gain +1 hit points whenever you gain a Hit Die (such as when you gain a level).</p>"
+      },
+      "tags": [
+        "General",
+        "Defensive"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [
+        {
+          "_id": "bl5pemy2",
+          "formula": "max(3, @attributes.hd.total)",
+          "target": "mhp",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0,
+          "value": 0
+        }
+      ],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "toughness",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "116, 135"
+        }
+      ]
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  }
+]

@@ -1,0 +1,921 @@
+[
+  {
+    "img": "systems/pf1/icons/spells/beam-magenta-3.jpg",
+    "name": "Wizard",
+    "system": {
+      "description": {
+        "value": "<p>Beyond the veil of the mundane hide the secrets of absolute power. The works of beings beyond mortals, the legends of realms where gods and spirits tread, the lore of creations both wondrous and terrible—such mysteries call to those with the ambition and the intellect to rise above the common folk to grasp true might. Such is the path of the wizard. These shrewd magic-users seek, collect, and covet esoteric knowledge, drawing on cultic arts to work wonders beyond the abilities of mere mortals. While some might choose a particular field of magical study and become masters of such powers, others embrace versatility, reveling in the unbounded wonders of all magic. In either case, wizards prove a cunning and potent lot, capable of smiting their foes, empowering their allies, and shaping the world to their every desire.</p><p>Role: While universalist wizards might study to prepare themselves for any manner of danger, specialist wizards research schools of magic that make them exceptionally skilled within a specific focus. Yet no matter their specialty, all wizards are masters of the impossible and can aid their allies in overcoming any danger.</p><h2>Class Skills</h2><p>The wizard’s class skills are Appraise (Int), Craft (Int), Fly (Dex), Knowledge (all) (Int), Linguistics (Int), Profession (Wis), and Spellcraft (Int).</p>"
+      },
+      "tags": [],
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "classAssociations": [
+          {
+            "level": 1,
+            "uuid": "Compendium.pf1.class-abilities.pW1PNlDcdGl7KuEa"
+          },
+          {
+            "level": 1,
+            "uuid": "Compendium.pf1.class-abilities.20JWTam2dn7jjZFV"
+          },
+          {
+            "level": 1,
+            "uuid": "Compendium.pf1.class-abilities.BS9WDbCy2Up3QHw9"
+          },
+          {
+            "level": 1,
+            "uuid": "Compendium.pf1.class-abilities.Item.IPy4aqFYbOppaqKC"
+          },
+          {
+            "level": 1,
+            "uuid": "Compendium.pf1.class-abilities.Item.4wdsdOkgv4uEkS9K"
+          },
+          {
+            "level": 5,
+            "uuid": "Compendium.pf1.class-abilities.2h3lI574tmVjOalQ"
+          }
+        ],
+        "supplements": []
+      },
+      "tag": "wizard",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": [
+          "Club",
+          "Dagger",
+          "Heavy Crossbow",
+          "Light Crossbow",
+          "Quarterstaff"
+        ]
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "base",
+      "level": 17,
+      "hd": 6,
+      "hp": 6,
+      "bab": "low",
+      "skillsPerLevel": 2,
+      "savingThrows": {
+        "fort": {
+          "value": "low"
+        },
+        "ref": {
+          "value": "low"
+        },
+        "will": {
+          "value": "high"
+        }
+      },
+      "fc": {
+        "hp": {
+          "value": 0
+        },
+        "skill": {
+          "value": 0
+        },
+        "alt": {
+          "value": 0,
+          "notes": ""
+        }
+      },
+      "wealth": "2d6 * 10",
+      "alignment": "",
+      "classSkills": {
+        "apr": true,
+        "art": true,
+        "crf": true,
+        "fly": true,
+        "kar": true,
+        "kdu": true,
+        "ken": true,
+        "kge": true,
+        "khi": true,
+        "klo": true,
+        "kna": true,
+        "kno": true,
+        "kpl": true,
+        "kre": true,
+        "lin": true,
+        "lor": true,
+        "pro": true,
+        "spl": true
+      },
+      "casting": {
+        "ability": "int",
+        "cantrips": true,
+        "domain": 1,
+        "progression": "high",
+        "spells": "arcane",
+        "type": "prepared"
+      },
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "77-83"
+        }
+      ]
+    },
+    "type": "class",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.classes.Item.0c4lYDywj6bQ0i8r"
+      },
+      "scene-packer": {
+        "hash": "25a98c103232014eea112ce58c21144c52aec5b2"
+      },
+      "pf1": {
+        "links": {
+          "classAssociations": {
+            "lPJ4atIgbeY2GzNZ": 1,
+            "x2Ppvqua8qYdFTa1": 1,
+            "O7OuJfW7lr5WKfgI": 1,
+            "OoHXTpkoSyiEQf94": 1,
+            "e7urOWVB3JxM9qc5": 1,
+            "mmDFp9oUNOBSTKEg": 1,
+            "jFePPCgzemM0zxPx": 1
+          }
+        }
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821890527,
+      "modifiedTime": 1734821891637,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "E8dYv8h07Ruw7ljy",
+    "folder": null,
+    "sort": 4500000
+  },
+  {
+    "img": "systems/pf1/icons/items/inventory/ore-green.jpg",
+    "name": "Arcane Bond",
+    "system": {
+      "description": {
+        "value": "<p>At 1st level, wizards form a powerful bond with an object or a creature. This bond can take one of two forms: a <em>familiar</em> or a bonded object. A <em>familiar</em> is a magical pet that enhances the wizard’s skills and senses and can aid him in magic, while a bonded object is an item a wizard can use to cast additional spells or to serve as a magical item. Once a wizard makes this choice, it is permanent and cannot be changed.</p>\n<p>Wizards who select a bonded object begin play with one at no cost. Objects that are the subject of an arcane bond must fall into one of the following categories: amulet, ring, staff, wand, or weapon. These objects are always masterwork quality. Weapons acquired at 1st level are not made of any special material. If the object is an amulet or ring, it must be worn to have effect, while staves, wands, and weapons must be held in one hand. If a wizard attempts to cast a spell without his bonded object worn or in hand, he must make a <em>concentration</em> check or lose the spell. The DC for this check is equal to 20 + the spell’s level. If the object is a ring or amulet, it occupies the ring or neck slot accordingly.</p>\n<p>A bonded object can be used once per day to cast any one spell that the wizard has in his spellbook and is capable of casting, even if the spell is not prepared. This spell is treated like any other spell cast by the wizard, including casting time, duration, and other effects dependent on the wizard’s level. This spell cannot be modified by <em>metamagic feats</em> or other abilities. The bonded object cannot be used to cast spells from the wizard’s opposition schools (see <em>arcane school</em> below).</p>\n<p>A wizard can add additional magic abilities to his bonded object as if he has the required <em>Item Creation Feats</em> and if he meets the level prerequisites of the feat. For example, a wizard with a bonded dagger must be at least 5th level to add magic abilities to the dagger (see @Compendium[pf1.feats.4hNO4OAWYF5vXphH]{Craft Magic Arms and Armor} feat). If the bonded object is a wand, it loses its wand abilities when its last charge is consumed, but it is not destroyed and it retains all of its bonded object properties and can be used to craft a new wand. The magic properties of a bonded object, including any magic abilities added to the object, only function for the wizard who owns it. If a bonded object’s owner dies, or the item is replaced, the object reverts to being an ordinary masterwork item of the appropriate type.</p>\n<p>If a bonded object is damaged, it is restored to full hit points the next time the wizard prepares his spells. If the object of an arcane bond is lost or destroyed, it can be replaced after 1 week in a special ritual that costs 200 gp per wizard level plus the cost of the masterwork item. This ritual takes 8 hours to complete. Items replaced in this way do not possess any of the additional enchantments of the previous bonded item. A wizard can designate an existing magic item as his bonded item. This functions in the same way as replacing a lost or destroyed item except that the new magic item retains its abilities while gaining the benefits and drawbacks of becoming a bonded item.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": [
+          "Wizard"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "78"
+        }
+      ],
+      "class": "wizard"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.class-abilities.Item.pW1PNlDcdGl7KuEa"
+      },
+      "scene-packer": {
+        "hash": "65a088deb6556d728e2bd549508ae4980773be2f"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821891016,
+      "modifiedTime": 1734821891016,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "sort": 18100000,
+    "_id": "lPJ4atIgbeY2GzNZ",
+    "folder": null
+  },
+  {
+    "img": "systems/pf1/icons/items/inventory/book-folder.jpg",
+    "name": "Arcane School",
+    "system": {
+      "description": {
+        "value": "<p>A wizard can choose to specialize in one school of magic, gaining additional spells and powers based on that school. This choice must be made at 1st level, and once made, it cannot be changed. A wizard that does not select a school receives the <em>universalist</em> school instead.</p>\n<p>A wizard that chooses to specialize in one school of magic must select two other schools as his opposition schools, representing knowledge sacrificed in one area of arcane lore to gain mastery in another. A wizard who prepares spells from his opposition schools must use two spell slots of that level to prepare the spell. For example, a wizard with <em>evocation</em> as an opposition school must expend two of his available 3rd-level spell slots to prepare a @Compendium[pf1.spells.6oq1wcryviik9ice]{Fireball}. In addition, a specialist takes a –4 penalty on any <em>skill checks</em> made when crafting a magic item that has a spell from one of his opposition schools as a prerequisite. A <em>universalist</em> wizard can prepare spells from any school without restriction.</p>\n<p>Each arcane school gives the wizard a number of school powers. In addition, specialist wizards receive an additional spell slot of each spell level he can cast, from 1st on up. Each day, a wizard can prepare a spell from his specialty school in that slot. This spell must be in the wizard’s spellbook. A wizard can select a spell modified by a metamagic feat to prepare in his school slot, but it uses up a higher-level spell slot. Wizards with the <em>universalist</em> school do not receive a school slot.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": [
+          "Wizard"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "78-79, 79-82"
+        }
+      ],
+      "class": "wizard"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.class-abilities.Item.20JWTam2dn7jjZFV"
+      },
+      "scene-packer": {
+        "hash": "45e21db731b5c56a1fb861359a0877b6d9508615"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821891016,
+      "modifiedTime": 1734821891016,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "sort": 18200000,
+    "_id": "x2Ppvqua8qYdFTa1",
+    "folder": null
+  },
+  {
+    "img": "systems/pf1/icons/items/inventory/note-scroll.jpg",
+    "name": "Scribe Scroll",
+    "system": {
+      "description": {
+        "value": "<p>The character gains @Compendium[pf1.feats.tlRu8SYjzA7WCHN7]{Scribe Scroll} as a bonus feat.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [
+        {
+          "_id": "FXXkIVTl",
+          "formula": "1",
+          "target": "bonusFeats",
+          "type": "untyped"
+        }
+      ],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [
+          {
+            "uuid": ".Item.mmDFp9oUNOBSTKEg"
+          }
+        ],
+        "charges": [],
+        "supplements": [
+          {
+            "uuid": "Compendium.pf1.feats.Item.tlRu8SYjzA7WCHN7"
+          }
+        ]
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": [
+          "Wizard",
+          "Skald"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "79"
+        }
+      ],
+      "class": "wizard"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.class-abilities.Item.BS9WDbCy2Up3QHw9"
+      },
+      "scene-packer": {
+        "hash": "d8b0e9994ef8895b57edb797ecbf91833496fa1a"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821891016,
+      "modifiedTime": 1734821891344,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "sort": 18300000,
+    "_id": "O7OuJfW7lr5WKfgI",
+    "folder": null
+  },
+  {
+    "img": "icons/magic/symbols/rune-sigil-rough-white-teal.webp",
+    "name": "Cantrips",
+    "system": {
+      "description": {
+        "value": "<p>The character can prepare a number of cantrips, or 0-level spells, each day. These spells are cast like any other spell, but they do not consume spell slots. As with her other spells, these spells are not expended when cast.</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": [
+          "Arcanist",
+          "Bard",
+          "Magus",
+          "Skald",
+          "Sorcerer",
+          "Summoner",
+          "Summoner (Unchained)",
+          "Witch",
+          "Wizard"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "34, 70, 77"
+        },
+        {
+          "id": "PZO1115",
+          "pages": "54, 65"
+        },
+        {
+          "id": "PZO1117",
+          "pages": "9"
+        },
+        {
+          "id": "PZO1131",
+          "pages": "25"
+        },
+        {
+          "id": "PZO1129",
+          "pages": "8, 49"
+        }
+      ],
+      "class": "wizard"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.class-abilities.Item.IPy4aqFYbOppaqKC"
+      },
+      "scene-packer": {
+        "hash": "d184668eb2cbcca99fce5b0f93f1eaabbe1261d0"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821891016,
+      "modifiedTime": 1734821891016,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "sort": 18400000,
+    "_id": "OoHXTpkoSyiEQf94",
+    "folder": null
+  },
+  {
+    "img": "icons/sundries/books/book-stack.webp",
+    "name": "Spellbooks (WIZ)",
+    "system": {
+      "description": {
+        "value": "<p>The wizard must study his spellbook each day to prepare his spells. He cannot prepare any spell not recorded in his spellbook, except for @UUID[Compendium.pf1.spells.Item.j0bc0iii8zp1jiwr]{read magic}, which all wizards can prepare from memory.</p><p>A wizard begins play with a @UUID[Compendium.pf1.items.Item.onurpjwtdogsedsg]{spellbook} containing all 0-level wizard spells (except those from his prohibited schools, if any; see @UUID[Compendium.pf1.class-abilities.Item.20JWTam2dn7jjZFV]{Arcane Schools}) plus three 1st-level spells of his choice. The wizard also selects a number of additional 1st-level spells equal to his Intelligence modifier to add to the spellbook. At each new wizard level, he gains two new spells of any spell level or levels that he can cast (based on his new wizard level) for his spellbook. At any time, a wizard can also add spells found in other wizards' spellbooks to his own (see Magic).</p>"
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [
+          {
+            "uuid": ".Item.jFePPCgzemM0zxPx"
+          }
+        ],
+        "charges": [],
+        "supplements": [
+          {
+            "uuid": "Compendium.pf1.items.Item.onurpjwtdogsedsg"
+          }
+        ]
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": [
+          "Wizard"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "79"
+        }
+      ],
+      "class": "wizard"
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.class-abilities.Item.4wdsdOkgv4uEkS9K"
+      },
+      "scene-packer": {
+        "hash": "3f958b68d09a5a5fdeec08cbb341a45cad8672bb"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821891016,
+      "modifiedTime": 1734821891344,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "sort": 18500000,
+    "_id": "e7urOWVB3JxM9qc5",
+    "folder": null
+  },
+  {
+    "img": "systems/pf1/icons/feats/scribe-scroll.jpg",
+    "name": "Scribe Scroll",
+    "system": {
+      "description": {
+        "value": "<i>You can create magic scrolls.</i><p><strong>Prerequisites</strong>: Caster level 1st.</p><p><strong>Benefits</strong>: You can create a scroll of any spell that you know. Scribing a scroll takes 2 hours if its base price is 250 gp or less, otherwise scribing a scroll takes 1 day for each 1,000 gp in its base price. To scribe a scroll, you must use up raw materials costing half of this base price. See the magic item creation rules in Magic Items for more information.</p>"
+      },
+      "tags": [
+        "General",
+        "Item Creation"
+      ],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "feat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "disabled": false,
+      "classSkills": {},
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "117, 133"
+        }
+      ]
+    },
+    "type": "feat",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.feats.Item.tlRu8SYjzA7WCHN7"
+      },
+      "pf1": {
+        "source": "Compendium.pf1.class-abilities.Item.BS9WDbCy2Up3QHw9"
+      },
+      "scene-packer": {
+        "hash": "79d5f5b2aeb7a19b279a18e1eff73c653b3e7d31"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821891016,
+      "modifiedTime": 1734821891016,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "mmDFp9oUNOBSTKEg",
+    "folder": null,
+    "sort": 0
+  },
+  {
+    "img": "systems/pf1/icons/items/inventory/book-purple.jpg",
+    "name": "Spellbook",
+    "system": {
+      "description": {
+        "value": "<p>A spellbook has 100 pages of parchment, and each spell takes up one page per spell level (one page each for 0-level spells). A newly purchased spellbook contains no spells. A wizard character begins play with a spellbook containing the spells he knows.</p>",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "quantity": 1,
+      "weight": {
+        "value": 3
+      },
+      "equipped": false,
+      "carried": true,
+      "price": 15,
+      "size": "med",
+      "resizing": false,
+      "timeworn": false,
+      "artifact": false,
+      "identified": true,
+      "unidentified": {
+        "price": 0,
+        "name": ""
+      },
+      "cursed": false,
+      "cl": 0,
+      "aura": {
+        "custom": false,
+        "school": ""
+      },
+      "hp": {
+        "max": 10,
+        "value": 10
+      },
+      "broken": false,
+      "hardness": 0,
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "tool",
+      "extraType": "",
+      "abundant": false,
+      "sources": [
+        {
+          "id": "PZO1123",
+          "pages": "77"
+        },
+        {
+          "id": "PZO1110",
+          "pages": "158, 161"
+        }
+      ]
+    },
+    "type": "loot",
+    "effects": [],
+    "ownership": {
+      "default": 0,
+      "un4oEQ6U0Aq044EO": 3
+    },
+    "flags": {
+      "core": {
+        "sourceId": "Compendium.pf1.items.Item.onurpjwtdogsedsg"
+      },
+      "pf1": {
+        "source": "Compendium.pf1.class-abilities.Item.4wdsdOkgv4uEkS9K"
+      },
+      "scene-packer": {
+        "hash": "5d616cc3898d2b98c74dc756e4799fdafa78f7fb"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1734821891016,
+      "modifiedTime": 1734821891016,
+      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    },
+    "_id": "jFePPCgzemM0zxPx",
+    "folder": null,
+    "sort": 0
+  }
+]

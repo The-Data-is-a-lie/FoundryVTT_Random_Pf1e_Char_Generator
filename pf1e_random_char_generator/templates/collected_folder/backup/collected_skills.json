@@ -1,0 +1,218 @@
+{
+  "acr": {
+    "ability": "dex",
+    "rt": false,
+    "acp": true,
+    "rank": 2
+  },
+  "apr": {
+    "ability": "int",
+    "rt": false,
+    "acp": false,
+    "rank": 3
+  },
+  "art": {
+    "ability": "int",
+    "rt": false,
+    "acp": false,
+    "rank": 8
+  },
+  "blf": {
+    "ability": "cha",
+    "rt": false,
+    "acp": false,
+    "rank": 2
+  },
+  "clm": {
+    "ability": "str",
+    "rt": false,
+    "acp": true,
+    "rank": 2
+  },
+  "crf": {
+    "ability": "int",
+    "rt": false,
+    "acp": false,
+    "rank": 3
+  },
+  "dip": {
+    "ability": "cha",
+    "rt": false,
+    "acp": false,
+    "rank": 4
+  },
+  "dev": {
+    "ability": "dex",
+    "rt": true,
+    "acp": true,
+    "rank": 6
+  },
+  "dis": {
+    "ability": "cha",
+    "rt": false,
+    "acp": false,
+    "rank": 0
+  },
+  "esc": {
+    "ability": "dex",
+    "rt": false,
+    "acp": true,
+    "rank": 10
+  },
+  "fly": {
+    "ability": "dex",
+    "rt": false,
+    "acp": true,
+    "rank": 1
+  },
+  "han": {
+    "ability": "cha",
+    "rt": true,
+    "acp": false,
+    "rank": 7
+  },
+  "hea": {
+    "ability": "wis",
+    "rt": false,
+    "acp": false,
+    "rank": 0
+  },
+  "int": {
+    "ability": "cha",
+    "rt": false,
+    "acp": false,
+    "rank": 1
+  },
+  "kar": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 5
+  },
+  "kdu": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 1
+  },
+  "ken": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 3
+  },
+  "kge": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 6
+  },
+  "khi": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 5
+  },
+  "klo": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 8
+  },
+  "kna": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 10
+  },
+  "kno": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 0
+  },
+  "kpl": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 6
+  },
+  "kre": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 2
+  },
+  "lin": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 10
+  },
+  "per": {
+    "ability": "wis",
+    "rt": false,
+    "acp": false,
+    "rank": 0
+  },
+  "prf": {
+    "ability": "cha",
+    "rt": false,
+    "acp": false,
+    "rank": 5
+  },
+  "pro": {
+    "ability": "wis",
+    "rt": true,
+    "acp": false,
+    "rank": 10
+  },
+  "rid": {
+    "ability": "dex",
+    "rt": false,
+    "acp": true,
+    "rank": 0
+  },
+  "sen": {
+    "ability": "wis",
+    "rt": false,
+    "acp": false,
+    "rank": 4
+  },
+  "slt": {
+    "ability": "dex",
+    "rt": true,
+    "acp": true,
+    "rank": 3
+  },
+  "spl": {
+    "ability": "int",
+    "rt": true,
+    "acp": false,
+    "rank": 7
+  },
+  "ste": {
+    "ability": "dex",
+    "rt": false,
+    "acp": true,
+    "rank": 0
+  },
+  "sur": {
+    "ability": "wis",
+    "rt": false,
+    "acp": false,
+    "rank": 10
+  },
+  "swm": {
+    "ability": "str",
+    "rt": false,
+    "acp": true,
+    "rank": 0
+  },
+  "umd": {
+    "ability": "cha",
+    "rt": true,
+    "acp": false,
+    "rank": 6
+  }
+}

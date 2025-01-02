@@ -1,0 +1,1842 @@
+{
+  "folder": "EYSudMag4S2FZBC4",
+  "name": "new wizard",
+  "type": "character",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "abilities": {
+      "str": {
+        "value": 10,
+        "damage": 0,
+        "drain": 0,
+        "userPenalty": 0
+      },
+      "dex": {
+        "value": 10,
+        "damage": 0,
+        "drain": 0,
+        "userPenalty": 0
+      },
+      "con": {
+        "value": 10,
+        "damage": 0,
+        "drain": 0,
+        "userPenalty": 0
+      },
+      "int": {
+        "value": 10,
+        "damage": 0,
+        "drain": 0,
+        "userPenalty": 0
+      },
+      "wis": {
+        "value": 10,
+        "damage": 0,
+        "drain": 0,
+        "userPenalty": 0
+      },
+      "cha": {
+        "value": 10,
+        "damage": 0,
+        "drain": 0,
+        "userPenalty": 0
+      }
+    },
+    "attributes": {
+      "hpAbility": "con",
+      "cmbAbility": "str",
+      "naturalAC": 0,
+      "ac": {
+        "normal": {
+          "ability": "dex"
+        },
+        "touch": {
+          "ability": "dex"
+        },
+        "flatFooted": {}
+      },
+      "cmd": {
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "sr": {
+        "formula": ""
+      },
+      "clCheck": false,
+      "saveNotes": "",
+      "acNotes": "",
+      "cmdNotes": "",
+      "srNotes": "",
+      "attack": {
+        "meleeAbility": "str",
+        "rangedAbility": "dex"
+      },
+      "energyDrain": 0,
+      "quadruped": null,
+      "savingThrows": {
+        "fort": {
+          "base": 0,
+          "ability": "con"
+        },
+        "ref": {
+          "base": 0,
+          "ability": "dex"
+        },
+        "will": {
+          "base": 0,
+          "ability": "wis"
+        }
+      },
+      "hp": {
+        "base": 0,
+        "temp": 0,
+        "nonlethal": 0,
+        "offset": 0
+      },
+      "wounds": {
+        "base": 0,
+        "offset": 0
+      },
+      "vigor": {
+        "temp": 0,
+        "base": 0,
+        "offset": 0
+      },
+      "init": {
+        "value": 0,
+        "ability": "dex"
+      },
+      "speed": {
+        "land": {
+          "base": 30
+        },
+        "climb": {
+          "base": 0
+        },
+        "swim": {
+          "base": 0
+        },
+        "burrow": {
+          "base": 0
+        },
+        "fly": {
+          "base": 0,
+          "maneuverability": "average"
+        }
+      },
+      "spells": {
+        "spellbooks": {
+          "primary": {
+            "name": "Generated Spellbook",
+            "inUse": true,
+            "castPerDayAllOffsetFormula": "",
+            "preparedAllOffsetFormula": "",
+            "casterType": "high",
+            "class": "wizard",
+            "cl": {
+              "formula": "",
+              "autoSpellLevelCalculationFormula": ""
+            },
+            "concentrationFormula": "",
+            "concentrationNotes": "",
+            "clNotes": "",
+            "ability": "int",
+            "autoSpellLevelCalculation": true,
+            "autoSpellLevels": true,
+            "psychic": false,
+            "arcaneSpellFailure": true,
+            "hasCantrips": true,
+            "spellPreparationMode": "prepared",
+            "baseDCFormula": "10 + @sl + @ablMod",
+            "spellPoints": {
+              "useSystem": false,
+              "value": 0,
+              "maxFormula": "",
+              "restoreFormula": ""
+            },
+            "spells": {
+              "spell0": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell1": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell2": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell3": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell4": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell5": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell6": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell7": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell8": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell9": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              }
+            },
+            "spellSlotAbilityBonusFormula": "",
+            "domainSlotValue": 1,
+            "kind": "arcane",
+            "noAbilityLimit": false
+          },
+          "secondary": {
+            "name": "",
+            "inUse": false,
+            "castPerDayAllOffsetFormula": "",
+            "preparedAllOffsetFormula": "",
+            "casterType": "high",
+            "class": "",
+            "cl": {
+              "formula": ""
+            },
+            "concentrationFormula": "",
+            "concentrationNotes": "",
+            "clNotes": "",
+            "ability": "int",
+            "autoSpellLevelCalculation": true,
+            "autoSpellLevels": true,
+            "psychic": false,
+            "arcaneSpellFailure": true,
+            "hasCantrips": true,
+            "spellPreparationMode": "spontaneous",
+            "baseDCFormula": "10 + @sl + @ablMod",
+            "spellPoints": {
+              "useSystem": false,
+              "value": 0,
+              "maxFormula": "",
+              "restoreFormula": ""
+            },
+            "spells": {
+              "spell0": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell1": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell2": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell3": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell4": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell5": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell6": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell7": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell8": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell9": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              }
+            },
+            "spellSlotAbilityBonusFormula": "",
+            "domainSlotValue": 1
+          },
+          "tertiary": {
+            "name": "",
+            "inUse": false,
+            "castPerDayAllOffsetFormula": "",
+            "preparedAllOffsetFormula": "",
+            "casterType": "high",
+            "class": "",
+            "cl": {
+              "formula": ""
+            },
+            "concentrationFormula": "",
+            "concentrationNotes": "",
+            "clNotes": "",
+            "ability": "int",
+            "autoSpellLevelCalculation": true,
+            "autoSpellLevels": true,
+            "psychic": false,
+            "arcaneSpellFailure": true,
+            "hasCantrips": true,
+            "spellPreparationMode": "spontaneous",
+            "baseDCFormula": "10 + @sl + @ablMod",
+            "spellPoints": {
+              "useSystem": false,
+              "value": 0,
+              "maxFormula": "",
+              "restoreFormula": ""
+            },
+            "spells": {
+              "spell0": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell1": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell2": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell3": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell4": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell5": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell6": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell7": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell8": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell9": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              }
+            },
+            "spellSlotAbilityBonusFormula": "",
+            "domainSlotValue": 1
+          },
+          "spelllike": {
+            "name": "",
+            "inUse": false,
+            "castPerDayAllOffsetFormula": "",
+            "preparedAllOffsetFormula": "",
+            "casterType": "high",
+            "class": "_hd",
+            "cl": {
+              "formula": ""
+            },
+            "concentrationFormula": "",
+            "concentrationNotes": "",
+            "clNotes": "",
+            "ability": "cha",
+            "autoSpellLevelCalculation": true,
+            "autoSpellLevels": true,
+            "psychic": false,
+            "arcaneSpellFailure": true,
+            "hasCantrips": true,
+            "spellPreparationMode": "spontaneous",
+            "baseDCFormula": "10 + @sl + @ablMod",
+            "spellPoints": {
+              "useSystem": false,
+              "value": 0,
+              "maxFormula": "",
+              "restoreFormula": ""
+            },
+            "spells": {
+              "spell0": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell1": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell2": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell3": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell4": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell5": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell6": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell7": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell8": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              },
+              "spell9": {
+                "castPerDayOffsetFormula": "",
+                "preparedOffsetFormula": ""
+              }
+            },
+            "spellSlotAbilityBonusFormula": "",
+            "domainSlotValue": 1
+          }
+        }
+      },
+      "woundThresholds": {
+        "override": -1
+      }
+    },
+    "details": {
+      "height": "",
+      "weight": "",
+      "gender": "",
+      "deity": "",
+      "age": "",
+      "alignment": "tn",
+      "biography": {
+        "value": ""
+      },
+      "bonusFeatFormula": "",
+      "bonusSkillRankFormula": "",
+      "tooltip": {
+        "name": "",
+        "hideHeld": false,
+        "hideArmor": false,
+        "hideBuffs": false,
+        "hideConditions": false,
+        "hideClothing": false,
+        "hideName": false
+      },
+      "carryCapacity": {
+        "bonus": {
+          "user": 0
+        },
+        "multiplier": {
+          "base": 1,
+          "user": 0
+        }
+      },
+      "notes": {
+        "value": ""
+      },
+      "xp": {
+        "value": 0
+      }
+    },
+    "skills": {
+      "acr": {
+        "ability": "dex",
+        "rt": false,
+        "acp": true,
+        "rank": 0
+      },
+      "apr": {
+        "ability": "int",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "art": {
+        "ability": "int",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "blf": {
+        "ability": "cha",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "clm": {
+        "ability": "str",
+        "rt": false,
+        "acp": true,
+        "rank": 0
+      },
+      "crf": {
+        "ability": "int",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "dip": {
+        "ability": "cha",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "dev": {
+        "ability": "dex",
+        "rt": true,
+        "acp": true,
+        "rank": 0
+      },
+      "dis": {
+        "ability": "cha",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "esc": {
+        "ability": "dex",
+        "rt": false,
+        "acp": true,
+        "rank": 0
+      },
+      "fly": {
+        "ability": "dex",
+        "rt": false,
+        "acp": true,
+        "rank": 0
+      },
+      "han": {
+        "ability": "cha",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "hea": {
+        "ability": "wis",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "int": {
+        "ability": "cha",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "kar": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "kdu": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "ken": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "kge": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "khi": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "klo": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "kna": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "kno": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "kpl": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "kre": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "lin": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "lor": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "per": {
+        "ability": "wis",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "prf": {
+        "ability": "cha",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "pro": {
+        "ability": "wis",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "rid": {
+        "ability": "dex",
+        "rt": false,
+        "acp": true,
+        "rank": 0
+      },
+      "sen": {
+        "ability": "wis",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "slt": {
+        "ability": "dex",
+        "rt": true,
+        "acp": true,
+        "rank": 0
+      },
+      "spl": {
+        "ability": "int",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      },
+      "ste": {
+        "ability": "dex",
+        "rt": false,
+        "acp": true,
+        "rank": 0
+      },
+      "sur": {
+        "ability": "wis",
+        "rt": false,
+        "acp": false,
+        "rank": 0
+      },
+      "swm": {
+        "ability": "str",
+        "rt": false,
+        "acp": true,
+        "rank": 0
+      },
+      "umd": {
+        "ability": "cha",
+        "rt": true,
+        "acp": false,
+        "rank": 0
+      }
+    },
+    "traits": {
+      "size": "med",
+      "senses": {
+        "dv": 0,
+        "ts": 0,
+        "bs": 0,
+        "bse": 0,
+        "ll": {
+          "enabled": false,
+          "multiplier": {
+            "dim": 2,
+            "bright": 2
+          }
+        },
+        "sid": false,
+        "tr": 0,
+        "si": false,
+        "sc": 0,
+        "custom": ""
+      },
+      "hardness": 0,
+      "dr": {
+        "value": [],
+        "custom": ""
+      },
+      "eres": {
+        "value": [],
+        "custom": ""
+      },
+      "cres": "",
+      "regen": "",
+      "fastHealing": "",
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "di": {
+        "value": [],
+        "custom": []
+      },
+      "dv": {
+        "value": [],
+        "custom": []
+      },
+      "ci": {
+        "value": [],
+        "custom": []
+      },
+      "stature": "tall",
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "aura": {
+        "custom": ""
+      }
+    },
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "altCurrency": {
+      "pp": 0,
+      "gp": 0,
+      "sp": 0,
+      "cp": 0
+    }
+  },
+  "prototypeToken": {
+    "name": "new wizard",
+    "displayName": 30,
+    "actorLink": true,
+    "appendNumber": true,
+    "prependAdjective": true,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0
+    },
+    "width": 1,
+    "height": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": 1,
+    "displayBars": 50,
+    "bar1": {
+      "attribute": "attributes.hp"
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 1000,
+      "coloration": 1,
+      "dim": 50,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": true,
+      "range": 1000,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 1,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [
+      {
+        "id": "basicSight",
+        "range": 1000,
+        "enabled": true
+      }
+    ],
+    "flags": {
+      "pf1": {
+        "customVisionRules": true
+      },
+      "monks-tokenbar": {
+        "include": "default"
+      },
+      "barbrawl": {
+        "resourceBars": {
+          "bar1": {
+            "order": 0,
+            "id": "bar1",
+            "attribute": "attributes.hp",
+            "mincolor": "#FF0000",
+            "maxcolor": "#80FF00",
+            "position": "bottom-inner",
+            "otherVisibility": 0,
+            "ownerVisibility": 10,
+            "gmVisibility": -1,
+            "hideFull": false,
+            "hideEmpty": false,
+            "hideCombat": false,
+            "hideNoCombat": false,
+            "indentLeft": null,
+            "indentRight": null,
+            "shareHeight": false,
+            "style": "user",
+            "label": "",
+            "invert": false,
+            "subdivisions": null,
+            "subdivisionsOwner": false,
+            "fgImage": "",
+            "bgImage": "",
+            "opacity": null,
+            "invertDirection": false
+          }
+        }
+      },
+      "token-auras": {
+        "aura1": {
+          "permission": "all",
+          "colour": "#ffffff",
+          "opacity": 0.5,
+          "distance": null,
+          "square": false
+        },
+        "aura2": {
+          "permission": "all",
+          "colour": "#ffffff",
+          "opacity": 0.5,
+          "distance": null,
+          "square": false
+        }
+      },
+      "about-face": {
+        "indicatorDisabled": false,
+        "flipOrRotate": "global",
+        "facingDirection": "global",
+        "rotationOffset": 0
+      },
+      "wall-height": {
+        "tokenHeight": 5
+      },
+      "monks-enhanced-journal": {
+        "chatbubble": ""
+      },
+      "arms-reach": {
+        "range": 0
+      }
+    },
+    "randomImg": false
+  },
+  "items": [
+    {
+      "img": "systems/pf1/icons/spells/beam-magenta-3.jpg",
+      "name": "Wizard",
+      "system": {
+        "description": {
+          "value": "<p>Beyond the veil of the mundane hide the secrets of absolute power. The works of beings beyond mortals, the legends of realms where gods and spirits tread, the lore of creations both wondrous and terrible—such mysteries call to those with the ambition and the intellect to rise above the common folk to grasp true might. Such is the path of the wizard. These shrewd magic-users seek, collect, and covet esoteric knowledge, drawing on cultic arts to work wonders beyond the abilities of mere mortals. While some might choose a particular field of magical study and become masters of such powers, others embrace versatility, reveling in the unbounded wonders of all magic. In either case, wizards prove a cunning and potent lot, capable of smiting their foes, empowering their allies, and shaping the world to their every desire.</p><p>Role: While universalist wizards might study to prepare themselves for any manner of danger, specialist wizards research schools of magic that make them exceptionally skilled within a specific focus. Yet no matter their specialty, all wizards are masters of the impossible and can aid their allies in overcoming any danger.</p><h2>Class Skills</h2><p>The wizard’s class skills are Appraise (Int), Craft (Int), Fly (Dex), Knowledge (all) (Int), Linguistics (Int), Profession (Wis), and Spellcraft (Int).</p>"
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": [
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.pW1PNlDcdGl7KuEa"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.20JWTam2dn7jjZFV"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.BS9WDbCy2Up3QHw9"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.IPy4aqFYbOppaqKC"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.4wdsdOkgv4uEkS9K"
+            },
+            {
+              "level": 5,
+              "uuid": "Compendium.pf1.class-abilities.2h3lI574tmVjOalQ"
+            }
+          ],
+          "supplements": []
+        },
+        "tag": "wizard",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": [
+            "Club",
+            "Dagger",
+            "Heavy Crossbow",
+            "Light Crossbow",
+            "Quarterstaff"
+          ]
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "base",
+        "level": 1,
+        "hd": 6,
+        "hp": 6,
+        "bab": "low",
+        "skillsPerLevel": 2,
+        "savingThrows": {
+          "fort": {
+            "value": "low"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "2d6 * 10",
+        "alignment": "",
+        "classSkills": {
+          "apr": true,
+          "art": true,
+          "crf": true,
+          "fly": true,
+          "kar": true,
+          "kdu": true,
+          "ken": true,
+          "kge": true,
+          "khi": true,
+          "klo": true,
+          "kna": true,
+          "kno": true,
+          "kpl": true,
+          "kre": true,
+          "lin": true,
+          "lor": true,
+          "pro": true,
+          "spl": true
+        },
+        "casting": {
+          "ability": "int",
+          "cantrips": true,
+          "domain": 1,
+          "progression": "high",
+          "spells": "arcane",
+          "type": "prepared"
+        },
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "77-83"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.classes.Item.0c4lYDywj6bQ0i8r"
+        },
+        "scene-packer": {
+          "hash": "e7ac0d823f091cd30df6e13cd8acd0773f9ee25a"
+        },
+        "pf1": {
+          "links": {
+            "classAssociations": {
+              "aJ6gjH4EO18CMteN": 1,
+              "JsJlffxP9v317iTN": 1,
+              "V9VZoLgSRh704nmF": 1,
+              "0nNQ5eLZ2BH29koT": 1,
+              "Zt5CYIp5iJsdsv2l": 1,
+              "nVqPfssTz0n0JBMc": 1,
+              "HYJUSAskYQH1JwrE": 1
+            }
+          }
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462607295,
+        "modifiedTime": 1735462619879,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "_id": "iFEWvqgUF7LAVUxD",
+      "folder": null,
+      "sort": 0
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/ore-green.jpg",
+      "name": "Arcane Bond",
+      "system": {
+        "description": {
+          "value": "<p>At 1st level, wizards form a powerful bond with an object or a creature. This bond can take one of two forms: a <em>familiar</em> or a bonded object. A <em>familiar</em> is a magical pet that enhances the wizard’s skills and senses and can aid him in magic, while a bonded object is an item a wizard can use to cast additional spells or to serve as a magical item. Once a wizard makes this choice, it is permanent and cannot be changed.</p>\n<p>Wizards who select a bonded object begin play with one at no cost. Objects that are the subject of an arcane bond must fall into one of the following categories: amulet, ring, staff, wand, or weapon. These objects are always masterwork quality. Weapons acquired at 1st level are not made of any special material. If the object is an amulet or ring, it must be worn to have effect, while staves, wands, and weapons must be held in one hand. If a wizard attempts to cast a spell without his bonded object worn or in hand, he must make a <em>concentration</em> check or lose the spell. The DC for this check is equal to 20 + the spell’s level. If the object is a ring or amulet, it occupies the ring or neck slot accordingly.</p>\n<p>A bonded object can be used once per day to cast any one spell that the wizard has in his spellbook and is capable of casting, even if the spell is not prepared. This spell is treated like any other spell cast by the wizard, including casting time, duration, and other effects dependent on the wizard’s level. This spell cannot be modified by <em>metamagic feats</em> or other abilities. The bonded object cannot be used to cast spells from the wizard’s opposition schools (see <em>arcane school</em> below).</p>\n<p>A wizard can add additional magic abilities to his bonded object as if he has the required <em>Item Creation Feats</em> and if he meets the level prerequisites of the feat. For example, a wizard with a bonded dagger must be at least 5th level to add magic abilities to the dagger (see @Compendium[pf1.feats.4hNO4OAWYF5vXphH]{Craft Magic Arms and Armor} feat). If the bonded object is a wand, it loses its wand abilities when its last charge is consumed, but it is not destroyed and it retains all of its bonded object properties and can be used to craft a new wand. The magic properties of a bonded object, including any magic abilities added to the object, only function for the wizard who owns it. If a bonded object’s owner dies, or the item is replaced, the object reverts to being an ordinary masterwork item of the appropriate type.</p>\n<p>If a bonded object is damaged, it is restored to full hit points the next time the wizard prepares his spells. If the object of an arcane bond is lost or destroyed, it can be replaced after 1 week in a special ritual that costs 200 gp per wizard level plus the cost of the masterwork item. This ritual takes 8 hours to complete. Items replaced in this way do not possess any of the additional enchantments of the previous bonded item. A wizard can designate an existing magic item as his bonded item. This functions in the same way as replacing a lost or destroyed item except that the new magic item retains its abilities while gaining the benefits and drawbacks of becoming a bonded item.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Wizard"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "78"
+          }
+        ],
+        "class": "wizard"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.pW1PNlDcdGl7KuEa"
+        },
+        "scene-packer": {
+          "hash": "11f388c17d8195b7efd65660b41bc6ec90373f71"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462611308,
+        "modifiedTime": 1735462611308,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "sort": 100000,
+      "_id": "aJ6gjH4EO18CMteN",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/book-folder.jpg",
+      "name": "Arcane School",
+      "system": {
+        "description": {
+          "value": "<p>A wizard can choose to specialize in one school of magic, gaining additional spells and powers based on that school. This choice must be made at 1st level, and once made, it cannot be changed. A wizard that does not select a school receives the <em>universalist</em> school instead.</p>\n<p>A wizard that chooses to specialize in one school of magic must select two other schools as his opposition schools, representing knowledge sacrificed in one area of arcane lore to gain mastery in another. A wizard who prepares spells from his opposition schools must use two spell slots of that level to prepare the spell. For example, a wizard with <em>evocation</em> as an opposition school must expend two of his available 3rd-level spell slots to prepare a @Compendium[pf1.spells.6oq1wcryviik9ice]{Fireball}. In addition, a specialist takes a –4 penalty on any <em>skill checks</em> made when crafting a magic item that has a spell from one of his opposition schools as a prerequisite. A <em>universalist</em> wizard can prepare spells from any school without restriction.</p>\n<p>Each arcane school gives the wizard a number of school powers. In addition, specialist wizards receive an additional spell slot of each spell level he can cast, from 1st on up. Each day, a wizard can prepare a spell from his specialty school in that slot. This spell must be in the wizard’s spellbook. A wizard can select a spell modified by a metamagic feat to prepare in his school slot, but it uses up a higher-level spell slot. Wizards with the <em>universalist</em> school do not receive a school slot.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Wizard"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "78-79, 79-82"
+          }
+        ],
+        "class": "wizard"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.20JWTam2dn7jjZFV"
+        },
+        "scene-packer": {
+          "hash": "4ad7d6bfcf3bfb15399f69f7126aa1544a72060b"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462611308,
+        "modifiedTime": 1735462611308,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "sort": 200000,
+      "_id": "JsJlffxP9v317iTN",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/note-scroll.jpg",
+      "name": "Scribe Scroll",
+      "system": {
+        "description": {
+          "value": "<p>The character gains @Compendium[pf1.feats.tlRu8SYjzA7WCHN7]{Scribe Scroll} as a bonus feat.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [
+          {
+            "_id": "za0J7bDv",
+            "formula": "1",
+            "target": "bonusFeats",
+            "type": "untyped"
+          }
+        ],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [
+            {
+              "uuid": ".Item.nVqPfssTz0n0JBMc"
+            }
+          ],
+          "charges": [],
+          "supplements": [
+            {
+              "uuid": "Compendium.pf1.feats.Item.tlRu8SYjzA7WCHN7"
+            }
+          ]
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Wizard",
+            "Skald"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "79"
+          }
+        ],
+        "class": "wizard"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.BS9WDbCy2Up3QHw9"
+        },
+        "scene-packer": {
+          "hash": "b0fec0863338f9fd5130b9027cc00973dfa98ab8"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462611308,
+        "modifiedTime": 1735462617368,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "sort": 300000,
+      "_id": "V9VZoLgSRh704nmF",
+      "folder": null
+    },
+    {
+      "img": "icons/magic/symbols/rune-sigil-rough-white-teal.webp",
+      "name": "Cantrips",
+      "system": {
+        "description": {
+          "value": "<p>The character can prepare a number of cantrips, or 0-level spells, each day. These spells are cast like any other spell, but they do not consume spell slots. As with her other spells, these spells are not expended when cast.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Arcanist",
+            "Bard",
+            "Magus",
+            "Skald",
+            "Sorcerer",
+            "Summoner",
+            "Summoner (Unchained)",
+            "Witch",
+            "Wizard"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "34, 70, 77"
+          },
+          {
+            "id": "PZO1115",
+            "pages": "54, 65"
+          },
+          {
+            "id": "PZO1117",
+            "pages": "9"
+          },
+          {
+            "id": "PZO1131",
+            "pages": "25"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "8, 49"
+          }
+        ],
+        "class": "wizard"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.IPy4aqFYbOppaqKC"
+        },
+        "scene-packer": {
+          "hash": "36380c1de31bfb7f90ecd8f34b960d8c8995eceb"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462611308,
+        "modifiedTime": 1735462611308,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "sort": 400000,
+      "_id": "0nNQ5eLZ2BH29koT",
+      "folder": null
+    },
+    {
+      "img": "icons/sundries/books/book-stack.webp",
+      "name": "Spellbooks (WIZ)",
+      "system": {
+        "description": {
+          "value": "<p>The wizard must study his spellbook each day to prepare his spells. He cannot prepare any spell not recorded in his spellbook, except for @UUID[Compendium.pf1.spells.Item.j0bc0iii8zp1jiwr]{read magic}, which all wizards can prepare from memory.</p><p>A wizard begins play with a @UUID[Compendium.pf1.items.Item.onurpjwtdogsedsg]{spellbook} containing all 0-level wizard spells (except those from his prohibited schools, if any; see @UUID[Compendium.pf1.class-abilities.Item.20JWTam2dn7jjZFV]{Arcane Schools}) plus three 1st-level spells of his choice. The wizard also selects a number of additional 1st-level spells equal to his Intelligence modifier to add to the spellbook. At each new wizard level, he gains two new spells of any spell level or levels that he can cast (based on his new wizard level) for his spellbook. At any time, a wizard can also add spells found in other wizards' spellbooks to his own (see Magic).</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [
+            {
+              "uuid": ".Item.HYJUSAskYQH1JwrE"
+            }
+          ],
+          "charges": [],
+          "supplements": [
+            {
+              "uuid": "Compendium.pf1.items.Item.onurpjwtdogsedsg"
+            }
+          ]
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Wizard"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "79"
+          }
+        ],
+        "class": "wizard"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.4wdsdOkgv4uEkS9K"
+        },
+        "scene-packer": {
+          "hash": "eeb44d3709d49808c6b4e84b61051a78ff98ec0d"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462611308,
+        "modifiedTime": 1735462617368,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "sort": 500000,
+      "_id": "Zt5CYIp5iJsdsv2l",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/feats/scribe-scroll.jpg",
+      "name": "Scribe Scroll",
+      "system": {
+        "description": {
+          "value": "<i>You can create magic scrolls.</i><p><strong>Prerequisites</strong>: Caster level 1st.</p><p><strong>Benefits</strong>: You can create a scroll of any spell that you know. Scribing a scroll takes 2 hours if its base price is 250 gp or less, otherwise scribing a scroll takes 1 day for each 1,000 gp in its base price. To scribe a scroll, you must use up raw materials costing half of this base price. See the magic item creation rules in Magic Items for more information.</p>"
+        },
+        "tags": [
+          "General",
+          "Item Creation"
+        ],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "feat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": []
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "117, 133"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.feats.Item.tlRu8SYjzA7WCHN7"
+        },
+        "pf1": {
+          "source": "Compendium.pf1.class-abilities.Item.BS9WDbCy2Up3QHw9"
+        },
+        "scene-packer": {
+          "hash": "79d5f5b2aeb7a19b279a18e1eff73c653b3e7d31"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462611308,
+        "modifiedTime": 1735462611308,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "_id": "nVqPfssTz0n0JBMc",
+      "folder": null,
+      "sort": 0
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/book-purple.jpg",
+      "name": "Spellbook",
+      "system": {
+        "description": {
+          "value": "<p>A spellbook has 100 pages of parchment, and each spell takes up one page per spell level (one page each for 0-level spells). A newly purchased spellbook contains no spells. A wizard character begins play with a spellbook containing the spells he knows.</p>",
+          "unidentified": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "quantity": 1,
+        "weight": {
+          "value": 3
+        },
+        "equipped": false,
+        "carried": true,
+        "price": 15,
+        "size": "med",
+        "resizing": false,
+        "timeworn": false,
+        "artifact": false,
+        "identified": true,
+        "unidentified": {
+          "price": 0,
+          "name": ""
+        },
+        "cursed": false,
+        "cl": 0,
+        "aura": {
+          "custom": false,
+          "school": ""
+        },
+        "hp": {
+          "max": 10,
+          "value": 10
+        },
+        "broken": false,
+        "hardness": 0,
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": []
+        },
+        "tag": "",
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "tool",
+        "extraType": "",
+        "abundant": false,
+        "sources": [
+          {
+            "id": "PZO1123",
+            "pages": "77"
+          },
+          {
+            "id": "PZO1110",
+            "pages": "158, 161"
+          }
+        ]
+      },
+      "type": "loot",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "un4oEQ6U0Aq044EO": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.items.Item.onurpjwtdogsedsg"
+        },
+        "pf1": {
+          "source": "Compendium.pf1.class-abilities.Item.4wdsdOkgv4uEkS9K"
+        },
+        "scene-packer": {
+          "hash": "5d616cc3898d2b98c74dc756e4799fdafa78f7fb"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1735462611308,
+        "modifiedTime": 1735462611308,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "_id": "HYJUSAskYQH1JwrE",
+      "folder": null,
+      "sort": 0
+    }
+  ],
+  "effects": [],
+  "flags": {
+    "scene-packer": {
+      "hash": "4c9915cb74f95ca10e640e283e31460da82c1d8a",
+      "sourceId": "Actor.3XNI7dMaGGJDrNsD"
+    },
+    "exportSource": {
+      "world": "zolnore",
+      "system": "pf1",
+      "coreVersion": "11.315",
+      "systemVersion": "10.8"
+    }
+  },
+  "_stats": {
+    "systemId": "pf1",
+    "systemVersion": "10.8",
+    "coreVersion": "11.315",
+    "createdTime": 1735461786474,
+    "modifiedTime": 1735462637548,
+    "lastModifiedBy": "un4oEQ6U0Aq044EO"
+  }
+}

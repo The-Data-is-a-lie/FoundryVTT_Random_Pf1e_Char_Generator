@@ -1,0 +1,129 @@
+[
+  {
+    "name": "Rosewood Armor",
+    "type": "equipment",
+    "img": "systems/pf1/icons/items/armor/rosewood.png",
+    "system": {
+      "description": {
+        "value": "<p>This suit of leather armor is wrapped in special rose vines. Treat this as leather armor with armor spikes. The vines must be watered with at least 1 gallon of water each day or they wither and die, turning the armor into normal leather armor.</p><p>These are the enhancements: </p><ul><li>Unrighteous</li></ul><ul><li>Unrighteous</li></ul>",
+        "unidentified": ""
+      },
+      "tags": [],
+      "quantity": 1,
+      "weight": {
+        "value": 15,
+        "total": 15,
+        "converted": {
+          "value": 15,
+          "total": 15
+        }
+      },
+      "equipped": true,
+      "carried": true,
+      "price": 50,
+      "size": "med",
+      "resizing": false,
+      "timeworn": false,
+      "artifact": false,
+      "identified": true,
+      "unidentified": {
+        "price": 0,
+        "name": ""
+      },
+      "cursed": false,
+      "cl": 0,
+      "aura": {
+        "custom": false,
+        "school": ""
+      },
+      "hp": {
+        "max": 10,
+        "value": 10
+      },
+      "broken": false,
+      "hardness": 2,
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "rosewoodArmor",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "masterwork": false,
+      "enh": null,
+      "proficient": false,
+      "held": "normal",
+      "ammo": {
+        "type": "",
+        "capacity": null,
+        "misfire": null,
+        "explode": null
+      },
+      "subType": "armor",
+      "slot": "armor",
+      "equipmentSubtype": "lightArmor",
+      "baseTypes": [
+        "Rosewood Armor"
+      ],
+      "armor": {
+        "value": 2,
+        "dex": 6,
+        "acp": 0,
+        "enh": 0,
+        "material": {
+          "base": {
+            "value": "leather",
+            "custom": false
+          },
+          "normal": {
+            "value": "",
+            "custom": false
+          },
+          "addon": []
+        },
+        "total": 2
+      },
+      "spellFailure": 10,
+      "showInQuickbar": false
+    },
+    "sort": 0,
+    "ownership": {
+      "default": 0
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": null,
+      "systemVersion": null,
+      "coreVersion": null,
+      "createdTime": null,
+      "modifiedTime": null,
+      "lastModifiedBy": null
+    },
+    "changes": {},
+    "scriptCalls": {},
+    "actions": {},
+    "links": {}
+  }
+]

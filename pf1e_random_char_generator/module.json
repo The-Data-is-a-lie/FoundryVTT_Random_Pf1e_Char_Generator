@@ -1,0 +1,21 @@
+{
+  "name": "pf1e_random_char_generator",
+  "title": "Pathfinder 1e Random Character Generator",
+  "description": "This module will allow you to auto-generate randomized Pathfinder 1e character sheets.",
+  "version": "1.0.0",
+  "author": "Tabletopsoftware",
+  "esmodules": ["scripts/main.js"],
+  "styles": [],
+  "packs": [],
+  "system": "pf1e",
+  "dependencies": [],
+  "minimumCoreVersion": "10.0.0",
+  "compatibleCoreVersion": "10.0.0",
+  "scripts": [
+    "scripts/module.js",
+    "scripts/deliver-data.js",
+    "scripts/fetch-data.js",
+    "scripts/modify-abilities.js"
+  ],
+  "icon": "assets/icon.png"
+}
