@@ -29,7 +29,7 @@ async function main() {
 
     // base_folder
     const baseFeatPath = base.target + "/base_feat.json";
-    const baseskillPath = base.target + "/base_skill.json";
+    const baseSkillPath = base.target + "/base_skill.json";
     
 
     // manual filePaths
@@ -44,7 +44,7 @@ async function main() {
       everyTraitPath,
       everyWeaponPath,
       baseFeatPath,
-      baseskillPath,
+      baseSkillPath,
     ]    
 
     // Create a dictionary to hold all the file dictionaries
@@ -538,7 +538,113 @@ await processItem("Armor", everyArmorPath, characterData.armor_name, characterDa
 // ----- End of Weapon/Armor Section ----- //
 
 
- } catch (error) {
+// ----- Start of Skills Section ----- //
+
+const skillsDict = {
+  // "Pull_name": "Foundry_name"
+  acrobatics: "acr",
+  appraise: "apr",
+  artistry: "art",
+  bluff: "blf",
+  climb: "clm",
+  craft: "crf",
+  diplomacy: "dip",
+  "disable device": "dev",
+  disguise: "dis",
+  "escape artist": "esc",
+  fly: "fly",
+  "gather information": "gai",
+  "handle animal": "han",
+  heal: "hea",
+  intimidate: "int",
+  "knowledge arcana": "kar",
+  "knowledge dungeoneering": "kdu",
+  "knowledge engineering": "ken",
+  "knowledge geography": "kge",
+  "knowledge history": "khi",
+  "knowledge local": "klo",
+  "knowledge nature": "kna",
+  "knowledge nobility": "kno",
+  "knowledge planes": "kpl",
+  "knowledge religion": "kre",
+  linguistics: "lin",
+  perception: "per",
+  perform: "prf",
+  profession: "pro",
+  ride: "rid",
+  "sense motive": "sen",
+  "sleight of hand": "slt",
+  spellcraft: "spl",
+  stealth: "ste",
+  survival: "sur",
+  swim: "swm",
+  "use magic device": "umd",
+};
+
+async function convertSkillNames(characterData, skillsDict) {
+  // Reconstruct string (otherwise it reads as each alphabetical letter as a key)
+  let reconstructedString = '';
+  for (const key in characterData) {
+    reconstructedString += characterData[key];
+  }
+
+  const characterDataParsed = JSON.parse(reconstructedString);
+
+  // Change skill_rank names -> foundry names
+  const newCharacterData = {};
+
+  for (const skill in characterDataParsed) {
+    // Check if the skill name exists in the skillsDict
+    if (skillsDict[skill]) {
+      // Map the original skill name to the new name from the dictionary
+      newCharacterData[skillsDict[skill]] = characterDataParsed[skill];
+    } else {
+      // If the skill isn't in the dictionary, keep the original name
+      newCharacterData[skill] = characterDataParsed[skill];
+    }
+  }
+
+  return newCharacterData;
+}
+
+async function createUpdatedSkills(updatedCharacterData, baseSkillPathData) {
+  // Loop through each skill in updatedCharacterData and update the rank value
+  for (let skill in updatedCharacterData) {
+    if (baseSkillPathData[skill]) {
+      // Update the rank value in the baseSkillPathData structure
+      baseSkillPathData[skill].rank = updatedCharacterData[skill];
+    }
+  }
+
+  // Instead of using fs, use localStorage to store the updated skill data
+  writeToLocalStorage('collectedSkills', baseSkillPathData);
+}
+
+async function overwriteData(collectedData) {
+  // Need to parse the data, otherwise it is not in the right format
+  const parsedSkills = JSON.parse(collectedData);
+  // Directly modifying Export Template stored in localStorage
+  exportTemplate.system.skills = parsedSkills;
+  // Save the updated exportTemplate back to localStorage
+  writeToLocalStorage('exportTemplate', exportTemplate);
+}
+
+// Load the collected skills into an accessible object
+const updatedCharacterData = await convertSkillNames(characterData.skill_ranks, skillsDict);
+const baseSkillTemplate = fileDataDictionary[baseSkillPath]; // Example, replace with your actual path
+// Now we have a JSON object with the proper names and ranks -> need to update the skills
+await createUpdatedSkills(updatedCharacterData, baseSkillTemplate);
+// Now that we have updated skills -> need to overwrite the export file (stored in localStorage)
+await overwriteData(localStorage.getItem('collectedSkills'));
+
+// Rewriting the export file directly (with export template)
+writeToLocalStorage('exportFoundryPath', exportTemplate);
+
+// ----- End of Skills Section ----- //
+
+
+
+} catch (error) {
    console.error("Error in main function:", error);
  }
 }

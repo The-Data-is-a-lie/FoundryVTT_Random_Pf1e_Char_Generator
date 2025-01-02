@@ -1,0 +1,30 @@
+/* Style for the movable and resizable button */
+#generate-character-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 9999; /* Make sure it's on top */
+  }
+  
+  .generate-button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .generate-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Resizing the button */
+  #generate-character-button .ui-resizable-se {
+    width: 12px;
+    height: 12px;
+    background-color: #000;
+    cursor: se-resize;
+  }
+  

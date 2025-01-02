@@ -474,25 +474,25 @@
                 "ability": "int",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 3
             },
             "blf": {
                 "ability": "cha",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 6
             },
             "clm": {
                 "ability": "str",
                 "rt": false,
                 "acp": true,
-                "rank": 0
+                "rank": 9
             },
             "crf": {
                 "ability": "int",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 6
             },
             "dip": {
                 "ability": "cha",
@@ -516,7 +516,7 @@
                 "ability": "dex",
                 "rt": false,
                 "acp": true,
-                "rank": 0
+                "rank": 9
             },
             "fly": {
                 "ability": "dex",
@@ -528,7 +528,7 @@
                 "ability": "cha",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 7
             },
             "hea": {
                 "ability": "wis",
@@ -540,37 +540,37 @@
                 "ability": "cha",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 1
             },
             "kar": {
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 5
             },
             "kdu": {
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 7
             },
             "ken": {
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 12
             },
             "kge": {
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 5
             },
             "khi": {
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 5
             },
             "klo": {
                 "ability": "int",
@@ -582,7 +582,7 @@
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 3
             },
             "kno": {
                 "ability": "int",
@@ -594,7 +594,7 @@
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 2
             },
             "kre": {
                 "ability": "int",
@@ -606,31 +606,25 @@
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
-            },
-            "lor": {
-                "ability": "int",
-                "rt": true,
-                "acp": false,
-                "rank": 0
+                "rank": 3
             },
             "per": {
                 "ability": "wis",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 4
             },
             "prf": {
                 "ability": "cha",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 6
             },
             "pro": {
                 "ability": "wis",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 9
             },
             "rid": {
                 "ability": "dex",
@@ -642,7 +636,7 @@
                 "ability": "wis",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 6
             },
             "slt": {
                 "ability": "dex",
@@ -654,7 +648,7 @@
                 "ability": "int",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 2
             },
             "ste": {
                 "ability": "dex",
@@ -666,7 +660,7 @@
                 "ability": "wis",
                 "rt": false,
                 "acp": false,
-                "rank": 0
+                "rank": 14
             },
             "swm": {
                 "ability": "str",
@@ -678,7 +672,7 @@
                 "ability": "cha",
                 "rt": true,
                 "acp": false,
-                "rank": 0
+                "rank": 6
             }
         },
         "traits": {
@@ -13822,7 +13816,7 @@
             "img": "systems/pf1/icons/items/weapons/longsword.png",
             "system": {
                 "description": {
-                    "value": "<p>This sword is about 3-1/2 feet in length.</p><p>These are the enhancements: </p><ul><li>Toxic</li><li>Compassionate</li><li>Sapping</li><li>Thundering</li></ul><ul><li>Toxic</li><li>Compassionate</li><li>Sapping</li><li>Thundering</li></ul>",
+                    "value": "<p>This sword is about 3-1/2 feet in length.</p><p>These are the enhancements: </p><ul><li>Toxic</li><li>Compassionate</li><li>Sapping</li><li>Thundering</li></ul>",
                     "unidentified": ""
                 },
                 "tags": [],
@@ -13997,7 +13991,7 @@
             "img": "systems/pf1/icons/items/armor/leather.PNG",
             "system": {
                 "description": {
-                    "value": "<p>Leather armor is made up of multiple overlapping pieces of leather, boiled to increase their natural toughness and then deliberately stitched together. Although not as sturdy as metal armor, the flexibility it allows wearers makes it among the most widely used types of armor.</p><p>These are the enhancements: </p><ul><li>Balanced</li><li>Slick, Improved</li><li>Benevolent</li></ul><ul><li>Balanced</li><li>Slick, Improved</li><li>Benevolent</li></ul>",
+                    "value": "<p>Leather armor is made up of multiple overlapping pieces of leather, boiled to increase their natural toughness and then deliberately stitched together. Although not as sturdy as metal armor, the flexibility it allows wearers makes it among the most widely used types of armor.</p><p>These are the enhancements: </p><ul><li>Balanced</li><li>Slick, Improved</li><li>Benevolent</li></ul>",
                     "unidentified": ""
                 },
                 "tags": [],
