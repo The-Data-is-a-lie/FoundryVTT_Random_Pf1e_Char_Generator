@@ -13986,27 +13986,27 @@
             "links": {}
         },
         {
-            "name": "Leather Armor",
+            "name": "Do-Maru",
             "type": "equipment",
-            "img": "systems/pf1/icons/items/armor/leather.PNG",
+            "img": "systems/pf1/icons/items/armor/do-maru.PNG",
             "system": {
                 "description": {
-                    "value": "<p>Leather armor is made up of multiple overlapping pieces of leather, boiled to increase their natural toughness and then deliberately stitched together. Although not as sturdy as metal armor, the flexibility it allows wearers makes it among the most widely used types of armor.</p><p>These are the enhancements: </p><ul><li>Balanced</li><li>Slick, Improved</li><li>Benevolent</li></ul>",
+                    "value": "<p>The lightest of armors typically favored by samurai, do-maru wraps around the wearer’s body like a short armored coat. It consists primarily of lamellar and lacks a solid breastplate or sleeves, leaving the shoulders and upper body somewhat exposed, but permitting the wearer greater flexibility than do the majority of heavier armors.</p><p>These are the enhancements: </p><ul><li>Balanced</li><li>Slick, Improved</li><li>Benevolent</li></ul>",
                     "unidentified": ""
                 },
                 "tags": [],
                 "quantity": 1,
                 "weight": {
-                    "value": 15,
-                    "total": 15,
+                    "value": 30,
+                    "total": 30,
                     "converted": {
-                        "value": 15,
-                        "total": 15
+                        "value": 30,
+                        "total": 30
                     }
                 },
                 "equipped": true,
                 "carried": true,
-                "price": 10,
+                "price": 200,
                 "size": "med",
                 "resizing": false,
                 "timeworn": false,
@@ -14023,8 +14023,8 @@
                     "school": ""
                 },
                 "hp": {
-                    "max": 10,
-                    "value": 10
+                    "max": 25,
+                    "value": 25
                 },
                 "broken": false,
                 "hardness": 2,
@@ -14051,7 +14051,7 @@
                     "children": [],
                     "charges": []
                 },
-                "tag": "leatherArmor",
+                "tag": "domaru",
                 "flags": {
                     "boolean": {},
                     "dictionary": {}
@@ -14069,18 +14069,18 @@
                 },
                 "subType": "armor",
                 "slot": "armor",
-                "equipmentSubtype": "lightArmor",
+                "equipmentSubtype": "mediumArmor",
                 "baseTypes": [
-                    "Leather Armor"
+                    "Do-Maru"
                 ],
                 "armor": {
-                    "value": 2,
-                    "dex": 6,
-                    "acp": 0,
+                    "value": 5,
+                    "dex": 4,
+                    "acp": 4,
                     "enh": 0,
                     "material": {
                         "base": {
-                            "value": "leather",
+                            "value": "steel",
                             "custom": false
                         },
                         "normal": {
@@ -14089,14 +14089,538 @@
                         },
                         "addon": []
                     },
-                    "total": 2
+                    "total": 5
                 },
-                "spellFailure": 10,
+                "spellFailure": 25,
+                "showInQuickbar": false
+            },
+            "sort": 0,
+            "ownership": {
+                "default": 0
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": null,
+                "systemVersion": null,
+                "coreVersion": null,
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "changes": {},
+            "scriptCalls": {},
+            "actions": {},
+            "links": {}
+        },
+        {
+            "name": "Windwave Kilt",
+            "type": "equipment",
+            "img": "icons/equipment/waist/belt-coiled-leather-steel.webp",
+            "system": {
+                "description": {
+                    "value": "<p>This kilt is made of thick woven strips of sea-green and sky-blue cloth decorated with tiny pearls and bits of coral along the beltline. The wearer gains a +3 competence bonus on Swim checks.  When not worn, a windwave kilt floats on water like a dry log, automatically buoying upward any creature that weighs 100 pounds or less and aiding in flotation for heavier creatures.  If Gozreh is the wearer's patron, once per day the wearer can use gaseous form. In this form, the wearer does not need to breathe and can enter water or other liquid, appearing as a mass of fine bubbles and gaining the ability to swim at a speed of 10 feet. The wearer can also drink salt water as if it were fresh water.</p><h3>Construction</h3><p><strong>Requirements</strong> Craft Wondrous Item, create water, gaseous form, levitate or  water walk, creator must have 5 ranks in Swim</p>",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 5,
+                    "total": 5,
+                    "converted": {
+                        "value": 5,
+                        "total": 5
+                    }
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 7000,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 5,
+                "aura": {
+                    "custom": false,
+                    "school": "trs"
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "windwaveKilt",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "wondrous",
+                "slot": "belt",
+                "equipmentSubtype": "lightArmor",
+                "baseTypes": [],
+                "armor": {
+                    "value": 0,
+                    "dex": null,
+                    "acp": 0,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "addon": []
+                    },
+                    "total": 0
+                },
+                "spellFailure": 0,
                 "showInQuickbar": false,
                 "sources": [
                     {
+                        "id": "PZO9267"
+                    }
+                ]
+            },
+            "sort": 0,
+            "ownership": {
+                "default": 0
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": null,
+                "systemVersion": null,
+                "coreVersion": null,
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "changes": {},
+            "scriptCalls": {},
+            "actions": {},
+            "links": {}
+        },
+        {
+            "name": "Witching Gown",
+            "type": "equipment",
+            "img": "icons/equipment/chest/coat-collared-red-gold.webp",
+            "system": {
+                "description": {
+                    "value": "<p><strong>Source</strong>: AP 47</p><p>Spun from combed cotton, this simple, unassuming gown bears a strong aura of witchcraft. These magical garments are highly sought after by witches, for though anyone may wear a witching gown, only a witch may realize its full potential. A witching gown grants its wearer a +2 resistance bonus on all saving throws and a +2 competence bonus on all Bluff, Diplomacy, and Intimidate skill checks. When worn by a witch, these bonuses double.  In addition, a witch may change the appearance and style of the gown to match her whims (as the glamered armor special ability) and adopt virtually any disguise, gaining a +10 bonus on Disguise checks that incorporate the gown's appearance. Only a true seeing spell or similar magic can pierce this effect.  Lastly, a witch may cast a single touch range spell of 4th level or lower into the gown. Thereafter, the gown holds the magic for up to 24 hours, functioning as a spite spell against the next foe to strike the witch with a successful melee attack or combat maneuver. The gown's spite spell counts as an active spite effect for the witch wearing the gown.<h3>Requirements</h3><p>Craft Wondrous Item, charm person, disguise self, resistance, spite (Pathfinder RPG Advanced Player's Guide 246)</p>",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 1,
+                    "total": 1,
+                    "converted": {
+                        "value": 1,
+                        "total": 1
+                    }
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 35000,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 7,
+                "aura": {
+                    "custom": false,
+                    "school": "abj"
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "witchingGown",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "wondrous",
+                "slot": "body",
+                "equipmentSubtype": "lightArmor",
+                "baseTypes": [],
+                "armor": {
+                    "value": 0,
+                    "dex": null,
+                    "acp": 0,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "addon": []
+                    },
+                    "total": 0
+                },
+                "spellFailure": 0,
+                "showInQuickbar": false
+            },
+            "sort": 0,
+            "ownership": {
+                "default": 0
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": null,
+                "systemVersion": null,
+                "coreVersion": null,
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "changes": {},
+            "scriptCalls": {},
+            "actions": {},
+            "links": {}
+        },
+        {
+            "name": "Snakeskin Tunic",
+            "type": "equipment",
+            "img": "icons/equipment/chest/vest-leather-pink.webp",
+            "system": {
+                "description": {
+                    "value": "<p>A snakeskin tunic is a tight, form-fitting shirt crafted from the scales of a giant snake. When worn, it grants a +1 armor bonus to AC, a +2 enhancement bonus to Dexterity, and a +2 resistance bonus on saving throws against poison.</p><h3>Construction</h3><p><strong>Requirements</strong> Craft Wondrous Item, cat's grace, delay poison</p>",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 2,
+                    "total": 2,
+                    "converted": {
+                        "value": 2,
+                        "total": 2
+                    }
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 8000,
+                "size": "med",
+                "resizing": false,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": ""
+                },
+                "cursed": false,
+                "cl": 8,
+                "aura": {
+                    "custom": true,
+                    "school": "abjuration and transmutation"
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "snakeskinTunic",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "wondrous",
+                "slot": "chest",
+                "equipmentSubtype": "lightArmor",
+                "baseTypes": [],
+                "armor": {
+                    "value": 0,
+                    "dex": null,
+                    "acp": 0,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "",
+                            "custom": false
+                        },
+                        "addon": []
+                    },
+                    "total": 0
+                },
+                "spellFailure": 0,
+                "showInQuickbar": false,
+                "sources": [
+                    {
+                        "id": "PZO1123"
+                    }
+                ]
+            },
+            "sort": 0,
+            "ownership": {
+                "default": 0
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": null,
+                "systemVersion": null,
+                "coreVersion": null,
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "changes": {},
+            "scriptCalls": {},
+            "actions": {},
+            "links": {}
+        },
+        {
+            "name": "Cloak of Resistance +3",
+            "type": "equipment",
+            "img": "systems/pf1/icons/items/equipment/cloak-plain.jpg",
+            "system": {
+                "description": {
+                    "value": "<p>This garment offers magic protection in the form of a +1 to +5 <em>resistance bonus</em> on all saving throws (<em>Fortitude</em>, <em>Reflex</em>, and <em>Will</em>).</p><h3>Construction</h3><p><strong>Requirements</strong> @UUID[Compendium.pf1.feats.Item.tD76K8QGco9scT0r]{Craft Wondrous Item}, @UUID[Compendium.pf1.spells.Item.g8j278xcu2s1zlwy]{resistance}, creator's caster level must be at least three times the cloak's bonus; <strong>Cost</strong> 4,500 gp</p>",
+                    "unidentified": ""
+                },
+                "tags": [],
+                "quantity": 1,
+                "weight": {
+                    "value": 1,
+                    "total": 1,
+                    "converted": {
+                        "value": 1,
+                        "total": 1
+                    }
+                },
+                "equipped": true,
+                "carried": true,
+                "price": 9000,
+                "size": "med",
+                "resizing": true,
+                "timeworn": false,
+                "artifact": false,
+                "identified": true,
+                "unidentified": {
+                    "price": 0,
+                    "name": "Cloak"
+                },
+                "cursed": false,
+                "cl": 9,
+                "aura": {
+                    "custom": false,
+                    "school": "abj"
+                },
+                "hp": {
+                    "max": 10,
+                    "value": 10
+                },
+                "broken": false,
+                "hardness": 0,
+                "changes": [
+                    {
+                        "_id": "mter3f3k",
+                        "formula": "3",
+                        "target": "allSavingThrows",
+                        "type": "resist",
+                        "operator": "add",
+                        "priority": 0,
+                        "value": 0
+                    }
+                ],
+                "changeFlags": {
+                    "loseDexToAC": false,
+                    "noMediumEncumbrance": false,
+                    "noHeavyEncumbrance": false,
+                    "mediumArmorFullSpeed": false,
+                    "heavyArmorFullSpeed": false
+                },
+                "contextNotes": [],
+                "actions": [],
+                "attackNotes": [],
+                "effectNotes": [],
+                "uses": {
+                    "value": null,
+                    "per": "",
+                    "autoDeductChargesCost": "",
+                    "maxFormula": "",
+                    "rechargeFormula": ""
+                },
+                "links": {
+                    "children": [],
+                    "charges": []
+                },
+                "tag": "cloakOfResistance3",
+                "flags": {
+                    "boolean": {},
+                    "dictionary": {}
+                },
+                "scriptCalls": [],
+                "masterwork": false,
+                "enh": null,
+                "proficient": false,
+                "held": "normal",
+                "ammo": {
+                    "type": "",
+                    "capacity": null,
+                    "misfire": null,
+                    "explode": null
+                },
+                "subType": "wondrous",
+                "slot": "shoulders",
+                "equipmentSubtype": "lightArmor",
+                "baseTypes": [],
+                "armor": {
+                    "value": 0,
+                    "dex": null,
+                    "acp": 0,
+                    "enh": 0,
+                    "material": {
+                        "base": {
+                            "value": "leather",
+                            "custom": false
+                        },
+                        "normal": {
+                            "value": "leather",
+                            "custom": false
+                        },
+                        "addon": []
+                    },
+                    "total": 0
+                },
+                "spellFailure": 0,
+                "showInQuickbar": false,
+                "sources": [
+                    {
+                        "id": "PZO1123",
+                        "pages": "264"
+                    },
+                    {
                         "id": "PZO1110",
-                        "pages": "151"
+                        "pages": "507"
                     }
                 ]
             },

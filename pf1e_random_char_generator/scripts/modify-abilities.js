@@ -22,6 +22,7 @@ async function main() {
     const everyArmorPath = charSheetBase.target + "/every_armor.json";
     const everyClassPath = charSheetBase.target + "/every_class.json";
     const everyFeatPath = charSheetBase.target + "/every_feat.json";
+    const everyItemPath = charSheetBase.target + "/every_item.json";
     const everyRacePath = charSheetBase.target + "/every_race.json";
     const everySpellPath = charSheetBase.target + "/every_spell.json";
     const everyTraitPath = charSheetBase.target + "/every_trait.json";
@@ -39,6 +40,7 @@ async function main() {
       everyArmorPath,
       everyClassPath,
       everyFeatPath,
+      everyItemPath,
       everyRacePath,
       everySpellPath,
       everyTraitPath,
@@ -283,13 +285,29 @@ function processClass(targetClass, newLevel, classList) {
 
 // function to capitalize the first letter of each word in a string
 function capitalizeWords(str) {
+  // Ensure str is a string before attempting to split
+  if (typeof str !== 'string') {
+    console.error('Expected a string, but received:', str);
+    return str; // Return the value unchanged if it's not a string
+  }
+
   return str
     .split(' ') // Split the string into an array of words
-    .map(word => 
-      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() // Capitalize first letter
-    )
+    .map(word => {
+      // Capitalize the first letter of each part before and after the hyphen
+      return word.split('-').map((part, index) => {
+        if (index === 0) {
+          // Capitalize the first part as usual
+          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        } else {
+          // Capitalize the part after the hyphen
+          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        }
+      }).join('-'); // Rejoin the parts after the hyphen
+    })
     .join(' '); // Join all words together
 }
+
 
 // Example inputs
 const upper_case_class = capitalizeWords(characterData.c_class);
@@ -453,14 +471,14 @@ await processSpell(everySpellPath, characterData.spell_list_choose_from);
 
 // ----- Start of Weapon/Armor Section ----- //
 // Function to append enhancements to description
-function appendEnhancementsToDescription(item, enhancements) {
+async function appendEnhancementsToDescription(item, enhancements) {
   if (item.system && item.system.description) {
     const enhancementText = (Array.isArray(enhancements) ? enhancements : [])
       .map(enhancement => `<li>${enhancement}</li>`)
       .join('');
     const message = enhancementText ? 
                     `<p>These are the enhancements: </p><ul>${enhancementText}</ul>` : 
-                    '<p>No enhancements available.</p>';
+                    '';
     
     // Add enhancements only once
     if (!item.system.description.value.includes(message)) {
@@ -469,16 +487,25 @@ function appendEnhancementsToDescription(item, enhancements) {
   }
 }
 
-// General function to process items (weapon, armor, etc.)
-async function processItem(itemType, everyItemPath, itemName, enhancementList, defaultItemName) {
+async function processItem(itemType, everyItemPath, itemName, enhancementList, defaultItemName, defaultItemNameFlag = 0) {
   try {
-    // If itemName is empty or undefined, use defaultItemName (e.g., "Longsword" for weapons)
-    itemName = itemName || defaultItemName;
+    // If itemName is empty or undefined, use defaultItemName
+    if (!itemName && defaultItemNameFlag === 0) {
+      itemName = defaultItemName;
+      defaultItemNameFlag = 1;  // Set the flag to 1 if defaultItemName is used
+    }
+
+    // If item can't be found and defaultItemNameFlag is set to 1, skip this time
+    if (!itemName && defaultItemNameFlag === 1) {
+      return defaultItemNameFlag;  // Ensure the flag is returned
+    }
+
+    itemName = capitalizeWords(itemName);
 
     // Ensure the item name is not empty or undefined
     if (!itemName) {
       console.error(`Character class ${characterData.c_class} does not have any selected ${itemType}.`);
-      return;
+      return defaultItemNameFlag;  // Ensure the flag is returned
     }
 
     // Retrieve the items data from the fileDataDictionary
@@ -487,7 +514,7 @@ async function processItem(itemType, everyItemPath, itemName, enhancementList, d
     // Check if the items data is an array
     if (!Array.isArray(items)) {
       console.error(`${itemType} data is not an array or is undefined:`, items);
-      return;
+      return defaultItemNameFlag;  // Ensure the flag is returned
     }
 
     console.log(`${itemType} data structure`, JSON.stringify(itemName, null, 2));
@@ -499,15 +526,20 @@ async function processItem(itemType, everyItemPath, itemName, enhancementList, d
       // Try to use the default item if the selected one is not found
       const defaultMatchedItem = items.find(r => r.name === defaultItemName);
       if (defaultMatchedItem) {
-        appendEnhancementsToDescription(defaultMatchedItem, enhancementList);
-        writeToLocalStorage(`collected${itemType}s`, [defaultMatchedItem]);
-        appendJsonToTemplate([defaultMatchedItem], exportTemplate, itemType);
-        writeToLocalStorage('exportTemplate', exportTemplate);
-        console.log(`Successfully added default ${itemType} data to the export template.`);
+        if (defaultItemNameFlag === 0) {
+          appendEnhancementsToDescription(defaultMatchedItem, enhancementList);
+          writeToLocalStorage(`collected${itemType}s`, [defaultMatchedItem]);
+          appendJsonToTemplate([defaultMatchedItem], exportTemplate, itemType);
+          writeToLocalStorage('exportTemplate', exportTemplate);
+          console.log(`Successfully added default ${itemType} data to the export template.`);
+          
+          // Set the flag to 1 to avoid adding default again
+          return 1; // Set flag here to indicate the default item has been added
+        }
       } else {
         console.error(`Default ${itemType} "${defaultItemName}" also not found.`);
       }
-      return;
+      return defaultItemNameFlag;  // Ensure the flag is returned
     }
 
     // Append enhancements to the item (only once)
@@ -524,16 +556,53 @@ async function processItem(itemType, everyItemPath, itemName, enhancementList, d
     writeToLocalStorage('exportTemplate', exportTemplate);
 
     console.log(`Successfully added ${itemType} data to the export template.`);
+    return defaultItemNameFlag;  // Ensure the flag is returned
+
   } catch (error) {
     console.error(`Error reading or processing the ${itemType} Section:`, error);
+    return defaultItemNameFlag;  // Ensure the flag is returned
   }
 }
 
-// Example usage for Weapon with default fallback to "Longsword"
-await processItem("Weapon", everyWeaponPath, characterData.weapon_name, characterData.weapon_enhancement_chosen_list, "Longsword");
 
-// Example usage for Armor with default fallback to "Leather Armor"
-await processItem("Armor", everyArmorPath, characterData.armor_name, characterData.armor_enhancement_chosen_list, "Leather Armor");
+
+
+
+//Weapon with default fallback to "Longsword"
+await processItem("Weapon", everyWeaponPath, characterData.weapon_name, characterData.weapon_enhancement_chosen_list, "Longsword", 0);
+
+//Armor with default fallback to "Leather Armor"
+await processItem("Armor", everyArmorPath, characterData.armor_name, characterData.armor_enhancement_chosen_list, "Leather Armor", 0);
+
+//Wondrous item with default fallback to "Cloak of Resistance +3"
+async function processEquipment(characterData) {
+  // Initialize defaultItemNameFlag before the loop
+  let defaultItemNameFlag = 0;    
+
+  // Check if equipment_list exists and is an array
+  if (Array.isArray(characterData.equipment_list)) {
+    // Loop through each item in the equipment list using for...of
+    for (const item of characterData.equipment_list) {
+      console.log("defaultItemNameFlag pre loop:", defaultItemNameFlag);
+      // Pass the updated defaultItemNameFlag and receive the new one
+      defaultItemNameFlag = await processItem("WondrousItem", everyItemPath, item, '', "Cloak of Resistance +3", defaultItemNameFlag);
+      console.log("defaultItemNameFlag post loop:", defaultItemNameFlag);
+
+      // Stop if the default item has been added (flag = 1)
+      if (defaultItemNameFlag === 1) {
+        console.log("Default item has been added, skipping further iterations.");
+        break;
+      }
+    }
+  } else {
+    console.error('equipment_list is not an array or is missing');
+  }
+}
+
+// Call the function with the characterData object
+await processEquipment(characterData);
+
+
 
 // ----- End of Weapon/Armor Section ----- //
 
@@ -641,6 +710,7 @@ await overwriteData(localStorage.getItem('collectedSkills'));
 writeToLocalStorage('exportFoundryPath', exportTemplate);
 
 // ----- End of Skills Section ----- //
+
 
 
 

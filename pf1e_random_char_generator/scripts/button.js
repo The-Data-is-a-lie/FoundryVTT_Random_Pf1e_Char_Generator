@@ -1,5 +1,5 @@
   // Function to create the persistent button
-  function createPersistentButton() {
+async function createPersistentButton() {
     const button = document.createElement('button');
     button.textContent = "CG"; // Short for "Character Generator"
     button.id = "character-generator-button";
@@ -22,7 +22,12 @@
     // Add event listener to show the dialog when clicked
     button.addEventListener('click', () => {
       showCharacterGeneratorDialog();
+    // Calling the main() function from modify-abilities.js to modify the button
+    import('./modify-abilities.js');
+    main();       
     });
+
+
 
     // Add dragging functionality
     let isDragging = false;
