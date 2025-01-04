@@ -1,12 +1,8 @@
-// Define the path to the saved file (locally stored in localStorage)
-const storageKey = 'character_data';
-
 // Fetch and save data to localStorage
-(async () => {
+export async function fetchDataAndSaveToLocalStorage(location, storageKey) {
     try {
         // Fetch the data from the external API
-        const url = "https://pathfinder-char-creator.onrender.com/get_character_data"; // Replace with your server URL
-        const response = await fetch(url);
+        const response = await fetch(location);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         const data = await response.json();
@@ -19,10 +15,10 @@ const storageKey = 'character_data';
     } catch (error) {
         console.error("Error fetching or saving data:", error);
     }
-})();
+}
 
 // Retrieve data from localStorage
-function getCharacterData() {
+export async function getCharacterData(storageKey) {
     const data = localStorage.getItem(storageKey);
     if (data) {
         return JSON.parse(data);
@@ -31,7 +27,3 @@ function getCharacterData() {
         return null;
     }
 }
-
-// Example usage: Retrieve and log the character data
-const characterData = getCharacterData();
-console.log("Character Data from localStorage:", characterData);

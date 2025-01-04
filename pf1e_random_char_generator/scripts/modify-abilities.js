@@ -1,4 +1,4 @@
-async function main() {
+export async function main() {
   try {
     // Retrieve the module dynamically using the module name
     const module = game.modules.get('pf1e_random_char_generator');
@@ -68,11 +68,11 @@ async function main() {
 
     await loadFiles();
 
-// console.log("fileDataDictionary", fileDataDictionary);
 
 
 // ----- End of setting up filePaths ----- //
 
+const characterData = JSON.parse(localStorage.getItem('character_data'));
 
 
    // ----- Start of exportTemplate setup ----- //
@@ -100,6 +100,7 @@ async function main() {
      // Save updated exportTemplate to localStorage
      localStorage.setItem('exportTemplate', JSON.stringify(exportTemplate));
    }
+
 
    // Stats
    updateAttribute(characterData.str, exportTemplate.system.abilities.str, 'value');
@@ -712,6 +713,8 @@ writeToLocalStorage('exportFoundryPath', exportTemplate);
 // ----- End of Skills Section ----- //
 
 
+// Rewriting the export file directly (with export template)
+writeToLocalStorage('exportFoundryPath', exportTemplate);
 
 
 } catch (error) {

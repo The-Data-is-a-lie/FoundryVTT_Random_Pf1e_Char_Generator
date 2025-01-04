@@ -1,7 +1,10 @@
-// main.js
-
 (async () => {
+
+
   // Import necessary scripts
+  await import('./deliver-data.js');
+  console.log("deliver-data ran");
+
   await import('./fetch-data.js'); // Load fetch-data script
   console.log("fetch-data ran");
 

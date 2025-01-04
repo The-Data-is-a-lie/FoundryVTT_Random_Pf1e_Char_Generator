@@ -1,62 +1,109 @@
-  // Function to create the persistent button
-async function createPersistentButton() {
-    const button = document.createElement('button');
-    button.textContent = "CG"; // Short for "Character Generator"
-    button.id = "character-generator-button";
+// // Imports
+import { fetchDataAndSaveToLocalStorage, getCharacterData } from './fetch-data.js';
+import { main } from './modify-abilities.js';
 
-    // Apply styling to position the button at the bottom left of the screen
-    button.style.position = 'fixed';
-    button.style.bottom = '10%';
-    button.style.left = '2%';
-    button.style.width = '50px';
-    button.style.height = '50px';
-    button.style.border = '1px solid #ccc';
-    button.style.borderRadius = '5px';
-    button.style.backgroundColor = '#333';
-    button.style.color = 'white';
-    button.style.fontSize = '12px';
-    button.style.cursor = 'pointer';
-    button.style.textAlign = 'center';
-    button.style.lineHeight = '50px';
+// import { getCharacterData } from './fetch-data.js';
+// import { sendDataToServer } from './deliver-data.js';
+// import { fetchDataAndSaveToLocalStorage, getCharacterData} from './fetch-data.js';
+// import { main } from './modify-abilities.js';
 
-    // Add event listener to show the dialog when clicked
-    button.addEventListener('click', () => {
+
+// Function to create the persistent button
+// need export so we can import in main.js
+export async function createPersistentButton() {
+  const location = 'https://pathfinder-char-creator.onrender.com/get_character_data';
+
+  const button = document.createElement('button');
+  button.textContent = "Character Generator";
+  button.id = "character-generator-button";
+
+  // Button Style options
+  button.style.position = 'fixed';
+  button.style.bottom = '10%';
+  button.style.left = '2%';
+  button.style.width = '125px';
+  button.style.height = '75px';
+  button.style.border = '1px solid #ccc';
+  button.style.borderRadius = '5px';
+  button.style.backgroundColor = '#333';
+  button.style.color = 'white';
+  button.style.fontSize = '12px';
+  button.style.cursor = 'pointer';
+  button.style.textAlign = 'center';
+  button.style.lineHeight = '50px';
+
+  // Add event listener to show the dialog when clicked
+  button.addEventListener('click', async () => {
       showCharacterGeneratorDialog();
-    // Calling the main() function from modify-abilities.js to modify the button
-    import('./modify-abilities.js');
-    main();       
-    });
+
+  // Import deliver-data.js
+  // try {  
+  //   await import('./deliver-data.js');
+    
+  //   const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
+  //   console.log("Data sent over to server:", savedData);
+    
+  //   await sendDataToServer(savedData, location);
+  // } catch (error) {
+  //   console.error("Error deliver-data.js in button.js:", error);
+  // }  
+
+  // Import fetch-data.js
+  try {
+    // await import('./fetch-data.js');
+    await fetchDataAndSaveToLocalStorage(location, 'character_data');
+    await getCharacterData('character_data');
+  } catch (error) {
+    console.error("Error importing fetch-data.js in button.js:", error);
+  }
+
+  // Import main from modify-abilities.js (bulk of the character creation)
+  try {
+    // await import('./modify-abilities.js');
+    await main();
+  } catch (error) {
+    console.error("Error importing modify-abilities in button.js:", error);
+  }
+  
+  // Import createCharacterFunc from createCharacter.js
+  try {
+    // await import('./createCharacter.js');
+    await createAndAssignActor();
+  } catch (error) {
+    console.error("Error importing createCharacter in button.js:", error);
+  }
+});
 
 
 
-    // Add dragging functionality
-    let isDragging = false;
-    let offsetX, offsetY;
+  // Add dragging functionality
+  let isDragging = false;
+  let offsetX, offsetY;
 
-    button.addEventListener('mousedown', (event) => {
+  button.addEventListener('mousedown', (event) => {
       isDragging = true;
       offsetX = event.clientX - button.getBoundingClientRect().left;
       offsetY = event.clientY - button.getBoundingClientRect().top;
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
-    });
+  });
 
-    function onMouseMove(event) {
+  function onMouseMove(event) {
       if (!isDragging) return;
       const newX = event.clientX - offsetX;
       const newY = event.clientY - offsetY;
       button.style.left = `${newX}px`;
       button.style.top = `${newY}px`;
-    }
+  }
 
-    function onMouseUp() {
+  function onMouseUp() {
       isDragging = false;
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
-    }
-
-    document.body.appendChild(button);
   }
+
+  document.body.appendChild(button);
+}
 
   function showCharacterGeneratorDialog() {
     // Get the saved character data from localStorage
@@ -219,5 +266,3 @@ async function createPersistentButton() {
       }
     }).render(true);
   }
-
-  createPersistentButton();
