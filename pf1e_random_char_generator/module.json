@@ -18,14 +18,7 @@
     "scripts/fetch-data.js",
     "scripts/modify-abilities.js",
     "scripts/button.js",
-    "scripts/createCharacter.js",
-    "scripts/simpleData.js",
-    "scripts/classData.js",
-    "scripts/featTraitData.js",
-    "scripts/spellData.js",
-    "scripts/weaponArmorData.js",
-    "scripts/wondrousItemData.js",
-    "scripts/skillsData.js"
+    "scripts/createCharacter.js"
   ],
   "icon": "assets/icon.png"
 }

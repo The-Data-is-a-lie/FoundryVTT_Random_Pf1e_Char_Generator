@@ -1,29 +1,45 @@
-// Fetch and save data to localStorage
+// Function to fetch data and save it to localStorage
 export async function fetchDataAndSaveToLocalStorage(location, storageKey) {
+    console.log("fetching data location:", location);
     try {
-        // Fetch the data from the external API
-        const response = await fetch(location);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        const data = await response.json();
-        console.log("Fetched Data:", data);
+        // Fetch data from the backend
+        const response = await fetch(location, {
+            method: 'POST',
+            credentials: 'include', // Include cookies/session if needed
+        });
 
-        // Save the fetched data to localStorage
+        console.log("grabbed cookie", document.cookie)
+
+        // Check if the response is successful
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+        // Parse the JSON response
+        const data = await response.json();
+
+        // Log the fetched data
+        console.log('Fetched Data:', data);
+
+        // Save the fetched data to localStorage (convert to JSON string)
         localStorage.setItem(storageKey, JSON.stringify(data));
-        console.log("Data saved to localStorage.");
-        
+
+        // Confirm saving to localStorage
+        console.log(`${storageKey} saved to localStorage.`);
     } catch (error) {
-        console.error("Error fetching or saving data:", error);
+        console.error('Error fetching or saving data:', error);
     }
 }
 
-// Retrieve data from localStorage
+// Function to retrieve the data from localStorage
 export async function getCharacterData(storageKey) {
-    const data = localStorage.getItem(storageKey);
-    if (data) {
-        return JSON.parse(data);
+    // Get the character data from localStorage
+    const pulledCharacterData = JSON.parse(localStorage.getItem(storageKey));
+
+    // Check if the data exists and log it
+    if (pulledCharacterData) {
+        console.log('Pulled Character Data:', pulledCharacterData);
+        return pulledCharacterData;
     } else {
-        console.log("No data found in localStorage.");
+        console.log('No character data found in localStorage.');
         return null;
     }
 }

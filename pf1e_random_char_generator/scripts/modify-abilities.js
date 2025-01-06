@@ -72,7 +72,7 @@ export async function main() {
 
 // ----- End of setting up filePaths ----- //
 
-const characterData = JSON.parse(localStorage.getItem('character_data'));
+const characterData = JSON.parse(localStorage.getItem('pulledCharacterData'));
 
 
    // ----- Start of exportTemplate setup ----- //

@@ -1,5 +1,6 @@
 // // Imports
-import { fetchDataAndSaveToLocalStorage, getCharacterData } from './fetch-data.js';
+import { sendDataToServer } from './deliver-data.js';
+// import { fetchDataAndSaveToLocalStorage, getCharacterData } from './fetch-data.js';
 import { main } from './modify-abilities.js';
 
 // import { getCharacterData } from './fetch-data.js';
@@ -11,7 +12,12 @@ import { main } from './modify-abilities.js';
 // Function to create the persistent button
 // need export so we can import in main.js
 export async function createPersistentButton() {
-  const location = 'https://pathfinder-char-creator.onrender.com/get_character_data';
+  // test server
+  // const deliver_location = 'http://localhost:5000/update_character_data';
+  // perm server
+  const deliver_location = 'https://pathfinder-char-creator-5awx.onrender.com/update_character_data';
+  
+  // const receive_location = 'http://localhost:5000/get_character_data';
 
   const button = document.createElement('button');
   button.textContent = "Character Generator";
@@ -37,25 +43,28 @@ export async function createPersistentButton() {
       showCharacterGeneratorDialog();
 
   // Import deliver-data.js
-  // try {  
-  //   await import('./deliver-data.js');
+  try {  
+    // await import('./deliver-data.js');
     
-  //   const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
-  //   console.log("Data sent over to server:", savedData);
+    const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
+    // console.log("Data sent over to server:", savedData);
     
-  //   await sendDataToServer(savedData, location);
-  // } catch (error) {
-  //   console.error("Error deliver-data.js in button.js:", error);
-  // }  
+    await sendDataToServer(savedData, deliver_location, 'pulledCharacterData');
+    // for some reason sendDataToServer grabs the correct data as well
 
-  // Import fetch-data.js
-  try {
-    // await import('./fetch-data.js');
-    await fetchDataAndSaveToLocalStorage(location, 'character_data');
-    await getCharacterData('character_data');
   } catch (error) {
-    console.error("Error importing fetch-data.js in button.js:", error);
-  }
+    console.error("Error deliver-data.js in button.js:", error);
+  }  
+
+  // Don't use anymore (sendDataToServer sends data + grabs it)
+  // // Import fetch-data.js
+  // try {
+  //   // await import('./fetch-data.js');
+  //   await fetchDataAndSaveToLocalStorage(deliver_location, 'pulledCharacterData');
+  //   await getCharacterData('pulledCharacterData');
+  // } catch (error) {
+  //   console.error("Error importing fetch-data.js in button.js:", error);
+  // }
 
   // Import main from modify-abilities.js (bulk of the character creation)
   try {
@@ -219,29 +228,13 @@ export async function createPersistentButton() {
     const dialog = new Dialog({
       title: "Random Character Generator",
       content: html,
-      render: (htmlElement) => {
-        // Add a custom "X" button
-        const closeButton = document.createElement('button');
-        closeButton.textContent = "X";
-        closeButton.style.position = "absolute";
-        closeButton.style.top = "10px";
-        closeButton.style.right = "10px";
-        closeButton.style.background = "red";
-        closeButton.style.color = "white";
-        closeButton.style.border = "none";
-        closeButton.style.padding = "5px";
-        closeButton.style.cursor = "pointer";
-        closeButton.addEventListener('click', () => {
-          dialog.close();
-        });
-        htmlElement.appendChild(closeButton);
-      },
       buttons: {
         generate: {
           label: "Generate Character",
           callback: () => {
             // Get form data
             const characterData = {
+              input: "Y",  // Ensure the first value is "Y"
               region: document.getElementById('character-region').value,
               race: document.getElementById('character-race').value,
               class: document.getElementById('character-class').value,
@@ -255,14 +248,15 @@ export async function createPersistentButton() {
               lowestLevel: document.getElementById('lowest-level').value,
               goldAmount: document.getElementById('gold-amount').value
             };
-
+    
             // Save the data to localStorage
             localStorage.setItem('deliverData.json', JSON.stringify(characterData));
-
+    
             // You can proceed with your logic for generating the character here
             console.log("Character Data Generated: ", characterData);
           }
         }
       }
     }).render(true);
+    
   }
