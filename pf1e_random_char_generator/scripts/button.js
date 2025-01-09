@@ -17,7 +17,7 @@ export async function createPersistentButton() {
   // perm server
   const deliver_location = 'https://pathfinder-char-creator-5awx.onrender.com/update_character_data';
   
-  // const receive_location = 'http://localhost:5000/get_character_data';
+
 
   const button = document.createElement('button');
   button.textContent = "Character Generator";
@@ -49,6 +49,7 @@ export async function createPersistentButton() {
     const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
     // console.log("Data sent over to server:", savedData);
     
+    console.log('deliver_location', deliver_location)
     await sendDataToServer(savedData, deliver_location, 'pulledCharacterData');
     // for some reason sendDataToServer grabs the correct data as well
 
@@ -157,10 +158,11 @@ export async function createPersistentButton() {
         <label for="character-class">Select Class:</label>
         <select id="character-class">
           ${[
-            'Random', 'Alchemist', 'Antipaladin', 'Arcanist', 'Barbarian', 'Bloodrager', 
-            'Cavalier', 'Fighter', 'Inquisitor', 'Investigator', 'Magus', 'Monk', 'Ninja', 
-            'Oracle', 'Paladin', 'Ranger', 'Rogue', 'Shaman', 'Skald', 'Slayer', 'Samurai', 
-            'Sorcerer', 'Vigilante', 'Warpriest', 'Witch', 'Wizard'
+              'Random', 'Alchemist', 'Antipaladin', 'Arcanist', 'Barbarian', 'Barbarian (Unchained)', 'Bard',
+              'Bloodrager', 'Brawler', 'Cavalier', 'Cleric', 'Druid', 'Fighter', 'Gunslinger', 'Hunter', 'Inquisitor',
+              'Investigator', 'Magus', 'Monk', 'Monk (Unchained)', 'Ninja', 'Oracle', 'Paladin', 'Ranger', 'Rogue',
+              'Rogue (Unchained)', 'Samurai', 'Shaman', 'Shifter', 'Skald', 'Slayer', 'Sorcerer', 'Summoner',
+              'Summoner (Unchained)', 'Swashbuckler', 'Vigilante', 'Warpriest', 'Witch', 'Wizard'
           ].map(char_class => 
             `<option value="${char_class.toLowerCase().replace(/\s/g, '-')}">${char_class}</option>`
           ).join('')}

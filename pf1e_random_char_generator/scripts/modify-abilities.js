@@ -13,8 +13,7 @@ export async function main() {
     const charSheetBase = await FilePicker.browse('data', 'modules/pf1e_random_char_generator/templates/character_sheet_folder'); 
     // base_folder Base
     const base = await FilePicker.browse('data', 'modules/pf1e_random_char_generator/templates/base_folder'); 
-    // collected items Base
-    const collectedBase = await FilePicker.browse('data', 'modules/pf1e_random_char_generator/templates/collected_folder'); 
+
 
     // char_sheet_folders
     const unmodifiedPreExportTemplatePath = charSheetBase.target + "/unmodified_pre_export_template.json";
@@ -73,7 +72,8 @@ export async function main() {
 // ----- End of setting up filePaths ----- //
 
 const characterData = JSON.parse(localStorage.getItem('pulledCharacterData'));
-
+const prepared_caster_list = ["Alchemist", "Bard", "Cleric", "Druid", "Inquisitor", "Investigator", "Magus", "Paladin", "Ranger", "Summoner", "Summoner (Unchained)", "Skald", "Warpriest", "Wizard", "Witch"]
+const upper_case_class = capitalizeWords(characterData.c_class);
 
    // ----- Start of exportTemplate setup ----- //
 
@@ -156,16 +156,6 @@ const characterData = JSON.parse(localStorage.getItem('pulledCharacterData'));
 
 
 // ------ Start of Class Data Section ------ //
-
-// Function to parse JSON data
-function parseJson(data) {
-  try {
-    return JSON.parse(data);
-  } catch (err) {
-    console.error('Error parsing the JSON data:', err);
-    return null;
-  }
-}
 
 // Function to validate and extract items array
 function extractItems(parsedData) {
@@ -264,14 +254,28 @@ function appendJsonToTemplate(collectedItems, exportTemplate, sectionKey) {
   console.log(`Appended ${collectedItems.length} items to ${sectionKey} in exportTemplate.`);
 }
 
+
+// Function to filter items by level
+function filterByLevel(items, level) {
+  if (!Array.isArray(items)) {
+    console.error('Items is not an array:', items);
+    return [];
+  }
+
+  return items.filter(item => item.system && typeof item.system.level === 'number' && item.system.level === level);
+}
+
 // Main function to process class data and update class level
 function processClass(targetClass, newLevel, classList) {
   const everyClassPathData = fileDataDictionary[everyClassPath];
   const items = extractItems(everyClassPathData);
   if (!items) return;
 
+  // We only want class abilities from where level received <= characterData.level 
+  const filteredItems = filterByLevel(items, newLevel);
+
   // Update level in the class data
-  updateLevel(items, targetClass, newLevel);
+  updateLevel(filteredItems, targetClass, newLevel);
 
   // Collect the items for the given class
   const newCollectedItems = collectItems(items, targetClass, classList);
@@ -292,26 +296,41 @@ function capitalizeWords(str) {
     return str; // Return the value unchanged if it's not a string
   }
 
+  const ignoreWords = ['of', 'the', 'and', 'in', 'on', 'at', 'to', 'with', 'from'];
+
+  // List of specific Roman numerals to capitalize
+  const romanNumerals = ['ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii'];
+
   return str
     .split(' ') // Split the string into an array of words
-    .map(word => {
-      // Capitalize the first letter of each part before and after the hyphen
-      return word.split('-').map((part, index) => {
-        if (index === 0) {
-          // Capitalize the first part as usual
-          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
-        } else {
-          // Capitalize the part after the hyphen
-          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
-        }
-      }).join('-'); // Rejoin the parts after the hyphen
+    .map((word, index) => {
+      // Lowercase the word for comparison
+      const lowerWord = word.toLowerCase();
+
+      // Capitalize Roman numerals
+      if (romanNumerals.includes(lowerWord)) {
+        return word.toUpperCase();
+      }
+
+      // Capitalize the first letter if it's the first word or not in ignoreWords
+      if (index === 0 || !ignoreWords.includes(lowerWord)) {
+        return word
+          .split('-') // Handle hyphenated words
+          .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+          .join('-');
+      } else {
+        // Keep the word in lowercase if it's in the ignore list and not the first word
+        return word.toLowerCase();
+      }
     })
     .join(' '); // Join all words together
 }
 
 
+
+
+
 // Example inputs
-const upper_case_class = capitalizeWords(characterData.c_class);
 
 const class_list = [
   "Alchemist", "Antipaladin", "Arcanist", "Barbarian", "Barbarian (Unchained)", "Bard", "Bloodrager", "Brawler", 
@@ -405,6 +424,51 @@ processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
 
 
 // ----- Start of Spell Section ----- //
+async function determineSpellType(){
+  let type = 'prepared';
+  console.log("this is upper_case_class ", upper_case_class);
+  
+  // Convert upper_case_class to uppercase for a case-insensitive check
+  const prepared_caster_list_upper = prepared_caster_list.map(c => c.toUpperCase());
+  
+  // Check if upper_case_class is in the list (case insensitive)
+  if (prepared_caster_list_upper.includes(upper_case_class.toUpperCase())) {
+    console.log("Prepared Casters");
+    type = "prepared";
+  }
+  // Arcanist
+  else if (["Arcanist".toUpperCase()].includes(upper_case_class.toUpperCase())) {
+    console.log("Arcanist caster");
+    type = "arcanist";
+  } 
+  // Spontaneous casters
+  else {
+    console.log("Spontaneous Casters");
+    type = "spontaneous";
+  }
+  
+  return type;
+}
+
+
+async function assignSpellTypes(type) {
+  if (exportTemplate.system && exportTemplate.system.attributes && exportTemplate.system.attributes.spells) {
+    const primarySpellbook = exportTemplate.system.attributes.spells.spellbooks.primary;
+    
+    if (primarySpellbook) {
+      console.log('Before change:', primarySpellbook.spellPreparationMode);  // Log current value
+      primarySpellbook.spellPreparationMode = type;
+      console.log('After change:', primarySpellbook.spellPreparationMode);  // Log updated value
+    } else {
+      console.error('Primary spellbook not found in the exportTemplate.');
+    }
+  } else {
+    console.error('Spell section structure missing in exportTemplate.');
+  }
+}
+
+
+
 
 async function processSpell(everySpellPath, spellListChooseFrom) {
   try {
@@ -448,6 +512,10 @@ async function processSpell(everySpellPath, spellListChooseFrom) {
       // Mark the spellbook as in use and specify the caster class
       exportTemplate.system.attributes.spells.spellbooks.primary.inUse = true;
       exportTemplate.system.attributes.spells.spellbooks.primary.class = characterData.c_class;
+
+      // Determine SpellType and Assign spellType
+      const type = await determineSpellType();
+      await assignSpellTypes(type);
 
       // Append matched spells to the exportTemplate
       appendJsonToTemplate(allMatchedSpells, exportTemplate, "Spells");

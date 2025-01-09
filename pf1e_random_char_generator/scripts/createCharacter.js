@@ -47,6 +47,38 @@ async function generateRandomizedCharacterFolder() {
   return folder.id;
 }
 
+async function adjustLevel(actor) {
+  const characterData = await localStorage.getItem("pulledCharacterData");
+  console.log("actor:", actor)
+  if (characterData) {
+    try {
+      const parsedData = JSON.parse(characterData);
+      console.log("this is the adjustLevel function", parsedData);
+
+      // Extract c_class and level
+      const c_class = parsedData.c_class.capitalize();
+      const level = parsedData.level;
+
+      console.log("Extracted c_class and level:", c_class, level);
+
+      // Find the class item in the actor's items
+      const classItem = actor.items.find(item => item.name === c_class);
+      if (classItem) {
+        // Update the class level
+        await classItem.update({ "system.level": level });
+        console.log(`Updated ${c_class} level to ${level}`);
+      } else {
+        console.error(`Class item ${c_class} not found in actor's items.`);
+      }
+    } catch (error) {
+      console.error("Error parsing CharacterData or accessing c_class and level:", error);
+    }
+  } else {
+    console.error("No CharacterData found in localStorage under 'pulledCharacterData'");
+  }
+}
+
+
 // Calls all Actor Creation functions
 async function createAndAssignActor() {
   const folderId = await generateRandomizedCharacterFolder();
@@ -56,6 +88,8 @@ async function createAndAssignActor() {
   await injectJsonDataIntoNewActor(actor);
 
   await actor.update({ folder: folderId });
+
+  await adjustLevel(actor);
 
   console.log("Actor successfully created and added to the 'Random Characters' folder.");
 }
