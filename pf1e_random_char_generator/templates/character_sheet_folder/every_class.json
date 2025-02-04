@@ -71215,6 +71215,1430 @@
       "sort": 58300000,
       "_id": "sF97uBDuqX4hdVZk",
       "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/yellow_21.jpg",
+      "name": "Warpriest",
+      "system": {
+        "description": {
+          "value": "<p>Capable of calling upon the power of the gods in the form of blessings and spells, warpriests blend divine magic with martial skill. They are unflinching bastions of their faith, shouting gospel as they pummel foes into submission, and never shy away from a challenge to their beliefs. While clerics might be subtle and use diplomacy to accomplish their aims, warpriests aren’t above using violence whenever the situation warrants it. In many faiths, warpriests form the core of the church’s martial forces—reclaiming lost relics, rescuing captured clergy, and defending the church’s tenets from all challenges.</p><p><strong>Role</strong>: Warpriests can serve as capable healers or spellcasters, calling upon their divine powers from the center of the fight, where their armor and martial skills are put to the test.</p><p><strong>Alignment</strong>: A warpriest’s alignment must be within one step of his deity’s, along either the law/chaos axis or the good/evil axis.</p><p><strong>Parent Classes</strong>: <em>Cleric</em> and <em>fighter</em>.</p><h2>Class Skills</h2><p>The warpriest’s class skills are Climb (Str), Craft (Int), Diplomacy (Cha), Handle Animal (Cha), Heal (Wis), Intimidate (Cha), Knowledge (engineering) (Int), Knowledge (religion) (Int), Profession (Wis), Ride (Dex), Sense Motive (Wis), Spellcraft (Int), Survival (Wis), and Swim (Str).</p>"
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": [
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.4QeavCZeba7ApFD2"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.bXznpN0piipekXTH"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.YGbFrqaGvnCbAKKV"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.RaFl9SpbAlXqhsDk"
+            },
+            {
+              "level": 2,
+              "uuid": "Compendium.pf1.class-abilities.Rzexvt4z8taA8dCu"
+            },
+            {
+              "level": 3,
+              "uuid": "Compendium.pf1.class-abilities.HL0mn3TDEKQWeF03"
+            },
+            {
+              "level": 4,
+              "uuid": "Compendium.pf1.class-abilities.Ktda1hno3geFi4j8"
+            },
+            {
+              "level": 7,
+              "uuid": "Compendium.pf1.class-abilities.UBv1y1h93jrnhWxO"
+            },
+            {
+              "level": 20,
+              "uuid": "Compendium.pf1.class-abilities.Yjps5mzhrDe2gJMr"
+            }
+          ]
+        },
+        "tag": "warpriest",
+        "armorProf": {
+          "value": [
+            "lgt",
+            "med",
+            "hvy",
+            "shl"
+          ],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [
+            "simple",
+            "martial"
+          ],
+          "custom": [
+            "Favored Weapon"
+          ]
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "base",
+        "level": 20,
+        "hd": 8,
+        "hp": 4,
+        "bab": "med",
+        "skillsPerLevel": 2,
+        "savingThrows": {
+          "fort": {
+            "value": "high"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "5d6 * 10",
+        "alignment": "",
+        "classSkills": {
+          "art": true,
+          "clm": true,
+          "crf": true,
+          "dip": true,
+          "han": true,
+          "hea": true,
+          "int": true,
+          "ken": true,
+          "kre": true,
+          "lor": true,
+          "pro": true,
+          "rid": true,
+          "sen": true,
+          "spl": true,
+          "sur": true,
+          "swm": true,
+          "acr": false,
+          "apr": false,
+          "blf": false,
+          "dev": false,
+          "dis": false,
+          "esc": false,
+          "fly": false,
+          "kar": false,
+          "kdu": false,
+          "kge": false,
+          "khi": false,
+          "klo": false,
+          "kna": false,
+          "kno": false,
+          "kpl": false,
+          "lin": false,
+          "per": false,
+          "prf": false,
+          "slt": false,
+          "ste": false,
+          "umd": false
+        },
+        "casting": {
+          "ability": "wis",
+          "cantrips": true,
+          "domain": 0,
+          "progression": "med",
+          "spells": "divine",
+          "type": "prepared",
+          "offset": null
+        },
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "60-68"
+          }
+        ],
+        "customHD": ""
+      },
+      "type": "class",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.classes.Item.KgxFsHNv0g1GbvmS"
+        },
+        "pf1": {
+          "links": {
+            "classAssociations": {
+              "yfDRyZ6PkEZQ8JdH": 1,
+              "vha8Aadm4tSligjr": 1,
+              "HUYvvDD9a9AZZpur": 1,
+              "fpdqptqmwOixw7eZ": 1,
+              "404HUaLQKozihB0n": 1,
+              "u1ONVSDt6ci6h8Gl": 2,
+              "HmwoaPB7sRs7yhdF": 3,
+              "cDsBKrsAtHNjjHig": 4,
+              "7ccbmuX4ZzM1ge08": 7,
+              "S00LooeI9SZ5Nt2b": 20
+            }
+          }
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653805277,
+        "modifiedTime": 1738653812906,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "_id": "kxa4mhnbUVmUZPg3",
+      "folder": null,
+      "sort": 4200000
+    },
+    {
+      "img": "systems/pf1/icons/spells/enchant-magenta-3.jpg",
+      "name": "Blessings",
+      "system": {
+        "description": {
+          "value": "<p>A warpriest’s deity influences his alignment, what magic he can perform, his values, and how others see him. Each warpriest can select two blessings from among those granted by his deity (each deity grants the blessings tied to its domains). A warpriest can select an alignment blessing (Chaos, Evil, Good, or Law) only if his alignment matches that domain. If a warpriest isn’t devoted to a particular deity, he still selects two blessings to represent his spiritual inclinations and abilities, subject to GM approval. The restriction on alignment domains still applies.</p><p>Each blessing grants a minor power at 1st level and a major power at 10th level. A warpriest can call upon the power of his blessings a number of times per day (in any combination) equal to 3 + 1/2 his warpriest level (to a maximum of 13 times per day at 20th level). Each time he calls upon any one of his blessings, it counts against his daily limit. The save DC for these blessings is equal to 10 + 1/2 the warpriest’s level + the warpriest’s Wisdom modifier.</p><p>If a warpriest also has levels in a class that grants cleric domains, the blessings chosen must match the domains selected by that class. Subject to GM discretion, the warpriest can change his former blessings or domains to make them conform.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "du3q8wcreeplt353",
+            "activation": {
+              "type": "special",
+              "unchained": {
+                "type": "special"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "3 + floor(@class.level / 2)",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_blessings",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.4QeavCZeba7ApFD2"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653805813,
+        "modifiedTime": 1738653805813,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 58400000,
+      "_id": "yfDRyZ6PkEZQ8JdH",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/light_09.jpg",
+      "name": "Focus Weapon",
+      "system": {
+        "description": {
+          "value": "<p>At 1st level, a warpriest receives @Compendium[pf1.feats.n250dFlbykAIAg5Z]{Weapon Focus} as a bonus feat (he can choose any weapon, not just his deity’s favored weapon).</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [
+          {
+            "_id": "C0b7XKmq",
+            "formula": "1",
+            "target": "bonusFeats",
+            "type": "untyped"
+          }
+        ],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [
+            {
+              "uuid": ".Item.404HUaLQKozihB0n"
+            }
+          ],
+          "charges": [],
+          "supplements": [
+            {
+              "uuid": "Compendium.pf1.feats.Item.n250dFlbykAIAg5Z"
+            }
+          ]
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.bXznpN0piipekXTH"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653805813,
+        "modifiedTime": 1738653806254,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 58500000,
+      "_id": "vha8Aadm4tSligjr",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/spells/enchant-royal-3.jpg",
+      "name": "Sacred Weapon",
+      "system": {
+        "description": {
+          "value": "<p>At 1st level, weapons wielded by a warpriest are charged with the power of his faith. In addition to the favored weapon of his deity, the warpriest can designate a weapon as a sacred weapon by selecting that weapon with the Weapon Focus feat; if he has multiple Weapon Focus feats, this ability applies to all of them. Whenever the warpriest hits with his sacred weapon, the weapon damage is based on his level and not the weapon type. The damage for Medium warpriests is listed on Table 1–14; see the table below for Small and Large warpriests. The warpriest can decide to use the weapon’s base damage instead of the sacred weapon damage—this must be declared before the attack roll is made. (If the weapon’s base damage exceeds the sacred weapon damage, its damage is unchanged.) This increase in damage does not affect any other aspect of the weapon, and doesn’t apply to alchemical items, bombs, or other weapons that only deal energy damage.</p>\n<hr />\n<table>\n<tbody>\n<tr>\n<td><b>Level</b></td>\n<td><b>Damage (Small)</b></td>\n<td><b>Damage (Large)</b></td>\n</tr>\n<tr>\n<td>1st-4th</td>\n<td>1d4</td>\n<td>1d8</td>\n</tr>\n<tr>\n<td>5th-9th</td>\n<td>1d6</td>\n<td>2d6</td>\n</tr>\n<tr>\n<td>10th-14th</td>\n<td>1d8</td>\n<td>2d8</td>\n</tr>\n<tr>\n<td>15th-19th</td>\n<td>1d10</td>\n<td>3d6</td>\n</tr>\n<tr>\n<td>20th</td>\n<td>2d6</td>\n<td>3d8</td>\n</tr>\n</tbody>\n</table>\n<hr />\n<p><br />At 4th level, the warpriest gains the ability to enhance one of his sacred weapons with divine power as a swift action. This power grants the weapon a +1 enhancement bonus. For every 4 levels beyond 4th, this bonus increases by 1 (to a maximum of +5 at 20th level). If the warpriest has more than one sacred weapon, he can enhance another on the following round by using another swift action. The warpriest can use this ability a number of rounds per day equal to his warpriest level, but these rounds need not be consecutive.</p><p>These bonuses stack with any existing bonuses the weapon might have, to a maximum of +5. The warpriest can enhance a weapon with any of the following weapon special abilities: brilliant energy, defending, disruption, flaming, frost, keen, and shock. In addition, if the warpriest is chaotic, he can add anarchic and vicious. If he is evil, he can add mighty cleaving and unholy. If he is good, he can add ghost touch and holy. If he is lawful, he can add axiomatic and merciful. If he is neutral (with no other alignment components), he can add spell storing and thundering. Adding any of these special abilities replaces an amount of bonus equal to the special ability’s base cost (see Table 15–9 on page 469 of the Core Rulebook). Duplicate abilities do not stack. The weapon must have at least a +1 enhancement bonus before any other special abilities can be added.</p><p>If multiple weapons are enhanced, each one consumes rounds of use individually. The enhancement bonus and special abilities are determined the first time the ability is used each day, and cannot be changed until the next day. These bonuses do not apply if another creature is wielding the weapon, but they continue to be in effect if the weapon otherwise leaves the warpriest’s possession (such as if the weapon is thrown). This ability can be ended as a free action at the start of the warpriest’s turn (that round does not count against the total duration, unless the ability is resumed during the same round). If the warpriest uses this ability on a double weapon, the effects apply to only one end of the weapon.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "lwyjn9g18hsmrqlq",
+            "activation": {
+              "type": "swift",
+              "unchained": {
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "round",
+              "value": "1"
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "@class.level >= 4 ? @class.level : 0",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_sacredWeapon",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.YGbFrqaGvnCbAKKV"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653805813,
+        "modifiedTime": 1738653805813,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 58600000,
+      "_id": "HUYvvDD9a9AZZpur",
+      "folder": null
+    },
+    {
+      "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
+      "name": "Orisons",
+      "system": {
+        "description": {
+          "value": "<p>The character can prepare a number of orisons, or 0-level spells, each day. These spells are cast like any other spell, but they are not expended when cast and may be used again.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Cleric",
+            "Druid",
+            "Inquisitor",
+            "Oracle",
+            "Shaman",
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "38, 48"
+          },
+          {
+            "id": "PZO1115",
+            "pages": "38, 42"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "35, 60"
+          }
+        ],
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.RaFl9SpbAlXqhsDk"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653805813,
+        "modifiedTime": 1738653805813,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 58700000,
+      "_id": "fpdqptqmwOixw7eZ",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/feats/weapon-focus.jpg",
+      "name": "Weapon Focus",
+      "system": {
+        "description": {
+          "value": "<i>Choose one type of weapon. You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat.</i><p><strong>Prerequisites</strong>: Proficiency with selected weapon, base attack bonus +1.</p><p><strong>Benefits</strong>: You gain a +1 bonus on all attack rolls you make using the selected weapon.</p><p><strong>Special</strong>: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.</p>"
+        },
+        "tags": [
+          "Combat",
+          "Weapon",
+          "Offensive"
+        ],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "feat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": []
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "117, 136"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.feats.Item.n250dFlbykAIAg5Z"
+        },
+        "pf1": {
+          "source": "Compendium.pf1.class-abilities.Item.bXznpN0piipekXTH"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653805813,
+        "modifiedTime": 1738653805813,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "_id": "404HUaLQKozihB0n",
+      "folder": null,
+      "sort": 0
+    },
+    {
+      "img": "systems/pf1/icons/spells/heal-jade-2.jpg",
+      "name": "Fervor",
+      "system": {
+        "description": {
+          "value": "<p>At 2nd level, a warpriest can draw upon the power of his faith to heal wounds or harm foes. He can also use this ability to quickly cast spells that aid in his struggles. This ability can be used a number of times per day equal to 1/2 his warpriest level + his Wisdom modifier.</p><p>By expending one use of this ability, a good warpriest (or one who worships a good deity) can touch a creature to heal it of 1d6 points of damage, plus an additional 1d6 points of damage for every 3 warpriest levels he possesses above 2nd (to a maximum of 7d6 at 20th level). Using this ability is a standard action (unless the warpriest targets himself, in which case it’s a swift action). Alternatively, the warpriest can use this ability to harm an undead creature, dealing the same amount of damage he would otherwise heal with a melee touch attack. Using fervor in this way is a standard action that provokes an attack of opportunity. Undead do not receive a saving throw against this damage. This counts as positive energy.</p><p>An evil warpriest (or one who worships an evil deity) can use this ability to instead deal damage to living creatures with a melee touch attack and heal undead creatures with a touch. This counts as negative energy.</p><p>A neutral warpriest who worships a neutral deity (or one who is not devoted to a particular deity) uses this ability as a good warpriest if he chose to spontaneously cast cure spells or as an evil warpriest if he chose to spontaneously cast inflict spells.</p><p>As a swift action, a warpriest can expend one use of this ability to cast any one warpriest spell he has prepared with a casting time of 1 round or shorter. When cast in this way, the spell can target only the warpriest, even if it could normally affect other or multiple targets. Spells cast in this way ignore somatic components and do not provoke attacks of opportunity. The warpriest does not need to have a free hand to cast a spell in this way.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "fh9ra7x0xkoauc1m",
+            "actionType": "heal",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "(floor((@class.level + 1) / 3))d6",
+                  "type": {
+                    "custom": "",
+                    "values": [
+                      "positive"
+                    ]
+                  }
+                }
+              ]
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use",
+            "range": {
+              "units": "touch"
+            },
+            "target": {
+              "value": "creature touched"
+            },
+            "touch": true
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "floor(@class.level / 2) + @abilities.wis.mod",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_fervor",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.Rzexvt4z8taA8dCu"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653812470,
+        "modifiedTime": 1738653812470,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 58800000,
+      "_id": "u1ONVSDt6ci6h8Gl",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/feats/defensive-combat-training.jpg",
+      "name": "Bonus Feats (WAR)",
+      "system": {
+        "description": {
+          "value": "<p>At 3rd level and every 3 levels thereafter, a warpriest gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as combat feats. The warpriest must meet the prerequisites for these feats, but he treats his warpriest level as his base attack bonus (in addition to base attack bonuses gained from other classes and Hit Dice) for the purpose of qualifying for these feats. Finally, for the purposes of these feats, the warpriest can select feats that have a minimum number of fighter levels as a prerequisite, treating his warpriest level as his fighter level.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [
+          {
+            "_id": "BDCbbXXW",
+            "formula": "floor(@class.level / 3)",
+            "target": "bonusFeats",
+            "type": "untyped"
+          }
+        ],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.HL0mn3TDEKQWeF03"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653812470,
+        "modifiedTime": 1738653812470,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 58900000,
+      "_id": "HmwoaPB7sRs7yhdF",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/feats/alignment-channel.jpg",
+      "name": "Channel Energy (WAR)",
+      "system": {
+        "description": {
+          "value": "<p>Starting at 4th level, a warpriest can release a wave of energy by channeling the power of his faith through his holy (or unholy) symbol. This energy can be used to deal or heal damage, depending on the type of energy channeled and the creatures targeted. Using this ability is a standard action that expends two uses of his fervor ability and doesn’t provoke an attack of opportunity. The warpriest must present a holy (or unholy) symbol to use this ability.</p><p>A good warpriest (or one who worships a good deity) channels positive energy and can choose to heal living creatures or to deal damage to undead creatures. An evil cleric (or one who worships an evil deity) channels negative energy and can choose to deal damage to living creatures or heal undead creatures. A neutral cleric who worships a neutral deity (or one who is not devoted to a particular deity) channels positive energy if he chose to spontaneously cast cure spells or negative energy if he chose to spontaneously cast inflict spells.</p><p>Channeling energy causes a burst that affects all creatures of one type (either undead or living) in a 30-foot radius centered on the warpriest. The amount of damage dealt or healed is equal to the amount listed in the fervor ability. Creatures that take damage from channeled energy must succeed at a Will saving throw to halve the damage. The save DC is 10 + 1/2 the warpriest’s level + the warpriest’s Wisdom modifier. Creatures healed by channeled energy cannot exceed their maximum hit point total—all excess healing is lost. A warpriest can choose whether or not to include himself in this effect.</p><hr /><p><strong>Usage</strong>: link this class feat to @UUID[Compendium.pf1.class-abilities.Item.Rzexvt4z8taA8dCu]{fervor} charges.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "3of44xvqzv5wycg8",
+            "actionType": "heal",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "(floor((@class.level + 1) / 3))d6",
+                  "type": {
+                    "custom": "",
+                    "values": [
+                      "positive"
+                    ]
+                  }
+                }
+              ]
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "measureTemplate": {
+              "size": "30",
+              "type": "circle"
+            },
+            "name": "Positive - Heal living",
+            "range": {
+              "units": "ft",
+              "value": "30"
+            },
+            "target": {
+              "value": "self; affects living"
+            },
+            "uses": {
+              "autoDeductChargesCost": "2"
+            }
+          },
+          {
+            "_id": "nH9Ayb4TpXhHbTbX",
+            "actionType": "save",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "(floor((@class.level + 1) / 3))d6",
+                  "type": {
+                    "custom": "",
+                    "values": [
+                      "positive"
+                    ]
+                  }
+                }
+              ]
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+            "measureTemplate": {
+              "size": "30",
+              "type": "circle"
+            },
+            "name": "Positive - Harm undead",
+            "range": {
+              "units": "ft",
+              "value": "30"
+            },
+            "save": {
+              "dc": "10 + floor(@class.level / 2) + @abilities.wis.mod",
+              "description": "Will halves damage",
+              "type": "will"
+            },
+            "target": {
+              "value": "Undead"
+            },
+            "uses": {
+              "autoDeductChargesCost": "2"
+            }
+          },
+          {
+            "_id": "TYB35i85zyq8Jpdz",
+            "actionType": "heal",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "(floor((@class.level + 1) / 3))d6",
+                  "type": {
+                    "custom": "",
+                    "values": [
+                      "positive"
+                    ]
+                  }
+                }
+              ]
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "img": "icons/magic/death/undead-skeleton-fire-green.webp",
+            "measureTemplate": {
+              "size": "30",
+              "type": "circle"
+            },
+            "name": "Negative - Heal undead",
+            "range": {
+              "units": "ft",
+              "value": "30"
+            },
+            "target": {
+              "value": "self; affects living"
+            },
+            "uses": {
+              "autoDeductChargesCost": "2"
+            }
+          },
+          {
+            "_id": "Bf0ru9RH4a5EVnqU",
+            "actionType": "save",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "(floor((@class.level + 1) / 3))d6",
+                  "type": {
+                    "custom": "",
+                    "values": [
+                      "negative"
+                    ]
+                  }
+                }
+              ]
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
+            "measureTemplate": {
+              "size": "30",
+              "type": "circle"
+            },
+            "name": "Negative - Harm living",
+            "range": {
+              "units": "ft",
+              "value": "30"
+            },
+            "save": {
+              "dc": "10 + floor(@class.level / 2) + @abilities.wis.mod",
+              "description": "Will halves damage",
+              "type": "will"
+            },
+            "target": {
+              "value": "Living Creatures"
+            },
+            "uses": {
+              "autoDeductChargesCost": "2"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_channelEnergyWar",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.Ktda1hno3geFi4j8"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653812470,
+        "modifiedTime": 1738653812470,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59000000,
+      "_id": "cDsBKrsAtHNjjHig",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/feats/arcane-armor-mastery.jpg",
+      "name": "Sacred Armor",
+      "system": {
+        "description": {
+          "value": "<p>At 7th level, the warpriest gains the ability to enhance his armor with divine power as a swift action. This power grants the armor a +1 enhancement bonus. For every 3 levels beyond 7th, this bonus increases by 1 (to a maximum of +5 at 19th level). The warpriest can use this ability a number of minutes per day equal to his warpriest level. This duration must be used in 1-minute increments, but they don’t need to be consecutive.</p><p>These bonuses stack with any existing bonuses the armor might have, to a maximum of +5. The warpriest can enhance armor any of the following armor special abilities: energy resistance (normal, improved, and greater), fortification (heavy, light, or moderate), glamered, and spell resistance (13, 15, 17, and 19). Adding any of these special abilities replaces an amount of bonus equal to the special ability’s base cost (see Table 15–4 on page 463 of the Core Rulebook). For this purpose, glamered counts as a +1 bonus, energy resistance counts as +2, improved energy resistance counts as +4, and greater energy resistance counts as +5. Duplicate abilities do not stack. The armor must have at least a +1 enhancement bonus before any other special abilities can be added.</p><p>The enhancement bonus and armor special abilities are determined the first time the ability is used each day and cannot be changed until the next day. These bonuses apply only while the warpriest is wearing the armor, and end immediately if the armor is removed or leaves the warpriest’s possession. This ability can be ended as a free action at the start of the warpriest’s turn. This ability cannot be applied to a shield.</p><p>When the warpriest uses this ability, he can also use his sacred weapon ability as a free action by expending one use of his fervor.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "gf55dpo3p6h3sj6e",
+            "activation": {
+              "type": "swift",
+              "unchained": {
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "minute",
+              "value": "1"
+            },
+            "name": "Use",
+            "range": {
+              "units": "personal"
+            },
+            "target": {
+              "value": "self"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "@class.level",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_sacredArmor",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.UBv1y1h93jrnhWxO"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653812470,
+        "modifiedTime": 1738653812470,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59100000,
+      "_id": "7ccbmuX4ZzM1ge08",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/feats/double-slice.jpg",
+      "name": "Aspect of War",
+      "system": {
+        "description": {
+          "value": "<p>At 20th level, the warpriest can channel an aspect of war, growing in power and martial ability. Once per day as a swift action, a warpriest can treat his level as his base attack bonus, gains DR 10/-, and can move at his full speed regardless of the armor he is wearing or his encumbrance. In addition, the blessings he calls upon don’t count against his daily limit during this time. This ability lasts for 1 minute.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "jvtlyywkrcnp1ycp",
+            "activation": {
+              "type": "swift",
+              "unchained": {
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "minute",
+              "value": "1"
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "1",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_aspectOfWar",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "class": "warpriest"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.Yjps5mzhrDe2gJMr"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1738653812470,
+        "modifiedTime": 1738653812470,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59200000,
+      "_id": "S00LooeI9SZ5Nt2b",
+      "folder": null
     }
   ],
   "effects": [],
@@ -71231,7 +72655,7 @@
     "systemVersion": "10.8",
     "coreVersion": "11.315",
     "createdTime": 1736401703423,
-    "modifiedTime": 1736403597523,
+    "modifiedTime": 1738653819299,
     "lastModifiedBy": "mDeCKAjdWUVLYJir"
   }
 }
