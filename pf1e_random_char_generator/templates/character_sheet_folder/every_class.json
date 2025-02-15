@@ -72639,6 +72639,1787 @@
       "sort": 59200000,
       "_id": "S00LooeI9SZ5Nt2b",
       "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/pipe.jpg",
+      "name": "Investigator",
+      "system": {
+        "description": {
+          "value": "<p>Whether on the trail of a fugitive, a long-lost treasure trove, or a criminal mastermind, investigators are motivated by an intense curiosity about the world and use knowledge of it as a weapon. Mixing gumption and learnedness into a personal alchemy of daring, investigators are full of surprises. Observing the world around them, they gain valuable knowledge about the situation they’re in, process that information using inspiration and deduction, and cut to the quick of the matter in unexpected ways. Investigators are always evaluating situations they encounter, sizing up potential foes, and looking out for secret dangers, all while using their vast knowledge and powers of perception to find solutions to the most perplexing problems.</p><p><strong>Role</strong>: Investigators live to solve mysteries and find inventive ways to get out of jams. They serve as advisors and support for their adventuring parties, but can take center stage when knowledge and cunning are needed. No slouches in battle, they know how to make surprise attacks and use inspiration to bring those attacks home.</p><p><strong>Parent Classes</strong>: <em>Alchemist</em> and <em>rogue</em>.</p><h2>Class Skills</h2><p>The investigator’s class skills are Acrobatics (Dex), Appraise (Int), Bluff (Cha), Climb (Str), Craft (Int), Diplomacy (Cha), Disable Device (Dex), Disguise (Cha), Escape Artist (Dex), Heal (Wis), Intimidate (Cha), Knowledge (all) (Int), Linguistics (Int), Perception (Wis), Perform (Cha), Profession (Wis), Sense Motive (Wis), Sleight of Hand (Dex), Spellcraft (Int), Stealth (Dex), and Use Magic Device (Cha).</p>"
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": [
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.nKbyztRQCU5XMbbs"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.gotW1ETzGrrwVtk2"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.pEODJDoTk7uhCZY7"
+            },
+            {
+              "level": 2,
+              "uuid": "Compendium.pf1.class-abilities.C7UgLJt7yRHnAqyG"
+            },
+            {
+              "level": 2,
+              "uuid": "Compendium.pf1.class-abilities.2qcz39w9O2Qlms0Q"
+            },
+            {
+              "level": 3,
+              "uuid": "Compendium.pf1.class-abilities.AOnFqb1h3gXbFUup"
+            },
+            {
+              "level": 3,
+              "uuid": "Compendium.pf1.class-abilities.rJBdkI8mlJBNWcU2"
+            },
+            {
+              "level": 3,
+              "uuid": "Compendium.pf1.class-abilities.KbhRBQE5ZyYedJo6"
+            },
+            {
+              "level": 4,
+              "uuid": "Compendium.pf1.class-abilities.nVwveeNV71Bg7YnY"
+            },
+            {
+              "level": 4,
+              "uuid": "Compendium.pf1.class-abilities.3WsfpUeW7oe4GOuh"
+            },
+            {
+              "level": 4,
+              "uuid": "Compendium.pf1.class-abilities.kEVqxs23oyNDxbc1"
+            },
+            {
+              "level": 11,
+              "uuid": "Compendium.pf1.class-abilities.tflIOhX6ukxtwXLx"
+            },
+            {
+              "level": 20,
+              "uuid": "Compendium.pf1.class-abilities.H2Iac6ELVKBU6Ayu"
+            }
+          ],
+          "supplements": []
+        },
+        "tag": "investigator",
+        "armorProf": {
+          "value": [
+            "lgt"
+          ],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [
+            "simple"
+          ],
+          "custom": [
+            "Hand Crossbow",
+            "Rapier",
+            "Sap",
+            "Shortbow",
+            "Shortsword",
+            "Sword Cane"
+          ]
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "base",
+        "level": 20,
+        "hd": 8,
+        "hp": 4,
+        "bab": "med",
+        "skillsPerLevel": 6,
+        "savingThrows": {
+          "fort": {
+            "value": "low"
+          },
+          "ref": {
+            "value": "high"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "3d6 * 10",
+        "alignment": "",
+        "classSkills": {
+          "acr": true,
+          "apr": true,
+          "art": true,
+          "blf": true,
+          "clm": true,
+          "crf": true,
+          "dev": true,
+          "dip": true,
+          "dis": true,
+          "esc": true,
+          "hea": true,
+          "int": true,
+          "kar": true,
+          "kdu": true,
+          "ken": true,
+          "kge": true,
+          "khi": true,
+          "klo": true,
+          "kna": true,
+          "kno": true,
+          "kpl": true,
+          "kre": true,
+          "lin": true,
+          "lor": true,
+          "per": true,
+          "prf": true,
+          "pro": true,
+          "sen": true,
+          "slt": true,
+          "spl": true,
+          "ste": true,
+          "umd": true,
+          "fly": false,
+          "han": false,
+          "rid": false,
+          "sur": false,
+          "swm": false
+        },
+        "casting": {
+          "ability": "int",
+          "cantrips": false,
+          "domain": 0,
+          "progression": "med",
+          "spells": "alchemy",
+          "type": "prepared",
+          "offset": null
+        },
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "30-34"
+          }
+        ],
+        "customHD": ""
+      },
+      "type": "class",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.classes.Item.s27zdYVFenYBVtfu"
+        },
+        "pf1": {
+          "links": {
+            "classAssociations": {
+              "WtzlPpl2yUYUDJfW": 1,
+              "Zg1kFiPf4qOgBLfM": 1,
+              "ykzlKo4MSb2okLsU": 1,
+              "aMX3nY02P0Huloek": 1,
+              "c2VxRjyDLrLgzQdz": 2,
+              "cu2KK2Pd6h5V5zBo": 2,
+              "INOfZqJXKYyGvrVH": 3,
+              "Rf6LVm5bfj1d2Ghb": 3,
+              "HbOCY1ZBkn1Yyjwc": 3,
+              "kVccjBzgYwxotlLc": 4,
+              "YfTkIe6PofyW6Esn": 4,
+              "acwxN2oGa52MuAGF": 4,
+              "oIp5cBsikJc8LAMT": 11,
+              "zTHEzy57qINnbhHy": 20
+            }
+          }
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082890768,
+        "modifiedTime": 1739082898617,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "_id": "N9hq5lS16aZSYwaZ",
+      "folder": null,
+      "sort": 4300000
+    },
+    {
+      "img": "systems/pf1/icons/skills/emerald_11.jpg",
+      "name": "Inspiration",
+      "system": {
+        "description": {
+          "value": "<p><em>An investigator is beyond knowledgeable and skilled—he also possesses keen powers of observation and deduction that far surpass the abilities of others. An investigator typically uses these powers to aid in their investigations, but can also use these flashes of inspiration in other situations.</em></p><p>An investigator has the ability to augment skill checks and ability checks through his brilliant inspiration. The investigator has an inspiration pool equal to 1/2 his investigator level + his Intelligence modifier (minimum 1). An investigator’s inspiration pool refreshes each day, typically after he gets a restful night’s sleep. As a free action, he can expend one use of inspiration from his pool to add 1d6 to the result of that check, including any on which he takes 10 or 20. This choice is made after the check is rolled and before the results are revealed. An investigator can only use inspiration once per check or roll. The investigator can use inspiration on any Knowledge, Linguistics, or Spellcraft skill checks without expending a use of inspiration, provided he’s trained in the skill.</p><p>Inspiration can also be used on attack rolls and saving throws, at the cost of expending two uses of inspiration each time from the investigator’s pool. In the case of saving throws, using inspiration is an immediate action rather than a free action.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "didgk77lyb52bgl9",
+            "activation": {
+              "type": "free",
+              "unchained": {
+                "type": "free"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use on skill"
+          },
+          {
+            "_id": "ceDWnadSRCZzG4Qi",
+            "activation": {
+              "type": "free",
+              "unchained": {
+                "type": "free"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use on attack",
+            "uses": {
+              "autoDeductChargesCost": "2"
+            }
+          },
+          {
+            "_id": "22JN9wo6JryqvLX2",
+            "activation": {
+              "type": "immediate",
+              "unchained": {
+                "type": "reaction"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use on saving throw",
+            "uses": {
+              "autoDeductChargesCost": "2"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "@abilities.int.mod + floor(@class.level / 2)",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_inspiration",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "31"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.nKbyztRQCU5XMbbs"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082891296,
+        "modifiedTime": 1739082891296,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59300000,
+      "_id": "WtzlPpl2yUYUDJfW",
+      "folder": null
+    },
+    {
+      "img": "icons/tools/laboratory/vials-blue-pink.webp",
+      "name": "Alchemy (INV)",
+      "system": {
+        "description": {
+          "value": "<p>Investigators are highly trained in the creation of mundane alchemical substances and magical potionlike extracts.</p><p>When using Craft (alchemy) to create an alchemical item, an investigator gains a competence bonus equal to his class level on the skill check. In addition, an investigator can use Craft (alchemy) to identify potions as if using @UUID[Compendium.pf1.spells.Item.uqh87jz757r2cb7r]{detect magic}. He must hold the potion for 1 round to attempt such a check.</p><p>Like an alchemist, an investigator prepares his spells by mixing ingredients and a tiny fraction of his own magical power into a number of extracts, and then effectively casts the spell by drinking the extract. These extracts have powerful effects, but they are also bound to their creator. Extracts behave like spells in potion form, and as such their effects can be dispelled by dispel magic and similar effects, using the investigator’s level as the caster level.</p><p>An investigator can create only a certain number of extracts of each level per day (see Spells tab). In addition, he receives bonus extracts per day if he has a high Intelligence score, in the same way a wizard receives bonus spells per day.</p><p>When an investigator mixes an extract, he infuses the chemicals and reagents in the extract with magic siphoned from his own magical aura. An extract immediately become inert if it leaves the investigator’s possession, reactivating as soon as it returns to his keeping—an investigator cannot normally pass out his extracts for allies to use. An extract, once created, remains potent for 1 day before losing its magic, so an investigator must reprepare his extracts every day. Mixing an extract takes 1 minute of work.</p><p>Creating extracts consumes raw material, but the cost of those materials is insignificant—comparable to the valueless material components of most spells. If a spell normally has a costly material component, that component is expended during the consumption of that particular extract. Extracts cannot be made from spells that have focus requirements; extracts that duplicate divine spells never have a divine focus requirement.</p><p>An investigator uses the alchemist formula list to determine the extracts he can know. An investigator can prepare an extract of any formula he knows. To learn or use an extract, an investigator must have at least an Intelligence score equal to 10 + the extract’s level. The saving throw DC for an investigator’s extract is equal to 10 + the extract’s level + the investigator’s Intelligence modifier.</p><p>An investigator may know any number of formulae. He stores his formulae in a special tome called a @UUID[Compendium.pf1.items.Item.3cF2AyPBjbB8ckon]{formula book}. He must refer to this book whenever he prepares an extract. At 1st level, an investigator starts with two 1st level formulae of his choice, plus a number of additional formulae equal to his Intelligence modifier. At each new investigator level, he gains one new formula for any level that he can create. An investigator can also add formulae to his book just like a wizard adds spells to his spellbook, using the same costs, pages, and time requirements. A formula book costs as much as a spellbook. An investigator can study a wizard’s spellbook to learn any formula that is equivalent to a spell the spellbook contains. A wizard, however, cannot learn spells from a formula book. An investigator can also learn formulae from another investigator’s or an alchemist’s formula book (and vice versa). An investigator does not need to decipher arcane writing before copying that formulae.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [
+          {
+            "target": "skill.crf",
+            "text": "+[[@class.level]] Competence bonus, when using Craft (alchemy) to create an alchemical item."
+          },
+          {
+            "target": "skill.crf",
+            "text": "The investigator can use Craft (alchemy) to identify potions as if using @UUID[Compendium.pf1.spells.Item.uqh87jz757r2cb7r]{detect magic}"
+          }
+        ],
+        "links": {
+          "children": [
+            {
+              "uuid": ".Item.aMX3nY02P0Huloek"
+            }
+          ],
+          "charges": [],
+          "supplements": [
+            {
+              "uuid": "Compendium.pf1.items.Item.3cF2AyPBjbB8ckon"
+            }
+          ]
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "30"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.gotW1ETzGrrwVtk2"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082891296,
+        "modifiedTime": 1739082891726,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59400000,
+      "_id": "Zg1kFiPf4qOgBLfM",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/lockpick.jpg",
+      "name": "Trapfinding",
+      "system": {
+        "description": {
+          "value": "<p>The character adds 1/2 her class level to @UUID[Compendium.pf1.pf1e-rules.x175kVqUfLGPt8tC.JournalEntryPage.2h6hz5AkTDxKPFxr]{Perception} skill checks made to locate traps and to @UUID[Compendium.pf1.pf1e-rules.x175kVqUfLGPt8tC.JournalEntryPage.cSdUATLHBFfw3v4s]{Disable Device} checks (minimum 1). The character can use Disable Device to disarm magical traps.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [
+          {
+            "_id": "go6ahzmr",
+            "formula": "max(1, floor(@class.level / 2))",
+            "target": "skill.dev",
+            "type": "untyped"
+          }
+        ],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [
+          {
+            "target": "skill.per",
+            "text": "+[[max(1, floor(@class.level / 2))]] vs Traps"
+          }
+        ],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Rogue",
+            "Rogue (Unchained)",
+            "Investigator",
+            "Slayer"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "63"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "31"
+          },
+          {
+            "id": "PZO1131",
+            "pages": "20"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.pEODJDoTk7uhCZY7"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082891296,
+        "modifiedTime": 1739082891296,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59500000,
+      "_id": "ykzlKo4MSb2okLsU",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/book-folder.jpg",
+      "name": "Formula Book",
+      "system": {
+        "description": {
+          "value": "<p>A formula book has 100 pages of parchment, and each alchemical extract formula takes up one page per extract level. A newly purchased formula book contains no extract formulas. An alchemist character begins play with a formula book containing the extract formulae he knows (Advanced Player's Guide 32). This is the alchemist equivalent of a spellbook for wizards (a spellbook and a formula book are essentially the same item).</p>",
+          "unidentified": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "quantity": 1,
+        "weight": {
+          "value": 3
+        },
+        "equipped": false,
+        "carried": true,
+        "price": 15,
+        "size": "med",
+        "resizing": false,
+        "timeworn": false,
+        "artifact": false,
+        "identified": true,
+        "unidentified": {
+          "price": 0,
+          "name": ""
+        },
+        "cursed": false,
+        "cl": 0,
+        "aura": {
+          "custom": false,
+          "school": ""
+        },
+        "hp": {
+          "max": 10,
+          "value": 10
+        },
+        "broken": false,
+        "hardness": 0,
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": []
+        },
+        "tag": "",
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "tool",
+        "extraType": "",
+        "abundant": false,
+        "sources": [
+          {
+            "id": "PZO1123",
+            "pages": "77"
+          }
+        ]
+      },
+      "type": "loot",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.items.Item.3cF2AyPBjbB8ckon"
+        },
+        "pf1": {
+          "source": "Compendium.pf1.class-abilities.Item.gotW1ETzGrrwVtk2"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082891296,
+        "modifiedTime": 1739082891296,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "_id": "aMX3nY02P0Huloek",
+      "folder": null,
+      "sort": 0
+    },
+    {
+      "img": "systems/pf1/icons/items/potions/minor-green.jpg",
+      "name": "Poison Lore",
+      "system": {
+        "description": {
+          "value": "<p>An investigator has a deep understanding and appreciation for poisons. At 2nd level, he cannot accidentally <em>poison</em> himself when applying <em>poison</em> to a weapon. If the investigator spends 1 minute physically examining the <em>poison</em>, he can attempt a <em>Knowledge</em> (nature) check to identify any natural <em>poison</em> or <em>Knowledge</em> (arcana) check to identify any magical <em>poison</em> (DC = the <em>poison’s</em> saving throw DC). Lastly, once a <em>poison</em> is identified, he can spend 1 minute and attempt a <em>Craft</em> (alchemy) check (DC = the <em>poison’s</em> saving throw DC) to neutralize 1 dose of the <em>poison</em>. Success renders the dose harmless. The investigator has no chance of accidentally poisoning himself when examining or attempting to neutralize a <em>poison</em>.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "C1h5azMC12yBZJP9",
+            "activation": {
+              "type": "minute",
+              "unchained": {
+                "type": "minute"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Identify poison",
+            "target": {
+              "value": "Any natural or magical poison"
+            }
+          },
+          {
+            "_id": "dJdPwIpn5B5C268n",
+            "activation": {
+              "type": "minute",
+              "unchained": {
+                "type": "minute"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Neutralize poison",
+            "target": {
+              "value": "Any natural or magical poison"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "31"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.C7UgLJt7yRHnAqyG"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59600000,
+      "_id": "c2VxRjyDLrLgzQdz",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/violet_16.jpg",
+      "name": "Poison Resistance",
+      "system": {
+        "description": {
+          "value": "<p>At 2nd level, the character gains a +2 bonus on all saving throws against poison. This bonus increases to +4 at 5th level, and then again to +6 at 8th level.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [
+          {
+            "target": "allSavingThrows",
+            "text": "+[[floor((@class.level + 1) / 3) * 2]] vs poison"
+          }
+        ],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Alchemist",
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1115",
+            "pages": "31"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "31"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.2qcz39w9O2Qlms0Q"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59700000,
+      "_id": "cu2KK2Pd6h5V5zBo",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/gray_04.jpg",
+      "name": "Investigator Talent",
+      "system": {
+        "description": {
+          "value": "<p>At 3rd level and every 2 levels thereafter, an investigator gains an investigator talent. Except where otherwise noted, each investigator talent can only be selected once.</p><p>Investigator talents tagged with <em>Studied Combat/Strike</em> tag add effects to an investigator’s studied combat or studied strike. Only one of these talents can be applied to an individual attack, but the decision can be made when the damage is dealt.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "32"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.AOnFqb1h3gXbFUup"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59800000,
+      "_id": "INOfZqJXKYyGvrVH",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/red_26.jpg",
+      "name": "Keen Recollection",
+      "system": {
+        "description": {
+          "value": "<p>At 3rd level, an investigator can attempt all Knowledge skill checks untrained.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "34"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.rJBdkI8mlJBNWcU2"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 59900000,
+      "_id": "Rf6LVm5bfj1d2Ghb",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/items/inventory/hook-hand.jpg",
+      "name": "Trap Sense (INV)",
+      "system": {
+        "description": {
+          "value": "<p>At 3rd level, an investigator gains an intuitive sense that alerts him to danger from traps, granting him a +1 bonus on <em>Reflex</em> saving throws to avoid traps and a +1 <em>dodge bonus</em> to AC against attacks by traps. At 6th level and every 3 levels thereafter, these bonuses increase by 1 (to a maximum of +6 at 18th level).</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [
+          {
+            "target": "ref",
+            "text": "+[[floor(@class.level / 3)]] vs. traps"
+          },
+          {
+            "target": "ac",
+            "text": "+[[floor(@class.level / 3)]] dodge vs. traps"
+          }
+        ],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "34"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.KbhRBQE5ZyYedJo6"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 60000000,
+      "_id": "HbOCY1ZBkn1Yyjwc",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/weapon_44.jpg",
+      "name": "Studied Combat",
+      "system": {
+        "description": {
+          "value": "<p>With a keen eye and calculating mind, an investigator can assess the mettle of his opponent to take advantage of gaps in talent and training. At 4th level, an investigator can use a move action to study a single enemy that he can see. Upon doing so, he adds 1/2 his investigator level as an insight bonus on melee attack rolls and as a bonus on damage rolls against the creature. This effect lasts for a number of rounds equal to his Intelligence modifier (minimum 1) or until he deals damage with a studied strike, whichever comes first. The bonus on damage rolls is precision damage, and is not multiplied on a critical hit.</p><p>An investigator can only have one target of studied combat at a time, and once a creature has become the target of an investigator’s studied combat, he cannot become the target of the same investigator’s studied combat again for 24 hours unless the investigator expends one use of inspiration when taking the move action to use this ability.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "lb2hotzlp39lt0d3",
+            "activation": {
+              "type": "move",
+              "unchained": {
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "round",
+              "value": "@max(1, @abilities.int.mod)"
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "34"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.nVwveeNV71Bg7YnY"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 60100000,
+      "_id": "kVccjBzgYwxotlLc",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/weapon_29.jpg",
+      "name": "Studied Strike",
+      "system": {
+        "description": {
+          "value": "<p>At 4th level, an investigator can choose to make a studied strike against the target of his studied combat as a free action, upon successfully hitting his studied target with a melee attack, to deal additional damage. The damage is 1d6 at 4th level, and increases by 1d6 for every 2 levels thereafter (to a maximum of 9d6 at 20th level). The damage of studied strike is precision damage and is not multiplied on a critical hit; creatures that are immune to sneak attacks are also immune to studied strike.</p><p>If the investigator’s attack used a weapon that deals nonlethal damage (like a sap, whip, or an unarmed strike), he may choose to have the additional damage from studied strike be nonlethal damage instead of lethal damage. If the investigator chose to make an attack with a lethal weapon instead deal nonlethal damage (with the usual –4 penalty), the studied strike damage may also deal nonlethal damage.</p><p>The investigator must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. An investigator cannot use studied strike against a creature with concealment.</p>"
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "nt6buut0ei09bhwg",
+            "activation": {
+              "type": "free",
+              "unchained": {
+                "type": "free"
+              }
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "floor((@class.level - 2) / 2)",
+                  "type": {
+                    "custom": "",
+                    "values": [
+                      "precision"
+                    ]
+                  }
+                }
+              ]
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use",
+            "target": {
+              "value": "Studied target"
+            }
+          },
+          {
+            "_id": "3Mhm1UaJlJ3jJY2m",
+            "activation": {
+              "type": "free",
+              "unchained": {
+                "type": "free"
+              }
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "floor((@class.level - 2) / 2)",
+                  "type": {
+                    "custom": "",
+                    "values": [
+                      "nonlethal",
+                      "precision"
+                    ]
+                  }
+                }
+              ]
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use nonlethal",
+            "target": {
+              "value": "Studied target"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "34"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.3WsfpUeW7oe4GOuh"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 60200000,
+      "_id": "YfTkIe6PofyW6Esn",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/violet_25.jpg",
+      "name": "Swift Alchemy (INV)",
+      "system": {
+        "description": {
+          "value": "<p>At 4th level, an investigator can create alchemical items with astounding speed. It takes an investigator half the normal amount of time to create alchemical items. He can also apply <em>poison</em> to a weapon as a <em>move action</em> instead of a <em>standard action</em>.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "34"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.kEVqxs23oyNDxbc1"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 60300000,
+      "_id": "acwxN2oGa52MuAGF",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/violet_23.jpg",
+      "name": "Poison Immunity",
+      "system": {
+        "description": {
+          "value": "<p>The character becomes completely immune to poison.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [
+          {
+            "target": "allSavingThrows",
+            "text": "Immune to poison"
+          }
+        ],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Alchemist",
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1115",
+            "pages": "26"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "31"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.tflIOhX6ukxtwXLx"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 60400000,
+      "_id": "oIp5cBsikJc8LAMT",
+      "folder": null
+    },
+    {
+      "img": "systems/pf1/icons/skills/shadow_12.jpg",
+      "name": "True Inspiration",
+      "system": {
+        "description": {
+          "value": "<p>At 20th level, an investigator can use inspiration on all skill checks—even ones he isn’t trained in—and all ability checks without spending inspiration.</p><p>In addition, whenever he expends inspiration on an ability check, attack roll, saving throw, or skill check, he adds 2d6 rather than 1d6 to the result. Some talents can affect this. If using the amazing inspiration investigator talent, he rolls 2d8 instead. If using this with empathy, tenacious inspiration, underworld inspiration, or a similar talent, he rolls two sets of inspiration dice and uses the higher of the two results.</p>"
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": {
+          "value": [],
+          "custom": []
+        },
+        "weaponProf": {
+          "value": [],
+          "custom": []
+        },
+        "languages": {
+          "value": [],
+          "custom": []
+        },
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Investigator"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1129",
+            "pages": "34"
+          }
+        ],
+        "class": "investigator"
+      },
+      "type": "feat",
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "mDeCKAjdWUVLYJir": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.pf1.class-abilities.Item.H2Iac6ELVKBU6Ayu"
+        }
+      },
+      "_stats": {
+        "systemId": "pf1",
+        "systemVersion": "10.8",
+        "coreVersion": "11.315",
+        "createdTime": 1739082898188,
+        "modifiedTime": 1739082898188,
+        "lastModifiedBy": "mDeCKAjdWUVLYJir"
+      },
+      "sort": 60500000,
+      "_id": "zTHEzy57qINnbhHy",
+      "folder": null
     }
   ],
   "effects": [],
@@ -72655,7 +74436,7 @@
     "systemVersion": "10.8",
     "coreVersion": "11.315",
     "createdTime": 1736401703423,
-    "modifiedTime": 1738653819299,
+    "modifiedTime": 1739082904050,
     "lastModifiedBy": "mDeCKAjdWUVLYJir"
   }
 }

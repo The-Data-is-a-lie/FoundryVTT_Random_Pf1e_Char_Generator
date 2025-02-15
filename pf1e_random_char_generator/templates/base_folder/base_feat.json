@@ -1,95 +1,83 @@
 {
-    "img": "icons/svg/book.svg",
-    "name": "featName",
-    "system": {
-      "description": {
-        "value": "<p><em>You can make exceptionally deadly ranged attacks by pinpointing a foe's weak spot, at the expense of making the attack less likely to succeed.</em></p><p><strong>Prerequisites</strong>: Dex 13, base attack bonus +1.</p><p><strong>Benefits</strong>: You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.</p><h3>Combat Trick</h3><p>When using this feat, you can spend 4 stamina points to reduce the penalty to attack rolls imposed by the feat by 1 until the beginning of your next turn. You can't reduce the penalty below 0.</p><p><b>Usage</b>: select Conditional Modifier when performing a ranged attack.</p>"
-      },
-      "tags": [
-      ],
-      "actions": [],
-      "attackNotes": [],
-      "effectNotes": [],
-      "uses": {
-        "value": null,
-        "per": "",
-        "autoDeductChargesCost": "",
-        "maxFormula": "",
-        "rechargeFormula": ""
-      },
-      "changes": [],
-      "changeFlags": {
-        "loseDexToAC": false,
-        "noMediumEncumbrance": false,
-        "noHeavyEncumbrance": false,
-        "mediumArmorFullSpeed": false,
-        "heavyArmorFullSpeed": false
-      },
-      "contextNotes": [],
-      "links": {
-        "children": [],
-        "charges": []
-      },
-      "tag": "",
-      "armorProf": {
-        "value": [],
-        "custom": []
-      },
-      "weaponProf": {
-        "value": [],
-        "custom": []
-      },
-      "languages": {
-        "value": [],
-        "custom": []
-      },
-      "flags": {
-        "boolean": {},
-        "dictionary": {}
-      },
-      "scriptCalls": [],
-      "subType": "feat",
-      "traitType": "",
-      "traitCategory": "",
-      "racePoints": null,
-      "abilityType": "na",
-      "associations": {
-        "classes": []
-      },
-      "showInQuickbar": false,
-      "crOffset": "",
-      "disabled": false,
-      "classSkills": {},
-      "sources": [
-        {
-          "id": "PZO1110",
-          "pages": "114, 121"
-        }
-      ]
+  "name": "Careful Speaker",
+  "type": "feat",
+  "img": "systems/pf1/icons/conditions/frightened.svg",
+  "system": {
+    "description": {
+      "value": "<p><em>The paranoid terror that comes from living in a region with a dangerous government (such as Cheliax or Galt) has made you unusually aware of what you say.</em></p><p><strong>Prerequisites</strong>: Wis 13.</p><p><strong>Benefits</strong>: You gain a +2 bonus on all Bluff checks made to fool someone or pass secret messages (but not to feint in combat), and a +2 bonus on all Will saves against attempts to scry upon you or read your mind.</p>"
     },
-    "type": "feat",
-    "effects": [],
-    "ownership": {
-      "default": 0,
-      "un4oEQ6U0Aq044EO": 3
+    "tags": [
+      "General"
+    ],
+    "actions": [],
+    "attackNotes": [],
+    "effectNotes": [],
+    "uses": {
+      "value": null,
+      "per": "",
+      "autoDeductChargesCost": "",
+      "maxFormula": "",
+      "rechargeFormula": ""
+    },
+    "changes": [],
+    "changeFlags": {
+      "loseDexToAC": false,
+      "noMediumEncumbrance": false,
+      "noHeavyEncumbrance": false,
+      "mediumArmorFullSpeed": false,
+      "heavyArmorFullSpeed": false
+    },
+    "contextNotes": [],
+    "links": {
+      "children": [],
+      "charges": []
+    },
+    "tag": "carefulSpeaker",
+    "armorProf": {
+      "value": [],
+      "custom": []
+    },
+    "weaponProf": {
+      "value": [],
+      "custom": []
+    },
+    "languages": {
+      "value": [],
+      "custom": []
     },
     "flags": {
-      "core": {
-        "sourceId": ""
-      },
-      "scene-packer": {
-        "hash": "9bfc3b6096a5d77056b4d3c7a2afe7d6bcdcb808"
-      }
+      "boolean": {},
+      "dictionary": {}
     },
-    "_stats": {
-      "systemId": "pf1",
-      "systemVersion": "10.8",
-      "coreVersion": "11.315",
-      "createdTime": 1734934189704,
-      "modifiedTime": 1734934189704,
-      "lastModifiedBy": "un4oEQ6U0Aq044EO"
+    "scriptCalls": [],
+    "subType": "classFeat",
+    "traitType": "",
+    "traitCategory": "",
+    "racePoints": null,
+    "abilityType": "na",
+    "associations": {
+      "classes": []
     },
-    "_id": "Vom2j1wF5D1JFZ7h",
-    "folder": null,
-    "sort": 100000
-  }
+    "showInQuickbar": false,
+    "crOffset": "",
+    "disabled": false,
+    "classSkills": {}
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": null,
+    "systemVersion": null,
+    "coreVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "changes": {},
+  "scriptCalls": {},
+  "actions": {},
+  "links": {}
+}

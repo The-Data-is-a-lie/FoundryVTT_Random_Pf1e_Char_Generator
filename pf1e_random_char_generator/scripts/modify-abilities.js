@@ -242,7 +242,6 @@ function writeToLocalStorage(key, data) {
 }
 
 // Function to append collected items to the export template
-// Function to append collected items to the export template
 function appendJsonToTemplate(collectedItems, exportTemplate, sectionKey) {
   if (!exportTemplate.items) {
     exportTemplate.items = {}; // Initialize if it doesn't exist
@@ -358,6 +357,144 @@ async function generateUniqueID() {
 // ------ End of Generalized Features Page Functions ------ //
 
 
+// ----- Start of Class Features Section ----- //
+// function convertToStringPrereqBenefit(featureData) {
+//   if (!featureData || typeof featureData !== "object") {
+//       return "<p><strong>Benefits:</strong> No benefits available.</p>";
+//   }
+
+//   // Extract benefits and prerequisites safely
+//   let benefits = featureData.benefits?.value || featureData.benefits || "No benefits available.";
+//   let prerequisites = featureData.prerequisites?.value || featureData.prerequisites || null;
+
+//   let htmlString = "<p>";
+
+//   // Add prerequisites if they exist
+//   if (prerequisites) {
+//       htmlString += `<strong>Prerequisites:</strong> ${prerequisites}</p><p>`;
+//   }
+
+//   // Add benefits (always included)
+//   htmlString += `<strong>Benefits:</strong> ${benefits}</p>`;
+
+//   return htmlString;
+// }
+
+
+function convertToStringSimple(key, featureData) {
+  if (!featureData || typeof featureData !== "object") {
+      return "<p>No feature data available.</p>";
+  }
+
+  let htmlString = `<p><strong>${key}</strong></p><ul>`;
+
+  for (const [key, value] of Object.entries(featureData)) {
+      htmlString += `<li><strong>${key}:</strong> ${typeof value === "object" ? JSON.stringify(value, null, 2) : value}</li>`;
+  }
+
+  htmlString += "</ul>";
+  return htmlString;
+}
+
+// function convertSorcererAbilityToHtmlWithBoldNames(featureData) {
+//   let htmlString = '';
+
+//   // Check if the featureData is an array (like bonus feats or bonus spells)
+//   if (Array.isArray(featureData)) {
+//     htmlString = '<ul>';
+//     featureData.forEach(item => {
+//       htmlString += `<li>${item}</li>`;
+//     });
+//     htmlString += '</ul>';
+//   }
+//   // Check if the featureData is a string (ability description)
+//   else if (typeof featureData === 'string') {
+//     htmlString = `<p>${featureData}</p>`;
+//   }
+//   // If it's an object (though not expected for a sorcerer ability), convert to a formatted string
+//   else if (typeof featureData === 'object') {
+//     htmlString = `<pre>${JSON.stringify(featureData, null, 2)}</pre>`;
+//   }
+
+//   return htmlString;
+// }
+
+// function formatSorcererBloodline(featureData) {
+//   let htmlString = '';
+
+//   for (const [key, value] of Object.entries(featureData)) {
+//     // Bold the name of the ability
+//     htmlString += `<strong>${key}</strong>: ${convertSorcererAbilityToHtmlWithBoldNames(value)}<br>`;
+//   }
+
+//   return htmlString;
+// }
+
+
+const classList1 = ["baba"];
+const classList2 = ["baba"];
+// const classList1 = ["Sorcerer"];
+// const classList2 = ["Barbarian", "Rogue", "Barbarian (Unchained)", "Rogue (Unchained)"];
+
+async function updateClassFeatures(fileDataDictionary, classFeatures) {
+  if (!fileDataDictionary || typeof fileDataDictionary !== 'object' || !classFeatures || typeof classFeatures !== 'object') {
+      console.error("Invalid input data.");
+      return;
+  }
+
+  // Iterate through each feature entry
+  for (const [key, featureData] of Object.entries(classFeatures)) {
+      if (!featureData || typeof featureData !== 'object') {
+          console.warn(`Skipping invalid feature at key: ${key}`);
+          continue;
+      }
+
+      console.log(`Processing feature key: ${key}, Data:`, featureData);
+
+      // Deep clone the fileDataDictionary before modification to avoid unintended changes
+      const feature = JSON.parse(JSON.stringify(fileDataDictionary));  
+      feature.name = key;
+      // this text is usually stored as an object, we need to convert it to a string
+
+      console.log("feature valuue:", feature.system.description.value)
+
+      if (classList1.includes(upper_case_class)) {
+        feature.system.description.value = formatSorcererBloodline(featureData);
+        console.log("First condition met: Class is in classList1");
+      } else if (classList2.includes(upper_case_class)) {
+        feature.system.description.value = convertToStringPrereqBenefit(featureData);
+        console.log("Second condition met: Class is in classList2");
+      } else {
+        feature.system.description.value = convertToStringSimple(key, featureData);
+        console.log("Class does not match any condition");
+      }
+
+      console.log("feature value after:", feature.system.description.value)
+
+      // methods for each set of class features (to make them look nicer)
+
+
+
+      writeToLocalStorage('updatedFeature', feature); 
+      // Append the feature to the exportTemplate
+      appendJsonToTemplate([feature], exportTemplate, "classFeature");
+      // Save the updated exportTemplate back to localStorage
+      writeToLocalStorage('exportTemplate', exportTemplate);
+
+
+      // Really good way to log all the data to see if discrepancy between printed and exported data
+      // console.log("exportTemplate After saving:", JSON.stringify(exportTemplate, null, 2));
+  }
+}
+
+
+
+
+// Append new class feature data
+await updateClassFeatures(fileDataDictionary[baseFeatPath], characterData.class_features);
+
+// ----- End of Class Features Section ----- //
+
 // ----- Start of Feat/Trait section ----- //
 
 async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType) {
@@ -421,6 +558,8 @@ processFeatTrait(everyFeatPath, characterData.feats, 'feat');
 processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
 
 // ------ End of Feat/Trait Section ------ //
+
+
 
 
 // ----- Start of Spell Section ----- //
@@ -781,8 +920,7 @@ writeToLocalStorage('exportFoundryPath', exportTemplate);
 // ----- End of Skills Section ----- //
 
 
-// Rewriting the export file directly (with export template)
-writeToLocalStorage('exportFoundryPath', exportTemplate);
+
 
 
 } catch (error) {
