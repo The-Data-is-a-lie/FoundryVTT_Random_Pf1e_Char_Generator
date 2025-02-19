@@ -431,10 +431,6 @@ function convertToStringSimple(key, featureData) {
 // }
 
 
-const classList1 = ["baba"];
-const classList2 = ["baba"];
-// const classList1 = ["Sorcerer"];
-// const classList2 = ["Barbarian", "Rogue", "Barbarian (Unchained)", "Rogue (Unchained)"];
 
 async function updateClassFeatures(fileDataDictionary, classFeatures) {
   if (!fileDataDictionary || typeof fileDataDictionary !== 'object' || !classFeatures || typeof classFeatures !== 'object') {
@@ -458,16 +454,7 @@ async function updateClassFeatures(fileDataDictionary, classFeatures) {
 
       console.log("feature valuue:", feature.system.description.value)
 
-      if (classList1.includes(upper_case_class)) {
-        feature.system.description.value = formatSorcererBloodline(featureData);
-        console.log("First condition met: Class is in classList1");
-      } else if (classList2.includes(upper_case_class)) {
-        feature.system.description.value = convertToStringPrereqBenefit(featureData);
-        console.log("Second condition met: Class is in classList2");
-      } else {
-        feature.system.description.value = convertToStringSimple(key, featureData);
-        console.log("Class does not match any condition");
-      }
+      feature.system.description.value = convertToStringSimple(key, featureData);
 
       console.log("feature value after:", feature.system.description.value)
 
@@ -575,10 +562,11 @@ async function determineSpellType(){
     console.log("Prepared Casters");
     type = "prepared";
   }
-  // Arcanist
+  // // Arcanist
   else if (["Arcanist".toUpperCase()].includes(upper_case_class.toUpperCase())) {
-    console.log("Arcanist caster");
-    type = "arcanist";
+    console.log("Arcanist caster -> hybrid");
+    // need to name it type hybrid (instead of Arcanist for some reason)
+    type = "hybrid";
   } 
   // Spontaneous casters
   else {
