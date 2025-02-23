@@ -1,0 +1,139 @@
+{
+    "name": "archetype_1",
+    "type": "class",
+    "_id": "HHB0D6v2kOa27RLu",
+    "img": "icons/svg/paralysis.svg",
+    "system": {
+      "description": {
+        "value": ""
+      },
+      "tags": [],
+      "changes": [],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "classAssociations": []
+      },
+      "tag": "",
+      "armorProf": {
+        "value": [],
+        "custom": []
+      },
+      "weaponProf": {
+        "value": [],
+        "custom": []
+      },
+      "languages": {
+        "value": [],
+        "custom": []
+      },
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "base",
+      "level": 0,
+      "hd": 8,
+      "hp": 8,
+      "bab": "low",
+      "skillsPerLevel": 0,
+      "savingThrows": {
+        "fort": {
+          "value": "low"
+        },
+        "ref": {
+          "value": "low"
+        },
+        "will": {
+          "value": "low"
+        }
+      },
+      "fc": {
+        "hp": {
+          "value": 0
+        },
+        "skill": {
+          "value": 0
+        },
+        "alt": {
+          "value": 0,
+          "notes": ""
+        }
+      },
+      "wealth": "",
+      "alignment": "",
+      "classSkills": {
+        "acr": false,
+        "apr": false,
+        "art": false,
+        "blf": false,
+        "clm": false,
+        "crf": false,
+        "dip": false,
+        "dev": false,
+        "dis": false,
+        "esc": false,
+        "fly": false,
+        "han": false,
+        "hea": false,
+        "int": false,
+        "kar": false,
+        "kdu": false,
+        "ken": false,
+        "kge": false,
+        "khi": false,
+        "klo": false,
+        "kna": false,
+        "kno": false,
+        "kpl": false,
+        "kre": false,
+        "lin": false,
+        "lor": false,
+        "per": false,
+        "prf": false,
+        "pro": false,
+        "rid": false,
+        "sen": false,
+        "slt": false,
+        "spl": false,
+        "ste": false,
+        "sur": false,
+        "swm": false,
+        "umd": false
+      },
+      "customHD": "",
+      "casting": {
+        "type": ""
+      }
+    },
+    "effects": [],
+    "folder": null,
+    "sort": 100000,
+    "ownership": {
+      "default": 0,
+      "mDeCKAjdWUVLYJir": 3
+    },
+    "flags": {
+      "pf1": {
+        "links": {
+          "classAssociations": {}
+        }
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1740295138143,
+      "modifiedTime": 1740295145966,
+      "lastModifiedBy": "mDeCKAjdWUVLYJir"
+    }
+  }
