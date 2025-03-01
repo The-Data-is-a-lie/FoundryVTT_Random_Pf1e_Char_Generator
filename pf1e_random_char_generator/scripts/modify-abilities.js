@@ -26,6 +26,7 @@ export async function main() {
     const everySpellPath = charSheetBase.target + "/every_spell.json";
     const everyTraitPath = charSheetBase.target + "/every_trait.json";
     const everyWeaponPath = charSheetBase.target + "/every_weapon.json";
+    const archetypePath = charSheetBase.target + "/archetype.json";
 
     // base_folder
     const baseFeatPath = base.target + "/base_feat.json";
@@ -46,6 +47,7 @@ export async function main() {
       everyWeaponPath,
       baseFeatPath,
       baseSkillPath,
+      archetypePath,      
     ]    
 
     // Create a dictionary to hold all the file dictionaries
@@ -342,6 +344,57 @@ const class_list = [
 processClass(upper_case_class, characterData.level, class_list);
 
 // ------ End of Class Data Section ------ //
+
+
+// ------ Start of Archetype Section ------ //
+async function processArchetype(targetArchetype) {
+  if (!targetArchetype || typeof targetArchetype !== 'object') {
+      console.error("Invalid targetArchetype:", targetArchetype);
+      return;
+  }
+
+  // Get archetypeInfo and ensure it's an object
+  let archetypeInfo = fileDataDictionary[archetypePath];
+
+  if (typeof archetypeInfo !== 'object' || archetypeInfo === null) {
+      console.warn("archetypeInfo is not an object. Attempting to fix...");
+      
+      // Check if it's a valid JSON string and parse it
+      try {
+          archetypeInfo = JSON.parse(archetypeInfo);
+      } catch (error) {
+          console.error("archetypeInfo could not be parsed as JSON. Resetting to an empty object.");
+          archetypeInfo = {};  
+      }
+  }
+
+  console.log("archetype pre trial", archetypeInfo);
+  console.log("targetArchetype", targetArchetype);
+
+  // Extract the first key from targetArchetype (e.g., "Visionary")
+  const archetypeKey = Object.keys(targetArchetype)[0]; 
+
+  if (!archetypeKey) {
+      console.error("No valid key found in targetArchetype:", targetArchetype);
+      return;
+  }
+
+  // Set the name of the archetype
+  archetypeInfo.name = archetypeKey;
+
+  // Ensure system and description exist before modifying
+  // archetypeInfo.system = archetypeInfo.system || {};
+  // archetypeInfo.system.description = archetypeInfo.system.description || {};
+  archetypeInfo.system.description.value = convertToStringSimple(archetypeKey,targetArchetype);
+
+  writeToLocalStorage('archetypeInfo', archetypeInfo);
+  appendJsonToTemplate([archetypeInfo], exportTemplate, "archetypeInfo");
+  writeToLocalStorage('exportTemplate', exportTemplate);
+}
+
+await processArchetype(characterData.archetype_info);
+
+// ------ End of Archetype Section ------ //
 
 
 // ------ Generalized Features Page Functions ------ //
