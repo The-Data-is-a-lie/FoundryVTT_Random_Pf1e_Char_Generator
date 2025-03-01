@@ -39,6 +39,7 @@ export async function createPersistentButton() {
   button.style.lineHeight = '50px';
 
   // Add event listener to show the dialog when clicked
+  // clicking the persistent button should only show the dialog
   button.addEventListener('click', async () => {
       showCharacterGeneratorDialog();
 
@@ -120,7 +121,6 @@ function showCharacterGeneratorDialog() {
   const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
 
   const html = `
-    <button id="generate-character">Generate Character</button>
     <div>
       <label for="character-region">Select Region:</label>
       <select id="character-region">
@@ -238,7 +238,7 @@ function showCharacterGeneratorDialog() {
     content: html,
     buttons: {
       generate: {
-        label: "Generate Character",
+        label: "Change Generated Character Info",
         callback: () => {
           // Get form data
           const characterData = {
