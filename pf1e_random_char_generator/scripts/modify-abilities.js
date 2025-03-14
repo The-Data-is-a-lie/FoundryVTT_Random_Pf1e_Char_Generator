@@ -132,25 +132,31 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    updateAttribute(characterData.height_number, exportTemplate.system.details, 'height');
    updateAttribute(characterData.weight_number, exportTemplate.system.details, 'weight');
 
-   function stackWithParagraphs(...values) {
-     return values.map(value => `<p>${value}</p><p></p>`).join('');
-   }
+   
+
+   function stackWithParagraphs(...items) {
+    return items.map(item => `<p>${item.label} ${item.value}</p><p></p>`).join('');
+  }
 
    const combined_bio = stackWithParagraphs(
-     characterData.younger_brothers,
-     characterData.younger_sisters,
-     characterData.older_brothers,
-     characterData.older_sisters,
-     characterData.parents,
-     characterData.mannerisms,
-     characterData.flaws,
-     characterData.hair_type,
-     characterData.hair_color,
-     characterData.eye_color,
-     characterData.appearance,
-     characterData.background_traits,
-     characterData.region
-   );
+    { label: "", value: characterData.younger_brothers },
+    { label: "", value: characterData.younger_sisters },
+    { label: "", value: characterData.older_brothers },
+    { label: "", value: characterData.older_sisters },
+    { label: "this is your situation growing up with your parents: ", value: characterData.parents },
+    { label: "these are your typical mannerisms:", value: characterData.mannerisms },
+    { label: "these are your flaws:", value: characterData.flaws },
+    { label: "this is your hair type:", value: characterData.hair_type },
+    { label: "this is your hair color:", value: characterData.hair_color },
+    { label: "this is your eye color: ", value: characterData.eye_color },
+    { label: "this is your appearance:", value: characterData.appearance },
+    { label: "these are your background traits (for personality): ", value: characterData.background_traits },
+    { label: "this is your region of origin: ", value: characterData.region },
+    { label: "These are your specialty schools: ", value: characterData.specialty_schools },
+    { label: "These are your counter schools:   ", value: characterData.counter_schools },
+    { label: "These are your favored spell types, you prefer these:     ", value: characterData.chosen_spell_descriptor },
+    { label: "These are your counter spell types, you don't want these: ", value: characterData.counter_spell_descriptor }
+  );
 
    updateAttribute(combined_bio, exportTemplate.system.details.biography, 'value');
    // ----- End of simple data update ----- //
