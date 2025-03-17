@@ -13,9 +13,9 @@ import { main } from './modify-abilities.js';
 // need export so we can import in main.js
 export async function createPersistentButton() {
   // test server
-  const deliver_location = 'http://localhost:5000/update_character_data';
+  // const deliver_location = 'http://localhost:5000/update_character_data';
   // perm server
-  // const deliver_location = 'https://pathfinder-char-creator-5awx.onrender.com/update_character_data';
+  const deliver_location = 'https://pathfinder-char-creator.onrender.com/update_character_data';
   
 
 
