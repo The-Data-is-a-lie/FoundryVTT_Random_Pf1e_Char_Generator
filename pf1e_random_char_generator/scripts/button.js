@@ -15,7 +15,7 @@ export async function createPersistentButton() {
   // test server
   const deliver_location = 'http://localhost:5000/update_character_data';
   // perm server
-  // const deliver_location = 'https://pathfinder-char-creator.onrender.com/update_character_data';
+  // const deliver_location = 'https://pathfinder-char-creator-web-latest.onrender.com/update_character_data';
   
 
 
@@ -141,7 +141,7 @@ function showCharacterGeneratorDialog() {
       <label for="character-race">Select Race:</label>
       <select id="character-race">
         ${[
-          'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human',
+          'Random', 'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human',
           'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow',
           'Fetchling', 'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli',
           'Hobgoblin', 'Ifrit', 'Kitsune', 'Kobold', 'Locathah', 'Merfolk',
@@ -181,6 +181,46 @@ function showCharacterGeneratorDialog() {
       </select>
     </div>
     <div>
+      <label for="deity">Choose Deity:</label>
+      <select id="deity">
+        <option value="random" ${savedData.deity === "random" ? "selected" : ""}>Random</option>
+        <option value="Abadar" ${savedData.deity === "Abadar" ? "selected" : ""}>Abadar</option>
+        <option value="Achaekek" ${savedData.deity === "Achaekek" ? "selected" : ""}>Achaekek</option>
+        <option value="Ahriman" ${savedData.deity === "Ahriman" ? "selected" : ""}>Ahriman</option>
+        <option value="Alazhra" ${savedData.deity === "Alazhra" ? "selected" : ""}>Alazhra</option>
+        <option value="Alseta" ${savedData.deity === "Alseta" ? "selected" : ""}>Alseta</option>
+        <option value="Apsu" ${savedData.deity === "Apsu" ? "selected" : ""}>Apsu</option>
+        <option value="Arazni" ${savedData.deity === "Arazni" ? "selected" : ""}>Arazni</option>
+        <option value="Asmodeus" ${savedData.deity === "Asmodeus" ? "selected" : ""}>Asmodeus</option>
+        <option value="Besmara" ${savedData.deity === "Besmara" ? "selected" : ""}>Besmara</option>
+        <option value="Calistria" ${savedData.deity === "Calistria" ? "selected" : ""}>Calistria</option>
+        <option value="Cayden Cailean" ${savedData.deity === "Cayden Cailean" ? "selected" : ""}>Cayden Cailean</option>
+        <option value="Desna" ${savedData.deity === "Desna" ? "selected" : ""}>Desna</option>
+        <option value="Easivra" ${savedData.deity === "Easivra" ? "selected" : ""}>Easivra</option>
+        <option value="Erastil" ${savedData.deity === "Erastil" ? "selected" : ""}>Erastil</option>
+        <option value="Erecura" ${savedData.deity === "Erecura" ? "selected" : ""}>Erecura</option>
+        <option value="Gorum" ${savedData.deity === "Gorum" ? "selected" : ""}>Gorum</option>
+        <option value="Gozreh" ${savedData.deity === "Gozreh" ? "selected" : ""}>Gozreh</option>
+        <option value="Groetus" ${savedData.deity === "Groetus" ? "selected" : ""}>Groetus</option>
+        <option value="Hanspur" ${savedData.deity === "Hanspur" ? "selected" : ""}>Hanspur</option>
+        <option value="Iomedae" ${savedData.deity === "Iomedae" ? "selected" : ""}>Iomedae</option>
+        <option value="Irori" ${savedData.deity === "Irori" ? "selected" : ""}>Irori</option>
+        <option value="Kurgess" ${savedData.deity === "Kurgess" ? "selected" : ""}>Kurgess</option>
+        <option value="Lamashtu" ${savedData.deity === "Lamashtu" ? "selected" : ""}>Lamashtu</option>
+        <option value="Lissala" ${savedData.deity === "Lissala" ? "selected" : ""}>Lissala</option>
+        <option value="Nethys" ${savedData.deity === "Nethys" ? "selected" : ""}>Nethys</option>
+        <option value="Norgorber" ${savedData.deity === "Norgorber" ? "selected" : ""}>Norgorber</option>
+        <option value="Pharasma" ${savedData.deity === "Pharasma" ? "selected" : ""}>Pharasma</option>
+        <option value="Rovagug" ${savedData.deity === "Rovagug" ? "selected" : ""}>Rovagug</option>
+        <option value="Sarenrae" ${savedData.deity === "Sarenrae" ? "selected" : ""}>Sarenrae</option>
+        <option value="Shelyn" ${savedData.deity === "Shelyn" ? "selected" : ""}>Shelyn</option>
+        <option value="Torag" ${savedData.deity === "Torag" ? "selected" : ""}>Torag</option>
+        <option value="Urgathoa" ${savedData.deity === "Urgathoa" ? "selected" : ""}>Urgathoa</option>
+        <option value="Zon-Kuthon" ${savedData.deity === "Zon-Kuthon" ? "selected" : ""}>Zon-Kuthon</option>
+        <option value="Zyphus" ${savedData.deity === "Zyphus" ? "selected" : ""}>Zyphus</option>
+      </select>
+    </div>    
+    <div>
       <label for="alignment">Choose Alignment:</label>
       <select id="alignment">
         <option value="random" ${savedData.alignment === "random" ? "selected" : ""}>Random</option>
@@ -211,6 +251,13 @@ function showCharacterGeneratorDialog() {
       </select>
     </div>
     <div>
+      <label for="inherents">Do you want inherent stats:</label>
+      <select id="inherents">
+        <option value="y" ${savedData.inherents === "y" ? "selected" : ""}>Yes</option>
+        <option value="n" ${savedData.inherents === "n" ? "selected" : ""}>No</option>
+      </select>
+    </div>     
+    <div>
       <label for="dice-rolls">Number of Dice:</label>
       <input type="number" id="dice-rolls" min="1" value="${savedData.diceRolls || ''}">
     </div>
@@ -230,6 +277,7 @@ function showCharacterGeneratorDialog() {
       <label for="gold-amount">Desired Gold Amount (or leave blank):</label>
       <input type="number" id="gold-amount" min="0" value="${savedData.goldAmount || ''}" placeholder="Optional">
     </div>
+
     <div class="resizable-handle"></div> <!-- Resizable handle -->
   `;
 
@@ -247,14 +295,16 @@ function showCharacterGeneratorDialog() {
             race: document.getElementById('character-race').value,
             class: document.getElementById('character-class').value,
             multiclass: document.getElementById('multiclass').value,
+            deity: document.getElementById('deity').value,
             alignment: document.getElementById('alignment').value,
             gender: document.getElementById('gender').value,
             randomFeats: document.getElementById('random-feats').value,
+            inherents: document.getElementById('inherents').value,
             diceRolls: document.getElementById('dice-rolls').value,
             diceSides: document.getElementById('dice-sides').value,
             highestLevel: document.getElementById('highest-level').value,
             lowestLevel: document.getElementById('lowest-level').value,
-            goldAmount: document.getElementById('gold-amount').value
+            goldAmount: document.getElementById('gold-amount').value,
           };
   
           // Save the data to localStorage

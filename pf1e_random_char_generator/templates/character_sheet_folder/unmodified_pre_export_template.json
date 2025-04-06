@@ -86,7 +86,7 @@
         }
       },
       "hp": {
-        "base": 67,
+        "base": 0,
         "temp": 0,
         "nonlethal": 0,
         "offset": 0

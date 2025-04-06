@@ -113,11 +113,14 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    updateAttribute(characterData.cha, exportTemplate.system.abilities.cha, 'value');
 
    // Saving Throws
-   updateAttribute(characterData.fort_saving_throw, exportTemplate.system.attributes.savingThrows.fort, 'base');
-   updateAttribute(characterData.will_saving_throw, exportTemplate.system.attributes.savingThrows.will, 'base');
-   updateAttribute(characterData.ref_saving_throw, exportTemplate.system.attributes.savingThrows.ref, 'base');
+  //  updateAttribute(characterData.fort_saving_throw, exportTemplate.system.attributes.savingThrows.fort, 'base');
+  //  updateAttribute(characterData.will_saving_throw, exportTemplate.system.attributes.savingThrows.will, 'base');
+  //  updateAttribute(characterData.ref_saving_throw, exportTemplate.system.attributes.savingThrows.ref, 'base');
 
    // Health (HP)
+   updateAttribute(characterData.total_rolled_hp, exportTemplate.system.attributes.hp, 'base');
+
+  // Deity
    updateAttribute(characterData.alignment, exportTemplate.system.details, 'alignment');
    updateAttribute(characterData.deity_name, exportTemplate.system.details, 'deity');
    updateAttribute(characterData.age_number, exportTemplate.system.details, 'age');
@@ -489,6 +492,18 @@ function convertToStringSimple(key, featureData) {
 //   return htmlString;
 // }
 
+// Custom stringify function that maintains order of keys
+function stableStringify(obj) {
+  if (Array.isArray(obj)) {
+    return `[${obj.map(stableStringify).join(',')}]`;
+  } else if (obj && typeof obj === 'object') {
+    const keys = Object.keys(obj); // preserve original key order
+    const keyValuePairs = keys.map(key => `"${key}":${stableStringify(obj[key])}`);
+    return `{${keyValuePairs.join(',')}}`;
+  } else {
+    return JSON.stringify(obj);
+  }
+}
 
 
 async function updateClassFeatures(fileDataDictionary, classFeatures) {
@@ -507,7 +522,7 @@ async function updateClassFeatures(fileDataDictionary, classFeatures) {
       console.log(`Processing feature key: ${key}, Data:`, featureData);
 
       // Deep clone the fileDataDictionary before modification to avoid unintended changes
-      const feature = JSON.parse(JSON.stringify(fileDataDictionary));  
+      const feature = JSON.parse(stableStringify(fileDataDictionary));  
       feature.name = key;
       // this text is usually stored as an object, we need to convert it to a string
 
