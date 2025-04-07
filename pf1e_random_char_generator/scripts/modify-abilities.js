@@ -135,19 +135,25 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    updateAttribute(characterData.height_number, exportTemplate.system.details, 'height');
    updateAttribute(characterData.weight_number, exportTemplate.system.details, 'weight');
 
-   
+   // Fixing Casting level
+  updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.primary, 'casterType');
+  updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.secondary, 'casterType');
+  
+  console.log("this is the casting level", characterData.casting_level_str_foundry);
   //  Arcane spell failure
-  // Define the list of classes
-const classList = ["Cleric", "Druid", "Oracle", "Paladin", "Ranger", "Summoner", "Warpriest"];
+  // Define divine casters
+  const divine_casters = ["Cleric", "Druid", "Oracle", "Paladin", "Ranger", "Summoner", "Warpriest"];
 
 // Check if the class (in lower case) is in the list
-if (classList.some(cls => cls.toLowerCase() === characterData.c_class.toLowerCase())) {
+if (divine_casters.some(cls => cls.toLowerCase() === characterData.c_class.toLowerCase())) {
   updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
   updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
 } else {
   updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
   updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
 }
+
+// Fixing spell level
 
    function stackWithParagraphs(...items) {
     return items.map(item => `<p>${item.label} ${item.value}</p><p></p>`).join('');
