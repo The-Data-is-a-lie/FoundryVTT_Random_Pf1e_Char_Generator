@@ -228,7 +228,7 @@ function showCharacterGeneratorDialog() {
         <option value="cn" ${savedData.alignment === "cn" ? "selected" : ""}>Chaotic Neutral</option>
         <option value="ce" ${savedData.alignment === "ce" ? "selected" : ""}>Chaotic Evil</option>
         <option value="ng" ${savedData.alignment === "ng" ? "selected" : ""}>Neutral Good</option>
-        <option value="n" ${savedData.alignment === "n" ? "selected" : ""}>Neutral</option>
+        <option value="n"  ${savedData.alignment === "tn" ? "selected" : ""}>Neutral</option>
         <option value="ne" ${savedData.alignment === "ne" ? "selected" : ""}>Neutral Evil</option>
         <option value="lg" ${savedData.alignment === "lg" ? "selected" : ""}>Lawful Good</option>
         <option value="ln" ${savedData.alignment === "ln" ? "selected" : ""}>Lawful Neutral</option>

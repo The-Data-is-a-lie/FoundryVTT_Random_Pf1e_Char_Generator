@@ -121,7 +121,7 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    updateAttribute(characterData.total_rolled_hp, exportTemplate.system.attributes.hp, 'base');
 
   // Deity
-   updateAttribute(characterData.alignment, exportTemplate.system.details, 'alignment');
+   updateAttribute(characterData.mini_alignment, exportTemplate.system.details, 'alignment');
    updateAttribute(characterData.deity_name, exportTemplate.system.details, 'deity');
    updateAttribute(characterData.age_number, exportTemplate.system.details, 'age');
 
@@ -136,6 +136,18 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    updateAttribute(characterData.weight_number, exportTemplate.system.details, 'weight');
 
    
+  //  Arcane spell failure
+  // Define the list of classes
+const classList = ["Cleric", "Druid", "Oracle", "Paladin", "Ranger", "Summoner", "Warpriest"];
+
+// Check if the class (in lower case) is in the list
+if (classList.some(cls => cls.toLowerCase() === characterData.c_class.toLowerCase())) {
+  updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
+  updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
+} else {
+  updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
+  updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
+}
 
    function stackWithParagraphs(...items) {
     return items.map(item => `<p>${item.label} ${item.value}</p><p></p>`).join('');
@@ -659,6 +671,7 @@ async function assignSpellTypes(type) {
     if (primarySpellbook) {
       console.log('Before change:', primarySpellbook.spellPreparationMode);  // Log current value
       primarySpellbook.spellPreparationMode = type;
+      // primarySpellbook.arcaneSpellFailure = false; // Set arcaneSpellFailure to false
       console.log('After change:', primarySpellbook.spellPreparationMode);  // Log updated value
     } else {
       console.error('Primary spellbook not found in the exportTemplate.');
@@ -797,6 +810,9 @@ async function processItem(itemType, everyItemPath, itemName, enhancementList, d
       const defaultMatchedItem = items.find(r => r.name === defaultItemName);
       if (defaultMatchedItem) {
         if (defaultItemNameFlag === 0) {
+          // Set the proficient section to true
+          defaultMatchedItem.system.proficient = true;
+                    
           appendEnhancementsToDescription(defaultMatchedItem, enhancementList);
           writeToLocalStorage(`collected${itemType}s`, [defaultMatchedItem]);
           appendJsonToTemplate([defaultMatchedItem], exportTemplate, itemType);
@@ -811,6 +827,9 @@ async function processItem(itemType, everyItemPath, itemName, enhancementList, d
       }
       return defaultItemNameFlag;  // Ensure the flag is returned
     }
+
+    // Set the proficient section to true
+    matchedItem.system.proficient = true; 
 
     // Append enhancements to the item (only once)
     console.log(matchedItem);
