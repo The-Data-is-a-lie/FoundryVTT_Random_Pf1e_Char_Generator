@@ -138,7 +138,11 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    // Fixing Casting level
   updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.primary, 'casterType');
   updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.secondary, 'casterType');
-  
+
+  // Fixing casting stat
+  updateAttribute(characterData.main_stat, exportTemplate.system.attributes.spells.spellbooks.primary, 'ability');
+  updateAttribute(characterData.main_stat, exportTemplate.system.attributes.spells.spellbooks.secondary, 'ability');
+    
   console.log("this is the casting level", characterData.casting_level_str_foundry);
   //  Arcane spell failure
   // Define divine casters
@@ -146,11 +150,21 @@ const upper_case_class = capitalizeWords(characterData.c_class);
 
 // Check if the class (in lower case) is in the list
 if (divine_casters.some(cls => cls.toLowerCase() === characterData.c_class.toLowerCase())) {
+  // spell failure
   updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
   updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
+  // spell type 
+  updateAttribute('divine', exportTemplate.system.attributes.spells.spellbooks.primary, 'kind');
+  updateAttribute('divine', exportTemplate.system.attributes.spells.spellbooks.secondary, 'kind');
+
 } else {
+  // spell failure
   updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
   updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
+
+  // spell type
+  updateAttribute('arcane', exportTemplate.system.attributes.spells.spellbooks.primary, 'kind');
+  updateAttribute('arcane', exportTemplate.system.attributes.spells.spellbooks.secondary, 'kind');
 }
 
 // Fixing spell level
