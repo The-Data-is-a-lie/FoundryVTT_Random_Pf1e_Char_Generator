@@ -179,13 +179,15 @@ if (divine_casters.some(cls => cls.toLowerCase() === characterData.c_class.toLow
     { label: "", value: characterData.older_brothers },
     { label: "", value: characterData.older_sisters },
     { label: "this is your situation growing up with your parents: ", value: characterData.parents },
-    { label: "these are your typical mannerisms:", value: characterData.mannerisms },
-    { label: "these are your flaws:", value: characterData.flaws },
+    { label: "these are your typical mannerisms:", value: characterData.mannerisms},
+    { label: "these are your personality traits: ", value: characterData.personality_traits},
+    { label: "these are your flaws:", value: characterData.flaw},
     { label: "this is your hair type:", value: characterData.hair_type },
     { label: "this is your hair color:", value: characterData.hair_color },
     { label: "this is your eye color: ", value: characterData.eye_color },
     { label: "this is your appearance:", value: characterData.appearance },
-    { label: "these are your background traits (for personality): ", value: characterData.background_traits },
+    { label: "these are your professions: ", value: characterData.professions },
+    { label: "these are your background traits: ", value: characterData.background_traits },
     { label: "this is your region of origin: ", value: characterData.region },
     { label: "These are your specialty schools: ", value: characterData.specialty_schools },
     { label: "These are your counter schools:   ", value: characterData.counter_schools },
@@ -386,6 +388,28 @@ processClass(upper_case_class, characterData.level, class_list);
 
 // ------ End of Class Data Section ------ //
 
+// ------ Start of Race Section ------ //
+async function gatherRace(race) {
+  const everyRacePathData = fileDataDictionary[everyRacePath];
+  const items = extractItems(everyRacePathData);
+  const matchedItems = items.filter(item => item.name === race);
+  console.log("matchedItems", matchedItems);
+  if (!matchedItems) return;
+
+  console.log("gate 1")
+  writeToLocalStorage("Race", matchedItems);
+
+  console.log("gate 2")
+  // Append the collected items to exportTemplate
+  appendJsonToTemplate(matchedItems, exportTemplate, "Class");
+
+  console.log("gate 3")
+  // Save the updated exportTemplate back to localStorage
+  writeToLocalStorage('exportTemplate', exportTemplate);
+}
+
+await gatherRace(characterData.chosen_race);
+// ------ End of Race Section ------ //
 
 // ------ Start of Archetype Section ------ //
 async function processArchetype(targetArchetype) {
@@ -489,40 +513,6 @@ function convertToStringSimple(key, featureData) {
   htmlString += "</ul>";
   return htmlString;
 }
-
-// function convertSorcererAbilityToHtmlWithBoldNames(featureData) {
-//   let htmlString = '';
-
-//   // Check if the featureData is an array (like bonus feats or bonus spells)
-//   if (Array.isArray(featureData)) {
-//     htmlString = '<ul>';
-//     featureData.forEach(item => {
-//       htmlString += `<li>${item}</li>`;
-//     });
-//     htmlString += '</ul>';
-//   }
-//   // Check if the featureData is a string (ability description)
-//   else if (typeof featureData === 'string') {
-//     htmlString = `<p>${featureData}</p>`;
-//   }
-//   // If it's an object (though not expected for a sorcerer ability), convert to a formatted string
-//   else if (typeof featureData === 'object') {
-//     htmlString = `<pre>${JSON.stringify(featureData, null, 2)}</pre>`;
-//   }
-
-//   return htmlString;
-// }
-
-// function formatSorcererBloodline(featureData) {
-//   let htmlString = '';
-
-//   for (const [key, value] of Object.entries(featureData)) {
-//     // Bold the name of the ability
-//     htmlString += `<strong>${key}</strong>: ${convertSorcererAbilityToHtmlWithBoldNames(value)}<br>`;
-//   }
-
-//   return htmlString;
-// }
 
 // Custom stringify function that maintains order of keys
 function stableStringify(obj) {
