@@ -29,17 +29,29 @@ export async function fetchDataAndSaveToLocalStorage(location, storageKey) {
     }
 }
 
-// Function to retrieve the data from localStorage
-export async function getCharacterData(storageKey) {
-    // Get the character data from localStorage
-    const pulledCharacterData = JSON.parse(localStorage.getItem(storageKey));
 
-    // Check if the data exists and log it
-    if (pulledCharacterData) {
-        console.log('Pulled Character Data:', pulledCharacterData);
-        return pulledCharacterData;
+async function stableStringify(obj) {
+    if (Array.isArray(obj)) {
+      return `[${obj.map(stableStringify).join(',')}]`;
+    } else if (obj && typeof obj === 'object') {
+      const keys = Object.keys(obj); // preserve original key order
+      const keyValuePairs = keys.map(key => `"${key}":${stableStringify(obj[key])}`);
+      return `{${keyValuePairs.join(',')}}`;
     } else {
-        console.log('No character data found in localStorage.');
-        return null;
+      return JSON.stringify(obj);
     }
-}
+  }
+// // Function to retrieve the data from localStorage
+// export async function getCharacterData(storageKey) {
+//     // Get the character data from localStorage
+//     const pulledCharacterData = JSON.parse(localStorage.getItem(storageKey));
+
+//     // Check if the data exists and log it
+//     if (pulledCharacterData) {
+//         console.log('Pulled Character Data:', pulledCharacterData);
+//         return pulledCharacterData;
+//     } else {
+//         console.log('No character data found in localStorage.');
+//         return null;
+//     }
+// }

@@ -396,14 +396,11 @@ async function gatherRace(race) {
   console.log("matchedItems", matchedItems);
   if (!matchedItems) return;
 
-  console.log("gate 1")
   writeToLocalStorage("Race", matchedItems);
 
-  console.log("gate 2")
   // Append the collected items to exportTemplate
   appendJsonToTemplate(matchedItems, exportTemplate, "Class");
 
-  console.log("gate 3")
   // Save the updated exportTemplate back to localStorage
   writeToLocalStorage('exportTemplate', exportTemplate);
 }
@@ -413,10 +410,26 @@ await gatherRace(characterData.chosen_race);
 
 // ------ Start of Archetype Section ------ //
 async function processArchetype(targetArchetype) {
+  console.log(typeof targetArchetype);
+    // If the targetArchetype is a string, try parsing it
+    if (typeof targetArchetype === 'string') {
+      try {
+          targetArchetype = JSON.parse(targetArchetype);
+          console.log("Parsed archetype_info:", targetArchetype);
+      } catch (error) {
+          console.error("Error parsing archetype_info:", error);
+          return;
+      }
+  }
+
+  console.log("characterData.archetype_info", targetArchetype);
+  // Validate targetArchetype is an object
   if (!targetArchetype || typeof targetArchetype !== 'object') {
       console.error("Invalid targetArchetype:", targetArchetype);
       return;
   }
+
+  console.log("characterData.archetype_info", characterData.archetype_info);
 
   // Get archetypeInfo and ensure it's an object
   let archetypeInfo = fileDataDictionary[archetypePath];
@@ -424,7 +437,7 @@ async function processArchetype(targetArchetype) {
   if (typeof archetypeInfo !== 'object' || archetypeInfo === null) {
       console.warn("archetypeInfo is not an object. Attempting to fix...");
       
-      // Check if it's a valid JSON string and parse it
+      // Attempt to parse JSON if needed
       try {
           archetypeInfo = JSON.parse(archetypeInfo);
       } catch (error) {
@@ -436,7 +449,7 @@ async function processArchetype(targetArchetype) {
   console.log("archetype pre trial", archetypeInfo);
   console.log("targetArchetype", targetArchetype);
 
-  // Extract the first key from targetArchetype (e.g., "Visionary")
+  // Extract the first key from targetArchetype (e.g., "Cold Iron Warden")
   const archetypeKey = Object.keys(targetArchetype)[0]; 
 
   if (!archetypeKey) {
@@ -448,16 +461,22 @@ async function processArchetype(targetArchetype) {
   archetypeInfo.name = archetypeKey;
 
   // Ensure system and description exist before modifying
-  // archetypeInfo.system = archetypeInfo.system || {};
-  // archetypeInfo.system.description = archetypeInfo.system.description || {};
-  archetypeInfo.system.description.value = convertToStringSimple(archetypeKey,targetArchetype);
+  archetypeInfo.system = archetypeInfo.system || {};
+  archetypeInfo.system.description = archetypeInfo.system.description || {};
 
+  // Convert the description and assign it
+  // We pass targetArchetype[archetypeKey] which is the data associated with that archetype
+  archetypeInfo.system.description.value = convertToStringSimple(archetypeKey, targetArchetype[archetypeKey]);
+
+  // Save to localStorage and append to template
   writeToLocalStorage('archetypeInfo', archetypeInfo);
   appendJsonToTemplate([archetypeInfo], exportTemplate, "archetypeInfo");
   writeToLocalStorage('exportTemplate', exportTemplate);
 }
 
 await processArchetype(characterData.archetype_info);
+
+
 
 // ------ End of Archetype Section ------ //
 
@@ -476,27 +495,6 @@ async function generateUniqueID() {
 
 
 // ----- Start of Class Features Section ----- //
-// function convertToStringPrereqBenefit(featureData) {
-//   if (!featureData || typeof featureData !== "object") {
-//       return "<p><strong>Benefits:</strong> No benefits available.</p>";
-//   }
-
-//   // Extract benefits and prerequisites safely
-//   let benefits = featureData.benefits?.value || featureData.benefits || "No benefits available.";
-//   let prerequisites = featureData.prerequisites?.value || featureData.prerequisites || null;
-
-//   let htmlString = "<p>";
-
-//   // Add prerequisites if they exist
-//   if (prerequisites) {
-//       htmlString += `<strong>Prerequisites:</strong> ${prerequisites}</p><p>`;
-//   }
-
-//   // Add benefits (always included)
-//   htmlString += `<strong>Benefits:</strong> ${benefits}</p>`;
-
-//   return htmlString;
-// }
 
 
 function convertToStringSimple(key, featureData) {
@@ -507,7 +505,7 @@ function convertToStringSimple(key, featureData) {
   let htmlString = `<p><strong>${key}</strong></p><ul>`;
 
   for (const [key, value] of Object.entries(featureData)) {
-      htmlString += `<li><strong>${key}:</strong> ${typeof value === "object" ? JSON.stringify(value, null, 2) : value}</li>`;
+      htmlString += `<li><strong>${key}:</strong> ${typeof value === "object" ? stableStringify(value, null, 2) : value}</li>`;
   }
 
   htmlString += "</ul>";
