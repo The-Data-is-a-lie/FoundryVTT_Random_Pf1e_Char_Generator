@@ -902,7 +902,61 @@ await processEquipment(characterData);
 
 
 // ----- End of Weapon/Armor Section ----- //
+async function check_ammo() {
+  const collectedWeapons = JSON.parse(localStorage.getItem('collectedWeapons')); // Parse the JSON string
 
+    console.log("collectedWeapons:", collectedWeapons[0].system.ammo.type);
+  // Check if collectedWeapons, its system property, and ammo exist
+  if (!collectedWeapons[0] || !collectedWeapons[0].system || !collectedWeapons[0].system.ammo || !collectedWeapons[0].system.ammo.type) {
+    console.log("No ammo found or ammo type is missing. Ending function.");
+    return; // End the function
+  }
+
+  // Access the ammo type
+  const ammo_type = collectedWeapons[0].system.ammo.type;
+  console.log("Ammo type:", ammo_type);
+
+  // Continue with the rest of the function
+  select_random_ammo(ammo_type);
+}
+
+async function select_random_ammo(ammo_type) {
+  // Retrieve the weapons data from the fileDataDictionary
+  const weapons = fileDataDictionary[everyWeaponPath];
+
+  // Check if weapons is an array
+  if (!Array.isArray(weapons)) {
+    console.error('Weapons data is not an array or is undefined:', weapons);
+    return;
+  }
+
+  // Filter weapons where subType is "ammo" and extraType matches ammo_type
+  const filteredAmmo = weapons.filter(
+    weapon => weapon.system.subType === "ammo" && weapon.system.extraType === ammo_type
+  );
+
+  // Check if any matching ammo was found
+  if (filteredAmmo.length === 0) {
+    console.warn(`No ammo found with subType "ammo" and extraType "${ammo_type}".`);
+    return;
+  }
+
+  // Select a random ammo from the filtered list
+  const randomAmmo = filteredAmmo[Math.floor(Math.random() * filteredAmmo.length)];
+
+  // Log the selected ammo
+  console.log("Selected random ammo:", randomAmmo);
+
+  // Perform any additional actions with the selected ammo
+  writeToLocalStorage('selectedAmmo', randomAmmo);
+  appendJsonToTemplate([randomAmmo], exportTemplate, "Ammo");
+  writeToLocalStorage('exportTemplate', exportTemplate);
+}
+
+await check_ammo();
+// ----- Start of Ammo Section ----- //
+
+// ----- End of Ammo Section ----- //
 
 // ----- Start of Skills Section ----- //
 
