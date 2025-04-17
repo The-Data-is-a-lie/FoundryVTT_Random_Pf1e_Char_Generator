@@ -527,6 +527,10 @@ function stableStringify(obj) {
 
 
 async function updateClassFeatures(fileDataDictionary, classFeatures) {
+  console.log("****************** starting class features ******************");
+  console.log("characterData", characterData);
+  console.log("classFeatures:", classFeatures);
+  console.log("characterData.class_features", characterData.class_features);
   if (!fileDataDictionary || typeof fileDataDictionary !== 'object' || !classFeatures || typeof classFeatures !== 'object') {
       console.error("Invalid input data.");
       return;

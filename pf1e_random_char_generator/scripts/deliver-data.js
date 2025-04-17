@@ -23,11 +23,7 @@ export async function sendDataToServer(data, location, storageKey) {
     .then(responseData => {
         // Log the response data returned from the server
         console.log("2nd data send check:", responseData);
-        localStorage.setItem(storageKey, JSON.stringify(
-            Object.fromEntries(new Map(Object.entries(responseData))),
-            null, // Replacer function, can be left as null if you don't need one
-            2     // Indentation for pretty-printing
-        ));
+        localStorage.setItem(storageKey, JSON.stringify(responseData));
 
     })
     .catch(error => {
