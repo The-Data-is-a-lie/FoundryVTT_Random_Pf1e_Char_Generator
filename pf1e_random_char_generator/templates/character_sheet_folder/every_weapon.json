@@ -205,10 +205,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -458,10 +455,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -711,10 +705,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -961,10 +952,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -1315,10 +1303,7 @@
         "base": [
           "bladesLight",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -1771,10 +1756,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -2134,10 +2116,7 @@
         "base": [
           "double",
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -2384,10 +2363,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -2637,10 +2613,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -2887,10 +2860,7 @@
         "base": [
           "flails",
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -3140,10 +3110,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -3389,10 +3356,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -3757,10 +3721,7 @@
       "weaponGroups": {
         "base": [
           "bows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "bone",
@@ -4115,10 +4076,7 @@
       "weaponGroups": {
         "base": [
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -4368,10 +4326,7 @@
         "Harvester"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -4615,10 +4570,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -4968,10 +4920,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -5241,10 +5190,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -5490,10 +5436,7 @@
         "base": [
           "bladesLight",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -5739,10 +5682,7 @@
         "Crushing Wheel"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -5986,10 +5926,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -6240,10 +6177,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -6702,10 +6636,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -6969,10 +6900,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -7218,10 +7146,7 @@
         "base": [
           "monk",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -7472,10 +7397,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -7722,10 +7644,7 @@
         "base": [
           "flails",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -7975,10 +7894,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -8337,10 +8253,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -8586,10 +8499,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -8833,10 +8743,7 @@
       "weaponGroups": {
         "base": [
           "double"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -9086,10 +8993,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -9335,10 +9239,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -9584,10 +9485,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -9833,10 +9731,7 @@
         "Thorn Bracer"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "leather",
@@ -10080,10 +9975,7 @@
         "Shortbow"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "wood",
@@ -10432,10 +10324,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -10684,10 +10573,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -11035,10 +10921,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -11395,10 +11278,7 @@
         "Kobold Tail Attachment"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -11758,10 +11638,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -12006,10 +11883,7 @@
         "base": [
           "double",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -12260,10 +12134,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -12622,10 +12493,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -12861,10 +12729,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -13559,10 +13424,7 @@
         "Rhomphaia"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -13810,10 +13672,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -14164,10 +14023,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -14414,10 +14270,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -14882,10 +14735,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -15120,10 +14970,7 @@
         "Siege Tower"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -15366,10 +15213,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -15608,10 +15452,7 @@
         "Gas Cylinder"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -15860,10 +15701,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -16109,10 +15947,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -16474,10 +16309,7 @@
         "base": [
           "axes",
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -16819,10 +16651,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -17279,10 +17108,7 @@
         "Firewyrm"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -17748,10 +17574,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -18219,10 +18042,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -18581,10 +18401,7 @@
       "weaponGroups": {
         "base": [
           "bows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -18833,10 +18650,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -19083,10 +18897,7 @@
         "base": [
           "hammers",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -19334,10 +19145,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -19588,10 +19396,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -20053,10 +19858,7 @@
         "Firedrake"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -20300,10 +20102,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -20654,10 +20453,7 @@
         "base": [
           "hammers",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -20905,10 +20701,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -21269,10 +21062,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -21512,10 +21302,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -21750,10 +21537,7 @@
         "Assault Bridge"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -22221,10 +22005,7 @@
         "base": [
           "close",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -22475,10 +22256,7 @@
         "base": [
           "bladesHeavy",
           "double"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -22713,10 +22491,7 @@
         "Assault Bridge"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -22960,10 +22735,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -23313,10 +23085,7 @@
         "base": [
           "hammers",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -23673,10 +23442,7 @@
         "base": [
           "bladesLight",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -23923,10 +23689,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -24170,10 +23933,7 @@
         "Light Catapult"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -24419,10 +24179,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -24669,10 +24426,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -24922,10 +24676,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -25172,10 +24923,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -25668,10 +25416,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -25918,10 +25663,7 @@
         "base": [
           "bladesLight",
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -26169,10 +25911,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -26419,10 +26158,7 @@
         "base": [
           "axes",
           "tribal"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -26673,10 +26409,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -26944,10 +26677,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -27415,10 +27145,7 @@
         "Rocket Springal"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -27773,10 +27500,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -28214,10 +27938,7 @@
           "double",
           "hammers",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -28467,10 +28188,7 @@
       "weaponGroups": {
         "base": [
           "bows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -28709,10 +28427,7 @@
         "Siege Tower"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -28959,10 +28674,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -29207,10 +28919,7 @@
         "base": [
           "bladesLight",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -29460,10 +29169,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -29698,10 +29404,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -29945,10 +29648,7 @@
         "Terbutje"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -30304,10 +30004,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -30667,10 +30364,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -31029,10 +30723,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -31276,10 +30967,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -31532,10 +31220,7 @@
           "double",
           "flails",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -31785,10 +31470,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -32038,10 +31720,7 @@
         "Trebuchet"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -32284,10 +31963,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -32531,10 +32207,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -32893,10 +32566,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -33142,10 +32812,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -33392,10 +33059,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -33641,10 +33305,7 @@
       "weaponGroups": {
         "base": [
           "double"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -33892,10 +33553,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -34143,10 +33801,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -34392,10 +34047,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -34641,10 +34293,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -34891,10 +34540,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -35144,10 +34790,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -35393,10 +35036,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -35641,10 +35281,7 @@
         "Heavy Ballista"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -35890,10 +35527,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -36242,10 +35876,7 @@
         "Lizard King War Trident"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -36482,10 +36113,7 @@
         "Gallery"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -36730,10 +36358,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -37086,10 +36711,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -37338,10 +36960,7 @@
         "base": [
           "flails",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -37593,10 +37212,7 @@
         "Standard Bombard"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -37840,10 +37456,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -38092,10 +37705,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -38343,10 +37953,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -38593,10 +38200,7 @@
       "weaponGroups": {
         "base": [
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -38847,10 +38451,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -39100,10 +38701,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -39349,10 +38947,7 @@
       "weaponGroups": {
         "base": [
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -39598,10 +39193,7 @@
       "weaponGroups": {
         "base": [
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -39847,10 +39439,7 @@
         "Earthmaul"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -40093,10 +39682,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -40325,10 +39911,7 @@
         "Assault Bridge"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -40572,10 +40155,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -40925,10 +40505,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -41174,10 +40751,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -41638,10 +41212,7 @@
         "base": [
           "hammers",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -41993,10 +41564,7 @@
         "base": [
           "hammers",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -42240,10 +41808,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -42598,10 +42163,7 @@
           "bladesLight",
           "bladesHeavy",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -42849,10 +42411,7 @@
         "M1914 Grenade (Concussion)"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -43098,10 +42657,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -43452,10 +43008,7 @@
           "spears",
           "thrown",
           "tribal"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -43705,10 +43258,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -43956,10 +43506,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -44209,10 +43756,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -44572,10 +44116,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -44826,10 +44367,7 @@
         "base": [
           "double",
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -45080,10 +44618,7 @@
         "Manticore's Tail"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -45438,10 +44973,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "leather",
@@ -45806,10 +45338,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -46061,10 +45590,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -46394,10 +45920,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -46655,10 +46178,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -47009,10 +46529,7 @@
           "bladesLight",
           "monk",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -47260,10 +46777,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -47510,10 +47024,7 @@
         "Pickaxe"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -47758,10 +47269,7 @@
         "Light Flail"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "leather",
@@ -48011,10 +47519,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -48259,10 +47764,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -48504,10 +48006,7 @@
         "Light Ballista"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -48754,10 +48253,7 @@
         "base": [
           "axes",
           "double"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -49010,10 +48506,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -49372,10 +48865,7 @@
       "weaponGroups": {
         "base": [
           "bows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -49623,10 +49113,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -49984,10 +49471,7 @@
         "base": [
           "bladesHeavy",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -50231,10 +49715,7 @@
         "Cannon"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -50480,10 +49961,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -50732,10 +50210,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -50985,10 +50460,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -51235,10 +50707,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -51594,10 +51063,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -51838,10 +51304,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -52203,10 +51666,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -52449,10 +51909,7 @@
         "Kobold Tail Attachment"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -52702,10 +52159,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -52949,10 +52403,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -53202,10 +52653,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -53454,10 +52902,7 @@
         "base": [
           "double",
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -53707,10 +53152,7 @@
         "Ram"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -54177,10 +53619,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -54428,10 +53867,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -54677,10 +54113,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -54926,10 +54359,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -55177,10 +54607,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -55430,10 +54857,7 @@
         "base": [
           "close",
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "stone",
@@ -55791,10 +55215,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -56040,10 +55461,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -56389,10 +55807,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -56862,10 +56277,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -57221,10 +56633,7 @@
         "Elven Leafblade"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -57471,10 +56880,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -57939,10 +57345,7 @@
         "Gallery"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -58186,10 +57589,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -58439,10 +57839,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -58688,10 +58085,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -58940,10 +58334,7 @@
       "weaponGroups": {
         "base": [
           "double"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -59193,10 +58584,7 @@
         "Kobold Tail Attachment"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -59444,10 +58832,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -59802,10 +59187,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -60056,10 +59438,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -60303,10 +59682,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -60552,10 +59928,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "leather",
@@ -60800,10 +60173,7 @@
         "base": [
           "flails",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -61164,10 +60534,7 @@
         "base": [
           "bladesHeavy",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -61415,10 +60782,7 @@
         "base": [
           "close",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -61668,10 +61032,7 @@
         "base": [
           "bladesHeavy",
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -62020,10 +61381,7 @@
         "Gallery"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -62267,10 +61625,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -62516,10 +61871,7 @@
         "Ram"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -62764,10 +62116,7 @@
         "base": [
           "spears",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -63126,10 +62475,7 @@
         "Arrow Springal"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -63372,10 +62718,7 @@
         "Kasatha Spinal Sword"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -63727,10 +63070,7 @@
           "close",
           "monk",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -63977,10 +63317,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -64229,10 +63566,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -64476,10 +63810,7 @@
       "weaponGroups": {
         "base": [
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -64729,10 +64060,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -65089,10 +64417,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -65341,10 +64666,7 @@
         "Tepoztopilli"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -65704,10 +65026,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -65959,10 +65278,7 @@
         "base": [
           "axes",
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -66208,10 +65524,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -66457,10 +65770,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -66706,10 +66016,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -67068,10 +66375,7 @@
         "base": [
           "close",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -67320,10 +66624,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -67563,10 +66864,7 @@
         "Heavy Trebuchet"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -67811,10 +67109,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -68067,10 +67362,7 @@
           "double",
           "flails",
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -68316,10 +67608,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -68565,10 +67854,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -68819,10 +68105,7 @@
       "weaponGroups": {
         "base": [
           "double"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -69076,10 +68359,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -69323,10 +68603,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -69568,10 +68845,7 @@
         "Siege Tower"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -69816,10 +69090,7 @@
         "base": [
           "bladesHeavy",
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -70065,10 +69336,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -70313,10 +69581,7 @@
         "base": [
           "close",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -70564,10 +69829,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -71141,10 +70403,7 @@
         "base": [
           "hammers",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -71391,10 +70650,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -71639,10 +70895,7 @@
         "base": [
           "close",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -72001,10 +71254,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -72253,10 +71503,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -72502,10 +71749,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "leather",
@@ -72744,10 +71988,7 @@
         "Escalade Ladder"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -72991,10 +72232,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -73232,10 +72470,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -73479,10 +72714,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -73730,10 +72962,7 @@
       "weaponGroups": {
         "base": [
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -73980,10 +73209,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -74230,10 +73456,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -74477,10 +73700,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -74732,10 +73952,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -74982,10 +74199,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -75232,10 +74446,7 @@
         "Heavy Wrist Launcher"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -75471,10 +74682,7 @@
         "M1917 Chemical Grenade"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -75719,10 +74927,7 @@
         "Kobold Tail Attachment"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -75959,10 +75164,7 @@
         "Escalade Ladder"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -76205,10 +75407,7 @@
         "Spring Blade"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -76568,10 +75767,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -76818,10 +76014,7 @@
       "weaponGroups": {
         "base": [
           "axes"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -77174,10 +76367,7 @@
           "bladesLight",
           "thrown",
           "tribal"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -77539,10 +76729,7 @@
         "base": [
           "bladesLight",
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -77790,10 +76977,7 @@
         "base": [
           "double",
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -78041,10 +77225,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -78393,10 +77574,7 @@
           "axes",
           "thrown",
           "tribal"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -78759,10 +77937,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -79008,10 +78183,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -79370,10 +78542,7 @@
         "Gnome Flick-Mace"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -79732,10 +78901,7 @@
         "base": [
           "axes",
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -79982,10 +79148,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -80243,10 +79406,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -80489,10 +79649,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -80738,10 +79895,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -80987,10 +80141,7 @@
         "base": [
           "flails",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -81240,10 +80391,7 @@
         "base": [
           "double",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -81491,10 +80639,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -81742,10 +80887,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -81995,10 +81137,7 @@
           "monk",
           "polearms",
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -82243,10 +81382,7 @@
         "Gate Breaker Ballista"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -82491,10 +81627,7 @@
         "base": [
           "bladesLight",
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -82740,10 +81873,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -82993,10 +82123,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -83244,10 +82371,7 @@
         "base": [
           "bladesLight",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -83499,10 +82623,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -83746,10 +82867,7 @@
         "Ram"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -83994,10 +83112,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -84241,10 +83356,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -84490,10 +83602,7 @@
       "weaponGroups": {
         "base": [
           "bows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -84740,10 +83849,7 @@
         "Bich'hwa"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -84989,10 +84095,7 @@
         "Fiend's Mouth Cannon"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -85236,10 +84339,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -85490,10 +84590,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -85744,10 +84841,7 @@
         "base": [
           "axes",
           "double"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -85993,10 +85087,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -86233,10 +85324,7 @@
         "Escalade Ladder"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -86481,10 +85569,7 @@
         "Longbow"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "wood",
@@ -86719,10 +85804,7 @@
         "Hand Crossbow"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -86966,10 +86048,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -87217,10 +86296,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -87579,10 +86655,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -87826,10 +86899,7 @@
         "Baston Fighting Stick"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -88077,10 +87147,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -88326,10 +87393,7 @@
         "Spider-Leg Sickle"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -88691,10 +87755,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -88942,10 +88003,7 @@
       "weaponGroups": {
         "base": [
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -89198,10 +88256,7 @@
           "double",
           "flails",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -89453,10 +88508,7 @@
       "weaponGroups": {
         "base": [
           "bows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -89703,10 +88755,7 @@
         "Brutal Bola"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -89945,10 +88994,7 @@
         "base": [
           "bladesHeavy",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -90198,10 +89244,7 @@
         "base": [
           "double",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "leather",
@@ -90448,10 +89491,7 @@
         "base": [
           "axes",
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -90698,10 +89738,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -90952,10 +89989,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -91405,10 +90439,7 @@
       "weaponGroups": {
         "base": [
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -91664,10 +90695,7 @@
         "base": [
           "axes",
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -91915,10 +90943,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -92168,10 +91193,7 @@
         "Rapier"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -92421,10 +91443,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -92784,10 +91803,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -93034,10 +92050,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -93285,10 +92298,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -93535,10 +92545,7 @@
       "weaponGroups": {
         "base": [
           "hammers"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -93891,10 +92898,7 @@
         "base": [
           "hammers",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -94140,10 +93144,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -94391,10 +93392,7 @@
         "base": [
           "hammers",
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -94641,10 +93639,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -94881,10 +93876,7 @@
         "Gallery"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -95120,10 +94112,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -95357,10 +94346,7 @@
         "Handwraps"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "cloth",
@@ -95719,10 +94705,7 @@
         "base": [
           "axes",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -95965,10 +94948,7 @@
         "Catapult"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -96543,10 +95523,7 @@
         "Ram"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -96781,10 +95758,7 @@
         "Corvus"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -97029,10 +96003,7 @@
         "base": [
           "bladesHeavy",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -97278,10 +96249,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -97524,10 +96492,7 @@
         "Horsechopper"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -97991,10 +96956,7 @@
           "spears",
           "thrown",
           "tribal"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -98235,10 +97197,7 @@
         "Siege Tower"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -98484,10 +97443,7 @@
         "base": [
           "close",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -98735,10 +97691,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -98984,10 +97937,7 @@
         "Light Trebuchet"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -99343,10 +98293,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -99590,10 +98537,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -99839,10 +98783,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -100091,10 +99032,7 @@
         "base": [
           "flails",
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -100444,10 +99382,7 @@
         "base": [
           "bladesLight",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -100808,10 +99743,7 @@
         "Heavy Bombard"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -101055,10 +99987,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -101310,10 +100239,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -101673,10 +100599,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -102032,10 +100955,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -102512,10 +101432,7 @@
           "double",
           "monk",
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -102873,10 +101790,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -103235,10 +102149,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -103487,10 +102398,7 @@
         "base": [
           "hammers",
           "tribal"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -103850,10 +102758,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -104100,10 +103005,7 @@
         "Heavy Catapult"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -104347,10 +103249,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -104703,10 +103602,7 @@
           "hammers",
           "thrown",
           "tribal"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -104954,10 +103850,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -105203,10 +104096,7 @@
       "weaponGroups": {
         "base": [
           "crossbows"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "wood",
@@ -105564,10 +104454,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -105820,10 +104707,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -106177,10 +105061,7 @@
         "Kobold Tail Attachment"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -106426,10 +105307,7 @@
       "weaponGroups": {
         "base": [
           "spears"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -106670,10 +105548,7 @@
         "Assault Bridge"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -106916,10 +105791,7 @@
         "Dwarven Chain-Flail"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -107274,10 +106146,7 @@
         "M1914 Grenade (Fragmentation)"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -107522,10 +106391,7 @@
       "weaponGroups": {
         "base": [
           "monk"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -107774,10 +106640,7 @@
         "base": [
           "monk",
           "thrown"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -108027,10 +106890,7 @@
       "weaponGroups": {
         "base": [
           "flails"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -108281,10 +107141,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -108519,10 +107376,7 @@
         "Escalade Ladder"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -108768,10 +107622,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -109124,10 +107975,7 @@
           "bladesHeavy",
           "bladesLight",
           "close"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -109373,10 +108221,7 @@
       "weaponGroups": {
         "base": [
           "bladesLight"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -109622,10 +108467,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -109874,10 +108716,7 @@
       "weaponGroups": {
         "base": [
           "firearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -110124,10 +108963,7 @@
         "Light Bombard"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -110372,10 +109208,7 @@
       "weaponGroups": {
         "base": [
           "polearms"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
@@ -110627,10 +109460,7 @@
         "Elven Thornblade"
       ],
       "weaponGroups": {
-        "base": [],
-        "custom": {}
-        
-      },
+        "base": []      },
       "material": {
         "base": {
           "value": "steel",
@@ -110877,10 +109707,7 @@
       "weaponGroups": {
         "base": [
           "bladesHeavy"
-        ],
-        "custom": {}
-        
-      },
+        ]      },
       "material": {
         "base": {
           "value": "steel",
