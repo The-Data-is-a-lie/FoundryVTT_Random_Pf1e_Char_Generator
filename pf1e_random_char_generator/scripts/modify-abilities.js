@@ -143,6 +143,9 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    updateAttribute(characterData.height_number, exportTemplate.system.details, 'height');
    updateAttribute(characterData.weight_number, exportTemplate.system.details, 'weight');
 
+  // Edit token name
+   updateAttribute(characterData.character_full_name, exportTemplate.prototypeToken, 'name');
+
    // Fixing Casting level
   updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.primary, 'casterType');
   updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.secondary, 'casterType');
