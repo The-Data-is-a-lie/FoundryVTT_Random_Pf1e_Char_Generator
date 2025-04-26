@@ -698,6 +698,7 @@ async function Feats_n_Traits() {
   await processFeatTrait(everyFeatPath, characterData.feats, 'feat', 1500, "Feat", true, 1, 2);
   await addFeatSeparator(spaceClassBonusFeatsPath, 'space_function', 2000);
   await processFeatTrait(everyFeatPath, characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3);
+  await processFeatTrait(everyFeatPath, characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2);
   // Traits section
   await processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
 }
