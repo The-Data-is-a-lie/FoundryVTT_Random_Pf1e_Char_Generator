@@ -590,7 +590,7 @@ await updateClassFeatures(fileDataDictionary[baseFeatPath], characterData.class_
 
 // ----- Start of Feat/Trait section ----- //
 
-async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1) {
+async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null) {
   try {
     // Retrieve data from fileDataDictionary based on dataType (feats or traits)
     const data = fileDataDictionary[everyDataPath];
@@ -629,7 +629,9 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
       assignSequentialSort(allMatchedItems, startingSort);
       if (dataType === 'feat') {
       // Add Received location
-      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step);
+      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels);
+      // Assign Feat subType
+      assignToFeatSection(allMatchedItems);      
       }            
       // Instead of writing to a file, we write to localStorage
       writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, allMatchedItems);
@@ -669,7 +671,7 @@ async function addFeatSeparator(filePath, dataType, startingSort = 0) {
   }
 }
 
-function assignSequentialSort(items, startingSort = 0, step = 10) {
+async function assignSequentialSort(items, startingSort = 0, step = 10) {
   let currentSort = startingSort;
   for (const item of items) {
     item.sort = currentSort;
@@ -677,24 +679,39 @@ function assignSequentialSort(items, startingSort = 0, step = 10) {
   }
 }
 
+async function assignToFeatSection(items) {
+  for (const item of items) {
+    if (item.system) {
+      item.system.subType = "feat";
+    } else {
+      console.warn("Item missing 'system' property:", item);
+    }
+  }
+}
 async function Feats_n_Traits() {
   // Feats section
   await addFeatSeparator(spaceBackgroundPath, 'space_function', 1);
+  await processFeatTrait(everyFeatPath, characterData.flavor_feats, 'feat', 200, "Flavor");
+  await processFeatTrait(everyFeatPath, characterData.flaw_feats, 'feat', 250, "Flaw", true, 1, 1);
+  await processFeatTrait(everyFeatPath, characterData.story_feats, 'feat', 500, "Story Feat", true, 1, 5, [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100]);
   await addFeatSeparator(spaceFeatsPath, 'space_function', 1000);
-  await processFeatTrait(everyFeatPath, characterData.feats, 'feat', 1500, "FEAT", true, 1, 2);
+  await processFeatTrait(everyFeatPath, characterData.feats, 'feat', 1500, "Feat", true, 1, 2);
   await addFeatSeparator(spaceClassBonusFeatsPath, 'space_function', 2000);
+  await processFeatTrait(everyFeatPath, characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3);
   // Traits section
   await processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
 }
 
-function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1) {
+function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null) {
   let current = startingNumber;
 
-  for (const item of items) {
-    item.name = `(${label} ${current}) ${item.name}`;
-    if (shouldIncrement) current += step;
+  for (let i = 0; i < items.length; i++) {
+    const level = customLevels?.[i] ?? current;
+    items[i].name = `(${label} ${level}) ${items[i].name}`;
+    if (!customLevels && shouldIncrement) current += step;
   }
 }
+
 
 await Feats_n_Traits();
 // ------ End of Feat/Trait Section ------ //

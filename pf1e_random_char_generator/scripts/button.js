@@ -13,9 +13,9 @@ import { main } from './modify-abilities.js';
 // need export so we can import in main.js
 export async function createPersistentButton() {
   // test server
-  // const deliver_location = 'http://localhost:5000/update_character_data';
+  const deliver_location = 'http://localhost:5000/update_character_data';
   // perm server
-  const deliver_location = 'https://pathfinder-char-creator-web-latest.onrender.com/update_character_data';
+  // const deliver_location = 'https://pathfinder-char-creator-web-latest.onrender.com/update_character_data';
   
 
 
@@ -256,7 +256,14 @@ function showCharacterGeneratorDialog() {
         <option value="y" ${savedData.inherents === "y" ? "selected" : ""}>Yes</option>
         <option value="n" ${savedData.inherents === "n" ? "selected" : ""}>No</option>
       </select>
-    </div>     
+    </div>    
+    <div>
+      <label for="homebrew_feat_amount">Do you want my homebrew feat amount:</label>
+      <select id="homebrew_feat_amount">
+        <option value="y" ${savedData.homebrew_feat_amount === "y" ? "selected" : ""}>Yes</option>
+        <option value="n" ${savedData.homebrew_feat_amount === "n" ? "selected" : ""}>No</option>
+      </select>
+    </div>      
     <div>
       <label for="dice-rolls">Number of Dice:</label>
       <input type="number" id="dice-rolls" min="1" value="${savedData.diceRolls || ''}">
@@ -300,6 +307,7 @@ function showCharacterGeneratorDialog() {
             gender: document.getElementById('gender').value,
             randomFeats: document.getElementById('random-feats').value,
             inherents: document.getElementById('inherents').value,
+            homebrew_feat_amount: document.getElementById('homebrew_feat_amount').value,
             diceRolls: document.getElementById('dice-rolls').value,
             diceSides: document.getElementById('dice-sides').value,
             highestLevel: document.getElementById('highest-level').value,
