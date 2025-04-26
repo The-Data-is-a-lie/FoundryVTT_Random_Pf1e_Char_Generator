@@ -13,9 +13,9 @@ import { main } from './modify-abilities.js';
 // need export so we can import in main.js
 export async function createPersistentButton() {
   // test server
-  // const deliver_location = 'http://localhost:5000/update_character_data';
+  const deliver_location = 'http://localhost:5000/update_character_data';
   // perm server
-  const deliver_location = 'https://pathfinder-char-creator-web-latest.onrender.com/update_character_data';
+  // const deliver_location = 'https://pathfinder-char-creator-web-latest.onrender.com/update_character_data';
   
 
 
@@ -124,17 +124,17 @@ function showCharacterGeneratorDialog() {
     <div>
       <label for="character-region">Select Region:</label>
       <select id="character-region">
-        <option value="0" ${savedData.region === "0" ? "selected" : ""}>Random</option>
-        <option value="1" ${savedData.region === "1" ? "selected" : ""}>Tal-falko</option>
-        <option value="2" ${savedData.region === "2" ? "selected" : ""}>Dolestan</option>
-        <option value="3" ${savedData.region === "3" ? "selected" : ""}>Sojoria</option>
-        <option value="4" ${savedData.region === "4" ? "selected" : ""}>Ieso</option>
-        <option value="5" ${savedData.region === "5" ? "selected" : ""}>Spire</option>
-        <option value="6" ${savedData.region === "6" ? "selected" : ""}>Feyador</option>
-        <option value="7" ${savedData.region === "7" ? "selected" : ""}>Esterdragon</option>
-        <option value="8" ${savedData.region === "8" ? "selected" : ""}>Grundykin Damplands</option>
-        <option value="9" ${savedData.region === "9" ? "selected" : ""}>Dust Cairn</option>
-        <option value="10" ${savedData.region === "10" ? "selected" : ""}>Kaeru no Tochi</option>
+        <option value="Random" ${savedData.region === "Random" ? "selected" : ""}>Random</option>
+        <option value="Tal-falko" ${savedData.region === "Tal-falko" ? "selected" : ""}>Tal-falko</option>
+        <option value="Dolestan" ${savedData.region === "Dolestan" ? "selected" : ""}>Dolestan</option>
+        <option value="Sojoria" ${savedData.region === "Sojoria" ? "selected" : ""}>Sojoria</option>
+        <option value="Ieso" ${savedData.region === "Ieso" ? "selected" : ""}>Ieso</option>
+        <option value="Spire" ${savedData.region === "Spire" ? "selected" : ""}>Spire</option>
+        <option value="Feyador" ${savedData.region === "Feyador" ? "selected" : ""}>Feyador</option>
+        <option value="Esterdragon" ${savedData.region === "Esterdragon" ? "selected" : ""}>Esterdragon</option>
+        <option value="Grundykin Damplands" ${savedData.region === "Grundykin Damplands" ? "selected" : ""}>Grundykin Damplands</option>
+        <option value="Dust Cairn" ${savedData.region === "Dust Cairn" ? "selected" : ""}>Dust Cairn</option>
+        <option value="Kaeru no Tochi" ${savedData.region === "Kaeru no Tochi" ? "selected" : ""}>Kaeru no Tochi</option>
       </select>
     </div>
     <div>
@@ -302,8 +302,8 @@ function showCharacterGeneratorDialog() {
             race: document.getElementById('character-race').value,
             class: document.getElementById('character-class').value,
             multiclass: document.getElementById('multiclass').value,
-            deity: document.getElementById('deity').value,
             alignment: document.getElementById('alignment').value,
+            deity: document.getElementById('deity').value,
             gender: document.getElementById('gender').value,
             randomFeats: document.getElementById('random-feats').value,
             inherents: document.getElementById('inherents').value,
