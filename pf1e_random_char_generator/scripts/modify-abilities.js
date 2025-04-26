@@ -17,16 +17,21 @@ export async function main() {
 
     // char_sheet_folders
     const unmodifiedPreExportTemplatePath = charSheetBase.target + "/unmodified_pre_export_template.json";
-    const preExportTemplatePath = charSheetBase.target + "/pre_export_template.json";
-    const everyArmorPath = charSheetBase.target + "/every_armor.json";
-    const everyClassPath = charSheetBase.target + "/every_class.json";
-    const everyFeatPath = charSheetBase.target + "/every_feat.json";
-    const everyItemPath = charSheetBase.target + "/every_item.json";
-    const everyRacePath = charSheetBase.target + "/every_race.json";
-    const everySpellPath = charSheetBase.target + "/every_spell.json";
-    const everyTraitPath = charSheetBase.target + "/every_trait.json";
-    const everyWeaponPath = charSheetBase.target + "/every_weapon.json";
-    const archetypePath = charSheetBase.target + "/archetype.json";
+    const preExportTemplatePath           = charSheetBase.target + "/pre_export_template.json";
+    const everyArmorPath                  = charSheetBase.target + "/every_armor.json";
+    const everyClassPath                  = charSheetBase.target + "/every_class.json";
+    const everyFeatPath                   = charSheetBase.target + "/every_feat.json";
+    const everyItemPath                   = charSheetBase.target + "/every_item.json";
+    const everyRacePath                   = charSheetBase.target + "/every_race.json";
+    const everySpellPath                  = charSheetBase.target + "/every_spell.json";
+    const everyTraitPath                  = charSheetBase.target + "/every_trait.json";
+    const everyWeaponPath                 = charSheetBase.target + "/every_weapon.json";
+    const archetypePath                   = charSheetBase.target + "/archetype.json";
+
+    // space_background
+    const spaceBackgroundPath             = charSheetBase.target + "/space_Background.json";
+    const spaceFeatsPath                  = charSheetBase.target + "/space_Feats.json";
+    const spaceClassBonusFeatsPath        = charSheetBase.target + "/space_ClassBonusFeats.json";
 
     // base_folder
     const baseFeatPath = base.target + "/base_feat.json";
@@ -44,10 +49,13 @@ export async function main() {
       everyRacePath,
       everySpellPath,
       everyTraitPath,
-      everyWeaponPath,
+      everyWeaponPath, 
       baseFeatPath,
       baseSkillPath,
       archetypePath,      
+      spaceBackgroundPath,
+      spaceClassBonusFeatsPath,
+      spaceFeatsPath,
     ]    
 
     // Create a dictionary to hold all the file dictionaries
@@ -582,7 +590,7 @@ await updateClassFeatures(fileDataDictionary[baseFeatPath], characterData.class_
 
 // ----- Start of Feat/Trait section ----- //
 
-async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType) {
+async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1) {
   try {
     // Retrieve data from fileDataDictionary based on dataType (feats or traits)
     const data = fileDataDictionary[everyDataPath];
@@ -617,6 +625,12 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType) {
     }
 
     if (allMatchedItems.length > 0) {
+      // 🔥 Apply sort order
+      assignSequentialSort(allMatchedItems, startingSort);
+      if (dataType === 'feat') {
+      // Add Received location
+      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step);
+      }            
       // Instead of writing to a file, we write to localStorage
       writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, allMatchedItems);
 
@@ -637,11 +651,52 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Feats section
-processFeatTrait(everyFeatPath, characterData.feats, 'feat');
-// Traits section
-processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
+// --- adding Feat separators --- //
+async function addFeatSeparator(filePath, dataType, startingSort = 0) {
+  try {
+    const data = fileDataDictionary[filePath];
+    const wrappedData = Array.isArray(data) ? data : [data];
 
+    // 🔥 Apply sort
+    assignSequentialSort(wrappedData, startingSort);
+
+    writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, wrappedData);
+    appendJsonToTemplate(wrappedData, exportTemplate, capitalizeFirstLetter(dataType));
+    writeToLocalStorage('exportTemplate', exportTemplate);
+    console.log(`${dataType} data successfully added from ${filePath}`);
+  } catch (error) {
+    console.error(`Error processing ${dataType} from ${filePath}:`, error);
+  }
+}
+
+function assignSequentialSort(items, startingSort = 0, step = 10) {
+  let currentSort = startingSort;
+  for (const item of items) {
+    item.sort = currentSort;
+    currentSort += step;
+  }
+}
+
+async function Feats_n_Traits() {
+  // Feats section
+  await addFeatSeparator(spaceBackgroundPath, 'space_function', 1);
+  await addFeatSeparator(spaceFeatsPath, 'space_function', 1000);
+  await processFeatTrait(everyFeatPath, characterData.feats, 'feat', 1500, "FEAT", true, 1, 2);
+  await addFeatSeparator(spaceClassBonusFeatsPath, 'space_function', 2000);
+  // Traits section
+  await processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
+}
+
+function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1) {
+  let current = startingNumber;
+
+  for (const item of items) {
+    item.name = `(${label} ${current}) ${item.name}`;
+    if (shouldIncrement) current += step;
+  }
+}
+
+await Feats_n_Traits();
 // ------ End of Feat/Trait Section ------ //
 
 
