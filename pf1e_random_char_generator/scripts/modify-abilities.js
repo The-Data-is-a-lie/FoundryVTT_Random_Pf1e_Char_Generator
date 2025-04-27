@@ -33,6 +33,9 @@ export async function main() {
     const spaceFeatsPath                  = charSheetBase.target + "/space_Feats.json";
     const spaceClassBonusFeatsPath        = charSheetBase.target + "/space_ClassBonusFeats.json";
 
+    // inherents
+    const inherentsPath                   = charSheetBase.target + "/inherents.json";
+
     // base_folder
     const baseFeatPath = base.target + "/base_feat.json";
     const baseSkillPath = base.target + "/base_skill.json";
@@ -56,6 +59,7 @@ export async function main() {
       spaceBackgroundPath,
       spaceClassBonusFeatsPath,
       spaceFeatsPath,
+      inherentsPath,
     ]    
 
     // Create a dictionary to hold all the file dictionaries
@@ -119,6 +123,7 @@ const upper_case_class = capitalizeWords(characterData.c_class);
    updateAttribute(characterData.int, exportTemplate.system.abilities.int, 'value');
    updateAttribute(characterData.wis, exportTemplate.system.abilities.wis, 'value');
    updateAttribute(characterData.cha, exportTemplate.system.abilities.cha, 'value');
+
 
    // Saving Throws
   //  updateAttribute(characterData.fort_saving_throw, exportTemplate.system.attributes.savingThrows.fort, 'base');
@@ -720,6 +725,37 @@ function addingReceivedLocationToName(items, label = "Level", shouldIncrement = 
 await Feats_n_Traits();
 // ------ End of Feat/Trait Section ------ //
 
+// ----- Start of Inherents Section ----- //
+async function addInherent(filePath) {
+  const data = fileDataDictionary[filePath];
+  let wrappedData = Array.isArray(data) ? data : [data];
+  // Manipulate inherent stats
+  console.log("this is the pre wrapped data", wrappedData);
+  console.log("charaterData.inherents", characterData.inherents);
+  wrappedData = await changeInherentStats(wrappedData);
+  console.log("this is the post wrapped data", wrappedData);
+  writeToLocalStorage('collectedInherents', wrappedData);
+  appendJsonToTemplate(wrappedData, exportTemplate, "Inherents");
+
+
+}
+
+async function changeInherentStats(dataArray) {
+  for (const item of dataArray) {
+    if (!item.system?.changes) continue;
+  
+    for (const change of item.system.changes) {
+      const target = change.target;
+      if (characterData.inherents.hasOwnProperty(target)) {
+        change.formula = characterData.inherents[target].toString();
+      }
+    }
+  }
+  return dataArray;
+}
+
+await addInherent(inherentsPath);
+// ----- End of Inherents Section ----- //
 
 
 
@@ -1000,6 +1036,8 @@ async function check_ammo() {
   select_random_ammo(ammo_type);
 }
 
+
+// ----- Start of Ammo Section ----- //
 async function select_random_ammo(ammo_type) {
   // Retrieve the weapons data from the fileDataDictionary
   const weapons = fileDataDictionary[everyWeaponPath];
@@ -1034,9 +1072,11 @@ async function select_random_ammo(ammo_type) {
 }
 
 await check_ammo();
-// ----- Start of Ammo Section ----- //
 
 // ----- End of Ammo Section ----- //
+
+
+
 
 // ----- Start of Skills Section ----- //
 

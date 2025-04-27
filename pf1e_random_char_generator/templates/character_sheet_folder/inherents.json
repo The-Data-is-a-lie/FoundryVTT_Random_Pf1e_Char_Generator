@@ -1,0 +1,148 @@
+{
+    "name": "Inherents",
+    "type": "buff",
+    "_id": "0IijKQwUzzrOS5xG",
+    "img": "icons/svg/ice-aura.svg",
+    "system": {
+      "description": {
+        "value": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "type": "untyped",
+          "_id": "48L4kFsL",
+          "operator": "add",
+          "priority": 0,
+          "formula": "1",
+          "target": "str"
+        },
+        {
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0,
+          "formula": "1",
+          "target": "dex",
+          "_id": "tHqbENWY"
+        },
+        {
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0,
+          "formula": "1",
+          "target": "con",
+          "_id": "AvzevfaK"
+        },
+        {
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0,
+          "formula": "1",
+          "target": "int",
+          "_id": "VdHkEDJT"
+        },
+        {
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0,
+          "formula": "1",
+          "target": "wis",
+          "_id": "tzy06DtC"
+        },
+        {
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0,
+          "formula": "1",
+          "target": "cha",
+          "_id": "SP5qVQzT"
+        }
+      ],
+      "changeFlags": {
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "perm",
+      "active": true,
+      "level": 0,
+      "duration": {
+        "value": null,
+        "units": "",
+        "start": 0
+      },
+      "conditions": {
+        "value": [],
+        "custom": []
+      },
+      "hideFromToken": false,
+      "showInQuickbar": false
+    },
+    "effects": [
+      {
+        "name": "Inherent",
+        "icon": "icons/svg/ice-aura.svg",
+        "origin": ".Item.0IijKQwUzzrOS5xG",
+        "duration": {
+          "startTime": 0,
+          "seconds": null,
+          "combat": null,
+          "rounds": null,
+          "turns": null,
+          "startRound": null,
+          "startTurn": null
+        },
+        "disabled": false,
+        "statuses": [],
+        "flags": {
+          "pf1": {
+            "duration": {
+              "end": "turnStart"
+            },
+            "tracker": true
+          }
+        },
+        "transfer": true,
+        "_id": "dJL32JS1dikJnuzI",
+        "changes": [],
+        "description": ""
+      }
+    ],
+    "folder": null,
+    "sort": 0,
+    "ownership": {
+      "default": 0,
+      "mDeCKAjdWUVLYJir": 3
+    },
+    "flags": {},
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "10.8",
+      "coreVersion": "11.315",
+      "createdTime": 1745734831151,
+      "modifiedTime": 1745734891849,
+      "lastModifiedBy": "mDeCKAjdWUVLYJir"
+    }
+  }
