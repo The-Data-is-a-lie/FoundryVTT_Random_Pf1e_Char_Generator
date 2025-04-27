@@ -1,7 +1,7 @@
 {
-    "name": "Inherents",
+    "name": "level_up_stats",
     "type": "buff",
-    "_id": "0IijKQwUzzrOS5xA",
+    "_id": "0IijKQwUzzrOS5xZ",
     "img": "icons/svg/ice-aura.svg",
     "system": {
       "description": {
@@ -11,7 +11,7 @@
       "changes": [
         {
           "type": "untyped",
-          "_id": "48L4kFsL",
+          "_id": "48L4kFsZ",
           "operator": "add",
           "priority": 0,
           "formula": "1",
@@ -23,7 +23,7 @@
           "priority": 0,
           "formula": "1",
           "target": "dex",
-          "_id": "tHqbENWY"
+          "_id": "tHqbENWZ"
         },
         {
           "type": "untyped",
@@ -31,7 +31,7 @@
           "priority": 0,
           "formula": "1",
           "target": "con",
-          "_id": "AvzevfaK"
+          "_id": "AvzevfaZ"
         },
         {
           "type": "untyped",
@@ -39,7 +39,7 @@
           "priority": 0,
           "formula": "1",
           "target": "int",
-          "_id": "VdHkEDJT"
+          "_id": "VdHkEDJZ"
         },
         {
           "type": "untyped",
@@ -47,7 +47,7 @@
           "priority": 0,
           "formula": "1",
           "target": "wis",
-          "_id": "tzy06DtC"
+          "_id": "tzy06DtZ"
         },
         {
           "type": "untyped",
@@ -55,7 +55,7 @@
           "priority": 0,
           "formula": "1",
           "target": "cha",
-          "_id": "SP5qVQzT"
+          "_id": "SP5qVQzZ"
         }
       ],
       "changeFlags": {
@@ -102,9 +102,9 @@
     },
     "effects": [
       {
-        "name": "Inherent",
+        "name": "level_up_stats",
         "icon": "icons/svg/ice-aura.svg",
-        "origin": ".Item.0IijKQwUzzrOS5xG",
+        "origin": ".Item.0IijKQwUzzrOS5xZ",
         "duration": {
           "startTime": 0,
           "seconds": null,
@@ -125,7 +125,7 @@
           }
         },
         "transfer": true,
-        "_id": "dJL32JS1dikJnuzI",
+        "_id": "dJL32JS1dikJnuzZ",
         "changes": [],
         "description": ""
       }

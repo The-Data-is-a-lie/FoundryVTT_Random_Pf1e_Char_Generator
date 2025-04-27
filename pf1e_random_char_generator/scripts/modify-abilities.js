@@ -35,6 +35,7 @@ export async function main() {
 
     // inherents
     const inherentsPath                   = charSheetBase.target + "/inherents.json";
+    const inherents2Path                   = charSheetBase.target + "/inherents2.json";
 
     // base_folder
     const baseFeatPath = base.target + "/base_feat.json";
@@ -60,6 +61,7 @@ export async function main() {
       spaceClassBonusFeatsPath,
       spaceFeatsPath,
       inherentsPath,
+      inherents2Path,
     ]    
 
     // Create a dictionary to hold all the file dictionaries
@@ -640,7 +642,9 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
       addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels);
       // Assign Feat subType
       assignToFeatSection(allMatchedItems);      
-      }            
+      }         
+      // Assign a unique ID to each item
+         
       // Instead of writing to a file, we write to localStorage
       writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, allMatchedItems);
 
@@ -726,35 +730,41 @@ await Feats_n_Traits();
 // ------ End of Feat/Trait Section ------ //
 
 // ----- Start of Inherents Section ----- //
-async function addInherent(filePath) {
-  const data = fileDataDictionary[filePath];
+async function addStatBuff(filePath, stats, label) {
+  // Deep copy to avoid mutation of shared state
+  const data = structuredClone(fileDataDictionary[filePath]);
+  
+  // Turns data -> array if it isn't already
   let wrappedData = Array.isArray(data) ? data : [data];
+
   // Manipulate inherent stats
-  console.log("this is the pre wrapped data", wrappedData);
-  console.log("charaterData.inherents", characterData.inherents);
-  wrappedData = await changeInherentStats(wrappedData);
-  console.log("this is the post wrapped data", wrappedData);
-  writeToLocalStorage('collectedInherents', wrappedData);
-  appendJsonToTemplate(wrappedData, exportTemplate, "Inherents");
+  wrappedData = await changeStatBuff(wrappedData, stats, label);
+  console.log("this is the wrapped data", wrappedData);
 
-
+  writeToLocalStorage(label, wrappedData);
+  appendJsonToTemplate(wrappedData, exportTemplate, label);
 }
 
-async function changeInherentStats(dataArray) {
+async function changeStatBuff(dataArray, stats, label) {
+  // loops through each stat in the relevant stat array and assigns the value to the corresponding stat in the dataArray
   for (const item of dataArray) {
+    item.name = label;
+    item._id = await generateUniqueID(); // Generate a unique ID for each item
+
     if (!item.system?.changes) continue;
   
     for (const change of item.system.changes) {
       const target = change.target;
-      if (characterData.inherents.hasOwnProperty(target)) {
-        change.formula = characterData.inherents[target].toString();
+      if (stats.hasOwnProperty(target)) {
+        change.formula = stats[target].toString();
       }
     }
   }
   return dataArray;
 }
 
-await addInherent(inherentsPath);
+await addStatBuff(inherentsPath, characterData.level_up_stats, 'level_up_stats');
+await addStatBuff(inherentsPath, characterData.inherents, 'Inherents');
 // ----- End of Inherents Section ----- //
 
 
