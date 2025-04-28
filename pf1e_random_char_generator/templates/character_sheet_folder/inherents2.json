@@ -1,148 +1,34 @@
 {
-    "name": "level_up_stats",
-    "type": "buff",
-    "_id": "0IijKQwUzzrOS5xZ",
-    "img": "icons/svg/ice-aura.svg",
-    "system": {
-      "description": {
-        "value": ""
-      },
-      "tags": [],
-      "changes": [
-        {
-          "type": "untyped",
-          "_id": "48L4kFsZ",
-          "operator": "add",
-          "priority": 0,
-          "formula": "1",
-          "target": "str"
-        },
-        {
-          "type": "untyped",
-          "operator": "add",
-          "priority": 0,
-          "formula": "1",
-          "target": "dex",
-          "_id": "tHqbENWZ"
-        },
-        {
-          "type": "untyped",
-          "operator": "add",
-          "priority": 0,
-          "formula": "1",
-          "target": "con",
-          "_id": "AvzevfaZ"
-        },
-        {
-          "type": "untyped",
-          "operator": "add",
-          "priority": 0,
-          "formula": "1",
-          "target": "int",
-          "_id": "VdHkEDJZ"
-        },
-        {
-          "type": "untyped",
-          "operator": "add",
-          "priority": 0,
-          "formula": "1",
-          "target": "wis",
-          "_id": "tzy06DtZ"
-        },
-        {
-          "type": "untyped",
-          "operator": "add",
-          "priority": 0,
-          "formula": "1",
-          "target": "cha",
-          "_id": "SP5qVQzZ"
-        }
-      ],
-      "changeFlags": {
-        "loseDexToAC": false,
-        "noMediumEncumbrance": false,
-        "noHeavyEncumbrance": false,
-        "mediumArmorFullSpeed": false,
-        "heavyArmorFullSpeed": false
-      },
-      "contextNotes": [],
-      "actions": [],
-      "attackNotes": [],
-      "effectNotes": [],
-      "uses": {
-        "value": null,
-        "per": "",
-        "autoDeductChargesCost": "",
-        "maxFormula": "",
-        "rechargeFormula": ""
-      },
-      "links": {
-        "children": []
-      },
-      "tag": "",
-      "flags": {
-        "boolean": {},
-        "dictionary": {}
-      },
-      "scriptCalls": [],
-      "subType": "perm",
-      "active": true,
-      "level": 0,
-      "duration": {
-        "value": null,
-        "units": "",
-        "start": 0
-      },
-      "conditions": {
-        "value": [],
-        "custom": []
-      },
-      "hideFromToken": false,
-      "showInQuickbar": false
+  "name": "Greater Two-Weapon Fighting (EitR)",
+  "type": "feat",
+  "img": "systems/pf1/icons/feats/greater-two-weapon-fighting.jpg",
+  "system": {
+    "description": {
+      "value": "<p><em>You are skilled at fighting with two weapons.</em></p><p><strong>Prerequisites</strong></p><p>Dex 15, Two-Weapon Fighting, base attack bonus +6.</p><p><strong>Benefits</strong></p><p>In addition to the standard single extra attack you get with an off-hand weapon, you get a second attack with it, albeit at a -5 penalty. When your base attack bonus reaches +11, you also gain a third attack with your off-hand weapon, albeit at a -10 penalty.</p><p><strong>Normal</strong></p><p>Without this feat, you can only get a single extra attack with an off-hand weapon.</p>"
     },
-    "effects": [
-      {
-        "name": "level_up_stats",
-        "icon": "icons/svg/ice-aura.svg",
-        "origin": ".Item.0IijKQwUzzrOS5xZ",
-        "duration": {
-          "startTime": 0,
-          "seconds": null,
-          "combat": null,
-          "rounds": null,
-          "turns": null,
-          "startRound": null,
-          "startTurn": null
-        },
-        "disabled": false,
-        "statuses": [],
-        "flags": {
-          "pf1": {
-            "duration": {
-              "end": "turnStart"
-            },
-            "tracker": true
-          }
-        },
-        "transfer": true,
-        "_id": "dJL32JS1dikJnuzZ",
-        "changes": [],
-        "description": ""
-      }
+    "tags": [
+      "Combat",
+      "Two Weapons",
+      "Weapon",
+      "Offensive"
     ],
-    "folder": null,
-    "sort": 0,
-    "ownership": {
-      "default": 0,
-      "mDeCKAjdWUVLYJir": 3
+    "actions": [],
+    "attackNotes": [],
+    "effectNotes": [],
+    "uses": {
+      "value": null,
+      "per": "",
+      "autoDeductChargesCost": "",
+      "maxFormula": "",
+      "rechargeFormula": ""
     },
-    "flags": {},
-    "_stats": {
-      "systemId": "pf1",
-      "systemVersion": "10.8",
-      "coreVersion": "11.315",
-      "createdTime": 1745734831151,
-      "modifiedTime": 1745734891849,
-      "lastModifiedBy": "mDeCKAjdWUVLYJir"
+    "changes": [],
+    "changeFlags": {
+      "loseDexToAC": false,
+      "noMediumEncumbrance": false,
+      "noHeavyEncumbrance": false,
+      "mediumArmorFullSpeed": false,
+      "heavyArmorFullSpeed": false
     }
   }
+}

@@ -628,24 +628,38 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
       });
 
       if (matchedItem) {
-        allMatchedItems.push(matchedItem);
+        // Log the original matchedItem for verification
+        console.log("Original matchedItem:", matchedItem);
+
+        // Use the helper function to grab only necessary information
+        const filteredItem = onlyGrabNecessaryFeatInfo(matchedItem, dataType);
+        
+        // Log the filtered item to verify its structure
+        console.log("Filtered item:", filteredItem);
+
+        // Add the filtered item to the list
+        allMatchedItems.push(filteredItem);
       } else {
         console.warn(`${dataType} "${item}" not found.`);
       }
     }
 
+    // Log the final list of matched items
+    console.log("All matched items after filtering:", JSON.stringify(allMatchedItems, null, 2));
+
     if (allMatchedItems.length > 0) {
       // 🔥 Apply sort order
       assignSequentialSort(allMatchedItems, startingSort);
       if (dataType === 'feat') {
-      // Add Received location
-      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels);
-      // Assign Feat subType
-      assignToFeatSection(allMatchedItems);      
-      }         
+        // Add Received location
+        addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels);
+        // Assign Feat subType
+        assignToFeatSection(allMatchedItems);      
+      }
       // Assign a unique ID to each item
          
       // Instead of writing to a file, we write to localStorage
+      console.log("this is the final allMatchedItems", allMatchedItems);
       writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, allMatchedItems);
 
       // Append matched items to the exportTemplate in localStorage
@@ -661,6 +675,33 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
   }
 }
 
+// Only grabbing the vital portions of feats and traits (so it's version agnostic)
+function onlyGrabNecessaryFeatInfo(matchedItem, dataType) {
+  // Set subType based on dataType
+  const subType = (dataType === "trait") ? "trait" : "feat"; 
+  console.log("dataType and subType", dataType, subType);
+
+  return {
+    img: matchedItem.img,
+    name: matchedItem.name,
+    system: {
+      description: {
+        value: matchedItem.system.description.value
+      },
+      tags: matchedItem.system.tags,
+      actions: matchedItem.system.actions,
+      attackNotes: matchedItem.system.attackNotes,
+      effectNotes: matchedItem.system.effectNotes,
+      changes: matchedItem.system.changes,
+      changeFlags: matchedItem.system.changeFlags,
+      contextNotes: matchedItem.system.contextNotes,
+      subType: subType,  // Use the dynamically assigned subType
+    },
+    type: "feat",  // Keep the type as "feat" for consistency, unless you also want to change it based on the label
+    effects: matchedItem.effects || [],
+    sort: matchedItem.sort || 0
+  };
+}
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -700,6 +741,8 @@ async function assignToFeatSection(items) {
     }
   }
 }
+
+
 async function Feats_n_Traits() {
   // Feats section
   await addFeatSeparator(spaceBackgroundPath, 'space_function', 1);
@@ -724,6 +767,7 @@ function addingReceivedLocationToName(items, label = "Level", shouldIncrement = 
     if (!customLevels && shouldIncrement) current += step;
   }
 }
+
 
 
 await Feats_n_Traits();
