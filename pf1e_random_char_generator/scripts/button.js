@@ -16,7 +16,6 @@ export async function createPersistentButton() {
   // const deliver_location = 'http://localhost:5000/update_character_data';
   // perm server
   const deliver_location = 'https://pathfinder-char-creator-web.onrender.com/update_character_data';
- 
   
 
 
@@ -176,6 +175,34 @@ function showCharacterGeneratorDialog() {
       </select>
     </div>
     <div>
+      <label for="character-bab">Select BAB:</label>
+      <select id="character-bab">
+        ${[
+          'H', 'M', 'L', 'Random'
+        ].map(bab =>
+          `<option value="${bab.toLowerCase().replace(/\s/g, '-')}" 
+            ${savedData.bab === bab.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
+            ${bab}
+          </option>`
+        ).join('')}
+      </select>
+    </div>    
+    </div>
+    <div>
+      <label for="character-caster_level">Select Caster Level:</label>
+      <select id="character-caster_level">
+        ${[
+          'High', 'Medium', 'Low', 'None', 'Random'
+        ].map(caster_level =>
+          `<option value="${caster_level.toLowerCase().replace(/\s/g, '-')}" 
+            ${savedData.caster_level === caster_level.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
+            ${caster_level}
+          </option>`
+        ).join('')}
+      </select>
+    </div>    
+    </div>       
+    <div>
       <label for="multiclass">Multiclass:</label>
       <select id="multiclass">
         <option value="n" ${savedData.multiclass === "n" ? "selected" : ""}>No</option>
@@ -302,6 +329,8 @@ function showCharacterGeneratorDialog() {
             region: document.getElementById('character-region').value,
             race: document.getElementById('character-race').value,
             class: document.getElementById('character-class').value,
+            bab: document.getElementById('character-bab').value,
+            caster_level: document.getElementById('character-caster_level').value,
             multiclass: document.getElementById('multiclass').value,
             alignment: document.getElementById('alignment').value,
             deity: document.getElementById('deity').value,
