@@ -15,7 +15,8 @@ export async function createPersistentButton() {
   // test server
   // const deliver_location = 'http://localhost:5000/update_character_data';
   // perm server
-  const deliver_location = 'https://pathfinder-char-creator-web-latest.onrender.com/update_character_data';
+  const deliver_location = 'https://pathfinder-char-creator-web.onrender.com/update_character_data';
+ 
   
 
 
