@@ -13,9 +13,9 @@ import { main } from './modify-abilities.js';
 // need export so we can import in main.js
 export async function createPersistentButton() {
   // test server
-  // const deliver_location = 'http://localhost:5000/update_character_data';
+  const deliver_location = 'http://localhost:5000/update_character_data';
   // perm server
-  const deliver_location = 'https://pathfinder-char-creator-web.onrender.com/update_character_data';
+  // const deliver_location = 'https://pathfinder-char-creator-web.onrender.com/update_character_data';
   
 
 
@@ -286,6 +286,13 @@ function showCharacterGeneratorDialog() {
       </select>
     </div>    
     <div>
+      <label for="modded_char_sheet">Do you use mods that affect your character sheet:</label>
+      <select id="modded_char_sheet">
+        <option value="y" ${savedData.modded_char_sheet === "y" ? "selected" : ""}>Yes</option>
+        <option value="n" ${savedData.modded_char_sheet === "n" ? "selected" : ""}>No</option>
+      </select>
+    </div>      
+    <div>
       <label for="homebrew_feat_amount">Do you want my homebrew feat amount:</label>
       <select id="homebrew_feat_amount">
         <option value="y" ${savedData.homebrew_feat_amount === "y" ? "selected" : ""}>Yes</option>
@@ -337,6 +344,7 @@ function showCharacterGeneratorDialog() {
             gender: document.getElementById('gender').value,
             randomFeats: document.getElementById('random-feats').value,
             inherents: document.getElementById('inherents').value,
+            modded_char_sheet: document.getElementById('modded_char_sheet').value,
             homebrew_feat_amount: document.getElementById('homebrew_feat_amount').value,
             diceRolls: document.getElementById('dice-rolls').value,
             diceSides: document.getElementById('dice-sides').value,
