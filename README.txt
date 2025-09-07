@@ -1,1 +1,2 @@
-This directory contains add-on modules which add or extend core VTT functionality. Each module has its own uniquely named subdirectory containing a module.json manifest file.
+Detailed instructions:
+https://docs.google.com/document/d/1zi7AHkpgBhGTbGETUlZaCPbx7J3H3X5BnaslqpbvL3U/edit?usp=sharing
