@@ -1,4 +1,8 @@
-Detailed instructions:
+                                                Release info + Downloads:
+https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/releases
+
+
+                                                Detailed instructions:
 Gitlabs:
 https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/wikis/home
 
