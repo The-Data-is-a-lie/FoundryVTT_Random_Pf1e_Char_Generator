@@ -47,6 +47,44 @@ async function generateRandomizedCharacterFolder() {
   return folder.id;
 }
 
+// function to capitalize the first letter of each word in a string
+function capitalizeWords(str) {
+  // Ensure str is a string before attempting to split
+  if (typeof str !== 'string') {
+    console.error('Expected a string, but received:', str);
+    return str; // Return the value unchanged if it's not a string
+  }
+
+  const ignoreWords = ['of', 'the', 'and', 'in', 'on', 'at', 'to', 'with', 'from'];
+
+  // List of specific Roman numerals to capitalize
+  const romanNumerals = ['ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii'];
+
+  return str
+    .split(' ') // Split the string into an array of words
+    .map((word, index) => {
+      // Lowercase the word for comparison
+      const lowerWord = word.toLowerCase();
+
+      // Capitalize Roman numerals
+      if (romanNumerals.includes(lowerWord)) {
+        return word.toUpperCase();
+      }
+
+      // Capitalize the first letter if it's the first word or not in ignoreWords
+      if (index === 0 || !ignoreWords.includes(lowerWord)) {
+        return word
+          .split('-') // Handle hyphenated words
+          .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+          .join('-');
+      } else {
+        // Keep the word in lowercase if it's in the ignore list and not the first word
+        return word.toLowerCase();
+      }
+    })
+    .join(' '); // Join all words together
+}
+
 async function adjustLevel(actor) {
   const characterData = await localStorage.getItem("pulledCharacterData");
   console.log("actor:", actor)
@@ -55,8 +93,13 @@ async function adjustLevel(actor) {
       const parsedData = JSON.parse(characterData);
       console.log("this is the adjustLevel function", parsedData);
 
-      // Extract c_class and level
-      const c_class = parsedData.c_class.capitalize();
+      // Extract c_class and level with proper error handling
+      if (!parsedData.c_class) {
+        console.error("c_class is undefined in parsedData:", parsedData);
+        return;
+      }
+      
+      const c_class = capitalizeWords(parsedData.c_class);
       const level = parsedData.level;
 
       console.log("Extracted c_class and level:", c_class, level);
