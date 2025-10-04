@@ -1132,13 +1132,8 @@ const skillsDict = {
 };
 
 async function convertSkillNames(characterData, skillsDict) {
-  // Reconstruct string (otherwise it reads as each alphabetical letter as a key)
-  let reconstructedString = '';
-  for (const key in characterData) {
-    reconstructedString += characterData[key];
-  }
-
-  const characterDataParsed = JSON.parse(reconstructedString);
+  // characterData should already be a JavaScript object, not a string
+  const characterDataParsed = characterData;
 
   // Change skill_rank names -> foundry names
   const newCharacterData = {};
@@ -1180,12 +1175,19 @@ async function overwriteData(collectedData) {
 }
 
 // Load the collected skills into an accessible object
-const updatedCharacterData = await convertSkillNames(characterData.skill_ranks, skillsDict);
-const baseSkillTemplate = fileDataDictionary[baseSkillPath]; // Example, replace with your actual path
-// Now we have a JSON object with the proper names and ranks -> need to update the skills
-await createUpdatedSkills(updatedCharacterData, baseSkillTemplate);
-// Now that we have updated skills -> need to overwrite the export file (stored in localStorage)
-await overwriteData(localStorage.getItem('collectedSkills'));
+try {
+  const updatedCharacterData = await convertSkillNames(characterData.skill_ranks, skillsDict);
+  const baseSkillTemplate = fileDataDictionary[baseSkillPath]; // Example, replace with your actual path
+  // Now we have a JSON object with the proper names and ranks -> need to update the skills
+  await createUpdatedSkills(updatedCharacterData, baseSkillTemplate);
+  // Now that we have updated skills -> need to overwrite the export file (stored in localStorage)
+  await overwriteData(localStorage.getItem('collectedSkills'));
+} catch (error) {
+  console.error("Error in skills processing:", error);
+  console.log("characterData.skill_ranks:", characterData.skill_ranks);
+  console.log("skillsDict:", skillsDict);
+  console.log("baseSkillPath:", baseSkillPath);
+}
 
 // Rewriting the export file directly (with export template)
 writeToLocalStorage('exportFoundryPath', exportTemplate);
