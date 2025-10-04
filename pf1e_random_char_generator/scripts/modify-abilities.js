@@ -1190,7 +1190,17 @@ try {
 }
 
 // Rewriting the export file directly (with export template)
-writeToLocalStorage('exportFoundryPath', exportTemplate);
+console.log("About to write exportFoundryPath to localStorage");
+console.log("exportTemplate exists:", !!exportTemplate);
+console.log("exportTemplate:", exportTemplate);
+
+if (exportTemplate) {
+  writeToLocalStorage('exportFoundryPath', exportTemplate);
+  console.log("Successfully wrote exportFoundryPath to localStorage");
+} else {
+  console.error("exportTemplate is undefined! Cannot write to localStorage.");
+  console.log("Available fileDataDictionary keys:", Object.keys(fileDataDictionary));
+}
 
 // ----- End of Skills Section ----- //
 
