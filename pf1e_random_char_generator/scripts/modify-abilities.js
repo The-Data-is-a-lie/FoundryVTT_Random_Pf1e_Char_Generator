@@ -7,6 +7,9 @@ export async function main() {
       return;
     }
 
+    var savedData = JSON.parse(localStorage.getItem('deliverData.json')|| '{}');
+    var modded = savedData.modded_char_sheet; // y or n
+    console.log("Is it modded????????????", modded);
     // ----- Setting up filePaths ----- //
 
     // char_sheet_folder Base
@@ -14,18 +17,17 @@ export async function main() {
     // base_folder Base
     const base = await FilePicker.browse('data', 'modules/pf1e_random_char_generator/templates/base_folder'); 
 
-
     // char_sheet_folders
     const unmodifiedPreExportTemplatePath = charSheetBase.target + "/unmodified_pre_export_template.json";
     const preExportTemplatePath           = charSheetBase.target + "/pre_export_template.json";
     const everyArmorPath                  = charSheetBase.target + "/every_armor.json";
-    const everyClassPath                  = charSheetBase.target + "/every_class.json";
-    const everyFeatPath                   = charSheetBase.target + "/every_feat.json";
+    // const everyClassPath                  = charSheetBase.target + "/every_class.json";
+    // const everyFeatPath                   = charSheetBase.target + "/every_feat_MODS.json";
     const everyItemPath                   = charSheetBase.target + "/every_item.json";
     const everyRacePath                   = charSheetBase.target + "/every_race.json";
-    const everySpellPath                  = charSheetBase.target + "/every_spell.json";
-    const everyTraitPath                  = charSheetBase.target + "/every_trait.json";
-    const everyWeaponPath                 = charSheetBase.target + "/every_weapon.json";
+    // const everySpellPath                  = charSheetBase.target + "/every_spell_MODS.json";
+    // const everyTraitPath                  = charSheetBase.target + "/every_trait.json";
+    // const everyWeaponPath                 = charSheetBase.target + "/every_weapon_MODS.json";
     const archetypePath                   = charSheetBase.target + "/archetype.json";
 
     // space_background
@@ -38,9 +40,28 @@ export async function main() {
     const inherents2Path                   = charSheetBase.target + "/inherents2.json";
 
     // base_folder
-    const baseFeatPath = base.target + "/base_feat.json";
+    // const baseFeatPath = base.target + "/base_feat.json";
     const baseSkillPath = base.target + "/base_skill.json";
     
+
+        // Let for these so we can reassign at WILL
+    let everyClassPath, everyFeatPath, everySpellPath, everyWeaponPath, everyTraitPath, baseFeatPath;
+
+    if (modded === "y") {
+      everyClassPath  = charSheetBase.target + "/every_class_MODS.json";
+      everyFeatPath   = charSheetBase.target + "/every_feat_MODS.json";
+      everySpellPath  = charSheetBase.target + "/every_spell_MODS.json";
+      everyTraitPath  = charSheetBase.target + "/every_trait_MODS.json";
+      everyWeaponPath = charSheetBase.target + "/every_weapon_MODS.json";
+      baseFeatPath    = base.target + "/base_feat_MODS.json";
+    } else {
+      everyClassPath  = charSheetBase.target + "/every_class.json";
+      everyFeatPath   = charSheetBase.target + "/every_feat.json";
+      everySpellPath  = charSheetBase.target + "/every_spell.json";
+      everyTraitPath  = charSheetBase.target + "/every_trait.json";
+      everyWeaponPath = charSheetBase.target + "/every_weapon.json";
+      baseFeatPath    = base.target + "/base_feat.json";
+    }
 
     // manual filePaths
     const filePaths = [

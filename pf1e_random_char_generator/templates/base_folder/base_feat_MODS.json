@@ -1,0 +1,137 @@
+{
+      "type": "feat",
+      "system": {
+        "description": {
+          "value": "",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": []
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {
+          "acr": false,
+          "apr": false,
+          "art": false,
+          "ahp": false,
+          "blf": false,
+          "clm": false,
+          "ckg": false,
+          "crf": false,
+          "dip": false,
+          "dev": false,
+          "dis": false,
+          "esc": false,
+          "fly": false,
+          "han": false,
+          "hea": false,
+          "int": false,
+          "kar": false,
+          "kdu": false,
+          "ken": false,
+          "kge": false,
+          "khi": false,
+          "klo": false,
+          "kmt": false,
+          "kna": false,
+          "kno": false,
+          "kpl": false,
+          "kre": false,
+          "lin": false,
+          "lor": false,
+          "per": false,
+          "prf": false,
+          "pro": false,
+          "rid": false,
+          "sen": false,
+          "slt": false,
+          "spl": false,
+          "ste": false,
+          "sur": false,
+          "swm": false,
+          "umd": false
+        },
+        "class": "wizard",
+        "showInCombat": false
+      },
+      "name": "smoke (Fixed)",
+      "_id": "kYLEmqgdZZmB7caW",
+      "img": "icons/svg/book.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 200000,
+      "flags": {
+        "scene-packer": {
+          "hash": "0eecb708b45b0f04c227589570223b0b7865914e"
+        },
+        "lilhelper": {
+          "item": {
+            "hideAttacks": false,
+            "autoPowerAttack": false,
+            "keen": false,
+            "skipDialog": 0,
+            "rollmodeOverride": "",
+            "rollOverride": ""
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.348",
+        "systemId": "pf1",
+        "systemVersion": "11.8",
+        "createdTime": 1765259233931,
+        "modifiedTime": 1765259242533,
+        "lastModifiedBy": "un4oEQ6U0Aq044EO"
+      },
+      "ownership": {
+        "default": 0
+      }
+}
