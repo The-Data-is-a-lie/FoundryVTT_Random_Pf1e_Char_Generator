@@ -1153,8 +1153,8 @@ const skillsDict = {
 };
 
 async function convertSkillNames(characterData, skillsDict) {
-  // characterData should already be a JavaScript object, not a string
-  const characterDataParsed = characterData;
+  // The backend sends skill_ranks as a JSON string; parse it if it hasn't been already.
+  const characterDataParsed = typeof characterData === 'string' ? JSON.parse(characterData) : characterData;
 
   // Change skill_rank names -> foundry names
   const newCharacterData = {};
@@ -1173,12 +1173,34 @@ async function convertSkillNames(characterData, skillsDict) {
   return newCharacterData;
 }
 
-async function createUpdatedSkills(updatedCharacterData, baseSkillPathData) {
-  // Loop through each skill in updatedCharacterData and update the rank value
+async function createUpdatedSkills(updatedCharacterData, baseSkillPathData, professions) {
+  // Craft/Perform/Profession are pf1e "container" skills: their ranks must live under
+  // .subSkills (e.g. crf.subSkills.crf1.rank), not on the container's own rank.
+  const CONTAINERS = { crf: "Craft", prf: "Perform", pro: "Profession" };
+
   for (let skill in updatedCharacterData) {
-    if (baseSkillPathData[skill]) {
-      // Update the rank value in the baseSkillPathData structure
-      baseSkillPathData[skill].rank = updatedCharacterData[skill];
+    const rank = updatedCharacterData[skill];
+    const parent = baseSkillPathData[skill];
+    if (!parent) continue; // unmapped skill (e.g. "lore") -> skip
+
+    if (CONTAINERS[skill]) {
+      parent.rank = 0; // ranks live on the subskill, not the container
+      if (rank > 0) {
+        parent.subSkills = parent.subSkills || {};
+        let name = CONTAINERS[skill];
+        if (skill === "pro" && Array.isArray(professions) && professions.length) {
+          name = professions[0]; // name the Profession subskill after the chosen profession
+        }
+        parent.subSkills[skill + "1"] = {
+          name,
+          ability: parent.ability,
+          rt: parent.rt,
+          acp: parent.acp,
+          rank
+        };
+      }
+    } else {
+      parent.rank = rank; // normal flat skills: unchanged behavior
     }
   }
 
@@ -1198,9 +1220,14 @@ async function overwriteData(collectedData) {
 // Load the collected skills into an accessible object
 try {
   const updatedCharacterData = await convertSkillNames(characterData.skill_ranks, skillsDict);
+  // Chosen professions name the Profession subskill (otherwise this field is bio-only).
+  let professions = characterData.professions;
+  if (typeof professions === 'string') {
+    try { professions = JSON.parse(professions); } catch (e) { professions = [professions]; }
+  }
   const baseSkillTemplate = fileDataDictionary[baseSkillPath]; // Example, replace with your actual path
   // Now we have a JSON object with the proper names and ranks -> need to update the skills
-  await createUpdatedSkills(updatedCharacterData, baseSkillTemplate);
+  await createUpdatedSkills(updatedCharacterData, baseSkillTemplate, professions);
   // Now that we have updated skills -> need to overwrite the export file (stored in localStorage)
   await overwriteData(localStorage.getItem('collectedSkills'));
 } catch (error) {
