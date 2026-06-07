@@ -621,7 +621,7 @@ await updateClassFeatures(fileDataDictionary[baseFeatPath], characterData.class_
 
 // ----- Start of Feat/Trait section ----- //
 
-async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null) {
+async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null) {
   try {
     // Retrieve data from fileDataDictionary based on dataType (feats or traits)
     const data = fileDataDictionary[everyDataPath];
@@ -636,8 +636,10 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
 
     // Consolidate all data from the nested list
     const allMatchedItems = [];
+    const matchedLabels = []; // per-feat labels (e.g. "Fighter 1"), aligned with allMatchedItems
 
-    for (const item of dataListChooseFrom) {
+    for (let idx = 0; idx < dataListChooseFrom.length; idx++) {
+      const item = dataListChooseFrom[idx];
       // Logs all data being processed
       console.log(`Processing ${dataType}:`, item);
 
@@ -650,6 +652,7 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
 
       if (matchedItem) {
         allMatchedItems.push(matchedItem);
+        if (labelArray) matchedLabels.push(labelArray[idx]);
       } else {
         console.warn(`${dataType} "${item}" not found.`);
       }
@@ -660,7 +663,7 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
       assignSequentialSort(allMatchedItems, startingSort);
       if (dataType === 'feat') {
       // Add Received location
-      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels);
+      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels, labelArray ? matchedLabels : null);
       // Assign Feat subType
       assignToFeatSection(allMatchedItems);      
       }         
@@ -731,15 +734,20 @@ async function Feats_n_Traits() {
   await processFeatTrait(everyFeatPath, characterData.feats, 'feat', 1500, "Feat", true, 1, 2);
   await addFeatSeparator(spaceClassBonusFeatsPath, 'space_function', 2000);
   await processFeatTrait(everyFeatPath, characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3);
-  await processFeatTrait(everyFeatPath, characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2);
+  await processFeatTrait(everyFeatPath, characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2, null, characterData.class_feat_labels);
   // Traits section
   await processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
 }
 
-function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null) {
+function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null) {
   let current = startingNumber;
 
   for (let i = 0; i < items.length; i++) {
+    if (labelArray && labelArray[i] != null) {
+      // Per-feat label from the backend, e.g. "Fighter 1: Weapon Focus"
+      items[i].name = `${labelArray[i]}: ${items[i].name}`;
+      continue;
+    }
     const level = customLevels?.[i] ?? current;
     items[i].name = `(${label} ${level}) ${items[i].name}`;
     if (!customLevels && shouldIncrement) current += step;
