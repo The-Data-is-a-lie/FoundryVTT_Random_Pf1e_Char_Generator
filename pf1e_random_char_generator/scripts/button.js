@@ -165,8 +165,16 @@ function showCharacterGeneratorDialog() {
           'Bloodrager', 'Brawler', 'Cavalier', 'Cleric', 'Druid', 'Fighter', 'Gunslinger', 'Hunter', 'Inquisitor',
           'Investigator', 'Magus', 'Monk', 'Monk (Unchained)', 'Ninja', 'Oracle', 'Paladin', 'Ranger', 'Rogue',
           'Rogue (Unchained)', 'Samurai', 'Shaman', 'Shifter', 'Skald', 'Slayer', 'Sorcerer', 'Summoner',
-          'Summoner (Unchained)', 'Swashbuckler', 'Vigilante', 'Warpriest', 'Witch', 'Wizard'
-        ].map(char_class => 
+          'Summoner (Unchained)', 'Swashbuckler', 'Vigilante', 'Warpriest', 'Witch', 'Wizard',
+          // Path of War initiator classes (backend keys: warlord/warder/harbinger/mystic/medic)
+          'Warlord', 'Warder', 'Harbinger', 'Mystic', 'Medic'
+          // Stalker & Zealot are NOT in the pf1-pow Foundry compendium yet (module last updated
+          // ~late May 2026 but still missing them — may need to ping the maintainer). They'd
+          // generate on the backend, but the Foundry sheet can't resolve a class item that the
+          // module doesn't ship. To re-enable once they're added: uncomment the line below AND
+          // remove "stalker"/"zealot" from pow_classes_pending_foundry in Backend/utils/data.py.
+          // , 'Stalker', 'Zealot'
+        ].map(char_class =>
           `<option value="${char_class.toLowerCase().replace(/\s/g, '-')}" 
             ${savedData.class === char_class.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
             ${char_class}
