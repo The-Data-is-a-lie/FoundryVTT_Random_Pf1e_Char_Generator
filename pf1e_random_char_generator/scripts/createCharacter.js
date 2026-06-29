@@ -99,17 +99,28 @@ async function adjustLevel(actor) {
         return;
       }
       
-      const c_class = capitalizeWords(parsedData.c_class);
+      // Prefer the backend's display name (e.g. "Barbarian (Unchained)") so adjustLevel finds the
+      // correct unchained class item; fall back to capitalizeWords(c_class) for older backends.
+      const c_class = parsedData.c_class_display || capitalizeWords(parsedData.c_class);
       const level = parsedData.level;
 
       console.log("Extracted c_class and level:", c_class, level);
 
       // Find the class item in the actor's items
       const classItem = actor.items.find(item => item.name === c_class);
+      const target = Number(level);
       if (classItem) {
-        // Update the class level
-        await classItem.update({ "system.level": level });
-        console.log(`Updated ${c_class} level to ${level}`);
+        // The class item is injected at the every_class.json template level (20). For a max-level
+        // (20) character, update({ level: 20 }) is a same-value no-op: Foundry fires no change
+        // event, pf1 never derives the character level, and the sheet stays at Level 0 /
+        // "missing a class" until the user manually clicks Level Up. Nudge to a different level
+        // first to guarantee a class-level change event so pf1 recomputes. Sub-max characters
+        // already differ from the template, so the single update below is enough for them.
+        if (Number(classItem.system.level) === target) {
+          await classItem.update({ "system.level": target > 1 ? target - 1 : target + 1 });
+        }
+        await classItem.update({ "system.level": target });
+        console.log(`Updated ${c_class} level to ${target}`);
       } else {
         console.error(`Class item ${c_class} not found in actor's items.`);
       }
