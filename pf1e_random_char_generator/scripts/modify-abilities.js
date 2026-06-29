@@ -1554,18 +1554,51 @@ async function processSpell(everySpellPath, spellListChooseFrom) {
 
     console.log("spell list structure", JSON.stringify(spellListChooseFrom, null, 2));
 
-    // Consolidate all matched spells from the nested spell list
+    // Determine the spellbook's casting type up front so we know whether to mark spells prepared.
+    const type = await determineSpellType();
+    const markPrepared = (type === 'prepared' || type === 'hybrid');
+    // Per-level prepared count from the backend (spells/day), aligned 1:1 to spellListChooseFrom.
+    // Divine casters prepare their whole loadout (count == group size); spellbook casters (wizard,
+    // witch, ...) prepare only a subset of the larger spellbook. Empty/0 for spontaneous casters.
+    const preparedPerLevel = Array.isArray(characterData.spells_prepared_per_level)
+      ? characterData.spells_prepared_per_level : [];
+
+    // Consolidate all matched spells from the nested spell list, marking the prepared ones per level.
     const allMatchedSpells = [];
 
-    for (const spellArray of spellListChooseFrom) {
+    // Case-insensitive name index. The backend sends names from data/spells.csv, whose article /
+    // preposition casing ("Shield Of The Dawnflower") can differ from the compendium's canonical
+    // casing ("Shield of the Dawnflower"). A strict === would silently drop ~250 such spells (while
+    // their weapon conditional still attaches from spell_changes_dict, leaving an orphaned toggle).
+    // Match leniently here, mirroring addSpellRiders and the feat lookups.
+    const spellByLower = new Map();
+    for (const r of spells) spellByLower.set((r.name || '').toLowerCase(), r);
+
+    for (let level = 0; level < spellListChooseFrom.length; level++) {
+      const spellArray = spellListChooseFrom[level] || [];
+      let prepRemaining = markPrepared ? (Number(preparedPerLevel[level]) || 0) : 0;
       for (const spell of spellArray) {
-        const matchedSpell = spells.find(r => r.name === spell);
-        if (matchedSpell) {
-          // Ensure consistent structure (array format)
-          allMatchedSpells.push(matchedSpell);
-        } else {
+        const matchedSpell = spellByLower.get((spell || '').toLowerCase());
+        if (!matchedSpell) {
           console.warn(`Spell "${spell}" not found.`);
+          continue;
         }
+        // Clone so we don't mutate the shared every_spell.json cache.
+        const item = JSON.parse(JSON.stringify(matchedSpell));
+        if (item.system && item.system.level === 0) {
+          // Cantrips/orisons: always prepared AND infinitely castable, for EVERY caster type
+          // (prepared and spontaneous). Detected by the spell's own level so low casters with no
+          // level-0 spells are unaffected.
+          item.system.atWill = true;
+          item.system.preparation = { ...(item.system.preparation || {}), value: 1, max: 1 };
+        } else if (markPrepared && item.system) {
+          const prepared = prepRemaining > 0 ? 1 : 0;
+          if (prepared) prepRemaining--;
+          // value = currently prepared; max = preparable (1 per spell, so spellbook spells stay
+          // preparable even when not prepared today). Spontaneous books skip this entirely.
+          item.system.preparation = { ...(item.system.preparation || {}), value: prepared, max: 1 };
+        }
+        allMatchedSpells.push(item);
       }
     }
 
@@ -1577,8 +1610,7 @@ async function processSpell(everySpellPath, spellListChooseFrom) {
       exportTemplate.system.attributes.spells.spellbooks.primary.inUse = true;
       exportTemplate.system.attributes.spells.spellbooks.primary.class = characterData.c_class;
 
-      // Determine SpellType and Assign spellType
-      const type = await determineSpellType();
+      // Assign the spellbook's preparation mode (type determined above).
       await assignSpellTypes(type);
 
       // Append matched spells to the exportTemplate
