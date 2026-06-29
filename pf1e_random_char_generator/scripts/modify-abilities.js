@@ -1858,10 +1858,12 @@ async function addManeuverConditionals() {
       for (const m of (entry.modifiers || [])) {
         const isAttack = m.target === 'attack';
         let formula = subInit(m.formula);
-        // pf1 embeds the conditional NAME as the attack-roll term's flavor ((formula)[name]); a name
-        // with [[ ]] inline rolls then nests brackets and crashes the d20 parser. Pre-supplying our
-        // own [label] makes pf1 use the formula as-is and skip the name, so the rider keeps its [[ ]].
-        if (isAttack && formula && !/\[.*\]/.test(formula)) {
+        // Source-label EVERY modifier (attack AND damage) with the maneuver name so the rolled term
+        // shows its source on the card (e.g. "8d6 (Maneuver Name)"). The label is also REQUIRED on
+        // attack formulas: a conditional name carrying [[ ]] inline rolls would otherwise make pf1
+        // embed the whole name as the term flavor, nest the brackets, and crash the d20 parser. The
+        // !/\[.*\]/ guard leaves an already-bracketed formula untouched (no double-label).
+        if (formula && !/\[.*\]/.test(formula)) {
           formula = `${formula}[${String(name).replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
@@ -1891,7 +1893,9 @@ async function addManeuverConditionals() {
       for (const m of (entry.modifiers || [])) {
         const isAttack = m.target === 'attack';
         let formula = subInit(m.formula);
-        if (isAttack && formula && !/\[.*\]/.test(formula)) {
+        // Same source-label as strikes: tag attack AND damage with the stance name (shows on the
+        // roll; required on attack formulas to avoid bracket-nesting); guard skips already-labeled.
+        if (formula && !/\[.*\]/.test(formula)) {
           formula = `${formula}[${String(name).replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
@@ -1940,10 +1944,10 @@ async function addFeatConditionals() {
       for (const m of (entry.modifiers || [])) {
         const isAttack = m.target === 'attack';
         let formula = String(m.formula);
-        // Same guard as maneuvers: an attack modifier whose conditional name carries [[ ]] inline
-        // rolls would nest brackets and crash the d20 parser; pre-supply a [label] so pf1 uses the
-        // formula as-is. Use the clean feat name (before the ':' rider text).
-        if (isAttack && formula && !/\[.*\]/.test(formula)) {
+        // Same as maneuvers: source-label attack AND damage with the clean feat name (before the
+        // ':' rider text) so the roll shows its source; required on attack formulas to avoid
+        // bracket-nesting under a [[ ]]-bearing name. Guard skips already-labeled formulas.
+        if (formula && !/\[.*\]/.test(formula)) {
           formula = `${formula}[${condName.split(':')[0].replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
@@ -2018,9 +2022,10 @@ async function addSpellConditionals() {
       for (const m of (mods || [])) {
         const isAttack = m.target === 'attack';
         let formula = String(m.formula);
-        // Same guard as feats/maneuvers: a bracket-less attack formula under a conditional name that
-        // carries [[ ]] inline rolls would nest brackets and crash the parser; pre-supply a [label].
-        if (isAttack && formula && !/\[.*\]/.test(formula)) {
+        // Same as feats/maneuvers: source-label attack AND damage with the spell name so the roll
+        // shows its source; required on attack formulas to avoid bracket-nesting under a [[ ]]-bearing
+        // name. Guard skips already-labeled formulas (no double-label).
+        if (formula && !/\[.*\]/.test(formula)) {
           formula = `${formula}[${spellName.replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
