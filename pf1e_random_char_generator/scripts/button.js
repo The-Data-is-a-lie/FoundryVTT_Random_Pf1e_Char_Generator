@@ -119,6 +119,7 @@ export async function createPersistentButton() {
 function showCharacterGeneratorDialog() {
   // Get the saved character data from localStorage
   const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
+  const savedAddBuffs = localStorage.getItem('addCustomBuffs') || 'n';
 
   const html = `
     <div>
@@ -301,12 +302,26 @@ function showCharacterGeneratorDialog() {
       </select>
     </div>      
     <div>
+      <label for="add_custom_buffs">Add custom buffs:</label>
+      <select id="add_custom_buffs">
+        <option value="n" ${savedAddBuffs === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedAddBuffs === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
+    <div>
       <label for="homebrew_feat_amount">Do you want my homebrew feat amount:</label>
       <select id="homebrew_feat_amount">
         <option value="y" ${savedData.homebrew_feat_amount === "y" ? "selected" : ""}>Yes</option>
         <option value="n" ${savedData.homebrew_feat_amount === "n" ? "selected" : ""}>No</option>
       </select>
-    </div>      
+    </div>
+    <div>
+      <label for="spheres_of_power">Do you want Spheres of Power/Might:</label>
+      <select id="spheres_of_power">
+        <option value="n" ${savedData.spheres_of_power === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedData.spheres_of_power === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
     <div>
       <label for="dice-rolls">Number of Dice:</label>
       <input type="number" id="dice-rolls" min="1" value="${savedData.diceRolls || ''}">
@@ -354,6 +369,7 @@ function showCharacterGeneratorDialog() {
             inherents: document.getElementById('inherents').value,
             modded_char_sheet: document.getElementById('modded_char_sheet').value,
             homebrew_feat_amount: document.getElementById('homebrew_feat_amount').value,
+            spheres_of_power: document.getElementById('spheres_of_power').value,
             diceRolls: document.getElementById('dice-rolls').value,
             diceSides: document.getElementById('dice-sides').value,
             highestLevel: document.getElementById('highest-level').value,
@@ -363,6 +379,8 @@ function showCharacterGeneratorDialog() {
   
           // Save the data to localStorage
           localStorage.setItem('deliverData.json', JSON.stringify(characterData));
+          // Stored separately (NOT in the backend payload) so it doesn't break the fixed 19-input endpoint
+          localStorage.setItem('addCustomBuffs', document.getElementById('add_custom_buffs').value);
   
           // You can proceed with your logic for generating the character here
           console.log("Character Data Generated: ", characterData);
