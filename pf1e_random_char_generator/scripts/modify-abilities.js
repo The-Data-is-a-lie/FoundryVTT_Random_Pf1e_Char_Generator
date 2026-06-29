@@ -145,7 +145,10 @@ const featConditionalsMap = {};
 for (const [fn, fv] of Object.entries(characterData.feat_conditionals_dict || {})) {
   featConditionalsMap[fn.toLowerCase()] = fv;
 }
-const prepared_caster_list = ["Alchemist", "Bard", "Cleric", "Druid", "Inquisitor", "Investigator", "Magus", "Paladin", "Ranger", "Summoner", "Summoner (Unchained)", "Skald", "Warpriest", "Wizard", "Witch"]
+// Prepared casters (prepare a daily spell loadout). Bard, Summoner, Summoner (Unchained), and Skald
+// are SPONTANEOUS in PF1 (cast from spells known, no preparation) and are intentionally excluded so
+// they fall through to the spontaneous branch in determineSpellType().
+const prepared_caster_list = ["Alchemist", "Cleric", "Druid", "Inquisitor", "Investigator", "Magus", "Paladin", "Ranger", "Warpriest", "Wizard", "Witch"]
 // Prefer the backend's display name (e.g. "Barbarian (Unchained)"), which is already in the exact
 // every_class.json format. Do NOT run it through capitalizeWords (that lowercases the "(unchained)"
 // part). Fall back to capitalizeWords(c_class) for an un-redeployed backend.
@@ -1100,14 +1103,60 @@ async function processSpheres(magicItems, combatItems, tradition, manaPool, star
   const built = talentEntries.map(e => e.item);
 
   // Magic dabblers: one informational casting-tradition / mana-pool summary feat (not a talent).
+  // The block is fully self-explanatory -- it spells out what each drawback/boon DOES, how the
+  // drawback->boon->bonus-spell-point math worked out, and what the casting ability & mana pool mean.
   if (Number(manaPool) > 0 || (tradition && Object.keys(tradition).length)) {
     const parts = [];
-    if (tradition && tradition.casting_ability_modifier) parts.push(`<p><strong>Casting ability:</strong> ${tradition.casting_ability_modifier}</p>`);
-    if (Number(manaPool) > 0) parts.push(`<p><strong>Spell points (mana pool):</strong> ${manaPool}</p>`);
-    const dbs = (tradition && tradition.drawbacks) || [];
-    const boons = (tradition && tradition.boons) || [];
-    if (dbs.length) parts.push(`<p><strong>Drawbacks:</strong> ${dbs.join(', ')}</p>`);
-    if (boons.length) parts.push(`<p><strong>Boons:</strong> ${boons.join(', ')}</p>`);
+    const esc = s => String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const plural = (n, word) => `${n} ${word}${Number(n) === 1 ? '' : 's'}`;
+    // Each drawback/boon is now {name, description, counts_as?}; tolerate bare-name strings from
+    // payloads generated before descriptions were carried through (still cached in localStorage).
+    const traitName = t => (t && typeof t === 'object') ? (t.name || '') : String(t);
+    const traitDesc = t => (t && typeof t === 'object') ? (t.description || '') : '';
+    const traitWeight = t => (t && typeof t === 'object') ? (Number(t.counts_as) || 1) : 1;
+    const renderDrawback = t => {
+      const wt = ` <em>(${plural(traitWeight(t), 'drawback point')})</em>`;
+      const d = traitDesc(t);
+      return `<li><strong>${esc(traitName(t))}</strong>${wt}${d ? ` &mdash; ${esc(d)}` : ''}</li>`;
+    };
+    const renderBoon = t => {
+      const d = traitDesc(t);
+      return `<li><strong>${esc(traitName(t))}</strong>${d ? ` &mdash; ${esc(d)}` : ''}</li>`;
+    };
+
+    const cam = (tradition && tradition.casting_ability_modifier) || '';
+    // Prefer the rich {name, description, counts_as} dicts; fall back to the plain name-string arrays
+    // (which the backend always keeps .join()-safe) so an older payload still renders clean names.
+    const dbs = (tradition && (tradition.drawbacks_detail || tradition.drawbacks)) || [];
+    const boons = (tradition && (tradition.boons_detail || tradition.boons)) || [];
+    const bonusSp = Number(tradition && tradition.bonus_spell_points) || 0;
+    const pool = Number(manaPool) || 0;
+    const base = Math.max(0, pool - bonusSp);
+
+    if (dbs.length || boons.length) {
+      parts.push(`<p><em>This character's casting tradition &mdash; the limitations (drawbacks) and perks (boons) that shape how their magic works.</em></p>`);
+    }
+    if (cam) {
+      parts.push(`<p><strong>Casting ability:</strong> ${esc(cam)} &mdash; the mental ability score that powers their sphere magic. It sets the save DC of their sphere effects (DC 10 + 1/2 caster level + ${esc(cam)} modifier) and their base pool of spell points.</p>`);
+    }
+    if (pool > 0) {
+      const breakdown = bonusSp
+        ? ` (base ${base} from the ${esc(cam || 'casting')} modifier + ${plural(bonusSp, 'bonus spell point')} from unspent drawbacks)`
+        : ` (from the ${esc(cam || 'casting')} modifier)`;
+      parts.push(`<p><strong>Spell points (mana pool):</strong> ${pool} &mdash; the daily pool spent to fuel the more powerful sphere abilities; it refreshes after a night's rest.${breakdown}</p>`);
+    }
+    if (dbs.length) {
+      parts.push(`<p><strong>Drawbacks</strong> &mdash; limits accepted on their magic; each is worth 1 or 2 drawback points:</p><ul>${dbs.map(renderDrawback).join('')}</ul>`);
+    }
+    if (boons.length) {
+      parts.push(`<p><strong>Boons</strong> &mdash; perks purchased with drawback points (2 drawback points buy 1 boon):</p><ul>${boons.map(renderBoon).join('')}</ul>`);
+    }
+    if (dbs.length) {
+      const totalPts = dbs.reduce((n, t) => n + traitWeight(t), 0);
+      const leftover = Math.max(0, totalPts - boons.length * 2);
+      parts.push(`<p><strong>Tradition math:</strong> ${plural(totalPts, 'drawback point')} total &rarr; ${plural(boons.length, 'boon')} bought (2 points each) &rarr; ${plural(leftover, 'point')} left over &rarr; +${plural(bonusSp, 'bonus spell point')} (rising triangular chart, folded into the mana pool above).</p>`);
+    }
     if (parts.length) built.push(synthesizeFeatItem(`Spheres Casting (mana pool ${Number(manaPool) || 0})`, parts.join('')));
   }
 
