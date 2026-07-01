@@ -1,0 +1,52 @@
+{
+  "name": "____________________ Path of War ____________________",
+  "type": "buff",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": {
+      "value": "",
+      "instructions": "",
+      "unidentified": ""
+    },
+    "tags": [],
+    "changes": [],
+    "changeFlags": {},
+    "contextNotes": [],
+    "actions": [],
+    "attackNotes": [],
+    "effectNotes": [],
+    "uses": {
+      "value": null,
+      "per": "",
+      "autoDeductChargesCost": "",
+      "maxFormula": "",
+      "rechargeFormula": ""
+    },
+    "links": {
+      "children": []
+    },
+    "tag": "",
+    "flags": {
+      "boolean": {},
+      "dictionary": {}
+    },
+    "scriptCalls": [],
+    "subType": "temp",
+    "active": false,
+    "level": 0,
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "conditions": [],
+    "hideFromToken": true,
+    "showInQuickbar": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4000,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  }
+}

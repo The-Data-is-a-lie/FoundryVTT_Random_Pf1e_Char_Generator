@@ -1,0 +1,1065 @@
+[
+  {
+    "name": "Speed AC (Lost on Charge)",
+    "type": "buff",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "_id": "7F449p08",
+          "formula": "+floor(((@attributes.speed.land.total)-30) / 20)",
+          "operator": "add",
+          "priority": 0,
+          "target": "ac",
+          "type": "dodge"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "temp",
+      "active": false,
+      "level": 0,
+      "duration": {
+        "value": "",
+        "units": "",
+        "end": "",
+        "start": 780192
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "showInQuickbar": false
+    },
+    "img": "icons/svg/ice-aura.svg",
+    "effects": [],
+    "folder": null,
+    "sort": -337500,
+    "flags": {
+      "scene-packer": {
+        "hash": "664471237fe56541975c67bf48d9a699afd0cd9e"
+      },
+      "core": {},
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "11.11",
+      "coreVersion": "13.348",
+      "createdTime": 1715141141226,
+      "modifiedTime": 1776747396655,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "6yu6aA4T5RHRtbta",
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "name": "Charge",
+    "type": "buff",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "_id": "qAUn7Q2b",
+          "formula": "+floor(@attributes.speed.land.total/10)-1",
+          "operator": "add",
+          "priority": 0,
+          "target": "attack",
+          "type": "untyped"
+        },
+        {
+          "_id": "fa1hnnYa",
+          "formula": "-2",
+          "operator": "add",
+          "priority": 0,
+          "target": "ac",
+          "type": "untyped"
+        },
+        {
+          "_id": "13m7wqCW",
+          "formula": "+floor(@attributes.speed.land.total/10)-1",
+          "operator": "add",
+          "priority": 0,
+          "target": "wdamage",
+          "type": "untyped"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "temp",
+      "active": false,
+      "level": null,
+      "duration": {
+        "value": "",
+        "units": "",
+        "end": "",
+        "start": 1026564
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "showInQuickbar": false
+    },
+    "img": "icons/svg/ice-aura.svg",
+    "effects": [],
+    "folder": null,
+    "sort": -237500,
+    "flags": {
+      "scene-packer": {
+        "hash": "6dcf9390605425ea80a887fe77d3fd7801e27a45"
+      },
+      "core": {},
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "11.8",
+      "coreVersion": "13.348",
+      "createdTime": 1715140937387,
+      "modifiedTime": 1776747394900,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "CW8s3tnsrlPTRuTC",
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "_stats": {
+      "coreVersion": "13.348",
+      "systemId": "pf1",
+      "systemVersion": "11.9",
+      "createdTime": 1770881871529,
+      "modifiedTime": 1770881874281,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "img": "systems/pf1/icons/feats/combat-expertise.jpg",
+    "name": "Combat Expertise",
+    "system": {
+      "description": {
+        "value": "<p>@UUID[Compendium.pf1.feats.Item.NFxHebU1XhEs5WJh]{Combat Expertise}</p><p>You can choose to take a \u20131 penalty on melee attack rolls and combat maneuver checks to gain a +1 dodge bonus to your Armor Class. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by \u20131 and the dodge bonus increases by +1.</p><p>You can only choose to use this feat when you declare that you are making an attack or a full-attack action with a melee weapon. The effects of this feat last until your next turn.</p>",
+        "instructions": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "_id": "6cxoFKCg",
+          "formula": "-(1 + (floor(@attributes.bab.total / 4)))",
+          "target": "mattack",
+          "type": "untyped"
+        },
+        {
+          "_id": "Vb3eUBvd",
+          "formula": "(1 + (floor(@attributes.bab.total / 4)))",
+          "target": "ac",
+          "type": "dodge"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "temp",
+      "active": false,
+      "level": null,
+      "duration": {
+        "value": "1",
+        "units": "round",
+        "end": "turnStart"
+      },
+      "conditions": [],
+      "hideFromToken": false
+    },
+    "type": "buff",
+    "effects": [],
+    "flags": {
+      "scene-packer": {
+        "hash": "2efcf2c8e2c48f090005ed9e6c3709034b07e999"
+      }
+    },
+    "_id": "jdSOXxnVXNHByas4",
+    "folder": null,
+    "sort": 37500,
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "_stats": {
+      "coreVersion": "13.348",
+      "systemId": "pf1",
+      "systemVersion": "11.9",
+      "createdTime": 1770881859331,
+      "modifiedTime": 1770881859331,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "img": "icons/svg/combat.svg",
+    "name": "Total Defense",
+    "system": {
+      "description": {
+        "value": "<p>You can defend yourself as a standard action. You get a +4 dodge bonus to your AC for 1 round. Your AC improves at the start of this action. You can\u2019t combine total defense with fighting defensively or with the benefit of the Combat Expertise feat. You can\u2019t make attacks of opportunity while using total defense.</p>",
+        "instructions": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "_id": "je1Ant12",
+          "formula": "4 + if(gte(@skills.acr.rank, 3), 2)",
+          "target": "ac",
+          "type": "dodge"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "temp",
+      "active": false,
+      "level": 0,
+      "duration": {
+        "value": "1",
+        "units": "round",
+        "end": "turnStart"
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "186"
+        }
+      ]
+    },
+    "type": "buff",
+    "effects": [],
+    "flags": {
+      "scene-packer": {
+        "hash": "6368624c72c2acf8f7d60fcf908282abfdf1314d"
+      }
+    },
+    "_id": "4ckXzft8autUwbWE",
+    "folder": null,
+    "sort": 62500,
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "_stats": {
+      "coreVersion": "13.348",
+      "systemId": "pf1",
+      "systemVersion": "11.9",
+      "createdTime": 1770881865083,
+      "modifiedTime": 1770881873531,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "img": "icons/svg/combat.svg",
+    "name": "Fighting Defensively",
+    "system": {
+      "description": {
+        "value": "<p>You can choose to fight defensively when attacking. If you do so, you take a \u20134 penalty on all attacks in a round to gain a +2 dodge bonus to AC until the start of your next turn.</p>",
+        "instructions": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "_id": "yACQ7XWO",
+          "formula": "if(gte(@skills.acr.rank, 3), 1) + 2",
+          "target": "ac",
+          "type": "dodge"
+        },
+        {
+          "_id": "miRWnsin",
+          "formula": "-4",
+          "target": "attack",
+          "type": "untyped"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "temp",
+      "active": false,
+      "level": 0,
+      "duration": {
+        "value": "1",
+        "units": "round",
+        "end": "turnStart"
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "sources": [
+        {
+          "id": "PZO1110",
+          "pages": "184"
+        }
+      ]
+    },
+    "type": "buff",
+    "effects": [],
+    "flags": {
+      "scene-packer": {
+        "hash": "6c275ab035362f2907cacae2623941ffa82b564f"
+      }
+    },
+    "_id": "PchBttdDKHzB9b9q",
+    "folder": null,
+    "sort": 12500,
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "name": "Professions",
+    "type": "buff",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "perm",
+      "active": true,
+      "level": 0,
+      "duration": {
+        "value": "",
+        "units": "",
+        "end": "",
+        "start": 1470300
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "showInQuickbar": false
+    },
+    "img": "icons/svg/ice-aura.svg",
+    "effects": [
+      {
+        "name": "Professions",
+        "img": "icons/svg/ice-aura.svg",
+        "origin": ".Item.rJa6rdSDtz3LORko",
+        "duration": {
+          "startTime": 1470282,
+          "combat": null
+        },
+        "disabled": false,
+        "type": "buff",
+        "system": {
+          "end": "turnStart"
+        },
+        "transfer": true,
+        "flags": {
+          "pf1": {
+            "tracker": true
+          }
+        },
+        "_id": "MifVhgA9fSjuTCcY",
+        "changes": [],
+        "description": "",
+        "tint": "#ffffff",
+        "statuses": [],
+        "sort": 0,
+        "_stats": {
+          "coreVersion": "13.348",
+          "systemId": "pf1",
+          "systemVersion": "11.11",
+          "createdTime": 1776747265572,
+          "modifiedTime": 1776747265572,
+          "lastModifiedBy": "hjlKuN18NAgKkglK"
+        }
+      }
+    ],
+    "flags": {
+      "scene-packer": {
+        "hash": "af28584730e6b556b06c131dedb13652a45aa4d5"
+      },
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "coreVersion": "13.348",
+      "systemId": "pf1",
+      "systemVersion": "11.11",
+      "createdTime": 1776747264868,
+      "modifiedTime": 1777743854652,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "rJa6rdSDtz3LORko",
+    "folder": null,
+    "sort": 456250,
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "name": "Skill Synergies",
+    "type": "buff",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "perm",
+      "active": true,
+      "level": 0,
+      "duration": {
+        "value": "",
+        "units": "",
+        "end": "",
+        "start": 1470300
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "showInQuickbar": false
+    },
+    "img": "icons/svg/ice-aura.svg",
+    "effects": [
+      {
+        "name": "Skill Synergies",
+        "img": "icons/svg/ice-aura.svg",
+        "origin": ".Item.oVKm3W3RoKV1IZsP",
+        "duration": {
+          "startTime": 1470282,
+          "combat": null
+        },
+        "disabled": false,
+        "type": "buff",
+        "system": {
+          "end": "turnStart"
+        },
+        "transfer": true,
+        "flags": {
+          "pf1": {
+            "tracker": true
+          }
+        },
+        "_id": "qH6Hu6JZKWmrFYoR",
+        "changes": [],
+        "description": "",
+        "tint": "#ffffff",
+        "statuses": [],
+        "sort": 0,
+        "_stats": {
+          "coreVersion": "13.348",
+          "systemId": "pf1",
+          "systemVersion": "11.11",
+          "createdTime": 1776747272740,
+          "modifiedTime": 1776747272740,
+          "lastModifiedBy": "hjlKuN18NAgKkglK"
+        }
+      }
+    ],
+    "flags": {
+      "scene-packer": {
+        "hash": "207cd5211e63c76fe09838d7f1db3c3fef13baef"
+      },
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "coreVersion": "13.348",
+      "systemId": "pf1",
+      "systemVersion": "11.11",
+      "createdTime": 1776747272274,
+      "modifiedTime": 1777743899682,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "oVKm3W3RoKV1IZsP",
+    "folder": null,
+    "sort": 462500,
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "name": "Skill Ranks Based on Wisdom",
+    "type": "buff",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "_id": "XJ2EdeZX",
+          "formula": "-(@abilities.int.mod)*(@attributes.hd.total)",
+          "operator": "add",
+          "priority": 0,
+          "target": "bonusSkillRanks",
+          "type": "untyped"
+        },
+        {
+          "_id": "QkLCBBZa",
+          "formula": "+(@abilities.wis.mod)*(@attributes.hd.total)",
+          "operator": "add",
+          "priority": 0,
+          "target": "bonusSkillRanks",
+          "type": "untyped"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "perm",
+      "active": false,
+      "level": null,
+      "duration": {
+        "value": "",
+        "units": "",
+        "end": "",
+        "start": 779472
+      },
+      "conditions": [],
+      "hideFromToken": false
+    },
+    "img": "icons/svg/ice-aura.svg",
+    "effects": [],
+    "folder": null,
+    "sort": 400000,
+    "flags": {
+      "scene-packer": {
+        "hash": "eb6849d5506e95d2c1597b5613302e381b6604ec"
+      },
+      "core": {},
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "11.8",
+      "coreVersion": "13.348",
+      "createdTime": 1706122494446,
+      "modifiedTime": 1760917304737,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "rULZzJkSJpmBRjUI",
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "name": "Skill Ranks Based on Charisma",
+    "type": "buff",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "_id": "dC6pANVI",
+          "formula": "-(@abilities.int.mod)*(@attributes.hd.total)",
+          "operator": "add",
+          "priority": 0,
+          "target": "bonusSkillRanks",
+          "type": "untyped"
+        },
+        {
+          "_id": "wSQknFGB",
+          "formula": "+(@abilities.cha.mod)*(@attributes.hd.total)",
+          "operator": "add",
+          "priority": 0,
+          "target": "bonusSkillRanks",
+          "type": "untyped"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "perm",
+      "active": false,
+      "level": null,
+      "duration": {
+        "value": "",
+        "units": "",
+        "end": "",
+        "start": 779472
+      },
+      "conditions": [],
+      "hideFromToken": false
+    },
+    "img": "icons/svg/ice-aura.svg",
+    "effects": [],
+    "folder": null,
+    "sort": 425000,
+    "flags": {
+      "scene-packer": {
+        "hash": "b9f7e28c67d63062c65f78b5f6e119b3cb5948a3"
+      },
+      "core": {},
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "systemId": "pf1",
+      "systemVersion": "11.8",
+      "coreVersion": "13.348",
+      "createdTime": 1706122494446,
+      "modifiedTime": 1776910267082,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "8B3WdBfNWonEMtJy",
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "name": "Speed Bonus To Acrobatics (Land)",
+    "type": "buff",
+    "img": "icons/svg/ice-aura.svg",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "type": "untyped",
+          "_id": "jfwCcfom",
+          "operator": "add",
+          "priority": 0,
+          "formula": "+floor(@attributes.speed.land.total/10-3)*4",
+          "target": "skill.acr"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "perm",
+      "active": false,
+      "level": 0,
+      "duration": {
+        "value": null,
+        "units": "",
+        "end": "",
+        "start": 1026480
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "showInQuickbar": false
+    },
+    "effects": [],
+    "flags": {
+      "scene-packer": {
+        "hash": "a0ee519538bc79d313b865b7ca18384edb043ff0"
+      },
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "coreVersion": "13.348",
+      "systemId": "pf1",
+      "systemVersion": "11.8",
+      "createdTime": 1752946656532,
+      "modifiedTime": 1760917304737,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "bacLdca7ZLJe5BcK",
+    "folder": null,
+    "sort": 600000,
+    "ownership": {
+      "default": 0
+    }
+  },
+  {
+    "name": "Acrobatics Speed",
+    "type": "buff",
+    "img": "icons/svg/ice-aura.svg",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": ""
+      },
+      "tags": [],
+      "changes": [
+        {
+          "type": "untyped",
+          "_id": "jfwCcfom",
+          "operator": "add",
+          "priority": 0,
+          "formula": "0",
+          "target": "skill.acr"
+        }
+      ],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": null,
+        "per": "",
+        "autoDeductChargesCost": "",
+        "maxFormula": "",
+        "rechargeFormula": ""
+      },
+      "links": {
+        "children": []
+      },
+      "tag": "",
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "perm",
+      "active": true,
+      "level": 0,
+      "duration": {
+        "value": null,
+        "units": "",
+        "end": "",
+        "start": 1026480
+      },
+      "conditions": [],
+      "hideFromToken": false,
+      "showInQuickbar": false
+    },
+    "effects": [],
+    "flags": {
+      "scene-packer": {
+        "hash": "a0ee519538bc79d313b865b7ca18384edb043ff0"
+      },
+      "pf1": {
+        "migration": "11.2"
+      }
+    },
+    "_stats": {
+      "coreVersion": "13.348",
+      "systemId": "pf1",
+      "systemVersion": "11.8",
+      "createdTime": 1752946656532,
+      "modifiedTime": 1760917304737,
+      "lastModifiedBy": "hjlKuN18NAgKkglK"
+    },
+    "_id": "AcrobSpeedBuff01",
+    "folder": null,
+    "sort": 600000,
+    "ownership": {
+      "default": 0
+    }
+  }
+]

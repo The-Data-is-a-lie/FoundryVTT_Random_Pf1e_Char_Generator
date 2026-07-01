@@ -13,9 +13,9 @@ import { main } from './modify-abilities.js';
 // need export so we can import in main.js
 export async function createPersistentButton() {
   // test server
-  // const deliver_location = 'http://localhost:5000/update_character_data';
+  const deliver_location = 'http://localhost:5001/update_character_data';
   // perm server
-  const deliver_location = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
+  // const deliver_location = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
   
 
 
@@ -119,6 +119,7 @@ export async function createPersistentButton() {
 function showCharacterGeneratorDialog() {
   // Get the saved character data from localStorage
   const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
+  const savedAddBuffs = localStorage.getItem('addCustomBuffs') || 'n';
 
   const html = `
     <div>
@@ -165,8 +166,16 @@ function showCharacterGeneratorDialog() {
           'Bloodrager', 'Brawler', 'Cavalier', 'Cleric', 'Druid', 'Fighter', 'Gunslinger', 'Hunter', 'Inquisitor',
           'Investigator', 'Magus', 'Monk', 'Monk (Unchained)', 'Ninja', 'Oracle', 'Paladin', 'Ranger', 'Rogue',
           'Rogue (Unchained)', 'Samurai', 'Shaman', 'Shifter', 'Skald', 'Slayer', 'Sorcerer', 'Summoner',
-          'Summoner (Unchained)', 'Swashbuckler', 'Vigilante', 'Warpriest', 'Witch', 'Wizard'
-        ].map(char_class => 
+          'Summoner (Unchained)', 'Swashbuckler', 'Vigilante', 'Warpriest', 'Witch', 'Wizard',
+          // Path of War initiator classes (backend keys: warlord/warder/harbinger/mystic/medic)
+          'Warlord', 'Warder', 'Harbinger', 'Mystic', 'Medic'
+          // Stalker & Zealot are NOT in the pf1-pow Foundry compendium yet (module last updated
+          // ~late May 2026 but still missing them — may need to ping the maintainer). They'd
+          // generate on the backend, but the Foundry sheet can't resolve a class item that the
+          // module doesn't ship. To re-enable once they're added: uncomment the line below AND
+          // remove "stalker"/"zealot" from pow_classes_pending_foundry in Backend/utils/data.py.
+          // , 'Stalker', 'Zealot'
+        ].map(char_class =>
           `<option value="${char_class.toLowerCase().replace(/\s/g, '-')}" 
             ${savedData.class === char_class.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
             ${char_class}
@@ -293,12 +302,26 @@ function showCharacterGeneratorDialog() {
       </select>
     </div>      
     <div>
+      <label for="add_custom_buffs">Add custom buffs:</label>
+      <select id="add_custom_buffs">
+        <option value="n" ${savedAddBuffs === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedAddBuffs === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
+    <div>
       <label for="homebrew_feat_amount">Do you want my homebrew feat amount:</label>
       <select id="homebrew_feat_amount">
         <option value="y" ${savedData.homebrew_feat_amount === "y" ? "selected" : ""}>Yes</option>
         <option value="n" ${savedData.homebrew_feat_amount === "n" ? "selected" : ""}>No</option>
       </select>
-    </div>      
+    </div>
+    <div>
+      <label for="spheres_of_power">Do you want Spheres of Power/Might:</label>
+      <select id="spheres_of_power">
+        <option value="n" ${savedData.spheres_of_power === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedData.spheres_of_power === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
     <div>
       <label for="dice-rolls">Number of Dice:</label>
       <input type="number" id="dice-rolls" min="1" value="${savedData.diceRolls || ''}">
@@ -346,6 +369,7 @@ function showCharacterGeneratorDialog() {
             inherents: document.getElementById('inherents').value,
             modded_char_sheet: document.getElementById('modded_char_sheet').value,
             homebrew_feat_amount: document.getElementById('homebrew_feat_amount').value,
+            spheres_of_power: document.getElementById('spheres_of_power').value,
             diceRolls: document.getElementById('dice-rolls').value,
             diceSides: document.getElementById('dice-sides').value,
             highestLevel: document.getElementById('highest-level').value,
@@ -355,6 +379,8 @@ function showCharacterGeneratorDialog() {
   
           // Save the data to localStorage
           localStorage.setItem('deliverData.json', JSON.stringify(characterData));
+          // Stored separately (NOT in the backend payload) so it doesn't break the fixed 19-input endpoint
+          localStorage.setItem('addCustomBuffs', document.getElementById('add_custom_buffs').value);
   
           // You can proceed with your logic for generating the character here
           console.log("Character Data Generated: ", characterData);

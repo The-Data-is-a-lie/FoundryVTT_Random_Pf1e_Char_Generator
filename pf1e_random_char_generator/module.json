@@ -9,8 +9,10 @@
   "packs": [],
   "system": "pf1e",
   "dependencies": [],
-  "minimumCoreVersion": "10.0.0",
-  "compatibleCoreVersion": "10.0.0",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "13"
+  },
   "scripts": [
     "scripts/module.js",
     "scripts/deliver-data.js",

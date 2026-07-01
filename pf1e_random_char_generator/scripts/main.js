@@ -11,6 +11,9 @@
   await import('./modify-abilities.js'); // Load modify-abilities script
   console.log("modify-abilities ran");
 
+  await import('./pow-sort-override.js'); // pf1-pow Path of War tab sort override (registers a ready hook)
+  console.log("pow-sort-override ran");
+
   console.log("All scripts loaded and ready.");
 
   // Now, import button.js and create the persistent button
