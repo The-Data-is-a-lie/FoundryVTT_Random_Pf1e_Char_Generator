@@ -1007,28 +1007,32 @@
       ],
       "rider": "requires a weapon enhanced with Energy Enhancement; the energy becomes sonic (or force at caster level [[10]]) in place of a physical energy type, treated as the flaming weapon special ability"
     },
+    "Cripple": {
+      "modifiers": [],
+      "rider": "apply to a creature (e.g. via Crippling Strike or Enhance): it takes -[[2 + floor(@spheres.cl.total / 5)]] on all attack rolls, saving throws, ability checks, and skill checks."
+    },
     "Deadly Weapon": {
       "modifiers": [],
-      "rider": "grants the weapon keen (doubles its threat range; does not stack with keen or Improved Critical) plus a +[[floor(@spheres.cl.total / 3)]] bonus on critical hit confirmation rolls; alternatively, enhance the weapon instead to bypass one type of damage reduction (bludgeoning, cold iron, piercing, silver, or slashing)"
+      "rider": "your weapon gains keen (its threat range is doubled) and +[[floor(@spheres.cl.total / 3)]] on rolls to confirm critical hits."
     },
     "Energy Enhancement": {
       "modifiers": [
         {
-          "formula": "1d6 + floor(@spheres.cl.total / 2)",
+          "formula": "max(1, floor(@spheres.cl.total / 2))",
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
           "damageType": [
             "fire"
           ],
-          "critical": "nonCrit"
+          "critical": "normal"
         }
       ],
-      "rider": "energy type chosen when the enhancement is created — corrosive (acid), flaming (fire), frost (cold), or shock (electricity); may instead be applied to a consumable, splash weapon, or dose of poison so that anyone who consumes it, takes its direct/splash damage, or is struck by it (save or not) also takes [[@spheres.cl.total]] energy damage"
+      "rider": "your weapon gains a chosen energy special ability (corrosive/flaming/frost/shock — change the damageType to acid/fire/cold/electricity to match), dealing +[[max(1, floor(@spheres.cl.total / 2))]] energy damage on each hit."
     },
     "Ragged Edges": {
       "modifiers": [],
-      "rider": "on a hit the enhanced weapon deals [[floor(@spheres.cl.total / 2)]] bleed damage (minimum [[1]]); alternatively spend [[1]] spell point when creating the enhancement so it deals [[@spheres.cl.total]] bleed damage instead"
+      "rider": "your weapon deals +[[max(1, floor(@spheres.cl.total / 2))]] bleed damage on a hit (spend [[1]] spell point for the stronger version in the talent)."
     },
     "Spectral Enhancement": {
       "modifiers": [],
@@ -1585,8 +1589,17 @@
       "rider": "shroud; at the start of each of the target turns it must make a Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] or begin coughing, becoming staggered for [[1]] round."
     },
     "Fata Morgana": {
-      "modifiers": [],
-      "rider": "shroud; the target takes -[[2 + floor(@spheres.cl.total / 5)]] to AC and on saving throws against illusions."
+      "modifiers": [
+        {
+          "formula": "2 + floor(@spheres.cl.total / 5)",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ],
+      "rider": "shroud; the target's AC is reduced by [[2 + floor(@spheres.cl.total / 5)]] (reflected by this attack bonus) and it takes the same penalty on saving throws against illusions."
     },
     "Heat Stroke": {
       "modifiers": [],
@@ -1681,8 +1694,17 @@
       "rider": "shroud; the target takes a Stealth penalty of [[10 + @spheres.cl.total]] and all ranged attacks against it gain +[[1 + floor(@spheres.cl.total / 5)]]."
     },
     "Melt Skin": {
-      "modifiers": [],
-      "rider": "shroud; the target takes -[[2 + floor(@spheres.cl.total / 5)]] to AC, Fortitude saves, and Charisma-based skill checks."
+      "modifiers": [
+        {
+          "formula": "2 + floor(@spheres.cl.total / 5)",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ],
+      "rider": "shroud; the target takes -[[2 + floor(@spheres.cl.total / 5)]] to AC (reflected by this attack bonus), Fortitude saves, and Charisma-based skill checks."
     }
   }
 }
