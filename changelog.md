@@ -1,5 +1,7 @@
 Unreleased
 
+Version 2.0.0 (2026-07-04)
+
 - Changed: The Biography tab now shows the backend's coherent prose backstory (new `backstory` payload field) instead of the raw labeled field-by-field dump; that raw dump (family, mannerisms, personality, flaws, appearance, region, professions, schools, etc.) moved to the Notes tab. If no backstory is present (e.g. an un-redeployed backend), it falls back to the old behavior (raw dump in Biography). New backstoryToHtml() helper escapes the text and renders paragraph breaks.
 - Fixed: Path of War attack-buff conditionals (with a [[ ]] rider in the name) no longer crash the attack roll ("SyntaxError: Expected ] but [ found"). pf1 embeds the conditional NAME as the attack-roll term's flavor — (formula)[name] — and the [[ ]] nested brackets broke the d20 parser (damage conditionals were unaffected). The generator now gives attack-target conditional modifiers their own [maneuver name] flavor, so pf1 uses the formula as-is and never embeds the name — keeping the clickable [[ ]] rider intact.
 - Changed: The main weapon now also gets the size-scaling setup — a 2nd "Don't Touch" action (a copy of the attack, read by the script as the pristine base damage) plus the "Scaling Weapon Damage" script call — so damage scaling works when rolling the weapon directly in the Combat tab (previously only the separate attack item had it). The separate attack item is still created.
