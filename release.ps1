@@ -49,13 +49,16 @@ $ChangelogPath  = Join-Path $Root 'changelog.md'
 $ZipPath        = Join-Path $Root "downloads\$ModName.zip"
 $EnvPath        = Join-Path $Root '.env'
 $PkgId          = $ModName
+# The Foundry-registered package id is HYPHENATED (the URL slug), NOT the underscore module.json id.
+# Submitting the underscore id to the Release API returns 403 "Invalid Release API token".
+$FoundryId      = 'pf1e-random-char-generator'
 $ProjPath       = 'pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator'
 $ProjId         = 'pathfinder_1e_randomized_character_generator%2FFoundryVTT_Random_Pf1e_Char_Generator'
 $RawBase        = "https://gitlab.com/$ProjPath/-/raw/v$Version"
 $PinnedManifest = "$RawBase/$ModName/module.json"
 $PinnedDownload = "$RawBase/downloads/$ModName.zip"
 $FoundryApi     = 'https://foundryvtt.com/_api/packages/release_version/'
-$PkgUrl         = "https://foundryvtt.com/packages/$PkgId"
+$PkgUrl         = "https://foundryvtt.com/packages/$FoundryId"
 
 Set-Location $Root
 
@@ -180,7 +183,7 @@ if ($DryRun) {
     Note "Revert:   git restore -- $ManifestRel $ChangelogRel"
     Write-Host ''
     Step 'Foundry payload that a real run would submit (dry-run:true, then dry-run:false):'
-    $preview = @{ id = $PkgId; 'dry-run' = $true; release = @{
+    $preview = @{ id = $FoundryId; 'dry-run' = $true; release = @{
         version = $Version; manifest = $PinnedManifest
         notes = '(the GitLab release URL, created at publish time)'
         compatibility = @{ minimum = $mjObj.compatibility.minimum; verified = $mjObj.compatibility.verified } } }
@@ -220,10 +223,12 @@ try {
         Note "GitLab release v$Version already exists -- continuing."
         $GitLabReleaseUrl = "https://gitlab.com/$ProjPath/-/releases/v$Version"
     } else {
-        Fail "GitLab release failed ($code): $($_.ErrorDetails.Message)`nTag is pushed; create the release manually or re-run with -NoPublish once fixed."
+        Note "GitLab release couldn't be created ($code): $($_.ErrorDetails.Message)"
+        Note '(A CI/CD-Catalog project setting can block the Releases API -- not fatal; the tag itself is the release.)'
+        $GitLabReleaseUrl = "https://gitlab.com/$ProjPath/-/blob/v$Version/changelog.md"
     }
 }
-Ok "GitLab release: $GitLabReleaseUrl"
+Ok "Release notes URL: $GitLabReleaseUrl"
 
 # ---- NO-PUBLISH stops here -----------------------------------------------------------------------
 if ($NoPublish) {
@@ -243,11 +248,13 @@ $compat = @{ minimum = $mjObj.compatibility.minimum; verified = $mjObj.compatibi
 if ($mjObj.compatibility.maximum) { $compat.maximum = $mjObj.compatibility.maximum }
 
 function Invoke-FoundryRelease([bool]$dry) {
-    $payload = @{ id = $PkgId; 'dry-run' = $dry; release = @{
+    $payload = @{ id = $FoundryId; 'dry-run' = $dry; release = @{
         version = $Version; manifest = $PinnedManifest; notes = $GitLabReleaseUrl; compatibility = $compat } }
     $json = $payload | ConvertTo-Json -Depth 6
     try {
-        return Invoke-RestMethod -Method Post -Uri $FoundryApi -Headers @{ Authorization = $FoundryToken } -ContentType 'application/json' -Body $json
+        # -SkipHeaderValidation: Foundry wants the raw fvttp_ token as the Authorization value with no
+        # scheme; .NET otherwise rejects a scheme-less Authorization header with a FormatException.
+        return Invoke-RestMethod -Method Post -Uri $FoundryApi -Headers @{ Authorization = $FoundryToken } -ContentType 'application/json' -Body $json -SkipHeaderValidation
     } catch {
         $code = $null; try { $code = [int]$_.Exception.Response.StatusCode } catch {}
         if ($code -eq 429) {
