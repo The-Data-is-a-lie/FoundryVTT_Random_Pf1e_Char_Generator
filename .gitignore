@@ -1,0 +1,21 @@
+# ---- secrets (never commit) ----
+.env
+*.env
+
+# ---- editor / agent tooling ----
+.claude/
+node_modules/
+
+# ---- backup / scratch files (present in the working tree, NOT shipped) ----
+*.bak
+*.tmp
+downloads/*- Copy.zip
+
+# ---- other FoundryVTT modules that happen to share this git root ----
+#      (this repo only ships pf1e_random_char_generator/ + downloads/)
+/lib-wrapper/
+/pf-content/
+/pf1-pow/
+/pf1-statblock-converter/
+/pf1spheres/
+/statblock-library/

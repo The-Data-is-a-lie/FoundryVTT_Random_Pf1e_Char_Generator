@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Keep the distributable archive byte-for-byte binary (never LF-normalize it)
+*.zip binary
