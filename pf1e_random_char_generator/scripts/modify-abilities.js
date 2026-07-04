@@ -38,6 +38,9 @@ export async function main() {
     const spacePathOfWarBuffsPath         = charSheetBase.target + "/space_Path_of_War_buffs.json";
     const stanceChangesPath               = charSheetBase.target + "/stance_changes.json";
     const maneuverChangesPath             = charSheetBase.target + "/maneuver_changes.json";
+    // Spheres of Power / Might per-roll conditionals (nested {Sphere:{Talent:{modifiers,rider}}}).
+    const combatTalentConditionalsPath    = charSheetBase.target + "/combat_talent_conditionals.json";
+    const magicTalentConditionalsPath     = charSheetBase.target + "/magic_talent_conditionals.json";
 
     // inherents
     const inherentsPath                   = charSheetBase.target + "/inherents.json";
@@ -95,6 +98,8 @@ export async function main() {
       spacePathOfWarBuffsPath,
       stanceChangesPath,
       maneuverChangesPath,
+      combatTalentConditionalsPath,
+      magicTalentConditionalsPath,
       inherentsPath,
       inherents2Path,
       customBuffsPath,
@@ -2129,6 +2134,200 @@ async function addSpellConditionals() {
   }
 }
 await addSpellConditionals();
+
+// ----- Spheres of Power / Might: talent conditionals + a Destructive Blast ----- //
+// Each attack-relevant sphere talent (curated in combat_talent_conditionals.json /
+// magic_talent_conditionals.json, nested {Sphere:{Talent:{modifiers,rider,default?}}}) becomes a
+// conditional toggle: Might talents + non-Destruction Power talents on the main weapon's attack
+// action, Destruction blast-type/shape talents on a synthesized "Destructive Blast" attack item.
+// Mirrors addManeuverConditionals — clean numbers are structured modifiers (auto source-labeled),
+// saves/conditions/durations ride the conditional NAME with [[ ]] inline rolls. Runs after the weapon
+// exists (processEquipment) and BEFORE createScalingAttackItem (so the scaling clone inherits them).
+//
+// These are DABBLING NPCs (Basic Magic Training = effective caster level 1), so the sphere roll-data
+// tokens are substituted to CONCRETE forms here: @spheres.cl.total -> 1, @spheres.cam/@spheres.pam ->
+// @abilities.<mod>.mod. (The importable palette actor keeps the native @spheres.* tokens instead, so a
+// conditional copied off it scales on a real spherecasting PC.)
+function sphereWordToAbbrev(w) {
+  const m = { intelligence: 'int', wisdom: 'wis', charisma: 'cha', int: 'int', wis: 'wis', cha: 'cha' };
+  return m[String(w || '').toLowerCase()] || '';
+}
+function resolveSphereAbilities() {
+  const trad = characterData.casting_tradition || {};
+  const cam = sphereWordToAbbrev(trad.casting_ability_modifier) || resolveInitStat();
+  const pam = 'wis';   // Spheres: a non-practitioner's practitioner modifier defaults to Wis
+  return { cam, pam };
+}
+function makeSubSpheres(cam, pam) {
+  return s => String(s == null ? '' : s)
+    .replaceAll('@spheres.cl.total', '1')
+    .replaceAll('@spheres.cam', `@abilities.${cam}.mod`)
+    .replaceAll('@spheres.pam', `@abilities.${pam}.mod`);
+}
+// Mark the generated actor as a spheres caster/practitioner (castingAbility/practitionerAbility drive
+// @spheres.cam/@spheres.pam on the pf1spheres tab + talent-sheet DCs) and stamp the dabbler's caster
+// level 1 onto the "Spheres Casting" summary feat. Harmless when the pf1spheres module is disabled.
+function applySpheresFlags(cam, pam) {
+  const hasMagic = Array.isArray(characterData.magic_talent_items) && characterData.magic_talent_items.length;
+  const hasCombat = Array.isArray(characterData.combat_talent_items) && characterData.combat_talent_items.length;
+  if (!hasMagic && !hasCombat) return;
+  exportTemplate.flags = exportTemplate.flags || {};
+  const f = Object.assign({}, exportTemplate.flags.pf1spheres);
+  if (hasMagic) f.castingAbility = cam;
+  f.practitionerAbility = pam;
+  exportTemplate.flags.pf1spheres = f;
+  if (hasMagic) {
+    const feat = (exportTemplate.items || []).find(i =>
+      i.type === 'feat' && typeof i.name === 'string' && i.name.startsWith('Spheres Casting'));
+    if (feat) {
+      feat.system = feat.system || {};
+      const ch = Array.isArray(feat.system.changes) ? feat.system.changes : [];
+      if (!ch.some(c => c && c.target === 'spherecl')) {
+        ch.push({ _id: randomChangeId(), formula: '1', target: 'spherecl', type: 'untyped', operator: 'add', priority: 0, value: 0 });
+        feat.system.changes = ch;
+      }
+    }
+  }
+  writeToLocalStorage('exportTemplate', exportTemplate);
+}
+
+// Synthesize a "Destructive Blast" attack item (Destruction sphere base ability): a touch attack whose
+// base damage scales (ceil(@spheres.cl.total/2))d6 -> 1d6 for a CL-1 dabbler. Blast-type/shape talents
+// attach as conditionals via addSphereTalentConditionals; the spell-point boost rides here as a
+// built-in toggle. Cloned from the main weapon so the pf1 v11 action schema is guaranteed valid.
+async function addDestructiveBlastAttack(subSpheres) {
+  try {
+    const chosen = characterData.spheres_chosen || [];
+    const magic = characterData.magic_talent_items || [];
+    const hasDestruction =
+      chosen.some(s => s && String(s.sphere).toLowerCase() === 'destruction'
+        && String(s.system || '').toLowerCase().startsWith('p'))
+      || magic.some(t => t && String(t.sphere).toLowerCase() === 'destruction');
+    if (!hasDestruction) return;
+    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
+    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    if (!weapon) { console.warn('Spheres: no weapon to base the Destructive Blast on.'); return; }
+    const blast = structuredClone(weapon);
+    blast.type = 'attack';
+    blast._id = await generateUniqueID();
+    blast.name = 'Destructive Blast';
+    blast.flags = {};
+    blast.system = blast.system || {};
+    blast.system.description = { value: '<p><strong>Destructive Blast</strong> (Destruction sphere) &mdash; a ranged or melee touch attack within close range (25 ft + 5 ft / 2 caster levels), subject to spell resistance. Deals <strong>(ceil(CL/2))d6</strong> bludgeoning by default (1d6 for a caster-level-1 dabbler). Blast-type talents (Fire/Frost/Acid/&hellip;) change the damage type and add a save rider; blast-shape talents change the delivery; toggle "Empowered Blast" to spend a spell point for one die per caster level.</p>' };
+    const action = (blast.system.actions || [])[0];
+    if (!action) { console.warn('Spheres: cloned weapon has no action for the blast.'); return; }
+    action._id = await generateUniqueID();
+    action.name = 'Destructive Blast';
+    action.actionType = 'rwak';
+    action.ability = Object.assign({}, action.ability, { attack: 'dex', damage: '', damageMult: 0 });
+    action.damage = action.damage || {};
+    action.damage.parts = [{ formula: subSpheres('(ceil(@spheres.cl.total / 2))d6'), types: ['bludgeoning'] }];
+    action.damage.critParts = [];
+    action.damage.nonCritParts = [];
+    action.conditionals = [{
+      _id: (await generateUniqueID()).slice(0, 8),
+      name: '(Destruction) Empowered Blast: spend [[1]] spell point — blast dice increase to one die per caster level',
+      default: false,
+      modifiers: [{
+        _id: (await generateUniqueID()).slice(0, 8),
+        formula: subSpheres('(floor(@spheres.cl.total / 2))d6') + '[Empowered Blast]',
+        target: 'damage', subTarget: 'allDamage', type: 'untyped', damageType: ['bludgeoning'], critical: 'nonCrit',
+      }],
+    }];
+    appendJsonToTemplate([blast], exportTemplate, 'Attack');
+    writeToLocalStorage('exportTemplate', exportTemplate);
+    console.log('Spheres: added Destructive Blast attack item.');
+  } catch (error) {
+    console.error('Error adding Destructive Blast:', error);
+  }
+}
+
+async function addSphereTalentConditionals(subSpheres) {
+  try {
+    const combat = characterData.combat_talent_items || [];
+    const magic = characterData.magic_talent_items || [];
+    if (!combat.length && !magic.length) return;
+    // Nested {Sphere:{Talent:{...}}} -> byNorm[sphereNorm(sphere)][sphereNorm(talent)].
+    const buildByNorm = table => {
+      const out = {};
+      for (const [sph, talents] of Object.entries(table || {})) {
+        if (!talents || typeof talents !== 'object') continue;
+        const key = sphereNorm(sph);
+        out[key] = out[key] || {};
+        for (const [tname, entry] of Object.entries(talents)) out[key][sphereNorm(tname)] = entry;
+      }
+      return out;
+    };
+    const combatByNorm = buildByNorm(fileDataDictionary[combatTalentConditionalsPath]);
+    const magicByNorm = buildByNorm(fileDataDictionary[magicTalentConditionalsPath]);
+
+    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
+    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weaponAction = weapon && (weapon.system?.actions || [])[0];
+    const blast = (exportTemplate.items || []).find(i => i.type === 'attack' && i.name === 'Destructive Blast');
+    const blastAction = blast && (blast.system?.actions || [])[0];
+
+    let added = 0;
+    const attach = async (items, byNorm, isMagic) => {
+      for (const t of items) {
+        if (!t) continue;
+        const sKey = sphereNorm(t.sphere || '');
+        const entry = (byNorm[sKey] || {})[sphereNorm(t.name || '')];
+        if (!entry) continue;
+        // Destruction Power talents ride the Destructive Blast item; everything else the main weapon.
+        const action = (isMagic && sKey === 'destruction') ? blastAction : weaponAction;
+        if (!action) continue;
+        if (!Array.isArray(action.conditionals)) action.conditionals = [];
+        const rider = typeof entry.rider === 'string' ? entry.rider.trim() : '';
+        const hasMods = Array.isArray(entry.modifiers) && entry.modifiers.length;
+        if (!rider && !hasMods) continue;
+        const condName = rider
+          ? `(${t.sphere}) ${t.name}: ${subSpheres(rider)}`
+          : `(${t.sphere}) ${t.name}`;
+        if (action.conditionals.some(c => c && c.name === condName)) continue;
+        const modifiers = [];
+        for (const m of (entry.modifiers || [])) {
+          const isAttack = m.target === 'attack';
+          let formula = subSpheres(m.formula);
+          // Source-label attack AND damage with the talent name (shows the source on the card; required
+          // on attack formulas so a [[ ]]-bearing name can't crash the d20 parser). Guard skips labeled.
+          if (formula && !/\[.*\]/.test(formula)) {
+            formula = `${formula}[${String(t.name).replace(/[\[\]]/g, '').trim()}]`;
+          }
+          modifiers.push({
+            _id: (await generateUniqueID()).slice(0, 8),
+            formula,
+            target: m.target || 'damage',
+            subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
+            type: m.type || 'untyped',
+            damageType: Array.isArray(m.damageType) ? m.damageType : [],
+            critical: m.critical || 'normal',
+          });
+        }
+        action.conditionals.push({
+          _id: (await generateUniqueID()).slice(0, 8),
+          name: condName,
+          default: entry.default === true,
+          modifiers,
+        });
+        added++;
+      }
+    };
+    await attach(combat, combatByNorm, false);
+    await attach(magic, magicByNorm, true);
+    writeToLocalStorage('exportTemplate', exportTemplate);
+    console.log(`Spheres: attached ${added} talent conditional(s).`);
+  } catch (error) {
+    console.error('Error attaching sphere talent conditionals:', error);
+  }
+}
+{
+  const { cam, pam } = resolveSphereAbilities();
+  const subSpheres = makeSubSpheres(cam, pam);
+  applySpheresFlags(cam, pam);
+  await addDestructiveBlastAttack(subSpheres);
+  await addSphereTalentConditionals(subSpheres);
+}
 
 // ----- Size-based damage scaling ----- //
 // Every sheet gets a `sizefordamage` feature whose charge value (default 0) drives the
