@@ -1,0 +1,501 @@
+{
+  "Beastmastery": {
+    "Focusing Connection": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "2",
+          "target": "allSavingThrows",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Touch an animal ally (regain your martial focus): it gains +[[2]] on all saving throws for [[1]] round (+[[2]] per [[10]] ranks in Handle Animal or Ride)."
+    },
+    "Frenzy Rider": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "attack",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Distribute to your mount: +[[1]] competence on all attack rolls with natural weapons (you take -[[1]] on your own attacks and combat maneuvers while active; scales per the talent)."
+    },
+    "Armored Charge": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmd",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Distribute to your mount (also applies to you while mounted): +[[1]] to CMD against bull rush, overrun, and trip (higher at [[10]] ranks in Ride); no squeezing penalties and no armor-check penalty on Ride checks."
+    }
+  },
+  "Gladiator": {
+    "Aura Of Fear": {
+      "aura_range": 25,
+      "only_others": true,
+      "changes": [
+        {
+          "formula": "-2",
+          "target": "attack",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "-2",
+          "target": "allSavingThrows",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Hostile creatures within range must make a Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] or be shaken while they remain (this buff applies shaken: -[[2]] on attack rolls and saves), +[[1d4]] rounds after leaving; a creature that saves is immune for [[24]] hours. Range is 25 ft + 5 ft per 2 base attack bonus."
+    },
+    "Inspiring Pose": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "One ally within range may immediately re-attempt a saving throw (at the original DC) against an ongoing effect afflicting them, even one already failed; +[[1]] more ally per [[4]] ranks in Intimidate."
+    }
+  },
+  "Guardian": {
+    "Defend Other": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "max(1, floor(@attributes.bab.total / 2))",
+          "target": "ac",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Immediate action when an ally in your threatened area is attacked: grant +[[max(1, floor(@attributes.bab.total / 2))]] competence AC against that attack (you may take the damage in their place if it still hits)."
+    }
+  },
+  "Shield": {
+    "Cover Ally": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "While you have martial focus, extend your active defense (the miss chance / interpose) to an ally within your shield's reach when they are attacked."
+    }
+  },
+  "Warleader": {
+    "Aggressive Flanking": {
+      "aura_range": 30,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Allied creatures within range count as flanking a shared target regardless of their relative positions."
+    },
+    "Coordinated Reflexes": {
+      "aura_range": 30,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "ref",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Allies within range gain +[[1]] morale on Reflex saves against area attacks and effects (+[[1]] per [[4]] ranks in Diplomacy)."
+    },
+    "Cry Of Confrontation": {
+      "aura_range": null,
+      "only_others": true,
+      "changes": [
+        {
+          "formula": "-1",
+          "target": "attack",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Distribute to each enemy that failed a Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] against your shout: -[[1]] on attack rolls that do not include you as a target."
+    },
+    "Fierce Shout": {
+      "aura_range": 30,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "wdamage",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "You and affected allies gain +[[1]] morale on damage rolls on their first attack each turn (+[[1]] per [[2]] ranks in Diplomacy). Mind-affecting emotion effect."
+    },
+    "Fortifying Phalanx": {
+      "aura_range": 30,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "fort",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Allies within range gain +[[1]] morale on Fortitude saves (+[[1]] per [[4]] ranks in Diplomacy) while within reach of another affected ally."
+    },
+    "Heraldry": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "attack",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "While you hold your banner, allies of your allegiance who can see it (including you) gain +[[1]] on attack rolls within the area of a tactic and treat your tactics as having +[[5]] ranks of Diplomacy."
+    },
+    "Masterful Coordination": {
+      "aura_range": 30,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Allies within range may use aid another to grant +[[3]] to attack rolls or AC (+[[1]] per [[10]] ranks in Diplomacy) to another affected ally against a threatened opponent; lasts until the aiding ally's next turn."
+    }
+  },
+  "Bear": {
+    "Fursome Aura": {
+      "aura_range": 30,
+      "only_others": true,
+      "changes": [
+        {
+          "formula": "-2",
+          "target": "attack",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "-2",
+          "target": "allSavingThrows",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Targets within the aura must make a Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] or be shaken while they remain (shaken: -[[2]] on attack rolls and saves); a creature that saves cannot be affected again for a time."
+    }
+  },
+  "Conjuration": {
+    "Bestial": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Your companion gains a chosen set of natural attacks (e.g. a primary [[1d6]] bite); may be taken multiple times for more."
+    },
+    "Mystical Companion": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Your companion gains a ki pool (half its Hit Dice + Wis modifier, minimum [[1]]); while it has ki, its unarmed and natural attacks count as magic (and more per the talent)."
+    },
+    "Regenerating Companion": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Your companion's fast healing becomes regeneration (overcome by two chosen damage types); it is not dismissed at 0 hp unless the regeneration is suppressed."
+    },
+    "Swarm Companion": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Your companion gains the swarm subtype (Tiny members), dealing [[1d6 + (floor(@spheres.cl.total / 3))d6]] swarm damage; shrinks a size at caster level [[10]] and [[15]]."
+    },
+    "Troop Companion": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Your companion gains the troop subtype (Small/Medium members), dealing [[1d6 + (floor(@spheres.cl.total / 3))d6]] troop damage with its attacks' enhancement and reach."
+    },
+    "Raging Companion": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "4",
+          "target": "str",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "4",
+          "target": "con",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "2",
+          "target": "will",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "-2",
+          "target": "ac",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Your companion rages (barbarian): +[[4]] morale to Strength and Constitution, +[[2]] morale on Will saves, -[[2]] AC, for rounds/day equal to the higher of its Con modifier or Hit Dice."
+    }
+  },
+  "Fate": {
+    "Greater Serendipity": {
+      "aura_range": 30,
+      "only_others": true,
+      "changes": [
+        {
+          "formula": "-1",
+          "target": "attack",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "-1",
+          "target": "allSavingThrows",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "-1",
+          "target": "skills",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Used with Serendipity: enemies within the area also suffer -[[1]] on attack rolls, skill checks, ability checks, and saving throws (a curse) equal to the luck bonus your allies gain."
+    },
+    "Serendipity": {
+      "aura_range": 30,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "attack",
+          "type": "luck",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1",
+          "target": "allSavingThrows",
+          "type": "luck",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1",
+          "target": "skills",
+          "type": "luck",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "All allies within range gain +[[1]] luck on attack rolls, skill checks, ability checks, and saving throws while you concentrate (spend [[1]] spell point to sustain for [[1]] round per caster level)."
+    },
+    "Strength": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "2",
+          "target": "cmb",
+          "type": "insight",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "2",
+          "target": "cmd",
+          "type": "insight",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Grant this motif to a target: +[[2]] insight (+[[1]] per [[4]] caster levels) to CMB, CMD, Strength checks, and Strength-based skill checks."
+    }
+  },
+  "Life": {
+    "Adrenaline Surge": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "When you use a Life sphere effect on an ally (spend [[1]] spell point), they may take one immediate action: an attack at their highest base attack bonus, a move (provoking), or an Escape Artist check."
+    }
+  },
+  "Mind": {
+    "Mind Shield": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "1",
+          "target": "will",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Ward a willing creature: +[[1]] morale (+[[1]] per [[2]] caster levels) on saves against mind-altering effects for [[@spheres.cl.total]] rounds."
+    }
+  },
+  "Nature": {
+    "Peace And Love": {
+      "aura_range": 30,
+      "only_others": true,
+      "changes": [
+        {
+          "formula": "-1",
+          "target": "attack",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Enemies within this 30-ft aura take -[[1]] on all attack rolls (mind-affecting compulsion). Suppress or resume as a free action."
+    }
+  },
+  "War": {
+    "Favorable Momentum": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Allies may spend [[2]] points of momentum (decided before the roll) to add a [[1d6]] circumstance bonus to any skill or ability check, once each per turn."
+    },
+    "Revitalizing Momentum": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "As a swift action an ally may spend momentum (max equal to your casting ability modifier) to gain [[1d4]] temporary hp per point spent, lasting that many rounds."
+    },
+    "Strike": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "floor(@spheres.cl.total / 5)",
+          "target": "cmb",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Rally an ally (spend [[1]] spell point): it may make a combat maneuver (not grapple or Escape Artist) against a threatened enemy without provoking, with +[[floor(@spheres.cl.total / 5)]] morale to the CMB check."
+    },
+    "Tenacity": {
+      "aura_range": null,
+      "only_others": false,
+      "changes": [
+        {
+          "formula": "4",
+          "target": "allSavingThrows",
+          "type": "morale",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Distribute to your mandate partner: when one member succeeds on a saving throw, the other gains +[[4]] morale on saving throws."
+    },
+    "Totem Of Expulsion": {
+      "aura_range": 20,
+      "only_others": true,
+      "changes": [
+        {
+          "formula": "-2",
+          "target": "attack",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "-2",
+          "target": "allSavingThrows",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "description": "Totem aura (spend [[1]] spell point): non-native outsiders within (including allies) are sickened with no save (-[[2]] on attack rolls, damage, saves, and skill checks) while inside."
+    },
+    "Totem Of Insanity": {
+      "aura_range": 20,
+      "only_others": true,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Totem aura (spend [[1]] spell point): enemies entering or present at creation make a Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] or, at the start of their next turn, have a [[50]]% chance to attack their own nearest ally."
+    },
+    "Totem Of Tactical Prowess": {
+      "aura_range": 20,
+      "only_others": false,
+      "changes": [],
+      "contextNotes": [],
+      "description": "Totem aura: whenever you or an ally gains a positioning bonus to attack or AC (flanking, higher ground, cover), that bonus is increased by +[[1]] (+[[1]] per [[5]] caster levels)."
+    }
+  }
+}
