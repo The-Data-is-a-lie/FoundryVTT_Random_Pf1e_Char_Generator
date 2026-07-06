@@ -41,6 +41,10 @@ export async function main() {
     // Spheres of Power / Might per-roll conditionals (nested {Sphere:{Talent:{modifiers,rider}}}).
     const combatTalentConditionalsPath    = charSheetBase.target + "/combat_talent_conditionals.json";
     const magicTalentConditionalsPath     = charSheetBase.target + "/magic_talent_conditionals.json";
+    // Affects-others sphere buffs (multi-buff distributor): temp buffs named "<Talent> (TAG)".
+    const talentAuraBuffsPath             = charSheetBase.target + "/talent_aura_buffs.json";
+    // Every buff spell as a distributable temp buff "<Spell> (TAG)" (multi-buff distributor).
+    const spellBuffsPath                  = charSheetBase.target + "/spell_buffs.json";
 
     // inherents
     const inherentsPath                   = charSheetBase.target + "/inherents.json";
@@ -100,6 +104,8 @@ export async function main() {
       maneuverChangesPath,
       combatTalentConditionalsPath,
       magicTalentConditionalsPath,
+      talentAuraBuffsPath,
+      spellBuffsPath,
       inherentsPath,
       inherents2Path,
       customBuffsPath,
@@ -2321,13 +2327,169 @@ async function addSphereTalentConditionals(subSpheres) {
     console.error('Error attaching sphere talent conditionals:', error);
   }
 }
+// Affects-others sphere talents (ally/companion/aura recipients) -> inactive temp buffs the player
+// distributes with the Multi-Buff Distributor macro. Named "<Talent> (TAG)" where TAG is the first 5
+// letters of the NPC's name (uppercased, stopping at the first non-letter; UNAMED fallback). Markers
+// "Aura Range: N" / "onlyOthers;" ride the description. See the multi-buff-distributor skill.
+function deriveBuffTag(name) {
+  const m = String(name || '').match(/[A-Za-z]{1,5}/);
+  return m ? m[0].toUpperCase() : 'UNAMED';
+}
+async function addSphereAuraBuffs(subSpheres) {
+  try {
+    const table = fileDataDictionary[talentAuraBuffsPath];
+    if (!table || typeof table !== 'object') return;
+    const combat = characterData.combat_talent_items || [];
+    const magic = characterData.magic_talent_items || [];
+    if (!combat.length && !magic.length) return;
+    const byNorm = {};
+    for (const [sph, tals] of Object.entries(table)) {
+      if (!tals || typeof tals !== 'object') continue;
+      const k = sphereNorm(sph); byNorm[k] = byNorm[k] || {};
+      for (const [tn, e] of Object.entries(tals)) byNorm[k][sphereNorm(tn)] = e;
+    }
+    const tag = deriveBuffTag(characterData.character_full_name);
+    const buffs = [];
+    const seen = new Set();
+    for (const t of [...combat, ...magic]) {
+      if (!t) continue;
+      const e = (byNorm[sphereNorm(t.sphere || '')] || {})[sphereNorm(t.name || '')];
+      if (!e) continue;
+      const key = sphereNorm(t.name || '');
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const parts = [];
+      if (e.aura_range != null && e.aura_range !== '' && e.aura_range !== 0) parts.push(`<p>Aura Range: ${e.aura_range}</p>`);
+      if (e.only_others) parts.push('<p>onlyOthers;</p>');
+      if (e.description) parts.push(`<p>${subSpheres(e.description)}</p>`);
+      const changes = (Array.isArray(e.changes) ? e.changes : []).map(ch => Object.assign(
+        { formula: '0', target: '', type: 'untyped', operator: 'add', priority: 0, value: 0 },
+        ch, { formula: subSpheres(String(ch.formula ?? '0')), _id: randomChangeId() }));
+      buffs.push({
+        name: `(${tag}) ${t.name}`, type: 'buff', img: 'icons/svg/aura.svg',
+        system: {
+          description: { value: parts.join(''), instructions: '', unidentified: '' },
+          tags: [], changes, changeFlags: {}, contextNotes: Array.isArray(e.contextNotes) ? e.contextNotes : [],
+          actions: [], attackNotes: [], effectNotes: [],
+          uses: { value: null, per: '', autoDeductChargesCost: '', maxFormula: '', rechargeFormula: '' },
+          links: { children: [] }, tag: '', flags: { boolean: {}, dictionary: {} }, scriptCalls: [],
+          subType: 'temp', active: false, level: 0, duration: { value: '', units: '' },
+          conditions: [], hideFromToken: false, showInQuickbar: false,
+        }, effects: [], flags: {},
+      });
+    }
+    if (!buffs.length) return;
+    const divider = {
+      name: '____________________ Spheres — shared / aura buffs ____________________',
+      type: 'buff', img: 'icons/svg/book.svg',
+      system: {
+        description: { value: '<p>Toggle and run the Multi-Buff Distributor to share these with allies / apply auras.</p>' },
+        tags: [], changes: [], changeFlags: {}, contextNotes: [], actions: [], attackNotes: [], effectNotes: [],
+        uses: { value: null, per: '', autoDeductChargesCost: '', maxFormula: '', rechargeFormula: '' },
+        links: { children: [] }, tag: '', flags: { boolean: {}, dictionary: {} }, scriptCalls: [],
+        subType: 'temp', active: false, level: 0, duration: { value: '', units: '' },
+        conditions: [], hideFromToken: true, showInQuickbar: false,
+      }, effects: [], flags: {},
+    };
+    const all = [divider, ...buffs];
+    assignSequentialSort(all, 4300);
+    appendJsonToTemplate(all, exportTemplate, 'SphereAuraBuffs');
+    writeToLocalStorage('exportTemplate', exportTemplate);
+    console.log(`Spheres: injected ${buffs.length} affects-others buff(s) tagged (${tag}).`);
+  } catch (error) {
+    console.error('Error adding sphere aura buffs:', error);
+  }
+}
+// Every buff spell the NPC KNOWS -> an inactive distributable temp buff "<Spell> (TAG)" (parsed from
+// spell_buffs.json). Toggle + Multi-Buff Distributor shares it with allies (even Personal/Self spells).
+async function addSpellBuffs() {
+  try {
+    const table = fileDataDictionary[spellBuffsPath];
+    if (!table || typeof table !== 'object') return;
+    const known = [];
+    for (const lvl of (characterData.spell_list_choose_from || [])) {
+      for (const s of (lvl || [])) if (s) known.push(String(s));
+    }
+    if (!known.length) return;
+    const byLower = {};
+    for (const [k, v] of Object.entries(table)) byLower[k.toLowerCase()] = { name: k, entry: v };
+    const tag = deriveBuffTag(characterData.character_full_name);
+    // Aura Range = the spell's range as a concrete number of feet at the NPC's caster level (close/
+    // medium/long conventions; character level is the CL proxy). Distributor reads this integer.
+    const cl = Number(characterData.level) || 1;
+    const spellAuraRange = (units, value) => {
+      switch (units) {
+        case 'personal': return 0;
+        case 'touch': return 5;
+        case 'close': return 25 + 5 * Math.floor(cl / 2);
+        case 'medium': return 100 + 10 * cl;
+        case 'long': return 400 + 40 * cl;
+        case 'ft': return Number(value) || 0;
+        case 'mi': return (Number(value) || 1) * 5280;
+        default: return 0;
+      }
+    };
+    const mkBuff = (name, descHtml, changes, hide) => ({
+      name, type: 'buff', img: hide ? 'icons/svg/book.svg' : 'icons/svg/aura.svg',
+      system: {
+        description: { value: descHtml, instructions: '', unidentified: '' },
+        tags: [], changes: changes || [], changeFlags: {}, contextNotes: [],
+        actions: [], attackNotes: [], effectNotes: [],
+        uses: { value: null, per: '', autoDeductChargesCost: '', maxFormula: '', rechargeFormula: '' },
+        links: { children: [] }, tag: '', flags: { boolean: {}, dictionary: {} }, scriptCalls: [],
+        subType: 'spell', active: false, level: 0, duration: { value: '', units: '' },
+        conditions: [], hideFromToken: !!hide, showInQuickbar: false,
+      }, effects: [], flags: {},
+    });
+    // Bucket the known buff spells by duration (rounds/minutes/hours/other).
+    const buckets = { rounds: [], minutes: [], hours: [], other: [] };
+    const seen = new Set();
+    for (const nm of known) {
+      const hit = byLower[nm.toLowerCase()];
+      if (!hit || seen.has(hit.name)) continue;
+      seen.add(hit.name);
+      const e = hit.entry || {};
+      (buckets[e.duration_bucket] || buckets.other).push({ name: hit.name, e });
+    }
+    const BUCKET_LABELS = [['rounds', 'rounds'], ['minutes', 'minutes'], ['hours', 'hours'], ['other', 'other durations']];
+    const all = [];
+    let count = 0;
+    for (const [key, label] of BUCKET_LABELS) {
+      const rows = buckets[key];
+      if (!rows.length) continue;
+      all.push(mkBuff(`____________________ ${label} ____________________`,
+        `<p>Buff spells you know with a <strong>${label}</strong> duration &mdash; toggle + Multi-Buff Distributor (even Personal/Self spells).</p>`, [], true));
+      rows.sort((a, b) => ((a.e.level ?? 99) - (b.e.level ?? 99)) || a.name.localeCompare(b.name));
+      for (const { name, e } of rows) {
+        const parts = [`<p>Aura Range: ${spellAuraRange(e.range_units, e.range_value)}</p>`];  // always first line
+        if (e.only_others) parts.push('<p>onlyOthers;</p>');
+        if (e.description) parts.push(String(e.description));   // pre-formatted spell stat-block HTML, raw
+        const changes = (Array.isArray(e.changes) ? e.changes : []).map(ch => Object.assign(
+          { formula: '0', target: '', type: 'untyped', operator: 'add', priority: 0, value: 0 },
+          ch, { _id: randomChangeId() }));
+        const title = `(${tag}) ${name}` + (e.level != null ? ` (level ${e.level})` : '');
+        all.push(mkBuff(title, parts.join(''), changes, false));
+        count++;
+      }
+    }
+    if (!count) return;
+    assignSequentialSort(all, 4400);
+    appendJsonToTemplate(all, exportTemplate, 'SpellBuffs');
+    writeToLocalStorage('exportTemplate', exportTemplate);
+    console.log(`Spells: injected ${count} distributable spell buff(s) tagged (${tag}), grouped by duration.`);
+  } catch (error) {
+    console.error('Error adding spell buffs:', error);
+  }
+}
 {
   const { cam, pam } = resolveSphereAbilities();
   const subSpheres = makeSubSpheres(cam, pam);
   applySpheresFlags(cam, pam);
   await addDestructiveBlastAttack(subSpheres);
   await addSphereTalentConditionals(subSpheres);
+  await addSphereAuraBuffs(subSpheres);
 }
+await addSpellBuffs();
 
 // ----- Size-based damage scaling ----- //
 // Every sheet gets a `sizefordamage` feature whose charge value (default 0) drives the
