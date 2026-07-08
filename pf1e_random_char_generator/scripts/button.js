@@ -12,13 +12,6 @@ import { main } from './modify-abilities.js';
 // Function to create the persistent button
 // need export so we can import in main.js
 export async function createPersistentButton() {
-  // test server
-  const deliver_location = 'http://localhost:5001/update_character_data';
-  // perm server
-  // const deliver_location = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
-  
-
-
   const button = document.createElement('button');
   button.textContent = "Character Generator";
   button.id = "character-generator-button";
@@ -44,19 +37,36 @@ export async function createPersistentButton() {
       showCharacterGeneratorDialog();
 
   // Import deliver-data.js
-  try {  
+  try {
     // await import('./deliver-data.js');
-    
+
     const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
     // console.log("Data sent over to server:", savedData);
-    
+
+    // Read the backend endpoint from the module setting at click time, so a settings change takes
+    // effect without reloading Foundry. Fall back to the hosted server if the setting is somehow
+    // unavailable (e.g. registration hasn't run) — we must never silently POST to localhost.
+    let deliver_location;
+    try {
+      deliver_location = game.settings.get('pf1e_random_char_generator', 'backendUrl');
+    } catch (e) {
+      deliver_location = null;
+    }
+    if (!deliver_location) {
+      deliver_location = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
+    }
+
+    ui.notifications?.info("Character Generator: contacting the backend… (the first request after the server has idled can take up to a minute).");
     console.log('deliver_location', deliver_location)
+    // Fully awaited: sendDataToServer stores the returned character in localStorage before
+    // resolving, so main()/createAndAssignActor() below read THIS click's fresh data.
     await sendDataToServer(savedData, deliver_location, 'pulledCharacterData');
-    // for some reason sendDataToServer grabs the correct data as well
 
   } catch (error) {
     console.error("Error deliver-data.js in button.js:", error);
-  }  
+    // deliver-data.js already notified the user; abort so we don't build an actor from stale data.
+    return;
+  }
 
   // Don't use anymore (sendDataToServer sends data + grabs it)
   // // Import fetch-data.js
