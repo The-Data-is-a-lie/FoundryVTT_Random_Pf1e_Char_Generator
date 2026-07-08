@@ -1,5 +1,7 @@
 Unreleased
 
+Version 2.0.1 (2026-07-08)
+
 - Fixed: The module no longer POSTs to the localhost development endpoint. The published build shipped with `http://localhost:5001/update_character_data` active in button.js, so on any machine without the local backend running every generation failed with a CORS/NetworkError (and then built a broken actor from stale data — e.g. "Class item Bard not found in actor's items"). The endpoint now defaults to the hosted server.
 - Added: A "Backend URL" module setting (Configure Settings → Module Settings) controls where the generator POSTs character inputs. It defaults to the hosted Render backend; local-dev users can point it at http://localhost:5001/update_character_data. It is read at button-click time, so changes take effect without reloading Foundry.
 - Fixed: Character creation no longer races the network round-trip. sendDataToServer now fully awaits the backend request (it was fire-and-forget), so the actor is always built from the current click's freshly fetched data instead of the previous run's leftovers. A failed request now shows a visible error notification and aborts instead of silently creating a broken actor.
