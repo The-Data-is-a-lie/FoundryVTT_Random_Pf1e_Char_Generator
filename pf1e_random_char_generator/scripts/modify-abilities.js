@@ -64,6 +64,32 @@ export async function main() {
         // Let for these so we can reassign at WILL
     let everyClassPath, everyFeatPath, everySpellPath, everyWeaponPath, everyTraitPath, baseFeatPath;
 
+    // Releases up to and including v2.0.1 shipped a zip with every *_MODS.json stripped out, so on
+    // those installs the modded branch fetches six 404s. FilePicker.browse already gave us the
+    // directory listings, so check them before committing to the modded paths and fall back rather
+    // than dying on an HTML error page.
+    if (modded === "y") {
+      const present = new Set([...(charSheetBase.files || []), ...(base.files || [])]);
+      const moddedFiles = [
+        charSheetBase.target + "/every_class_MODS.json",
+        charSheetBase.target + "/every_feat_MODS.json",
+        charSheetBase.target + "/every_spell_MODS.json",
+        charSheetBase.target + "/every_trait_MODS.json",
+        charSheetBase.target + "/every_weapon_MODS.json",
+        base.target + "/base_feat_MODS.json",
+      ];
+      const missing = moddedFiles.filter(f => !present.has(f));
+      if (missing.length) {
+        console.warn("Missing modded templates, falling back to base templates:", missing);
+        ui.notifications?.warn(
+          "Character Generator: the modded-sheet templates aren't installed " +
+          `(${missing.length} file(s) missing). Using the base templates instead. ` +
+          "Update the module to get them."
+        );
+        modded = "n";
+      }
+    }
+
     if (modded === "y") {
       everyClassPath  = charSheetBase.target + "/every_class_MODS.json";
       everyFeatPath   = charSheetBase.target + "/every_feat_MODS.json";
@@ -117,9 +143,16 @@ export async function main() {
     const fileDataDictionary = {};
 
     // Reads the JSON file and turns it into a data object
+    // Check the status before parsing: Foundry answers a missing template with an HTML error page,
+    // and predata.json() on that reports a bare "unexpected character" with no clue which file broke.
     async function readFile(filePath) {
       const predata = await fetch(filePath);
-      return await predata.json();
+      if (!predata.ok) throw new Error(`Template not found (${predata.status}): ${filePath}`);
+      try {
+        return await predata.json();
+      } catch (e) {
+        throw new Error(`Template is not valid JSON: ${filePath} (${e.message})`);
+      }
     }
 
     async function loadFiles() {
@@ -2817,11 +2850,15 @@ if (exportTemplate) {
 
 // ----- End of Skills Section ----- //
 
-
-
+if (!exportTemplate) return false;
+return true;
 
 
 } catch (error) {
    console.error("Error in main function:", error);
+   // Report failure: the caller must NOT build an actor, or it would inject whatever
+   // exportFoundryPath the previous run left in localStorage (a stale character sheet).
+   ui.notifications?.error(`Character Generator: character build failed (${error.message}). No character was created.`);
+   return false;
  }
 }

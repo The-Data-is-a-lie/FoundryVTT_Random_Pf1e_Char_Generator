@@ -1,5 +1,11 @@
 Unreleased
 
+- Fixed: Installed (zip) copies of the module no longer produce the *previous* run's character sheet over and over. The release archive was built with every `*_MODS.json` template stripped out, but the generator fetches exactly those files whenever "Do you use mods that affect your character sheet" is Yes (the default answer). Each fetch 404'd, Foundry returned an HTML error page, and `JSON.parse` threw — main() swallowed the error, never rewrote the generated sheet, and the actor was then built from whatever sheet was left in localStorage from a previous run. The modded templates now ship, and the release script verifies that every template main() loads is present in the zip before publishing. This only ever affected installs from the published zip; running from a source checkout hid the bug.
+- Fixed: A failed generation no longer creates a character at all. The generated sheet is cleared from localStorage at the start of every run, main() now reports failure instead of returning silently, and the actor is only created once there is fresh data to inject — so a backend outage or a missing template produces a visible error notification and no actor, rather than a plausible-looking stale one (and no leftover blank "New Test Actor").
+- Fixed: A missing template now names itself in the error ("Template not found (404): ..."), instead of surfacing as a bare "JSON.parse: unexpected character at line 1 column 1".
+- Fixed: If the modded templates are somehow absent, the generator now warns and falls back to the base templates instead of failing outright.
+- Fixed (release tooling): Cutting a release with an empty "Unreleased" changelog section aborts as intended. The section-matching regex previously captured the entire preceding release's notes instead, so the new version would have shipped with the old version's changelog.
+
 Version 2.0.1 (2026-07-08)
 
 - Fixed: The module no longer POSTs to the localhost development endpoint. The published build shipped with `http://localhost:5001/update_character_data` active in button.js, so on any machine without the local backend running every generation failed with a CORS/NetworkError (and then built a broken actor from stale data — e.g. "Class item Bard not found in actor's items"). The endpoint now defaults to the hosted server.

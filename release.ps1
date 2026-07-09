@@ -130,7 +130,9 @@ Ok "version=$($mjObj.version)  minimum=$($mjObj.compatibility.minimum)  verified
 Step 'Rolling changelog.md (Unreleased -> versioned)'
 $cl  = [System.IO.File]::ReadAllText($ChangelogPath)
 $nlC = if ($cl -match "`r`n") { "`r`n" } else { "`n" }
-$m   = [regex]::Match($cl, '(?s)^Unreleased\r?\n\r?\n(.*?)\r?\n\r?\nVersion ')
+# Stop at the first line that BEGINS with "Version " (multiline ^). Anchoring on a blank-line
+# separator instead let an empty Unreleased section swallow the whole previous release's notes.
+$m   = [regex]::Match($cl, '(?sm)^Unreleased\r?\n(.*?)^Version ')
 if (-not $m.Success) { Fail "changelog.md: couldn't find an 'Unreleased' section followed by a 'Version ' section -- roll aborted." }
 $body = $m.Groups[1].Value.Trim()
 if (-not $body) { Fail 'The Unreleased section is empty -- nothing to release.' }
@@ -151,9 +153,10 @@ $stageMod  = Join-Path $stageRoot $ModName
 if (Test-Path $stageRoot) { Remove-Item $stageRoot -Recurse -Force }
 New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 
-# Mirror the module dir minus everything the shipped archive has never contained:
-#   *.bak (scratch), *_MODS.json (dev overlays), .claude/ (agent tooling), .env, .git, node_modules.
-& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules /XF *.bak *_MODS.json *.tmp .env /NFL /NDL /NJH /NJS /NP | Out-Null
+# Mirror the module dir minus scratch/tooling files: *.bak, *.tmp, .claude/, .env, .git, node_modules.
+# The *_MODS.json templates MUST ship: main() fetches them whenever the dialog's "modded character
+# sheet" answer is Yes (the default), and a missing one 404s -> HTML -> JSON.parse blows up.
+& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules /XF *.bak *.tmp .env /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { Fail "robocopy failed (exit $LASTEXITCODE)." }
 $global:LASTEXITCODE = 0
 
@@ -162,16 +165,57 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction SilentlyCon
 [System.IO.Compression.ZipFile]::CreateFromDirectory($stageMod, $zipTarget, [System.IO.Compression.CompressionLevel]::Optimal, $true)
 Remove-Item $stageRoot -Recurse -Force -ErrorAction SilentlyContinue
 
-# sanity: right root, no forbidden files, runtime data present, plausible size
+# Every template main() loads at runtime. Mirrors the `filePaths` array in
+# scripts/modify-abilities.js -- keep the two in sync when adding a template.
+$RequiredTemplates = @(
+    'character_sheet_folder/unmodified_pre_export_template.json'
+    'character_sheet_folder/pre_export_template.json'
+    'character_sheet_folder/every_armor.json'
+    'character_sheet_folder/every_class.json'
+    'character_sheet_folder/every_class_MODS.json'
+    'character_sheet_folder/every_feat.json'
+    'character_sheet_folder/every_feat_MODS.json'
+    'character_sheet_folder/every_item.json'
+    'character_sheet_folder/every_race.json'
+    'character_sheet_folder/every_spell.json'
+    'character_sheet_folder/every_spell_MODS.json'
+    'character_sheet_folder/every_trait.json'
+    'character_sheet_folder/every_trait_MODS.json'
+    'character_sheet_folder/every_weapon.json'
+    'character_sheet_folder/every_weapon_MODS.json'
+    'character_sheet_folder/archetype.json'
+    'character_sheet_folder/space_Background.json'
+    'character_sheet_folder/space_ClassBonusFeats.json'
+    'character_sheet_folder/space_Feats.json'
+    'character_sheet_folder/space_Path_of_War.json'
+    'character_sheet_folder/space_Path_of_War_buffs.json'
+    'character_sheet_folder/stance_changes.json'
+    'character_sheet_folder/maneuver_changes.json'
+    'character_sheet_folder/combat_talent_conditionals.json'
+    'character_sheet_folder/magic_talent_conditionals.json'
+    'character_sheet_folder/talent_aura_buffs.json'
+    'character_sheet_folder/spell_buffs.json'
+    'character_sheet_folder/inherents.json'
+    'character_sheet_folder/inherents2.json'
+    'character_sheet_folder/custom_buffs.json'
+    'character_sheet_folder/sizefordamage_feature.json'
+    'character_sheet_folder/scaling_weapon_damage.json'
+    'base_folder/base_skill.json'
+    'base_folder/base_feat.json'
+    'base_folder/base_feat_MODS.json'
+)
+
+# sanity: right root, no forbidden files, every runtime template present, plausible size
 $zi = [System.IO.Compression.ZipFile]::OpenRead($zipTarget)
 try { $names = @($zi.Entries | ForEach-Object { $_.FullName }) } finally { $zi.Dispose() }
-$bad = $names | Where-Object { $_ -match '\.bak$' -or $_ -match '_MODS\.json$' -or $_ -match '/\.claude/' -or $_ -match '(^|/)\.env$' }
+$bad = $names | Where-Object { $_ -match '\.bak$' -or $_ -match '/\.claude/' -or $_ -match '(^|/)\.env$' }
 if ($bad) { Fail "Zip contains files that must not ship:`n$($bad -join "`n")" }
-if (-not ($names -match "^$ModName/templates/character_sheet_folder/every_feat\.json$")) {
-    Fail 'Zip is missing expected runtime data (every_feat.json) -- aborting.'
-}
+$nameSet = [System.Collections.Generic.HashSet[string]]::new([string[]]$names)
+$missing = $RequiredTemplates | Where-Object { -not $nameSet.Contains("$ModName/templates/$_") }
+if ($missing) { Fail "Zip is missing runtime templates that main() fetches:`n$($missing -join "`n")" }
+Ok "All $($RequiredTemplates.Count) runtime templates present."
 $zipMB = [math]::Round((Get-Item $zipTarget).Length / 1MB, 1)
-if ($zipMB -lt 1) { Fail "Rebuilt zip is only ${zipMB} MB (<1 MB) -- likely incomplete." }
+if ($zipMB -lt 15) { Fail "Rebuilt zip is only ${zipMB} MB (<15 MB) -- likely incomplete." }
 Ok "Zip: $zipTarget  (${zipMB} MB, $($names.Count) entries)"
 
 # ---- DRY-RUN stops here --------------------------------------------------------------------------

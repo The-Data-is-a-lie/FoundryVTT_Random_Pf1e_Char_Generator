@@ -11,20 +11,20 @@ async function createCharacterFunc() {
 // Grab data from localStorage and inject into charactersheet
 async function injectJsonDataIntoNewActor(actor) {
   const exportFoundryPath = localStorage.getItem('exportFoundryPath');
-  
-  if (exportFoundryPath) {
-    const parsedData = JSON.parse(exportFoundryPath);
-    console.log("parsedData part1:", parsedData)
-    
-    // Inject the parsed data into the actor to overwrite all Data
-    try {
-      await actor.update(parsedData);
-      console.log("Actor data successfully overwritten with exportFoundryPath:", parsedData);
-    } catch (error) {
-      console.error("Error updating actor with parsed data:", error);
-    }
-  } else {
-    console.error("No data found in localStorage under 'exportFoundryPath'");
+
+  if (!exportFoundryPath) {
+    throw new Error("No data found in localStorage under 'exportFoundryPath'");
+  }
+
+  const parsedData = JSON.parse(exportFoundryPath);
+  console.log("parsedData part1:", parsedData)
+
+  // Inject the parsed data into the actor to overwrite all Data
+  try {
+    await actor.update(parsedData);
+    console.log("Actor data successfully overwritten with exportFoundryPath:", parsedData);
+  } catch (error) {
+    console.error("Error updating actor with parsed data:", error);
   }
 }
 
@@ -135,6 +135,12 @@ async function adjustLevel(actor) {
 
 // Calls all Actor Creation functions
 async function createAndAssignActor() {
+  // Bail before creating anything: an actor with no sheet data to inject would just be a blank
+  // "New Test Actor" littering the Random Characters folder.
+  if (!localStorage.getItem('exportFoundryPath')) {
+    throw new Error("No generated character data to inject ('exportFoundryPath' is empty)");
+  }
+
   const folderId = await generateRandomizedCharacterFolder();
 
   const actor = await createCharacterFunc();

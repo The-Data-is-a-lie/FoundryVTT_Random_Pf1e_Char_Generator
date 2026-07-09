@@ -36,6 +36,10 @@ export async function createPersistentButton() {
   button.addEventListener('click', async () => {
       showCharacterGeneratorDialog();
 
+  // Drop the previous run's built sheet before doing anything else. If any step below fails, there
+  // is then nothing stale left for createAndAssignActor() to inject as a bogus "new" character.
+  localStorage.removeItem('exportFoundryPath');
+
   // Import deliver-data.js
   try {
     // await import('./deliver-data.js');
@@ -79,19 +83,25 @@ export async function createPersistentButton() {
   // }
 
   // Import main from modify-abilities.js (bulk of the character creation)
+  // main() returns false (and notifies) when it couldn't build the sheet; abort rather than
+  // handing createAndAssignActor() a half-built or absent exportFoundryPath.
+  let built = false;
   try {
     // await import('./modify-abilities.js');
-    await main();
+    built = await main();
   } catch (error) {
     console.error("Error importing modify-abilities in button.js:", error);
+    ui.notifications?.error("Character Generator: character build failed. No character was created.");
   }
-  
+  if (!built) return;
+
   // Import createCharacterFunc from createCharacter.js
   try {
     // await import('./createCharacter.js');
     await createAndAssignActor();
   } catch (error) {
     console.error("Error importing createCharacter in button.js:", error);
+    ui.notifications?.error(`Character Generator: couldn't create the actor (${error.message}).`);
   }
 });
 
