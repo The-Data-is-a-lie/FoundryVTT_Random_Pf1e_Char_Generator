@@ -1,0 +1,2088 @@
+{
+  "heroPoints": {
+    "name": "Hero Points",
+    "type": "feat",
+    "img": "icons/svg/book.svg",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "charges",
+        "autoDeductChargesCost": "",
+        "maxFormula": "3",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {
+        "acr": false,
+        "apr": false,
+        "art": false,
+        "blf": false,
+        "clm": false,
+        "crf": false,
+        "dip": false,
+        "dev": false,
+        "dis": false,
+        "esc": false,
+        "fly": false,
+        "han": false,
+        "hea": false,
+        "int": false,
+        "kar": false,
+        "kdu": false,
+        "ken": false,
+        "kge": false,
+        "khi": false,
+        "klo": false,
+        "kna": false,
+        "kno": false,
+        "kpl": false,
+        "kre": false,
+        "lin": false,
+        "lor": false,
+        "per": false,
+        "prf": false,
+        "pro": false,
+        "rid": false,
+        "sen": false,
+        "slt": false,
+        "spl": false,
+        "ste": false,
+        "sur": false,
+        "swm": false,
+        "umd": false,
+        "skill": false,
+        "skill2": false,
+        "newskill": false
+      }
+    },
+    "sort": -75000,
+    "effects": [],
+    "flags": {}
+  },
+  "stamina": {
+    "name": "Stamina",
+    "type": "feat",
+    "img": "icons/svg/book.svg",
+    "system": {
+      "description": {
+        "value": "",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "charges",
+        "autoDeductChargesCost": "",
+        "maxFormula": "@abilities.con.mod+@attributes.bab.total",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": []
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {
+        "acr": false,
+        "apr": false,
+        "art": false,
+        "blf": false,
+        "clm": false,
+        "crf": false,
+        "dip": false,
+        "dev": false,
+        "dis": false,
+        "esc": false,
+        "fly": false,
+        "han": false,
+        "hea": false,
+        "int": false,
+        "kar": false,
+        "kdu": false,
+        "ken": false,
+        "kge": false,
+        "khi": false,
+        "klo": false,
+        "kna": false,
+        "kno": false,
+        "kpl": false,
+        "kre": false,
+        "lin": false,
+        "lor": false,
+        "per": false,
+        "prf": false,
+        "pro": false,
+        "rid": false,
+        "sen": false,
+        "slt": false,
+        "spl": false,
+        "ste": false,
+        "sur": false,
+        "swm": false,
+        "umd": false,
+        "ahp": false,
+        "ckg": false,
+        "kmt": false,
+        "newSkill": false
+      },
+      "class": "",
+      "showInCombat": false
+    },
+    "sort": -118000,
+    "effects": [],
+    "flags": {}
+  },
+  "rage": {
+    "name": "Rage",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A barbarian can call upon inner reserves of strength and ferocity, granting her additional combat prowess. Starting at 1st level, a barbarian can rage for a number of rounds per day equal to 4 + her <em>Constitution</em> modifier. At each level after 1st, she can rage for 2 additional rounds. Temporary increases to <em>Constitution</em>, such as those gained from rage and spells like <em>bear’s endurance</em>, do not increase the total number of rounds that a barbarian can rage per day. A barbarian can enter rage as a free action. The total number of rounds of rage per day is renewed after resting for 8 hours, although these hours do not need to be consecutive.</p>\n<p>While in rage, a barbarian gains a +4 morale bonus to her <em>Strength</em> and <em>Constitution</em>, as well as a +2 morale bonus on <em>Will</em> saves. In addition, she takes a –2 penalty to <em>Armor Class</em>. The increase to <em>Constitution</em> grants the barbarian 2 hit points per Hit Dice, but these disappear when the rage ends and are not lost first like <em>temporary hit points</em>. While in rage, a barbarian cannot use any <em>Charisma</em>-, <em>Dexterity</em>-, or <em>Intelligence</em>-based skills (except <em>Acrobatics</em>, <em>Fly</em>, <em>Intimidate</em>, and <em>Ride</em>) or any ability that requires patience or concentration.</p>\n<p>A barbarian can end her rage as a free action and is <em>fatigued</em> after rage for a number of rounds equal to 2 times the number of rounds spent in the rage. A barbarian cannot enter a new rage while <em>fatigued</em> or <em>exhausted</em> but can otherwise enter rage multiple times during a single encounter or combat. If a barbarian falls <em>unconscious</em>, her rage immediately ends, placing her in peril of death.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [
+        {
+          "_id": "5bvc8dz7vtyunhph",
+          "name": "Use",
+          "img": "systems/pf1/icons/feats/extra-rage.jpg",
+          "activation": {
+            "cost": 1,
+            "type": "free",
+            "unchained": {
+              "cost": 1,
+              "type": "free"
+            }
+          },
+          "duration": {
+            "value": "",
+            "units": "round"
+          },
+          "target": {
+            "value": "Self"
+          },
+          "range": {
+            "units": "personal"
+          },
+          "uses": {},
+          "actionType": "other",
+          "powerAttack": {
+            "damageBonus": 2,
+            "critMultiplier": 1
+          },
+          "naturalAttack": {
+            "secondary": {
+              "attackBonus": "-5",
+              "damageMult": 0.5
+            },
+            "primary": true
+          },
+          "ammo": {
+            "cost": 1
+          }
+        }
+      ],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "4 + @abilities.con.mod + (2 * (@classes.barbarian.level - 1))",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "classFeat_rage",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 96875,
+    "effects": [],
+    "flags": {}
+  },
+  "bardicPerformance": {
+    "name": "Bardic Performance",
+    "type": "feat",
+    "img": "systems/pf1/icons/items/inventory/flute.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A bard is trained to use the <em>Perform</em> skill to create magical effects on those around him, including himself if desired. He can use this ability for a number of rounds per day equal to 4 + his <em>Charisma</em> modifier. At each level after 1st a bard can use bardic performance for 2 additional rounds per day. Each round, the bard can produce any one of the types of bardic performance that he has mastered, as indicated by his level.</p>\n<p>Starting a bardic performance is a <em>standard action</em>, but it can be maintained each round as a <em>free action</em>. Changing a bardic performance from one effect to another requires the bard to stop the previous performance and start a new one as a <em>standard action</em>. A bardic performance cannot be disrupted, but it ends immediately if the bard is killed, <em>paralyzed</em>, <em>stunned</em>, knocked <em>unconscious</em>, or otherwise prevented from taking a <em>free action</em> to maintain it each round. A bard cannot have more than one bardic performance in effect at one time.</p>\n<p>At 7th level, a bard can start a bardic performance as a <em>move action</em> instead of a <em>standard action</em>. At 13th level, a bard can start a bardic performance as a <em>swift action</em>.</p>\n<p>Each bardic performance has audible <em>components</em>, visual <em>components</em>, or both.</p>\n<p>If a bardic performance has audible components, the targets must be able to hear the bard for the performance to have any effect, and many such performances are language dependent (as noted in the description). A <em>deaf</em> bard has a 20% chance to fail when attempting to use a bardic performance with an audible component. If he fails this check, the attempt still counts against his daily limit. Deaf creatures are immune to bardic performances with audible components.</p>\n<p>If a bardic performance has a visual component, the targets must have line of sight to the bard for the performance to have any effect. A <em>blind</em> bard has a 50% chance to fail when attempting to use a bardic performance with a visual component. If he fails this check, the attempt still counts against his daily limit. Blind creatures are immune to bardic performances with visual components.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [
+        {
+          "_id": "ohyjhnb4bta2gy9g",
+          "name": "Use",
+          "img": "systems/pf1/icons/items/inventory/flute.jpg",
+          "activation": {
+            "cost": 1,
+            "type": "standard",
+            "unchained": {
+              "cost": 2,
+              "type": "action"
+            }
+          },
+          "duration": {
+            "value": "",
+            "units": "round"
+          },
+          "range": {
+            "units": "seeText"
+          },
+          "uses": {},
+          "actionType": "other",
+          "powerAttack": {
+            "damageBonus": 2,
+            "critMultiplier": 1
+          },
+          "naturalAttack": {
+            "secondary": {
+              "attackBonus": "-5",
+              "damageMult": 0.5
+            },
+            "primary": true
+          },
+          "ammo": {
+            "cost": 1
+          }
+        }
+      ],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "4 + @abilities.cha.mod + ((@classes.bard.level * 2) - 2)",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "classFeat_bardicPerformance",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "na",
+      "associations": {
+        "classes": [
+          "Bard"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {
+        "acr": false,
+        "apr": false,
+        "art": false,
+        "ahp": false,
+        "blf": false,
+        "clm": false,
+        "ckg": false,
+        "crf": false,
+        "dip": false,
+        "dev": false,
+        "dis": false,
+        "esc": false,
+        "fly": false,
+        "han": false,
+        "hea": false,
+        "int": false,
+        "kar": false,
+        "kdu": false,
+        "ken": false,
+        "kge": false,
+        "khi": false,
+        "klo": false,
+        "kmt": false,
+        "kna": false,
+        "kno": false,
+        "kpl": false,
+        "kre": false,
+        "newSkill": false,
+        "lin": false,
+        "lor": false,
+        "per": false,
+        "prf": false,
+        "pro": false,
+        "rid": false,
+        "sen": false,
+        "slt": false,
+        "spl": false,
+        "ste": false,
+        "sur": false,
+        "swm": false,
+        "umd": false
+      },
+      "showInCombat": false,
+      "class": ""
+    },
+    "sort": 75000,
+    "effects": [],
+    "flags": {}
+  },
+  "channelEnergy": {
+    "name": "Channel Energy",
+    "type": "feat",
+    "img": "systems/pf1/icons/skills/blue_20.jpg",
+    "system": {
+      "description": {
+        "value": "<p>Regardless of alignment, any cleric can release a wave of energy by channeling the power of her faith through her holy (or unholy) symbol. This energy can be used to cause or heal damage, depending on the type of energy channeled and the creatures targeted.</p>\n<p>A good cleric (or a neutral cleric who worships a good deity) channels positive energy and can choose to deal damage to <em>undead</em> creatures or to heal living creatures. An evil cleric (or a neutral cleric who worships an evil deity) channels negative energy and can choose to deal damage to living creatures or to heal <em>undead</em> creatures. A neutral cleric of a neutral deity (or one who is not devoted to a particular deity) must choose whether she channels positive or negative energy. Once this choice is made, it cannot be reversed. This decision also determines whether the cleric can cast spontaneous cure or inflict spells (see spontaneous casting).</p>\n<p>Channeling energy causes a burst that affects all creatures of one type (either <em>undead</em> or living) in a 30-foot radius centered on the cleric. The amount of damage dealt or healed is equal to 1d6 points of damage plus 1d6 points of damage for every two cleric levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a <em>Will</em> save to halve the damage. The DC of this save is equal to 10 + 1/2 the cleric’s level + the cleric’s <em>Charisma</em> modifier. Creatures healed by channel energy cannot exceed their maximum hit point total—all excess healing is lost. A cleric may channel energy a number of times per day equal to 3 + her <em>Charisma</em> modifier. This is a standard action that does not provoke an attack of opportunity. A cleric can choose whether or not to include herself in this effect.</p>\n<p>A cleric must be able to present her holy symbol to use this ability.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [
+        {
+          "_id": "1f2894xiyq8pweq5",
+          "name": "Use",
+          "img": "systems/pf1/icons/skills/blue_20.jpg",
+          "activation": {
+            "cost": 1,
+            "type": "standard",
+            "unchained": {
+              "cost": 2,
+              "type": "action"
+            }
+          },
+          "duration": {
+            "units": "inst"
+          },
+          "target": {
+            "value": "self; affects living OR undead"
+          },
+          "range": {
+            "value": "30",
+            "units": "ft"
+          },
+          "uses": {},
+          "measureTemplate": {
+            "type": "circle",
+            "size": "30",
+            "color": null,
+            "texture": null
+          },
+          "actionType": "heal",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(ceil(@classes.cleric.level / 2))d6",
+                "types": [
+                  "positive"
+                ]
+              }
+            ]
+          },
+          "ability": {
+            "critRange": 20,
+            "critMult": 2
+          },
+          "save": {
+            "dc": "10 + floor(@classes.cleric.level / 2) + @abilities.cha.mod",
+            "type": "will",
+            "description": "Will halves damage",
+            "harmless": false
+          },
+          "powerAttack": {
+            "damageBonus": 2,
+            "critMultiplier": 1
+          },
+          "naturalAttack": {
+            "secondary": {
+              "attackBonus": "-5",
+              "damageMult": 0.5
+            },
+            "primary": true
+          },
+          "ammo": {
+            "cost": 1
+          }
+        }
+      ],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "3 + @abilities.cha.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "classFeat_channelEnergy",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "su",
+      "associations": {
+        "classes": [
+          "Cleric"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 50000,
+    "effects": [],
+    "flags": {}
+  },
+  "smiteEvil": {
+    "name": "Smite Evil",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/greater-weapon-focus.jpg",
+    "system": {
+      "description": {
+        "value": "<p>Once per day, a paladin can call out to the powers of good to aid her in her struggle against evil. As a swift action, the paladin chooses one target within sight to smite. If this target is evil, the paladin adds her <em>Cha</em> bonus (if any) to her attack rolls and adds her paladin level to all damage rolls made against the target of her smite. If the target of smite evil is an outsider with the evil subtype, an evil-aligned dragon, or an undead creature, the bonus to damage on the first successful attack increases to 2 points of damage per level the paladin possesses. Regardless of the target, smite evil attacks automatically bypass any <em>DR</em> the creature might possess.</p>\n<p>In addition, while smite evil is in effect, the paladin gains a deflection bonus equal to her <em>Charisma</em> modifier (if any) to her <em>AC</em> against attacks made by the target of the smite. If the paladin targets a creature that is not evil, the smite is wasted with no effect.</p>\n<p>The smite evil effect remains until the target of the smite is dead or the next time the paladin rests and regains her uses of this ability. At 4th level, and at every three levels thereafter, the paladin may smite evil one additional time per day, as indicated on Table: Paladin, to a maximum of seven times per day at 19th level.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [
+        {
+          "_id": "rp3my4fea7xog21f",
+          "name": "Use",
+          "img": "systems/pf1/icons/feats/greater-weapon-focus.jpg",
+          "activation": {
+            "cost": 1,
+            "type": "swift",
+            "unchained": {
+              "cost": 1,
+              "type": "action"
+            }
+          },
+          "duration": {
+            "units": "inst"
+          },
+          "range": {
+            "units": "seeText"
+          },
+          "uses": {},
+          "actionType": "other",
+          "powerAttack": {
+            "damageBonus": 2,
+            "critMultiplier": 1
+          },
+          "naturalAttack": {
+            "secondary": {
+              "attackBonus": "-5",
+              "damageMult": 0.5
+            },
+            "primary": true
+          },
+          "ammo": {
+            "cost": 1
+          }
+        }
+      ],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor((@attributes.hd.total - 1) / 3) + 1",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "classFeat_smiteEvil",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "su",
+      "associations": {
+        "classes": [
+          "Paladin"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {
+        "acr": false,
+        "apr": false,
+        "art": false,
+        "ahp": false,
+        "blf": false,
+        "clm": false,
+        "ckg": false,
+        "crf": false,
+        "dip": false,
+        "dev": false,
+        "dis": false,
+        "esc": false,
+        "fly": false,
+        "han": false,
+        "hea": false,
+        "int": false,
+        "kar": false,
+        "kdu": false,
+        "ken": false,
+        "kge": false,
+        "khi": false,
+        "klo": false,
+        "kmt": false,
+        "kna": false,
+        "kno": false,
+        "kpl": false,
+        "kre": false,
+        "newSkill": false,
+        "lin": false,
+        "lor": false,
+        "per": false,
+        "prf": false,
+        "pro": false,
+        "rid": false,
+        "sen": false,
+        "slt": false,
+        "spl": false,
+        "ste": false,
+        "sur": false,
+        "swm": false,
+        "umd": false
+      },
+      "showInCombat": false,
+      "class": ""
+    },
+    "sort": 87500,
+    "effects": [],
+    "flags": {}
+  },
+  "layOnHands": {
+    "name": "Lay on Hands",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-lay-on-hands.jpg",
+    "system": {
+      "description": {
+        "value": "<p>Beginning at 2nd level, a paladin can heal wounds (her own or those of others) by touch. Each day she can use this ability a number of times equal to 1/2 her paladin level plus her <em>Charisma</em> modifier. With one use of this ability, a paladin can heal 1d6 hit points of damage for every two paladin levels she possesses. Using this ability is a standard action, unless the paladin targets herself, in which case it is a swift action. Despite the name of this ability, a paladin only needs one free hand to use this ability.</p>\n<p>Alternatively, a paladin can use this healing power to deal damage to undead creatures, dealing 1d6 points of damage for every two levels the paladin possesses. Using lay on hands in this way requires a successful melee touch attack and doesn’t provoke an <em>attack of opportunity</em>. Undead do not receive a <em>saving throw</em> against this damage.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [
+        {
+          "_id": "5khundxpgv4jz0o3",
+          "name": "Use",
+          "img": "systems/pf1/icons/feats/extra-lay-on-hands.jpg",
+          "activation": {
+            "cost": 1,
+            "type": "standard",
+            "unchained": {
+              "cost": 2,
+              "type": "action"
+            }
+          },
+          "duration": {
+            "units": "inst"
+          },
+          "range": {
+            "units": "touch"
+          },
+          "uses": {},
+          "actionType": "heal",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(floor(@classes.paladin.level / 2))d6",
+                "types": [
+                  "positive"
+                ]
+              }
+            ]
+          },
+          "ability": {
+            "critRange": 20,
+            "critMult": 2
+          },
+          "powerAttack": {
+            "damageBonus": 2,
+            "critMultiplier": 1
+          },
+          "naturalAttack": {
+            "secondary": {
+              "attackBonus": "-5",
+              "damageMult": 0.5
+            },
+            "primary": true
+          },
+          "ammo": {
+            "cost": 1
+          }
+        }
+      ],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor(@classes.paladin.level / 2) + @abilities.cha.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "classFeat_layOnHands",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "su",
+      "associations": {
+        "classes": [
+          "Paladin"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 93750,
+    "effects": [],
+    "flags": {}
+  },
+  "bomb": {
+    "name": "Bomb",
+    "type": "feat",
+    "img": "systems/pf1/icons/items/inventory/bomb.jpg",
+    "system": {
+      "description": {
+        "value": "<p>In addition to magical extracts, alchemists are adept at swiftly mixing various volatile chemicals and infusing them with their magical reserves to create powerful bombs that they can hurl at their enemies. An alchemist can use a number of bombs each day equal to his class level + his <em>Intelligence</em> modifier. Bombs are unstable, and if not used in the round they are created, they degrade and become inert—their method of creation prevents large volumes of explosive material from being created and stored. In order to create a bomb, the alchemist must use a small vial containing an ounce of liquid catalyst—the alchemist can create this liquid catalyst from small amounts of chemicals from an alchemy lab, and these supplies can be readily refilled in the same manner as a spellcaster’s component pouch. Most alchemists create a number of catalyst vials at the start of the day equal to the total number of bombs they can create in that day—once created, a catalyst vial remains usable by the alchemist for years.</p>\n<p>Drawing the components of, creating, and throwing a bomb requires a <em>standard action</em> that provokes an attack of opportunity. Thrown bombs have a range of 20 feet and use the <em>Throw Splash Weapon</em> special attack. Bombs are considered weapons and can be selected using feats such as @Compendium[pf1.feats.8rsFtye3PwM6CKli]{Point-Blank Shot} and @Compendium[pf1.feats.n250dFlbykAIAg5Z]{Weapon Focus}. On a direct hit, an alchemist’s bomb inflicts 1d6 points of fire damage + additional damage equal to the alchemist’s <em>Intelligence</em> modifier. The damage of an alchemist’s bomb increases by 1d6 points at every odd-numbered alchemist level (this bonus damage is not multiplied on a critical hit or by using feats such as @Compendium[pf1.feats.26k1Gi7t5BoqxhIj]{Vital Strike}). Splash damage from an alchemist bomb is always equal to the bomb’s minimum damage (so if the bomb would deal 2d6+4 points of fire damage on a direct hit, its splash damage would be 6 points of fire damage). Those caught in the splash damage can attempt a <em>Reflex</em> save for half damage. The DC of this save is equal to 10 + 1/2 the alchemist’s level + the alchemist’s <em>Intelligence</em> modifier.</p>\n<p>Alchemists can learn new types of bombs as discoveries (see the <em>Discovery</em> ability) as they level up. An alchemist’s bomb, like an extract, becomes inert if used or carried by anyone else.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [
+        {
+          "_id": "pf6f5msnqitrhl47",
+          "name": "Use",
+          "img": "systems/pf1/icons/items/inventory/bomb.jpg",
+          "activation": {
+            "cost": 1,
+            "type": "standard",
+            "unchained": {
+              "cost": 2,
+              "type": "action"
+            }
+          },
+          "duration": {
+            "units": "inst"
+          },
+          "range": {
+            "value": "20",
+            "units": "ft"
+          },
+          "uses": {},
+          "measureTemplate": {
+            "type": "circle",
+            "size": "5",
+            "color": null,
+            "texture": null
+          },
+          "actionType": "rwak",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "types": [
+                  "fire"
+                ]
+              }
+            ],
+            "nonCritParts": [
+              {
+                "formula": "(ceil(@classes.alchemist.level / 2) - 1)d6",
+                "types": [
+                  "fire"
+                ]
+              }
+            ]
+          },
+          "ability": {
+            "attack": "dex",
+            "damage": "int",
+            "critRange": 20,
+            "critMult": 2
+          },
+          "save": {
+            "dc": "10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod",
+            "type": "ref",
+            "description": "Reflex half",
+            "harmless": false
+          },
+          "powerAttack": {
+            "damageBonus": 2,
+            "critMultiplier": 1
+          },
+          "naturalAttack": {
+            "secondary": {
+              "attackBonus": "-5",
+              "damageMult": 0.5
+            },
+            "primary": true
+          },
+          "ammo": {
+            "cost": 1
+          },
+          "notes": {
+            "effect": [
+              "[[ceil(@classes.alchemist.level / 2) + @abilities.int.mod]] Splash Damage"
+            ]
+          }
+        }
+      ],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "@classes.alchemist.level + @abilities.int.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "classFeat_bomb",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "su",
+      "associations": {
+        "classes": [
+          "Alchemist"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "0",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 0,
+    "effects": [],
+    "flags": {}
+  },
+  "kiPoolMonk": {
+    "name": "Ki Pool",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A monk gains a pool of ki points. The pool refreshes each morning after 8 hours of rest or meditation.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor(@classes.monk.level / 2) + @abilities.wis.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97000,
+    "effects": [],
+    "flags": {}
+  },
+  "kiPoolUnchainedMonk": {
+    "name": "Ki Pool",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A monk gains a pool of ki points. The pool refreshes each morning after 8 hours of rest or meditation.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor(@classes.monkUnchained.level / 2) + @abilities.wis.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97125,
+    "effects": [],
+    "flags": {}
+  },
+  "kiPoolNinja": {
+    "name": "Ki Pool",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A ninja gains a pool of ki points. The pool refreshes each morning after 8 hours of rest or meditation.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor(@classes.ninja.level / 2) + @abilities.cha.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97250,
+    "effects": [],
+    "flags": {}
+  },
+  "arcanePool": {
+    "name": "Arcane Pool",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A magus gains a reservoir of mystic energy to enhance his weapon and fuel his arcana. The pool refreshes once per day when the magus prepares his spells.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "max(1, floor(@classes.magus.level / 2) + @abilities.int.mod)",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97375,
+    "effects": [],
+    "flags": {}
+  },
+  "arcaneReservoir": {
+    "name": "Arcane Reservoir",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>An arcanist has an innate pool of magical energy used to fuel her arcanist exploits. It refreshes when she prepares her spells (points beyond the refresh amount carry over).</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "3 + floor(@classes.arcanist.level / 2)",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97500,
+    "effects": [],
+    "flags": {}
+  },
+  "grit": {
+    "name": "Grit",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A gunslinger gains grit points at the start of each day and regains them through daring deeds (critical hits and killing blows with a firearm).</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "max(1, @abilities.wis.mod)",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97625,
+    "effects": [],
+    "flags": {}
+  },
+  "panache": {
+    "name": "Panache",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A swashbuckler gains panache points at the start of each day and regains them through critical hits and killing blows with a light or one-handed piercing weapon.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "max(1, @abilities.cha.mod)",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97750,
+    "effects": [],
+    "flags": {}
+  },
+  "bloodrage": {
+    "name": "Bloodrage",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A bloodrager can bloodrage for a number of rounds per day, as the barbarian rage rules with his bloodline powers active.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "4 + @abilities.con.mod + (2 * (@classes.bloodrager.level - 1))",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 97875,
+    "effects": [],
+    "flags": {}
+  },
+  "ragingSong": {
+    "name": "Raging Song",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A skald can inspire rage in his allies with raging song for a number of rounds per day.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "3 + @abilities.cha.mod + (2 * (@classes.skald.level - 1))",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 98000,
+    "effects": [],
+    "flags": {}
+  },
+  "fervor": {
+    "name": "Fervor",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A warpriest can channel divine energy to heal himself or harm foes, and to cast spells as a swift action, a number of times per day.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor(@classes.warpriest.level / 2) + @abilities.wis.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 98125,
+    "effects": [],
+    "flags": {}
+  },
+  "inspiration": {
+    "name": "Inspiration",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>An investigator's inspiration pool fuels his flashes of brilliance on checks and attacks. It refreshes each day.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor(@classes.investigator.level / 2) + @abilities.int.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 98250,
+    "effects": [],
+    "flags": {}
+  },
+  "touchOfCorruption": {
+    "name": "Touch of Corruption",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>An antipaladin can cause wounds with a touch a number of times per day.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor(@classes.antipaladin.level / 2) + @abilities.cha.mod",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 98375,
+    "effects": [],
+    "flags": {}
+  },
+  "smiteGood": {
+    "name": "Smite Good",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>Once per day, an antipaladin can call out to the dark powers to smite good, plus one additional time per day at 4th level and every three levels thereafter.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "floor((@attributes.hd.total - 1) / 3) + 1",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 98500,
+    "effects": [],
+    "flags": {}
+  },
+  "rageUnchained": {
+    "name": "Rage",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>A barbarian can call upon inner reserves of strength and ferocity, granting her additional combat prowess, for a number of rounds per day.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "4 + @abilities.con.mod + (2 * (@classes.barbarianUnchained.level - 1))",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 98625,
+    "effects": [],
+    "flags": {}
+  },
+  "judgment": {
+    "name": "Judgment",
+    "type": "feat",
+    "img": "systems/pf1/icons/feats/extra-rage.jpg",
+    "system": {
+      "description": {
+        "value": "<p>An inquisitor can pronounce judgment upon her foes as a swift action a number of times per day.</p>",
+        "instructions": "",
+        "unidentified": ""
+      },
+      "tags": [],
+      "actions": [],
+      "attackNotes": [],
+      "effectNotes": [],
+      "uses": {
+        "value": 0,
+        "per": "day",
+        "autoDeductChargesCost": "",
+        "maxFormula": "1 + floor(@classes.inquisitor.level / 3)",
+        "rechargeFormula": ""
+      },
+      "changes": [],
+      "changeFlags": {
+        "immuneToMorale": false,
+        "loseDexToAC": false,
+        "noMediumEncumbrance": false,
+        "noHeavyEncumbrance": false,
+        "mediumArmorFullSpeed": false,
+        "heavyArmorFullSpeed": false,
+        "lowLightVision": false,
+        "seeInvisibility": false,
+        "seeInDarkness": false
+      },
+      "contextNotes": [],
+      "links": {
+        "children": [],
+        "charges": []
+      },
+      "tag": "",
+      "armorProf": [],
+      "weaponProf": [],
+      "languages": [],
+      "flags": {
+        "boolean": {},
+        "dictionary": {}
+      },
+      "scriptCalls": [],
+      "subType": "classFeat",
+      "traitType": "",
+      "traitCategory": "",
+      "racePoints": null,
+      "abilityType": "ex",
+      "associations": {
+        "classes": [
+          "Barbarian"
+        ]
+      },
+      "showInQuickbar": false,
+      "crOffset": "",
+      "inherited": false,
+      "acquired": false,
+      "simple": false,
+      "summons": false,
+      "disabled": false,
+      "classSkills": {}
+    },
+    "sort": 98750,
+    "effects": [],
+    "flags": {}
+  }
+}

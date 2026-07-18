@@ -1,5 +1,11 @@
 (async () => {
 
+  // Settings FIRST: module.js registers the module settings inside Hooks.once("init"), and
+  // esmodules execute before Foundry fires init — but only if this import actually runs.
+  // (module.js was previously only listed in module.json's classic "scripts" array, where its
+  // `export` is a SyntaxError, so registerSettings never ran and no settings ever appeared.)
+  await import('./module.js');
+  console.log("module (settings) ran");
 
   // Import necessary scripts
   await import('./deliver-data.js');

@@ -2,6 +2,7 @@
 import { sendDataToServer } from './deliver-data.js';
 // import { fetchDataAndSaveToLocalStorage, getCharacterData } from './fetch-data.js';
 import { main } from './modify-abilities.js';
+import { createAndAssignActor } from './createCharacter.js';
 
 // import { getCharacterData } from './fetch-data.js';
 // import { sendDataToServer } from './deliver-data.js';
@@ -58,6 +59,36 @@ export async function createPersistentButton() {
     }
     if (!deliver_location) {
       deliver_location = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
+    }
+
+    // Dev toggle (client-scoped, ships OFF): try the local backend first, falling back to the
+    // hosted endpoint above when it isn't running — a dead Flask never breaks generation.
+    // Liveness probe: any HTTP response from the local origin (even a 404) means the server is
+    // up; only a network error / ~1.5s timeout means it's down. flask-cors makes this legal.
+    let preferLocal = false;
+    let localUrl = '';
+    try {
+      preferLocal = !!game.settings.get('pf1e_random_char_generator', 'preferLocalBackend');
+      localUrl = game.settings.get('pf1e_random_char_generator', 'localBackendUrl') || '';
+    } catch (e) { /* settings not registered — behave exactly as before */ }
+    if (preferLocal && localUrl) {
+      let localAlive = false;
+      try {
+        const probeOrigin = new URL(localUrl).origin;
+        const abort = new AbortController();
+        const timer = setTimeout(() => abort.abort(), 1500);
+        await fetch(probeOrigin, { method: 'GET', signal: abort.signal, cache: 'no-store' });
+        clearTimeout(timer);
+        localAlive = true;
+      } catch (e) {
+        localAlive = false;
+      }
+      if (localAlive) {
+        deliver_location = localUrl;
+        ui.notifications?.info(`Character Generator DEV: using LOCAL backend (${localUrl}).`);
+      } else {
+        ui.notifications?.info('Character Generator DEV: local backend not reachable — falling back to the hosted server.');
+      }
     }
 
     ui.notifications?.info("Character Generator: contacting the backend… (the first request after the server has idled can take up to a minute).");
@@ -235,6 +266,7 @@ function showCharacterGeneratorDialog() {
       <label for="multiclass">Multiclass:</label>
       <select id="multiclass">
         <option value="n" ${savedData.multiclass === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedData.multiclass === "y" ? "selected" : ""}>Yes</option>
       </select>
     </div>
     <div>
@@ -362,7 +394,6 @@ function showCharacterGeneratorDialog() {
       <label for="gold-amount">Desired Gold Amount (or leave blank):</label>
       <input type="number" id="gold-amount" min="0" value="${savedData.goldAmount || ''}" placeholder="Optional">
     </div>
-
     <div class="resizable-handle"></div> <!-- Resizable handle -->
   `;
 

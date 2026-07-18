@@ -200,6 +200,8 @@ $RequiredTemplates = @(
     'character_sheet_folder/custom_buffs.json'
     'character_sheet_folder/sizefordamage_feature.json'
     'character_sheet_folder/scaling_weapon_damage.json'
+    'character_sheet_folder/house_features.json'
+    'character_sheet_folder/resource_pools.json'
     'base_folder/base_skill.json'
     'base_folder/base_feat.json'
     'base_folder/base_feat_MODS.json'

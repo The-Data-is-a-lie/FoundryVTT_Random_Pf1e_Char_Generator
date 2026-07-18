@@ -99,30 +99,36 @@ async function adjustLevel(actor) {
         return;
       }
       
-      // Prefer the backend's display name (e.g. "Barbarian (Unchained)") so adjustLevel finds the
-      // correct unchained class item; fall back to capitalizeWords(c_class) for older backends.
-      const c_class = parsedData.c_class_display || capitalizeWords(parsedData.c_class);
-      const level = parsedData.level;
+      // Multiclass-aware: level EVERY class item the backend rolled. Old payloads without
+      // `classes` fall back to the legacy single-class entry. Prefer the backend's display name
+      // (e.g. "Barbarian (Unchained)") so we find the correct unchained class item.
+      const classEntries = (Array.isArray(parsedData.classes) && parsedData.classes.length)
+        ? parsedData.classes
+        : [{ display: parsedData.c_class_display || capitalizeWords(parsedData.c_class), level: parsedData.level }];
 
-      console.log("Extracted c_class and level:", c_class, level);
+      for (const entry of classEntries) {
+        const c_class = entry.display || capitalizeWords(entry.name || '');
+        const target = Number(entry.level);
 
-      // Find the class item in the actor's items
-      const classItem = actor.items.find(item => item.name === c_class);
-      const target = Number(level);
-      if (classItem) {
-        // The class item is injected at the every_class.json template level (20). For a max-level
-        // (20) character, update({ level: 20 }) is a same-value no-op: Foundry fires no change
-        // event, pf1 never derives the character level, and the sheet stays at Level 0 /
-        // "missing a class" until the user manually clicks Level Up. Nudge to a different level
-        // first to guarantee a class-level change event so pf1 recomputes. Sub-max characters
-        // already differ from the template, so the single update below is enough for them.
-        if (Number(classItem.system.level) === target) {
-          await classItem.update({ "system.level": target > 1 ? target - 1 : target + 1 });
+        console.log("Extracted c_class and level:", c_class, target);
+
+        // Find the class item in the actor's items
+        const classItem = actor.items.find(item => item.type === 'class' && item.name === c_class);
+        if (classItem) {
+          // The class item is injected at the every_class.json template level (20). For a max-level
+          // (20) character, update({ level: 20 }) is a same-value no-op: Foundry fires no change
+          // event, pf1 never derives the character level, and the sheet stays at Level 0 /
+          // "missing a class" until the user manually clicks Level Up. Nudge to a different level
+          // first to guarantee a class-level change event so pf1 recomputes. Sub-max characters
+          // already differ from the template, so the single update below is enough for them.
+          if (Number(classItem.system.level) === target) {
+            await classItem.update({ "system.level": target > 1 ? target - 1 : target + 1 });
+          }
+          await classItem.update({ "system.level": target });
+          console.log(`Updated ${c_class} level to ${target}`);
+        } else {
+          console.error(`Class item ${c_class} not found in actor's items.`);
         }
-        await classItem.update({ "system.level": target });
-        console.log(`Updated ${c_class} level to ${target}`);
-      } else {
-        console.error(`Class item ${c_class} not found in actor's items.`);
       }
     } catch (error) {
       console.error("Error parsing CharacterData or accessing c_class and level:", error);
@@ -133,8 +139,9 @@ async function adjustLevel(actor) {
 }
 
 
-// Calls all Actor Creation functions
-async function createAndAssignActor() {
+// Calls all Actor Creation functions. Exported: button.js imports this — the file used to be a
+// classic script in module.json's "scripts" array that defined it as a global.
+export async function createAndAssignActor() {
   // Bail before creating anything: an actor with no sheet data to inject would just be a blank
   // "New Test Actor" littering the Random Characters folder.
   if (!localStorage.getItem('exportFoundryPath')) {

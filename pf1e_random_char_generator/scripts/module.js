@@ -12,6 +12,27 @@ export default class MyModule {
         default: "https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data",
       });
 
+      // Dev convenience: prefer a locally running backend over the hosted one. CLIENT scope —
+      // stored per-browser/per-machine, so it never syncs to players and a shipped release can
+      // never arrive with it enabled (defaults live in code: false / localhost). When the local
+      // server isn't up, button.js falls back to the Backend URL setting automatically.
+      game.settings.register("pf1e_random_char_generator", "preferLocalBackend", {
+        name: "Prefer local backend (dev)",
+        hint: "Try the local dev backend first when generating; falls back to the hosted server automatically if it isn't running. Per-machine setting.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+      });
+      game.settings.register("pf1e_random_char_generator", "localBackendUrl", {
+        name: "Local backend URL (dev)",
+        hint: "Endpoint tried first when 'Prefer local backend' is on.",
+        scope: "client",
+        config: true,
+        type: String,
+        default: "http://localhost:5001/update_character_data",
+      });
+
       game.settings.register("pf1e_random_char_generator", "modulePath", {
         name: "Module Path",
         hint: "Path to the module's resources.",
@@ -28,7 +49,11 @@ export default class MyModule {
     }
   }
 
-  // Settings must be registered during Foundry's "init" hook — game.settings isn't ready at
-  // module-load time. Registering here guarantees the Backend URL setting exists before the
-  // Character Generator button reads it.
-  Hooks.once("init", () => MyModule.init());
+  // Robust against load order: main.js imports this file dynamically from an async IIFE, so it
+  // can resolve either BEFORE Foundry's "init" hook (register on the hook) or AFTER it already
+  // fired (the hook would never run — register immediately; game.settings exists by then).
+  if (globalThis.game?.settings?.register) {
+    MyModule.init();
+  } else {
+    Hooks.once("init", () => MyModule.init());
+  }
