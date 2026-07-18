@@ -2,7 +2,7 @@
   "name": "pf1e_random_char_generator",
   "title": "Pathfinder 1e Random Character Generator",
   "description": "This module will allow you to auto-generate randomized Pathfinder 1e character sheets.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "Tabletopsoftware",
   "esmodules": ["scripts/main.js"],
   "styles": [],
@@ -14,8 +14,8 @@
     "verified": "13"
   },
   "id": "pf1e_random_char_generator",
-  "manifest": "https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/raw/v2.0.2/pf1e_random_char_generator/module.json",
-  "download": "https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/raw/v2.0.2/downloads/pf1e_random_char_generator.zip",
+  "manifest": "https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/raw/v2.0.3/pf1e_random_char_generator/module.json",
+  "download": "https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/raw/v2.0.3/downloads/pf1e_random_char_generator.zip",
   "readme": "https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/blob/main/README.md",
   "changelog": "https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/blob/main/changelog.md"
 }
