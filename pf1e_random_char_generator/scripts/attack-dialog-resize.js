@@ -17,7 +17,10 @@ Hooks.once("ready", () => {
   Object.defineProperty(AD, "defaultOptions", {
     configurable: true,
     get() {
-      return foundry.utils.mergeObject(superGet.call(this), { resizable: true }, { inplace: false });
+      // resizable:true adds the drag handle; a concrete `height` (instead of the stock "auto") is
+      // what lets a dragged height STICK — with "auto" the window snaps back to content height, so
+      // only width would resize. Foundry clamps the window to the viewport, so no upper cap is needed.
+      return foundry.utils.mergeObject(superGet.call(this), { resizable: true, height: 600 }, { inplace: false });
     },
   });
   console.log("pf1e_random_char_generator | AttackDialog is now resizable");

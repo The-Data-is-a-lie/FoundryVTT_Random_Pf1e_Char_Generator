@@ -1,11 +1,12 @@
 /* Keep the pf1 attack roll dialog usable when a weapon carries many conditionals.
  *
  * The conditionals list flexes to fill the dialog and scrolls internally, so the Single/Full Attack
- * buttons always stay on-screen; the window is capped at 85vh so it never opens taller than the
- * viewport. Paired with the resizable-window patch (scripts/attack-dialog-resize.js): dragging the
- * window larger grows the conditionals area (the list is the flexible region, other fields stay put). */
+ * buttons always stay on-screen. Paired with the resizable-window patch (scripts/attack-dialog-resize.js),
+ * which opens the dialog at a concrete height and makes it resizable: dragging the window larger or
+ * smaller in EITHER direction grows/shrinks the conditionals area (the list is the flexible region,
+ * other fields stay put). No max-height here — Foundry already clamps the window to the viewport, and a
+ * cap would stop the list from filling when the window is dragged taller. */
 .pf1.attack-dialog .window-content {
-  max-height: 85vh;
   display: flex;
   flex-flow: column nowrap;
 }
