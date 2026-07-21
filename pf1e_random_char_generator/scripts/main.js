@@ -20,6 +20,9 @@
   await import('./pow-sort-override.js'); // pf1-pow Path of War tab sort override (registers a ready hook)
   console.log("pow-sort-override ran");
 
+  await import('./attack-dialog-resize.js'); // make the pf1 attack-roll dialog a resizable window (registers a ready hook)
+  console.log("attack-dialog-resize ran");
+
   console.log("All scripts loaded and ready.");
 
   // Now, import button.js and create the persistent button

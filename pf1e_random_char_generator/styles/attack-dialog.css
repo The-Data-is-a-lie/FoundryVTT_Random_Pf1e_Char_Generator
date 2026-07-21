@@ -1,0 +1,22 @@
+/* Keep the pf1 attack roll dialog usable when a weapon carries many conditionals.
+ *
+ * The conditionals list flexes to fill the dialog and scrolls internally, so the Single/Full Attack
+ * buttons always stay on-screen; the window is capped at 85vh so it never opens taller than the
+ * viewport. Paired with the resizable-window patch (scripts/attack-dialog-resize.js): dragging the
+ * window larger grows the conditionals area (the list is the flexible region, other fields stay put). */
+.pf1.attack-dialog .window-content {
+  max-height: 85vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.pf1.attack-dialog form {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.pf1.attack-dialog form .conditionals {
+  flex: 1 1 auto;
+  min-height: 6em;      /* keep a usable list even in a small window */
+  overflow-y: auto;
+}
