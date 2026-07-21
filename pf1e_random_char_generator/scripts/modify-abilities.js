@@ -2175,12 +2175,28 @@ if (Array.isArray(characterData.spellbooks) && characterData.spellbooks.length) 
 // `[[ 10 + @slvl + @castMod ]]`. Those two tokens aren't real pf1 roll-data paths, so substitute them
 // to concrete forms at attach time (mirrors the @INITMOD / @spheres.* substitution the maneuver and
 // sphere paths already do): @slvl -> the spell's own level, @castMod -> @abilities.<book ability>.mod.
+// Combined pf1-spell caster level for the homebrew rule: each casting class contributes its FULL class
+// level (high/med), or level-3 for a 'low' caster (bard/ranger/paladin RAW), summed over the
+// spellbooks and floored to 1 -- the pf1-spell analog of sphereCLExpr(). Uses @classes.<tag>.level,
+// NOT @spells.<book>.cl.total (which pf1 leaves at full class level even for low casters, since
+// casterType only drives slots/max spell level).
+function spellCLExpr() {
+  const books = exportTemplate.system?.attributes?.spells?.spellbooks || {};
+  const terms = ['primary', 'secondary', 'tertiary']
+    .map(s => books[s]).filter(b => b && b.inUse && b.class)
+    .map(b => {
+      const lvl = `@classes.${b.class}.level`;
+      return b.casterType === 'low' ? `max(${lvl} - 3, 0)` : lvl;   // high/med -> full level
+    });
+  return `max(${terms.join(' + ') || '0'}, 1)`;
+}
 function subSpellTokens(text, spell) {
   const books = exportTemplate.system?.attributes?.spells?.spellbooks || {};
   const bk = spell?.system?.spellbook;
   const ability = (books[bk] && books[bk].ability) || (books.primary && books.primary.ability) || 'int';
   const level = spell?.system?.level ?? 0;
   return String(text == null ? '' : text)
+    .replaceAll('@spells.primary.cl.total', spellCLExpr())
     .replaceAll('@slvl', String(level))
     .replaceAll('@castMod', `@abilities.${ability}.mod`);
 }
