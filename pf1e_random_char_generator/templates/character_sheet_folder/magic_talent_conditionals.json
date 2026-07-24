@@ -23,7 +23,7 @@
           "subTarget": "allDamage",
           "type": "untyped",
           "damageType": [
-            "electricity"
+            "electric"
           ],
           "critical": "nonCrit"
         }
@@ -2478,7 +2478,7 @@
           "subTarget": "allDamage",
           "type": "untyped",
           "damageType": [
-            "electricity"
+            "electric"
           ],
           "critical": "nonCrit"
         }
@@ -2594,7 +2594,7 @@
           "subTarget": "allDamage",
           "type": "untyped",
           "damageType": [
-            "electricity"
+            "electric"
           ],
           "critical": "nonCrit"
         }
@@ -2704,7 +2704,7 @@
           "subTarget": "allDamage",
           "type": "untyped",
           "damageType": [
-            "electricity"
+            "electric"
           ],
           "critical": "nonCrit"
         }
