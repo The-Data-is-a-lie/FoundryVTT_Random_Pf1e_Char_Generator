@@ -2171,6 +2171,36 @@ if (Array.isArray(characterData.spellbooks) && characterData.spellbooks.length) 
 // damage from every_spell.json; the backend's spell_riders_dict adds the formal save (only if the
 // compendium action has none) and the non-damage riders (ability damage, conditions, ongoing damage)
 // as default-on text conditionals with the numbers in [[ ]]. Keyed by display-cased spell name.
+// Enriched rider clauses (enrich_conditional_riders.py) restate the spell save DC as
+// `[[ 10 + @slvl + @castMod ]]`. Those two tokens aren't real pf1 roll-data paths, so substitute them
+// to concrete forms at attach time (mirrors the @INITMOD / @spheres.* substitution the maneuver and
+// sphere paths already do): @slvl -> the spell's own level, @castMod -> @abilities.<book ability>.mod.
+// Combined pf1-spell caster level for the homebrew rule: each casting class contributes its FULL class
+// level (high/med), or level-3 for a 'low' caster (bard/ranger/paladin RAW), summed over the
+// spellbooks and floored to 1 -- the pf1-spell analog of sphereCLExpr(). Uses @classes.<tag>.level,
+// NOT @spells.<book>.cl.total (which pf1 leaves at full class level even for low casters, since
+// casterType only drives slots/max spell level).
+function spellCLExpr() {
+  const books = exportTemplate.system?.attributes?.spells?.spellbooks || {};
+  const terms = ['primary', 'secondary', 'tertiary']
+    .map(s => books[s]).filter(b => b && b.inUse && b.class)
+    .map(b => {
+      const lvl = `@classes.${b.class}.level`;
+      return b.casterType === 'low' ? `max(${lvl} - 3, 0)` : lvl;   // high/med -> full level
+    });
+  return `max(${terms.join(' + ') || '0'}, 1)`;
+}
+function subSpellTokens(text, spell) {
+  const books = exportTemplate.system?.attributes?.spells?.spellbooks || {};
+  const bk = spell?.system?.spellbook;
+  const ability = (books[bk] && books[bk].ability) || (books.primary && books.primary.ability) || 'int';
+  const level = spell?.system?.level ?? 0;
+  return String(text == null ? '' : text)
+    .replaceAll('@spells.primary.cl.total', spellCLExpr())
+    .replaceAll('@slvl', String(level))
+    .replaceAll('@castMod', `@abilities.${ability}.mod`);
+}
+
 async function addSpellRiders() {
   try {
     const spellRiders = characterData.spell_riders_dict || {};
@@ -2198,7 +2228,7 @@ async function addSpellRiders() {
           if (!Array.isArray(action.conditionals)) action.conditionals = [];
           const seen = new Set(action.conditionals.map(c => c && c.name));
           for (const riderText of entry.riders) {
-            const name = String(riderText);
+            const name = subSpellTokens(riderText, spell);
             if (!name || seen.has(name)) continue;
             seen.add(name);
             action.conditionals.push({ _id: (await generateUniqueID()).slice(0, 8), name, default: true, modifiers: [] });
@@ -2773,7 +2803,11 @@ async function addSpellConditionals() {
       // NAME with its numbers in [[ ]] -- mirrors addManeuverConditionals so spells follow the same
       // house convention. The [label] guard below keeps the attack modifier safe even though the
       // name now carries inline rolls.
-      if (entry.rider) condName += `; ${String(entry.rider)}`;
+      if (entry.rider) {
+        const spellItem = (exportTemplate.items || []).find(
+          i => i.type === 'spell' && (i.name || '').toLowerCase() === spellName.toLowerCase());
+        condName += `; ${subSpellTokens(entry.rider, spellItem)}`;
+      }
       if (!condName || seen.has(condName)) continue;
       seen.add(condName);
       const modifiers = [];
@@ -2816,10 +2850,11 @@ await addSpellConditionals();
 // saves/conditions/durations ride the conditional NAME with [[ ]] inline rolls. Runs after the weapon
 // exists (processEquipment) and BEFORE createScalingAttackItem (so the scaling clone inherits them).
 //
-// These are DABBLING NPCs (Basic Magic Training = effective caster level 1), so the sphere roll-data
-// tokens are substituted to CONCRETE forms here: @spheres.cl.total -> 1, @spheres.cam/@spheres.pam ->
-// @abilities.<mod>.mod. (The importable palette actor keeps the native @spheres.* tokens instead, so a
-// conditional copied off it scales on a real spherecasting PC.)
+// These are DABBLING NPCs (Spheres via feats, not a spherecasting class), so the sphere roll-data
+// tokens are substituted to CONCRETE forms here: @spheres.cam/@spheres.pam -> @abilities.<mod>.mod, and
+// @spheres.cl.total -> a LIVE, tier-accurate sphere caster level built from the character's real caster
+// classes (see sphereCLExpr). (The importable palette actor keeps the native @spheres.* tokens instead,
+// so a conditional copied off it scales on a real spherecasting PC via pf1spheres.)
 function sphereWordToAbbrev(w) {
   const m = { intelligence: 'int', wisdom: 'wis', charisma: 'cha', int: 'int', wis: 'wis', cha: 'cha' };
   return m[String(w || '').toLowerCase()] || '';
@@ -2830,15 +2865,34 @@ function resolveSphereAbilities() {
   const pam = 'wis';   // Spheres: a non-practitioner's practitioner modifier defaults to Wis
   return { cam, pam };
 }
+// Build the live sphere-CL expression for a dabbler: caster levels from multiple casting classes STACK
+// (Spheres RAW), each contributing its tier fraction of that class's level -- high = level, mid (pf1
+// 'med') = 3/4, low = 1/2 (Pathfinder rounds down). Uses @classes.<tag>.level (class level, not the
+// spellbook CL) so a low caster contributes before it gains spells (e.g. paladin 3 -> floor(3/2)=1).
+// Floored to 1 so a magic dabbler with no populated spellbook (e.g. kineticist) still reads CL 1.
+function sphereCLExpr() {
+  const books = exportTemplate.system?.attributes?.spells?.spellbooks || {};
+  const terms = ['primary', 'secondary', 'tertiary']
+    .map(s => books[s]).filter(b => b && b.inUse && b.class)
+    .map(b => {
+      const lvl = `@classes.${b.class}.level`;
+      if (b.casterType === 'high') return lvl;
+      if (b.casterType === 'med') return `floor(3 * ${lvl} / 4)`;
+      return `floor(${lvl} / 2)`;   // 'low' (and any unrecognized tier -> conservative half)
+    });
+  return `max(${terms.join(' + ') || '0'}, 1)`;
+}
 function makeSubSpheres(cam, pam) {
+  const clExpr = sphereCLExpr();
   return s => String(s == null ? '' : s)
-    .replaceAll('@spheres.cl.total', '1')
+    .replaceAll('@spheres.cl.total', clExpr)
     .replaceAll('@spheres.cam', `@abilities.${cam}.mod`)
     .replaceAll('@spheres.pam', `@abilities.${pam}.mod`);
 }
 // Mark the generated actor as a spheres caster/practitioner (castingAbility/practitionerAbility drive
-// @spheres.cam/@spheres.pam on the pf1spheres tab + talent-sheet DCs) and stamp the dabbler's caster
-// level 1 onto the "Spheres Casting" summary feat. Harmless when the pf1spheres module is disabled.
+// @spheres.cam/@spheres.pam on the pf1spheres tab + talent-sheet DCs) and stamp the dabbler's live,
+// tier-accurate caster level (sphereCLExpr) onto the "Spheres Casting" summary feat so the pf1spheres
+// tab CL matches the talent/blast DCs. Harmless when the pf1spheres module is disabled.
 function applySpheresFlags(cam, pam) {
   const hasMagic = Array.isArray(characterData.magic_talent_items) && characterData.magic_talent_items.length;
   const hasCombat = Array.isArray(characterData.combat_talent_items) && characterData.combat_talent_items.length;
@@ -2855,7 +2909,7 @@ function applySpheresFlags(cam, pam) {
       feat.system = feat.system || {};
       const ch = Array.isArray(feat.system.changes) ? feat.system.changes : [];
       if (!ch.some(c => c && c.target === 'spherecl')) {
-        ch.push({ _id: randomChangeId(), formula: '1', target: 'spherecl', type: 'untyped', operator: 'add', priority: 0, value: 0 });
+        ch.push({ _id: randomChangeId(), formula: sphereCLExpr(), target: 'spherecl', type: 'untyped', operator: 'add', priority: 0, value: 0 });
         feat.system.changes = ch;
       }
     }
