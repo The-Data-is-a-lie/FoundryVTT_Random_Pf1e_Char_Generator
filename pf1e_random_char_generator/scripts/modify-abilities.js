@@ -2190,6 +2190,18 @@ function spellCLExpr() {
     });
   return `max(${terms.join(' + ') || '0'}, 1)`;
 }
+// NUMERIC twin of spellCLExpr(): the same homebrew combined caster level as a concrete integer, for
+// places that need a number now rather than a pf1 roll-data formula (e.g. aura ranges in feet).
+// The backend already bakes the low-caster -3 into each book -- caster_formula() in spells.py sets
+// casting_level_num to the class level and only the 'low' branch subtracts 3 -- so summing the books
+// reproduces the rule exactly. Falls back to the legacy primary-class level for payloads that predate
+// the `spellbooks` key (see the LEGACY single-book path above), so those render unchanged.
+function spellCasterLevelNum() {
+  const books = characterData.spellbooks;
+  if (!Array.isArray(books) || !books.length) return Number(characterData.level) || 1;
+  const total = books.reduce((n, b) => n + Math.max(0, Number(b?.casting_level_num) || 0), 0);
+  return Math.max(1, total);
+}
 function subSpellTokens(text, spell) {
   const books = exportTemplate.system?.attributes?.spells?.spellbooks || {};
   const bk = spell?.system?.spellbook;
@@ -2199,6 +2211,35 @@ function subSpellTokens(text, spell) {
     .replaceAll('@spells.primary.cl.total', spellCLExpr())
     .replaceAll('@slvl', String(level))
     .replaceAll('@castMod', `@abilities.${ability}.mod`);
+}
+
+// The base damage type(s) of the weapon (or attack item) a conditional is being attached to, read
+// from its first damage part -- handles pf1 v11 {type:{values:[...]}} and the older {types:[...]}.
+function weaponDamageTypes(action) {
+  for (const p of ((action && action.damage && action.damage.parts) || [])) {
+    const t = p && p.type;
+    let vals = [];
+    if (t && Array.isArray(t.values)) vals = t.values;
+    else if (Array.isArray(p && p.types)) vals = p.types;
+    else if (Array.isArray(t)) vals = t;
+    vals = (vals || []).filter(Boolean);
+    if (vals.length) return vals.slice();
+  }
+  return [];
+}
+
+// Resolve a conditional DAMAGE modifier's damageType at attach time:
+//   * ["as-weapon"] sentinel -> the attached weapon's own type(s) (so bonus weapon dice like Gravity
+//     Bow / a martial strike show the weapon's real slashing/bludgeoning/piercing), untyped fallback;
+//   * empty on a DICE instance -> ["untyped"] (an empty Set renders "undefined": pf1 damage-roll ??=
+//     only defaults null/undefined). A curated element is left untouched, as are attack/flat mods.
+function dmgTypeOrUntyped(dt, target, formula, weaponTypes) {
+  const arr = Array.isArray(dt) ? dt.slice() : [];
+  if ((target || 'damage') !== 'damage') return arr;
+  if (arr.length === 1 && arr[0] === 'as-weapon')
+    return (Array.isArray(weaponTypes) && weaponTypes.length) ? weaponTypes.slice() : ['untyped'];
+  if (arr.length === 0 && /[\d)]d\d/.test(String(formula || ''))) return ['untyped'];
+  return arr;
 }
 
 async function addSpellRiders() {
@@ -2537,7 +2578,7 @@ async function addManeuverConditionals() {
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
           type: m.type || 'untyped',
-          damageType: Array.isArray(m.damageType) ? m.damageType : [],
+          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
           critical: m.critical || 'normal',
         });
       }
@@ -2569,7 +2610,7 @@ async function addManeuverConditionals() {
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
           type: m.type || 'untyped',
-          damageType: Array.isArray(m.damageType) ? m.damageType : [],
+          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
           critical: m.critical || 'normal',
         });
       }
@@ -2621,7 +2662,7 @@ async function addFeatConditionals() {
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
           type: m.type || 'untyped',
-          damageType: Array.isArray(m.damageType) ? m.damageType : [],
+          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
           critical: m.critical || 'normal',
         });
       }
@@ -2689,7 +2730,7 @@ async function addEnhancementEffects() {
               target: m.target || 'damage',
               subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
               type: m.type || 'untyped',
-              damageType: Array.isArray(m.damageType) ? m.damageType : [],
+              damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
               critical: m.critical || 'normal',
             });
           }
@@ -2826,7 +2867,7 @@ async function addSpellConditionals() {
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
           type: m.type || 'untyped',
-          damageType: Array.isArray(m.damageType) ? m.damageType : [],
+          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
           critical: m.critical || 'normal',
         });
       }
@@ -3026,7 +3067,7 @@ async function addSphereTalentConditionals(subSpheres) {
             target: m.target || 'damage',
             subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
             type: m.type || 'untyped',
-            damageType: Array.isArray(m.damageType) ? m.damageType : [],
+            damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
             critical: m.critical || 'normal',
           });
         }
@@ -3135,8 +3176,12 @@ async function addSpellBuffs() {
     for (const [k, v] of Object.entries(table)) byLower[k.toLowerCase()] = { name: k, entry: v };
     const tag = deriveBuffTag(characterData.character_full_name);
     // Aura Range = the spell's range as a concrete number of feet at the NPC's caster level (close/
-    // medium/long conventions; character level is the CL proxy). Distributor reads this integer.
-    const cl = Number(characterData.level) || 1;
+    // medium/long conventions). Distributor reads this integer. One CL for the whole table: these
+    // spells come from the flat spell_list_choose_from with no per-book attribution, so a single
+    // combined CL is the (deliberate) approximation -- but it is now the REAL homebrew combined CL
+    // (spellCasterLevelNum) rather than characterData.level, which is only the PRIMARY class's level
+    // and sized a Monk 8 / Summoner 7 / Wizard 5's auras at CL 8 instead of 12.
+    const cl = spellCasterLevelNum();
     const spellAuraRange = (units, value) => {
       switch (units) {
         case 'personal': return 0;
@@ -3486,11 +3531,15 @@ await check_ammo();
 
 // ----- Start of Skills Section ----- //
 
+// Must stay in lockstep with the backend's canonical data.skills / data.SKILL_IDS. Anything the
+// backend sends that isn't here (or isn't in base_skill.json) is DROPPED -- which is how "gather
+// information", "lore" and "knowledge martial" used to eat a character's skill ranks. Both were
+// removed from the backend pool; "artistry" went with them because pf1 treats art/lor as container
+// skills whose ranks must live in subSkills, so ranks on the container are unusable.
 const skillsDict = {
   // "Pull_name": "Foundry_name"
   acrobatics: "acr",
   appraise: "apr",
-  artistry: "art",
   bluff: "blf",
   climb: "clm",
   craft: "crf",
@@ -3499,7 +3548,6 @@ const skillsDict = {
   disguise: "dis",
   "escape artist": "esc",
   fly: "fly",
-  "gather information": "gai",
   "handle animal": "han",
   heal: "hea",
   intimidate: "int",
@@ -3548,7 +3596,7 @@ async function convertSkillNames(characterData, skillsDict) {
   return newCharacterData;
 }
 
-async function createUpdatedSkills(updatedCharacterData, baseSkillPathData, professions, craftType) {
+async function createUpdatedSkills(updatedCharacterData, baseSkillPathData, professions, craftType, professionRanks) {
   // Craft/Perform/Profession are pf1e "container" skills: their ranks must live under
   // .subSkills (e.g. crf.subSkills.crf1.rank), not on the container's own rank.
   const CONTAINERS = { crf: "Craft", prf: "Perform", pro: "Profession" };
@@ -3556,27 +3604,36 @@ async function createUpdatedSkills(updatedCharacterData, baseSkillPathData, prof
   for (let skill in updatedCharacterData) {
     const rank = updatedCharacterData[skill];
     const parent = baseSkillPathData[skill];
-    if (!parent) continue; // unmapped skill (e.g. "lore") -> skip
+    if (!parent) {
+      // Unmapped skill -> its ranks would vanish off the sheet. Shout, don't swallow.
+      if (rank > 0) console.warn(`pf1e_random_char_generator: dropping ${rank} rank(s) in unmapped skill "${skill}"`);
+      continue;
+    }
 
     if (CONTAINERS[skill]) {
       parent.rank = 0; // ranks live on the subskill, not the container
 
       if (skill === "pro" && Array.isArray(professions) && professions.length) {
-        // One subskill per chosen profession ("Profession: <name>"), ranks split evenly
-        // (the remainder lands on the first professions). Driven by the professions list so
-        // every chosen profession shows up, even when Profession has 0 total ranks.
+        // One subskill per chosen profession ("Profession: <name>"). Ranks come from the backend's
+        // profession_ranks payload -- professions run on their own homebrew rank pool
+        // (5 + level + 10 per Multi Talented feat, capped 10 each / 15 for True Calling), which the
+        // backend has already distributed and reconciled with any Always Improving ranks.
+        // This used to split the ORDINARY Profession skill rank evenly across the professions, which
+        // rendered a 45-rank pool as 1/0/0/0.
         parent.subSkills = parent.subSkills || {};
         const n = professions.length;
-        const base = Math.floor(rank / n);
-        const remainder = ((rank % n) + n) % n; // guard against a stray negative rank
         for (let i = 0; i < n; i++) {
+          const entry = Array.isArray(professionRanks) ? professionRanks[i] : null;
           parent.subSkills["pro" + (i + 1)] = {
             name: "Profession: " + professions[i],
             ability: parent.ability,
             rt: parent.rt,
             acp: parent.acp,
-            rank: base + (i < remainder ? 1 : 0)
+            rank: entry ? (Number(entry.ranks) || 0) : 0
           };
+        }
+        if (!Array.isArray(professionRanks) || !professionRanks.length) {
+          console.warn("pf1e_random_char_generator: no profession_ranks in payload; Profession subskills set to 0 rank (backend needs redeploying)");
         }
       } else if (rank > 0) {
         parent.subSkills = parent.subSkills || {};
@@ -3618,9 +3675,14 @@ try {
   if (typeof professions === 'string') {
     try { professions = JSON.parse(professions); } catch (e) { professions = [professions]; }
   }
+  // Per-profession rank data ([{name, skill_label, ranks, cap, ...}]), parallel to `professions`.
+  let professionRanks = characterData.profession_ranks;
+  if (typeof professionRanks === 'string') {
+    try { professionRanks = JSON.parse(professionRanks); } catch (e) { professionRanks = []; }
+  }
   const baseSkillTemplate = fileDataDictionary[baseSkillPath]; // Example, replace with your actual path
   // Now we have a JSON object with the proper names and ranks -> need to update the skills
-  await createUpdatedSkills(updatedCharacterData, baseSkillTemplate, professions, characterData.craft_type);
+  await createUpdatedSkills(updatedCharacterData, baseSkillTemplate, professions, characterData.craft_type, professionRanks);
   // Now that we have updated skills -> need to overwrite the export file (stored in localStorage)
   await overwriteData(localStorage.getItem('collectedSkills'));
 } catch (error) {
