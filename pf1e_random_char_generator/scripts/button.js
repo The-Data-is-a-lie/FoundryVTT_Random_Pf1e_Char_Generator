@@ -226,6 +226,17 @@ function showCharacterGeneratorDialog() {
           // module doesn't ship. To re-enable once they're added: uncomment the line below AND
           // remove "stalker"/"zealot" from pow_classes_pending_foundry in Backend/utils/data.py.
           // , 'Stalker', 'Zealot'
+          ,
+          // Psionic manifesting classes (Dreamscarred Press, via the Library of Metzofitz). The
+          // backend key for the two-word one is "psychic warrior" WITH A SPACE; the slug below
+          // sends "psychic-warrior" and chooseClass turns the hyphen back into a space
+          // (Backend/utils/util.py), exactly as it does for the Unchained variants.
+          //
+          // These were already reachable by rolling Random -- data.psionic_classes_pending is
+          // empty, so all twelve sit in the random pool. Listing them here only makes deliberate
+          // what was already possible.
+          'Aegis', 'Cryptic', 'Dread', 'Highlord', 'Marksman', 'Psion', 'Psychic Warrior',
+          'Soulknife', 'Tactician', 'Vitalist', 'Voyager', 'Wilder'
         ].map(char_class =>
           `<option value="${char_class.toLowerCase().replace(/\s/g, '-')}" 
             ${savedData.class === char_class.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
