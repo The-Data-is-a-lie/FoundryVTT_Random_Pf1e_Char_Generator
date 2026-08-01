@@ -54,6 +54,13 @@ export function showCharacterGeneratorDialog() {
             // Stalker & Zealot are NOT in the pf1-pow Foundry compendium yet (re-enable when they
             // ship: uncomment below + clear pow_classes_pending_foundry in Backend/utils/data.py).
             // , 'Stalker', 'Zealot'
+            ,
+            // Psionic manifesting classes (Dreamscarred Press, via the Library of Metzofitz).
+            // "Psychic Warrior" slugs to "psychic-warrior"; chooseClass turns the hyphen back into
+            // the backend's space-separated key (Backend/utils/util.py), as for the Unchained
+            // variants. Already reachable via Random -- data.psionic_classes_pending is empty.
+            'Aegis', 'Cryptic', 'Dread', 'Highlord', 'Marksman', 'Psion', 'Psychic Warrior',
+            'Soulknife', 'Tactician', 'Vitalist', 'Voyager', 'Wilder'
           ].map(char_class =>
             `<option value="${char_class.toLowerCase().replace(/\s/g, '-')}" 
               ${savedData.class === char_class.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>

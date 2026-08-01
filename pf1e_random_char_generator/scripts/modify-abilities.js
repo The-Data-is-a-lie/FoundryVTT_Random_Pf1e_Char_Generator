@@ -648,7 +648,13 @@ const class_list = [
   // collectItems boundary once added to every_class.json (see export_every_class macro).
   // "Medic" is a Metzofitz PoW homebrew class present on everyClassPerson; it isn't
   // backend-generatable yet but must be a boundary so it doesn't bleed into the prior class.
-  "Stalker", "Warlord", "Warder", "Harbinger", "Mystic", "Zealot", "Medic"
+  "Stalker", "Warlord", "Warder", "Harbinger", "Mystic", "Zealot", "Medic",
+  // Psionic classes (pf1-psionics), spliced into every_class.json by
+  // Backend/scripts/build_every_class.mjs. Same boundary requirement as everything above: these
+  // sit at the END of the bundle, so without them the previously-last class (Warlord) would
+  // swallow all 157 psionic items.
+  "Aegis", "Cryptic", "Dread", "Highlord", "Marksman", "Psion", "Psychic Warrior",
+  "Soulknife", "Tactician", "Vitalist", "Voyager", "Wilder"
 ];
 
 // Build EVERY rolled class (multiclass-aware), highest level first, so the sheet lists
