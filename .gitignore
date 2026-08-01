@@ -16,6 +16,15 @@ downloads/*- Copy.zip
 /lib-wrapper/
 /pf-content/
 /pf1-pow/
+/pf1-psionics/
 /pf1-statblock-converter/
 /pf1spheres/
 /statblock-library/
+# sibling repos of this project, each with its own git root
+/pf1-buff-bundles/
+/pf1-buff-distributor/
+/pf1-conditional-applier/
+
+# ---- leftover build artifact of the removed spell-conditionals compendium ----
+#      module.json ships "packs": [], so nothing here is distributed.
+/pf1e_random_char_generator/packs/
