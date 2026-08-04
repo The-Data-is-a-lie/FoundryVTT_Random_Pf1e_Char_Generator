@@ -90058,6 +90058,3704 @@
       "type": "feat",
       "effects": [],
       "sort": 89600000
+    },
+    {
+      "_id": "as8QozSqVrbSw7tG",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf1.classes.Item.5nxfoXZ5KpOFYpLm",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/items/inventory/book-blue.jpg",
+      "name": "Adept",
+      "system": {
+        "description": {
+          "value": "<h2>Class Skills</h2><p>The adept’s class skills (and the key ability for each skill) are Craft (Int), Handle Animal (Cha), Heal (Wis), Knowledge (all skills taken individually) (Int), Profession (Wis), Spellcraft (Int), and Survival (Wis).</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": []
+        },
+        "tag": "adept",
+        "armorProf": [],
+        "weaponProf": [
+          "simple"
+        ],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "npc",
+        "level": 20,
+        "hd": 6,
+        "hp": 6,
+        "bab": "low",
+        "skillsPerLevel": 2,
+        "savingThrows": {
+          "fort": {
+            "value": "low"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "",
+        "alignment": "",
+        "classSkills": {
+          "art": true,
+          "crf": true,
+          "han": true,
+          "hea": true,
+          "kar": true,
+          "kdu": true,
+          "ken": true,
+          "kge": true,
+          "khi": true,
+          "klo": true,
+          "kna": true,
+          "kno": true,
+          "kpl": true,
+          "kre": true,
+          "lor": true,
+          "pro": true,
+          "spl": true,
+          "sur": true
+        },
+        "casting": {
+          "ability": "wis",
+          "cantrips": true,
+          "progression": "med",
+          "spells": "divine",
+          "type": "prepared"
+        },
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "448-449"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "folder": null,
+      "sort": 89700000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "pf1": {
+          "links": {
+            "classAssociations": {}
+          }
+        }
+      }
+    },
+    {
+      "_id": "hx8KETF0rD6wAjwC",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf1.classes.Item.j9B52zPw8AwNqYsk",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/items/inventory/chalice-gems.jpg",
+      "name": "Aristocrat",
+      "system": {
+        "description": {
+          "value": "<h2>Class Skills</h2><p>The aristocrat’s class skills (and the key ability for each skill) are Appraise (Int), Bluff (Cha), Craft (Int), Diplomacy (Cha), Disguise (Cha), Handle Animal (Cha), Intimidate (Cha), Knowledge (all skills taken individually) (Int), Linguistics (Int), Perception (Wis), Perform (Cha), Profession (Wis), Ride (Dex), Sense Motive (Wis), Swim (Str), and Survival (Wis).</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": []
+        },
+        "tag": "aristocrat",
+        "armorProf": [
+          "lgt",
+          "med",
+          "hvy",
+          "shl",
+          "twr"
+        ],
+        "weaponProf": [
+          "simple",
+          "martial"
+        ],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "npc",
+        "level": 20,
+        "hd": 8,
+        "hp": 8,
+        "bab": "med",
+        "skillsPerLevel": 4,
+        "savingThrows": {
+          "fort": {
+            "value": "low"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "",
+        "alignment": "",
+        "classSkills": {
+          "apr": true,
+          "art": true,
+          "blf": true,
+          "crf": true,
+          "dip": true,
+          "dis": true,
+          "han": true,
+          "int": true,
+          "kar": true,
+          "kdu": true,
+          "ken": true,
+          "kge": true,
+          "khi": true,
+          "klo": true,
+          "kna": true,
+          "kno": true,
+          "kpl": true,
+          "kre": true,
+          "lin": true,
+          "lor": true,
+          "per": true,
+          "prf": true,
+          "pro": true,
+          "rid": true,
+          "sen": true,
+          "sur": true,
+          "swm": true
+        },
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "449"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "folder": null,
+      "sort": 89800000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "pf1": {
+          "links": {
+            "classAssociations": {}
+          }
+        }
+      }
+    },
+    {
+      "_id": "FNeavdsYETXQ5yQG",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf1.classes.Item.jKH9m5QF1jCnU3s0",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/items/inventory/ladle.jpg",
+      "name": "Commoner",
+      "system": {
+        "description": {
+          "value": "<h2>Class Skills</h2><p>The commoner’s class skills (and the key ability for each skill) are Climb (Str), Craft (Int), <em>Handle Animal</em> (Cha), Perception (Wis), Profession (Wis), Ride (Dex), and Swim (Str).</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": []
+        },
+        "tag": "commoner",
+        "armorProf": [],
+        "weaponProf": [
+          "1 simple weapon"
+        ],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "npc",
+        "level": 20,
+        "hd": 6,
+        "hp": 6,
+        "bab": "low",
+        "skillsPerLevel": 2,
+        "savingThrows": {
+          "fort": {
+            "value": "low"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "low"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "",
+        "alignment": "",
+        "classSkills": {
+          "art": true,
+          "clm": true,
+          "crf": true,
+          "han": true,
+          "lor": true,
+          "per": true,
+          "pro": true,
+          "rid": true,
+          "swm": true
+        },
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "449"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "folder": null,
+      "sort": 89900000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "pf1": {
+          "links": {
+            "classAssociations": {}
+          }
+        }
+      }
+    },
+    {
+      "_id": "VB0Dz0yGpoTV5502",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf1.classes.Item.H0iUHrBW5tqrL9Zu",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/items/inventory/hammer.jpg",
+      "name": "Expert",
+      "system": {
+        "description": {
+          "value": "<h2>Class Skills</h2><p>The expert can choose any 10 skills to be class skills.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": []
+        },
+        "tag": "expert",
+        "armorProf": [
+          "lgt"
+        ],
+        "weaponProf": [
+          "simple"
+        ],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "npc",
+        "level": 20,
+        "hd": 8,
+        "hp": 8,
+        "bab": "med",
+        "skillsPerLevel": 6,
+        "savingThrows": {
+          "fort": {
+            "value": "low"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "",
+        "alignment": "",
+        "classSkills": {
+          "lor": true
+        },
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "450"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "folder": null,
+      "sort": 90000000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "pf1": {
+          "links": {
+            "classAssociations": {}
+          }
+        }
+      }
+    },
+    {
+      "_id": "VlRES8ZgnWdA7MaD",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf1.classes.Item.KfcnHrgAMpBhScKB",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/items/weapons/club.PNG",
+      "name": "Warrior",
+      "system": {
+        "description": {
+          "value": "<h2>Class Skills</h2><p>The warrior’s class skills (and the key ability for each skill) are Climb (Str), Craft (Int), <em>Handle Animal</em> (Cha), Intimidate (Cha), Profession (Wis), Ride (Dex), and Swim (Str).</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": []
+        },
+        "tag": "warrior",
+        "armorProf": [
+          "lgt",
+          "med",
+          "hvy",
+          "shl",
+          "twr"
+        ],
+        "weaponProf": [
+          "simple",
+          "martial"
+        ],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "npc",
+        "level": 20,
+        "hd": 10,
+        "hp": 10,
+        "bab": "high",
+        "skillsPerLevel": 2,
+        "savingThrows": {
+          "fort": {
+            "value": "high"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "low"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "",
+        "alignment": "",
+        "classSkills": {
+          "art": true,
+          "clm": true,
+          "crf": true,
+          "han": true,
+          "int": true,
+          "lor": true,
+          "pro": true,
+          "rid": true,
+          "swm": true
+        },
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "450"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "folder": null,
+      "sort": 90100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "pf1": {
+          "links": {
+            "classAssociations": {}
+          }
+        }
+      }
+    },
+    {
+      "_id": "0A3YfmG3mwVjiNZL",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.WNzyRU5gMQcb6HUu",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/light_06.jpg",
+      "name": "Omdura",
+      "system": {
+        "description": {
+          "value": "<p>Acting as divine warriors, omduras embody the tenets of their gods and serve as divine vessels. In the world of Asunda, omdura means “leader of souls” omdaris the masculine form and omdurais the feminine form. As Niobe is a woman, the feminine form of the class is used throughout this section. These mortals are granted greater purpose and are tasked with both spreading their god’s faith and defeating the faith’s enemies. Omduras are able to grant the same divine power they hold within themselves to others around them. This allows omduras to both defend others from enemies of their faith and inspire others to follow in their footsteps. Gods of all kinds select omduras to enact their will, though how this will is interpreted varies from omdura to omdura.</p><p><strong>Role</strong>: Omduras’ divine abilities allow them to support their allies with spellcasting and the divine power of their gods. When fighting on their own, they call forth their god’s power to help them defeat their enemies, channeling a god’s divine force into mighty weapons.</p><p>As their powers are influenced by their faith, all omduras must focus their worship upon a divine source. While the vast majority of omduras revere a specific deity (or multiple deities), a small number dedicate themselves to a divine concept worthy of devotion-such as battle, death, justice, or knowledge-free of a deific abstraction. (Work with your GM if you prefer this path to selecting a specific deity.)</p><p><strong>Alignment</strong>: An omdura’s <em>alignment</em> must be within one step of her deity’s.</p><h2>Class Skills</h2><p>The omdura’s class skills are Appraise (Int), Bluff (Cha), Craft (Int), Diplomacy (Cha), Heal (Wis), Intimidate (Cha), Knowledge (arcana) (Int), Knowledge (nobility) (Int), Knowledge (planes) (Int), Knowledge (religion) (Int), Linguistics (Int), Perception (Wis), Profession (Wis), Sense Motive (Wis), and Spellcraft (Int).</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": [
+            {
+              "level": 1,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.KQjqqZr31ZxM9K2u"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.bPJNmeL9hs2LTbco"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.RaFl9SpbAlXqhsDk"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.KGjeQOeDKBMUt98q"
+            },
+            {
+              "level": 2,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.bWPWEkpSOHEr5RNz"
+            },
+            {
+              "level": 3,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.VUR9dwJLHieLwbEH"
+            },
+            {
+              "level": 4,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.GGIJUPfgLWU4FmNU"
+            },
+            {
+              "level": 5,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.XxiLuE2jlp5aQZK2"
+            },
+            {
+              "level": 7,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.N9pNy8Knym9U2CPn"
+            },
+            {
+              "level": 11,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.4bOrPB5xUT5p1zxR"
+            },
+            {
+              "level": 18,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.22lXokptV5JXN2R9"
+            },
+            {
+              "level": 20,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.Itt5uycnpzrnrKM9"
+            }
+          ]
+        },
+        "tag": "omdura",
+        "armorProf": [
+          "lgt",
+          "med",
+          "shl"
+        ],
+        "weaponProf": [
+          "simple"
+        ],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "base",
+        "level": 20,
+        "hd": 8,
+        "hp": 8,
+        "bab": "med",
+        "skillsPerLevel": 4,
+        "savingThrows": {
+          "fort": {
+            "value": "high"
+          },
+          "ref": {
+            "value": "low"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "",
+        "alignment": "",
+        "classSkills": {
+          "apr": true,
+          "art": true,
+          "blf": true,
+          "crf": true,
+          "dip": true,
+          "hea": true,
+          "int": true,
+          "kar": true,
+          "kno": true,
+          "kpl": true,
+          "kre": true,
+          "lin": true,
+          "lor": true,
+          "per": true,
+          "pro": true,
+          "sen": true,
+          "spl": true
+        },
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "sort": 90200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "pf1": {
+          "links": {
+            "classAssociations": {
+              "rnz8ul6vymaxOPYI": 1,
+              "9EJkdox5fxdi6pjO": 1,
+              "8NuwLhyVlYmlqcNP": 1,
+              "Wp2hGM2FXAthzJqg": 1,
+              "TYBZUoAl9bLcsTkg": 2,
+              "z0XMYo37Erudrpw2": 3,
+              "08KzlcGXIFaxhwSN": 4,
+              "Pxx8SyA0FaixRC5E": 5,
+              "B6yXhmQsh0eW5RUF": 7,
+              "lGUTWBKkOeTsvYEL": 11,
+              "o9nhkAkk9DHQLSWh": 18,
+              "CnkLKuONCgOeeFRf": 20
+            }
+          }
+        }
+      }
+    },
+    {
+      "_id": "rnz8ul6vymaxOPYI",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.KQjqqZr31ZxM9K2u",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/blue_33.jpg",
+      "name": "Aura (OMD)",
+      "system": {
+        "description": {
+          "value": "<p>An omdura of a chaotic, evil, good, or lawful deity has a powerful aura corresponding to the deity’s alignment (see the @Compendium[pf1.spells.tr7m97npkbgm4wp7]{Detect Evil} spell for details).</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 90300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "9EJkdox5fxdi6pjO",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.bPJNmeL9hs2LTbco",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/affliction_24.jpg",
+      "name": "Invocation",
+      "system": {
+        "description": {
+          "value": "<p>An omdura can call forth he power of her deity to improve her allies’ abilities as a <em>standard action</em>.</p>\n<p>When the omdura calls upon this power, she must select one type of invocation from those listed below to grant the benefits to her allies within 30 feet. If the omdura is evil, she grants <em>profane</em> bonuses instead of sacred, as appropriate. Neutral omduras must select <em>profane</em> or sacred bonuses. Once made, this choice cannot be changed. A called invocation cannot be disrupted, but it ends immediately if the omdura is killed, <em>paralyzed</em>, <em>stunned</em>, or knocked <em>unconscious</em>.</p>\n<p>The omdura can use this ability for a number of minutes per day equal to her level. This duration does not need to be consecutive, but it must be spent in 1-minute increments. The omdura can change her chosen invocation to another type as a <em>swift action</em>, but doing so expends a 1-minute increment of her invocations.</p>\n<p>At 7th level, an omdura can call an invocation as a <em>move action</em> instead of a <em>standard action</em>. At 13th level, an omdura can call an invocation as a <em>swift action</em>.</p>\n<ul>\n<li><strong>Destruction</strong>: The omdura’s allies are filled with divine wrath, gaining a +1 <em>sacred bonus</em> on weapon damage rolls. This bonus increases by 1 for every 3 class levels the omdura has.</li>\n<li><strong>Healing</strong>: The omdura radiates a healing light, granting <em>fast healing</em> 1. This causes the omdura’s allies to recover 1 hit point each round (up to their maximum <em>hit points</em>). The amount of <em>fast healing</em> increases by 1 for every 3 class levels the omdura has.</li>\n<li><strong>Justice</strong>: This invocation spurs the omdura’s allies to seek justice, granting a +1 <em>sacred bonus</em> on <em>attack rolls</em>. This bonus increases by 1 for every 5 class levels the omdura has. At 10th level, this bonus is doubled on <em>attack rolls</em> to confirm critical hits.</li>\n<li><strong>Piercing</strong>: This invocation gives the omdura’s allies great focus and makes their spells more potent. This benefit grants a +1 <em>sacred bonus</em> on <em>concentration</em> checks and <em>caster level</em> checks to overcome a target’s <em>spell resistance</em>. This bonus increases by 1 for every 3 class levels the omdura has.</li>\n<li><strong>Protection</strong>: The omdura radiates a protective aura, granting a +1 <em>sacred bonus</em> to <em>Armor Class</em>. This bonus increases by 1 for every 5 class levels the omdura has. At 10th level, this bonus is doubled against <em>attack rolls</em> to confirm critical hits against the omdura’s allies.</li>\n<li><strong>Purify</strong>: The omdura’s allies are protected from the vile taint of her foes, gaining a +1 <em>sacred bonus</em> on all saving throws. This bonus increases by 1 for every 5 class levels the omdura has. At 10th level, the bonus is doubled against curses, diseases, and poisons.</li>\n<li><strong>Resiliency</strong>: This invocation makes the omdura’s allies resistant to harm, granting <em>DR</em> 1/magic. This <em>DR</em> increases by 1 for every 5 class levels the omdura has. At 10th level, this <em>DR</em> changes from magic to an <em>alignment</em> (chaotic, evil, good, or lawful) that is opposite the omdura’s. If she is neutral, the type of <em>DR</em> doesn’t change.</li>\n<li><strong>Resistance</strong>: The omdura’s allies are shielded by a flickering aura, gaining 2 points of <em>energy resistance</em> against one energy type (acid, cold, electricity, fire, or sonic)chosen when the omdura calls this invocation. The protection increases by 2 for every 3 class levels the omdura has.</li>\n<li><strong>Smiting</strong>: This invocation bathes the weapons of the omdura’s allies in a divine light. These weapons count as magic for the purpose of bypassing <em>damage reduction</em>. At 6th level, the allies’ weapons also count as one alignment type (chaotic, evil, good, or lawful) for the purpose of bypassing <em>damage reduction</em>. The type selected must match one of the omdura’s alignments. If the omdura is neutral, she does not grant this bonus. At 10th level, the allies’ weapons also count as <em>adamantine</em> for the purpose of overcoming <em>damage reduction</em> (but not for reducing <em>hardness</em>).</li>\n</ul>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "9qqhgxy4n68t413d",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "minute",
+              "value": "1"
+            },
+            "name": "Use",
+            "range": {
+              "units": "ft",
+              "value": "30"
+            },
+            "target": {
+              "value": "allies"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "@class.level",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_invocation",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 90400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "8NuwLhyVlYmlqcNP",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.RaFl9SpbAlXqhsDk",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
+      "name": "Orisons",
+      "system": {
+        "description": {
+          "value": "<p>The character can prepare a number of orisons, or 0-level spells, each day. These spells are cast like any other spell, but they are not expended when cast and may be used again.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Cleric",
+            "Druid",
+            "Inquisitor",
+            "Oracle",
+            "Shaman",
+            "Warpriest"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "38, 48"
+          },
+          {
+            "id": "PZO1115",
+            "pages": "38, 42"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "35, 60"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "folder": null,
+      "sort": 90500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "Wp2hGM2FXAthzJqg",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.KGjeQOeDKBMUt98q",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/spells/evil-eye-red-1.jpg",
+      "name": "Detect Alignment",
+      "system": {
+        "description": {
+          "value": "<p>At will, this character can use @UUID[Compendium.pf1.spells.17eskras8cjynj10]{Detect Chaos}, @UUID[Compendium.pf1.spells.tr7m97npkbgm4wp7]{Detect Evil}, @UUID[Compendium.pf1.spells.mkgysr5o92kxxn59]{Detect Good}, or @UUID[Compendium.pf1.spells.jo67xdocgdmk5hhh]{Detect Law}. She can only use one of these at any given time.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "d8v90zjz3u7orjg0",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "sp",
+        "associations": {
+          "classes": [
+            "Inquisitor"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {}
+      },
+      "type": "feat",
+      "effects": [],
+      "folder": null,
+      "sort": 90600000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "TYBZUoAl9bLcsTkg",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.bWPWEkpSOHEr5RNz",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/ice_16.jpg",
+      "name": "Divine Touch",
+      "system": {
+        "description": {
+          "value": "<p>At 2nd level, an omdura can deliver divine energy by touch. She can deliver either positive energy or negative energy. A good omdura (or a neutral omdura of a good deity) must select positive energy. An evil omdura (or a neutral omdura of an evil deity) must select negative energy. An omdura who is neither good nor evil and whose deity is neither good nor evil can select either positive or negative energy. This choice is made when the omdura gains this ability and cannot be changed.</p>\n<p>Each day the omdura can use this ability a number of times equal to half her omdura level plus her <em>Charisma</em> modifier. With one use of this ability, an omdura can use divine energy to restore to a target 1d6 <em>hit points</em> for every 2 omdura levels she has. Using this ability is a <em>standard action</em>, unless the omdura targets herself, in which case it is a <em>swift action</em>. An omdura who delivers negative energy with her <em>touch</em> can instead deal 1d6 points of damage to a living creature for every 2 omdura levels she has. Alternatively, an omdura can use this divine energy to affect <em>undead</em> creatures, dealing damage when delivering positive energy or restoring <em>hit points</em> when delivering negative energy.</p>\n<p>An omdura needs only one freehand to use this ability. Using divine touch to harm a creature requires a successful melee <em>touch attack</em> and doesn’t provoke an <em>attack of opportunity</em>. Creatures do not receive a saving throw against the damage from divine touch. Divine touch is modified by any feat, spell, or effect that specifically works with the <em>lay on hands paladin</em> class feature. For example, the <em>Extra Lay On Hands</em> feat grants an omdura two additional uses of the divine touch class feature.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "lqcacztgedkiqevq",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use",
+            "range": {
+              "units": "touch"
+            },
+            "target": {
+              "value": "creature touched"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "floor(@class.level / 2) + @abilities.cha.mod",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_divineTouch",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 90700000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "z0XMYo37Erudrpw2",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.VUR9dwJLHieLwbEH",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/arrow_18.jpg",
+      "name": "Divine Infusion",
+      "system": {
+        "description": {
+          "value": "<p>At 3rd level and every 3 levels thereafter, an omdura can select one divine infusion. Each infusion adds an effect to the omdura’s divine touch ability. The types of infusions available to the omdura are determined by the type of energy the omdura delivers with her divine touch. An omdura who delivers positive energy adds a mercy to her divine touch, treating her omdura level as her <em>paladin</em> level and her divine touch as the <em>paladin’s lay on hands</em> ability. An omdura who delivers negative energy adds a cruelty to her divine touch, treating her omdura level as her <em>antipaladin</em> level and her divine <em>touch</em> as the <em>antipaladin’s</em> touch of corruption ability. At 6th, 9th, and 12th level, she adds infusions to the list of those she can select as though she were a <em>paladin</em> or <em>antipaladin</em> (depending on her divine touch ability) of her omdura level. Divine infusion functions as either the cruelty or mercy class ability, depending on the omdura’s divine touch energy, for the purposes of feats, spells, or effects that work with those class features.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "9su4dwklgt8wiplg",
+            "activation": {
+              "type": "passive",
+              "unchained": {
+                "type": "passive"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 90800000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "08KzlcGXIFaxhwSN",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.GGIJUPfgLWU4FmNU",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/blue_23.jpg",
+      "name": "Divine Might",
+      "system": {
+        "description": {
+          "value": "<p>At 4th level, an omdura can call on the powers of her god once per day to aid in her struggle against her enemies. As a <em>swift action</em>, the omdura chooses one target within sight to be the focus of her divine might. If the target is opposed to the omdura’s <em>alignment</em> on either the law/chaos or the good/evil axis, the omdura adds half her <em>Charisma</em> bonus (minimum +o) to her <em>attack rolls</em> and adds half her omdura level to damage rolls against the target of her divine might. A neutral omdura can choose any target to be the target of her divine might, but she adds only one­ third her <em>Charisma</em> bonus and omdura level.</p>\n<p>In addition, while divine might is in effect, the omdura gains a <em>deflection bonus</em> equal to half her <em>Charisma</em> modifier (one-third for a neutral omdura) to her AC against attacks made by the target of the divine might. If a non­ neutral omdura targets a creature that is not opposed to her <em>alignment</em>, the use of this ability is wasted with no effect.</p>\n<p>The divine might effect remains until the target of divine might is <em>dead</em> or the next time the omdura rests and regains her uses of this ability. At 9th level and every 5 levels thereafter, the omdura can use divine might one additional time per day to a maximum of four times per day at 19th level.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "3d02i2ngazk8yi4d",
+            "activation": {
+              "type": "swift",
+              "unchained": {
+                "type": "action"
+              }
+            },
+            "name": "Use",
+            "range": {
+              "units": "seeText"
+            },
+            "target": {
+              "value": "one creature"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "1 + floor((@class.level - 4) / 5)",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_divineMight",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 90900000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "Pxx8SyA0FaixRC5E",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.XxiLuE2jlp5aQZK2",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/light_09.jpg",
+      "name": "Divine Weapon",
+      "system": {
+        "description": {
+          "value": "<p>At 5th level, an omdura forms a divine bond with her god. This bond allows the omdura to enhance her weapon as a <em>standard action</em> by calling upon the aid of a divine spirit. This aid lasts for 1 minute per omdura level. When called, the spirit causes the weapon to shed light as a <em>torch</em>. At 5th level, this spirit grants the weapon a +1 <em>enhancement bonus</em>. For every 3 levels beyond 5th, the weapon gains another +1 <em>enhancement bonus</em>, to a maximum of +6 at 20th level. These bonuses can be added to the weapon, stacking with existing weapon bonuses to a maximum of +5, or they can be used to add any of the following weapon special abilities: <em>brilliant energy</em>, <em>defending</em>, <em>flaming</em>, <em>flaming burst</em>, <em>keen</em>, or <em>speed</em>.</p>\n<p>A lawful omdura can also choose from <em>axiomatic</em> and <em>merciful</em>. A chaotic omdura can also choose from <em>anarchic</em> and <em>vicious</em>. A good omdura can also choose from <em>disruption</em> and <em>holy</em>.</p>\n<p>An evil omdura can also choose from <em>unholy</em> and <em>wounding</em>. A neutral omdura can also add <em>vorpal</em>. Adding a special ability consumes an amount of bonus equal to the special ability’s cost (see Table: Melee Weapon Special Abilities). These bonuses are in addition to any special abilities the weapon already has, but duplicate abilities do not stack. If the weapon is not magic, at least a +1 <em>enhancement bonus</em> must be added before any other special abilities can be added. The bonus and special abilities granted by the spirit are determined when the spirit is called and cannot be changed until the spirit is called again. The divine spirit imparts no bonuses if the weapon is held by anyone other than the omdura, but it resumes granting bonuses if the weapon is returned to the omdura. These bonuses apply to only one end of a double weapon.</p>\n<p>An omdura can use this ability once per day at 5th level, and one additional time per day for every 4 levels beyond 5th, to a total of four times per day at 17th level.</p>\n<p>If a weapon bonded with a divine spirit is destroyed, the omdura loses the use of this ability for 30 days or until she gains a level, whichever comes first. During this 30-day period, the omdura takes a-1 penalty on weapon attack and damage rolls.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "ockn02rpzuemnzrl",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "minute",
+              "value": "1"
+            },
+            "name": "Use",
+            "range": {
+              "units": "touch"
+            },
+            "target": {
+              "value": "weapon held"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "@class.level",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_divineWeapon",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91000000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "B6yXhmQsh0eW5RUF",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.N9pNy8Knym9U2CPn",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/light_10.jpg",
+      "name": "Commune",
+      "system": {
+        "description": {
+          "value": "<p>At 7th level, the omdura can cast @Compendium[pf1.spells.p2kosvizylhy8vfa]{Commune} once per day as a <em>spell-like ability</em>. She can cast this a second time per day at 15th level.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "72hhs3caciqw4082",
+            "activation": {
+              "cost": 10,
+              "type": "minute",
+              "unchained": {
+                "cost": 10,
+                "type": "minute"
+              }
+            },
+            "duration": {
+              "units": "round",
+              "value": "@cl"
+            },
+            "name": "Use",
+            "range": {
+              "units": "personal"
+            },
+            "target": {
+              "value": "self"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "ifelse(gte(@class.level,15),2,1)",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_commune",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "sp",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "lGUTWBKkOeTsvYEL",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.4bOrPB5xUT5p1zxR",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/affliction_24.jpg",
+      "name": "Improved Invocation",
+      "system": {
+        "description": {
+          "value": "<p>At 11th level, when using her invocation class ability, the omdura chooses two invocations to grant her allies. In addition, the omdura also benefits from any one invocation she calls, but she receives only half the invocation’s granted bonus.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "o9nhkAkk9DHQLSWh",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.22lXokptV5JXN2R9",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/blue_27.jpg",
+      "name": "Greater Divine Might",
+      "system": {
+        "description": {
+          "value": "<p>At 18th level, the omdura uses her full <em>Charisma</em> bonus and full omdura level when using her divine might ability. A neutral omdura uses her full <em>Charisma</em> bonus and her omdura level – 3 when using her divine might ability.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "CnkLKuONCgOeeFRf",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.Itt5uycnpzrnrKM9",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/emerald_06.jpg",
+      "name": "Greater Invocation",
+      "system": {
+        "description": {
+          "value": "<p>At 20th level, each day when the omdura regains her spell slots, she chooses one invocation to be active on herself and her allies for the entire day. The omdura receives the full bonus granted by this invocation. This invocation is in addition to her uses of the invocation and improved invocation class abilities.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Omdura"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - Niobe"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "GFHMt8Ec8HM35zJA",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.zx3bDmMsNBEBNfIJ",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/items/inventory/stake.jpg",
+      "name": "Vampire Hunter",
+      "system": {
+        "description": {
+          "value": "<p>Not all beings who stalk the night hunt mortal prey. Out of honor, desperation, or tragic need, a vampire hunter pits his abilities not just against the creatures of the night, but also their terrifying undead overlords: vampires. Most vampire hunters do not survive their first encounters with vampirekind, as no amount of study or training can truly prepare one to face the Nobles of the night. Those few who survive and force themselves to carry on grow more and more like their terrible quarry, becoming dark-garbed bringers of death, feared by the dead and the living alike. Vampire hunters approach their duties with a grim but ironclad resolve so strong it resembles ecclesiastical faith, and it is from this mysterious, selfless dedication that their divine power wells.</p><p><strong>Role</strong>: Vampire hunters obsessively stalk their quarry— not just vampirekind, but all those supernatural beasts and undead terrors that serve the Nobility. These champions of the living track their blasphemous prey, learn their weaknesses, and bring them low. Doing so requires more than training and guile, though. To stand against the darkness, vampire hunters adopt a measure of their foes’ unnatural power, turning vampirekind’s sinister might back against them. Vampire hunters are the vanguard in the battle against evil, but know to value the perspective, support, and magic of other expert adventurers.</p><h2>Class Skills</h2><p>The vampire hunter’s class skills are Bluff (Cha), Climb (Str), Craft (Int), <em>Handle Animal</em> (Cha), Heal (Wis), Intimidate (Cha), Knowledge (arcana) (Int), Knowledge (geography) (Int), Knowledge (local) (Int), Knowledge (religion) (Int), Perception (Wis), Profession (Wis), Ride (Dex), Sense Motive (Wis), Spellcraft (Int), Stealth (Dex), Survival (Wis), and Swim (Str).</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "classAssociations": [
+            {
+              "level": 1,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.aQ0aWLmgTI3TIGXo"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.1gKaluTk5z6U2nZM"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.D2Hb80tMFgnbhkeN"
+            },
+            {
+              "level": 1,
+              "uuid": "Compendium.pf1.class-abilities.Item.r8wPs0bB3WhOLxbX"
+            },
+            {
+              "level": 2,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.MT4AzxhNBwUsNQC0"
+            },
+            {
+              "level": 4,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.VTSxRzsa79oMALLt"
+            },
+            {
+              "level": 5,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.YaaZNCmv8kp62Wfd"
+            },
+            {
+              "level": 7,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.9hgwz9Z4MQJfd1ph"
+            },
+            {
+              "level": 10,
+              "uuid": "Compendium.pf1.class-abilities.Item.sk0HNTe9lKBpHQpN"
+            },
+            {
+              "level": 11,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.rbsYLckukbbbHDN7"
+            },
+            {
+              "level": 13,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.EbMT5qliolI2BhDt"
+            },
+            {
+              "level": 14,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.7hFLTBScf4tz8wXh"
+            },
+            {
+              "level": 17,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.6as0xicfWFdSV58T"
+            },
+            {
+              "level": 19,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.32nTtFqPUPWcU6gB"
+            },
+            {
+              "level": 20,
+              "uuid": "Compendium.pf-content.pf-collab-content.Item.XvyrdZjQh3Fa9mZN"
+            }
+          ]
+        },
+        "tag": "vampireHunter",
+        "armorProf": [
+          "lgt",
+          "med",
+          "shl"
+        ],
+        "weaponProf": [
+          "simple",
+          "martial"
+        ],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "base",
+        "level": 20,
+        "hd": 8,
+        "hp": 8,
+        "bab": "high",
+        "skillsPerLevel": 6,
+        "savingThrows": {
+          "fort": {
+            "value": "low"
+          },
+          "ref": {
+            "value": "high"
+          },
+          "will": {
+            "value": "high"
+          }
+        },
+        "fc": {
+          "hp": {
+            "value": 0
+          },
+          "skill": {
+            "value": 0
+          },
+          "alt": {
+            "value": 0,
+            "notes": ""
+          }
+        },
+        "wealth": "5d6 * 10",
+        "alignment": "",
+        "classSkills": {
+          "art": true,
+          "blf": true,
+          "clm": true,
+          "crf": true,
+          "han": true,
+          "hea": true,
+          "int": true,
+          "kar": true,
+          "kge": true,
+          "klo": true,
+          "kre": true,
+          "lor": true,
+          "per": true,
+          "pro": true,
+          "rid": true,
+          "sen": true,
+          "spl": true,
+          "ste": true,
+          "sur": true,
+          "swm": true
+        },
+        "sources": [
+          {
+            "date": "2016",
+            "pages": "6-11",
+            "publisher": "paizo",
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "class",
+      "effects": [],
+      "sort": 91500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "pf1": {
+          "links": {
+            "classAssociations": {
+              "hJWw5s4l6SxlNCRu": 1,
+              "G8ACAai9Nu5lhnEz": 1,
+              "ITofecAmamSB9Cw2": 1,
+              "gaSzEX2xBPNljLIM": 1,
+              "mAXA7mECVqnCB9Yo": 2,
+              "MKFWIogfFHHaBY0H": 4,
+              "5LC0Rpt0MFAR9VNK": 5,
+              "RkEaDmjSWqvReBwm": 7,
+              "hbyt73lGKyYqDhAt": 10,
+              "Cc67rOpdVfLwLTzI": 11,
+              "foSBgY3f1QQLeyin": 13,
+              "wkn5tGeVZKykYq3q": 14,
+              "HtuEaCnZLpcoCc3A": 17,
+              "fiGnlL2f3TrG7MmE": 19,
+              "vXlEsY1aSqzwyjKM": 20
+            }
+          }
+        }
+      }
+    },
+    {
+      "_id": "hJWw5s4l6SxlNCRu",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.aQ0aWLmgTI3TIGXo",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/affliction_17.jpg",
+      "name": "Detect Undead",
+      "system": {
+        "description": {
+          "value": "<p>At will, a vampire hunter can use @Compendium[pf1.spells.aa0w7tk852iqn3ni]{Detect Undead}, as the spell. A vampire hunter can, as a <em>move action</em>, concentrate on a single item or individual within 60 feet and determine if it is <em>undead</em>, learning the strength of its aura as if he had studied it for 3 rounds. While focusing on one individual or object, the vampire hunter does not @Compendium[pf1.spells.aa0w7tk852iqn3ni]{Detect Undead} in any other object or individual within range.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "y60buvuoqdtfhphw",
+            "activation": {
+              "type": "move",
+              "unchained": {
+                "type": "action"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "sp",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91600000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "G8ACAai9Nu5lhnEz",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.1gKaluTk5z6U2nZM",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/red_11.jpg",
+      "name": "Technique Feat",
+      "system": {
+        "description": {
+          "value": "<p>Due to the inherent deadliness of hunting vampires, the methods and traditions of vampire hunters are rare and little understood. This often makes vampire hunters just as feared as the <em>undead</em> they hunt. As vampire hunters study and train, they develop their skills, mastering ancient fighting techniques and drawing upon mystical arts feared by both the living and the <em>dead</em>.</p>\n<p>At 1st level, a vampire hunter gains a bonus feat. This new feat can be selected from either those listed as <em>combat feats</em> or as vampire hunting technique feats (see page 14). A vampire hunter must meet the prerequisites for these feats to select them. The vampire hunter gains an additional bonus feat at 3rd level and every three levels thereafter.</p>\n<p>Upon reaching 6th level, and every six levels thereafter (12th and 18th), a vampire hunter can choose to learn a new combat or technique feat in place of a combat or technique feat he has already learned. In effect, the vampire hunter loses the old feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or another ability the vampire hunter knows. A vampire hunter can exchange only one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.</p>\n<p>Technique feats include: <em>Blessed Waters</em>, <em>Death’s Nightmare</em>, <em>Extended Vampiric Focus</em>, <em>Know Master</em>, <em>Liberating Critical</em>, <em>Locked Will</em>, <em>Resolute Steed</em>, <em>Revealing Waters</em>, <em>Soured Soul</em>, and <em>Vampire Scholar</em>.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [
+          {
+            "_id": "h17xzys9",
+            "formula": "1 + floor(@class.level / 3)",
+            "target": "bonusFeats",
+            "type": "untyped"
+          }
+        ],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "na",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91700000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "ITofecAmamSB9Cw2",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.D2Hb80tMFgnbhkeN",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/beast_02.jpg",
+      "name": "Vampiric Focus",
+      "system": {
+        "description": {
+          "value": "<p>A vampire hunter knows the sinister power of the <em>undead</em>. Through discipline and precision, he can temporarily turn the unholy powers of the <em>undead</em> against them.</p>\n<p>At 1st level, the vampire hunter must select one common vampiric power to mimic from the vampiric foci listed below. Each vampiric focus grants the vampire hunter a bonus or special ability. Once this decision is made, the vampire hunter cannot change which vampiric focus he knows. At 8th and 16th level, the vampire hunter learns an additional vampiric focus.</p>\n<p>As a <em>swift action</em>, the vampire hunter can <em>activate</em> his vampiric focus. Ending the vampiric focus is a <em>free action</em>.</p>\n<p>He can use each vampiric focus for a number of minutes per day equal to his level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.</p>\n<p>Once the vampire hunter ends a focus, it cannot be reactivated for 1 minute. The vampire hunter can have only one vampiric focus active at a time. Benefits from different vampiric foci do not stack with one another, including <em>temporary hit points</em> from multiple foci.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "mcz23qjp28mxtxg9",
+            "activation": {
+              "type": "swift",
+              "unchained": {
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "minute",
+              "value": "1"
+            },
+            "name": "Use",
+            "range": {
+              "units": "personal"
+            },
+            "target": {
+              "value": "self"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "day",
+          "autoDeductChargesCost": "",
+          "maxFormula": "@class.level",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "classFeat_vampiricFocus",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {}
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 91800000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "gaSzEX2xBPNljLIM",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.r8wPs0bB3WhOLxbX",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/skills/beast_01.jpg",
+      "name": "Track",
+      "system": {
+        "description": {
+          "value": "<p>The character adds half his level (minimum 1) to <em>Survival skill checks</em> made to follow tracks.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [
+          {
+            "target": "skill.sur",
+            "text": "+[[max(1, floor(@class.level / 2))]] to follow tracks"
+          }
+        ],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Hunter",
+            "Inquisitor",
+            "Ranger",
+            "Shifter",
+            "Slayer"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "64"
+          },
+          {
+            "id": "PZO1115",
+            "pages": "40"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "28, 53"
+          },
+          {
+            "id": "PZO1140",
+            "pages": "27"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "folder": null,
+      "sort": 91900000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "mAXA7mECVqnCB9Yo",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.MT4AzxhNBwUsNQC0",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/blue_32.jpg",
+      "name": "Relentless",
+      "system": {
+        "description": {
+          "value": "<p>At 2nd level, a vampire hunter can travel for an extended period of time without rest. The vampire hunter (and his mount, if he has one) can walk 16 hours in a day of travel without it being considered a forced march, but at the end of that day, he must attempt a DC 15 <em>Fortitude</em> saving throw. If he fails, he can travel for 8 hours the following day, and he (as well as his mount, if he has one) is <em>fatigued</em> for the following 24 hours. If he succeeds at the saving throw, he can use this ability again the following day. The DC of the <em>Fortitude</em> saving throw increases by 2 for every additional day the vampire hunter has been traveling for more than 8 hours. The vampire hunter does not need to attempt a separate saving throw for his mount. After the vampire hunter rests for 24 hours, the saving throw DC resets to 15.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "1h3rz85rl0ty99hy",
+            "activation": {
+              "type": "passive",
+              "unchained": {
+                "type": "passive"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92000000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "MKFWIogfFHHaBY0H",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.VTSxRzsa79oMALLt",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/items/weapons/kobold-tail-attachment.png",
+      "name": "Stake",
+      "system": {
+        "description": {
+          "value": "<p>At 4th level, any piercing weapon or sharp tool (such as a piton) a vampire hunter drives through a vampire’s heart is treated as a <em>wooden stake</em> for purposes of creatures who are vulnerable to them. If this improvised stake is removed, the vampire returns to life as normal.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "85g77jiad3imz3oi",
+            "activation": {
+              "type": "passive",
+              "unchained": {
+                "type": "passive"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "5LC0Rpt0MFAR9VNK",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.YaaZNCmv8kp62Wfd",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/nature_08.jpg",
+      "name": "Relentless Band",
+      "system": {
+        "description": {
+          "value": "<p>At 5th level, a vampire hunter’s resolve infects his traveling companions, increasing how many hours the group can spend traveling in a day. Every day the vampire hunter can allow a number of companions equal to half his level (plus their mounts) to also benefit from his relentless ability. The vampire hunter rolls saving throws to determine whether the group can carry on in its extended travels.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "h0hhcavvjyh1ncx7",
+            "activation": {
+              "type": "passive",
+              "unchained": {
+                "type": "passive"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "RkEaDmjSWqvReBwm",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.9hgwz9Z4MQJfd1ph",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/affliction_21.jpg",
+      "name": "Vampire Tracker",
+      "system": {
+        "description": {
+          "value": "<p>At 7th level, the vampire hunter can track gaseous creatures—such as <em>vampires</em> flying or moving in <em>gaseous form</em>—as though they were leaving physical tracks. The base DC of <em>Survival</em> checks to track gaseous creatures is 20. The modifiers for surfaces don’t apply (as a gaseous creature leaves no impressions during its passage) but other conditions do.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "iurvawym7lczdzvl",
+            "activation": {
+              "type": "passive",
+              "unchained": {
+                "type": "passive"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "hbyt73lGKyYqDhAt",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.sk0HNTe9lKBpHQpN",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "img": "systems/pf1/icons/skills/green_20.jpg",
+      "name": "Swift Tracker",
+      "system": {
+        "description": {
+          "value": "<p>The character can move at his normal speed while using @UUID[Compendium.pf1.pf1e-rules.JournalEntry.x175kVqUfLGPt8tC.JournalEntryPage.pLdYavy4nssLEoGV]{Survival} to follow tracks without taking the normal –5 penalty. He takes only a –10 penalty (instead of the normal –20) when moving at up to twice normal speed while tracking.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [
+          {
+            "target": "skill.sur",
+            "text": "No penalty to following tracks at your base speed and only -10 when  using up to twice your normal speed."
+          }
+        ],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Hunter",
+            "Ranger",
+            "Slayer"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "id": "PZO1110",
+            "pages": "67"
+          },
+          {
+            "id": "PZO1129",
+            "pages": "29, 55"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "folder": null,
+      "sort": 92400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "Cc67rOpdVfLwLTzI",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.rbsYLckukbbbHDN7",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/blood_04.jpg",
+      "name": "Vampire Bane",
+      "system": {
+        "description": {
+          "value": "<p>At 11th level, a vampire hunter can intensify a vampire’s revulsion to strongly presented holy symbols. When a vampire hunter uses a <em>standard action</em> to confront a <em>vampire</em> with a presented <em>holy symbol</em>, the vampire must attempt a <em>Will</em> saving throw (DC = 15 + the vampire hunter’s class level + the vampire hunter’s <em>Charisma</em> modifier). On a failed save, the vampire is repulsed and must stay a number of feet from the vampire hunter equal to 5 times the vampire hunter’s <em>Charisma</em> modifier. Additionally, a vampire repulsed in this way cannot touch or make melee attacks against the vampire hunter (although the vampire can still touch and make melee attacks against the vampire hunter’s allies as normal). A vampire continues to be repulsed for every round the vampire hunter spends presenting a <em>holy symbol</em> (a <em>standard action</em>), though it can attempt a new <em>Will</em> save every round to overcome its revulsion and act normally.</p>\n<p>The vampire hunter can use any <em>holy symbol</em> to repulse a vampire, but for the purposes of this ability, the vampire hunter treats his <em>Charisma</em> modifier as being 2 higher when he employs the symbol of the deity he worships.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "umcfu2shbrx4dxot",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use",
+            "target": {
+              "value": "vampire"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "foSBgY3f1QQLeyin",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.EbMT5qliolI2BhDt",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/blood_10.jpg",
+      "name": "Remove Vampirism",
+      "system": {
+        "description": {
+          "value": "<p>At 13th level, the vampire hunter can prevent a creature killed by a vampire from returning to life as a vampire itself. By spending 10 minutes and dousing a body with a <em>vial</em> of <em>holy water</em>, the vampire hunter removes the infection of vampirism from a creature slain by a vampire’s <em>blood drain</em> or <em>energy drain</em> ability, preventing it from rising as a <em>vampire spawn</em> via a vampire’s create spawn ability. This effect cannot be undone with any magic weaker than a @Compendium[pf1.spells.suel7sgnztenv551]{Miracle} or @Compendium[pf1.spells.nnj51dwfkwd15ngj]{Wish}. If the corpse is returned to life and subsequently killed by a vampire again might it become a <em>vampire spawn</em>.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "ovirtefyjoc7ejoi",
+            "activation": {
+              "cost": 10,
+              "type": "minute",
+              "unchained": {
+                "cost": 10,
+                "type": "minute"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92600000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "wkn5tGeVZKykYq3q",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.7hFLTBScf4tz8wXh",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/arrow_12.jpg",
+      "name": "Quarry (VAM)",
+      "system": {
+        "description": {
+          "value": "<p>At 14th level, as a <em>standard action</em> a vampire hunter can denote one target within his line of sight that he knows is <em>undead</em> as his quarry. Whenever he is following the tracks of his quarry, a vampire hunter can take 10 on his <em>Survival</em> skill checks while moving at normal speed, without penalty. In addition, he gains a +2 <em>insight bonus</em> on <em>attack rolls</em> against his quarry, and all critical threats against his quarry are automatically confirmed. A vampire hunter can have no more than one quarry at a time. He can dismiss this effect at any time as a <em>free action</em>, but he cannot select a new quarry for 24 hours. If the vampire hunter sees proof that his quarry is <em>dead</em> or (somehow) was not actually <em>undead</em>, he can select a new quarry after 1 hour.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "a40f5yq0zopx4q9f",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "hour",
+              "value": "24"
+            },
+            "name": "Use",
+            "range": {
+              "units": "seeText"
+            },
+            "target": {
+              "value": "undead within sight"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92700000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "HtuEaCnZLpcoCc3A",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.6as0xicfWFdSV58T",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/blood_02.jpg",
+      "name": "Critical Reflexes",
+      "system": {
+        "description": {
+          "value": "<p>At 17th level, upon confirming a <em>critical hit</em> against an <em>undead</em> creature, the vampire hunter can attempt a special <em>combat maneuver</em> check to produce an item and immediately use it upon that foe. The vampire hunter decides whether or not to use this ability after dealing additional damage for his <em>critical hit</em>. At that point, he can attempt a <em>combat maneuver</em> check against the target’s <em>CMD</em> (the target is denied its <em>Dexterity</em> modifier to resist this attack). If the vampire hunter succeeds, he produces a piece of equipment he has on his person and immediately uses that item upon the target creature. This ability does not provoke an <em>attack of opportunity</em>.</p>\n<p>Items used in this manner are typically alchemical items, such as <em>acid</em> or <em>holy water</em>. Items that require attacks against the target automatically hit and deal damage as normal (potentially to the vampire hunter, as well, if the item affects an area). Items that would have no direct effect against the target (such as a fishing hook or a <em>lantern</em>) or that require another <em>combat maneuver</em> to use (such as a <em>rope</em> or <em>manacles</em>) cannot be used as part of this ability. Other melee and ranged weapons cannot be used with this ability (with the exception of using a stake against a <em>vampire</em>; see below).</p>\n<p>This ability can be used against <em>incorporeal</em> creatures.</p>\n<p>If the target creature is a <em>vampire</em> and the vampire hunter has a <em>wooden stake</em> in his possession (or a similar item affected by his stake ability), he can drive the stake through the vampire’s heart as though it were <em>helpless</em>, slaying it immediately. If the creature is not a <em>vampire</em>, this attempt fails at the last moment; the vampire hunter realizes that the target is not a <em>vampire</em>. A vampire hunter cannot drive a stake through the heart of a non-<em>vampire</em> using this ability.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "su",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92800000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "fiGnlL2f3TrG7MmE",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.32nTtFqPUPWcU6gB",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/arrow_13.jpg",
+      "name": "Improved Quarry (VAM)",
+      "system": {
+        "description": {
+          "value": "<p>At 19th level, the vampire hunter’s ability to hunt his <em>undead</em> quarry improves. He can now select a quarry as a <em>free action</em>, and can now <em>take 20</em> while using <em>Survival</em> to track his quarry while moving at normal speed, without penalty. His <em>insight bonus</em> to attack his quarry increases to +4. If his quarry is killed or dismissed, he can select a new one after 10 minutes have passed.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "iwem3j95mwqndf91",
+            "activation": {
+              "type": "free",
+              "unchained": {
+                "type": "free"
+              }
+            },
+            "name": "Use"
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 92900000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "vXlEsY1aSqzwyjKM",
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "pf1",
+        "systemVersion": "11.11",
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.pf-content.pf-collab-content.Item.XvyrdZjQh3Fa9mZN",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "img": "systems/pf1/icons/skills/red_13.jpg",
+      "name": "Master Vampire Hunter",
+      "system": {
+        "description": {
+          "value": "<p>At 20th level, the vampire hunter becomes the <em>bane</em> of the <em>undead</em>. As a <em>standard action</em>, he can make a single attack against his <em>undead</em> quarry at his full <em>attack bonus</em> while choosing one of the following effects: destroy, stake, or paralyze for 2d6 rounds.</p>\n<p>If the attack hits, the target takes damage normally and must succeed at a <em>Fortitude</em> saving throw or suffer the additional effect. The DC for this save is 10 + 1/2 the vampire hunter’s level + the vampire hunter’s <em>Wisdom</em> modifier. Whether or not the attack succeeds, the creature cannot be targeted by this ability again (by any vampire hunter) for 24 hours.</p>\n<p>If the vampire hunter chooses to destroy the target, the target is killed. If the target is a <em>vampire</em>, it does not assume <em>gaseous form</em>, and its <em>healing</em> powers do not come into effect; it is destroyed outright. If the vampire hunter chooses to stake his target, the target is killed if it’s a non-<em>vampire</em>. If it’s a <em>vampire</em> (or similar creature affected by having a stake driven through its heart) it is killed, but returns to life if the stake is removed. The vampire hunter can use his 4th-level stake ability to employ any piercing weapon or sharp tool as though it were a <em>wooden stake</em>.</p>\n<p>Additionally, at 20th level, each day when the vampire hunter regains his spells per day, he chooses one vampiric focus to be active on himself for the entire day. This focus is in addition to uses of his vampiric focus class ability.</p>",
+          "instructions": ""
+        },
+        "tags": [],
+        "actions": [
+          {
+            "_id": "gt86weisgdhjsag6",
+            "activation": {
+              "type": "standard",
+              "unchained": {
+                "cost": 2,
+                "type": "action"
+              }
+            },
+            "duration": {
+              "units": "inst"
+            },
+            "name": "Use",
+            "range": {
+              "units": "seeText"
+            },
+            "target": {
+              "value": "undead quarry"
+            }
+          }
+        ],
+        "attackNotes": [],
+        "effectNotes": [],
+        "uses": {
+          "value": null,
+          "per": "",
+          "autoDeductChargesCost": "",
+          "maxFormula": "",
+          "rechargeFormula": ""
+        },
+        "changes": [],
+        "changeFlags": {
+          "immuneToMorale": false,
+          "loseDexToAC": false,
+          "noMediumEncumbrance": false,
+          "noHeavyEncumbrance": false,
+          "mediumArmorFullSpeed": false,
+          "heavyArmorFullSpeed": false,
+          "lowLightVision": false,
+          "seeInvisibility": false,
+          "seeInDarkness": false
+        },
+        "contextNotes": [],
+        "links": {
+          "children": [],
+          "charges": []
+        },
+        "tag": "",
+        "armorProf": [],
+        "weaponProf": [],
+        "languages": [],
+        "flags": {
+          "boolean": {},
+          "dictionary": {}
+        },
+        "scriptCalls": [],
+        "subType": "classFeat",
+        "traitType": "",
+        "traitCategory": "",
+        "racePoints": null,
+        "abilityType": "ex",
+        "associations": {
+          "classes": [
+            "Vampire Hunter"
+          ]
+        },
+        "showInQuickbar": false,
+        "crOffset": "",
+        "inherited": false,
+        "acquired": false,
+        "simple": false,
+        "summons": false,
+        "disabled": false,
+        "classSkills": {},
+        "sources": [
+          {
+            "title": "Pathfinder - The World of Vampire Hunter D"
+          }
+        ]
+      },
+      "type": "feat",
+      "effects": [],
+      "sort": 93000000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
     }
   ],
   "effects": [],
