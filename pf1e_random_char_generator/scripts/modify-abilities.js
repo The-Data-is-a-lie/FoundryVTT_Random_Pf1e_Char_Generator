@@ -1,3 +1,5 @@
+import { CLASS_ITEM_ORDER } from './class-roster.js';
+
 export async function main() {
   try {
     // Retrieve the module dynamically using the module name
@@ -638,24 +640,11 @@ function capitalizeWords(str) {
 // exists in the data but is missing here never acts as a boundary, so the PRECEDING class bleeds
 // into it and absorbs its class item (at level 20) + abilities. Ninja/Samurai/Shifter/Vigilante
 // were missing, which is why e.g. Monk (Unchained) was picking up a stray Ninja 20.
-const class_list = [
-  "Alchemist", "Antipaladin", "Arcanist", "Barbarian", "Barbarian (Unchained)", "Bard", "Bloodrager", "Brawler",
-  "Cavalier", "Cleric", "Druid", "Fighter", "Gunslinger", "Hunter", "Investigator", "Inquisitor", "Kineticist",
-  "Magus", "Medium", "Mesmerist", "Monk", "Monk (Unchained)", "Ninja", "Occultist", "Oracle", "Paladin", "Psychic",
-  "Ranger", "Rogue", "Rogue (Unchained)", "Samurai", "Shaman", "Shifter", "Skald", "Slayer", "Sorcerer", "Spiritualist", "Swashbuckler",
-  "Summoner", "Summoner (Unchained)", "Vigilante", "Warpriest", "Witch", "Wizard",
-  // Path of War initiator classes (pf1-pow module) — must be present so each acts as a
-  // collectItems boundary once added to every_class.json (see export_every_class macro).
-  // "Medic" is a Metzofitz PoW homebrew class present on everyClassPerson; it isn't
-  // backend-generatable yet but must be a boundary so it doesn't bleed into the prior class.
-  "Stalker", "Warlord", "Warder", "Harbinger", "Mystic", "Zealot", "Medic",
-  // Psionic classes (pf1-psionics), spliced into every_class.json by
-  // Backend/scripts/build_every_class.mjs. Same boundary requirement as everything above: these
-  // sit at the END of the bundle, so without them the previously-last class (Warlord) would
-  // swallow all 157 psionic items.
-  "Aegis", "Cryptic", "Dread", "Highlord", "Marksman", "Psion", "Psychic Warrior",
-  "Soulknife", "Tactician", "Vitalist", "Voyager", "Wilder"
-];
+//
+// The list itself now lives in class-roster.js as CLASS_ITEM_ORDER -- one roster for the module,
+// checked against every_class.json by Backend/scripts/validate_class_roster.py, because keeping
+// three hand-maintained copies in sync is what let the occult classes go missing from the dropdown.
+const class_list = CLASS_ITEM_ORDER;
 
 // Build EVERY rolled class (multiclass-aware), highest level first, so the sheet lists
 // "Class A (its archetype) / Class B (its archetype) / ...". Each class's archetype item is
