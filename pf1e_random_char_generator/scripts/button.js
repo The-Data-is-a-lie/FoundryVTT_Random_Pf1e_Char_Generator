@@ -3,6 +3,7 @@ import { sendDataToServer } from './deliver-data.js';
 // import { fetchDataAndSaveToLocalStorage, getCharacterData } from './fetch-data.js';
 import { main } from './modify-abilities.js';
 import { createAndAssignActor } from './createCharacter.js';
+import { CLASS_GROUPS, classSlug } from './class-roster.js';
 
 // import { getCharacterData } from './fetch-data.js';
 // import { sendDataToServer } from './deliver-data.js';
@@ -167,6 +168,27 @@ export async function createPersistentButton() {
   document.body.appendChild(button);
 }
 
+/**
+ * The class dropdown: a top-level Random, then one <optgroup> per family from class-roster.js.
+ *
+ * Each group is labelled with its size ("Occult Adventures (6)") and opens with a
+ * "Random <group>" entry whose value is `random-<token>`. That token is not a class name and is
+ * not meant to match one -- the backend's chooseClass recognises it and narrows the random pool to
+ * that family (Backend/utils/util.py::_group_pool). The counts are computed, never typed, so a
+ * class added to the roster cannot leave a stale number behind.
+ */
+function classOptions(selected) {
+  const option = (value, label) =>
+    `<option value="${value}" ${selected === value ? 'selected' : ''}>${label}</option>`;
+
+  return option('random', 'Random (any class)')
+    + CLASS_GROUPS.map(({ token, label, classes }) =>
+        `<optgroup label="${label} (${classes.length})">`
+          + option(`random-${token}`, `Random ${label}`)
+          + classes.map(name => option(classSlug(name), name)).join('')
+        + '</optgroup>').join('');
+}
+
 function showCharacterGeneratorDialog() {
   // Get the saved character data from localStorage
   const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
@@ -212,37 +234,7 @@ function showCharacterGeneratorDialog() {
     <div>
       <label for="character-class">Select Class:</label>
       <select id="character-class">
-        ${[
-          'Random', 'Alchemist', 'Antipaladin', 'Arcanist', 'Barbarian', 'Barbarian (Unchained)', 'Bard',
-          'Bloodrager', 'Brawler', 'Cavalier', 'Cleric', 'Druid', 'Fighter', 'Gunslinger', 'Hunter', 'Inquisitor',
-          'Investigator', 'Magus', 'Monk', 'Monk (Unchained)', 'Ninja', 'Oracle', 'Paladin', 'Ranger', 'Rogue',
-          'Rogue (Unchained)', 'Samurai', 'Shaman', 'Shifter', 'Skald', 'Slayer', 'Sorcerer', 'Summoner',
-          'Summoner (Unchained)', 'Swashbuckler', 'Vigilante', 'Warpriest', 'Witch', 'Wizard',
-          // Path of War initiator classes (backend keys: warlord/warder/harbinger/mystic/medic)
-          'Warlord', 'Warder', 'Harbinger', 'Mystic', 'Medic'
-          // Stalker & Zealot are NOT in the pf1-pow Foundry compendium yet (module last updated
-          // ~late May 2026 but still missing them — may need to ping the maintainer). They'd
-          // generate on the backend, but the Foundry sheet can't resolve a class item that the
-          // module doesn't ship. To re-enable once they're added: uncomment the line below AND
-          // remove "stalker"/"zealot" from pow_classes_pending_foundry in Backend/utils/data.py.
-          // , 'Stalker', 'Zealot'
-          ,
-          // Psionic manifesting classes (Dreamscarred Press, via the Library of Metzofitz). The
-          // backend key for the two-word one is "psychic warrior" WITH A SPACE; the slug below
-          // sends "psychic-warrior" and chooseClass turns the hyphen back into a space
-          // (Backend/utils/util.py), exactly as it does for the Unchained variants.
-          //
-          // These were already reachable by rolling Random -- data.psionic_classes_pending is
-          // empty, so all twelve sit in the random pool. Listing them here only makes deliberate
-          // what was already possible.
-          'Aegis', 'Cryptic', 'Dread', 'Highlord', 'Marksman', 'Psion', 'Psychic Warrior',
-          'Soulknife', 'Tactician', 'Vitalist', 'Voyager', 'Wilder'
-        ].map(char_class =>
-          `<option value="${char_class.toLowerCase().replace(/\s/g, '-')}" 
-            ${savedData.class === char_class.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
-            ${char_class}
-          </option>`
-        ).join('')}
+        ${classOptions(savedData.class)}
       </select>
     </div>
     <div>

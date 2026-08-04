@@ -1,3 +1,5 @@
+import { CLASS_ITEM_ORDER } from './class-roster.js';
+
 export async function main() {
   try {
     // Retrieve the module dynamically using the module name
@@ -638,24 +640,11 @@ function capitalizeWords(str) {
 // exists in the data but is missing here never acts as a boundary, so the PRECEDING class bleeds
 // into it and absorbs its class item (at level 20) + abilities. Ninja/Samurai/Shifter/Vigilante
 // were missing, which is why e.g. Monk (Unchained) was picking up a stray Ninja 20.
-const class_list = [
-  "Alchemist", "Antipaladin", "Arcanist", "Barbarian", "Barbarian (Unchained)", "Bard", "Bloodrager", "Brawler",
-  "Cavalier", "Cleric", "Druid", "Fighter", "Gunslinger", "Hunter", "Investigator", "Inquisitor", "Kineticist",
-  "Magus", "Medium", "Mesmerist", "Monk", "Monk (Unchained)", "Ninja", "Occultist", "Oracle", "Paladin", "Psychic",
-  "Ranger", "Rogue", "Rogue (Unchained)", "Samurai", "Shaman", "Shifter", "Skald", "Slayer", "Sorcerer", "Spiritualist", "Swashbuckler",
-  "Summoner", "Summoner (Unchained)", "Vigilante", "Warpriest", "Witch", "Wizard",
-  // Path of War initiator classes (pf1-pow module) — must be present so each acts as a
-  // collectItems boundary once added to every_class.json (see export_every_class macro).
-  // "Medic" is a Metzofitz PoW homebrew class present on everyClassPerson; it isn't
-  // backend-generatable yet but must be a boundary so it doesn't bleed into the prior class.
-  "Stalker", "Warlord", "Warder", "Harbinger", "Mystic", "Zealot", "Medic",
-  // Psionic classes (pf1-psionics), spliced into every_class.json by
-  // Backend/scripts/build_every_class.mjs. Same boundary requirement as everything above: these
-  // sit at the END of the bundle, so without them the previously-last class (Warlord) would
-  // swallow all 157 psionic items.
-  "Aegis", "Cryptic", "Dread", "Highlord", "Marksman", "Psion", "Psychic Warrior",
-  "Soulknife", "Tactician", "Vitalist", "Voyager", "Wilder"
-];
+//
+// The list itself now lives in class-roster.js as CLASS_ITEM_ORDER -- one roster for the module,
+// checked against every_class.json by Backend/scripts/validate_class_roster.py, because keeping
+// three hand-maintained copies in sync is what let the occult classes go missing from the dropdown.
+const class_list = CLASS_ITEM_ORDER;
 
 // Build EVERY rolled class (multiclass-aware), highest level first, so the sheet lists
 // "Class A (its archetype) / Class B (its archetype) / ...". Each class's archetype item is
@@ -882,6 +871,37 @@ const CLASS_FEATURE_BUCKETS = {
   mysteries:            { title: 'Mystery & Revelations', singular: 'Revelation',         ladder: true },
   curses:               { title: 'Oracle Curse',         singular: 'Curse',               ladder: false },
   spirits:              { title: 'Shaman Spirit',        singular: 'Spirit',              ladder: false },
+  // Psionics (backend utils/class_func/psionics.py -> SUBSYSTEM_BUCKET). The fallback below would
+  // already render these, but not well: it lands them in the generic band with no divider of their
+  // own, and its trailing-s trim turns 'strategies' into "Strategie". The aegis and the soulknife
+  // are the classes that need this most -- their subsystem is ALL the psionics they have.
+  customizations:       { title: 'Astral Suit Customizations', singular: 'Customization',  ladder: true },
+  insights:             { title: 'Cryptic Insights',     singular: 'Insight',             ladder: true },
+  terrors:              { title: 'Terrors',              singular: 'Terror',              ladder: true },
+  decrees:              { title: 'Decrees',              singular: 'Decree',              ladder: true },
+  strategies:           { title: 'Strategies',           singular: 'Strategy',            ladder: true },
+  blade_skills:         { title: 'Blade Skills',         singular: 'Blade Skill',         ladder: true },
+  warrior_path:         { title: 'Warrior Path',         singular: 'Warrior Path',        ladder: false },
+  vitalist_method:      { title: 'Vitalist Method',      singular: 'Method',              ladder: false },
+  combat_style:         { title: 'Combat Style',         singular: 'Combat Style',        ladder: false },
+  // Occult Adventures (backend main_test.py, the generic_class_option_chooser block right after
+  // the psionics one). Registered for the same reason psionics is: the fallback renders them, but
+  // in the generic band with no divider of their own. For the KINETICIST this is the entire sheet
+  // -- wild talents and infusions are all it has, since burn is deliberately unmodelled backend
+  // side, so an unregistered bucket would leave the class looking empty.
+  implements:           { title: 'Implement Schools',    singular: 'Implement',           ladder: true },
+  focus_powers:         { title: 'Focus Powers',         singular: 'Focus Power',         ladder: true },
+  elemental_focus:      { title: 'Elemental Focus',      singular: 'Element',             ladder: false },
+  wild_talents:         { title: 'Wild Talents',         singular: 'Wild Talent',         ladder: true },
+  infusions:            { title: 'Infusions',            singular: 'Infusion',            ladder: true },
+  // 'medium_spirit', not 'spirit': the shaman already owns 'spirits' above, and two buckets one
+  // letter apart is a trap for anything that registers them by name.
+  medium_spirit:        { title: 'Channeled Spirit',     singular: 'Spirit',              ladder: false },
+  mesmerist_tricks:     { title: 'Mesmerist Tricks',     singular: 'Trick',               ladder: true },
+  bold_stare:           { title: 'Bold Stare',           singular: 'Bold Stare',          ladder: true },
+  psychic_discipline:   { title: 'Psychic Discipline',   singular: 'Discipline',          ladder: false },
+  phrenic_amplifications: { title: 'Phrenic Amplifications', singular: 'Amplification',   ladder: true },
+  emotional_focus:      { title: 'Phantom Emotional Focus', singular: 'Emotional Focus',  ladder: false },
 };
 
 // Class Features tab layout: fixed group dividers up front, then one "Class Features (Class)"
@@ -1874,6 +1894,245 @@ async function processPathOfWar() {
 }
 
 await processPathOfWar();
+
+// ----- Start of Psionics Section ----- //
+// Psionics is the Path of War shape one more time: the backend picks the powers and computes the
+// numbers, a third-party module (pf1-psionics) renders them.
+//
+// The load-bearing difference is that pf1-psionics shows its ENTIRE Psionics tab off a single
+// condition — actor-sheet.mjs checks whether any manifester book flag has inUse:true. It reads no
+// class item, no class tag, no power item. So a generated manifester without these flags arrives
+// with its powers in the Items directory and nothing on the sheet, and the GM has to add a class
+// by hand in the settings panel to reveal it. configureManifesters is that fix.
+//
+// Powers become pf1-psionics.power items: cloned from the module's own pack when the name matches
+// (real icons, actions, prepared descriptions), synthesized from the backend's powers_desc_dict
+// otherwise. Misses are EXPECTED — a measured 67 of the backend's powers are Metzofitz-only
+// content that exists in no compendium anywhere.
+//
+// Power POINTS stay the module's to compute (autoLevelPowerPoints), because its tables and ours
+// are the same twenty numbers — validate_psionics_data.py asserts exactly that, every run. That
+// only works if book.class is the class ITEM's tag, so a tag miss is warned about rather than
+// left to surface as a plausible-looking zero. The backend's pp_per_day seeds the CURRENT pool
+// instead, so a generated NPC arrives rested; .maximum is derived during actor prep, which has
+// not run yet. With pf1-psionics disabled we fall back to feat items plus a charge pool, the same
+// way the Path of War block above falls back.
+
+const MANIFESTER_SLOTS = ['primary', 'secondary', 'tertiary'];
+// The seven discipline keys pf1-psionics recognises (data/disciplines.mjs). Anything else makes
+// system.school undefined and drops the power out of Psionics-Magic Transparency.
+const PSIONIC_DISCIPLINES = ['athanatism', 'clairsentience', 'metacreativity', 'psychokinesis',
+                             'psychometabolism', 'psychoportation', 'telepathy'];
+
+// Scraped discipline prose -> the module's key. The wiki writes "Telepathy (Compulsion)
+// [Mind-Affecting]"; the key is the first word, lowercased.
+function disciplineKey(raw) {
+  const first = String(raw || '').trim().split(/[\s([]/)[0].toLowerCase();
+  return PSIONIC_DISCIPLINES.includes(first) ? first : 'athanatism';
+}
+
+// "Auditory and visual" / "Material, Mental" -> the module's five display booleans.
+function displayFlags(raw) {
+  const s = String(raw || '').toLowerCase();
+  const has = k => s.includes(k);
+  return { auditory: has('auditory'), material: has('material'), mental: has('mental'),
+           olfactory: has('olfactory'), visual: has('visual') };
+}
+
+// The manifester entries that get a pf1-psionics book, in payload order. Two kinds are filtered
+// out and both are legitimate: the soulknife carries an entry with no key ability (it manifests
+// nothing — its mind blade is a weapon, not a subsystem), and a manifester whose key ability
+// failed the score gate reads all zeroes. The aegis DOES get one: power points, no powers.
+function manifestingBooks() {
+  return (characterData.manifesters || []).filter(m => m && m.manifesting_stat && m.caster_type);
+}
+
+// Write the pf1-psionics manifester book flags. Returns backend class name -> book slot, so the
+// power items below can point at the book that granted them.
+function configureManifesters(books) {
+  const flags = exportTemplate.flags || (exportTemplate.flags = {});
+  const psionics = flags['pf1-psionics'] || (flags['pf1-psionics'] = {});
+  const manifesters = psionics.manifesters || (psionics.manifesters = {});
+
+  if (books.length > MANIFESTER_SLOTS.length) {
+    console.warn(`Psionics: ${books.length} manifesting classes but only ${MANIFESTER_SLOTS.length} pf1-psionics books — dropping ${books.slice(MANIFESTER_SLOTS.length).map(b => b.name).join(', ')}.`);
+  }
+
+  const slotFor = new Map();
+  for (let s = 0; s < books.length && s < MANIFESTER_SLOTS.length; s++) {
+    const book = books[s];
+    const slot = MANIFESTER_SLOTS[s];
+    const display = book.display || capitalizeWords(book.name || '');
+    const classItem = (exportTemplate.items || []).find(i => i.type === 'class' && i.name === display);
+    const tag = classItem?.system?.tag;
+    if (!tag) {
+      // pf1-psionics derives power points from book.cl.classLevelTotal, which needs this tag. A
+      // miss reads as zero points with no error anywhere, so it gets said out loud here.
+      console.warn(`Psionics: no class item tag for "${display}" — its power points will read 0.`);
+    }
+    manifesters[slot] = Object.assign({}, manifesters[slot], {
+      inUse: true,               // <- the whole condition pf1-psionics gates its tab on
+      name: display,
+      class: tag || book.name,
+      casterType: book.caster_type,
+      ability: book.manifesting_stat,
+      autoLevelPowerPoints: true,
+      autoAttributePowerPoints: true,
+      autoMaxPowerLevel: true,
+    });
+    slotFor.set(book.name, slot);
+    console.log(`Manifester ${slot} <- ${display} (${book.caster_type}, ${book.manifesting_stat}, ML ${book.manifester_level}, ${book.pp_per_day} pp)`);
+  }
+
+  const pp = books.slice(0, MANIFESTER_SLOTS.length)
+    .reduce((sum, b) => sum + (Number(b.pp_per_day) || 0), 0);
+  psionics.powerPoints = Object.assign({}, psionics.powerPoints, { current: pp, temporary: 0 });
+  return slotFor;
+}
+
+// Full pf1-psionics.power item from a powers_desc_dict entry (field set mirrors the module's
+// PowerModel). Used only when the powers pack has no name match.
+function synthesizePowerItem(name, d, slot, level) {
+  const header = `<p><strong>${d.discipline || ''}${level ? ` ${level}` : ''}</strong></p>`;
+  const meta = [['manifesting time', 'Manifesting Time'], ['range', 'Range'],
+                ['duration', 'Duration'], ['saving throw', 'Saving Throw'],
+                ['power resistance', 'Power Resistance'], ['power points', 'Power Points']]
+    .filter(([k]) => d[k]).map(([k, label]) => `<p><em>${label}:</em> ${d[k]}</p>`).join('');
+  const body = d.text ? `<hr>${String(d.text).split(/\n{2,}/).map(p => `<p>${p}</p>`).join('')}` : '';
+  const augment = d.augment ? `<hr><p><em>Augment:</em> ${d.augment}</p>` : '';
+  const timeMatch = String(d['manifesting time'] || '').toLowerCase()
+    .match(/\b(swift|immediate|standard|move|full)\b/);
+  return {
+    name,
+    type: "pf1-psionics.power",
+    img: "icons/svg/daze.svg",
+    system: {
+      description: { value: header + meta + body + augment },
+      discipline: disciplineKey(d.discipline),
+      subdiscipline: [], descriptors: [],
+      level: Number(level) || 0,
+      manifester: slot,
+      manifestTime: { value: 1, units: timeMatch ? timeMatch[1] : "standard" },
+      display: displayFlags(d.display),
+      modifiers: { cl: 0, sl: 0 },
+      known: true,
+      prepared: false,
+      // "No" / "None" mean the power ignores power resistance; the module's default is true.
+      sr: !/^\s*(no|none)\b/i.test(String(d['power resistance'] || '')),
+      showInCombat: true,
+      actions: [], changes: [], contextNotes: [], sources: [],
+    },
+    effects: [], flags: {},
+  };
+}
+
+// Pre-pf1-psionics fallback: powers as plain feat items under a divider, plus one per-class power
+// point pool so the number the backend computed is still on the sheet somewhere.
+async function legacyProcessPsionicsFeats(books) {
+  const descs = characterData.powers_desc_dict || {};
+  await appendFeatDivider("__________________Psionics______________", 4200, 'feat');
+
+  const items = [];
+  for (const book of books) {
+    const display = book.display || capitalizeWords(book.name || '');
+    // The power point pool: a flat maxFormula, not a @classes.<tag>.level expression, because
+    // power points are a published table plus an ability formula, not a per-level slope.
+    const pool = synthesizeFeatItem(`Power Points (${display})`,
+      `<p>Power points per day for ${display} at manifester level ${book.manifester_level}.</p>`,
+      "systems/pf1/icons/skills/blue_36.jpg");
+    pool.system.uses = { value: Number(book.pp_per_day) || 0, per: "day",
+                         maxFormula: String(Number(book.pp_per_day) || 0),
+                         autoDeductChargesCost: "", rechargeFormula: "" };
+    items.push(pool);
+
+    (book.powers_by_level || []).forEach((bucket, level) => {
+      for (const name of bucket) {
+        const d = descs[name] || {};
+        const header = `<p><strong>${d.discipline || ''} power ${level}</strong></p>`;
+        const meta = ['manifesting time', 'range', 'duration', 'saving throw', 'power points']
+          .filter(k => d[k]).map(k => `<p><em>${capitalizeWords(k)}:</em> ${d[k]}</p>`).join('');
+        const body = d.text ? `<hr><p>${d.text}</p>` : '';
+        items.push(synthesizeFeatItem(`${name} (Power ${level})`, header + meta + body,
+                                      "icons/svg/daze.svg"));
+      }
+    });
+  }
+  assignSequentialSort(items, 4210);
+  writeToLocalStorage('collectedPsionics', items);
+  appendJsonToTemplate(items, exportTemplate, 'Psionics');
+  writeToLocalStorage('exportTemplate', exportTemplate);
+  console.log(`Psionics (legacy): injected ${items.length} power/pool feat items.`);
+}
+
+async function processPsionics() {
+  try {
+    const books = manifestingBooks();
+    if (!books.length) return;   // non-manifesters and old payloads: no psionics at all
+
+    if (!game.modules.get('pf1-psionics')?.active) {
+      console.warn('Psionics: pf1-psionics module inactive — falling back to legacy feat items.');
+      return legacyProcessPsionicsFeats(books);
+    }
+
+    const slotFor = configureManifesters(books);
+    const descs = characterData.powers_desc_dict || {};
+
+    // One-shot compendium load keyed by normalized name. powNorm also folds the curly apostrophe,
+    // which this pack genuinely mixes: "Artificer's Surge" (U+2019) sits beside "Reaper's Blade".
+    let packDocs = new Map();
+    try {
+      const pack = game.packs.get('pf1-psionics.powers');
+      if (pack) {
+        const docs = await pack.getDocuments();
+        packDocs = new Map(docs.map(doc => [powNorm(doc.name), doc]));
+      } else {
+        console.warn('Psionics: pf1-psionics.powers pack not found — synthesizing all items.');
+      }
+    } catch (e) {
+      console.warn('Psionics: could not read pf1-psionics.powers — synthesizing all items.', e);
+    }
+
+    const items = [];
+    let misses = 0;
+    for (const book of books) {
+      const slot = slotFor.get(book.name);
+      if (!slot) continue;   // dropped for want of a book slot; already warned about
+      // powers_by_level is the only record of which power sits at which level: the description
+      // entry keys its levels by power LIST ("psion/wilder"), not by class.
+      (book.powers_by_level || []).forEach((bucket, level) => {
+        for (const name of bucket) {
+          const d = descs[name] || {};
+          const doc = packDocs.get(powNorm(name));
+          if (doc) {
+            const item = doc.toObject();
+            delete item._id;            // fresh embedded id on actor creation
+            item.system = item.system || {};
+            item.system.manifester = slot;
+            item.system.known = true;
+            item.system.level = level;  // the level THIS class learns it at
+            items.push(item);
+          } else {
+            misses++;
+            console.warn(`Psionics: "${name}" not in pf1-psionics.powers — synthesizing from backend data.`);
+            items.push(synthesizePowerItem(name, d, slot, level));
+          }
+        }
+      });
+    }
+
+    assignSequentialSort(items, 4210);
+    writeToLocalStorage('collectedPsionics', items);
+    appendJsonToTemplate(items, exportTemplate, 'Psionics');
+    writeToLocalStorage('exportTemplate', exportTemplate);
+    console.log(`Psionics: ${books.length} manifester book(s), ${items.length} native pf1-psionics.power items (${misses} synthesized).`);
+  } catch (error) {
+    console.error('Error processing the Psionics section:', error);
+  }
+}
+
+await processPsionics();
+// ----- End of Psionics Section ----- //
+
 // ------ End of Feat/Trait Section ------ //
 
 // ----- Start of Inherents Section ----- //

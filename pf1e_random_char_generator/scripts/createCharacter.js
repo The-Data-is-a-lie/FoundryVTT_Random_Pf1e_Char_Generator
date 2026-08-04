@@ -1,3 +1,5 @@
+import { createBondedCreatures } from './createCompanions.js';
+
 async function createCharacterFunc() {
   const actor = await Actor.create({
     name: "New Test Actor",
@@ -159,5 +161,16 @@ export async function createAndAssignActor() {
   await adjustLevel(actor);
 
   console.log("Actor successfully created and added to the 'Random Characters' folder.");
+
+  // §8 D1: a bonded creature is its own Actor, never a block on its master's sheet. Runs last and
+  // never throws upward -- a companion that fails to build must not cost the character that was
+  // already created, and the reason is on the console either way.
+  try {
+    const payload = JSON.parse(localStorage.getItem('pulledCharacterData') || '{}');
+    await createBondedCreatures(payload, folderId);
+  } catch (error) {
+    console.error("Bonded creatures: none were created —", error);
+    ui.notifications?.warn("Character created, but its bonded creatures were not — see the console.");
+  }
 }
 
