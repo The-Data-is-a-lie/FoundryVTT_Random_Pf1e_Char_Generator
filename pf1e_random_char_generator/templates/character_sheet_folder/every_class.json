@@ -89719,7 +89719,7 @@
       "img": "icons/magic/perception/third-eye-blue-red.webp",
       "name": "Aegis",
       "system": {
-        "bab": "low",
+        "bab": "high",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -89764,7 +89764,7 @@
         "description": {
           "value": "</p><p>While the shaper is the master of manipulating ectoplasm and creating any manner of item, the aegis has learned to take ectoplasm and form it into a suit to be worn around his body, granting him a variety of benefits. </p><p>The aegis can shape his astral suit into several different forms and is capable of altering its abilities to suit his needs. </p><p><b>Role:</b> An aegis is a front-line combatant. His astral suit allows him significant flexibility in handling combat and non-combat situations, and his defensive abilities are considerable. </p><p><b>Alignment:</b> Any. </p><p><b>Hit Die:</b> d10. </p><p><b>Class Skills:</b> The aegis’s class skills (and the key ability for each skill) are Acrobatics (Dex), Autohypnosis (Wis), Climb (Str), Craft (Int), Fly (Dex), Intimidate (Cha), Knowledge (Engineering) (Int), Knowledge (Psionics) (Int), Profession (Wis), Spellcraft (Int), Swim (Str), and Use Magic Device (Cha). </p><p><b>Skill Ranks per Level:</b> 4 + Int modifier. </p>"
         },
-        "hd": 6,
+        "hd": 10,
         "hp": 6,
         "level": 20,
         "links": {
@@ -89827,7 +89827,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2012-07-23",
@@ -90290,7 +90290,7 @@
         "armorProf": [
           "lgt"
         ],
-        "bab": "low",
+        "bab": "med",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -90335,7 +90335,7 @@
         "description": {
           "value": "</p><p>The very fabric of the world is visible through the eyes of the cryptic, who sees all things as patterns of energies that can be understood and manipulated. This unique insight allows the cryptic the ability to foresee events and even manipulate the energy of her surroundings to accomplish her tasks. Whether it is knowing where to step to avoid being seen, where to place an attack for maximum effect, or how to temporarily alter the laws of physics, the cryptic is a master of any pattern she sees. </p><p><b>Role:</b> The cryptic excels as a finder of dangers and at remaining undetected even in the most difficult locations. With modest combat prowess, a cryptic can help her allies defeat enemies, although her limited defensive capabilities means she needs to avoid becoming the main target of her opponents. </p><p><b>Alignment</b>: Any. </p><p><b>Hit Die</b>: d8. </p><p><b>Starting Wealth</b>: 3d6 x 10 (average 105gp) In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Class Skills: </b>The cryptic's class skills are Acrobatics (Dex), Appraise (Int), Autohypnosis (Wis), Climb (Str), Craft (Int), Disable Device (Dex), Disguise (Cha), Escape Artist (Dex), Knowledge (all) (Int), Linguistics (Int), Perception (Wis), Perform (Cha), Profession (Wis), Sense Motive (Wis), Sleight of Hand (Dex), Spellcraft (Int), Stealth (Dex), Swim (Str), and Use Magic Device(Cha). </p><p><b>Skill Ranks per Level</b>: 4 + Int modifier. </p>"
         },
-        "hd": 6,
+        "hd": 8,
         "hp": 6,
         "level": 20,
         "links": {
@@ -90418,7 +90418,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2012-07-23",
@@ -91136,7 +91136,7 @@
       "img": "icons/magic/perception/third-eye-blue-red.webp",
       "name": "Dread",
       "system": {
-        "bab": "low",
+        "bab": "med",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -91181,7 +91181,7 @@
         "description": {
           "value": "</p><p>Most creatures must learn to deal with fear in some fashion. For some, it is confronting and overcoming their fears. For others, it is always running away. For the dread, it is using her fear as a weapon, it is understanding how fear works and manipulating the fears of others in unusual and devastating ways. The dread is the master of fear and terror. </p><p><b>Role:</b> A dread is an opponent on the battlefield who can turn the bravest of enemies into a sniveling coward with but a touch. Combining moderate manifesting ability with destructive melee attacks, the dread is a dangerous opponent to ignore. Out of combat, the dread uses fear and intimidation to manipulate or bully others into the path she deems best. </p><p><b>Alignment:</b> Any </p><p><b>Hit Die:</b> d8 </p><p><b>Starting Wealth:</b> 3d6 x 10 (average 105 gp). In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Class Skills:</b> The dread's class skills (and the key ability for each skill) are Acrobatics (Dex), Autohypnosis (Wis), Bluff (Cha), Climb (Str), Craft (Int), Escape Artist (Dex), Intimidate (Cha), Knowledge (psionics) (Int), Perception (Wis), Stealth (Dex), Profession (Wis), Sense Motive (Wis), Spellcraft (Int), and Swim (Str). </p><p><b>Skill Points Per Level:</b> 6 + Int modifier. </p>"
         },
-        "hd": 6,
+        "hd": 8,
         "hp": 6,
         "level": 20,
         "links": {
@@ -91248,7 +91248,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 6,
         "sources": [
           {
             "date": "2012-07-23",
@@ -91746,7 +91746,7 @@
         "armorProf": [
           "hvy"
         ],
-        "bab": "low",
+        "bab": "med",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -91791,7 +91791,7 @@
         "description": {
           "value": "</p><p>There are those who are meant to serve, and those who are meant to rule. A highlord stands proudly as one of the latter, joining minds together in a powerful network driven by his will and goals above all else. His true power shows itself when fighting alongside his allies, but if deprived of followers, the highlord can still fight by invading the minds of his enemies and briefly bending them to his will. </p><p>Unlike other telepaths, a highlord's power runs far deeper into both his mind and those of others. For a highlord, the touching of minds is a two-way street — just as he draws on the minds of his subjects, they get a glimpse into his thoughts and desires. The strong connection of a highlord's collective allows him to avail himself to the talents of both his allies and any enemies unfortunate enough to fall under his sway. When a highlord speaks, others obey. What a highlord decrees becomes fact, manipulating the course of battles, whether they take place in the mind or outside of it. </p><p>Each highlord chooses his own path, using the tenets they follow as a guideline to further their own goals. A highlord can drive his soldiers to seek victory at any cost, or exploit them for temporary advantages in combat. Those with evil in their hearts may treat their allies like pieces in the game of battle to be sacrificed if necessary. However, benevolent highlords may value the lives of those under his command, and consider them as friends or assets too valuable to discard. Instead, such highlords choose to use their talents to guide their allies towards a mutual goal. A highlord can drive his collective to step over the bodies of their fallen comrades, or to work together and persevere as one. </p><p><b>Role:</b> The highlord is a battlefield leader who guides the minds of his allies and grasps the minds of his enemies. By forcing enemies into his collective, he can inconvenience or incapacitate them, or direct his allies with pinpoint precision. Through his psionic abilities, he can fight alone or strengthen his party, ruling the battlefield regardless of his choice in tenets. </p><p><b>Alignment:</b> Any. Though certain alignments may gravitate toward different tenets, any given individual may channel the tenets of a highlord towards whichever goals they desire. </p><p><b>Starting Wealth:</b> 5d6 x 10 gp (175 gp). In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Hit Die:</b> d8 </p><p><b>Class Skills:</b> The highlord's class skills are Autohypnosis (Wis), Bluff (Cha), Craft (Int), Diplomacy (Cha), Heal (Wis), Intimidate (Cha), Knowledge (Nobility) (Int), Knowledge (Psionics) (Int), Knowledge (Religion) (Int), Perception (Wis), Profession (Wis), Ride (Dex), Sense Motive (Wis), Spellcraft (Int), and Use Magic Device (Cha). </p><p><b>Skill Ranks per level:</b> 4 + Int modifier </p>"
         },
-        "hd": 6,
+        "hd": 8,
         "hp": 6,
         "level": 20,
         "links": {
@@ -91862,7 +91862,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2010-01-01",
@@ -92323,7 +92323,7 @@
         "armorProf": [
           "lgt"
         ],
-        "bab": "low",
+        "bab": "high",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -92368,7 +92368,7 @@
         "description": {
           "value": "</p><p>Masters of ranged weapons, marksmen are the elite wielders of any weapon that can be shot, fired, or thrown. Unlike rangers, who are more focused on tracking down their chosen enemies, marksmen focus their attention on harnessing their ranged combat abilities, learning to use their weapon in ways others could only dream of. Their psionic ability improves their attacks and augments their otherwise limited defensive abilities. </p><p><b>Role:</b> As light armor wielders, marksmen are not intended to be front-line combatants. They excel when they have a safe distance from which to unleash their deadly attacks. </p><p><b>Alignment:</b> Any </p><p><b>Hit Die:</b> d10 </p><p><b>Starting Wealth:</b> 5d6 x 10 (175 gp.) In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Starting Age:</b> Moderate (as fighter) </p><p><b>Class Skills: </b>The Marksman's class skills (and the key ability for each skill) are Acrobatics (Dex), Autohypnosis (Wis), Climb (Str), Craft (Int), Escape Artist (Dex), Intimidate (Cha), Knowledge (psionics) (Int), Perception (Wis), Perform (Cha), Profession (Wis), Sense Motive (Wis), Stealth (Dex), Survival (Wis), and Use Magic Device (Cha) </p><p><b>Skill Ranks Per Level:</b> 4 + Int modifier </p>"
         },
-        "hd": 6,
+        "hd": 10,
         "hp": 6,
         "level": 20,
         "links": {
@@ -92443,7 +92443,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2012-07-23",
@@ -93267,7 +93267,7 @@
       "img": "icons/magic/perception/third-eye-blue-red.webp",
       "name": "Psychic Warrior",
       "system": {
-        "bab": "low",
+        "bab": "med",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -93312,7 +93312,7 @@
         "description": {
           "value": "</p><p><span class=\"va-quotation-text\"><i>Where the psion spends his days studying the intricacies of psionic power and unlocking the mysteries of the mind, others choose to use their internal power to augment their physical form. These psychic warriors use their psionic potential as a way to improve their natural abilities, becoming fierce and deadly in their chosen path.</i></span> </p><p><b>Role:</b> The psychic warrior's path determines his strengths and weaknesses within a party. Whether he is the epitome of unleashing the beast within, or a stealthy combatant who strikes from the shadows, the psychic warrior's primary focus is typically battlefield control and dealing or blocking damage. </p><p><b>Alignment: </b>Any. </p><p><b>Hit Die: </b>d8. </p><p><b>Starting Wealth:</b> 5d6 x 10 (average 175 gp.) In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Class Skills: </b>The psychic warrior's class skills are Acrobatics (Dex), Autohypnosis (Wis), Climb (Str), Craft (Int), Knowledge (psionics) (Int), Perception (Wis), Profession (Wis), Ride (Dex), Spellcraft (Int), and Swim (Str). </p><p><b>Skill Ranks at each Level: </b>4 + Int modifier. </p>"
         },
-        "hd": 6,
+        "hd": 8,
         "hp": 6,
         "level": 20,
         "links": {
@@ -93375,7 +93375,7 @@
             "value": "low"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2010-08-01",
@@ -93895,7 +93895,7 @@
       "img": "icons/magic/perception/third-eye-blue-red.webp",
       "name": "Soulknife",
       "system": {
-        "bab": "low",
+        "bab": "high",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -93940,7 +93940,7 @@
         "description": {
           "value": "</p> <table class=\"wikitable\"> <tbody><tr> <td><b>Editor's Note:</b> It is recommended by the developers that in \"games with higher levels of expertise, powerful classes and abilities, or just generally better toys available to people, it would be considered prudent\" to use the <a href=\"/wiki/Soulknife_(High_Psionics)\" title=\"Soulknife (High Psionics)\">High Psionics version of Soulknife</a>. For more information, see the <a href=\"/wiki/High_Psionics\" title=\"High Psionics\">High Psionics</a> rules. </td></tr></tbody></table> <p><span class=\"va-quotation-text\"><i>Never caught unarmed, the soulknife is the literal interpretation of using the power of the mind as a weapon. Creating a mind blade is the core of the soulknife, and with it, she is a deadly combatant. Versatile and varied, the soulknife can be found in all shapes and sizes, wielding blades unique to the wielder and customized to fit the needs of the soulknife. Fluid in function, the soulknife has mastered how to alter her mind blade to fit the situation, bringing power and versatility into any combat.</i></span> </p><p><b>Role:</b> As a wielder of a weapon first and foremost, the soulknife excels as a front-line combatant on the battlefield. Her limited armor options and defensive abilities can be a hindrance, but her varied blade abilities can make her an excellent mobile warrior or battlefield controller. </p><p><b>Alignment: </b>Any. </p><p><b>Hit Die: </b>d10. </p><p><b>Starting Wealth:</b> 5d6 x10 (average 175 gp.) In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Class Skills: </b>The soulknife's class skills are Acrobatics (Dex), Autohypnosis (Wis), Climb (Str), Craft (Int), Intimidate (Cha), Knowledge (psionics) (Int), Perception (Wis), Profession (Wis), Stealth (Dex), and Swim (Str). </p><p><b>Skill Ranks per Level: </b>4 + Int modifier </p>"
         },
-        "hd": 6,
+        "hd": 10,
         "hp": 6,
         "level": 20,
         "links": {
@@ -94001,7 +94001,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2010-08-01",
@@ -94458,7 +94458,7 @@
         "armorProf": [
           "med"
         ],
-        "bab": "low",
+        "bab": "med",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -94503,7 +94503,7 @@
         "description": {
           "value": "</p><p>Joining allies into a single cohesive unit, the tactician uses his psionic power to unlock the potential of others, as well as himself. This master of strategy tends to focus his abilities on the insight of clairsentience and the improved communication of telepathy to know where and when to act and ensure his companions are best situated to react. </p><p><b>Role:</b> A tactician is at his strongest when his companions cooperate with his instructions. He is a strategist and a battle leader, issuing orders and expecting them to be followed. He has decent combat ability, but relies primary upon his manifesting ability. </p><p><b>Alignment: </b>Any. </p><p><b>Hit Die:</b> d8 </p><p><b>Starting Wealth:</b> 4d6 x 10 (140 gp.) In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Class Skills: </b>The tactician's class skills are Autohypnosis (Wis), Bluff (Cha), Climb (Str), Craft (Int), Diplomacy (Cha), Intimidate (Cha), Knowledge (engineering) (Int), Knowledge (history) (Int), Knowledge (psionics) (Int), Linguistics (Int), Perception (Wis), Perform (Cha), Profession (Wis), Ride (Dex), Sense Motive (Wis), Spellcraft (Int), Swim (Str), Use Magic Device (Cha). </p><p><b>Skill Ranks at each Level:</b> 4 + Int modifier. </p>"
         },
-        "hd": 6,
+        "hd": 8,
         "hp": 6,
         "level": 20,
         "links": {
@@ -94574,7 +94574,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2012-07-23",
@@ -97174,7 +97174,7 @@
         "armorProf": [
           "lgt"
         ],
-        "bab": "low",
+        "bab": "med",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -97334,7 +97334,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 6,
         "sources": [
           {
             "date": "2010-01-01",
@@ -98180,7 +98180,7 @@
         "armorProf": [
           "lgt"
         ],
-        "bab": "low",
+        "bab": "med",
         "classSkills": {
           "acr": false,
           "ahp": false,
@@ -98225,7 +98225,7 @@
         "description": {
           "value": "</p><p>Unlike the psion, who studies his psionic ability and potential to unlock its secrets, or the psychic warrior, who uses his psionic ability to enhance his physical form, the wilder taps into her emotions to unlock and unleash her innate psionic power. By channeling her emotions in such a fashion, the wilder greatly enhances her psionic powers, but runs the risk of suffering backlash, as emotions are unstable. </p><p><b>Role:</b> The wilder traditionally fills the role of dealing large amounts of damage, while running the risk of suffering backlash. Depending on the path a wilder chooses, she can also give her nearby allies a boost in efficiency. </p><p><b>Alignment:</b> Any. </p><p><b>Hit Die:</b> d8. </p><p><b>Starting Wealth:</b> 4d4 x 10 gp (average 100 gp). In addition, each character begins play with an outfit worth 10 gp or less. </p><p><b>Class Skills: </b>The wilder's class skills are Acrobatics (Dex), Autohypnosis (Wis), Bluff (Cha), Climb (Str), Craft (Int), Diplomacy (Cha), Escape Artist (Dex), Intimidate (Cha), Knowledge (psionics) (Int), Perception (Wis), Profession (Int), Sense Motive (Wis), Spellcraft (Int), Swim (Str), and Use Magic Device (Cha). </p><p><b>Skill Ranks at Each Level:</b> 4 + Int modifier </p>"
         },
-        "hd": 6,
+        "hd": 8,
         "hp": 6,
         "level": 20,
         "links": {
@@ -98284,7 +98284,7 @@
             "value": "high"
           }
         },
-        "skillsPerLevel": 2,
+        "skillsPerLevel": 4,
         "sources": [
           {
             "date": "2010-08-01",

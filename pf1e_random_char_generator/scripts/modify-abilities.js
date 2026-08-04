@@ -895,6 +895,24 @@ const CLASS_FEATURE_BUCKETS = {
   warrior_path:         { title: 'Warrior Path',         singular: 'Warrior Path',        ladder: false },
   vitalist_method:      { title: 'Vitalist Method',      singular: 'Method',              ladder: false },
   combat_style:         { title: 'Combat Style',         singular: 'Combat Style',        ladder: false },
+  // Occult Adventures (backend main_test.py, the generic_class_option_chooser block right after
+  // the psionics one). Registered for the same reason psionics is: the fallback renders them, but
+  // in the generic band with no divider of their own. For the KINETICIST this is the entire sheet
+  // -- wild talents and infusions are all it has, since burn is deliberately unmodelled backend
+  // side, so an unregistered bucket would leave the class looking empty.
+  implements:           { title: 'Implement Schools',    singular: 'Implement',           ladder: true },
+  focus_powers:         { title: 'Focus Powers',         singular: 'Focus Power',         ladder: true },
+  elemental_focus:      { title: 'Elemental Focus',      singular: 'Element',             ladder: false },
+  wild_talents:         { title: 'Wild Talents',         singular: 'Wild Talent',         ladder: true },
+  infusions:            { title: 'Infusions',            singular: 'Infusion',            ladder: true },
+  // 'medium_spirit', not 'spirit': the shaman already owns 'spirits' above, and two buckets one
+  // letter apart is a trap for anything that registers them by name.
+  medium_spirit:        { title: 'Channeled Spirit',     singular: 'Spirit',              ladder: false },
+  mesmerist_tricks:     { title: 'Mesmerist Tricks',     singular: 'Trick',               ladder: true },
+  bold_stare:           { title: 'Bold Stare',           singular: 'Bold Stare',          ladder: true },
+  psychic_discipline:   { title: 'Psychic Discipline',   singular: 'Discipline',          ladder: false },
+  phrenic_amplifications: { title: 'Phrenic Amplifications', singular: 'Amplification',   ladder: true },
+  emotional_focus:      { title: 'Phantom Emotional Focus', singular: 'Emotional Focus',  ladder: false },
 };
 
 // Class Features tab layout: fixed group dividers up front, then one "Class Features (Class)"
