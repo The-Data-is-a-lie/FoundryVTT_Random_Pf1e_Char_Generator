@@ -2219,6 +2219,15 @@ async function changeStatBuff(dataArray, stats, label) {
     item.name = label;
     item._id = await generateUniqueID('statBuff', [label, item]); // Generate a unique ID for each item
 
+    // The template's ActiveEffect carries its OWN baked-in name and origin, and re-identifying the
+    // item above does not reach them. Both stat buffs come from the same template, so without this
+    // the character ends up with two tracker effects both labelled "Inherent" -- and every effect's
+    // origin points at an item _id that no longer exists, because the line above just replaced it.
+    for (const effect of item.effects ?? []) {
+      effect.name = label;
+      effect.origin = `.Item.${item._id}`;
+    }
+
     if (!item.system?.changes) continue;
   
     for (const change of item.system.changes) {

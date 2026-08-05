@@ -8269,8 +8269,8 @@
        }
       },
       "icon": "icons/svg/ice-aura.svg",
-      "name": "Inherent",
-      "origin": ".Item.0IijKQwUzzrOS5xG",
+      "name": "level_up_stats",
+      "origin": ".Item.deaNa5oNFiPYA0Rh",
       "statuses": [],
       "transfer": true
      }
@@ -8417,8 +8417,8 @@
        }
       },
       "icon": "icons/svg/ice-aura.svg",
-      "name": "Inherent",
-      "origin": ".Item.0IijKQwUzzrOS5xG",
+      "name": "Inherents",
+      "origin": ".Item.RXsSLGPLdMZ8Xcgh",
       "statuses": [],
       "transfer": true
      }
