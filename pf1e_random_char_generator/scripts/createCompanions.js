@@ -217,6 +217,22 @@ async function reconcile(actor, stats) {
     console.log(`Companion ${actor.name}: reconciled ${notes.join(', ')}.`);
   }
 
+}
+
+/**
+ * Audit AC, AFTER the parity sections have landed.
+ *
+ * This used to sit at the bottom of `reconcile()` and was therefore mistimed: reconcile runs before
+ * `attachSections()`, so the feat items carrying the fold's own `ac` changes were not on the actor
+ * yet and the check compared an incomplete sheet against a complete payload. It warned on every
+ * companion with an AC feat, which is how a real one-point shortfall hid inside an expected warning
+ * for as long as it did.
+ *
+ * Still a warning and not a correction: pf1 gives AC no seed to write a delta into, so there is
+ * nothing to correct THROUGH. A disagreement now genuinely means something on the body is
+ * contributing that the payload did not count, which is worth seeing rather than papering over.
+ */
+function auditAc(actor, stats) {
   const wantAc = Number(stats?.ac);
   const gotAc = Number(actor.system.attributes?.ac?.normal?.total);
   if (Number.isFinite(wantAc) && Number.isFinite(gotAc) && gotAc !== wantAc) {
@@ -369,6 +385,7 @@ async function createBondedCreature(entry, folderId, masterName) {
   await actor.update(systemPatch(entry));
   await reconcile(actor, stats);
   await attachSections(actor, entry);
+  auditAc(actor, stats);   // after the sections: the fold's own AC changes ride in on the feat items
 
   return { actor, cloned: !!source };
 }

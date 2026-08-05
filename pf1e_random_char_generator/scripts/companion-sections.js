@@ -12,6 +12,9 @@
  *   Feats and flaws ALWAYS apply, so `companion_stats.py` already folded their numbers into `stats`.
  *   Their items therefore ship with `system.changes` STRIPPED -- pf1 must not apply what the payload
  *   already counted. `contextNotes` survive, because they are situational text nobody totalled.
+ *   `ac`-targeted changes survive too, and only those: see the note in `featItems`. AC is the one
+ *   folded stat pf1 gives no seed for, so stripping it dropped the number on the floor instead of
+ *   moving it somewhere else.
  *
  *   Buffs are situational, so they are NOT folded. Their items keep their changes and ship INACTIVE,
  *   which is what makes them safe: an inactive buff contributes nothing until a player toggles it,
@@ -103,7 +106,23 @@ export function featItems(entry, resolveFeat) {
     item.system = item.system ?? {};
     // D14: the payload already counted this feat. Leaving the compendium's automation on would make
     // the Foundry sheet disagree with the web sheet, which has no way to derive anything.
-    item.system.changes = [];
+    //
+    // ONE EXCEPTION, and it is the whole reason a companion's AC used to render a point low:
+    // stripping works because every folded number has a SEED on the actor for `reconcile()` to write
+    // the difference into -- `hp.base`, `savingThrows.*.base`, `bab.value`. AC has none. pf1 derives
+    // `attributes.ac` entirely from changes and offers nothing to seed, which is exactly why
+    // `reconcile()` says AC is "deliberately NOT corrected" and only warns. So a feat's AC
+    // contribution had nowhere to live and simply vanished.
+    //
+    // Keeping the compendium's own `ac` changes puts it back WITH ITS BONUS TYPE intact, which
+    // matters: the reef snake's Dodge is `+1 dodge`, and the payload proves the type -- its ac 18 and
+    // touch 14 both include the point while flat-footed 14 does not, which is dodge behaviour and
+    // nothing else's. Nothing double-counts, because nothing seeds AC.
+    //
+    // `nac` is deliberately NOT kept. Natural armour DOES have a seed -- `attributes.naturalAC`, set
+    // from `stats.natural_armor`, which is the post-fold figure -- so keeping Improved Natural
+    // Armor's change would count it twice. `ac` is the only target with no home.
+    item.system.changes = (item.system.changes ?? []).filter((change) => change?.target === 'ac');
     item.system.subType = 'feat';
     item.sort = sort;
     return item;
