@@ -1,15 +1,7 @@
-// // Imports
 import { sendDataToServer } from './deliver-data.js';
-// import { fetchDataAndSaveToLocalStorage, getCharacterData } from './fetch-data.js';
 import { main } from './modify-abilities.js';
 import { createAndAssignActor } from './createCharacter.js';
 import { CLASS_GROUPS, classSlug } from './class-roster.js';
-
-// import { getCharacterData } from './fetch-data.js';
-// import { sendDataToServer } from './deliver-data.js';
-// import { fetchDataAndSaveToLocalStorage, getCharacterData} from './fetch-data.js';
-// import { main } from './modify-abilities.js';
-
 
 // Function to create the persistent button
 // need export so we can import in main.js
@@ -103,16 +95,6 @@ export async function createPersistentButton() {
     // deliver-data.js already notified the user; abort so we don't build an actor from stale data.
     return;
   }
-
-  // Don't use anymore (sendDataToServer sends data + grabs it)
-  // // Import fetch-data.js
-  // try {
-  //   // await import('./fetch-data.js');
-  //   await fetchDataAndSaveToLocalStorage(deliver_location, 'pulledCharacterData');
-  //   await getCharacterData('pulledCharacterData');
-  // } catch (error) {
-  //   console.error("Error importing fetch-data.js in button.js:", error);
-  // }
 
   // Import main from modify-abilities.js (bulk of the character creation)
   // main() returns false (and notifies) when it couldn't build the sheet; abort rather than

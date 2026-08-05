@@ -32,15 +32,6 @@ export default class MyModule {
         type: String,
         default: "http://localhost:5001/update_character_data",
       });
-
-      game.settings.register("pf1e_random_char_generator", "modulePath", {
-        name: "Module Path",
-        hint: "Path to the module's resources.",
-        scope: "world",  // or "client" depending on where you want it to be stored
-        config: true,    // whether it should appear in the settings menu
-        type: String,
-        default: "",     // Default path or empty string
-      });
     }
 
     static init() {

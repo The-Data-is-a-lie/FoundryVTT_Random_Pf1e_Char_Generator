@@ -52,13 +52,8 @@ export async function main(deps = {}) {
     const unmodifiedPreExportTemplatePath = charSheetBase.target + "/unmodified_pre_export_template.json";
     const preExportTemplatePath           = charSheetBase.target + "/pre_export_template.json";
     const everyArmorPath                  = charSheetBase.target + "/every_armor.json";
-    // const everyClassPath                  = charSheetBase.target + "/every_class.json";
-    // const everyFeatPath                   = charSheetBase.target + "/every_feat_MODS.json";
     const everyItemPath                   = charSheetBase.target + "/every_item.json";
     const everyRacePath                   = charSheetBase.target + "/every_race.json";
-    // const everySpellPath                  = charSheetBase.target + "/every_spell_MODS.json";
-    // const everyTraitPath                  = charSheetBase.target + "/every_trait.json";
-    // const everyWeaponPath                 = charSheetBase.target + "/every_weapon_MODS.json";
     const archetypePath                   = charSheetBase.target + "/archetype.json";
 
     // space_background
@@ -81,8 +76,7 @@ export async function main(deps = {}) {
     const inherentsPath                   = charSheetBase.target + "/inherents.json";
     const inherents2Path                   = charSheetBase.target + "/inherents2.json";
 
-    // base_folder
-    // const baseFeatPath = base.target + "/base_feat.json";
+    // base_folder (baseFeatPath is declared with the modded/base swap below)
     const baseSkillPath = base.target + "/base_skill.json";
     const customBuffsPath = charSheetBase.target + "/custom_buffs.json";
 

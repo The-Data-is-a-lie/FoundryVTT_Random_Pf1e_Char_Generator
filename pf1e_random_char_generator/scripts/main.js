@@ -11,9 +11,6 @@
   await import('./deliver-data.js');
   console.log("deliver-data ran");
 
-  await import('./fetch-data.js'); // Load fetch-data script
-  console.log("fetch-data ran");
-
   await import('./modify-abilities.js'); // Load modify-abilities script
   console.log("modify-abilities ran");
 
