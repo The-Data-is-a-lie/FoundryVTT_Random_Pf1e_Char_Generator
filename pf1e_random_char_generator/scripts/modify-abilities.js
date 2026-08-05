@@ -72,9 +72,9 @@ export async function main(deps = {}) {
     // Every buff spell as a distributable temp buff "<Spell> (TAG)" (multi-buff distributor).
     const spellBuffsPath                  = charSheetBase.target + "/spell_buffs.json";
 
-    // inherents
+    // inherents. One template, used twice: addStatBuff renames and re-ids every clone, so the
+    // level-up-stats buff and the inherents buff are both built from this file.
     const inherentsPath                   = charSheetBase.target + "/inherents.json";
-    const inherents2Path                   = charSheetBase.target + "/inherents2.json";
 
     // base_folder (baseFeatPath is declared with the modded/base swap below)
     const baseSkillPath = base.target + "/base_skill.json";
@@ -164,7 +164,6 @@ export async function main(deps = {}) {
       talentAuraBuffsPath,
       spellBuffsPath,
       inherentsPath,
-      inherents2Path,
       customBuffsPath,
       sizeForDamageFeaturePath,
       scalingWeaponDamagePath,
