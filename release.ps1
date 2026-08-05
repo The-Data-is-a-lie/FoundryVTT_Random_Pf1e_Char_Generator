@@ -172,16 +172,21 @@ if (Test-Path $stageRoot) { Remove-Item $stageRoot -Recurse -Force }
 New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 
 # Mirror the module dir minus scratch/tooling files: *.bak, *.tmp, .claude/, .env, .git,
-# node_modules, tools/ and the dev-only package.json.
+# node_modules, tools/, .pytest_cache/, the dev-only package.json, and every_class_feature*.json.
 #
 # `tools` and `package.json` are DEV-ONLY and must never reach an end user. Until 2026-08-05 tools/
 # was not excluded, so every release shipped the module's own harnesses, macros and (now) golden
 # fixtures. package.json exists solely so bare `node` can import scripts/*.js as ESM in the test
 # suite; Foundry reads module.json and never consults it.
 #
+# every_class_feature.json + its _MODS twin are 29 MB of JSON that no runtime path fetches -- they
+# are not in modify-abilities.js's filePaths list and never have been. They stay in the REPO, where
+# the generator backend's validate_class_feature_effects.py gate reads them across repos; only the
+# zip loses them. .pytest_cache is a stray from a Python tool that was never part of this module.
+#
 # The *_MODS.json templates MUST ship: main() fetches them whenever the dialog's "modded character
 # sheet" answer is Yes (the default), and a missing one 404s -> HTML -> JSON.parse blows up.
-& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools /XF *.bak *.tmp .env package.json package-lock.json /NFL /NDL /NJH /NJS /NP | Out-Null
+& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { Fail "robocopy failed (exit $LASTEXITCODE)." }
 $global:LASTEXITCODE = 0
 
@@ -221,7 +226,6 @@ $RequiredTemplates = @(
     'character_sheet_folder/talent_aura_buffs.json'
     'character_sheet_folder/spell_buffs.json'
     'character_sheet_folder/inherents.json'
-    'character_sheet_folder/inherents2.json'
     'character_sheet_folder/custom_buffs.json'
     'character_sheet_folder/sizefordamage_feature.json'
     'character_sheet_folder/scaling_weapon_damage.json'
@@ -241,8 +245,13 @@ $nameSet = [System.Collections.Generic.HashSet[string]]::new([string[]]$names)
 $missing = $RequiredTemplates | Where-Object { -not $nameSet.Contains("$ModName/templates/$_") }
 if ($missing) { Fail "Zip is missing runtime templates that main() fetches:`n$($missing -join "`n")" }
 Ok "All $($RequiredTemplates.Count) runtime templates present."
+# Floor, not a target: it exists to catch a zip that lost its big templates, since a mirror that
+# silently copied nothing still zips and still passes every other check. Dropping
+# every_class_feature*.json took the zip from 18.05 MB to 14.99 MB, so the old 15 MB floor would
+# now fail every release. 12 MB keeps roughly the same margin: every_feat.json, every_item.json and
+# every_feat_MODS.json are most of what is left, and losing any one of them lands well under it.
 $zipMB = [math]::Round((Get-Item $zipTarget).Length / 1MB, 1)
-if ($zipMB -lt 15) { Fail "Rebuilt zip is only ${zipMB} MB (<15 MB) -- likely incomplete." }
+if ($zipMB -lt 12) { Fail "Rebuilt zip is only ${zipMB} MB (<12 MB) -- likely incomplete." }
 Ok "Zip: $zipTarget  (${zipMB} MB, $($names.Count) entries)"
 
 # ---- DRY-RUN stops here --------------------------------------------------------------------------
