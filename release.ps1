@@ -105,6 +105,24 @@ if (-not $AllowDirty) {
 }
 Ok 'Preconditions OK.'
 
+# The test suite is the release gate. It runs HERE, before module.json is bumped and the changelog
+# rolled, so a red suite leaves the tree untouched rather than half-released. This is the only thing
+# that runs the suite automatically -- there is no CI (ticket 11) -- so it is deliberately not
+# skippable by -DryRun, which is a rehearsal of the real thing and should catch what the real thing
+# would. `node` absent is a hard failure for the same reason: silently skipping the gate would make
+# the one enforcement point vanish exactly when someone's machine is misconfigured.
+Step 'Running the test suite (release gate)'
+if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+    Fail 'node not found on PATH -- the test suite is the release gate and there is no way around it. Install Node and re-run.'
+}
+Push-Location $ModDir
+& node --test tools/
+$testExit = $LASTEXITCODE
+Pop-Location
+$global:LASTEXITCODE = 0
+if ($testExit -ne 0) { Fail "Test suite failed (exit $testExit). Nothing was changed. Fix it, or re-record goldens with 'node tools/generate_character.test.mjs --update' if the change is intended." }
+Ok 'Test suite green.'
+
 # ---- 2. bump module.json (version, compat, pinned URLs) -------------------------------------------
 Step "Bumping $ManifestRel -> version $Version, pinned to tag v$Version"
 $mj  = [System.IO.File]::ReadAllText($ManifestPath)
@@ -153,10 +171,17 @@ $stageMod  = Join-Path $stageRoot $ModName
 if (Test-Path $stageRoot) { Remove-Item $stageRoot -Recurse -Force }
 New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 
-# Mirror the module dir minus scratch/tooling files: *.bak, *.tmp, .claude/, .env, .git, node_modules.
+# Mirror the module dir minus scratch/tooling files: *.bak, *.tmp, .claude/, .env, .git,
+# node_modules, tools/ and the dev-only package.json.
+#
+# `tools` and `package.json` are DEV-ONLY and must never reach an end user. Until 2026-08-05 tools/
+# was not excluded, so every release shipped the module's own harnesses, macros and (now) golden
+# fixtures. package.json exists solely so bare `node` can import scripts/*.js as ESM in the test
+# suite; Foundry reads module.json and never consults it.
+#
 # The *_MODS.json templates MUST ship: main() fetches them whenever the dialog's "modded character
 # sheet" answer is Yes (the default), and a missing one 404s -> HTML -> JSON.parse blows up.
-& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules /XF *.bak *.tmp .env /NFL /NDL /NJH /NJS /NP | Out-Null
+& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools /XF *.bak *.tmp .env package.json package-lock.json /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { Fail "robocopy failed (exit $LASTEXITCODE)." }
 $global:LASTEXITCODE = 0
 
