@@ -4625,7 +4625,7 @@
     ],
     "rider": "[[ d20 + @skills.acr.mod ]] DC [[20]], then a ranged touch attack against a foe within [[30]] ft; +[[1]] additional attack against a different target per [[5]] points over the DC (max [[6]]); on hit, staggered [[1d4]] rounds; Fortitude Save [[ 17 + @INITMOD ]] halves the damage and negates the staggered condition (multiple instances overlap but do not stack)"
   },
-  "Solar Flare maneuver": {
+  "Solar Flare": {
     "modifiers": [
       {
         "formula": "2d6",

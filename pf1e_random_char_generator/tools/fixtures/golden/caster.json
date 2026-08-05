@@ -11,9 +11,7 @@
   "templates/character_sheet_folder/space_Feats.json"
  ],
  "duplicateItemIds": [],
- "synthesised": [
-  "Path of War: \"Solar Flare maneuver\" not in pf1-pow.disciplines — synthesizing from backend data."
- ],
+ "synthesised": [],
  "template": {
   "_stats": {
    "coreVersion": "11.315",
@@ -8293,10 +8291,26 @@
     "type": "pf1-pow.maneuver"
    },
    {
+    "_stats": {
+     "compendiumSource": null,
+     "coreVersion": "13.347",
+     "createdTime": 1732991463570,
+     "duplicateSource": null,
+     "exportSource": null,
+     "lastModifiedBy": "jI6iseAymTC0jkXd",
+     "modifiedTime": 1736076969747,
+     "systemId": "pf1",
+     "systemVersion": "10.8"
+    },
     "effects": [],
     "flags": {},
-    "img": "icons/svg/sword.svg",
-    "name": "(Strike) Solar Flare maneuver",
+    "folder": "MrVJnKGt79twYb5D",
+    "img": "icons/magic/fire/beam-jet-stream-trails-orange.webp",
+    "name": "(Strike) Solar Flare",
+    "ownership": {
+     "default": 0,
+     "jI6iseAymTC0jkXd": 3
+    },
     "sort": 4060,
     "system": {
      "actions": [],
@@ -8304,7 +8318,7 @@
      "class": "Summoner (Unchained)",
      "contextNotes": [],
      "description": {
-      "value": "<538 chars sha256:0aaa0043ff251cfd>"
+      "value": "<576 chars sha256:388675ce3ff30f05>"
      },
      "discipline": "Solar Wind",
      "granted": false,
@@ -8315,14 +8329,14 @@
      "level": 2,
      "maneuverType": "Strike",
      "ready": false,
-     "saveEffect": "See text",
+     "saveEffect": "Half",
      "saveType": "None",
      "sources": [],
      "stanceActive": false,
      "uses": {
       "autoDeductChargesCost": "",
       "maxFormula": "1",
-      "per": "",
+      "per": "charges",
       "rechargeFormula": "",
       "value": 0
      }
@@ -17316,22 +17330,22 @@
          "name": "<271 chars sha256:831a733899c5eff4>"
         },
         {
-         "_id": "e6AjJQoV",
+         "_id": "hjhFF5l3",
          "default": false,
          "modifiers": [
           {
-           "_id": "fKtEM5JD",
+           "_id": "pCzF7IJC",
            "critical": "nonCrit",
            "damageType": [
             "fire"
            ],
-           "formula": "2d6[Solar Flare maneuver]",
+           "formula": "2d6[Solar Flare]",
            "subTarget": "allDamage",
            "target": "damage",
            "type": "untyped"
           }
          ],
-         "name": "(Strike) Solar Flare maneuver: ignores the target's cover"
+         "name": "(Strike) Solar Flare: ignores the target's cover"
         },
         {
          "_id": "Plu2sq0G",
@@ -17575,7 +17589,7 @@
        }
       },
       {
-       "_id": "HvIQ2apUOdpvOsII",
+       "_id": "Ljd297GAie4b8JHm",
        "ability": {
         "attack": "_default",
         "critMult": 2,
@@ -17670,22 +17684,22 @@
          "name": "<271 chars sha256:831a733899c5eff4>"
         },
         {
-         "_id": "e6AjJQoV",
+         "_id": "hjhFF5l3",
          "default": false,
          "modifiers": [
           {
-           "_id": "fKtEM5JD",
+           "_id": "pCzF7IJC",
            "critical": "nonCrit",
            "damageType": [
             "fire"
            ],
-           "formula": "2d6[Solar Flare maneuver]",
+           "formula": "2d6[Solar Flare]",
            "subTarget": "allDamage",
            "target": "damage",
            "type": "untyped"
           }
          ],
-         "name": "(Strike) Solar Flare maneuver: ignores the target's cover"
+         "name": "(Strike) Solar Flare: ignores the target's cover"
         },
         {
          "_id": "Plu2sq0G",
@@ -19442,22 +19456,22 @@
          "name": "<271 chars sha256:831a733899c5eff4>"
         },
         {
-         "_id": "e6AjJQoV",
+         "_id": "hjhFF5l3",
          "default": false,
          "modifiers": [
           {
-           "_id": "fKtEM5JD",
+           "_id": "pCzF7IJC",
            "critical": "nonCrit",
            "damageType": [
             "fire"
            ],
-           "formula": "2d6[Solar Flare maneuver]",
+           "formula": "2d6[Solar Flare]",
            "subTarget": "allDamage",
            "target": "damage",
            "type": "untyped"
           }
          ],
-         "name": "(Strike) Solar Flare maneuver: ignores the target's cover"
+         "name": "(Strike) Solar Flare: ignores the target's cover"
         },
         {
          "_id": "Plu2sq0G",
@@ -19701,7 +19715,7 @@
        }
       },
       {
-       "_id": "vuO2NTWSx1dKz11p",
+       "_id": "lY1rxShhlTmEPG0y",
        "ability": {
         "attack": "_default",
         "critMult": 2,
@@ -19796,22 +19810,22 @@
          "name": "<271 chars sha256:831a733899c5eff4>"
         },
         {
-         "_id": "e6AjJQoV",
+         "_id": "hjhFF5l3",
          "default": false,
          "modifiers": [
           {
-           "_id": "fKtEM5JD",
+           "_id": "pCzF7IJC",
            "critical": "nonCrit",
            "damageType": [
             "fire"
            ],
-           "formula": "2d6[Solar Flare maneuver]",
+           "formula": "2d6[Solar Flare]",
            "subTarget": "allDamage",
            "target": "damage",
            "type": "untyped"
           }
          ],
-         "name": "(Strike) Solar Flare maneuver: ignores the target's cover"
+         "name": "(Strike) Solar Flare: ignores the target's cover"
         },
         {
          "_id": "Plu2sq0G",
