@@ -18,10 +18,12 @@
  *
  * Run from the module root:  node tools/backfill_pow_classes_into_mods.js
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DIR = path.resolve(__dirname, '..', 'templates', 'character_sheet_folder');
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const DIR = path.resolve(HERE, '..', 'templates', 'character_sheet_folder');
 const SRC = path.join(DIR, 'every_class.json');
 const DST = path.join(DIR, 'every_class_MODS.json');
 

@@ -1,0 +1,1689 @@
+{
+ "Total_HP": 120,
+ "age_number": 48,
+ "alignment": "Neutral Good",
+ "animal_companion": null,
+ "appearance": [
+  "Hazel-eyed"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Storm Caller\": {\n        \"source\": \"Elemental Master's Handbook pg. 16 Many summoners beckon monsters from the Elemental Planes, but few are as specialized as storm callers, who channel the elemental energies of the Plane of Air. Storm callers are most commonly encountered in areas where thunderstorms appear frequently, including supernaturally stormy places like the Sodden Lands.\",\n        \"stormy eidolon\": \" A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon. If the eidolon has neither of these evolutions, it becomes nauseated until it regains one of them. This ability alters eidolon.\",\n        \"summon storm's fury (sp)\": \" A storm caller can summon creatures infused with the power of the storm to help him. This functions as the summoner's summon monster I-IX abilities, except the storm caller can summon only the following creatures at the indicated spell levels: I-eagle; II-small air elemental, small lightning elemental B2 ; III-dire bat; IV-medium air elemental, medium lightning elemental B2 , pteranodon; V-large air elemental, large lightning elemental B2 ; VI-huge air elemental, huge lightning elemental B2 ; VII-roc; VIII-elder air elemental, elder lightning elemental B2 ; IX-advanced elder air elemental, advanced elder lightning elemental B2 . Any creatures summoned with this ability gain immunity to electricity. Alternatively, whenever his eidolon is not summoned, a storm caller can expend a daily use of this ability to summon a magical storm as a standard action. This functions as call lightning with a caster level equal to his summoner level, except as noted below. Each bolt of lightning deals 1d6 points of electricity damage. This damage increases by 1d6 at 3rd level and every 2 levels thereafter, to a maximum of 10d6 at 19th level. The prevailing weather has no effect on the damage of the lightning bolts. The Reflex save DC is equal to 10 + half the storm caller's summoner level + his Charisma modifier. If the storm caller uses this ability again before he has used all of his available bolts of lightning (to summon another magical storm, to summon a monster, or to use the gate spell), any unused bolts are expended with no effect. The storm caller adds call lightning to his summoner spell list as a 3rd-level spell and call lightning storm to his summoner spell list as a 5th-level spell, but he does not automatically add them to his list of spells known. This alters the summoner's summon monster I-IX abilities.\",\n        \"electrical polarity (su)\": \" At 4th level, a storm caller and his eidolon can temporarily form an electrical current between them. The storm caller can expend a use of his summon storm's fury ability as a standard action to create an instantaneous line of lightning between him and his eidolon, provided that the eidolon is within 60 feet of him. The lightning arc deals the same amount of damage to all creatures in the line and has the same save DC as a bolt of lightning from the summon storm's fury ability (unlike call lightning , this damage is dealt only once). The storm caller and his eidolon are not affected by this lightning. At 12th level, the storm caller gains the benefit of his eidolon's resistance (electricity) or immunity (electricity) evolution whenever he is within 30 feet of the eidolon. This ability replaces shield ally and greater shield ally.\",\n        \"storm's wings (su)\": \" At 6th level, a storm caller can borrow some of his eidolon's elemental might. He can gain the flight evolution ( Pathfinder Unchained 37) as though he were using the summoner's aspect ability, deducting 2 evolution points from the eidolon's evolution pool. If he does so, his eidolon is unable to take the flight evolution as long as the storm caller has that evolution. At 8th level, the storm caller's eidolon can have the flight evolution even if the storm caller has that evolution. At 10th level, the storm caller automatically gains the flight evolution without reducing the number of evolution points available to the eidolon. He can use the aspect ability (and at 18th level, the greater aspect ability) to gain additional evolutions. This ability replaces maker's call and transposition.\"\n    }\n}",
+ "armor_ac": "8",
+ "armor_armor_check_penalty": "-7",
+ "armor_enhancement_bonus": 2,
+ "armor_enhancement_chosen_list": [],
+ "armor_max_dex_bonus": "0",
+ "armor_name": "Agile half-plate",
+ "armor_spell_failure": 0,
+ "armor_weight": "55 lbs.",
+ "bab_total": 10,
+ "background_traits": [
+  "Inspiring Rush"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [],
+ "buff_gaps": [],
+ "build_archetype": "Spellblade",
+ "build_tactics": "Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.",
+ "c_class": "summoner",
+ "c_class_2": "cleric",
+ "c_class_display": "Summoner (Unchained)",
+ "casting_level_str_foundry": "med",
+ "casting_tradition": {
+  "bonus_spell_points": 1,
+  "boons": [
+   "Easy Focus",
+   "Fortified Casting"
+  ],
+  "boons_detail": [
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
+   }
+  ],
+  "casting_ability_modifier": "Intelligence",
+  "drawbacks": [
+   "Draining Casting",
+   "Extended Casting",
+   "Somatic Casting",
+   "Prepared Caster"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   },
+   {
+    "counts_as": 2,
+    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
+    "name": "Extended Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   }
+  ]
+ },
+ "cha": 10,
+ "character_full_name": "Pauline Dupont",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "mind-affecting",
+  "earth"
+ ],
+ "class feature levels": {},
+ "class feature owners": {
+  "Luck": "cleric",
+  "Strength": "cleric"
+ },
+ "class features": {
+  "Luck": {
+   "Bit of Luck (Sp)": [
+    "You can touch a willing creature as a standard action, giving it a bit of luck. For the next round, any time the target rolls a d20, he may roll twice and take the more favorable result. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "Good Fortune (Ex)": [
+    "At 6th level, as an immediate action, you can reroll any one d20 roll you have just made before the results of the roll are revealed. You must take the result of the reroll, even if its worse than the original roll. You can use this ability once per day at 6th level, and one additional time per day for every six cleric levels beyond 6th."
+   ],
+   "bonus spells": [
+    "true strike",
+    "aid",
+    "protection from energy",
+    "freedom of movement",
+    "break enchantment",
+    "mislead",
+    "spell turning",
+    "moment of prescience",
+    "miracle"
+   ],
+   "subdomains": [
+    "Curse",
+    "Fate",
+    "Imagination"
+   ]
+  },
+  "Skill Unlock: Disguise": {
+   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15 Ranks": "You can create a disguise as a full-round action.",
+   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  },
+  "Strength": {
+   "Might of the Gods (Su)": [
+    "At 8th level, you can add your cleric level as an enhancement bonus to your Strength score for a number of rounds per day equal to your cleric level. This bonus only applies on Strength checks and Strength-based skill checks. These rounds do not need to be consecutive."
+   ],
+   "Strength Surge (Sp)": [
+    "As a standard action, you can touch a creature to give it great strength. For 1 round, the target gains an enhancement bonus equal to 1/2 your cleric level (minimum +1) to melee attacks, combat maneuver checks that rely on Strength, Strength-based skills, and Strength checks. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "bonus spells": [
+    "enlarge person",
+    "bulls strength",
+    "magic vestment",
+    "spell immunity",
+    "righteous might",
+    "stoneskin",
+    "grasping hand",
+    "clenched fist",
+    "crushing hand"
+   ],
+   "subdomains": [
+    "Competition",
+    "Ferocity",
+    "Fist",
+    "Resolve",
+    "Self-Realization"
+   ]
+  }
+ },
+ "class_ability": [
+  "spells_summoner (unchained)",
+  "cantrips_summoner (unchained)",
+  "eidolon_summoner (unchained)",
+  "life link_summoner (unchained)",
+  "summon monster i (sp)_summoner (unchained)",
+  "bond senses_summoner (unchained)",
+  "shield ally_summoner (unchained)",
+  "maker's call_summoner (unchained)",
+  "transposition_summoner (unchained)",
+  "aspect_summoner (unchained)",
+  "greater shield ally_summoner (unchained)",
+  "life bond_summoner (unchained)",
+  "merge forms_summoner (unchained)",
+  "greater aspect_summoner (unchained)",
+  "twin eidolon_summoner (unchained)",
+  "aura_cleric",
+  "spells_cleric",
+  "channel energy_cleric",
+  "domains_cleric",
+  "orisons_cleric",
+  "spontaneous casting_cleric",
+  "chaotic, evil, good, and lawful spells_cleric",
+  "bonus languages_cleric"
+ ],
+ "class_ability_desc": {
+  "aspect": "At 10th level, a summoner can divert up to 2 points from his eidolon's evolution pool to add evolutions to himself. He cannot select any evolution that the eidolon could not possess, and he must be able to meet the requirements as well (except for subtype requirements, so long as his eidolon meets the subtype requirement). He cannot select the ability increase evolution through this ability. Any points spent in this way are taken from the eidolon's evolution pool (reducing the total number available to the eidolon). The summoner can change the evolutions granted by these points anytime he can change the eidolon's evolutions.",
+  "aura": "A cleric of a chaotic, evil, good, or lawful deity has a particularly powerful aura corresponding to the deity's alignment (see the detect evil spell for details).",
+  "bond senses": "At 2nd level, a summoner can, as a standard action, share the senses of his eidolon, hearing, seeing, smelling, tasting, and touching everything the eidolon does. He can use this ability a number of rounds per day equal to his summoner level. There is no maximum range to this effect, but the eidolon and the summoner must be on the same plane. The summoner can end this effect as a free action.",
+  "bonus languages": "A cleric's bonus language options include Celestial, Abyssal, and Infernal (the languages of good, chaotic evil, and lawful evil outsiders, respectively). These choices are in addition to the bonus languages available to the character because of her race. Ex-Clerics A cleric who grossly violates the code of conduct required by her god loses all spells and class features, except for armor and shield proficiencies and proficiency with simple weapons. She cannot thereafter gain levels as a cleric of that god until she atones for her deeds (see the atonement spell description). Alternate Capstones",
+  "cantrips": "A summoner learns a number of cantrips, or 0-level spells, as noted on Table 1-5. These spells are cast like any other spell, but they do not consume any slots and may be used again. Cantrips prepared using other spell slots (due to metamagic feats, for example) consume spell slots as normal.",
+  "channel energy": "Regardless of alignment, any cleric can release a wave of energy by channeling the power of her faith through her holy (or unholy) symbol. This energy can be used to cause or heal damage, depending on the type of energy channeled and the creatures targeted. A good cleric (or one who worships a good deity) channels positive energy and can choose to deal damage to undead creatures or to heal living creatures. An evil cleric (or one who worships an evil deity) channels negative energy and can choose to deal damage to living creatures or to heal undead creatures. A neutral cleric who worships a neutral deity (or one who is not devoted to a particular deity) must choose whether she channels positive or negative energy. Once this choice is made, it cannot be reversed. This decision also determines whether the cleric casts spontaneous cure or inflict spells (see spontaneous casting). Channeling energy causes a burst that affects all creatures of one type (either undead or living) in a 30-foot radius centered on the cleric. The amount of damage dealt or healed is equal to 1d6 points of damage plus 1d6 points of damage for every two cleric levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the cleric's level + the cleric's Charisma modifier. Creatures healed by channeled energy cannot exceed their maximum hit point total-all excess healing is lost. A cleric may channel energy a number of times per day equal to 3 + her Charisma modifier. This is a standard action that does not provoke an attack of opportunity. A cleric can choose whether or not to include herself in this effect. A cleric must be able to present her holy symbol to use this ability.",
+  "chaotic, evil, good, and lawful spells": "A cleric can't cast spells of an alignment opposed to her own or her deity's (if she has one). Spells associated with particular alignments are indicated by the chaotic, evil, good, and lawful descriptors in their spell descriptions.",
+  "domains": "A cleric's deity influences her alignment, what magic she can perform, her values, and how others see her. A cleric chooses two domains from among those belonging to her deity. A cleric can select an alignment domain (Chaos, Evil, Good, or Law) only if her alignment matches that domain. If a cleric is not devoted to a particular deity, she still selects two domains to represent her spiritual inclinations and abilities (subject to GM approval). The restriction on alignment domains still applies. Each domain grants a number of domain powers, dependent upon the level of the cleric, as well as a number of bonus spells. A cleric gains one domain spell slot for each level of cleric spell she can cast, from 1st on up. Each day, a cleric can prepare one of the spells from her two domains in that slot. If a domain spell is not on the cleric spell list, a cleric can prepare it only in her domain spell slot. Domain spells cannot be used to cast spells spontaneously. In addition, a cleric gains the listed powers from both of her domains, if she is of a high enough level. Unless otherwise noted, using a domain power is a standard action. A full list of Cleric Domains can be found",
+  "eidolon": "A summoner begins play with the ability to summon to his side a powerful outsider called an eidolon. The eidolon forms a link with the summoner, who forever after summons an aspect of the same creature. Each eidolon has a subtype, chosen when the eidolon is first summoned, that determines its origin and many of its abilities. An eidolon must be within one alignment step of the summoner who calls it (so a neutral good summoner can call a neutral, lawful good, or chaotic good eidolon) and can speak all of his languages. An eidolon is treated as a summoned creature, except it is not sent back to its home plane until reduced to a number of negative hit points equal to or greater than its Constitution score. In addition, due to its tie to its summoner, an eidolon can touch and attack creatures warded by protection from evil and similar effects that prevent contact with summoned creatures. A summoner can summon his eidolon in a ritual that takes 1 minute to perform. When summoned in this way, the eidolon's hit points are unchanged from the last time it was summoned. The only exception to this is if the eidolon was slain, in which case it returns with half its normal hit points. The eidolon does not heal naturally. The eidolon remains until dismissed by the summoner (a standard action). If the eidolon is sent back to its home plane due to death, it cannot be summoned again until the following day. The eidolon cannot be sent back to its home plane by means of dispel magic , but spells such as dismissal and banishment function normally. If the summoner is unconscious, asleep, or killed, his eidolon is immediately banished. The eidolon takes a form shaped by the summoner's desires. The eidolon's Hit Dice, saving throws, skills, feats, and abilities are tied to the summoner's class level and increase as the summoner gains levels. In addition, each eidolon gains a pool of evolution points based on the summoner's class level that can be used to give the eidolon different abilities and powers. Whenever the summoner gains a level, he must decide how these points are spent, and they are set until he gains another level of summoner. The eidolon's physical appearance is up to the summoner, but it always appears as some sort of fantastical creature appropriate to its subtype. This control is not fine enough to make the eidolon appear like a specific creature. The eidolon also bears a glowing rune that is identical to a rune that appears on the summoner's forehead as long as the eidolon is summoned. While this rune can be hidden through mundane means, it cannot be concealed through magic that changes appearance, such as alter self or polymorph (although invisibility does conceal it as long as the spell lasts).",
+  "greater aspect": "At 18th level, a summoner can divert more of his eidolon's evolutions to himself. This ability functions as the aspect ability, but the maximum number of evolution points the summoner can divert increases to 6. In addition, the eidolon loses 1 point from its evolution pool for every 2 points (or fraction thereof ) diverted to the summoner instead of losing 1 point from the evolution pool for each point diverted.",
+  "greater shield ally": "At 12th level, whenever an ally is within reach of the summoner's eidolon, the ally gains a +2 shield bonus to its Armor Class and a +2 circumstance bonus on its saving throws. If this ally is the summoner, these bonuses increase to +4. This bonus does not apply if the eidolon is grappled, helpless, paralyzed, stunned, or unconscious.",
+  "life bond": "At 14th level, the summoner's life becomes linked to his eidolon's. As long as the eidolon has 1 or more hit points, the summoner is protected from harm. Damage in excess of that which would reduce the summoner to 0 hit points is instead transferred to the eidolon. This damage is transferred 1 point at a time, meaning that as soon as the eidolon is reduced to a number of negative hit points equal to its Constitution score, all excess damage remains with the summoner. Effects that cause death but don't deal damage are unaffected by this ability. This ability does not affect spells such as baleful polymorph , flesh to stone , imprisonment , or other spells that don't deal damage.",
+  "life link": "At 1st level, a summoner forms a close bond with his eidolon. Whenever the eidolon takes enough damage to send it back to its home plane, as a reaction to the damage, the summoner can sacrifice any number of hit points he has without using an action. Each hit point sacrificed in this way prevents 1 point of damage dealt to the eidolon. This can prevent the eidolon from being sent back to its home plane. In addition, the eidolon and the summoner must remain within 100 feet of one another for the eidolon to remain at full strength. If the eidolon is beyond 100 feet but closer than 1,000 feet, its current and maximum hit point totals are reduced by 50%. If the eidolon is more than 1,000 feet away but closer than 10,000 feet, its current and maximum hit point totals are reduced by 75%. If the eidolon is more than 10,000 feet away, it is immediately returned to its home plane. Current hit points lost in this way are not restored when the eidolon gets closer to its summoner, but its maximum hit point total does climb to the levels indicated and eventually returns to normal.",
+  "maker's call": "At 6th level, as a standard action, a summoner can call his eidolon to his side. This functions as dimension door , using the summoner's caster level. When this ability is used, the eidolon appears adjacent to the summoner (or as close as possible if all adjacent spaces are occupied). If the eidolon is out of range, the ability is wasted. The summoner can use this ability once per day at 6th level, plus one additional time per day for every four levels beyond 6th.",
+  "merge forms": "At 16th level, as a full-round action, a summoner can touch his eidolon and the two can merge forms. This transformation includes all of the summoner's gear. While merged in this way, the summoner is protected from harm and cannot be the target of spells or effects. All effects and spells currently targeting the summoner are suspended until the summoner emerges from the eidolon (although durations continue to expire). The summoner can cast spells while inside the eidolon by taking control of the eidolon for the duration of the casting. Any material components used for these spells are taken from the summoner's gear, even though they are otherwise inaccessible. The summoner can direct all of the eidolon's actions while merged, can perceive through its senses, and can speak through its voice. The summoner can use this ability for a number of rounds per day equal to his summoner level. He can end this effect at any time as a swift action. The summoner emerges in a square adjacent to the eidolon if able. If the eidolon is returned to its home plane while the summoner is merged with it, the summoner is immediately ejected, takes 4d6 points of damage, and is stunned for 1 round.",
+  "orisons": "Clerics can prepare a number of orisons, or 0-level spells, each day, as noted on Table: Cleric under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again.",
+  "shield ally": "At 4th level, whenever a summoner is within his eidolon's reach, the summoner gains a +2 shield bonus to his Armor Class and a +2 circumstance bonus on his saving throws. This bonus does not apply if the eidolon is grappled, helpless, paralyzed, stunned, or unconscious.",
+  "spells": "A cleric casts divine spells which are drawn from the cleric spell list presented in Spell Lists. Her alignment, however, may restrict her from casting certain spells opposed to her moral or ethical beliefs; see chaotic, evil, good, and lawful spells. A cleric must choose and prepare her spells in advance. To prepare or cast a spell, a cleric must have a Wisdom score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a cleric's spell is 10 + the spell level + the cleric's Wisdom modifier. Like other spellcasters, a cleric can cast only a certain number of spells of each spell level per day. Her base daily spell allotment is given on Table: Cleric. In addition, she receives bonus spells per day if she has a high Wisdom score (see Table: Ability Modifiers and Bonus Spells). Clerics meditate or pray for their spells. Each cleric must choose a time when she must spend 1 hour each day in quiet contemplation or supplication to regain her daily allotment of spells. A cleric may prepare and cast any spell on the cleric spell list, provided that she can cast spells of that level, but she must choose which spells to prepare during her daily meditation.",
+  "spontaneous casting": "A good cleric (or a neutral cleric of a good deity) can channel stored spell energy into healing spells that she did not prepare ahead of time. The cleric can \"lose\"any prepared spell that is not an orison or domain spell in order to cast any cure spell of the same spell level or lower (a cure spell is any spell with \"cure\"in its name). An evil cleric (or a neutral cleric who worships an evil deity) can't convert prepared spells to cure spells but can convert them to inflict spells (an inflict spell is one with \"inflict\"in its name). A cleric who is neither good nor evil and whose deity is neither good nor evil can convert spells to either cure spells or inflict spells (player's choice). Once the player makes this choice, it cannot be reversed. This choice also determines whether the cleric channels positive or negative energy (see Channel Energy).",
+  "summon monster i (sp)": "At 1st level, a summoner can cast summon monster I as a spell-like ability a number of times per day equal to 3 + his Charisma modifier. Drawing on this ability uses up the same power that the summoner uses to call his eidolon. As a result, he can use this ability only when his eidolon is not summoned. He can cast this spell as a standard action, and the creatures remain for 1 minute per level (instead of 1 round per level). At 3rd level, and every 2 levels thereafter, the power of this ability increases by 1 spell level, allowing him to summon more powerful creatures (to a maximum of summon monster IX at 17th level). At 19th level, this ability can be used as gate or summon monster IX . If used as gate , the summoner must pay any required material components. A summoner cannot have more than one summon monster or gate spell active in this way at one time. If this ability is used again, any existing summon monster or gate from this spell-like ability immediately ends. These summon spells are considered to be part of the summoner's spell list for the purposes of spell trigger and spell completion items. In addition, the summoner can expend uses of this ability to fulfill the construction requirements of any magic item he creates, so long as he can use this ability to cast the required spell.",
+  "transposition": "At 8th level, a summoner can use his maker's call ability to swap locations with his eidolon. If the eidolon occupies more squares than the summoner, the summoner can appear in any square occupied by the eidolon. The eidolon must occupy the square that was occupied by the summoner if able, or as close as possible if it is not able.",
+  "twin eidolon": "At 20th level, a summoner and his eidolon share a true connection. As a standard action, the summoner can assume the shape of his eidolon, copying all of its evolutions, form, and abilities. His Strength, Dexterity, and Constitution scores change to match the base scores of his eidolon. He can choose to have any gear that he carries become absorbed by his new form, as with spells from the polymorph subschool. Items with continuous effects continue to function while absorbed in this way. The summoner loses his natural attacks and all racial traits (except bonus feats, skills, and languages) in favor of the abilities granted by his eidolon's evolutions. The summoner retains all of his class features. The summoner can keep this form for a number of minutes per day equal to his summoner level. This duration does not need to be consecutive, but it must be spent in 1-minute increments. The summoner can end this effect as a free action. Alternate Capstones"
+ },
+ "class_feat_labels": [],
+ "class_feat_tax_dict": {},
+ "class_feats": [],
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {},
+ "class_feature_owners": {
+  "Luck": "cleric",
+  "Strength": "cleric"
+ },
+ "class_features": {
+  "Luck": {
+   "Bit of Luck (Sp)": [
+    "You can touch a willing creature as a standard action, giving it a bit of luck. For the next round, any time the target rolls a d20, he may roll twice and take the more favorable result. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "Good Fortune (Ex)": [
+    "At 6th level, as an immediate action, you can reroll any one d20 roll you have just made before the results of the roll are revealed. You must take the result of the reroll, even if its worse than the original roll. You can use this ability once per day at 6th level, and one additional time per day for every six cleric levels beyond 6th."
+   ],
+   "bonus spells": [
+    "true strike",
+    "aid",
+    "protection from energy",
+    "freedom of movement",
+    "break enchantment",
+    "mislead",
+    "spell turning",
+    "moment of prescience",
+    "miracle"
+   ],
+   "subdomains": [
+    "Curse",
+    "Fate",
+    "Imagination"
+   ]
+  },
+  "Skill Unlock: Disguise": {
+   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15 Ranks": "You can create a disguise as a full-round action.",
+   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  },
+  "Strength": {
+   "Might of the Gods (Su)": [
+    "At 8th level, you can add your cleric level as an enhancement bonus to your Strength score for a number of rounds per day equal to your cleric level. This bonus only applies on Strength checks and Strength-based skill checks. These rounds do not need to be consecutive."
+   ],
+   "Strength Surge (Sp)": [
+    "As a standard action, you can touch a creature to give it great strength. For 1 round, the target gains an enhancement bonus equal to 1/2 your cleric level (minimum +1) to melee attacks, combat maneuver checks that rely on Strength, Strength-based skills, and Strength checks. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "bonus spells": [
+    "enlarge person",
+    "bulls strength",
+    "magic vestment",
+    "spell immunity",
+    "righteous might",
+    "stoneskin",
+    "grasping hand",
+    "clenched fist",
+    "crushing hand"
+   ],
+   "subdomains": [
+    "Competition",
+    "Ferocity",
+    "Fist",
+    "Resolve",
+    "Self-Realization"
+   ]
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Storm Caller": {
+     "electrical polarity (su)": " At 4th level, a storm caller and his eidolon can temporarily form an electrical current between them. The storm caller can expend a use of his summon storm's fury ability as a standard action to create an instantaneous line of lightning between him and his eidolon, provided that the eidolon is within 60 feet of him. The lightning arc deals the same amount of damage to all creatures in the line and has the same save DC as a bolt of lightning from the summon storm's fury ability (unlike call lightning , this damage is dealt only once). The storm caller and his eidolon are not affected by this lightning. At 12th level, the storm caller gains the benefit of his eidolon's resistance (electricity) or immunity (electricity) evolution whenever he is within 30 feet of the eidolon. This ability replaces shield ally and greater shield ally.",
+     "source": "Elemental Master's Handbook pg. 16 Many summoners beckon monsters from the Elemental Planes, but few are as specialized as storm callers, who channel the elemental energies of the Plane of Air. Storm callers are most commonly encountered in areas where thunderstorms appear frequently, including supernaturally stormy places like the Sodden Lands.",
+     "storm's wings (su)": " At 6th level, a storm caller can borrow some of his eidolon's elemental might. He can gain the flight evolution ( Pathfinder Unchained 37) as though he were using the summoner's aspect ability, deducting 2 evolution points from the eidolon's evolution pool. If he does so, his eidolon is unable to take the flight evolution as long as the storm caller has that evolution. At 8th level, the storm caller's eidolon can have the flight evolution even if the storm caller has that evolution. At 10th level, the storm caller automatically gains the flight evolution without reducing the number of evolution points available to the eidolon. He can use the aspect ability (and at 18th level, the greater aspect ability) to gain additional evolutions. This ability replaces maker's call and transposition.",
+     "stormy eidolon": " A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon. If the eidolon has neither of these evolutions, it becomes nauseated until it regains one of them. This ability alters eidolon.",
+     "summon storm's fury (sp)": " A storm caller can summon creatures infused with the power of the storm to help him. This functions as the summoner's summon monster I-IX abilities, except the storm caller can summon only the following creatures at the indicated spell levels: I-eagle; II-small air elemental, small lightning elemental B2 ; III-dire bat; IV-medium air elemental, medium lightning elemental B2 , pteranodon; V-large air elemental, large lightning elemental B2 ; VI-huge air elemental, huge lightning elemental B2 ; VII-roc; VIII-elder air elemental, elder lightning elemental B2 ; IX-advanced elder air elemental, advanced elder lightning elemental B2 . Any creatures summoned with this ability gain immunity to electricity. Alternatively, whenever his eidolon is not summoned, a storm caller can expend a daily use of this ability to summon a magical storm as a standard action. This functions as call lightning with a caster level equal to his summoner level, except as noted below. Each bolt of lightning deals 1d6 points of electricity damage. This damage increases by 1d6 at 3rd level and every 2 levels thereafter, to a maximum of 10d6 at 19th level. The prevailing weather has no effect on the damage of the lightning bolts. The Reflex save DC is equal to 10 + half the storm caller's summoner level + his Charisma modifier. If the storm caller uses this ability again before he has used all of his available bolts of lightning (to summon another magical storm, to summon a monster, or to use the gate spell), any unused bolts are expended with no effect. The storm caller adds call lightning to his summoner spell list as a 3rd-level spell and call lightning storm to his summoner spell list as a 5th-level spell, but he does not automatically add them to his list of spells known. This alters the summoner's summon monster I-IX abilities."
+    }
+   },
+   "display": "Summoner (Unchained)",
+   "level": 9,
+   "name": "summoner (unchained)"
+  },
+  {
+   "archetype": {
+    "Varisian Pilgrim": {
+     "blessing of the harrow (su)": "  At 8th level, once per day the pilgrim may perform a harrowing for herself or another creature. This is otherwise identical to the blessing of the harrow from the harrower prestige class ( Inner Sea World Guide 276). This replaces an 8th-level domain power of the Varisian pilgrim's choice.",
+     "caravan bond (su)": "  At 1st level, by leading a group prayer for 1 minute, a Varisian pilgrim can select a number of traveling companions equal to her cleric level + her Wisdom bonus. She may use her domain-granted powers on any of these traveling companions as if they were her. She can use these abilities on her traveling companions at a range of up to 30 feet, even if the ability normally requires her touch. This ability replaces the cleric's proficiency with medium armor and shields- she retains proficiency with light armor only.",
+     "fortunate road": "  At 1st level, a Varisian pilgrim must select the Chaos, Community, Liberation, Luck, Travel, or Weather domain (or the Exploration, Fate, Freedom, Trade, or Seasons subdomains from the Advanced Player's Guide , if available in the campaign) as one of her domains. If the cleric worships a deity that doesn't normally grant one of these domains, she gains access to this domain but can only pick this one domain-she effectively loses the option to pick a second domain. As a result, very few clerics who worship deities who don't grant access to one of the domains or subdomains listed above opt to become Varisian pilgrims. In all other respects, this works like and replaces the standard cleric's domain ability.",
+     "source": "Inner Sea Magic pg. 42 While most clerics are associated with a particular temple, adventuring clerics spend much of their time away from their favored place of worship, and there are those who worship primarily on the road and during the journey. These clerics see the act of travel and the arrival at sites sacred to their religion as valuable, and perhaps more so than time spent sequestered inside a church. Relatively common in Varisia, these pilgrims love to travel, typically on foot or with caravans. While the archetype is called the 'Varisian pilgrim,' this archetype can be selected by any cleric who prefers to worship while on the move. Whether or not they are Varisian, these clerics learn a little about fortune-telling and a lot about people. A Varisian pilgrim has the following class features."
+    }
+   },
+   "display": "Cleric",
+   "level": 6,
+   "name": "cleric"
+  }
+ ],
+ "combat_talent_items": [
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You channel the serpent, improving your tenacity and grip.\n\nYou gain the following abilities which can be used while grappling:\n\nWhen Your Grappled Target Is Being Moved Away From You: While you are grappling another creature, any effect which would move your grappled target out of your reach must also succeed against you and your relevant statistic (CMD, saving throw, ability check, etc.) or fail to move the grappled target.\n\nWhen You Are Being Moved Away From Your Grappled Target: If an effect would move you away from your grappled target, you may attempt a grapple combat maneuver against your grappled target's CMD as an immediate action. If the target is battered, you may spend an attack of opportunity in place of an immediate action instead. If you are successful, the grappled target is moved into the nearest unoccupied and safe space within your reach and remains grappled. A grappled target being moved this way does not provoke attacks of opportunity.\n\nIf there is no unoccupied, safe space within your reach when attempting to move your grappled target with you, the target is moved into the nearest unoccupied, safe space near your new location, is released from your grapple, and is staggered for a number of rounds equal to 1/2 your practitioner modifier (minimum 1 round).\n\nSpecial: The abilities granted by Stubborn Serpent's Coils do not function against Warp sphere effects or other teleportation effects. If you possess the Inescapable Grasp talent, you may use the abilities granted by this talent against teleportation or Warp effects originating from a source other than your grappled target which would move your grappled target out of your grapple.\n\nWhen Your Grappled Target Is Being Moved Away From You: You are granted a saving throw or other appropriate check to negate a teleportation effect which would move your grappled target out of your grapple, as described in this ability.\n\nWhen You Are Being Moved Away From Your Grappled Target: You may include your grappled target in a teleport effect that would move you. If your grappled target is unwilling, the teleportation effect must be able to target an unwilling creature and the creature receives a saving throw against the effect, otherwise the grappled target is not moved with you and your grapple ends.\n\nExamples: Grappling is a complex and often confusing combat maneuver. Two examples are included with this talent to help better demonstrate how this talent is used.\n\nIf your grappled target is being moved away from you: A creature which uses the bull rush combat maneuver to push your grappled target away from you must also succeed against your CMD while grappling. A Wind severity effect would fail to push your grappled target if the Wind severity effect fails to push you. If a Telekinesis sphere effect would attempt to lift and move your grappled target out of your reach, the Telekinesis sphere caster would treat this as contested control over an item.\n\nIf you are being moved away from your grappled target: If a creature uses the bull rush combat maneuver to push you away from your grappled target, you can attempt a grapple combat maneuver as an immediate action (or as an attack of opportunity if the target is battered) against your grappled target. If you are successful, the grappled target also moves into an unoccupied, safe space within your reach and your grapple would not end.",
+   "name": "Stubborn Serpent’s Coils",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever a creature provokes an attack of opportunity from you, you may expend your martial focus to make a grapple check against them as an immediate action; if this grapple check is successful, you may make a trip attempt against that creature as a free action.",
+   "name": "Powerslam",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may attempt a grapple at the end of a charge in place of the normally granted attack. If this grapple attempt is successful, the creature must succeed at a Reflex save or fall prone.",
+   "name": "Tackle",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "As long as you have martial focus, you may maintain a grapple as a move action. Associated Feat: Greater Grapple.",
+   "name": "Greater Grapple",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you successfully maintain a grapple against a creature you have already pinned, you may expend your martial focus as an immediate action to attempt to damage one of the creatures limbs; the creature must succeed at a Fortitude save or have one of its limbs damaged by you (arms, legs, tentacles, or wings), ending the grapple. The penalties for a damaged limb are identical to the effects of a removed limb from the Limb Ripper talent except as follows:\n\nThe creature suffers no bleed damage.\n\nAny numerical penalties associated with the limb are halved.\n\nThe condition lasts for 1 round plus 1 round per 4 points of base attack bonus you possess.\n\nNote: Undead are not immune to this effect and must make the saving throw.",
+   "name": "Armbar",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever a creature attempts to magically escape a grapple with a teleportation or Warp effect, you may make a special combat maneuver check against their CMD as an immediate action. If successful, the escape fails and they provoke an attack of opportunity from you. At +10 base attack bonus, if you make a grapple attempt against a creature under the effect of a freedom of movement spell or similar effect, that effect is suppressed for the duration of the grapple.\n\nAuthor's Note: This talent only applies against teleportation effects originating from the grappled target, not from any source. At 10+ base attack bonus, this talent can suppress freedom of movement and other similar effects (like the Fate sphere's Freedom (word)), regardless of their source.",
+   "name": "Inescapable Grasp",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you successfully maintain a grapple against a creature you have already pinned, instead of one of the options normally available when you maintain a grapple, you may lift them over your head and smash them into the ground, automatically threatening a critical hit with your unarmed strike and rolling to confirm as normal. If the critical threat confirms successfully, the creature must make a successful Fortitude save or be staggered for 1 round. Use of this talent breaks your grapple on the creature. At +10 base attack bonus, the target is dazed for 1 round instead.\n\nThis talent is not a (slam) itself, and cannot be used together with a (slam).",
+   "name": "Piledriver",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": true,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Treat the result of your grapple check as a dispel check against the target of your grapple as though you were making a targeted dispel with dispel magic (compare your grapple check to the effect on the target with the highest caster level (DC = 11 + the spell's caster level). If successful, that effect ends. If not, compare the same result to the spell with the next highest caster level. Repeat this process until you have dispelled one spell affecting the target, or you have failed to dispel every spell). If you grapple a summoned creature, this can end the spell that summoned them.",
+   "name": "Magic Killing Grip",
+   "sphere": "Wrestling",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  }
+ ],
+ "con": 9,
+ "counter_schools": [
+  "illusion",
+  "transmutation"
+ ],
+ "counter_spell_descriptor": [
+  "fire",
+  "force"
+ ],
+ "craft_type": "Locks",
+ "day_list": [
+  0,
+  5,
+  4,
+  3
+ ],
+ "deity_name": "Kurgess",
+ "dex": 11,
+ "enhancement_effects_dict": {},
+ "equip_descrip": {
+  "belts": {
+   "description": " this snakeskin belt's buckle is shaped\r like a serpent's head. The wearer\r gains a +2 enhancement bonus to\r strength and a +2 competence bonus\r on grapple combat maneuver checks. \r treat the enhancement bonus to strength as temporary ability\r bonus for the first 24 hours the belt is worn. In addition, the\r belt grants the wearer the constrict ability (bestiary 298) for\r 1d6 points of damage plus the wearer's strength modifier. ",
+   "item_name": "Anaconda's Coils"
+  },
+  "body": {
+   "description": " this hole-ridden burlap robe would appear completely worthless if not for the immaculate red velvet lining its interior. When worn inside out, a liar's robe enshrouds the wearer in a continually shifting array of colors, features, and faces that obscure his entire appearance and make physical recognition all but impossible. This effect lasts for 1 hour, during which time the wearer can go back and forth between wearing the robe inside out (disguising himself) and right side out (revealing his true form) any number of times. Witnesses to a creature wearing a liar's robe must use true seeing or a similar effect in order to pierce through this disguise; otherwise, they see the wearer only as a continually shifting humanoid form. The wearer's voice, scent, and other tangible cues are also continually altered and distorted, though indirect magical means of identification (such as detect thoughts or locate creature) may still be used to recognize the individual. Since even the most magically disinclined individuals can clearly tell that the wearer is enshrouded in an illusion, a liar's robe is typically used in circumstances when it's appropriate to protect the wearer's anonymity without the wearer feigning another identity or hiding her presence. ",
+   "item_name": "Liar's Robe"
+  },
+  "rings": {
+   "description": "The surface of this silver ring never tarnishes, but when an evil creature is wearing it, its luster diminishes. Whenever the wearer takes the total defense action, he can activate the ring, creating a magic circle against evil effect centered on him. This effect lasts 10 rounds per day, though the rounds don't need to be spent consecutively. Once activated, the effect expends rounds until the user ends it as a move action or the rounds run out. s a standard action while the magic circle is active, the wearer can release the protective circle's energy as a violent blast. This functions as holy smite centered on the wearer, but the wearer can exclude a 10-foot-radius area from the center of the affected area. Releasing the energy expends all the ring's remaining rounds and can be done only if at least 5 rounds remain. The ring's power renews each day at dawn.",
+   "item_name": "Heavenly Aegis Ring"
+  }
+ },
+ "equipment_list": [
+  "Anaconda's Coils",
+  "Liar's Robe",
+  "Steelhand Circle",
+  "Heavenly Aegis Ring"
+ ],
+ "eye_color": [
+  "Blue"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 0,
+  "flavor": 1,
+  "flaw": 2,
+  "normal": 8,
+  "profession": 2,
+  "story": 4,
+  "teamwork": 0,
+  "trainer": 9
+ },
+ "feat_changes_dict": {},
+ "feat_conditionals_dict": {},
+ "feats": [
+  "Acrobatic",
+  "Improved Day Job",
+  "Cloak Dance",
+  "Alertness",
+  "Endurance",
+  "Martial Training I (Solar Wind)",
+  "Martial Training III (Solar Wind)",
+  "Blighted Critical",
+  "Multi Talented",
+  "True Calling"
+ ],
+ "feats_feat_tax_dict": {
+  "Alertness": [
+   "uncanny alertness"
+  ],
+  "Endurance": [
+   "altitude affinity",
+   "cold celerity"
+  ],
+  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)": [
+   "Extra Combat Talent"
+  ],
+  "Martial Training I (Solar Wind)": [
+   "Martial Training II (Solar Wind)"
+  ],
+  "Martial Training III (Solar Wind)": [
+   "Martial Training IV (Solar Wind)"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [
+  "Shield Wall"
+ ],
+ "flaw": [
+  "Animal Phobia",
+  "Powerless Prophecy"
+ ],
+ "flaw_effects_dict": {
+  "Animal Phobia": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allChecks",
+     "text": "Animal Phobia: -[[2]] on attacks, saves, skill checks, and ability checks in the presence of your phobia."
+    }
+   ],
+   "description": "One kind of animal (chosen when this flaw is gained) terrifies you. You take a -2 penalty on attack rolls, saving throws, skill checks, and ability checks while in the presence of your phobia.",
+   "tier": "minor"
+  },
+  "Powerless Prophecy": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "init",
+     "text": "Powerless Prophecy: no actions in surprise rounds; without a surprise round, staggered for round [[1]]."
+    }
+   ],
+   "description": "You are forewarned of danger but cannot act to prevent it. You can take no actions during a surprise round (not even free actions), and if there is no surprise round you are staggered for the entire first round of combat.",
+   "tier": "major"
+  }
+ },
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [
+  "Prone Slinger",
+  "Astrology"
+ ],
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Solar Wind, Steel Serpent\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An excellent trainer who taught them Woodland Sage, Cooperative Crafting, Selective Spell\n- Training: An excellent trainer who taught them Firesight, Pack Attack, Wand Desperado\n- Training: An average (Path of War) trainer who taught them Martial Training I (Steel Serpent), Martial Training III (Steel Serpent)\n- Training: An excellent (Spheres) trainer who taught them Tackle, Greater Grapple, Armbar, Inescapable Grasp, Piledriver, Magic Killing Grip\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 2 Younger Sisters\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Blue\n- Build: Hazel-eyed",
+ "full_domain": [
+  "Luck",
+  "Strength"
+ ],
+ "gender": "Female",
+ "generation_seed": 5002,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 1292,
+ "hair_color": [
+  "Red"
+ ],
+ "hair_type": [
+  "Frizzy"
+ ],
+ "height_number": "5'8\"",
+ "hero_points": 0,
+ "homebrew_feat_desc_dict": {
+  "Acrobatic": "You are skilled at leaping, jumping, and flying",
+  "Alertness": "You often notice things that others might miss",
+  "Astrology": "You have come to understand that the workings of the universe and even the capricious machinations of the gods can all be divined from the motions of the heavens. If you can cast psychic spells or have the Psychic Sensitivity feat, you can use prognostication one additional time per day. Spending 1 minute consulting a star chart or cosmogram that is accurate for the world or plane you are currently on, prior to attempting a Sense Motive check, grants you a +2 insight bonus on the check. Special A zodiac, or a path of the mage vizier, can expend uses of their stargazing or personal astrarium ability to use prognostication an additional time per day. you can perform the prognostication occult skill unlock even if you cant use psychic magic, though you must employ this occult skill unlock via horoscopy. with a dc 10 + creature's hit die prognostication task you can determine the astrological conditions at the time of a creature's birth. this can allow you to ascertain information about a creature that is based on those astrological conditions such as a creature's date of birth or the they would receive from the auspicious birth feat. this task follows the normal rules for the prognostication occult skill unlock.",
+  "Blighted Critical": "With a critical hit from a spell or spell-like ability, you give the target a minor spellblight",
+  "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
+  "Cloak Dance": "You are skilled at using optical tricks to make yourself seem to be where you are not. you can take a move action to obscure your exact position. until your next turn, you have concealment. alternatively, you can take a full-round action to entirely obscure your exact position. until your next action, you have total concealment.",
+  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
+  "Endurance": "Harsh conditions or long exertions do not easily tire you",
+  "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
+  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Stubborn Serpent’s Coils (Wrestling): You channel the serpent, improving your tenacity and grip.  You gain the following abilities which can be used while grappling:  When Your Grappled Target Is Being Moved Away From You: While you are grappling another creature, any effect which would move your grappled target out of your reach must a\n- Powerslam (Wrestling): Whenever a creature provokes an attack of opportunity from you, you may expend your martial focus to make a grapple check against them as an immediate action; if this grapple check is successful, you may make a trip attempt against that creature as a free action.",
+  "Firesight": "Fire no longer blinds you, and smoke conceals nothing from your gaze",
+  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
+  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
+  "Martial Training I (Solar Wind)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training I (Steel Serpent)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Solar Wind)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training II (Steel Serpent)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Solar Wind)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Steel Serpent)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Solar Wind)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Steel Serpent)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Pack Attack": "You are skilled at surrounding your enemies",
+  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
+  "Prone Slinger": "Your sideways sling release allows you to launch bullets and stones even while prone",
+  "Quick Preparation": "Early on in your adventuring career, you learned (perhaps the hard way) how to prepare your spells even when put under extreme time constraints",
+  "Selective Spell": "Your allies need not fear friendly fire",
+  "Shield Wall": "You form a unified defense with those around you",
+  "Spheres Mentor": "<strong>Spheres funded:</strong> Wrestling (Might)<br><br>Extra Combat Talent > Extra Combat Talent<br>Extra Combat Talent > Extra Combat Talent<br>Extra Combat Talent > Extra Combat Talent<br><br>Tackle (Wrestling)<br>Greater Grapple (Wrestling)<br>Armbar (Wrestling)<br>Inescapable Grasp (Wrestling)<br>Piledriver (Wrestling)<br>Magic Killing Grip (Wrestling)",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Wand Desperado": "Magical weaponry is a form of weaponry just as versatile as any whenever you use a martial maneuver that would allow an attack with a weapon, you may make a use magic device check with a wand or staff which allows a touch attack corresponding to the maneuver range (melee touch if with a melee weapon, ranged touch or ray if with a ranged weapon) to use the wand or staffs spell as a weapon for the purpose of the maneuver. the attack is made against regular ac rather than touch ac, but elsewise the spell operates normally and applies any effects of the maneuver to it (such as extra damage or debilitating effects). if the spell allows multiple touch attacks for fires multiple rays (such as scorching ray), the maneuvers effects are only applied to the first ray or touch.",
+  "Woodland Sage": "Understanding nature requires patience far more than education or guile. add your wisdom modifier as an additional bonus to your handle animal, knowledge (nature), and knowledge (geography) checks. if you have the wild empathy class feature, add your wisdom modifier as an additional bonus on checks with that ability."
+ },
+ "inherents": {
+  "cha": 8,
+  "con": 0,
+  "dex": 4,
+  "int": 0,
+  "str": 7,
+  "wis": 0
+ },
+ "initiation_stat": "int",
+ "initiator_level": 7,
+ "int": 19,
+ "item_changes_dict": {
+  "Anaconda's Coils": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "str",
+     "type": "enh"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "cmb",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "strChecks",
+     "text": "Treat the enhancement bonus to strength as temporary ability bonus for the first [[24]] hours the belt is worn. In addition, the belt grants the wearer the constrict ability (bestiary 298) for [[1d6]] points of damage plus the wearer's strength modifier."
+    }
+   ]
+  },
+  "Heavenly Aegis Ring": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This effect lasts 10 rounds per day, though the rounds don't need to be spent consecutively. Once activated, the effect expends rounds until the user ends it as a move action or the rounds run out. This functions as holy smite centered on the wearer, but the wearer can exclude a 10-foot-radius area from the center of the affected area. Releasing the energy expends all the ring's remaining rounds and can be done only if at least 5 rounds remain."
+   ]
+  },
+  "Liar's Robe": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This effect lasts for 1 hour, during which time the wearer can go back and forth between wearing the robe inside out (disguising himself) and right side out (revealing his true form) any number of times."
+   ]
+  },
+  "Steelhand Circle": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "In practical terms, the wearer ignores the first 5 points of an object's hardness when performing a sunder combat maneuver or when smashing an object. She also does not take the standard 4 penalty for making a combat maneuver check to disarm while unarmed. Once per day, when a critical hit or sneak attack is scored on the wearer, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally."
+    }
+   ]
+  }
+ },
+ "known_list": [
+  6,
+  5,
+  4,
+  4
+ ],
+ "land_speed": 30,
+ "language_text": [
+  "Common",
+  "Terran",
+  "Sphinx",
+  "Gnoll",
+  "Giant",
+  "Aquan",
+  "Halfling",
+  "Draconic",
+  "Aklo",
+  "Protean",
+  "Auran",
+  "Kelish",
+  "Elven",
+  "Drow Sign Language",
+  "Gnome",
+  "Dwarven"
+ ],
+ "level": 9,
+ "level_up_stats": {
+  "cha": 1,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 1,
+  "wis": 1
+ },
+ "license_url": "/license",
+ "magic_talent_items": [],
+ "main_stat": "int",
+ "maneuvers_choose_from": [
+  [
+   "Curving Ray Shot",
+   "Horizon Wind Lancet",
+   "Hunting Serpent Blow",
+   "Sting of the Rattler"
+  ],
+  [
+   "Intercepting Shade",
+   "Solar Flare maneuver",
+   "Fading Dodge",
+   "Iron Fang"
+  ],
+  [
+   "Phantom Wind Ray",
+   "Solar Reflection",
+   "Sickening Venom Strike",
+   "Sight Piercing Fang"
+  ],
+  [
+   "Dazzling Solar Flare",
+   "Poison Blood"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Curving Ray Shot": {
+   "action": "1 standard action",
+   "description": "The disciples keen eyes allow him to fire his weapon around his foes cover. The initiator makes an opposed Perception check against targets Armor Class before making a single ranged attack; if successful then the foes cover is negated.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Dazzling Solar Flare": {
+   "action": "1 standard action",
+   "description": "With swift and deadly precision, the disciple attacks with the force of the scorching sun. The initiator makes a ranged attack against a foe, and if successful the attack inflicts an additional 4d6 points of fire damage and dazes the target on a failed Fortitude saving throw DC 14 + initiation modifier for 1d4 rounds. If the save is successful, the target is dazzled instead for one round. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "1d4 rounds",
+   "level": 4,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Fading Dodge": {
+   "action": "1 immediate action",
+   "description": "By using his knowledge of anatomy to contort away from a strike, the Steel Serpent disciple may bend away from an attackers grasp and make a swift counter-offensive. As an immediate action, the disciple makes a Heal skill check against the attackers roll to bend or otherwise contort himself to evade an attack. If successful he negates the attack and may make a free dirty trick attempt without provoking attacks of opportunity.",
+   "discipline": "Steel Serpent",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "One attack",
+   "type": "counter"
+  },
+  "Horizon Wind Lancet": {
+   "action": "1 swift action",
+   "description": "The tenets of the Solar Wind have taught the disciple how to place more force behind his attacks. The initiator inflicts an additional 1d6 points of damage on a single ranged attack he makes this round. If the initiator is making multiple attacks in this round, this bonus applies to the first attack the initiator makes.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Hunting Serpent Blow": {
+   "action": "1 standard action",
+   "description": "The disciple hunts his foe through the emulation of a hunting serpent, obfuscating his true attack until the moment he strikes. The disciple makes a Heal check with a difficulty equal to his opponents armor class. If this check is successful, then the target is made flat-footed and the disciple may make a melee attack against him, inflicting an additional 1d6 points of damage if successful. If this Heal check fails, then his opponent sees through this ruse, and the disciple makes his melee attack with a -2 penalty as the enemy is anticipating his attack.",
+   "discipline": "Steel Serpent",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Intercepting Shade": {
+   "action": "1 immediate action",
+   "description": "Sometimes a good offense can be used as a good defense, so the Solar Wind discipline learns, as he uses his range to dissuade attacks by his sheer skill and exceptional aim. The initiator makes an opposed attack roll against his foes attack roll on an incoming attack such as an arrow or thrown weapon, a charging barbarian, or a skillful slash from a sword, but not a spell or similar attack targeting himself or an ally he can see within his weapons first range increment; if successful then the attack is negated.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal, or weapons first range increment",
+   "type": "counter"
+  },
+  "Iron Fang": {
+   "action": "1 standard action",
+   "description": "By hardeningkialong edge of his weapon, the Steel Serpent disciple uses the pressure of hiskito penetrate the defenses of his foe. The disciple makes an attack against a foe which if successful inflicts an additional 2d6 points of damage and ignores any damage reduction the target may possess. Additionally, if the disciple is using poison or a prana maneuver with this strike, increase the saving throw DC by +2. This is a supernatural ability.",
+   "discipline": "Steel Serpent",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Melee attack or ranged attack",
+   "type": "strike"
+  },
+  "Phantom Wind Ray": {
+   "action": "1 swift action",
+   "description": "The disciples knowledge of the desert mirages caused by the sun grants him the ability to obscure his attacks, using gaps in a foes perception. The target must make a Perception check opposed by the initiators next attack roll against the target; if the Perception check fails then he is caught flat-footed against the attack and the attack is resolved against his flat-footed armor class. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Poison Blood": {
+   "action": "1 immediate action",
+   "description": "Every disciple of Steel Serpent has long accepted that in battle, sometimes the superior warrior gets injured. The Steel Serpent however, believes that for every wound inflicted upon the disciple, a wound must be inflicted upon the attacker. By forcingkienergies into his blood at the point of being wounded, the blood lost from this attack sprays at the disciples foe as a caustic acid. To use this counter, the disciple must have been struck in combat by a slashing or piercing weapon. Upon the initiating of this counter, the attacker takes acid damage equal to twice the disciples initiator level. This is a supernatural ability.",
+   "discipline": "Steel Serpent",
+   "duration": "Instantaneous",
+   "level": 4,
+   "range": "One attack that inflicts slashing or piercing damage",
+   "type": "counter"
+  },
+  "Poisoners Stance": {
+   "action": "1 swift action",
+   "description": "One of the first lessons of Steel Serpent disciples is the knowledge of mundane poisons and how to use them with expertise. While in this stance, the disciple gains the poison use class feature the disciple no longer risks accidentally poisoning himself when attempting to apply poison to a weapon and gains a +1 DC per two initiator levels as a competence bonus maximum +10 to the saving throw DCs of any poison mundane, magical, sting maneuver or prana maneuver he applies through the use of this stance.",
+   "discipline": "Steel Serpent",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Sickening Venom Strike": {
+   "action": "1 standard action",
+   "description": "With a sharp jab of sickeningkienergy, the Steel Serpent disciple can rob an enemy of his will to continue to fight as their body rebels against them. Make an attack against an opponent, and if this is successful, the strike inflicts an additional 2 points of Constitution damage and has the chance to sicken the target for 1d4 rounds. A successful Fortitude save DC 13 + initiation modifier negates the sickened effect. This is a supernatural ability.",
+   "discipline": "Steel Serpent",
+   "duration": "Instantaneous, 1d4 rounds",
+   "level": 3,
+   "range": "Melee attack or ranged attack",
+   "type": "strike"
+  },
+  "Sight Piercing Fang": {
+   "action": "1 standard action",
+   "description": "With the swiftness of a striking snake, the disciple makes a jab at his opponents face to temporarily steal its vision. The disciple makes a melee attack against his target which if successful inflicts an additional 2d6 points of damage and the target must make a Reflex save DC 13 + initiation modifier. If this save is unsuccessful, the target is blinded for 1 minute as his eyes are temporarily rendered useless.",
+   "discipline": "Steel Serpent",
+   "duration": "1 minute",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Solar Flare maneuver": {
+   "action": "1 standard action",
+   "description": "Where the light of the sun touches, so does the burning reach of the Solar Wind disciple, allowing him to curve his weapons around impossible angles. The initiator makes a ranged attack against a target creature, and this attack ignores any cover defense that the creature possesses and inflicts an additional 2d6 points of fire damage. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Solar Reflection": {
+   "action": "1 full round action",
+   "description": "As reflective surfaces bounce the rays of the sun, so can the Solar Wind disciple ricochet a missile weapon from one target to another. The initiator makes a single ranged attack roll and if this roll is successful, he may apply this same attack roll against another opponent within 20-ft. of the first. This strike inflicts an additional 2d6 points of damage to the first target, and normal damage to the second target. Each reflection attack is considered a separate attack for the purposes of determining the effectiveness of single attack boosting abilities, such as boosts that affect one attack or spells liketrue strike.If the ammunition had special properties, the ammunition retains its properties on each attack until the strike ends.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Stance of Piercing Rays": {
+   "action": "1 swift action",
+   "description": "A Solar Wind disciple learns to cause his ammunition to pierce like the burning rays of the sun itself. While in this stance, the initiators ranged attacks inflict an additional 1d6 points of fire damage. This bonus damage increases by an additional 1d6 points of fire damage every eight initiator levels. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Steel Coils": {
+   "action": "1 swift action",
+   "description": "In this stance, the movements and motions of the disciple become more sinuous and deliberate, as if he were a serpent coiled to strike. While in this stance, the disciple may make grapple attempts without provoking attacks of opportunity, and if the disciple successfully grapples a foe, he may constrict his opponent to inflict 4d6 + his Strength modifier in damage. The manner in which he must carry himself in this stance, muscles taught and stiffened, grants him some degree of protection, adding a +4 bonus to his natural armor.",
+   "discipline": "Steel Serpent",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Sting of the Rattler": {
+   "action": "1 standard action",
+   "description": "Disciples of Steel Serpent learn to emulate the swift and powerful strikes of the serpent kingdom and leave lasting wounds through the power of theirki.By focusing this harmful energy into a single attack, the disciple may cause more grievous injuries than his opponent would register immediately. The disciple makes an attack and if successful, inflicts an additional 1d4 points of damage. The following round on the disciples turn, the enemy takes an additional 1d4 points of damage due to the venomouskithat has built up in the wound. This is a supernatural ability.",
+   "discipline": "Steel Serpent",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack or ranged attack",
+   "type": "strike"
+  },
+  "Sunwalker Stance": {
+   "action": "1 swift action",
+   "description": "Using the hunting techniques of the ancient days of the White Steppes, the Solar Wind disciple hunts on the move, making attacks while chasing down his prey. The initiator gains the benefits of the Shot on the Run feat As a full-round action, you can move up to your speed and make a single ranged attack at any point during your movement while in this stance he does not need to meet the prerequisites of this feat, and he gains a +2 circumstance bonus to his armor class against attacks if he moves more than 10-ft. during his turn.",
+   "discipline": "Solar Wind",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  4,
+  4,
+  4,
+  2
+ ],
+ "maneuvers_readied_list": [
+  0,
+  2,
+  4,
+  2
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Intercepting Shade",
+   "Iron Fang"
+  ],
+  [
+   "Phantom Wind Ray",
+   "Solar Reflection",
+   "Sight Piercing Fang",
+   "Sickening Venom Strike"
+  ],
+  [
+   "Dazzling Solar Flare",
+   "Poison Blood"
+  ]
+ ],
+ "manifesters": [],
+ "mannerisms": [
+  "Taps pencil",
+  "Rub hands together",
+  "Bursts into laughter",
+  "Crouches"
+ ],
+ "martial_disciplines": [
+  "Solar Wind",
+  "Steel Serpent"
+ ],
+ "mini_alignment": "ng",
+ "mod_char_sheet_var": false,
+ "mt_feats": [
+  "Martial Training I (Solar Wind)",
+  "Martial Training III (Solar Wind)",
+  "Martial Training I (Steel Serpent)",
+  "Martial Training III (Steel Serpent)"
+ ],
+ "normal_feat_amount": 8,
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "parents": "absent mother, loving father, raised in a middle income household",
+ "personality_traits": [
+  "Enthusiastic",
+  "Agreeable",
+  "Goal-oriented",
+  "Judicious",
+  "Gregarious"
+ ],
+ "platnium": 129.2,
+ "powers_desc_dict": {},
+ "profession_ability_items": [
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.hea",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Charm-Peddler) - rank 15/15. Associate skills (ranks 1/4/7/10): Use Magic Device, Sense Motive, Perception, Profession.</em></p><hr><p><strong>Evil Eye (Ex)</strong></p><p>Summoner (Unchained) can fix a victim with a baleful stare laden with petty malice. Three times per day as a standard action, one creature within 30 feet that Summoner (Unchained) can see takes a -2 penalty on saving throws against fear for 1 minute (no save to resist this minor curse).</p><hr><p><strong>Graveyard Manners (Ex)</strong></p><p>Long nights spent in crypts and at deathbeds have inured Summoner (Unchained) to the company of corpses. Grants a +2 competence bonus on Heal checks to treat the dying and a +2 morale bonus on saving throws against fear and disease.</p>",
+   "name": "Profession Rank 5: (Charm-Peddler)",
+   "uses": {
+    "maxFormula": "3",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.int",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.blf",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Charm-Peddler) - rank 15/15.</em></p><hr><p><strong>Cultist's Cant (Ex)</strong></p><p>Schooled in whispered creeds and secret signs, Summoner (Unchained) sways the faithful and the fearful alike. Grants a +2 competence bonus on Intimidate checks and a +2 competence bonus on Bluff checks made to spread rumor or conceal heresy.</p><hr><p><strong>Petty Hex (Su)</strong></p><p>Summoner (Unchained) knows one minor witch's hex (such as a sleep curse, a fortune jinx, or a misfortune touch). They may use it at will as a standard action; the save DC is 10 + half their character level + their Charisma modifier, and a target that saves is immune to that hex for 24 hours.</p><hr><p><strong>Cantrips of the Coven (Sp)</strong></p><p>Summoner (Unchained) can cast bleed, detect magic, touch of fatigue, and putrefy food and drink at will as spell-like abilities (caster level equal to their character level).</p>",
+   "name": "Profession Rank 15: (Charm-Peddler)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.han",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Medusa Hunter) - rank 6/10. Associate skills (ranks 1/4/7/10): Knowledge (local), Craft.</em></p><hr><p><strong>Sea Legs (Ex)</strong></p><p>Long voyages have given you flawless balance aboard a pitching deck. You gain a +2 competence bonus on Swim checks and a +2 competence bonus on Acrobatics checks made to keep your balance on unstable or moving surfaces, and you are never sickened by motion or seasickness.</p><hr><p><strong>Beast Soother (Ex)</strong></p><p>A calm word and a steady hand settle skittish animals. You gain a +2 competence bonus on Handle Animal checks, and you may attempt to influence the attitude of an animal as a Diplomacy check using your Handle Animal modifier.</p>",
+   "name": "Profession Rank 5: (Medusa Hunter)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.slt",
+     "type": "circumstance"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Sea Urchin Harvester) - rank 7/10. Associate skills (ranks 1/4/7/10): Appraise, Sleight of Hand, Perception.</em></p><hr><p><strong>Shifty Eyes (Ex)</strong></p><p>Always watching for marks and witnesses, the Summoner (Unchained) notices the small things others miss. They gain a <strong>+2</strong> competence bonus on Perception checks.</p><hr><p><strong>Light Fingers (Ex)</strong></p><p>A lifetime of palming coins and lifting purses makes petty theft second nature. The Summoner (Unchained) gains a <strong>+2</strong> circumstance bonus on Sleight of Hand checks.</p>",
+   "name": "Profession Rank 5: (Sea Urchin Harvester)",
+   "uses": null
+  }
+ ],
+ "profession_feat_desc": {
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "profession_feats": [
+  "Multi Talented",
+  "True Calling"
+ ],
+ "profession_pool": 30,
+ "profession_ranks": [
+  {
+   "ability_theme": "occult",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Use Magic Device",
+    "Sense Motive",
+    "Perception",
+    "Profession"
+   ],
+   "cap": 15,
+   "name": "Charm-Peddler",
+   "rank15_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.int",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.blf",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Schooled in whispered creeds and secret signs, Summoner (Unchained) sways the faithful and the fearful alike. Grants a +2 competence bonus on Intimidate checks and a +2 competence bonus on Bluff checks made to spread rumor or conceal heresy.</p>",
+     "name": "Cultist's Cant (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Summoner (Unchained) knows one minor witch's hex (such as a sleep curse, a fortune jinx, or a misfortune touch). They may use it at will as a standard action; the save DC is 10 + half their character level + their Charisma modifier, and a target that saves is immune to that hex for 24 hours.</p>",
+     "name": "Petty Hex (Su)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Summoner (Unchained) can cast bleed, detect magic, touch of fatigue, and putrefy food and drink at will as spell-like abilities (caster level equal to their character level).</p>",
+     "name": "Cantrips of the Coven (Sp)",
+     "uses": null
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Summoner (Unchained) can fix a victim with a baleful stare laden with petty malice. Three times per day as a standard action, one creature within 30 feet that Summoner (Unchained) can see takes a -2 penalty on saving throws against fear for 1 minute (no save to resist this minor curse).</p>",
+     "name": "Evil Eye (Ex)",
+     "uses": {
+      "maxFormula": "3",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.hea",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Long nights spent in crypts and at deathbeds have inured Summoner (Unchained) to the company of corpses. Grants a +2 competence bonus on Heal checks to treat the dying and a +2 morale bonus on saving throws against fear and disease.</p>",
+     "name": "Graveyard Manners (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 15,
+   "skill_label": "Profession (Charm-Peddler)"
+  },
+  {
+   "ability_theme": "nature",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Knowledge (local)",
+    "Craft"
+   ],
+   "cap": 10,
+   "name": "Medusa Hunter",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.swm",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Long voyages have given you flawless balance aboard a pitching deck. You gain a +2 competence bonus on Swim checks and a +2 competence bonus on Acrobatics checks made to keep your balance on unstable or moving surfaces, and you are never sickened by motion or seasickness.</p>",
+     "name": "Sea Legs (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.han",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>A calm word and a steady hand settle skittish animals. You gain a +2 competence bonus on Handle Animal checks, and you may attempt to influence the attitude of an animal as a Diplomacy check using your Handle Animal modifier.</p>",
+     "name": "Beast Soother (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 6,
+   "skill_label": "Profession (Medusa Hunter)"
+  },
+  {
+   "ability_theme": "elementalist",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Stoneshaper",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Stoneshaper)"
+  },
+  {
+   "ability_theme": "scholar",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Diplomacy"
+   ],
+   "cap": 10,
+   "name": "Book Seller",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Book Seller)"
+  },
+  {
+   "ability_theme": "skill",
+   "ability_tier": "garbage",
+   "associate_skills": [
+    "Appraise",
+    "Sleight of Hand",
+    "Perception"
+   ],
+   "cap": 10,
+   "name": "Sea Urchin Harvester",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.per",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Always watching for marks and witnesses, the Summoner (Unchained) notices the small things others miss. They gain a <strong>+2</strong> competence bonus on Perception checks.</p>",
+     "name": "Shifty Eyes (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.slt",
+       "type": "circumstance"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>A lifetime of palming coins and lifting purses makes petty theft second nature. The Summoner (Unchained) gains a <strong>+2</strong> circumstance bonus on Sleight of Hand checks.</p>",
+     "name": "Light Fingers (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 7,
+   "skill_label": "Profession (Sea Urchin Harvester)"
+  }
+ ],
+ "professions": [
+  "Charm-Peddler",
+  "Medusa Hunter",
+  "Stoneshaper",
+  "Book Seller",
+  "Sea Urchin Harvester"
+ ],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 2,
+  "str": 0,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 8,
+  "ref": 5,
+  "will": 11
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Easy Way or the Hard Way",
+  "Reincarnated",
+  "Pathfinder's Focus",
+  "Unspeakable Bond",
+  "Goblin Pirate",
+  "Gregarious",
+  "Principled",
+  "Wanderer's Shroud"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "Whenever you attack one of your favored enemies with a weapon that deals lethal damage and choose to deal nonlethal damage, you take only a –2 penalty on the attack roll instead of the normal –4 .",
+   "name": "Easy Way or the Hard Way"
+  },
+  {
+   "description": "You gain a +2 trait bonus on saving throws against fear and death effects.",
+   "name": "Reincarnated"
+  },
+  {
+   "description": "You can select a magnetic compass for your arcane bond class feature; this compass is non-magical, but you can later spend 250 gp to upgrade it into a wayfinder. Choosing this trait allows you to upgrade this wayfinder to a variant or unique wayfinder per the normal rules for improving magic items. A bonded wayfinder must be held in your hand to grant the benefits of being a bonded object.",
+   "name": "Pathfinder's Focus"
+  },
+  {
+   "description": "You gain a +2 trait bonus on Diplomacy checks when dealing with creatures of the aberration type.",
+   "name": "Unspeakable Bond"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Profession (sailor) and Swim checks, and Swim is always a class skill for you. You might also have a peg leg or a hook for a hand, but that’s not so helpful.",
+   "name": "Goblin Pirate"
+  },
+  {
+   "description": "Once per day, when you attempt a Diplomacy check to improve a creature's attitude toward you, you may choose to reroll the check after the first roll is made but before the results are revealed. You must take the second result, even if it is worse.",
+   "name": "Gregarious"
+  },
+  {
+   "description": "You take a –2 penalty on Bluff checks and gain a +2 trait bonus on saving throws against charm, compulsion, and emotion effects.",
+   "name": "Principled"
+  },
+  {
+   "description": "Efforts to use the Diplomacy skill to gather information about you take a –1 penalty, and you gain a +1 trait bonus on all saving throws against scrying and mind-reading effects that allow saving throws.",
+   "name": "Wanderer's Shroud"
+  }
+ ],
+ "sheet_health": 120,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 165,
+ "skill_ranks": {
+  "acrobatics": 0,
+  "appraise": 11,
+  "bluff": 0,
+  "climb": 0,
+  "craft": 7,
+  "diplomacy": 0,
+  "disable device": 5,
+  "disguise": 5,
+  "escape artist": 3,
+  "fly": 10,
+  "handle animal": 16,
+  "heal": 0,
+  "intimidate": 0,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 1,
+  "knowledge engineering": 3,
+  "knowledge geography": 5,
+  "knowledge history": 10,
+  "knowledge local": 8,
+  "knowledge nature": 12,
+  "knowledge nobility": 23,
+  "knowledge planes": 0,
+  "knowledge religion": 0,
+  "linguistics": 11,
+  "perception": 0,
+  "perform": 2,
+  "profession": 0,
+  "ride": 0,
+  "sense motive": 6,
+  "sleight of hand": 12,
+  "spellcraft": 4,
+  "stealth": 4,
+  "survival": 0,
+  "swim": 0,
+  "use magic device": 7
+ },
+ "skill_unlock": {
+  "base_skill": "disguise",
+  "ranks": 5,
+  "skill": "Disguise",
+  "unlock": {
+   "10": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15": "You can create a disguise as a full-round action.",
+   "20": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5": "You can create a disguise in 1d3 minutes."
+  },
+  "unlock_html": "<h2>Disguise</h2><p><strong>5 Ranks</strong>: You can create a disguise in 1d3 minutes.</p><p><strong>10 Ranks</strong>: You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.</p><p><strong>15 Ranks</strong>: You can create a disguise as a full-round action.</p><p><strong>20 Ranks</strong>: You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.</p>"
+ },
+ "specialty_schools": [
+  "divination",
+  "evocation"
+ ],
+ "spell_changes_dict": {
+  "Guidance": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
+ "spell_list_choose_from": [
+  [
+   "Daze",
+   "Detect Magic",
+   "Guidance",
+   "Light",
+   "Message",
+   "Read Magic"
+  ],
+  [
+   "Compel Hostility",
+   "Daze Monster",
+   "Detect Metal",
+   "Identify",
+   "Planar Orientation"
+  ],
+  [
+   "Detect Magic, Greater",
+   "Detect Thoughts",
+   "See Invisibility",
+   "Wind Wall"
+  ],
+  [
+   "Control Summoned Creature",
+   "Insect Scouts",
+   "Pack Empathy",
+   "Seek Thoughts"
+  ]
+ ],
+ "spell_list_choose_from_dict": [
+  [
+   "Daze",
+   "Detect Magic",
+   "Guidance",
+   "Light",
+   "Message",
+   "Read Magic"
+  ],
+  [
+   "Compel Hostility",
+   "Daze Monster",
+   "Detect Metal",
+   "Identify",
+   "Planar Orientation"
+  ],
+  [
+   "Detect Magic, Greater",
+   "Detect Thoughts",
+   "See Invisibility",
+   "Wind Wall"
+  ],
+  [
+   "Control Summoned Creature",
+   "Insect Scouts",
+   "Pack Empathy",
+   "Seek Thoughts"
+  ]
+ ],
+ "spell_riders_dict": {
+  "Daze": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; affects one humanoid of [[4]] or fewer HD (humanoids with [[5]] or more HD are not affected); the target is dazed and takes no actions for [[1]] round; a dazed subject is not stunned, so attackers get no special advantage against it; after being dazed by this spell, the creature is immune to it for [[1]] minute; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Daze Monster": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; functions like daze, but affects any one living creature of [[6]] or fewer HD (creatures of [[7]] or more HD are not affected); the target is dazed and takes no actions for [[1]] round; a dazed subject is not stunned, so attackers get no special advantage against it; after being dazed by this spell, the creature is immune to it for [[1]] minute; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Detect Thoughts": {
+   "attack": null,
+   "riders": [
+    "Range: [[60]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; see text — a successful save on the third round of concentration prevents you from reading that creature's surface thoughts, and you must cast detect thoughts again for another chance; 1st round of concentration: presence or absence of thoughts from conscious creatures with an Intelligence score of [[1]] or higher; 2nd round of concentration: number of thinking minds and the Intelligence score of each; if the highest Intelligence present is [[26]] or higher and at least [[10]] points higher than your own Intelligence score, you are stunned for [[1]] round and the spell ends; this spell does not reveal the location of thinking minds you cannot see; 3rd round of concentration: surface thoughts of any mind in the area; creatures of animal intelligence (Int [[1]] or [[2]]) have simple, instinctual thoughts; each round you can turn to detect thoughts in a new area; the spell can penetrate barriers, but [[1]] foot of stone, [[1]] inch of common metal, a thin sheet of lead, or [[3]] feet of wood or dirt blocks it; spell resistance: no"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates; see text — a successful save on the third round of concentration prevents you from reading that creature's surface thoughts, and you must cast detect thoughts again for another chance",
+    "harmless": false,
+    "type": "will"
+   }
+  }
+ },
+ "spellbooks": [
+  {
+   "capped_level": 9,
+   "casting_level_num": 9,
+   "casting_level_string": "mid",
+   "casting_stat": "cha",
+   "display": "Summoner (Unchained)",
+   "divine": false,
+   "highest_spell_known": 3,
+   "level": 9,
+   "name": "summoner (unchained)",
+   "spell_list_choose_from": [
+    [
+     "Daze",
+     "Detect Magic",
+     "Guidance",
+     "Light",
+     "Message",
+     "Read Magic"
+    ],
+    [
+     "Compel Hostility",
+     "Daze Monster",
+     "Detect Metal",
+     "Identify",
+     "Planar Orientation"
+    ],
+    [
+     "Detect Magic, Greater",
+     "Detect Thoughts",
+     "See Invisibility",
+     "Wind Wall"
+    ],
+    [
+     "Control Summoned Creature",
+     "Insect Scouts",
+     "Pack Empathy",
+     "Seek Thoughts"
+    ]
+   ],
+   "spells_known_list": [
+    6,
+    5,
+    4,
+    4
+   ],
+   "spells_per_day_list": [
+    0,
+    5,
+    4,
+    3
+   ],
+   "spells_prepared_per_level": [
+    0,
+    5,
+    4,
+    3
+   ]
+  },
+  {
+   "capped_level": 6,
+   "casting_level_num": 6,
+   "casting_level_string": "high",
+   "casting_stat": "wis",
+   "display": "Cleric",
+   "divine": true,
+   "highest_spell_known": 3,
+   "level": 6,
+   "name": "cleric",
+   "spell_list_choose_from": [
+    [
+     "Detect Magic",
+     "Detect Poison",
+     "Guidance",
+     "Light",
+     "Read Magic"
+    ],
+    [
+     "Abadar's Truthtelling",
+     "Carrion Compass",
+     "Enlarge Person",
+     "Mighty Fist of the Earth",
+     "Moment of Greatness",
+     "Speechreader's Sight",
+     "Starsight",
+     "Sure Casting",
+     "Tap Inner Beauty",
+     "True Strike"
+    ],
+    [
+     "Aid",
+     "Bestow Weapon Proficiency",
+     "Bull's Strength",
+     "Heroic Fortune",
+     "Know Peerage",
+     "Protective Penumbra",
+     "Share Language",
+     "Shatter",
+     "Spell Gauge",
+     "Status",
+     "Twisted Futures"
+    ],
+    [
+     "Aura Sight",
+     "Champion's Bout",
+     "Charitable Impulse",
+     "Dark-Light",
+     "Daylight",
+     "Detect Anxieties",
+     "Detect Desires",
+     "Helping Hand",
+     "Magic Vestment",
+     "Mark of Obvious Ethics",
+     "Protection from Energy",
+     "Riversight",
+     "Spirit Bonds",
+     "Wind Wall"
+    ]
+   ],
+   "spells_known_list": [],
+   "spells_per_day_list": [
+    5,
+    8,
+    10,
+    12
+   ],
+   "spells_prepared_per_level": [
+    5,
+    10,
+    11,
+    14
+   ]
+  }
+ ],
+ "spells_prepared_per_level": [
+  0,
+  5,
+  4,
+  3
+ ],
+ "sphere_boons": [
+  "Easy Focus",
+  "Fortified Casting"
+ ],
+ "sphere_counts": {
+  "Wrestling": {
+   "advanced": 1,
+   "feats": 0,
+   "normal": 7
+  }
+ },
+ "sphere_drawbacks": [
+  "Draining Casting",
+  "Extended Casting",
+  "Somatic Casting",
+  "Prepared Caster"
+ ],
+ "sphere_feat_tax": {
+  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)": [
+   "Extra Combat Talent"
+  ]
+ },
+ "sphere_feats": [
+  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)"
+ ],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Draining Casting",
+  "Extended Casting",
+  "Somatic Casting",
+  "Prepared Caster",
+  "Easy Focus",
+  "Fortified Casting"
+ ],
+ "spheres_chosen": [
+  {
+   "sphere": "Wrestling",
+   "system": "might"
+  }
+ ],
+ "stances_chosen": [
+  "Stance of Piercing Rays",
+  "Sunwalker Stance",
+  "Steel Coils",
+  "Poisoners Stance"
+ ],
+ "story_feat_tax_dict": {
+  "Point-Blank Shot": [
+   "charging hurler",
+   "disrupting shot",
+   "far shot",
+   "improved charging hurler",
+   "precise shot"
+  ]
+ },
+ "story_feats": [
+  "Catch Off-Guard",
+  "Point-Blank Shot",
+  "Martial Charge",
+  "Quick Preparation"
+ ],
+ "str": 12,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 15,
+ "total_rolled_hp": 112,
+ "trainer_calibers": [
+  3,
+  3
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3 - Path of War)",
+  "(Trainer 3 - Path of War)",
+  "(Trainer 4 - Spheres)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Martial Training I (Steel Serpent)": [
+   "Martial Training II (Steel Serpent)"
+  ],
+  "Martial Training III (Steel Serpent)": [
+   "Martial Training IV (Steel Serpent)"
+  ],
+  "Spheres Mentor": []
+ },
+ "trainer_feats": [
+  "Woodland Sage",
+  "Cooperative Crafting",
+  "Selective Spell",
+  "Firesight",
+  "Pack Attack",
+  "Wand Desperado",
+  "Martial Training I (Steel Serpent)",
+  "Martial Training III (Steel Serpent)",
+  "Spheres Mentor"
+ ],
+ "weapon_enhancement_bonus": 2,
+ "weapon_enhancement_chosen_list": [],
+ "weapon_name": "Morningstar",
+ "weight_number": 217,
+ "wis": 13,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 2 younger sisters"
+}

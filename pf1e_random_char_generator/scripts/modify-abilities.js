@@ -1,6 +1,35 @@
 import { CLASS_ITEM_ORDER } from './class-roster.js';
 
-export async function main() {
+/**
+ * Build the pf1 actor payload from the generated character data.
+ *
+ * `deps` is the first sliver of the build context (ticket 05) and exists for one reason: a run of
+ * this function is otherwise unreproducible, so nothing it produces can be diffed. Two things make
+ * it vary, and they are DIFFERENT KINDS of variation:
+ *
+ *   rng()    - SEMANTIC choice. Exactly one caller: check_ammo() picks a random ammo item, so two
+ *              runs of the same payload can put different content on the sheet. No amount of
+ *              id-normalisation after the fact can hide that, which is why the randomness is
+ *              injected rather than diffed around.
+ *   mintId() - IDENTITY only. `kind` says what is being stamped, `key` is the content it is being
+ *              stamped onto. The harness derives the id FROM that content rather than from a
+ *              counter, so extracting or merging code (tickets 06, 07) cannot shift every
+ *              subsequent id and turn the golden diff into noise on the very tickets that need to
+ *              read it. Content-derived ids can collide where a sequence could not, so the harness
+ *              asserts uniqueness to recover what the counter gave for free.
+ *
+ * PRODUCTION PASSES NOTHING. The defaults below are exactly what this file did before the seam
+ * existed -- Math.random and 16 random characters -- so live output is unchanged and `kind`/`key`
+ * are simply ignored. Only the harness supplies replacements.
+ */
+export async function main(deps = {}) {
+  const {
+    rng = Math.random,
+    mintId = (_kind, _key) => {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      return [...Array(16)].map(() => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
+    },
+  } = deps;
   try {
     // Retrieve the module dynamically using the module name
     const module = game.modules.get('pf1e_random_char_generator');
@@ -760,7 +789,7 @@ async function processArchetype(targetArchetype, sortValue = null) {
   // template also ships a fixed _id — re-id each clone (like addResourcePools does) so multiple
   // archetype items can't collide.
   archetypeInfo = structuredClone(archetypeInfo);
-  archetypeInfo._id = await generateUniqueID();
+  archetypeInfo._id = await generateUniqueID('archetype', archetypeInfo);
 
   console.log("archetype pre trial", archetypeInfo);
   console.log("targetArchetype", targetArchetype);
@@ -803,12 +832,12 @@ async function processArchetype(targetArchetype, sortValue = null) {
 
 // ------ Generalized Features Page Functions ------ //
 
-// Utility function to generate a unique 16-character alphanumeric ID
-async function generateUniqueID() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  return [...Array(16)]
-    .map(() => characters.charAt(Math.floor(Math.random() * characters.length)))
-    .join('');
+// Utility function to generate a unique 16-character alphanumeric ID.
+// `kind` and `key` are ignored by the production mint (which is random) and are what the harness's
+// content-derived mint hashes; see main()'s deps block. `key` may be any JSON-serialisable value --
+// pass the object being stamped, not a hand-written label, so the id tracks the content.
+async function generateUniqueID(kind = 'id', key = null) {
+  return mintId(kind, key);
 }
 
 // ------ End of Generalized Features Page Functions ------ //
@@ -953,7 +982,7 @@ async function updateClassFeatures(baseFeatTemplate, classFeatures) {
       const feature = JSON.parse(stableStringify(baseFeatTemplate));
       // The base feat template carries a hardcoded _id, so every clone would share it and
       // Foundry would collapse them into one embedded item on actor.update().
-      feature._id = await generateUniqueID();
+      feature._id = await generateUniqueID('classFeature', [name, sort]);
       feature.name = name;
       feature.system.description.value = descriptionHtml;
       feature.sort = sort;
@@ -1073,7 +1102,7 @@ async function addResourcePools() {
       const src = pools[key];
       if (!src) { console.warn(`Resource pools: no "${key}" entry in resource_pools.json.`); continue; }
       const clone = structuredClone(src);
-      clone._id = await generateUniqueID();
+      clone._id = await generateUniqueID('resourcePool', key);
       if (key === 'heroPoints' && clone.system?.uses) {
         clone.system.uses.value = Number(characterData.hero_points) || 1;
       }
@@ -1151,7 +1180,7 @@ function applyBuffData(item, buff) {
       .filter(ch => ch && !existingTargets.has(ch.target))
       .map(ch => Object.assign(
         { formula: "0", target: "", type: "untyped", operator: "add", priority: 0, value: 0 },
-        ch, { _id: (ch && ch._id) || randomChangeId() }));
+        ch, { _id: (ch && ch._id) || randomChangeId(ch) }));
     if (additions.length) item.system.changes = existing.concat(additions);
   }
   if (Array.isArray(buff.contextNotes) && buff.contextNotes.length) {
@@ -1427,9 +1456,9 @@ async function appendFeatDivider(title, sort, subType = 'feat') {
 }
 
 // Short id for embedded change rows -- pf1's ChangeModel expects an _id on each change.
-function randomChangeId() {
-  const c = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  return [...Array(8)].map(() => c.charAt(Math.floor(Math.random() * c.length))).join('');
+// `key` is the change row itself; see generateUniqueID above for why.
+function randomChangeId(key = null) {
+  return String(mintId('change', key)).slice(0, 8);
 }
 
 // Homebrew profession abilities -> feat-section items (subType:"feat", bottom of the Feats tab).
@@ -1446,7 +1475,7 @@ async function processProfessionAbilities(items, startingSort = 3900) {
       // Fill the pf1 ChangeModel defaults the backend omits (_id + value), keeping its formula/target.
       item.system.changes = changes.map(ch => Object.assign(
         { formula: "0", target: "", type: "untyped", operator: "add", priority: 0, value: 0 },
-        ch, { _id: (ch && ch._id) || randomChangeId() }
+        ch, { _id: (ch && ch._id) || randomChangeId(ch) }
       ));
     }
     if (Array.isArray(it.contextNotes) && it.contextNotes.length) item.system.contextNotes = it.contextNotes;
@@ -1595,7 +1624,7 @@ async function processSpheres(magicItems, combatItems, tradition, manaPool, star
       const ex = Array.isArray(item.system.changes) ? item.system.changes : [];
       item.system.changes = ex.concat(t.changes.map(ch => Object.assign(
         { formula: "0", target: "", type: "untyped", operator: "add", priority: 0, value: 0 },
-        ch, { _id: (ch && ch._id) || randomChangeId() })));
+        ch, { _id: (ch && ch._id) || randomChangeId(ch) })));
     }
     if (Array.isArray(t.contextNotes) && t.contextNotes.length) {
       item.system = item.system || {};
@@ -1766,7 +1795,7 @@ async function addStanceBuffs(stances, descs, matchedDocs) {
     const curated = changesByNorm[powNorm(name)] || {};
     const changes = structuredClone(Array.isArray(curated.changes) ? curated.changes : []);
     for (const ch of changes) {
-      if (!ch._id) ch._id = (await generateUniqueID()).slice(0, 8);
+      if (!ch._id) ch._id = (await generateUniqueID('change', [name, ch])).slice(0, 8);
     }
     buffs.push({
       name: `(Stance) ${doc ? powDisplayName(doc.name) : name}`,
@@ -2195,7 +2224,7 @@ async function changeStatBuff(dataArray, stats, label) {
   // loops through each stat in the relevant stat array and assigns the value to the corresponding stat in the dataArray
   for (const item of dataArray) {
     item.name = label;
-    item._id = await generateUniqueID(); // Generate a unique ID for each item
+    item._id = await generateUniqueID('statBuff', [label, item]); // Generate a unique ID for each item
 
     if (!item.system?.changes) continue;
   
@@ -2577,7 +2606,7 @@ async function addSpellRiders() {
             const name = subSpellTokens(riderText, spell);
             if (!name || seen.has(name)) continue;
             seen.add(name);
-            action.conditionals.push({ _id: (await generateUniqueID()).slice(0, 8), name, default: true, modifiers: [] });
+            action.conditionals.push({ _id: (await generateUniqueID('conditional', name)).slice(0, 8), name, default: true, modifiers: [] });
             added++;
           }
         }
@@ -2878,7 +2907,7 @@ async function addManeuverConditionals() {
           formula = `${formula}[${String(name).replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
-          _id: (await generateUniqueID()).slice(0, 8),
+          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
           formula,
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
@@ -2887,7 +2916,7 @@ async function addManeuverConditionals() {
           critical: m.critical || 'normal',
         });
       }
-      action.conditionals.push({ _id: (await generateUniqueID()).slice(0, 8), name: condName, default: false, modifiers });
+      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers });
       added++;
     }
     // Stances with a damage/attack modifier (e.g. Savage Stance) become a default-ON weapon
@@ -2910,7 +2939,7 @@ async function addManeuverConditionals() {
           formula = `${formula}[${String(name).replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
-          _id: (await generateUniqueID()).slice(0, 8),
+          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
           formula,
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
@@ -2919,7 +2948,7 @@ async function addManeuverConditionals() {
           critical: m.critical || 'normal',
         });
       }
-      action.conditionals.push({ _id: (await generateUniqueID()).slice(0, 8), name: condName, default: true, modifiers });
+      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: true, modifiers });
       added++;
     }
     writeToLocalStorage('exportTemplate', exportTemplate);
@@ -2962,7 +2991,7 @@ async function addFeatConditionals() {
           formula = `${formula}[${condName.split(':')[0].replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
-          _id: (await generateUniqueID()).slice(0, 8),
+          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
           formula,
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
@@ -2971,7 +3000,7 @@ async function addFeatConditionals() {
           critical: m.critical || 'normal',
         });
       }
-      action.conditionals.push({ _id: (await generateUniqueID()).slice(0, 8), name: condName, default: false, modifiers });
+      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers });
       added++;
     }
     writeToLocalStorage('exportTemplate', exportTemplate);
@@ -3030,7 +3059,7 @@ async function addEnhancementEffects() {
               formula = `${formula}[${condName.split(':')[0].replace(/[\[\]]/g, '').trim()}]`;
             }
             modifiers.push({
-              _id: (await generateUniqueID()).slice(0, 8),
+              _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
               formula,
               target: m.target || 'damage',
               subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
@@ -3040,7 +3069,7 @@ async function addEnhancementEffects() {
             });
           }
           action.conditionals.push({
-            _id: (await generateUniqueID()).slice(0, 8),
+            _id: (await generateUniqueID('conditional', condName)).slice(0, 8),
             name: condName,
             default: cond.default !== false,
             modifiers,
@@ -3094,7 +3123,7 @@ async function addItemAttackConditionals() {
       const condName = `(${capitalizeWords(itemName)}): ${text}`;
       if (seen.has(condName)) continue;
       seen.add(condName);
-      action.conditionals.push({ _id: (await generateUniqueID()).slice(0, 8), name: condName, default: false, modifiers: [] });
+      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers: [] });
       added++;
     }
     writeToLocalStorage('exportTemplate', exportTemplate);
@@ -3167,7 +3196,7 @@ async function addSpellConditionals() {
           formula = `${formula}[${spellName.replace(/[\[\]]/g, '').trim()}]`;
         }
         modifiers.push({
-          _id: (await generateUniqueID()).slice(0, 8),
+          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
           formula,
           target: m.target || 'damage',
           subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
@@ -3176,7 +3205,7 @@ async function addSpellConditionals() {
           critical: m.critical || 'normal',
         });
       }
-      action.conditionals.push({ _id: (await generateUniqueID()).slice(0, 8), name: condName, default: false, modifiers });
+      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers });
       added++;
     }
     writeToLocalStorage('exportTemplate', exportTemplate);
@@ -3255,7 +3284,7 @@ function applySpheresFlags(cam, pam) {
       feat.system = feat.system || {};
       const ch = Array.isArray(feat.system.changes) ? feat.system.changes : [];
       if (!ch.some(c => c && c.target === 'spherecl')) {
-        ch.push({ _id: randomChangeId(), formula: sphereCLExpr(), target: 'spherecl', type: 'untyped', operator: 'add', priority: 0, value: 0 });
+        ch.push({ _id: randomChangeId('spherecl'), formula: sphereCLExpr(), target: 'spherecl', type: 'untyped', operator: 'add', priority: 0, value: 0 });
         feat.system.changes = ch;
       }
     }
@@ -3281,14 +3310,14 @@ async function addDestructiveBlastAttack(subSpheres) {
     if (!weapon) { console.warn('Spheres: no weapon to base the Destructive Blast on.'); return; }
     const blast = structuredClone(weapon);
     blast.type = 'attack';
-    blast._id = await generateUniqueID();
+    blast._id = await generateUniqueID('attack', 'Destructive Blast');
     blast.name = 'Destructive Blast';
     blast.flags = {};
     blast.system = blast.system || {};
     blast.system.description = { value: '<p><strong>Destructive Blast</strong> (Destruction sphere) &mdash; a ranged or melee touch attack within close range (25 ft + 5 ft / 2 caster levels), subject to spell resistance. Deals <strong>(ceil(CL/2))d6</strong> bludgeoning by default (1d6 for a caster-level-1 dabbler). Blast-type talents (Fire/Frost/Acid/&hellip;) change the damage type and add a save rider; blast-shape talents change the delivery; toggle "Empowered Blast" to spend a spell point for one die per caster level.</p>' };
     const action = (blast.system.actions || [])[0];
     if (!action) { console.warn('Spheres: cloned weapon has no action for the blast.'); return; }
-    action._id = await generateUniqueID();
+    action._id = await generateUniqueID('action', 'Destructive Blast');
     action.name = 'Destructive Blast';
     action.actionType = 'rwak';
     action.ability = Object.assign({}, action.ability, { attack: 'dex', damage: '', damageMult: 0 });
@@ -3297,11 +3326,11 @@ async function addDestructiveBlastAttack(subSpheres) {
     action.damage.critParts = [];
     action.damage.nonCritParts = [];
     action.conditionals = [{
-      _id: (await generateUniqueID()).slice(0, 8),
+      _id: (await generateUniqueID('conditional', 'Empowered Blast')).slice(0, 8),
       name: '(Destruction) Empowered Blast: spend [[1]] spell point — blast dice increase to one die per caster level',
       default: false,
       modifiers: [{
-        _id: (await generateUniqueID()).slice(0, 8),
+        _id: (await generateUniqueID('modifier', 'Empowered Blast')).slice(0, 8),
         formula: subSpheres('(floor(@spheres.cl.total / 2))d6') + '[Empowered Blast]',
         target: 'damage', subTarget: 'allDamage', type: 'untyped', damageType: ['bludgeoning'], critical: 'nonCrit',
       }],
@@ -3367,7 +3396,7 @@ async function addSphereTalentConditionals(subSpheres) {
             formula = `${formula}[${String(t.name).replace(/[\[\]]/g, '').trim()}]`;
           }
           modifiers.push({
-            _id: (await generateUniqueID()).slice(0, 8),
+            _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
             formula,
             target: m.target || 'damage',
             subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
@@ -3377,7 +3406,7 @@ async function addSphereTalentConditionals(subSpheres) {
           });
         }
         action.conditionals.push({
-          _id: (await generateUniqueID()).slice(0, 8),
+          _id: (await generateUniqueID('conditional', condName)).slice(0, 8),
           name: condName,
           default: entry.default === true,
           modifiers,
@@ -3430,7 +3459,7 @@ async function addSphereAuraBuffs(subSpheres) {
       if (e.description) parts.push(`<p>${subSpheres(e.description)}</p>`);
       const changes = (Array.isArray(e.changes) ? e.changes : []).map(ch => Object.assign(
         { formula: '0', target: '', type: 'untyped', operator: 'add', priority: 0, value: 0 },
-        ch, { formula: subSpheres(String(ch.formula ?? '0')), _id: randomChangeId() }));
+        ch, { formula: subSpheres(String(ch.formula ?? '0')), _id: randomChangeId(ch) }));
       buffs.push({
         name: `(${tag}) ${t.name}`, type: 'buff', img: 'icons/svg/aura.svg',
         system: {
@@ -3541,7 +3570,7 @@ async function addSpellBuffs() {
         if (e.description) parts.push(String(e.description));   // pre-formatted spell stat-block HTML, raw
         const changes = (Array.isArray(e.changes) ? e.changes : []).map(ch => Object.assign(
           { formula: '0', target: '', type: 'untyped', operator: 'add', priority: 0, value: 0 },
-          ch, { _id: randomChangeId() }));
+          ch, { _id: randomChangeId(ch) }));
         const title = `(${tag}) ${name}` + (e.level != null ? ` (level ${e.level})` : '');
         all.push(mkBuff(title, parts.join(''), changes, false, e.contextNotes));
         count++;
@@ -3639,7 +3668,7 @@ async function addHouseFeatures() {
     const clones = [];
     for (const f of features) {
       const clone = structuredClone(f);
-      clone._id = await generateUniqueID();
+      clone._id = await generateUniqueID('houseFeature', f);
       clones.push(clone);
     }
     appendJsonToTemplate(clones, exportTemplate, 'Feature');
@@ -3654,7 +3683,7 @@ await addHouseFeatures();
 async function addSizeForDamageFeature() {
   try {
     const feature = structuredClone(fileDataDictionary[sizeForDamageFeaturePath]);
-    feature._id = await generateUniqueID();
+    feature._id = await generateUniqueID('sizeForDamage', feature.name);
     // Pin it into the "Variable Modifiers" group (template actor slot), just under its divider.
     feature.sort = 121680;
     appendJsonToTemplate([feature], exportTemplate, 'Feature');
@@ -3678,13 +3707,13 @@ async function createScalingAttackItem() {
     // the pristine base damage (actions[1]); a fresh script-call clone (reads @resources.sizefordamage).
     const dontTouchFrom = async (a0) => {
       const a1 = structuredClone(a0);
-      a1._id = await generateUniqueID();
+      a1._id = await generateUniqueID('action', ["Don't Touch", a0]);
       a1.name = "Don't Touch";
       return a1;
     };
     const freshScript = async () => {
       const sc = structuredClone(fileDataDictionary[scalingWeaponDamagePath]);
-      sc._id = (await generateUniqueID()).slice(0, 8);
+      sc._id = (await generateUniqueID('scriptCall', sc)).slice(0, 8);
       return sc;
     };
 
@@ -3698,7 +3727,7 @@ async function createScalingAttackItem() {
     // (same setup, fresh ids so nothing collides).
     const attack = structuredClone(weapon);
     attack.type = 'attack';
-    attack._id = await generateUniqueID();
+    attack._id = await generateUniqueID('attack', weapon.name);
     // pf1's Combat tab sections attack items by ATTACK subType (weapon/natural/ability/...); the
     // clone carries the WEAPON's subType ("simple"/"martial"), which matches no section, so the twin
     // existed on the actor but never rendered — players had to click "Create Attack" themselves.
@@ -3713,7 +3742,7 @@ async function createScalingAttackItem() {
       appendEnhancementsToDescription(attack, characterData.weapon_enhancement_chosen_list);
     }
     const aAttack = structuredClone(weapon.system.actions[0]);
-    aAttack._id = await generateUniqueID();
+    aAttack._id = await generateUniqueID('action', ['Attack', weapon.name]);
     aAttack.name = 'Attack';
     attack.system.actions = [aAttack, await dontTouchFrom(aAttack)];
     attack.system.scriptCalls = [await freshScript()];
@@ -3815,8 +3844,10 @@ async function select_random_ammo(ammo_type) {
     return;
   }
 
-  // Select a random ammo from the filtered list
-  const randomAmmo = filteredAmmo[Math.floor(Math.random() * filteredAmmo.length)];
+  // Select a random ammo from the filtered list.
+  // The ONLY semantic use of randomness in this file: it changes what is on the sheet, not just an
+  // id, so the golden harness has to seed it rather than normalise it away. See main()'s deps block.
+  const randomAmmo = filteredAmmo[Math.floor(rng() * filteredAmmo.length)];
 
   // Log the selected ammo
   console.log("Selected random ammo:", randomAmmo);

@@ -1,0 +1,1173 @@
+{
+ "Total_HP": 160,
+ "age_number": 51,
+ "alignment": "Lawful Good",
+ "animal_companion": null,
+ "appearance": [
+  "Knobby knees"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Dirty Fighter\": {\n        \"source\": \"Advanced Race Guide pg. 140 The dirty fighter laughs at concepts like honor and fair play. He cares only for victory, no matter how he achieves it, and spends as much time mastering sneaky combat maneuvers as he does drilling with weapons or learning how to wear armor. A dirty fighter has the following class features.\",\n        \"sidestep (ex)\": \"  At 2nd level, a dirty fighter learns how to evade his enemies when they react to his combat maneuvers. He gains a +1 dodge bonus to his AC against attacks of opportunity provoked by him while attempting a combat maneuver. This bonus increases by +1 for every four levels beyond 2nd level. This ability replaces bravery.\",\n        \"maneuver training (ex)\": \"  At 5th level, a dirty fighter becomes a master of dirty tricks. He gains a +2 bonus on dirty trick combat maneuver checks and +2 to his CMD when he is the target of a dirty trick combat maneuver. This ability replaces weapon training 1.\",\n        \"speedy tricks (ex)\": \"  At 9th level, a dirty fighter has perfected how to quickly perform dirty tricks. He can make a dirty trick combat maneuver as an attack instead of a standard action. This ability replaces weapon training 2.\",\n        \"double tricks (ex)\": \"  At 13th level, when a dirty fighter performs a combat maneuver, he may apply two different conditions to his target instead of one. Each penalty condition requires a separate action to remove. At 17th level, he may apply three different conditions. This ability replaces weapon training 3 and 4.\"\n    }\n}",
+ "armor_ac": "9",
+ "armor_armor_check_penalty": "-6",
+ "armor_enhancement_bonus": 3,
+ "armor_enhancement_chosen_list": [
+  "Delving"
+ ],
+ "armor_max_dex_bonus": "1",
+ "armor_name": "Stoneplate",
+ "armor_spell_failure": 0,
+ "armor_weight": "75 lbs.",
+ "bab_total": 16,
+ "background_traits": [
+  "Precocious Spellcaster",
+  "Arbiter",
+  "Aspiring Bard",
+  "Mummy-Cursed"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [],
+ "buff_gaps": [],
+ "build_archetype": "Man-at-Arms",
+ "build_tactics": "Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.",
+ "c_class": "fighter",
+ "c_class_2": "",
+ "c_class_display": "Fighter",
+ "casting_level_str_foundry": "None",
+ "casting_tradition": {
+  "bonus_spell_points": 1,
+  "boons": [
+   "Empowered Abilities",
+   "Overcharge",
+   "Easy Focus"
+  ],
+  "boons_detail": [
+   {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
+   },
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   }
+  ],
+  "casting_ability_modifier": "Charisma",
+  "drawbacks": [
+   "Draining Casting",
+   "Addictive Casting",
+   "Skilled Casting",
+   "Somatic Casting",
+   "Painful Magic",
+   "Prepared Caster"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   }
+  ]
+ },
+ "cha": 12,
+ "character_full_name": "Sébastien Dupuy",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "water"
+ ],
+ "class feature levels": {
+  "armor_training": {
+   "armor specialization (ex)": 7,
+   "armored master": 15,
+   "armored sacrifice (ex)": 11
+  },
+  "weapon_training": {
+   "fighters tactics (ex)": 9,
+   "trained grace (ex)": 13
+  }
+ },
+ "class feature owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class features": {
+  "Skill Unlock: Knowledge (history)": {
+   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
+   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
+   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
+   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  },
+  "armor_training": {
+   "armor specialization (ex)": {
+    "description": "the fighter selects one specific type of armor with which he is proficient, such as chain shirts or scale mail. While wearing the selected type of armor, the fighter adds one-quarter of his fighter level to the armors armor bonus, up to a maximum bonus of +3 for light armor, +4 for medium armor, or +5 for heavy armor. This increase to the armor bonus doesnt increase the benefit that the fighter gains from feats, class abilities, or other effects that are determined by his armors base armor bonus, including other advanced armor training options. A fighter can choose this option multiple times. Each time he chooses it, he applies its benefit to a different type of armor. "
+   },
+   "armored master": {
+    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   },
+   "armored sacrifice (ex)": {
+    "description": "when damage would cause the fighter or an adjacent ally to be knocked unconscious or killed, the fighter can instead direct the damage to a suit of armor that he is wearing or a shield he is using as an immediate action. The original target takes no damage, but the armor or shield is treated as if it had only half its normal hardness. The fighter can use this option once per day, plus one additional time each day at 11th level and every 8 fighter levels thereafter, to a maximum of three times per day at 19th level. "
+   }
+  },
+  "weapon_training": {
+   "fighters tactics (ex)": {
+    "description": "all of the fighters allies are treated as if they had the same teamwork feats as the fighter for the purpose of determining whether the fighter receives a bonus from his teamwork feats. His allies do not receive any bonuses from these feats unless they actually have the feats themselves. "
+   },
+   "trained grace (ex)": {
+    "description": "when the fighter uses weapon finesse to make a melee attack with a weapon, using his dexterity modifier on attack rolls and his strength modifier on damage rolls, he doubles his weapon training bonus on damage rolls. The fighter must have weapon finesse in order to choose this option. "
+   }
+  }
+ },
+ "class_ability": [
+  "bonus feats_fighter",
+  "bravery_fighter",
+  "armor training_fighter",
+  "weapon training_fighter",
+  "armor mastery_fighter",
+  "weapon mastery_fighter"
+ ],
+ "class_ability_desc": {
+  "armor mastery": "At 19th level, a fighter gains DR 5/- whenever he is wearing armor or using a shield.",
+  "armor training": "Starting at 3rd level, a fighter learns to be more maneuverable while wearing armor. Whenever he is wearing armor, he reduces the armor check penalty by 1 (to a minimum of 0) and increases the maximum Dexterity bonus allowed by his armor by 1. Every four levels thereafter (7th, 11th, and 15th), these bonuses increase by +1 each time, to a maximum -4 reduction of the armor check penalty and a +4 increase of the maximum Dexterity bonus allowed. In addition, a fighter can also move at his normal speed while wearing medium armor. At 7th level, a fighter can move at his normal speed while wearing heavy armor.",
+  "bonus feats": "At 1st level, and at every even level thereafter, a fighter gains a bonus feat in addition to those gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as combat feats, sometimes also called \"fighter bonus feats.\"Upon reaching 4th level, and every four levels thereafter (8th, 12th, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he has already learned. In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or other ability. A fighter can only change one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.",
+  "bravery": "Starting at 2nd level, a fighter gains a +1 bonus on Will saves against fear. This bonus increases by +1 for every four levels beyond 2nd.",
+  "weapon mastery": "At 20th level, a fighter chooses one weapon, such as the longsword, greataxe, or longbow. Any attacks made with that weapon automatically confirm all critical threats and have their damage multiplier increased by 1 (×2 becomes ×3, for example). In addition, he cannot be disarmed while wielding a weapon of this type. Alternate Capstones",
+  "weapon training": "Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls. Every four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups. A fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter's Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group. Weapon groups are defined as follows (GMs may add other weapons to these groups, or add entirely new groups): Note from Nethys : A consolidated list of fighter weapon groups is provided here"
+ },
+ "class_feat_labels": [
+  "Fighter 1",
+  "Fighter 2",
+  "Fighter 4",
+  "Fighter 6",
+  "Fighter 8",
+  "Fighter 10",
+  "Fighter 12",
+  "Fighter 14",
+  "Fighter 16"
+ ],
+ "class_feat_tax_dict": {
+  "Combat Reflexes": [
+   "bodyguard",
+   "in harm's way",
+   "pin down",
+   "porcupine defense",
+   "stand still"
+  ]
+ },
+ "class_feats": [
+  "Ferocious Loyalty",
+  "Miniature Reach",
+  "Winds of War",
+  "Stone Read",
+  "Combat Reflexes",
+  "Ensemble",
+  "Duck and Cover",
+  "Cosmopolitan",
+  "Opening Volley"
+ ],
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {
+  "armor_training": {
+   "armor specialization (ex)": 7,
+   "armored master": 15,
+   "armored sacrifice (ex)": 11
+  },
+  "weapon_training": {
+   "fighters tactics (ex)": 9,
+   "trained grace (ex)": 13
+  }
+ },
+ "class_feature_owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class_features": {
+  "Skill Unlock: Knowledge (history)": {
+   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
+   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
+   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
+   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  },
+  "armor_training": {
+   "armor specialization (ex)": {
+    "description": "the fighter selects one specific type of armor with which he is proficient, such as chain shirts or scale mail. While wearing the selected type of armor, the fighter adds one-quarter of his fighter level to the armors armor bonus, up to a maximum bonus of +3 for light armor, +4 for medium armor, or +5 for heavy armor. This increase to the armor bonus doesnt increase the benefit that the fighter gains from feats, class abilities, or other effects that are determined by his armors base armor bonus, including other advanced armor training options. A fighter can choose this option multiple times. Each time he chooses it, he applies its benefit to a different type of armor. "
+   },
+   "armored master": {
+    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   },
+   "armored sacrifice (ex)": {
+    "description": "when damage would cause the fighter or an adjacent ally to be knocked unconscious or killed, the fighter can instead direct the damage to a suit of armor that he is wearing or a shield he is using as an immediate action. The original target takes no damage, but the armor or shield is treated as if it had only half its normal hardness. The fighter can use this option once per day, plus one additional time each day at 11th level and every 8 fighter levels thereafter, to a maximum of three times per day at 19th level. "
+   }
+  },
+  "weapon_training": {
+   "fighters tactics (ex)": {
+    "description": "all of the fighters allies are treated as if they had the same teamwork feats as the fighter for the purpose of determining whether the fighter receives a bonus from his teamwork feats. His allies do not receive any bonuses from these feats unless they actually have the feats themselves. "
+   },
+   "trained grace (ex)": {
+    "description": "when the fighter uses weapon finesse to make a melee attack with a weapon, using his dexterity modifier on attack rolls and his strength modifier on damage rolls, he doubles his weapon training bonus on damage rolls. The fighter must have weapon finesse in order to choose this option. "
+   }
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Dirty Fighter": {
+     "double tricks (ex)": "  At 13th level, when a dirty fighter performs a combat maneuver, he may apply two different conditions to his target instead of one. Each penalty condition requires a separate action to remove. At 17th level, he may apply three different conditions. This ability replaces weapon training 3 and 4.",
+     "maneuver training (ex)": "  At 5th level, a dirty fighter becomes a master of dirty tricks. He gains a +2 bonus on dirty trick combat maneuver checks and +2 to his CMD when he is the target of a dirty trick combat maneuver. This ability replaces weapon training 1.",
+     "sidestep (ex)": "  At 2nd level, a dirty fighter learns how to evade his enemies when they react to his combat maneuvers. He gains a +1 dodge bonus to his AC against attacks of opportunity provoked by him while attempting a combat maneuver. This bonus increases by +1 for every four levels beyond 2nd level. This ability replaces bravery.",
+     "source": "Advanced Race Guide pg. 140 The dirty fighter laughs at concepts like honor and fair play. He cares only for victory, no matter how he achieves it, and spends as much time mastering sneaky combat maneuvers as he does drilling with weapons or learning how to wear armor. A dirty fighter has the following class features.",
+     "speedy tricks (ex)": "  At 9th level, a dirty fighter has perfected how to quickly perform dirty tricks. He can make a dirty trick combat maneuver as an attack instead of a standard action. This ability replaces weapon training 2."
+    }
+   },
+   "display": "Fighter",
+   "level": 16,
+   "name": "fighter"
+  }
+ ],
+ "combat_talent_items": [],
+ "con": 8,
+ "counter_schools": [
+  "divination"
+ ],
+ "counter_spell_descriptor": [
+  "cold"
+ ],
+ "craft_type": "Siege Engines",
+ "day_list": [],
+ "deity_name": "Erastil",
+ "dex": 12,
+ "enhancement_effects_dict": {
+  "armor": {
+   "Delving": {
+    "changes": [],
+    "contextNotes": [
+     {
+      "target": "ac",
+      "text": "Delving: burrow speed [[10]] ft through soil (not solid stone; no air supplied); +[[4]] on saves vs landslides, avalanches, and tunnel collapses."
+     }
+    ],
+    "description": "Armor with this special ability grants the wearer a burrow speed of 10 feet. This speed allows the wearer to tunnel through any type of soil, including rocky soil, but not actual solid stone. This special ability does not give the wearer the ability to breathe underground, so he must hold his breath or use other magic that provides air or allows him to breathe. The wearer gains a +4 bonus on all saving throws against landslides, avalanches, tunnel collapses, and similar effects."
+   }
+  },
+  "weapon": {
+   "Dispelling": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [],
+      "name": "Dispelling: stores dispel magic (as spell storing); the dispel check gains a bonus equal to the weapon's enhancement bonus (also applies to dispelling strike and spell sunder / sunder enchantment checks)"
+     }
+    ],
+    "description": "A dispelling weapon functions like a spell storing weapon, but it may only store dispel magic ; however, the caster level check to dispel gains an additional bonus equal to the weapon's enhancement bonus. This bonus also applies to a magus's dispelling strike arcana or a barbarian's spell sunder or sunder enchantment combat maneuver check."
+   },
+   "Guided": {
+    "conditionals": [
+     {
+      "default": true,
+      "modifiers": [],
+      "name": "Guided: attack and damage rolls use the wielder's Wisdom modifier instead of Strength (never adjusted for two-handed/off-hand); wielding it with Strength instead imposes -[[2]] on attack rolls"
+     }
+    ],
+    "description": "A weapon with the guided property allows its wielder to use his instinct when striking blows with it. Attacks from a guided weapon generally don't strike hard, but they strike at precisely the right moment to maximize damage if in the hands of a particularly wise wielder. A character who attacks with a guided weapon modifies his attack rolls and weapon damage rolls with his Wisdom modifier, not his Strength modifier. This modifier to damage is not adjusted for two-handed weapons or off-hand weaponsit always remains equal to the wielder's Wisdom modifier. A guided weapon may be wielded as a normal weapon, using Strength to modify attack and damage rolls, but this goes against the weapon's nature and imparts a –2 penalty on all attack rolls made in this manner."
+   }
+  }
+ },
+ "equip_descrip": {
+  "belts": {
+   "description": " this kilt is made of thick woven strips of sea-green and sky-blue cloth decorated with tiny pearls and bits of coral along the beltline. The wearer gains a +3 competence bonus on swim checks. When not worn, a windwave kilt floats on water like a dry log, automatically buoying upward any creature that weighs 100 pounds or less and aiding in flotation for heavier creatures. If gozreh is the wearer's patron, once per day the wearer can use gaseous form . In this form, the wearer does not need to breathe and can enter water or other liquid, appearing as a mass of fine bubbles and gaining the ability to swim at a speed of 10 feet. The wearer can also drink salt water as if it were fresh water. ",
+   "item_name": "Windwave Kilt"
+  },
+  "body": {
+   "description": " when worn, this simple brown robe confers great ability\r in unarmed combat. If the wearer has levels in monk, her\r ac and unarmed damage are treated as a monk of 5 levels\r higher. If donned by a character with the stunning fist feat, \r the robe lets her make one additional stunning attack per day. \r if the character is not a monk, she gains the ac and unarmed\r damage of a 5th-level monk (although she does not add her\r wisdom bonus to her ac). This ac bonus functions just like the\r monk's ac bonus. ",
+   "item_name": "Monk's Robe"
+  },
+  "chest": {
+   "description": " this loose-fitting blouse is adorned with grotesque fetishes\r and trophies, granting the wearer a +2 competence bonus on\r intimidate checks. If the wearer is a witch, she gains the cackle\r hex. If the wearer already has the cackle hex, twice per day she\r can use her cackle ability as a swift action instead of a move\r action. ",
+   "item_name": "Cackling Hag's Blouse"
+  },
+  "eyes": {
+   "description": " these goggles feature stubby periscopelike lenses that expand\r and retract depending on the needs of the wearer. These\r goggles function as sniper goggles , but the wearer gains the\r +2 circumstance bonus on each sneak attack when making a\r sneak attack at any range. ",
+   "item_name": "Sniper Goggles, Greater"
+  },
+  "feet": {
+   "description": " these boots appear to be ordinary footgear. On command, \r they sprout wings at the heel and let the wearer fly, without\r having to maintain concentration, as if affected by a fly spell\r (including a +4 bonus on fly skill checks). The wearer can fly\r three times per day for up to 5 minutes per flight. ",
+   "item_name": "Winged Boots"
+  },
+  "hands": {
+   "description": " these gloves are made of goatskin reinforced with heavy iron strips. They provide a sure, strengthened grip on large or awkwardly shaped items. When the wearer wields an improvised melee weapon or inappropriately sized weapon, reduce the penalty for doing so by 2 (minimum 0). The gloves don't change the number of hands required to wield such a weapon. ",
+   "item_name": "Irongrip Gauntlets"
+  },
+  "head": {
+   "description": " this finely constructed mask of colored cloth and carved bone incorporates parts of the animal it represents, such as its hair, hide, horn, fur, and teeth. Depicting the head of an ape, bear, boar, cat, fox, horse, pig, rat, or wolf, the mask completely covers the wearer's face, but the wearer can see through the mask's eyes as though they were her own. As a swift action, the wearer can transform her head into the form of the animal depicted by the mask for up to 5 minutes per day, absorbing the mask into her body in the process but leaving in place any other item she wears on her head. While so transformed, the wearer retains the ability to speak normally and can complete verbal spell components, utter command words, and activate spell-completion and spell-trigger items. She also gains low-light vision, scent, and either a bite or gore attack (as appropriate to the animal) that deals 1d4 points of damage for a medium wearer (1d3 if small). This duration does not need to be consecutive, but it must be used in 1-minute increments. ",
+   "item_name": "Animal Mask"
+  },
+  "headband": {
+   "description": " this fine silver circlet typically has a carved moonstone inset on the front or a crescent moon design. The wearer of a moon circlet gains darkvision out to 60 feet (if she does not already possess it). Its other effects only benefit a wearer capable of casting arcane spells. During the waxing moon, the wearer's caster level is considered one higher for purposes of caster level checks and spell effects; during the three nights of the full moon, this benefit increases to two levels higher than normal. However, this additional power comes with a price. During the waning moon, the wearer's caster level is considered one lower for purposes of caster level checks and spell effects, and during the three nights of the new moon, this penalty increases to two levels lower. Removing a moon circlet imposes 2 negative levels on the wearer until the next full moon (or until the circlet is worn again, whichever comes first). These negative levels cannot be restored by any means short of a limited wish , wish , or miracle ",
+   "item_name": "Moon Circlet"
+  },
+  "neck": {
+   "description": " this ruby is cut like a droplet of blood and suspended on an elaborate golden necklace. Once per day as a swift action, the wearer can envenom a wielded weapon with her saliva or blood as though she were a vishkanya (pathfinder rpg advanced race guide 208). The wearer must be injured to use her blood with this ability, but can voluntarily deal 1 point of damage to herself with piercing or slashing weapon in order to use it. If the wearer is a vishkanya, she can use her toxic racial trait two additional times per day, and the dc of saving throws against her venom increases by 1. ",
+   "item_name": "Vishkanya Periapt"
+  },
+  "rings": {
+   "description": "This ring is carved from a single, thick antler and fashioned into the shape of a regal elk's head. The wearer gains a +2 competence bonus on Perception and Survival checks. Once per day, the wearer can use animal messenger",
+   "item_name": "Deadeye's Spotter Ring"
+  },
+  "shoulders": {
+   "description": " this heavy cloak is made of blue scaled leather and has a\r pointed hem that hangs near the ground. The cloak provides\r the wearer a +4 resistance bonus on will saves, a continuous feather fall effect (as the spell), and the ability to use fly once\r per day. At will as a swift action, the wearer can form the\r hem into a stinger, granting her a sting natural weapon. This\r sting deals 1d6 points of damage plus poison (as the spell; dc\r 16). Reverting the stinger to its normal, inconspicuous shape\r is a free action. ",
+   "item_name": "Wyvern Cloak"
+  }
+ },
+ "equipment_list": [
+  "Windwave Kilt",
+  "Monk's Robe",
+  "Cackling Hag's Blouse",
+  "Sniper Goggles, Greater",
+  "Winged Boots",
+  "Irongrip Gauntlets",
+  "Animal Mask",
+  "Moon Circlet",
+  "Vishkanya Periapt",
+  "Wyvern Cloak",
+  "Deadeye's Spotter Ring"
+ ],
+ "eye_color": [
+  "Brown"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 9,
+  "flavor": 1,
+  "flaw": 2,
+  "normal": 9,
+  "profession": 2,
+  "story": 4,
+  "teamwork": 0,
+  "trainer": 0
+ },
+ "feat_changes_dict": {
+  "Coordinated Maneuvers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
+    }
+   ]
+  },
+  "Stone Read": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
+    }
+   ]
+  }
+ },
+ "feat_conditionals_dict": {
+  "Desperate Battler": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
+  },
+  "Ferocious Loyalty": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Ferocious Loyalty: +1 morale on attack rolls vs a foe threatening an ally who also has this feat (+2 morale for 1 min if such an ally is downed/killed within 30 ft)"
+  }
+ },
+ "feats": [
+  "Lookout",
+  "Sin Eater",
+  "Dragoncrafting",
+  "Firebrand",
+  "Scholar",
+  "Seize the Opportunity",
+  "Enforcer",
+  "Sure Grasp",
+  "Multi Talented",
+  "True Calling"
+ ],
+ "feats_feat_tax_dict": {},
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [
+  "Coordinated Maneuvers"
+ ],
+ "flaw": [
+  "Motion Sickness",
+  "Powerless Prophecy"
+ ],
+ "flaw_effects_dict": {
+  "Motion Sickness": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "fort",
+     "text": "Motion Sickness: after [[10]] minutes riding/sailing, Fortitude save DC [[5]] or sickened while it continues."
+    }
+   ],
+   "description": "Travel turns your stomach. After 10 minutes riding a mount, vehicle, or ship, you must pass a Fortitude save (DC 5) or be sickened for as long as the ride continues.",
+   "tier": "minor"
+  },
+  "Powerless Prophecy": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "init",
+     "text": "Powerless Prophecy: no actions in surprise rounds; without a surprise round, staggered for round [[1]]."
+    }
+   ],
+   "description": "You are forewarned of danger but cannot act to prevent it. You can take no actions during a surprise round (not even free actions), and if there is no surprise round you are staggered for the entire first round of combat.",
+   "tier": "major"
+  }
+ },
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [
+  "Toughness",
+  "Charge of the Righteous"
+ ],
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Scullery Hand (rank 15)\n- Profession: Sellsword (rank 10)\n- Profession: Abbott (rank 6)\n- Known for: Siege Engines\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Red\n- Eyes: Brown\n- Build: Knobby Knees",
+ "full_domain": [],
+ "gender": "Male",
+ "generation_seed": 3002,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 21700,
+ "hair_color": [
+  "Red"
+ ],
+ "hair_type": [
+  "Straight"
+ ],
+ "height_number": "5'3\"",
+ "hero_points": 1,
+ "homebrew_feat_desc_dict": {
+  "Charge of the Righteous": "You charge undead and fiends with confidence in your righteous cause",
+  "Combat Reflexes": "You can make additional attacks of opportunity",
+  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
+  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
+  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
+  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
+  "Duck and Cover": "Your allies assist you in avoiding certain attacks",
+  "Enforcer": "You are skilled at causing fear in those you brutalize",
+  "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
+  "Ferocious Loyalty": "You have a powerful sense of responsibility for your allies",
+  "Firebrand": "You can make use of a torch as a deadly, macelike weapon",
+  "Lookout": "Your allies help you avoid being surprised",
+  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
+  "Reckless Offense": "You can shift your focus from defense to offense. when you use the attack action or full attack action in melee, you can take a penalty of 4 to your armor class and add a +2 bonus on your melee attack roll. the bonus on attack rolls and penalty to armor class last until the beginning of your next turn.",
+  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
+  "Seize the Opportunity": "You possess an exceptional knack for exploiting sudden openings by your opponents. when you make an attack of opportunity, you can take an attack action (such as vital strike) or attempt a combat maneuver (such as a bull rush, disarm or dirty trick) in place of your attack of opportunity. this feat does not allow you to move when it isnt your turn.",
+  "Sin Eater": "You prosper as your enemies fail. whenever a creature claimed by you is reduced to 0 or fewer hit points, you gain temporary hit points equal to twice that creatures hit dice. these temporary hit points last for one minute.",
+  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
+  "Sure Grasp": "Your quick ref lexes and skill at climbing keep you from falling to your doom",
+  "Toughness": "You have enhanced physical stamina",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Winds of War": "Those you have Claimed cannot hide, and now they can no longer even run. you gain a +5-foot bonus to each of your movement speeds. this bonus increases by +5 feet for each creature you currently have claimed.",
+  "Woodland Sage": "Understanding nature requires patience far more than education or guile. add your wisdom modifier as an additional bonus to your handle animal, knowledge (nature), and knowledge (geography) checks. if you have the wild empathy class feature, add your wisdom modifier as an additional bonus on checks with that ability."
+ },
+ "inherents": {
+  "cha": 10,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 4,
+  "wis": 0
+ },
+ "initiation_stat": "cha",
+ "initiator_level": 0,
+ "int": 9,
+ "item_changes_dict": {
+  "Animal Mask": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "As a swift action, the wearer can transform her head into the form of the animal depicted by the mask for up to [[5]] minutes per day, absorbing the mask into her body in the process but leaving in place any other item she wears on her head. She also gains low-light vision, scent, and either a bite or gore attack (as appropriate to the animal) that deals [[1d4]] points of damage for a medium wearer ([[1d3]] if small). This duration does not need to be consecutive, but it must be used in 1-minute increments."
+    }
+   ]
+  },
+  "Cackling Hag's Blouse": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.int",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.int",
+     "text": "If the wearer already has the cackle hex, twice per day she can use her cackle ability as a swift action instead of a move action."
+    }
+   ]
+  },
+  "Deadeye's Spotter Ring": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.sur",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.per",
+     "text": "Once per day, the wearer can use animal messenger"
+    }
+   ]
+  },
+  "Irongrip Gauntlets": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "When the wearer wields an improvised melee weapon or inappropriately sized weapon, reduce the penalty for doing so by 2 (minimum 0)."
+   ]
+  },
+  "Monk's Robe": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "If the wearer has levels in monk, her ac and unarmed damage are treated as a monk of 5 levels higher. If the character is not a monk, she gains the ac and unarmed damage of a 5th-level monk (although she does not add her wisdom bonus to her ac)."
+    }
+   ]
+  },
+  "Moon Circlet": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "The wearer of a moon circlet gains darkvision out to [[60]] feet (if she does not already possess it). During the waxing moon, the wearer's caster level is considered one higher for purposes of caster level checks and spell effects; During the waning moon, the wearer's caster level is considered one lower for purposes of caster level checks and spell effects, and during the three nights of the new moon, this penalty increases to two levels lower. Removing a moon circlet imposes 2 negative levels on the wearer until the next full moon (or until the circlet is worn again, whichever comes first)."
+    }
+   ]
+  },
+  "Sniper Goggles, Greater": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "These goggles function as sniper goggles , but the wearer gains the +[[2]] circumstance bonus on each sneak attack when making a sneak attack at any range."
+    }
+   ]
+  },
+  "Vishkanya Periapt": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "Once per day as a swift action, the wearer can envenom a wielded weapon with her saliva or blood as though she were a vishkanya (pathfinder rpg advanced race guide 208). The wearer must be injured to use her blood with this ability, but can voluntarily deal 1 point of damage to herself with piercing or slashing weapon in order to use it. If the wearer is a vishkanya, she can use her toxic racial trait two additional times per day, and the dc of saving throws against her venom increases by 1."
+    }
+   ]
+  },
+  "Windwave Kilt": {
+   "changes": [
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.swm",
+     "text": "When not worn, a windwave kilt floats on water like a dry log, automatically buoying upward any creature that weighs 100 pounds or less and aiding in flotation for heavier creatures. If gozreh is the wearer's patron, once per day the wearer can use gaseous form . In this form, the wearer does not need to breathe and can enter water or other liquid, appearing as a mass of fine bubbles and gaining the ability to swim at a speed of [[10]] feet."
+    }
+   ]
+  },
+  "Winged Boots": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.fly",
+     "text": "On command, they sprout wings at the heel and let the wearer fly, without having to maintain concentration, as if affected by a fly spell (including a +[[4]] bonus on fly skill checks). The wearer can fly three times per day for up to [[5]] minutes per flight."
+    }
+   ]
+  },
+  "Wyvern Cloak": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.fly",
+     "text": "The cloak provides the wearer a +[[4]] resistance bonus on will saves, a continuous feather fall effect (as the spell), and the ability to use fly once per day. At will as a swift action, the wearer can form the hem into a stinger, granting her a sting natural weapon. This sting deals [[1d6]] points of damage plus poison (as the spell; Dc [[16]])."
+    }
+   ]
+  }
+ },
+ "known_list": [],
+ "land_speed": 30,
+ "language_text": [
+  "Common"
+ ],
+ "level": 16,
+ "level_up_stats": {
+  "cha": 0,
+  "con": 1,
+  "dex": 1,
+  "int": 0,
+  "str": 2,
+  "wis": 0
+ },
+ "license_url": "/license",
+ "magic_talent_items": [],
+ "main_stat": "str",
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
+ "manifesters": [],
+ "mannerisms": [
+  "Drums fingers",
+  "Yawns",
+  "Clenches fists"
+ ],
+ "martial_disciplines": [],
+ "mini_alignment": "lg",
+ "mod_char_sheet_var": false,
+ "mt_feats": [],
+ "normal_feat_amount": 8,
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "parents": "absent mother, loving father, raised in a wealthy household",
+ "personality_traits": [
+  "Fervent",
+  "Rebellious",
+  "Selfish",
+  "Fearsome"
+ ],
+ "platnium": 2170.0,
+ "powers_desc_dict": {},
+ "profession_ability_items": [
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.pro",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "+2 competence to Diplomacy within 1 minute of greeting a creature"
+    }
+   ],
+   "description": "<p><em>Profession (Scullery Hand) - rank 15/15. Associate skills (ranks 1/4/7/10): Sense Motive, Profession, Diplomacy, Perception.</em></p><hr><p><strong>Pleasant Greeting (Ex)</strong></p><p>You welcome each newcomer by name or with a warm word. You gain a <strong>+2 competence bonus</strong> on Diplomacy checks made to influence a creature within 1 minute of greeting it, and the first such check you make each day may take 10 even if rushed or distracted.</p><hr><p><strong>Clean Apron (Ex)</strong></p><p>You keep an immaculate station and a ready rag. You gain a <strong>+2 competence bonus</strong> on Profession (innkeeper, cook, or server) checks and on Diplomacy checks made to wait on or serve a creature, and once per day you can spend 1 minute to clean and press a creature's clothing or your own to grant a <strong>+2 circumstance bonus</strong> on its next Diplomacy or Disguise check made within 1 hour.</p>",
+   "name": "Profession Rank 5: (Scullery Hand)",
+   "uses": {
+    "maxFormula": "1",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.acr",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "+2 competence to Diplomacy (gather information) within the home settlement"
+    }
+   ],
+   "description": "<p><em>Profession (Scullery Hand) - rank 15/15.</em></p><hr><p><strong>Local Gossip (Ex)</strong></p><p>Behind the bar one hears everything. The character gains a <strong>+2 competence bonus</strong> on Diplomacy checks to gather information within their own town or district.</p><hr><p><strong>Steady Pour (Ex)</strong></p><p>Years of carrying full trays through crowded rooms have given the character a sure grip and good footing. They gain a <strong>+2 competence bonus</strong> on Acrobatics checks to move through a crowd or balance.</p><hr><p><strong>Day-Old Bread (Ex)</strong></p><p>The larder always holds yesterday's loaves and a crock of dripping. A number of times per day equal to 1 + your Charisma modifier (minimum 1) you can provide a free, filling meal to one creature, sparing it a day's ration cost; a creature that eats also removes the <strong>fatigued</strong> condition.</p>",
+   "name": "Profession Rank 15: (Scullery Hand)",
+   "uses": {
+    "maxFormula": "max(1, 1 + @abilities.cha.mod)",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.acr",
+     "type": "competence"
+    },
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "init",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Sellsword) - rank 10/10. Associate skills (ranks 1/4/7/10): Use Magic Device, Perception, Profession, Knowledge (local).</em></p><hr><p><strong>Nimble Delver (Ex)</strong></p><p>Tight crawls and treacherous footing hold no fear for you. You gain a +2 competence bonus on Acrobatics checks and on Climb checks made underground or amid ruins.</p><hr><p><strong>Wanderer's Bearings (Ex)</strong></p><p>You never truly lose your way. You always know which way is north and roughly how far you have travelled, and you gain a +1 competence bonus on initiative checks from your traveller's wariness.</p>",
+   "name": "Profession Rank 5: (Sellsword)",
+   "uses": null
+  },
+  {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+1 morale on saves vs. fear"
+    }
+   ],
+   "description": "<p><em>Profession (Abbott) - rank 6/10. Associate skills (ranks 1/4/7/10): Perception, Handle Animal.</em></p><hr><p><strong>Sacred Touch (Su)</strong></p><p>As a standard action you can automatically stabilize a dying creature merely by touching it. You may also remove the fatigued condition from a willing creature by touch once per hour.</p><hr><p><strong>Faithful Heart (Ex)</strong></p><p>An unshakable conviction steadies Fighter against the terrors that prey upon the doubtful. Grants a +1 <strong>morale</strong> bonus on saving throws against fear effects.</p>",
+   "name": "Profession Rank 5: (Abbott)",
+   "uses": null
+  }
+ ],
+ "profession_feat_desc": {
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "profession_feats": [
+  "Multi Talented",
+  "True Calling"
+ ],
+ "profession_pool": 31,
+ "profession_ranks": [
+  {
+   "ability_theme": "service",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Sense Motive",
+    "Profession",
+    "Diplomacy",
+    "Perception"
+   ],
+   "cap": 15,
+   "name": "Scullery Hand",
+   "rank15_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "attack",
+       "text": "+2 competence to Diplomacy (gather information) within the home settlement"
+      }
+     ],
+     "desc": "<p>Behind the bar one hears everything. The character gains a <strong>+2 competence bonus</strong> on Diplomacy checks to gather information within their own town or district.</p>",
+     "name": "Local Gossip (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.acr",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years of carrying full trays through crowded rooms have given the character a sure grip and good footing. They gain a <strong>+2 competence bonus</strong> on Acrobatics checks to move through a crowd or balance.</p>",
+     "name": "Steady Pour (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>The larder always holds yesterday's loaves and a crock of dripping. A number of times per day equal to 1 + your Charisma modifier (minimum 1) you can provide a free, filling meal to one creature, sparing it a day's ration cost; a creature that eats also removes the <strong>fatigued</strong> condition.</p>",
+     "name": "Day-Old Bread (Ex)",
+     "uses": {
+      "maxFormula": "max(1, 1 + @abilities.cha.mod)",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "attack",
+       "text": "+2 competence to Diplomacy within 1 minute of greeting a creature"
+      }
+     ],
+     "desc": "<p>You welcome each newcomer by name or with a warm word. You gain a <strong>+2 competence bonus</strong> on Diplomacy checks made to influence a creature within 1 minute of greeting it, and the first such check you make each day may take 10 even if rushed or distracted.</p>",
+     "name": "Pleasant Greeting (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.pro",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You keep an immaculate station and a ready rag. You gain a <strong>+2 competence bonus</strong> on Profession (innkeeper, cook, or server) checks and on Diplomacy checks made to wait on or serve a creature, and once per day you can spend 1 minute to clean and press a creature's clothing or your own to grant a <strong>+2 circumstance bonus</strong> on its next Diplomacy or Disguise check made within 1 hour.</p>",
+     "name": "Clean Apron (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "ranks": 15,
+   "skill_label": "Profession (Scullery Hand)"
+  },
+  {
+   "ability_theme": "wayfarer",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Use Magic Device",
+    "Perception",
+    "Profession",
+    "Knowledge (local)"
+   ],
+   "cap": 10,
+   "name": "Sellsword",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.acr",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Tight crawls and treacherous footing hold no fear for you. You gain a +2 competence bonus on Acrobatics checks and on Climb checks made underground or amid ruins.</p>",
+     "name": "Nimble Delver (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "init",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You never truly lose your way. You always know which way is north and roughly how far you have travelled, and you gain a +1 competence bonus on initiative checks from your traveller's wariness.</p>",
+     "name": "Wanderer's Bearings (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Sellsword)"
+  },
+  {
+   "ability_theme": "divine",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Perception",
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Abbott",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>As a standard action you can automatically stabilize a dying creature merely by touching it. You may also remove the fatigued condition from a willing creature by touch once per hour.</p>",
+     "name": "Sacred Touch (Su)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "allSavingThrows",
+       "text": "+1 morale on saves vs. fear"
+      }
+     ],
+     "desc": "<p>An unshakable conviction steadies Fighter against the terrors that prey upon the doubtful. Grants a +1 <strong>morale</strong> bonus on saving throws against fear effects.</p>",
+     "name": "Faithful Heart (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 6,
+   "skill_label": "Profession (Abbott)"
+  }
+ ],
+ "professions": [
+  "Scullery Hand",
+  "Sellsword",
+  "Abbott"
+ ],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 2,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 10,
+  "ref": 5,
+  "will": 5
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Talented",
+  "Seasoned Climber",
+  "Younger Sibling",
+  "Rescued",
+  "Viking Blood",
+  "Adopted",
+  "Uskwood Hunter",
+  "Isger Fixer"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +1 trait bonus on checks with a single Perform skill (your choice), and all Perform skills are always class skills for you.",
+   "name": "Talented"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Climb checks, and Climb becomes a class skill for you.",
+   "name": "Seasoned Climber"
+  },
+  {
+   "description": "You gain a +1 trait bonus on all attack rolls against foes that threaten your older sibling as well as one of the following: You gain a +1 trait bonus on Will saving throws or you gain a +1 trait bonus on all Fortitude saving throws. If you’re the younger sibling of a specific NPC (consult your GM), your quick reflexes give you a +1 trait bonus on all Reflex saving throws.",
+   "name": "Younger Sibling"
+  },
+  {
+   "description": "You gain a +1 trait bonus on all attack rolls against foes that threaten your savior as well as one of the following: You gain a +2 trait bonus whenever you use cure spells to heal damage or you gain a +1 trait bonus on Acrobatics checks and Acrobatics is always a class skill for you.",
+   "name": "Rescued"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.",
+   "name": "Viking Blood"
+  },
+  {
+   "description": "You may select a race trait from your adoptive parents’ race.",
+   "name": "Adopted"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Stealth checks, and Stealth is always a class skill for you.",
+   "name": "Uskwood Hunter"
+  },
+  {
+   "description": "Once per day, you can tinker with a broken object to allow anyone who uses it to ignore the penalties for its broken condition for 24 hours (this does not affect the object’s hit points). At the end of this time, it regains the broken condition (but you can use this trait on it over and over again).",
+   "name": "Isger Fixer"
+  }
+ ],
+ "sheet_health": 160,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 208,
+ "skill_ranks": {
+  "acrobatics": 8,
+  "appraise": 9,
+  "bluff": 9,
+  "climb": 0,
+  "diplomacy": 4,
+  "disable device": 0,
+  "disguise": 3,
+  "escape artist": 0,
+  "fly": 16,
+  "handle animal": 3,
+  "heal": 12,
+  "intimidate": 0,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 6,
+  "knowledge engineering": 3,
+  "knowledge geography": 3,
+  "knowledge history": 9,
+  "knowledge local": 2,
+  "knowledge nature": 6,
+  "knowledge nobility": 11,
+  "knowledge planes": 5,
+  "knowledge religion": 11,
+  "linguistics": 0,
+  "perception": 6,
+  "perform": 2,
+  "profession": 0,
+  "ride": 12,
+  "sense motive": 7,
+  "sleight of hand": 16,
+  "spellcraft": 0,
+  "stealth": 9,
+  "survival": 16,
+  "swim": 11,
+  "use magic device": 9
+ },
+ "skill_unlock": {
+  "base_skill": "knowledge",
+  "ranks": 9,
+  "skill": "Knowledge (history)",
+  "unlock": {
+   "10": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
+   "15": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
+   "20": "You can roll twice and take the better result on Knowledge checks.",
+   "5": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  },
+  "unlock_html": "<h2>Knowledge (history)</h2><p><strong>5 Ranks</strong>: You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill.</p><p><strong>10 Ranks</strong>: After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.</p><p><strong>15 Ranks</strong>: You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.</p><p><strong>20 Ranks</strong>: You can roll twice and take the better result on Knowledge checks.</p>"
+ },
+ "specialty_schools": [
+  "necromancy"
+ ],
+ "spell_changes_dict": {},
+ "spell_list_choose_from": [],
+ "spell_list_choose_from_dict": [],
+ "spell_riders_dict": {},
+ "spellbooks": [],
+ "spells_prepared_per_level": [],
+ "sphere_boons": [
+  "Empowered Abilities",
+  "Overcharge",
+  "Easy Focus"
+ ],
+ "sphere_counts": {},
+ "sphere_drawbacks": [
+  "Draining Casting",
+  "Addictive Casting",
+  "Skilled Casting",
+  "Somatic Casting",
+  "Painful Magic",
+  "Prepared Caster"
+ ],
+ "sphere_feat_tax": {},
+ "sphere_feats": [],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Draining Casting",
+  "Addictive Casting",
+  "Skilled Casting",
+  "Somatic Casting",
+  "Painful Magic",
+  "Prepared Caster",
+  "Empowered Abilities",
+  "Overcharge",
+  "Easy Focus"
+ ],
+ "spheres_chosen": [],
+ "stances_chosen": [],
+ "story_feat_tax_dict": {},
+ "story_feats": [
+  "Reckless Offense",
+  "Woodland Sage",
+  "Skilled Driver",
+  "Desperate Battler"
+ ],
+ "str": 21,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 16,
+ "total_rolled_hp": 150,
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
+ "weapon_enhancement_bonus": 5,
+ "weapon_enhancement_chosen_list": [
+  "Dispelling",
+  "Guided"
+ ],
+ "weapon_name": "Kerambit",
+ "weight_number": 210,
+ "wis": 15,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}
