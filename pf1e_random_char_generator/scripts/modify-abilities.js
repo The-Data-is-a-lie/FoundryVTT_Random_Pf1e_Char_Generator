@@ -1651,8 +1651,24 @@ await Feats_n_Traits();
 // Apostrophe-/case-/whitespace-insensitive key for matching backend scrape names (which often
 // lose apostrophes, e.g. "Pit Fighters Stance") against pf1-pow compendium names.
 function powNorm(s) {
-  return String(s).toLowerCase().replace(/['’`]/g, '').replace(/\s+/g, ' ').trim();
+  return String(s)
+    // pf1-pow ships 12 of its 1,067 documents with a DOUBLE-ENCODED apostrophe in the name --
+    // "Turtle Knightâ€™s Stance", "Donâ€™t Die On Me" -- the UTF-8 bytes of U+2019 stored as three
+    // Windows-1252 characters. The other 76 apostrophe-bearing names in the same pack are fine, and
+    // the other three packs have none, so this is that module's data and not an encoding fault on
+    // our side. Stripped before the apostrophe fold below, which only knows about real quote marks:
+    // without this every one of those twelve misses its compendium match and arrives as a
+    // synthesized feat item with no automation, no (Strike)/(Stance) type prefix, and -- for the
+    // four stances -- no stance buff. Found by the golden harness, which recorded the miss.
+    .replace(/â€™/g, '')
+    .toLowerCase().replace(/['’`]/g, '').replace(/\s+/g, ' ').trim();
 }
+
+// The display half of the same defect. Matching a corrupted compendium name is only half a fix: the
+// clone carries `doc.name` onto the sheet verbatim, so without this a warder's stance reads
+// "Turtle Knightâ€™s Stance" in the item list. Repaired rather than stripped -- the apostrophe is
+// part of the name, and the sheet should show the name the book prints.
+const powDisplayName = (s) => String(s).replace(/â€™/g, '’');
 
 function capitalizeManeuverType(t) {
   const s = String(t || '').toLowerCase();
@@ -1753,7 +1769,7 @@ async function addStanceBuffs(stances, descs, matchedDocs) {
       if (!ch._id) ch._id = (await generateUniqueID()).slice(0, 8);
     }
     buffs.push({
-      name: `(Stance) ${doc ? doc.name : name}`,
+      name: `(Stance) ${doc ? powDisplayName(doc.name) : name}`,
       type: "buff",
       img: doc?.img || "icons/svg/shield.svg",
       system: {
@@ -1864,7 +1880,7 @@ async function processPathOfWar() {
         const item = doc.toObject();
         delete item._id;   // fresh embedded id on actor creation
         const typeCap = item.system?.maneuverType || capitalizeManeuverType(d.type) || (isStance ? 'Stance' : 'Strike');
-        item.name = `(${typeCap}) ${doc.name}`;
+        item.name = `(${typeCap}) ${powDisplayName(doc.name)}`;
         item.system.class = upper_case_class;
         item.system.granted = false;
         item.system.stanceActive = false;
