@@ -1879,7 +1879,15 @@ async function processPathOfWar() {
         matchedDocs.set(name, doc);
         const item = doc.toObject();
         delete item._id;   // fresh embedded id on actor creation
-        const typeCap = item.system?.maneuverType || capitalizeManeuverType(d.type) || (isStance ? 'Stance' : 'Strike');
+        // WE outrank the pack on stance-ness. pf1-pow types 17 of its 69 "...Stance" documents as
+        // Boost (16) or Strike (1) -- Poisoner's Stance, Battle Dragon's Stance, Skirmisher's Stance
+        // and so on -- so deferring to `maneuverType` labelled them "(Boost) Poisoner's Stance" while
+        // addStanceBuffs simultaneously built them a "(Stance)" buff. `isStance` is the better
+        // source: it comes from the backend's own `stances_chosen` / desc `type`, which is what put
+        // the maneuver in the stance list in the first place.
+        const typeCap = isStance
+          ? 'Stance'
+          : (item.system?.maneuverType || capitalizeManeuverType(d.type) || 'Strike');
         item.name = `(${typeCap}) ${powDisplayName(doc.name)}`;
         item.system.class = upper_case_class;
         item.system.granted = false;
