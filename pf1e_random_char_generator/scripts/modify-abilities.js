@@ -2045,6 +2045,22 @@ function synthesizePowerItem(name, d, slot, level) {
       sr: !/^\s*(no|none)\b/i.test(String(d['power resistance'] || '')),
       showInCombat: true,
       actions: [], changes: [], contextNotes: [], sources: [],
+      // The rest of pf1-psionics' PowerModel, filled with the defaults all 593 pack documents
+      // share. A synthesized power used to be missing these, which made it structurally different
+      // from a native one -- and one of them is not cosmetic: `uses.autoDeductChargesCost` is the
+      // formula that spends power points when the power is manifested, so a gap-filled power was
+      // free to cast. The pack is missing "Suppress Veil" and "Malefic Metamorphosis" outright, so
+      // this path is the only thing standing between those powers and a broken sheet.
+      attackNotes: [], effectNotes: [], scriptCalls: [], tags: [],
+      links: { children: [] },
+      // pf1's own boolean/dictionary flag bags, which live INSIDE system. The item-level `flags`
+      // below is Foundry's module bag and a different thing -- every pack document carries
+      // `{"pf1-psionics": {sourceUrl: ...}}` there, which a synthesized power has no URL for.
+      flags: { boolean: {}, dictionary: {} },
+      // Deliberately empty: `learnedAt` drives the "which class can learn this at what level" UI,
+      // and the power is already granted and known here.
+      learnedAt: { class: {} },
+      uses: { autoDeductChargesCost: "max(0, @sl * 2 - 1)" },
     },
     effects: [], flags: {},
   };
