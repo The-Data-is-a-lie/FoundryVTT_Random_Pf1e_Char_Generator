@@ -101,3 +101,16 @@ export const ALL_CLASSES = CLASS_GROUPS.flatMap(group => group.classes);
 
 /** The dropdown's slug form, and the backend's un-slug rule's input: "Psychic Warrior" -> "psychic-warrior". */
 export const classSlug = (name) => name.toLowerCase().replace(/\s/g, '-');
+
+/**
+ * Classes whose spellcasting is DIVINE, which decides two things on a pf1 spellbook: `kind`, and
+ * whether arcane spell failure applies.
+ *
+ * Here rather than with either of its two readers because it has two: the core-attributes stage
+ * configures the legacy single spellbook from it, and the spells stage configures the per-class
+ * books from it. It is a roster, so it lives with the rosters.
+ *
+ * Not derived from `CLASS_GROUPS`: the families there are display groupings and several divine
+ * casters sit outside any "divine" one.
+ */
+export const DIVINE_CASTERS = ["Cleric", "Druid", "Oracle", "Paladin", "Ranger", "Summoner", "Warpriest"];

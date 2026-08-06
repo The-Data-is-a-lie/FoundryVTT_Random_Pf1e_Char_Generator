@@ -1,10 +1,12 @@
-import { CLASS_ITEM_ORDER } from './shared/class-roster.js';
+import { CLASS_ITEM_ORDER, DIVINE_CASTERS } from './shared/class-roster.js';
 import { createBuildContext } from './build/build-context.js';
 import { loadTemplates } from './build/template-loader.js';
 import { attachConditionals } from './build/conditional-engine.js';
 import { findMainWeapon } from './build/weapon.js';
 import { addRace } from './build/race.js';
 import { normalizeTraitShapes } from './build/pf1-compat.js';
+import { addStatBuffs, addCustomBuffs } from './build/buffs.js';
+import { applyCoreAttributes } from './build/core-attributes.js';
 import {
   extractItems,
   appendJsonToTemplate,
@@ -18,7 +20,6 @@ import {
 } from './build/items.js';
 import {
   readDeliverData,
-  readCustomBuffsFlag,
   readCharacterPayload,
   writeExportPath,
 } from './shared/storage.js';
@@ -186,195 +187,8 @@ ctx.upperCaseClass = upper_case_class;
    // than mutates, and both reassignments are in the block above.
    ctx.exportTemplate = exportTemplate;
 
-   // ----- Start of simple data update ----- //
-   function updateAttribute(variable, attributePath, type) {
-     attributePath[type] = variable;
-     console.log(attributePath[type]);
-   }
+   applyCoreAttributes(ctx);
 
-   // Stamp the backend's generator version onto the actor as a hidden flag, so any exported sheet
-   // reveals which backend build produced it (instant stale-vs-fresh diagnosis when feats look wrong).
-   exportTemplate.flags = exportTemplate.flags || {};
-   exportTemplate.flags['pf1e_random_char_generator'] = { version: characterData.generator_version || 'unknown' };
-
-
-   // Stats
-   updateAttribute(characterData.str, exportTemplate.system.abilities.str, 'value');
-   updateAttribute(characterData.dex, exportTemplate.system.abilities.dex, 'value');
-   updateAttribute(characterData.con, exportTemplate.system.abilities.con, 'value');
-   updateAttribute(characterData.int, exportTemplate.system.abilities.int, 'value');
-   updateAttribute(characterData.wis, exportTemplate.system.abilities.wis, 'value');
-   updateAttribute(characterData.cha, exportTemplate.system.abilities.cha, 'value');
-
-
-   // Saving Throws
-  //  updateAttribute(characterData.fort_saving_throw, exportTemplate.system.attributes.savingThrows.fort, 'base');
-  //  updateAttribute(characterData.will_saving_throw, exportTemplate.system.attributes.savingThrows.will, 'base');
-  //  updateAttribute(characterData.ref_saving_throw, exportTemplate.system.attributes.savingThrows.ref, 'base');
-
-   // Health (HP)
-   updateAttribute(characterData.total_rolled_hp, exportTemplate.system.attributes.hp, 'base');
-
-  // Deity
-   updateAttribute(characterData.mini_alignment, exportTemplate.system.details, 'alignment');
-   // Older backends ship deity_name as a list of aliases; pf1's details.deity is a StringField
-   // and an array in source data crashes actor data preparation -> take the primary name.
-   const deityName = Array.isArray(characterData.deity_name)
-     ? (characterData.deity_name[0] ?? '')
-     : characterData.deity_name;
-   updateAttribute(deityName, exportTemplate.system.details, 'deity');
-   updateAttribute(characterData.age_number, exportTemplate.system.details, 'age');
-
-   // Currency
-   updateAttribute(characterData.platnium, exportTemplate.system.currency, 'pp');
-
-   // Languages: pf1 renders traits.languages.value entries via its lowercase language ids
-   // (pf1.config.languages); names it doesn't know (Druidic, homebrew) belong in .custom.
-   function normalizeLanguages(languageList) {
-     const pf1Languages = pf1?.config?.languages ?? CONFIG?.PF1?.languages ?? {};
-     const idsByName = {};
-     for (const [id, label] of Object.entries(pf1Languages)) {
-       idsByName[String(label).toLowerCase()] = id;
-       idsByName[id.toLowerCase()] = id;
-     }
-     const ids = [];
-     const custom = [];
-     for (const lang of languageList ?? []) {
-       const id = idsByName[String(lang).toLowerCase()];
-       if (id) {
-         if (!ids.includes(id)) ids.push(id);
-       } else if (!custom.includes(lang)) {
-         custom.push(lang);
-       }
-     }
-     return { ids, custom };
-   }
-
-   // Background info
-   updateAttribute(characterData.character_full_name, exportTemplate, 'name');
-   // pf1 v11 stores traits as FLAT ARRAYS in source data — prep splits known ids into .standard
-   // and unknown strings into .custom. The old {value, custom} object shape is silently ignored
-   // (Array.isArray fails on it), which left only race-granted languages showing on the sheet.
-   const normalizedLanguages = normalizeLanguages(characterData.language_text);
-   updateAttribute(
-     [...normalizedLanguages.ids, ...normalizedLanguages.custom],
-     exportTemplate.system.traits, 'languages');
-   updateAttribute(characterData.gender, exportTemplate.system.details, 'gender');
-   updateAttribute(characterData.height_number, exportTemplate.system.details, 'height');
-   updateAttribute(characterData.weight_number, exportTemplate.system.details, 'weight');
-
-  // Edit token name
-   updateAttribute(characterData.character_full_name, exportTemplate.prototypeToken, 'name');
-
-   // Fixing Casting level / stat / kind.
-  // Define divine casters (also used by the per-class spellbook config in the Spell Section).
-  const divine_casters = ["Cleric", "Druid", "Oracle", "Paladin", "Ranger", "Summoner", "Warpriest"];
-
-// LEGACY single-book path: backends without a `spellbooks` payload configure the primary book
-// from the flat primary-class fields. New backends ship per-caster-class `spellbooks` and the
-// Spell Section assigns one pf1 book (primary/secondary/tertiary) per caster class instead.
-if (!Array.isArray(characterData.spellbooks) || !characterData.spellbooks.length) {
-  updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.primary, 'casterType');
-  updateAttribute(characterData.casting_level_str_foundry, exportTemplate.system.attributes.spells.spellbooks.secondary, 'casterType');
-
-  // Fixing casting stat
-  updateAttribute(characterData.main_stat, exportTemplate.system.attributes.spells.spellbooks.primary, 'ability');
-  updateAttribute(characterData.main_stat, exportTemplate.system.attributes.spells.spellbooks.secondary, 'ability');
-
-  console.log("this is the casting level", characterData.casting_level_str_foundry);
-  //  Arcane spell failure
-  // Check if the class (in lower case) is in the list
-  if (divine_casters.some(cls => cls.toLowerCase() === characterData.c_class.toLowerCase())) {
-    // spell failure
-    updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
-    updateAttribute(false, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
-    // spell type
-    updateAttribute('divine', exportTemplate.system.attributes.spells.spellbooks.primary, 'kind');
-    updateAttribute('divine', exportTemplate.system.attributes.spells.spellbooks.secondary, 'kind');
-
-  } else {
-    // spell failure
-    updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.primary, 'arcaneSpellFailure');
-    updateAttribute(true, exportTemplate.system.attributes.spells.spellbooks.secondary, 'arcaneSpellFailure');
-
-    // spell type
-    updateAttribute('arcane', exportTemplate.system.attributes.spells.spellbooks.primary, 'kind');
-    updateAttribute('arcane', exportTemplate.system.attributes.spells.spellbooks.secondary, 'kind');
-  }
-}
-
-// Fixing spell level
-
-   function stackWithParagraphs(...items) {
-    return items.map(item => `<p>${item.label} ${item.value}</p><p></p>`).join('');
-  }
-
-  // Convert the backend's plain-text backstory (paragraphs separated by blank lines) into safe
-  // biography HTML.
-  function backstoryToHtml(text) {
-    const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return String(text).split(/\n\s*\n/)
-      .map(p => p.trim()).filter(Boolean)
-      .map(p => `<p>${esc(p).replace(/\n/g, '<br>')}</p>`).join('');
-  }
-
-   // LEGACY raw labeled dump -- only rendered for payloads that predate formatted_bio (see below).
-   const combined_bio = stackWithParagraphs(
-    { label: "", value: characterData.younger_brothers },
-    { label: "", value: characterData.younger_sisters },
-    { label: "", value: characterData.older_brothers },
-    { label: "", value: characterData.older_sisters },
-    { label: "this is your situation growing up with your parents: ", value: characterData.parents },
-    { label: "these are your typical mannerisms:", value: characterData.mannerisms},
-    { label: "these are your personality traits: ", value: characterData.personality_traits},
-    { label: "these are your flaws:", value: characterData.flaw},
-    { label: "this is your hair type:", value: characterData.hair_type },
-    { label: "this is your hair color:", value: characterData.hair_color },
-    { label: "this is your eye color: ", value: characterData.eye_color },
-    { label: "this is your appearance:", value: characterData.appearance },
-    { label: "these are your professions: ", value: characterData.professions },
-    { label: "these are your background traits: ", value: characterData.background_traits },
-    { label: "this is your region of origin: ", value: characterData.region },
-    { label: "These are your specialty schools: ", value: characterData.specialty_schools },
-    { label: "These are your counter schools:   ", value: characterData.counter_schools },
-    { label: "These are your favored spell types, you prefer these:     ", value: characterData.chosen_spell_descriptor },
-    { label: "These are your counter spell types, you don't want these: ", value: characterData.counter_spell_descriptor }
-  );
-
-   // Drop the prose's legacy closing labeled list (Personality:/Mannerisms:/Appearance:/Flaws:) --
-   // the structured fact block above it shows those facts. New backends already strip it; this
-   // covers payloads from a not-yet-redeployed backend (and cached localStorage payloads).
-   function stripTrailingLabelList(text) {
-     const paragraphs = String(text || '').trim().split(/\n\s*\n/);
-     while (paragraphs.length
-            && /^(personality|mannerisms|appearance|flaws|traits)\s*:/i.test(paragraphs[paragraphs.length - 1].trim())) {
-       paragraphs.pop();
-     }
-     return paragraphs.join('\n\n').trim();
-   }
-
-   // Biography = the backend's structured fact block (formatted_bio), then a centered bold
-   // "Backstory:" heading (with breathing room under the Appearance section), then the prose;
-   // the Notes tab stays empty for session use (the old raw labeled dump is retired).
-   // Old payloads without formatted_bio keep the previous behavior (prose in Biography + raw dump
-   // in Notes, or raw dump alone), so nothing regresses on backend/module version skew.
-   const backstoryText = stripTrailingLabelList(characterData.backstory);
-   const formattedBio = (characterData.formatted_bio || '').trim();
-   if (formattedBio) {
-     let bioHtml = backstoryToHtml(formattedBio);
-     if (backstoryText) {
-       bioHtml += '<p></p><p></p>'
-         + '<h2 style="text-align:center"><strong>Backstory:</strong></h2>'
-         + backstoryToHtml(backstoryText);
-     }
-     updateAttribute(bioHtml, exportTemplate.system.details.biography, 'value');
-   } else if (backstoryText) {
-     updateAttribute(backstoryToHtml(backstoryText), exportTemplate.system.details.biography, 'value');
-     updateAttribute(combined_bio, exportTemplate.system.details.notes, 'value');
-   } else {
-     updateAttribute(combined_bio, exportTemplate.system.details.biography, 'value');
-   }
-   // ----- End of simple data update ----- //
 
 
 // ------ Start of Class Data Section ------ //
@@ -1820,112 +1634,9 @@ await processPsionics();
 
 // ------ End of Feat/Trait Section ------ //
 
-// ----- Start of Inherents Section ----- //
-async function addStatBuff(templateName, stats, label) {
-  // Deep copy to avoid mutation of shared state
-  const data = structuredClone(templates[templateName]);
-  
-  // Turns data -> array if it isn't already
-  let wrappedData = Array.isArray(data) ? data : [data];
+addStatBuffs(ctx);
+addCustomBuffs(ctx);
 
-  // Manipulate inherent stats
-  wrappedData = await changeStatBuff(wrappedData, stats, label);
-  console.log("this is the wrapped data", wrappedData);
-
-  appendJsonToTemplate(wrappedData, exportTemplate, label);
-}
-
-async function changeStatBuff(dataArray, stats, label) {
-  // loops through each stat in the relevant stat array and assigns the value to the corresponding stat in the dataArray
-  for (const item of dataArray) {
-    item.name = label;
-    item._id = ctx.newId('statBuff', [label, item]); // Generate a unique ID for each item
-
-    // The template's ActiveEffect carries its OWN baked-in name and origin, and re-identifying the
-    // item above does not reach them. Both stat buffs come from the same template, so without this
-    // the character ends up with two tracker effects both labelled "Inherent" -- and every effect's
-    // origin points at an item _id that no longer exists, because the line above just replaced it.
-    for (const effect of item.effects ?? []) {
-      effect.name = label;
-      effect.origin = `.Item.${item._id}`;
-    }
-
-    if (!item.system?.changes) continue;
-  
-    for (const change of item.system.changes) {
-      const target = change.target;
-      if (stats.hasOwnProperty(target)) {
-        change.formula = stats[target].toString();
-      }
-    }
-  }
-  return dataArray;
-}
-
-await addStatBuff('inherents', characterData.level_up_stats, 'level_up_stats');
-await addStatBuff('inherents', characterData.inherents, 'Inherents');
-// ----- End of Inherents Section ----- //
-
-// ----- Start of Custom Buffs Section ----- //
-async function addCustomBuffs() {
-  if (readCustomBuffsFlag().toLowerCase() !== 'y') return;
-
-  const buffs = structuredClone(templates.customBuffs);
-  if (!Array.isArray(buffs)) { console.warn('custom_buffs.json missing or not an array'); return; }
-
-  // Buffs that start active (the "X" set). Combat buffs + the acrobatics reference stay inactive.
-  const ACTIVE = new Set(['Professions', 'Skill Synergies', 'Acrobatics Speed']);
-
-  // Highest mental ability decides which skill-ranks buff to keep (Int highest -> neither;
-  // ties -> Int > Wis > Cha). Prefer the backend's initiation_stat export — the same FINAL-score
-  // calculation (base + inherents + level-ups) that drives the pf1-pow initiating stat — and
-  // fall back to comparing raw scores for an un-redeployed backend.
-  let mentalBuff = null;
-  const exportedMental = String(characterData.initiation_stat || '').toLowerCase();
-  if (['int', 'wis', 'cha'].includes(exportedMental)) {
-    if (exportedMental === 'wis') mentalBuff = 'Skill Ranks Based on Wisdom';
-    else if (exportedMental === 'cha') mentalBuff = 'Skill Ranks Based on Charisma';
-  } else {
-    const wis = Number(characterData.wis) || 0;
-    const cha = Number(characterData.cha) || 0;
-    const intel = Number(characterData.int) || 0;
-    if (wis >= cha && wis > intel) mentalBuff = 'Skill Ranks Based on Wisdom';
-    else if (cha > wis && cha > intel) mentalBuff = 'Skill Ranks Based on Charisma';
-  }
-
-  // Flat acrobatics number for the active buff: floor(land_speed/10 - 3) * 4
-  const landSpeed = Number(characterData.land_speed) || 30;
-  const acroFlat = Math.floor(landSpeed / 10 - 3) * 4;
-
-  // Professions buff: one chosen profession per line
-  let professions = characterData.professions;
-  if (typeof professions === 'string') { try { professions = JSON.parse(professions); } catch (e) { professions = [professions]; } }
-  const professionsHtml = Array.isArray(professions) ? professions.map(p => `<p>${p}</p>`).join('') : '';
-
-  const result = [];
-  for (const buff of buffs) {
-    // keep only the selected mental-ranks buff
-    if (buff.name === 'Skill Ranks Based on Wisdom' || buff.name === 'Skill Ranks Based on Charisma') {
-      if (buff.name !== mentalBuff) continue;
-    }
-    buff.system = buff.system || {};
-    buff.system.active = ACTIVE.has(buff.name) || buff.name === mentalBuff;
-
-    if (buff.name === 'Professions') {
-      buff.system.description = buff.system.description || {};
-      buff.system.description.value = professionsHtml;
-    }
-    if (buff.name === 'Acrobatics Speed' && Array.isArray(buff.system.changes) && buff.system.changes[0]) {
-      buff.system.changes[0].formula = String(acroFlat);
-    }
-    result.push(buff);
-  }
-
-  appendJsonToTemplate(result, exportTemplate, 'CustomBuffs');
-  console.log(`Added ${result.length} custom buffs (mental=${mentalBuff}, acroFlat=${acroFlat}).`);
-}
-await addCustomBuffs();
-// ----- End of Custom Buffs Section ----- //
 
 
 // ----- Start of Spell Section ----- //
@@ -1975,7 +1686,7 @@ async function configureSpellbook(slot, book) {
   pfBook.ability = book.casting_stat || characterData.main_stat;
   const isDivine = (book.divine !== undefined)
     ? !!book.divine
-    : divine_casters.some(c => c.toLowerCase() === String(book.name).toLowerCase());
+    : DIVINE_CASTERS.some(c => c.toLowerCase() === String(book.name).toLowerCase());
   pfBook.kind = isDivine ? 'divine' : 'arcane';
   pfBook.arcaneSpellFailure = !isDivine;
   pfBook.spellPreparationMode = await determineSpellType(display);
