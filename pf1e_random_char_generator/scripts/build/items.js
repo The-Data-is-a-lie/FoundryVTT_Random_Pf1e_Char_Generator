@@ -41,6 +41,21 @@ export function appendJsonToTemplate(collectedItems, exportTemplate, sectionKey)
 }
 
 /**
+ * The item array out of a loaded template bundle, whichever of the two shapes it is in.
+ *
+ * The template files are not consistent: some are a bare JSON array, others an object with an
+ * `items` key. Three stages read bundles this way — classes, race, and the natural-armor check in
+ * weapon finishing — so the shape question is answered once, here, rather than at each of them.
+ * Returns `null` on anything else, which every caller treats as "no items".
+ */
+export function extractItems(parsedData) {
+  if (Array.isArray(parsedData)) return parsedData;
+  if (parsedData && Array.isArray(parsedData.items)) return parsedData.items;
+  console.error('Items is not an array:', parsedData);
+  return null;
+}
+
+/**
  * Minimal pf1 feat item for names with no `every_feat.json` template (homebrew style chains,
  * Martial Training, Path of War maneuvers). No `_id` — Foundry assigns one on `actor.update`.
  */

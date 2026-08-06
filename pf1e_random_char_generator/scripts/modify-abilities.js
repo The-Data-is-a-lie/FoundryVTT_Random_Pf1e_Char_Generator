@@ -3,7 +3,10 @@ import { createBuildContext } from './build/build-context.js';
 import { loadTemplates } from './build/template-loader.js';
 import { attachConditionals } from './build/conditional-engine.js';
 import { findMainWeapon } from './build/weapon.js';
+import { addRace } from './build/race.js';
+import { normalizeTraitShapes } from './build/pf1-compat.js';
 import {
+  extractItems,
   appendJsonToTemplate,
   synthesizeFeatItem,
   assignSequentialSort,
@@ -377,13 +380,6 @@ if (!Array.isArray(characterData.spellbooks) || !characterData.spellbooks.length
 // ------ Start of Class Data Section ------ //
 
 // Function to validate and extract items array
-function extractItems(parsedData) {
-  if (Array.isArray(parsedData)) return parsedData;
-  if (parsedData && Array.isArray(parsedData.items)) return parsedData.items;
-  console.error('Items is not an array:', parsedData);
-  return null;
-}
-
 // Function to update the "level" property of the first matching class
 function updateLevel(items, targetClass, newLevel) {
   if (!Array.isArray(items)) {
@@ -558,24 +554,7 @@ for (const classEntry of classEntries) {
 
 // ------ End of Class Data Section ------ //
 
-// ------ Start of Race Section ------ //
-async function gatherRace(race) {
-  // Clone: the matched race items go onto the sheet by reference, and the trait-normalization
-  // pass at the end of the build then rewrites their system fields.
-  const everyRacePathData = structuredClone(templates.everyRace);
-  const items = extractItems(everyRacePathData);
-  const matchedItems = items.filter(item => item.name === race);
-  console.log("matchedItems", matchedItems);
-  if (!matchedItems) return;
-
-
-  // Append the collected items to exportTemplate
-  appendJsonToTemplate(matchedItems, exportTemplate, "Class");
-
-}
-
-await gatherRace(characterData.chosen_race);
-// ------ End of Race Section ------ //
+addRace(ctx);
 
 // ------ Start of Archetype Section ------ //
 async function processArchetype(targetArchetype, sortValue = null) {
@@ -3460,35 +3439,7 @@ try {
   console.log("baseSkill template:", templates.baseSkill);
 }
 
-// pf1 v11 stores item "trait" group fields (weaponGroups, weaponProf, armorProf, languages,
-// descriptors, subschool, creatureTypes, creatureSubtypes) as BARE ARRAYS of keys; its item
-// prepareData (item-pf.mjs) only builds the iterable { standard, custom } model when the stored
-// value is an array. The harvested templates carry legacy pf1 v10 OBJECT shapes ({base:[...]} /
-// {value,custom}), which the v11 model leaves untouched -> trait.standard is undefined and opening
-// the item sheet throws "a.standard is not iterable". Normalize every injected item's trait fields
-// back to bare arrays here (item-type-agnostic; matches Foundry-native items) before export.
-const TRAIT_FIELDS = ['weaponGroups', 'weaponProf', 'armorProf', 'languages',
-                      'descriptors', 'subschool', 'creatureTypes', 'creatureSubtypes'];
-function toTraitArray(v) {
-  if (v == null || Array.isArray(v)) return v;          // null / already a bare array -> leave
-  if (typeof v === 'string') return [v];                // single value -> [value]
-  if (typeof v === 'object') {                          // {base} | {value,custom} | {standard,custom}
-    const out = [];
-    for (const k of ['base', 'value', 'standard', 'custom']) {
-      if (Array.isArray(v[k])) out.push(...v[k]);
-    }
-    return out;
-  }
-  return v;
-}
-function normalizeItemTraits(item) {
-  const s = item?.system;
-  if (!s) return;
-  for (const k of TRAIT_FIELDS) if (k in s) s[k] = toTraitArray(s[k]);
-}
-if (exportTemplate && Array.isArray(exportTemplate.items)) {
-  for (const it of exportTemplate.items) normalizeItemTraits(it);
-}
+normalizeTraitShapes(ctx);
 
 // Rewriting the export file directly (with export template)
 console.log("About to write exportFoundryPath to localStorage");
