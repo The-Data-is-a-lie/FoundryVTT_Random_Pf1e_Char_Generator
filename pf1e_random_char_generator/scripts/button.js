@@ -2,6 +2,13 @@ import { sendDataToServer } from './deliver-data.js';
 import { main } from './modify-abilities.js';
 import { createAndAssignActor } from './createCharacter.js';
 import { CLASS_GROUPS, classSlug } from './shared/class-roster.js';
+import {
+  readDeliverData,
+  writeDeliverData,
+  readCustomBuffsFlag,
+  writeCustomBuffsFlag,
+  clearExportPath,
+} from './shared/storage.js';
 
 // Function to create the persistent button
 // need export so we can import in main.js
@@ -30,15 +37,14 @@ export async function createPersistentButton() {
   button.addEventListener('click', async () => {
       showCharacterGeneratorDialog();
 
-  // Drop the previous run's built sheet before doing anything else. If any step below fails, there
-  // is then nothing stale left for createAndAssignActor() to inject as a bogus "new" character.
-  localStorage.removeItem('exportFoundryPath');
+  // Drop the previous run's built sheet before doing anything else (see clearExportPath).
+  clearExportPath();
 
   // Import deliver-data.js
   try {
     // await import('./deliver-data.js');
 
-    const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
+    const savedData = readDeliverData();
     // console.log("Data sent over to server:", savedData);
 
     // Read the backend endpoint from the module setting at click time, so a settings change takes
@@ -88,7 +94,7 @@ export async function createPersistentButton() {
     console.log('deliver_location', deliver_location)
     // Fully awaited: sendDataToServer stores the returned character in localStorage before
     // resolving, so main()/createAndAssignActor() below read THIS click's fresh data.
-    await sendDataToServer(savedData, deliver_location, 'pulledCharacterData');
+    await sendDataToServer(savedData, deliver_location);
 
   } catch (error) {
     console.error("Error deliver-data.js in button.js:", error);
@@ -173,8 +179,8 @@ function classOptions(selected) {
 
 function showCharacterGeneratorDialog() {
   // Get the saved character data from localStorage
-  const savedData = JSON.parse(localStorage.getItem('deliverData.json')) || {};
-  const savedAddBuffs = localStorage.getItem('addCustomBuffs') || 'n';
+  const savedData = readDeliverData();
+  const savedAddBuffs = readCustomBuffsFlag();
 
   const html = `
     <div>
@@ -414,9 +420,9 @@ function showCharacterGeneratorDialog() {
           };
   
           // Save the data to localStorage
-          localStorage.setItem('deliverData.json', JSON.stringify(characterData));
+          writeDeliverData(characterData);
           // Stored separately (NOT in the backend payload) so it doesn't break the fixed 19-input endpoint
-          localStorage.setItem('addCustomBuffs', document.getElementById('add_custom_buffs').value);
+          writeCustomBuffsFlag(document.getElementById('add_custom_buffs').value);
   
           // You can proceed with your logic for generating the character here
           console.log("Character Data Generated: ", characterData);

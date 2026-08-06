@@ -1,5 +1,11 @@
 import { CLASS_ITEM_ORDER } from './shared/class-roster.js';
 import { createBuildContext } from './build/build-context.js';
+import {
+  readDeliverData,
+  readCustomBuffsFlag,
+  readCharacterPayload,
+  writeExportPath,
+} from './shared/storage.js';
 import { skillsDict } from './shared/skills-dict.js';
 import {
   capitalizeWords,
@@ -56,7 +62,7 @@ export async function main(deps = {}) {
       return;
     }
 
-    var savedData = JSON.parse(localStorage.getItem('deliverData.json')|| '{}');
+    var savedData = readDeliverData();
     var modded = savedData.modded_char_sheet; // y or n
     console.log("Is it modded????????????", modded);
     // ----- Setting up filePaths ----- //
@@ -221,7 +227,7 @@ export async function main(deps = {}) {
 
 // ----- End of setting up filePaths ----- //
 
-const characterData = JSON.parse(localStorage.getItem('pulledCharacterData'));
+const characterData = readCharacterPayload();
 // The backend wraps any generation exception as {"error": "..."} (app.py process_input_values), so
 // a payload without c_class is a failed generation, not a character — surface the real error and
 // abort (main() returning false makes button.js skip actor creation) instead of crashing on the
@@ -2180,7 +2186,7 @@ await addStatBuff(inherentsPath, characterData.inherents, 'Inherents');
 
 // ----- Start of Custom Buffs Section ----- //
 async function addCustomBuffs() {
-  if ((localStorage.getItem('addCustomBuffs') || 'n').toLowerCase() !== 'y') return;
+  if (readCustomBuffsFlag().toLowerCase() !== 'y') return;
 
   const buffs = structuredClone(fileDataDictionary[customBuffsPath]);
   if (!Array.isArray(buffs)) { console.warn('custom_buffs.json missing or not an array'); return; }
@@ -3960,7 +3966,7 @@ console.log("exportTemplate exists:", !!exportTemplate);
 console.log("exportTemplate:", exportTemplate);
 
 if (exportTemplate) {
-  writeToLocalStorage('exportFoundryPath', exportTemplate);
+  writeExportPath(exportTemplate);
   console.log("Successfully wrote exportFoundryPath to localStorage");
 } else {
   console.error("exportTemplate is undefined! Cannot write to localStorage.");

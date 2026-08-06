@@ -1,6 +1,7 @@
 import { createBondedCreatures } from './createCompanions.js';
 import { capitalizeWords } from './shared/text.js';
 import { forceRederive } from './shared/foundry-doc.js';
+import { readExportPath, hasExportPath, readCharacterPayload } from './shared/storage.js';
 
 async function createCharacterFunc() {
   const actor = await Actor.create({
@@ -14,13 +15,12 @@ async function createCharacterFunc() {
 
 // Grab data from localStorage and inject into charactersheet
 async function injectJsonDataIntoNewActor(actor) {
-  const exportFoundryPath = localStorage.getItem('exportFoundryPath');
+  const parsedData = readExportPath();
 
-  if (!exportFoundryPath) {
+  if (!parsedData) {
     throw new Error("No data found in localStorage under 'exportFoundryPath'");
   }
 
-  const parsedData = JSON.parse(exportFoundryPath);
   console.log("parsedData part1:", parsedData)
 
   // Inject the parsed data into the actor to overwrite all Data
@@ -52,11 +52,10 @@ async function generateRandomizedCharacterFolder() {
 }
 
 async function adjustLevel(actor) {
-  const characterData = await localStorage.getItem("pulledCharacterData");
+  const parsedData = readCharacterPayload();
   console.log("actor:", actor)
-  if (characterData) {
+  if (parsedData) {
     try {
-      const parsedData = JSON.parse(characterData);
       console.log("this is the adjustLevel function", parsedData);
 
       // Extract c_class and level with proper error handling
@@ -104,7 +103,7 @@ async function adjustLevel(actor) {
 export async function createAndAssignActor() {
   // Bail before creating anything: an actor with no sheet data to inject would just be a blank
   // "New Test Actor" littering the Random Characters folder.
-  if (!localStorage.getItem('exportFoundryPath')) {
+  if (!hasExportPath()) {
     throw new Error("No generated character data to inject ('exportFoundryPath' is empty)");
   }
 
@@ -124,7 +123,7 @@ export async function createAndAssignActor() {
   // never throws upward -- a companion that fails to build must not cost the character that was
   // already created, and the reason is on the console either way.
   try {
-    const payload = JSON.parse(localStorage.getItem('pulledCharacterData') || '{}');
+    const payload = readCharacterPayload() || {};
     await createBondedCreatures(payload, folderId);
   } catch (error) {
     console.error("Bonded creatures: none were created —", error);

@@ -1,4 +1,6 @@
-export async function sendDataToServer(data, location, storageKey) {
+import { writeCharacterPayload } from './shared/storage.js';
+
+export async function sendDataToServer(data, location) {
     // Log the data before sending it
     console.log("1st data send check: ", data);
 
@@ -25,7 +27,7 @@ export async function sendDataToServer(data, location, storageKey) {
         const responseData = await response.json();
         // Log the response data returned from the server
         console.log("2nd data send check:", responseData);
-        localStorage.setItem(storageKey, JSON.stringify(responseData));
+        writeCharacterPayload(responseData);
         return responseData;
     } catch (error) {
         console.error('Error sending data to server:', error);
