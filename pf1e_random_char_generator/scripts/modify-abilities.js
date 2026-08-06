@@ -1,4 +1,5 @@
 import { CLASS_ITEM_ORDER } from './shared/class-roster.js';
+import { createBuildContext } from './build/build-context.js';
 import { skillsDict } from './shared/skills-dict.js';
 import {
   capitalizeWords,
@@ -40,6 +41,13 @@ export async function main(deps = {}) {
       return [...Array(16)].map(() => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
     },
   } = deps;
+
+  // The build context (see build/build-context.js). During the strangler split its fields are
+  // ALIASES of the locals below: `main()` still declares them, and assigns them here as they come
+  // into existence, so an extracted stage reading `ctx.x` and closure code still reading `x` see
+  // the same object. Each assignment sits at the point the local is finished being reassigned.
+  const ctx = createBuildContext({ rng, mintId });
+
   try {
     // Retrieve the module dynamically using the module name
     const module = game.modules.get('pf1e_random_char_generator');
@@ -206,6 +214,8 @@ export async function main(deps = {}) {
     }
 
     await loadFiles();
+    ctx.templates = fileDataDictionary;
+    ctx.modded = modded;
 
 
 
@@ -275,6 +285,15 @@ const prepared_caster_list = ["Alchemist", "Cleric", "Druid", "Inquisitor", "Inv
 // part). Fall back to capitalizeWords(c_class) for an un-redeployed backend.
 const upper_case_class = characterData.c_class_display || capitalizeWords(characterData.c_class);
 
+ctx.characterData = characterData;
+ctx.homebrewFeatDescs = homebrewFeatDescs;
+ctx.featChangesMap = featChangesMap;
+ctx.featConditionalsMap = featConditionalsMap;
+ctx.itemChangesMap = itemChangesMap;
+ctx.itemAttackToggles = itemAttackToggles;
+ctx.preparedCasterList = prepared_caster_list;
+ctx.upperCaseClass = upper_case_class;
+
    // ----- Start of exportTemplate setup ----- //
 
    // we want to use unmodifed template if it exists
@@ -291,6 +310,10 @@ const upper_case_class = characterData.c_class_display || capitalizeWords(charac
    }
 
    // ----- End of exportTemplate setup ----- //
+
+   // Assigned here and not earlier: `exportTemplate` is the one local the build REASSIGNS rather
+   // than mutates, and both reassignments are in the block above.
+   ctx.exportTemplate = exportTemplate;
 
    // ----- Start of simple data update ----- //
    function updateAttribute(variable, attributePath, type) {
@@ -636,6 +659,7 @@ function processClass(targetClass, newLevel, classList) {
 // checked against every_class.json by Backend/scripts/validate_class_roster.py, because keeping
 // three hand-maintained copies in sync is what let the occult classes go missing from the dropdown.
 const class_list = CLASS_ITEM_ORDER;
+ctx.classList = class_list;
 
 // Build EVERY rolled class (multiclass-aware), highest level first, so the sheet lists
 // "Class A (its archetype) / Class B (its archetype) / ...". Each class's archetype item is
@@ -652,6 +676,7 @@ const classEntries = (Array.isArray(characterData.classes) && characterData.clas
 const CF_CLASS_BAND_BASE = 2000000;
 const CF_CLASS_BAND_STEP = 1000000;
 const classFeatureBands = {};
+ctx.classFeatureBands = classFeatureBands;
 
 let classIdx = 0;
 for (const classEntry of classEntries) {
@@ -798,8 +823,9 @@ async function processArchetype(targetArchetype, sortValue = null) {
 // `kind` and `key` are ignored by the production mint (which is random) and are what the harness's
 // content-derived mint hashes; see main()'s deps block. `key` may be any JSON-serialisable value --
 // pass the object being stamped, not a hand-written label, so the id tracks the content.
+// Delegates to the build context so an extracted stage mints through the same seam.
 async function generateUniqueID(kind = 'id', key = null) {
-  return mintId(kind, key);
+  return ctx.newId(kind, key);
 }
 
 // ------ End of Generalized Features Page Functions ------ //
@@ -1383,7 +1409,7 @@ async function appendFeatDivider(title, sort, subType = 'feat') {
 // Short id for embedded change rows -- pf1's ChangeModel expects an _id on each change.
 // `key` is the change row itself; see generateUniqueID above for why.
 function randomChangeId(key = null) {
-  return String(mintId('change', key)).slice(0, 8);
+  return ctx.newChangeId(key);
 }
 
 // Homebrew profession abilities -> feat-section items (subType:"feat", bottom of the Feats tab).
