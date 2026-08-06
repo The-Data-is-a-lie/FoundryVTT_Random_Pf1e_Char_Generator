@@ -13,16 +13,15 @@
  * access to everything, so the seams here are a convention rather than something enforced, and
  * "which stage wrote this item" is not answerable from the context alone.
  *
- * **During the strangler split, the fields are aliases.** `main()` still declares the same locals
- * it always did and assigns them onto the context as they come into existence; extracted stages
- * read them through `ctx` while the code still inside the closure reads the locals. Both see the
- * same objects. Two consequences to respect until the split finishes:
+ * **The split is finished, and the fields are no longer aliases.** For the length of the strangle
+ * `main()` kept its own locals and assigned them onto the context as they came into existence, so
+ * extracted stages could read `ctx.x` while the code still inside the closure read `x`. There are no
+ * locals left to alias: the orchestrator fills these fields directly and every reader goes through
+ * the context.
  *
- *   - a field must be assigned onto the context AFTER the last time its local is *reassigned*
- *     (as opposed to mutated), or the context holds a stale value. `exportTemplate` is the only
- *     local that is reassigned, and only during its own setup block.
- *   - a field that does not exist yet is `null`, not missing. A stage that reads one is being
- *     called too early in the spine, which is a real ordering bug, not a defensive-coding prompt.
+ * One rule survives that history and still holds: **a field that does not exist yet is `null`, not
+ * missing.** A stage that reads one is being called too early in the order, which is a real ordering
+ * bug rather than a prompt for defensive coding.
  */
 
 /**
