@@ -1,5 +1,6 @@
 import { CLASS_ITEM_ORDER } from './shared/class-roster.js';
 import { createBuildContext } from './build/build-context.js';
+import { loadTemplates } from './build/template-loader.js';
 import {
   readDeliverData,
   readCustomBuffsFlag,
@@ -65,167 +66,17 @@ export async function main(deps = {}) {
     var savedData = readDeliverData();
     var modded = savedData.modded_char_sheet; // y or n
     console.log("Is it modded????????????", modded);
-    // ----- Setting up filePaths ----- //
 
-    // char_sheet_folder Base
-    const charSheetBase = await FilePicker.browse('data', 'modules/pf1e_random_char_generator/templates/character_sheet_folder'); 
-    // base_folder Base
-    const base = await FilePicker.browse('data', 'modules/pf1e_random_char_generator/templates/base_folder'); 
-
-    // char_sheet_folders
-    const unmodifiedPreExportTemplatePath = charSheetBase.target + "/unmodified_pre_export_template.json";
-    const preExportTemplatePath           = charSheetBase.target + "/pre_export_template.json";
-    const everyArmorPath                  = charSheetBase.target + "/every_armor.json";
-    const everyItemPath                   = charSheetBase.target + "/every_item.json";
-    const everyRacePath                   = charSheetBase.target + "/every_race.json";
-    const archetypePath                   = charSheetBase.target + "/archetype.json";
-
-    // space_background
-    const spaceBackgroundPath             = charSheetBase.target + "/space_Background.json";
-    const spaceFeatsPath                  = charSheetBase.target + "/space_Feats.json";
-    const spaceClassBonusFeatsPath        = charSheetBase.target + "/space_ClassBonusFeats.json";
-    const spacePathOfWarPath              = charSheetBase.target + "/space_Path_of_War.json";
-    const spacePathOfWarBuffsPath         = charSheetBase.target + "/space_Path_of_War_buffs.json";
-    const stanceChangesPath               = charSheetBase.target + "/stance_changes.json";
-    const maneuverChangesPath             = charSheetBase.target + "/maneuver_changes.json";
-    // Spheres of Power / Might per-roll conditionals (nested {Sphere:{Talent:{modifiers,rider}}}).
-    const combatTalentConditionalsPath    = charSheetBase.target + "/combat_talent_conditionals.json";
-    const magicTalentConditionalsPath     = charSheetBase.target + "/magic_talent_conditionals.json";
-    // Affects-others sphere buffs (multi-buff distributor): temp buffs named "<Talent> (TAG)".
-    const talentAuraBuffsPath             = charSheetBase.target + "/talent_aura_buffs.json";
-    // Every buff spell as a distributable temp buff "<Spell> (TAG)" (multi-buff distributor).
-    const spellBuffsPath                  = charSheetBase.target + "/spell_buffs.json";
-
-    // inherents. One template, used twice: addStatBuff renames and re-ids every clone, so the
-    // level-up-stats buff and the inherents buff are both built from this file.
-    const inherentsPath                   = charSheetBase.target + "/inherents.json";
-
-    // base_folder (baseFeatPath is declared with the modded/base swap below)
-    const baseSkillPath = base.target + "/base_skill.json";
-    const customBuffsPath = charSheetBase.target + "/custom_buffs.json";
-
-    // size-based damage scaling: a feature that exposes @resources.sizefordamage + the script
-    // call that reads it (attached to every generated attack's "Don't Touch" action reference).
-    const sizeForDamageFeaturePath = charSheetBase.target + "/sizefordamage_feature.json";
-    const scalingWeaponDamagePath  = charSheetBase.target + "/scaling_weapon_damage.json";
-    // House tracker features (extracted from the hand-built template actor): Variable Modifiers /
-    // Natural AC / Death HP group items, sorts baked in to match the template layout.
-    const houseFeaturesPath        = charSheetBase.target + "/house_features.json";
-    // Resource pool items ({poolKey: pf1 classFeat item with a uses/charges formula}): Hero Points
-    // for everyone, Stamina for fighters / Combat Stamina takers, plus per-class pools.
-    const resourcePoolsPath        = charSheetBase.target + "/resource_pools.json";
-
-
-        // Let for these so we can reassign at WILL
-    let everyClassPath, everyFeatPath, everySpellPath, everyWeaponPath, everyTraitPath, baseFeatPath;
-
-    // Releases up to and including v2.0.1 shipped a zip with every *_MODS.json stripped out, so on
-    // those installs the modded branch fetches six 404s. FilePicker.browse already gave us the
-    // directory listings, so check them before committing to the modded paths and fall back rather
-    // than dying on an HTML error page.
-    if (modded === "y") {
-      const present = new Set([...(charSheetBase.files || []), ...(base.files || [])]);
-      const moddedFiles = [
-        charSheetBase.target + "/every_class_MODS.json",
-        charSheetBase.target + "/every_feat_MODS.json",
-        charSheetBase.target + "/every_spell_MODS.json",
-        charSheetBase.target + "/every_trait_MODS.json",
-        charSheetBase.target + "/every_weapon_MODS.json",
-        base.target + "/base_feat_MODS.json",
-      ];
-      const missing = moddedFiles.filter(f => !present.has(f));
-      if (missing.length) {
-        console.warn("Missing modded templates, falling back to base templates:", missing);
-        ui.notifications?.warn(
-          "Character Generator: the modded-sheet templates aren't installed " +
-          `(${missing.length} file(s) missing). Using the base templates instead. ` +
-          "Update the module to get them."
-        );
-        modded = "n";
-      }
-    }
-
-    if (modded === "y") {
-      everyClassPath  = charSheetBase.target + "/every_class_MODS.json";
-      everyFeatPath   = charSheetBase.target + "/every_feat_MODS.json";
-      everySpellPath  = charSheetBase.target + "/every_spell_MODS.json";
-      everyTraitPath  = charSheetBase.target + "/every_trait_MODS.json";
-      everyWeaponPath = charSheetBase.target + "/every_weapon_MODS.json";
-      baseFeatPath    = base.target + "/base_feat_MODS.json";
-    } else {
-      everyClassPath  = charSheetBase.target + "/every_class.json";
-      everyFeatPath   = charSheetBase.target + "/every_feat.json";
-      everySpellPath  = charSheetBase.target + "/every_spell.json";
-      everyTraitPath  = charSheetBase.target + "/every_trait.json";
-      everyWeaponPath = charSheetBase.target + "/every_weapon.json";
-      baseFeatPath    = base.target + "/base_feat.json";
-    }
-
-    // manual filePaths
-    const filePaths = [
-      unmodifiedPreExportTemplatePath,
-      preExportTemplatePath,
-      everyArmorPath,
-      everyClassPath,
-      everyFeatPath,
-      everyItemPath,
-      everyRacePath,
-      everySpellPath,
-      everyTraitPath,
-      everyWeaponPath, 
-      baseFeatPath,
-      baseSkillPath,
-      archetypePath,      
-      spaceBackgroundPath,
-      spaceClassBonusFeatsPath,
-      spaceFeatsPath,
-      spacePathOfWarPath,
-      spacePathOfWarBuffsPath,
-      stanceChangesPath,
-      maneuverChangesPath,
-      combatTalentConditionalsPath,
-      magicTalentConditionalsPath,
-      talentAuraBuffsPath,
-      spellBuffsPath,
-      inherentsPath,
-      customBuffsPath,
-      sizeForDamageFeaturePath,
-      scalingWeaponDamagePath,
-      houseFeaturesPath,
-      resourcePoolsPath,
-    ]
-
-    // Create a dictionary to hold all the file dictionaries
-    const fileDataDictionary = {};
-
-    // Reads the JSON file and turns it into a data object
-    // Check the status before parsing: Foundry answers a missing template with an HTML error page,
-    // and predata.json() on that reports a bare "unexpected character" with no clue which file broke.
-    async function readFile(filePath) {
-      const predata = await fetch(filePath);
-      if (!predata.ok) throw new Error(`Template not found (${predata.status}): ${filePath}`);
-      try {
-        return await predata.json();
-      } catch (e) {
-        throw new Error(`Template is not valid JSON: ${filePath} (${e.message})`);
-      }
-    }
-
-    async function loadFiles() {
-      for (const file of filePaths) {
-        const data = await readFile(file);
-        const dataKey = file; // Use the file path as the key
-        fileDataDictionary[dataKey] = data;
-      }
-    }
-
-    await loadFiles();
-    ctx.templates = fileDataDictionary;
+    // Templates, by stable name. The loader owns the paths, the modded/base swap and its
+    // missing-file fallback, and the session cache -- see build/template-loader.js. `modded` is
+    // reassigned from what it RETURNS, not from what it was asked for: the fallback downgrades a
+    // modded run to the base bundles when the _MODS templates aren't installed.
+    const loaded = await loadTemplates({ modded });
+    const templates = loaded.templates;
+    modded = loaded.modded;
+    ctx.templates = templates;
     ctx.modded = modded;
 
-
-
-// ----- End of setting up filePaths ----- //
 
 const characterData = readCharacterPayload();
 // The backend wraps any generation exception as {"error": "..."} (app.py process_input_values), so
@@ -304,13 +155,13 @@ ctx.upperCaseClass = upper_case_class;
 
    // we want to use unmodifed template if it exists
    let exportTemplate;
-   const storedTemplate = fileDataDictionary[unmodifiedPreExportTemplatePath]; 
+   const storedTemplate = templates.unmodifiedPreExportTemplate; 
    if (storedTemplate) {
-     // If the template exists in fileDataDictionary, set exportTemplate to that
+     // If the template was loaded, set exportTemplate to that
      exportTemplate = JSON.parse(JSON.stringify(storedTemplate)); // Deep copy to avoid references
    } else {
-     // If not found, use the preExportTemplatePath as fallback  (We typically don't want to use this one)
-     const template = fileDataDictionary[preExportTemplatePath];
+     // If not found, use the 'preExportTemplate' as fallback  (We typically don't want to use this one)
+     const template = templates.preExportTemplate;
      exportTemplate = JSON.parse(JSON.stringify(template)); // Deep copy
      localStorage.setItem('exportTemplate', JSON.stringify(exportTemplate)); // Save it to localStorage
    }
@@ -631,7 +482,7 @@ function filterByLevel(items, level) {
 
 // Main function to process class data and update class level
 function processClass(targetClass, newLevel, classList) {
-  const everyClassPathData = fileDataDictionary[everyClassPath];
+  const everyClassPathData = templates.everyClass;
   const items = extractItems(everyClassPathData);
   if (!items) return;
 
@@ -725,7 +576,7 @@ for (const classEntry of classEntries) {
 
 // ------ Start of Race Section ------ //
 async function gatherRace(race) {
-  const everyRacePathData = fileDataDictionary[everyRacePath];
+  const everyRacePathData = templates.everyRace;
   const items = extractItems(everyRacePathData);
   const matchedItems = items.filter(item => item.name === race);
   console.log("matchedItems", matchedItems);
@@ -764,7 +615,7 @@ async function processArchetype(targetArchetype, sortValue = null) {
   }
 
   // Get archetypeInfo and ensure it's an object
-  let archetypeInfo = fileDataDictionary[archetypePath];
+  let archetypeInfo = templates.archetype;
 
   if (typeof archetypeInfo !== 'object' || archetypeInfo === null) {
       console.warn("archetypeInfo is not an object. Attempting to fix...");
@@ -777,7 +628,7 @@ async function processArchetype(targetArchetype, sortValue = null) {
           archetypeInfo = {};
       }
   }
-  // Clone: this runs once per class now, and mutating the shared fileDataDictionary template
+  // Clone: this runs once per class now, and mutating the shared loaded template
   // would make every appended archetype item point at the same (last-written) object. The
   // template also ships a fixed _id — re-id each clone (like addResourcePools does) so multiple
   // archetype items can't collide.
@@ -1011,7 +862,7 @@ async function updateClassFeatures(baseFeatTemplate, classFeatures) {
 
 
 // Append new class feature data
-await updateClassFeatures(fileDataDictionary[baseFeatPath], characterData.class_features);
+await updateClassFeatures(templates.baseFeat, characterData.class_features);
 
 // ----- Resource Pools group (top of Class Features, template sort -137000) ----- //
 // Hero Points for EVERY character (current value = the generated hero_points count);
@@ -1043,7 +894,7 @@ const CLASS_RESOURCE_POOLS = {
 
 async function addResourcePools() {
   try {
-    const pools = fileDataDictionary[resourcePoolsPath];
+    const pools = templates.resourcePools;
     if (!pools || typeof pools !== 'object') {
       console.warn('Resource pools: resource_pools.json missing — skipping.');
       return;
@@ -1156,10 +1007,10 @@ function applyBuffData(item, buff) {
   }
 }
 
-async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null) {
+async function processFeatTrait(templateName, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null) {
   try {
-    // Retrieve data from fileDataDictionary based on dataType (feats or traits)
-    const data = fileDataDictionary[everyDataPath];
+    // Retrieve data by template name based on dataType (feats or traits)
+    const data = templates[templateName];
 
     // Check if data is an array
     if (!Array.isArray(data)) {
@@ -1242,9 +1093,9 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
 }
 
 // --- adding Feat separators --- //
-async function addFeatSeparator(filePath, dataType, startingSort = 0) {
+async function addFeatSeparator(templateName, dataType, startingSort = 0) {
   try {
-    const data = fileDataDictionary[filePath];
+    const data = templates[templateName];
     const wrappedData = Array.isArray(data) ? data : [data];
 
     // 🔥 Apply sort
@@ -1253,9 +1104,9 @@ async function addFeatSeparator(filePath, dataType, startingSort = 0) {
     writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, wrappedData);
     appendJsonToTemplate(wrappedData, exportTemplate, capitalizeFirstLetter(dataType));
     writeToLocalStorage('exportTemplate', exportTemplate);
-    console.log(`${dataType} data successfully added from ${filePath}`);
+    console.log(`${dataType} data successfully added from ${templateName}`);
   } catch (error) {
-    console.error(`Error processing ${dataType} from ${filePath}:`, error);
+    console.error(`Error processing ${dataType} from ${templateName}:`, error);
   }
 }
 
@@ -1278,26 +1129,26 @@ async function assignToFeatSection(items) {
 }
 async function Feats_n_Traits() {
   // Feats section
-  await addFeatSeparator(spaceBackgroundPath, 'space_function', 1);
-  await processFeatTrait(everyFeatPath, characterData.flavor_feats, 'feat', 200, "Flavor", true, 1, 1, null, null, characterData.flavor_feat_tax_dict);
-  await processFeatTrait(everyFeatPath, characterData.flaw_feats, 'feat', 250, "Flaw", true, 1, 1, null, null, characterData.flaw_feat_tax_dict);
-  await processFeatTrait(everyFeatPath, characterData.story_feats, 'feat', 500, "Story Feat", true, 1, 5, [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], null, characterData.story_feat_tax_dict);
-  await addFeatSeparator(spaceFeatsPath, 'space_function', 1000);
-  await processFeatTrait(everyFeatPath, characterData.feats, 'feat', 1500, "Feat", true, 1, 2, null, null, characterData.feats_feat_tax_dict);
-  await addFeatSeparator(spaceClassBonusFeatsPath, 'space_function', 2000);
-  await processFeatTrait(everyFeatPath, characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3, null, characterData.teamwork_feat_labels);
-  await processFeatTrait(everyFeatPath, characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2, null, characterData.class_feat_labels, characterData.class_feat_tax_dict);
+  await addFeatSeparator('spaceBackground', 'space_function', 1);
+  await processFeatTrait('everyFeat', characterData.flavor_feats, 'feat', 200, "Flavor", true, 1, 1, null, null, characterData.flavor_feat_tax_dict);
+  await processFeatTrait('everyFeat', characterData.flaw_feats, 'feat', 250, "Flaw", true, 1, 1, null, null, characterData.flaw_feat_tax_dict);
+  await processFeatTrait('everyFeat', characterData.story_feats, 'feat', 500, "Story Feat", true, 1, 5, [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], null, characterData.story_feat_tax_dict);
+  await addFeatSeparator('spaceFeats', 'space_function', 1000);
+  await processFeatTrait('everyFeat', characterData.feats, 'feat', 1500, "Feat", true, 1, 2, null, null, characterData.feats_feat_tax_dict);
+  await addFeatSeparator('spaceClassBonusFeats', 'space_function', 2000);
+  await processFeatTrait('everyFeat', characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3, null, characterData.teamwork_feat_labels);
+  await processFeatTrait('everyFeat', characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2, null, characterData.class_feat_labels, characterData.class_feat_tax_dict);
   // Bloodline bonus feats (Sorcerer/Bloodrager), labeled by granting class + level
   // (e.g. "Sorcerer 7: Combat Casting"). Guarded so an un-redeployed backend that doesn't
   // send bloodline_feats simply skips this step instead of erroring.
   if (Array.isArray(characterData.bloodline_feats) && characterData.bloodline_feats.length) {
-    await processFeatTrait(everyFeatPath, characterData.bloodline_feats, 'feat', 3500, "Bloodline Feat", true, 1, 1, null, characterData.bloodline_feat_labels);
+    await processFeatTrait('everyFeat', characterData.bloodline_feats, 'feat', 3500, "Bloodline Feat", true, 1, 1, null, characterData.bloodline_feat_labels);
   }
   // Homebrew Trainers -> bottom of the Feats section, rendered as normal feats: one item per taught
   // feat-tax chain, grouped by its "(Trainer N)" label, full compendium text, NO caliber line.
   if (Array.isArray(characterData.trainer_feats) && characterData.trainer_feats.length) {
     await appendFeatDivider("__________________________ Trainers _______________________", 3600);
-    await processFeatTrait(everyFeatPath, characterData.trainer_feats, 'feat', 3610, "Trainer", true, 1, 1, null, characterData.trainer_feat_labels, characterData.trainer_feat_tax_dict);
+    await processFeatTrait('everyFeat', characterData.trainer_feats, 'feat', 3610, "Trainer", true, 1, 1, null, characterData.trainer_feat_labels, characterData.trainer_feat_tax_dict);
   }
   // Homebrew Professions -> bottom of the Feats section: tiered Rank 5 / Rank 15 ability items (+
   // profession feats), each carrying pf1 changes/contextNotes/uses.
@@ -1332,7 +1183,7 @@ async function Feats_n_Traits() {
   }
   // Traits section: divider, then the creation traits (sorts 100+ from processFeatTrait).
   await appendFeatDivider("____________________ Traits______________________", -100000, 'trait');
-  await processFeatTrait(everyTraitPath, characterData.selected_traits, 'trait');
+  await processFeatTrait('everyTrait', characterData.selected_traits, 'trait');
   // Flaws: mechanical drawbacks from flaw_effects_dict — one trait item per flaw, named with its
   // tier, full rules text as the description, pf1 changes/contextNotes via applyBuffData.
   const flawEffects = characterData.flaw_effects_dict || {};
@@ -1709,7 +1560,7 @@ function applyManeuverProgression() {
 // pf1 v11 formulas have no JS ternaries); uncurated stances are description-only toggles.
 async function addStanceBuffs(stances, descs, matchedDocs) {
   if (!stances.length) return;
-  const stanceChanges = fileDataDictionary[stanceChangesPath];
+  const stanceChanges = templates.stanceChanges;
   const changesByNorm = {};
   if (stanceChanges && typeof stanceChanges === 'object') {
     for (const [k, v] of Object.entries(stanceChanges)) changesByNorm[powNorm(k)] = v;
@@ -1717,7 +1568,7 @@ async function addStanceBuffs(stances, descs, matchedDocs) {
     console.warn('Path of War: stance_changes.json missing or invalid — stance buffs will be description-only.');
   }
 
-  const divider = structuredClone(fileDataDictionary[spacePathOfWarBuffsPath]);
+  const divider = structuredClone(templates.spacePathOfWarBuffs);
   const buffs = [];
   // Resolve @INITMOD in stance contextNotes, same as addManeuverConditionals does for maneuver riders.
   const stanceInit = maneuverInitAttr();
@@ -1774,7 +1625,7 @@ async function legacyProcessPathOfWarFeats() {
   const descs = characterData.maneuvers_desc_dict || {};
   const powSubType = (modded === "y") ? "combatTalent" : "martialDiscipline";
 
-  await addFeatSeparator(spacePathOfWarPath, 'space_function', 4000);
+  await addFeatSeparator('spacePathOfWar', 'space_function', 4000);
 
   const items = [];
   for (const name of [...known, ...stances]) {
@@ -2138,9 +1989,9 @@ await processPsionics();
 // ------ End of Feat/Trait Section ------ //
 
 // ----- Start of Inherents Section ----- //
-async function addStatBuff(filePath, stats, label) {
+async function addStatBuff(templateName, stats, label) {
   // Deep copy to avoid mutation of shared state
-  const data = structuredClone(fileDataDictionary[filePath]);
+  const data = structuredClone(templates[templateName]);
   
   // Turns data -> array if it isn't already
   let wrappedData = Array.isArray(data) ? data : [data];
@@ -2180,15 +2031,15 @@ async function changeStatBuff(dataArray, stats, label) {
   return dataArray;
 }
 
-await addStatBuff(inherentsPath, characterData.level_up_stats, 'level_up_stats');
-await addStatBuff(inherentsPath, characterData.inherents, 'Inherents');
+await addStatBuff('inherents', characterData.level_up_stats, 'level_up_stats');
+await addStatBuff('inherents', characterData.inherents, 'Inherents');
 // ----- End of Inherents Section ----- //
 
 // ----- Start of Custom Buffs Section ----- //
 async function addCustomBuffs() {
   if (readCustomBuffsFlag().toLowerCase() !== 'y') return;
 
-  const buffs = structuredClone(fileDataDictionary[customBuffsPath]);
+  const buffs = structuredClone(templates.customBuffs);
   if (!Array.isArray(buffs)) { console.warn('custom_buffs.json missing or not an array'); return; }
 
   // Buffs that start active (the "X" set). Combat buffs + the acrobatics reference stay inactive.
@@ -2323,7 +2174,7 @@ async function assignSpellTypes(type) {
 
 
 
-async function processSpell(everySpellPath, spellListChooseFrom, slot = 'primary', book = null) {
+async function processSpell(spellListChooseFrom, slot = 'primary', book = null) {
   try {
     // Ensure only for characters with spells
     if (!Array.isArray(spellListChooseFrom) || spellListChooseFrom.length === 0) {
@@ -2332,8 +2183,8 @@ async function processSpell(everySpellPath, spellListChooseFrom, slot = 'primary
     }
 
 
-    // Retrieve spells data from fileDataDictionary
-    const spells = fileDataDictionary[everySpellPath];
+    // Retrieve spells data by template name
+    const spells = templates.everySpell;
 
     // Check if spells is an array
     if (!Array.isArray(spells)) {
@@ -2436,10 +2287,10 @@ if (Array.isArray(characterData.spellbooks) && characterData.spellbooks.length) 
   }
   for (let s = 0; s < casterBooks.length && s < SPELLBOOK_SLOTS.length; s++) {
     await configureSpellbook(SPELLBOOK_SLOTS[s], casterBooks[s]);
-    await processSpell(everySpellPath, casterBooks[s].spell_list_choose_from, SPELLBOOK_SLOTS[s], casterBooks[s]);
+    await processSpell(casterBooks[s].spell_list_choose_from, SPELLBOOK_SLOTS[s], casterBooks[s]);
   }
 } else {
-  await processSpell(everySpellPath, characterData.spell_list_choose_from);
+  await processSpell(characterData.spell_list_choose_from);
 }
 
 // ----- Spell riders: save + non-damage riders on Bucket-B attack spells ----- //
@@ -2616,7 +2467,7 @@ function synthesizeEquipmentItem(name, descriptionText, slot) {
   };
 }
 
-async function processItem(itemType, everyItemPath, itemName, enhancementList, defaultItemName, defaultItemNameFlag = 0, opts = {}) {
+async function processItem(itemType, templateName, itemName, enhancementList, defaultItemName, defaultItemNameFlag = 0, opts = {}) {
   try {
     // If itemName is empty or undefined, use defaultItemName
     if (!itemName && defaultItemNameFlag === 0) {
@@ -2640,8 +2491,8 @@ async function processItem(itemType, everyItemPath, itemName, enhancementList, d
     // Backend buff overlay is keyed by the backend's item name, lowercased
     const buffKeyLc = String(itemName).toLowerCase();
 
-    // Retrieve the items data from the fileDataDictionary
-    const items = fileDataDictionary[everyItemPath];
+    // Retrieve the items data by template name
+    const items = templates[templateName];
 
     // Check if the items data is an array
     if (!Array.isArray(items)) {
@@ -2742,10 +2593,10 @@ async function processItem(itemType, everyItemPath, itemName, enhancementList, d
 
 
 //Weapon with default fallback to "Longsword"
-await processItem("Weapon", everyWeaponPath, characterData.weapon_name, characterData.weapon_enhancement_chosen_list, "Longsword", 0);
+await processItem("Weapon", 'everyWeapon', characterData.weapon_name, characterData.weapon_enhancement_chosen_list, "Longsword", 0);
 
 //Armor with default fallback to "Leather Armor"
-await processItem("Armor", everyArmorPath, characterData.armor_name, characterData.armor_enhancement_chosen_list, "Leather Armor", 0);
+await processItem("Armor", 'everyArmor', characterData.armor_name, characterData.armor_enhancement_chosen_list, "Leather Armor", 0);
 
 // Slot equipment. Every name in equipment_list becomes an actor item: compendium match when the
 // name resolves (exact or parenthesised-variant), otherwise synthesized from the backend's own
@@ -2770,7 +2621,7 @@ async function processEquipment(characterData) {
   }
 
   for (const item of characterData.equipment_list) {
-    await processItem("WondrousItem", everyItemPath, item, '', "", 1,
+    await processItem("WondrousItem", 'everyItem', item, '', "", 1,
                       { synthesizeOnMiss: true, detailsByName });
   }
 }
@@ -2801,7 +2652,7 @@ async function addManeuverConditionals() {
     const known = (characterData.maneuvers_choose_from || []).flat();   // strikes/boosts/counters (no stances)
     const knownStances = characterData.stances_chosen || [];            // stances may carry a damage conditional
     if (!known.length && !knownStances.length) return;
-    const table = fileDataDictionary[maneuverChangesPath];
+    const table = templates.maneuverChanges;
     if (!table || typeof table !== 'object') {
       console.warn('maneuver_changes.json missing or invalid — no maneuver conditionals added.');
       return;
@@ -3301,8 +3152,8 @@ async function addSphereTalentConditionals(subSpheres) {
       }
       return out;
     };
-    const combatByNorm = buildByNorm(fileDataDictionary[combatTalentConditionalsPath]);
-    const magicByNorm = buildByNorm(fileDataDictionary[magicTalentConditionalsPath]);
+    const combatByNorm = buildByNorm(templates.combatTalentConditionals);
+    const magicByNorm = buildByNorm(templates.magicTalentConditionals);
 
     const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
     const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
@@ -3374,7 +3225,7 @@ function deriveBuffTag(name) {
 }
 async function addSphereAuraBuffs(subSpheres) {
   try {
-    const table = fileDataDictionary[talentAuraBuffsPath];
+    const table = templates.talentAuraBuffs;
     if (!table || typeof table !== 'object') return;
     const combat = characterData.combat_talent_items || [];
     const magic = characterData.magic_talent_items || [];
@@ -3441,7 +3292,7 @@ async function addSphereAuraBuffs(subSpheres) {
 // spell_buffs.json). Toggle + Multi-Buff Distributor shares it with allies (even Personal/Self spells).
 async function addSpellBuffs() {
   try {
-    const table = fileDataDictionary[spellBuffsPath];
+    const table = templates.spellBuffs;
     if (!table || typeof table !== 'object') return;
     const known = [];
     for (const lvl of (characterData.spell_list_choose_from || [])) {
@@ -3576,7 +3427,7 @@ function characterHasNaturalArmor() {
     has = characterData.equipment_list.some((e) => /amulet of natural armor/i.test(String(e)));
   }
   if (!has) {
-    const raceItems = extractItems(fileDataDictionary[everyRacePath]) || [];
+    const raceItems = extractItems(templates.everyRace) || [];
     const raceItem = raceItems.find((item) => item.name === characterData.chosen_race);
     has = !!raceItem?.system?.changes?.some((c) => c && c.target === 'nac');
   }
@@ -3599,7 +3450,7 @@ function characterHasNaturalArmor() {
 // Natural-armor tracker items are skipped for characters with no natural armor.
 async function addHouseFeatures() {
   try {
-    let features = fileDataDictionary[houseFeaturesPath];
+    let features = templates.houseFeatures;
     if (!Array.isArray(features) || !features.length) {
       console.warn('House features: house_features.json missing or empty — skipping.');
       return;
@@ -3624,7 +3475,7 @@ await addHouseFeatures();
 
 async function addSizeForDamageFeature() {
   try {
-    const feature = structuredClone(fileDataDictionary[sizeForDamageFeaturePath]);
+    const feature = structuredClone(templates.sizeForDamageFeature);
     feature._id = await generateUniqueID('sizeForDamage', feature.name);
     // Pin it into the "Variable Modifiers" group (template actor slot), just under its divider.
     feature.sort = 121680;
@@ -3654,7 +3505,7 @@ async function createScalingAttackItem() {
       return a1;
     };
     const freshScript = async () => {
-      const sc = structuredClone(fileDataDictionary[scalingWeaponDamagePath]);
+      const sc = structuredClone(templates.scalingWeaponDamage);
       sc._id = (await generateUniqueID('scriptCall', sc)).slice(0, 8);
       return sc;
     };
@@ -3766,8 +3617,8 @@ async function check_ammo() {
 
 // ----- Start of Ammo Section ----- //
 async function select_random_ammo(ammo_type) {
-  // Retrieve the weapons data from the fileDataDictionary
-  const weapons = fileDataDictionary[everyWeaponPath];
+  // Retrieve the weapons data by template name
+  const weapons = templates.everyWeapon;
 
   // Check if weapons is an array
   if (!Array.isArray(weapons)) {
@@ -3918,7 +3769,7 @@ try {
   if (typeof professionRanks === 'string') {
     try { professionRanks = JSON.parse(professionRanks); } catch (e) { professionRanks = []; }
   }
-  const baseSkillTemplate = fileDataDictionary[baseSkillPath]; // Example, replace with your actual path
+  const baseSkillTemplate = templates.baseSkill; // Example, replace with your actual path
   // Now we have a JSON object with the proper names and ranks -> need to update the skills
   await createUpdatedSkills(updatedCharacterData, baseSkillTemplate, professions, characterData.craft_type, professionRanks);
   // Now that we have updated skills -> need to overwrite the export file (stored in localStorage)
@@ -3927,7 +3778,7 @@ try {
   console.error("Error in skills processing:", error);
   console.log("characterData.skill_ranks:", characterData.skill_ranks);
   console.log("skillsDict:", skillsDict);
-  console.log("baseSkillPath:", baseSkillPath);
+  console.log("baseSkill template:", templates.baseSkill);
 }
 
 // pf1 v11 stores item "trait" group fields (weaponGroups, weaponProf, armorProf, languages,
@@ -3970,7 +3821,7 @@ if (exportTemplate) {
   console.log("Successfully wrote exportFoundryPath to localStorage");
 } else {
   console.error("exportTemplate is undefined! Cannot write to localStorage.");
-  console.log("Available fileDataDictionary keys:", Object.keys(fileDataDictionary));
+  console.log("Available template names:", Object.keys(templates));
 }
 
 // ----- End of Skills Section ----- //
