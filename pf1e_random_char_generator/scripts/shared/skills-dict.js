@@ -8,12 +8,10 @@
  * skills whose ranks must live in subSkills, so ranks on the container are unusable.
  *
  * Extracted so the companion renderer (`createCompanions.js`) spends a bonded creature's ranks
- * through the same table the character does.
- *
- * ⚠ NOT YET THE ONLY COPY. `modify-abilities.js::main` still declares its own identical
- * `skillsDict`; it was mid-edit by other work when this file was written, so the deletion there is
- * pending. Until it lands, a skill added here must be added there too — which is precisely the
- * drift the comment above is a scar from, so do the swap at the first safe moment.
+ * through the same table the character does. `modify-abilities.js` declared an identical copy
+ * inline until that half-finished extraction was closed; this is now the module's only copy, and
+ * it must stay that way — two tables that must agree and are edited separately are the drift bug
+ * the paragraph above is a scar from.
  */
 export const skillsDict = {
   // "Pull_name": "Foundry_name"

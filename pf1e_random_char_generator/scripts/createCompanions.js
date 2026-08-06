@@ -29,7 +29,8 @@
  * familiar whose progression is not the animal one, lands on the payload's numbers anyway -- and
  * anything that could not be corrected is logged rather than left to look right.
  */
-import { skillsDict } from './skills-dict.js';
+import { skillsDict } from './shared/skills-dict.js';
+import { forceRederive } from './shared/foundry-doc.js';
 import { buildSectionItems } from './companion-sections.js';
 
 // D1: the body comes from pf-content. Actors there are type `character`, NOT `npc` -- which is also
@@ -372,11 +373,11 @@ async function createBondedCreature(entry, folderId, masterName) {
   if (chassis) {
     const die = Number(String(stats.hit_die ?? '').replace(/\D/g, ''));
     // A same-value update is a no-op Foundry fires no change event for, and pf1 then never
-    // re-derives — the identical trap adjustLevel() documents for a level-20 character.
-    if (Number(chassis.system.level) === hd) {
-      await chassis.update({ 'system.level': hd > 1 ? hd - 1 : hd + 1 });
-    }
-    await chassis.update({ 'system.level': hd, ...(die ? { 'system.hd': die } : {}) });
+    // re-derives — see forceRederive in shared/foundry-doc.js.
+    await forceRederive(chassis, 'system.level', hd, {
+      current: chassis.system.level,
+      extra: die ? { 'system.hd': die } : {},
+    });
   } else {
     await actor.createEmbeddedDocuments('Item', [classItemData(stats)]);
   }

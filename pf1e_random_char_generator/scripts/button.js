@@ -1,7 +1,7 @@
 import { sendDataToServer } from './deliver-data.js';
 import { main } from './modify-abilities.js';
 import { createAndAssignActor } from './createCharacter.js';
-import { CLASS_GROUPS, classSlug } from './class-roster.js';
+import { CLASS_GROUPS, classSlug } from './shared/class-roster.js';
 
 // Function to create the persistent button
 // need export so we can import in main.js

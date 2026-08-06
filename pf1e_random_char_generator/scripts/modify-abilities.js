@@ -1,4 +1,14 @@
-import { CLASS_ITEM_ORDER } from './class-roster.js';
+import { CLASS_ITEM_ORDER } from './shared/class-roster.js';
+import { skillsDict } from './shared/skills-dict.js';
+import {
+  capitalizeWords,
+  capitalizeFirstLetter,
+  toTitleCase,
+  stableStringify,
+  convertToStringSimple,
+  sphereNorm,
+  powNorm,
+} from './shared/text.js';
 
 /**
  * Build the pf1 actor payload from the generated character data.
@@ -613,47 +623,6 @@ function processClass(targetClass, newLevel, classList) {
 }
 
 
-// function to capitalize the first letter of each word in a string
-function capitalizeWords(str) {
-  // Ensure str is a string before attempting to split
-  if (typeof str !== 'string') {
-    console.error('Expected a string, but received:', str);
-    return str; // Return the value unchanged if it's not a string
-  }
-
-  const ignoreWords = ['of', 'the', 'and', 'in', 'on', 'at', 'to', 'with', 'from'];
-
-  // List of specific Roman numerals to capitalize
-  const romanNumerals = ['ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii'];
-
-  return str
-    .split(' ') // Split the string into an array of words
-    .map((word, index) => {
-      // Lowercase the word for comparison
-      const lowerWord = word.toLowerCase();
-
-      // Capitalize Roman numerals
-      if (romanNumerals.includes(lowerWord)) {
-        return word.toUpperCase();
-      }
-
-      // Capitalize the first letter if it's the first word or not in ignoreWords
-      if (index === 0 || !ignoreWords.includes(lowerWord)) {
-        return word
-          .split('-') // Handle hyphenated words
-          .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
-          .join('-');
-      } else {
-        // Keep the word in lowercase if it's in the ignore list and not the first word
-        return word.toLowerCase();
-      }
-    })
-    .join(' '); // Join all words together
-}
-
-
-
-
 
 // Example inputs
 
@@ -837,35 +806,6 @@ async function generateUniqueID(kind = 'id', key = null) {
 
 
 // ----- Start of Class Features Section ----- //
-
-
-function convertToStringSimple(key, featureData) {
-  if (!featureData || typeof featureData !== "object") {
-      return "<p>No feature data available.</p>";
-  }
-
-  let htmlString = `<p><strong>${key}</strong></p><ul>`;
-
-  for (const [key, value] of Object.entries(featureData)) {
-      htmlString += `<li><strong>${key}:</strong> ${typeof value === "object" ? stableStringify(value, null, 2) : value}</li>`;
-  }
-
-  htmlString += "</ul>";
-  return htmlString;
-}
-
-// Custom stringify function that maintains order of keys
-function stableStringify(obj) {
-  if (Array.isArray(obj)) {
-    return `[${obj.map(stableStringify).join(',')}]`;
-  } else if (obj && typeof obj === 'object') {
-    const keys = Object.keys(obj); // preserve original key order
-    const keyValuePairs = keys.map(key => `"${key}":${stableStringify(obj[key])}`);
-    return `{${keyValuePairs.join(',')}}`;
-  } else {
-    return JSON.stringify(obj);
-  }
-}
 
 
 // Display metadata for the backend's class-feature selection buckets (class_features payload,
@@ -1269,10 +1209,6 @@ async function processFeatTrait(everyDataPath, dataListChooseFrom, dataType, sta
   }
 }
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 // --- adding Feat separators --- //
 async function addFeatSeparator(filePath, dataType, startingSort = 0) {
   try {
@@ -1432,10 +1368,6 @@ function applyFeatTax(items, data, taxArray) {
   }
 }
 
-function toTitleCase(str) {
-  return str.replace(/\b\w/g, c => c.toUpperCase());
-}
-
 // Inline section divider (no template file needed): a feat item with an underscore name, sorted
 // into place. subType picks the sheet section: "feat" (Feats), "classFeat" (Class Features),
 // "trait" (Traits). Used to head the Trainers / Professions blocks and the Class Features /
@@ -1482,14 +1414,6 @@ async function processProfessionAbilities(items, startingSort = 3900) {
   writeToLocalStorage('collectedProfessionAbilities', built);
   appendJsonToTemplate(built, exportTemplate, "Feat");
   writeToLocalStorage('exportTemplate', exportTemplate);
-}
-
-// Normalize a sphere talent name for compendium matching: drop a trailing " (variant)" and any
-// " [source]" tag (the backend sends e.g. "Ragdoll Swing (impale)" / "... [apoc]"; the pf1spheres
-// compendium name is just "Ragdoll Swing"), then lowercase / strip apostrophes / collapse spaces.
-function sphereNorm(s) {
-  return String(s).split(' (')[0].replace(/\s*\[[^\]]*\]\s*/g, ' ')
-    .toLowerCase().replace(/['’`]/g, '').replace(/\s+/g, ' ').trim();
 }
 
 // camelCase a display sphere name for the flags.pf1spheres.sphere fallback when a talent isn't in the
@@ -1670,23 +1594,7 @@ await Feats_n_Traits();
 // stance also becomes an inactive TEMPORARY buff under a "____ Path of War ____" buff divider
 // (addStanceBuffs). With pf1-pow disabled we fall back to the legacy feat items.
 
-// Apostrophe-/case-/whitespace-insensitive key for matching backend scrape names (which often
-// lose apostrophes, e.g. "Pit Fighters Stance") against pf1-pow compendium names.
-function powNorm(s) {
-  return String(s)
-    // pf1-pow ships 12 of its 1,067 documents with a DOUBLE-ENCODED apostrophe in the name --
-    // "Turtle Knightâ€™s Stance", "Donâ€™t Die On Me" -- the UTF-8 bytes of U+2019 stored as three
-    // Windows-1252 characters. The other 76 apostrophe-bearing names in the same pack are fine, and
-    // the other three packs have none, so this is that module's data and not an encoding fault on
-    // our side. Stripped before the apostrophe fold below, which only knows about real quote marks:
-    // without this every one of those twelve misses its compendium match and arrives as a
-    // synthesized feat item with no automation, no (Strike)/(Stance) type prefix, and -- for the
-    // four stances -- no stance buff. Found by the golden harness, which recorded the miss.
-    .replace(/â€™/g, '')
-    .toLowerCase().replace(/['’`]/g, '').replace(/\s+/g, ' ').trim();
-}
-
-// The display half of the same defect. Matching a corrupted compendium name is only half a fix: the
+// The display half of the same defect (see powNorm in shared/text.js). Matching a corrupted compendium name is only half a fix: the
 // clone carries `doc.name` onto the sheet verbatim, so without this a warder's stance reads
 // "Turtle Knightâ€™s Stance" in the item list. Repaired rather than stripped -- the apostrophe is
 // part of the name, and the sheet should show the name the book prints.
@@ -3869,49 +3777,9 @@ await check_ammo();
 
 // ----- Start of Skills Section ----- //
 
-// Must stay in lockstep with the backend's canonical data.skills / data.SKILL_IDS. Anything the
-// backend sends that isn't here (or isn't in base_skill.json) is DROPPED -- which is how "gather
-// information", "lore" and "knowledge martial" used to eat a character's skill ranks. Both were
-// removed from the backend pool; "artistry" went with them because pf1 treats art/lor as container
-// skills whose ranks must live in subSkills, so ranks on the container are unusable.
-const skillsDict = {
-  // "Pull_name": "Foundry_name"
-  acrobatics: "acr",
-  appraise: "apr",
-  bluff: "blf",
-  climb: "clm",
-  craft: "crf",
-  diplomacy: "dip",
-  "disable device": "dev",
-  disguise: "dis",
-  "escape artist": "esc",
-  fly: "fly",
-  "handle animal": "han",
-  heal: "hea",
-  intimidate: "int",
-  "knowledge arcana": "kar",
-  "knowledge dungeoneering": "kdu",
-  "knowledge engineering": "ken",
-  "knowledge geography": "kge",
-  "knowledge history": "khi",
-  "knowledge local": "klo",
-  "knowledge nature": "kna",
-  "knowledge nobility": "kno",
-  "knowledge planes": "kpl",
-  "knowledge religion": "kre",
-  linguistics: "lin",
-  perception: "per",
-  perform: "prf",
-  profession: "pro",
-  ride: "rid",
-  "sense motive": "sen",
-  "sleight of hand": "slt",
-  spellcraft: "spl",
-  stealth: "ste",
-  survival: "sur",
-  swim: "swm",
-  "use magic device": "umd",
-};
+// `skillsDict` (backend skill name -> pf1 skill id) is imported from shared/skills-dict.js. It was
+// declared inline here as well until this extraction landed; see that file's header for why the
+// table is load-bearing.
 
 async function convertSkillNames(characterData, skillsDict) {
   // The backend sends skill_ranks as a JSON string; parse it if it hasn't been already.

@@ -1,4 +1,6 @@
 import { createBondedCreatures } from './createCompanions.js';
+import { capitalizeWords } from './shared/text.js';
+import { forceRederive } from './shared/foundry-doc.js';
 
 async function createCharacterFunc() {
   const actor = await Actor.create({
@@ -49,44 +51,6 @@ async function generateRandomizedCharacterFolder() {
   return folder.id;
 }
 
-// function to capitalize the first letter of each word in a string
-function capitalizeWords(str) {
-  // Ensure str is a string before attempting to split
-  if (typeof str !== 'string') {
-    console.error('Expected a string, but received:', str);
-    return str; // Return the value unchanged if it's not a string
-  }
-
-  const ignoreWords = ['of', 'the', 'and', 'in', 'on', 'at', 'to', 'with', 'from'];
-
-  // List of specific Roman numerals to capitalize
-  const romanNumerals = ['ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii'];
-
-  return str
-    .split(' ') // Split the string into an array of words
-    .map((word, index) => {
-      // Lowercase the word for comparison
-      const lowerWord = word.toLowerCase();
-
-      // Capitalize Roman numerals
-      if (romanNumerals.includes(lowerWord)) {
-        return word.toUpperCase();
-      }
-
-      // Capitalize the first letter if it's the first word or not in ignoreWords
-      if (index === 0 || !ignoreWords.includes(lowerWord)) {
-        return word
-          .split('-') // Handle hyphenated words
-          .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
-          .join('-');
-      } else {
-        // Keep the word in lowercase if it's in the ignore list and not the first word
-        return word.toLowerCase();
-      }
-    })
-    .join(' '); // Join all words together
-}
-
 async function adjustLevel(actor) {
   const characterData = await localStorage.getItem("pulledCharacterData");
   console.log("actor:", actor)
@@ -117,16 +81,10 @@ async function adjustLevel(actor) {
         // Find the class item in the actor's items
         const classItem = actor.items.find(item => item.type === 'class' && item.name === c_class);
         if (classItem) {
-          // The class item is injected at the every_class.json template level (20). For a max-level
-          // (20) character, update({ level: 20 }) is a same-value no-op: Foundry fires no change
-          // event, pf1 never derives the character level, and the sheet stays at Level 0 /
-          // "missing a class" until the user manually clicks Level Up. Nudge to a different level
-          // first to guarantee a class-level change event so pf1 recomputes. Sub-max characters
-          // already differ from the template, so the single update below is enough for them.
-          if (Number(classItem.system.level) === target) {
-            await classItem.update({ "system.level": target > 1 ? target - 1 : target + 1 });
-          }
-          await classItem.update({ "system.level": target });
+          // The class item is injected at the every_class.json template level (20), so for a
+          // max-level character this update is a same-value no-op Foundry fires no change event
+          // for — see forceRederive in shared/foundry-doc.js.
+          await forceRederive(classItem, 'system.level', target, { current: classItem.system.level });
           console.log(`Updated ${c_class} level to ${target}`);
         } else {
           console.error(`Class item ${c_class} not found in actor's items.`);
