@@ -1,6 +1,8 @@
 import { CLASS_ITEM_ORDER } from './shared/class-roster.js';
 import { createBuildContext } from './build/build-context.js';
 import { loadTemplates } from './build/template-loader.js';
+import { attachConditionals } from './build/conditional-engine.js';
+import { findMainWeapon } from './build/weapon.js';
 import {
   readDeliverData,
   readCustomBuffsFlag,
@@ -163,7 +165,6 @@ ctx.upperCaseClass = upper_case_class;
      // If not found, use the 'preExportTemplate' as fallback  (We typically don't want to use this one)
      const template = templates.preExportTemplate;
      exportTemplate = JSON.parse(JSON.stringify(template)); // Deep copy
-     localStorage.setItem('exportTemplate', JSON.stringify(exportTemplate)); // Save it to localStorage
    }
 
    // ----- End of exportTemplate setup ----- //
@@ -176,16 +177,12 @@ ctx.upperCaseClass = upper_case_class;
    function updateAttribute(variable, attributePath, type) {
      attributePath[type] = variable;
      console.log(attributePath[type]);
-
-     // Save updated exportTemplate to localStorage
-     localStorage.setItem('exportTemplate', JSON.stringify(exportTemplate));
    }
 
    // Stamp the backend's generator version onto the actor as a hidden flag, so any exported sheet
    // reveals which backend build produced it (instant stale-vs-fresh diagnosis when feats look wrong).
    exportTemplate.flags = exportTemplate.flags || {};
    exportTemplate.flags['pf1e_random_char_generator'] = { version: characterData.generator_version || 'unknown' };
-   localStorage.setItem('exportTemplate', JSON.stringify(exportTemplate));
 
 
    // Stats
@@ -367,7 +364,6 @@ if (!Array.isArray(characterData.spellbooks) || !characterData.spellbooks.length
    // ----- End of simple data update ----- //
 
 
-
 // ------ Start of Class Data Section ------ //
 
 // Function to validate and extract items array
@@ -447,16 +443,6 @@ function collectItems(items, targetClass, classList) {
   return results;  // Ensure we're returning the updated results array
 }
 
-// Function to safely write data to localStorage
-function writeToLocalStorage(key, data) {
-  try {
-    localStorage.setItem(key, JSON.stringify(data));
-    console.log(`${key} has been updated in localStorage.`);
-  } catch (err) {
-    console.error(`Error writing to localStorage key ${key}:`, err);
-  }
-}
-
 // Function to append collected items to the export template
 function appendJsonToTemplate(collectedItems, exportTemplate, sectionKey) {
   if (!exportTemplate.items) {
@@ -501,10 +487,7 @@ function processClass(targetClass, newLevel, classList) {
   // Append the collected items to exportTemplate
   appendJsonToTemplate(newCollectedItems, exportTemplate, "Class");
 
-  // Save the updated exportTemplate back to localStorage
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
-
 
 
 // Example inputs
@@ -587,13 +570,10 @@ async function gatherRace(race) {
   console.log("matchedItems", matchedItems);
   if (!matchedItems) return;
 
-  writeToLocalStorage("Race", matchedItems);
 
   // Append the collected items to exportTemplate
   appendJsonToTemplate(matchedItems, exportTemplate, "Class");
 
-  // Save the updated exportTemplate back to localStorage
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
 
 await gatherRace(characterData.chosen_race);
@@ -668,10 +648,7 @@ async function processArchetype(targetArchetype, sortValue = null) {
   // We pass targetArchetype[archetypeKey] which is the data associated with that archetype
   archetypeInfo.system.description.value = convertToStringSimple(archetypeKey, targetArchetype[archetypeKey]);
 
-  // Save to localStorage and append to template
-  writeToLocalStorage('archetypeInfo', archetypeInfo);
   appendJsonToTemplate([archetypeInfo], exportTemplate, "archetypeInfo");
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
 
 // (called per class from the classEntries loop in the Class Data Section above)
@@ -860,10 +837,7 @@ async function updateClassFeatures(baseFeatTemplate, classFeatures) {
       }
       if (!meta.ladder) band.generalSort = sort;
   }
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
-
-
 
 
 // Append new class feature data
@@ -951,7 +925,6 @@ async function addResourcePools() {
     });
 
     appendJsonToTemplate(clones, exportTemplate, 'Feature');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Resource pools: added ${clones.length} pool(s) [${[...new Set(wanted)].join(', ')}], removed ${removed} duplicate class feature(s).`);
   } catch (error) {
     console.error('Error adding resource pools:', error);
@@ -1081,14 +1054,10 @@ async function processFeatTrait(templateName, dataListChooseFrom, dataType, star
       }         
       // Assign a unique ID to each item
          
-      // Instead of writing to a file, we write to localStorage
-      writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, allMatchedItems);
 
-      // Append matched items to the exportTemplate in localStorage
+      // Append matched items to the exportTemplate
       appendJsonToTemplate(allMatchedItems, exportTemplate, capitalizeFirstLetter(dataType));
 
-      // Save the updated exportTemplate back to localStorage
-      writeToLocalStorage('exportTemplate', exportTemplate);
     } else {
       console.error(`No matching ${dataType}s were found in the list.`);
     }
@@ -1108,9 +1077,7 @@ async function addFeatSeparator(templateName, dataType, startingSort = 0) {
     // 🔥 Apply sort
     assignSequentialSort(wrappedData, startingSort);
 
-    writeToLocalStorage(`collected${capitalizeFirstLetter(dataType)}s`, wrappedData);
     appendJsonToTemplate(wrappedData, exportTemplate, capitalizeFirstLetter(dataType));
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`${dataType} data successfully added from ${templateName}`);
   } catch (error) {
     console.error(`Error processing ${dataType} from ${templateName}:`, error);
@@ -1186,7 +1153,6 @@ async function Feats_n_Traits() {
     tradItem.system.subType = 'trait';
     tradItem.sort = -199900;
     appendJsonToTemplate([tradItem], exportTemplate, "Trait");
-    writeToLocalStorage('exportTemplate', exportTemplate);
   }
   // Traits section: divider, then the creation traits (sorts 100+ from processFeatTrait).
   await appendFeatDivider("____________________ Traits______________________", -100000, 'trait');
@@ -1207,7 +1173,6 @@ async function Feats_n_Traits() {
       applyBuffData(item, entry);
       appendJsonToTemplate([item], exportTemplate, "Trait");
     }
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Flaws: added ${Object.keys(flawEffects).length} mechanical flaw trait(s).`);
   }
 }
@@ -1267,7 +1232,6 @@ async function appendFeatDivider(title, sort, subType = 'feat') {
   div.sort = sort;
   div.system.subType = subType;
   appendJsonToTemplate([div], exportTemplate, "Feat");
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
 
 // Short id for embedded change rows -- pf1's ChangeModel expects an _id on each change.
@@ -1301,9 +1265,7 @@ async function processProfessionAbilities(items, startingSort = 3900) {
     built.push(item);
   }
   assignSequentialSort(built, startingSort);
-  writeToLocalStorage('collectedProfessionAbilities', built);
   appendJsonToTemplate(built, exportTemplate, "Feat");
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
 
 // camelCase a display sphere name for the flags.pf1spheres.sphere fallback when a talent isn't in the
@@ -1461,9 +1423,7 @@ async function processSpheres(magicItems, combatItems, tradition, manaPool, star
   }
 
   assignSequentialSort(built, startingSort);
-  writeToLocalStorage('collectedSphereTalents', built);
   appendJsonToTemplate(built, exportTemplate, "Feat");
-  writeToLocalStorage('exportTemplate', exportTemplate);
   console.log(`Spheres: injected ${built.length} item(s) (${misses} synthesized).`);
 }
 
@@ -1618,7 +1578,6 @@ async function addStanceBuffs(stances, descs, matchedDocs) {
   }
   const all = [divider, ...buffs];
   assignSequentialSort(all, 4000);   // divider 4000, stance buffs 4010+ (Buffs tab "temp" section)
-  writeToLocalStorage('collectedPathOfWarBuffs', all);
   appendJsonToTemplate(all, exportTemplate, 'PathOfWarBuffs');
   console.log(`Path of War: injected ${buffs.length} stance buff(s) under the buff divider.`);
 }
@@ -1652,9 +1611,7 @@ async function legacyProcessPathOfWarFeats() {
     items.push(item);
   }
   assignSequentialSort(items, 4010);
-  writeToLocalStorage('collectedPathOfWar', items);
   appendJsonToTemplate(items, exportTemplate, 'PathOfWar');
-  writeToLocalStorage('exportTemplate', exportTemplate);
   console.log(`Path of War (legacy): injected ${items.length} maneuver/stance feat items (${powSubType}).`);
 }
 
@@ -1724,13 +1681,11 @@ async function processPathOfWar() {
       }
     }
     assignSequentialSort(items, 4010);   // PoW tab ignores sort; keeps the Items directory tidy
-    writeToLocalStorage('collectedPathOfWar', items);
     appendJsonToTemplate(items, exportTemplate, 'PathOfWar');
 
     applyManeuverProgression();
     await addStanceBuffs(stances, descs, matchedDocs);
 
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Path of War: injected ${items.length} native pf1-pow.maneuver items (${misses} synthesized).`);
   } catch (error) {
     console.error('Error processing the Path of War section:', error);
@@ -1918,9 +1873,7 @@ async function legacyProcessPsionicsFeats(books) {
     });
   }
   assignSequentialSort(items, 4210);
-  writeToLocalStorage('collectedPsionics', items);
   appendJsonToTemplate(items, exportTemplate, 'Psionics');
-  writeToLocalStorage('exportTemplate', exportTemplate);
   console.log(`Psionics (legacy): injected ${items.length} power/pool feat items.`);
 }
 
@@ -1981,9 +1934,7 @@ async function processPsionics() {
     }
 
     assignSequentialSort(items, 4210);
-    writeToLocalStorage('collectedPsionics', items);
     appendJsonToTemplate(items, exportTemplate, 'Psionics');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Psionics: ${books.length} manifester book(s), ${items.length} native pf1-psionics.power items (${misses} synthesized).`);
   } catch (error) {
     console.error('Error processing the Psionics section:', error);
@@ -2007,7 +1958,6 @@ async function addStatBuff(templateName, stats, label) {
   wrappedData = await changeStatBuff(wrappedData, stats, label);
   console.log("this is the wrapped data", wrappedData);
 
-  writeToLocalStorage(label, wrappedData);
   appendJsonToTemplate(wrappedData, exportTemplate, label);
 }
 
@@ -2097,13 +2047,11 @@ async function addCustomBuffs() {
     result.push(buff);
   }
 
-  writeToLocalStorage('CustomBuffs', result);
   appendJsonToTemplate(result, exportTemplate, 'CustomBuffs');
   console.log(`Added ${result.length} custom buffs (mental=${mentalBuff}, acroFlat=${acroFlat}).`);
 }
 await addCustomBuffs();
 // ----- End of Custom Buffs Section ----- //
-
 
 
 // ----- Start of Spell Section ----- //
@@ -2179,8 +2127,6 @@ async function assignSpellTypes(type) {
 }
 
 
-
-
 async function processSpell(spellListChooseFrom, slot = 'primary', book = null) {
   try {
     // Ensure only for characters with spells
@@ -2253,8 +2199,6 @@ async function processSpell(spellListChooseFrom, slot = 'primary', book = null) 
     }
 
     if (allMatchedSpells.length > 0) {
-      // Write matched spells to localStorage (not file system)
-      writeToLocalStorage('collectedSpells', allMatchedSpells);
 
       if (!book) {
         // Legacy single-book payload: mark the primary book in use for the primary class.
@@ -2269,8 +2213,6 @@ async function processSpell(spellListChooseFrom, slot = 'primary', book = null) 
       // Append matched spells to the exportTemplate
       appendJsonToTemplate(allMatchedSpells, exportTemplate, "Spells");
 
-      // Save the updated exportTemplate back to localStorage
-      writeToLocalStorage('exportTemplate', exportTemplate);
     } else {
       console.error('No matching spells were found in the spell list.');
     }
@@ -2347,35 +2289,6 @@ function subSpellTokens(text, spell) {
     .replaceAll('@castMod', `@abilities.${ability}.mod`);
 }
 
-// The base damage type(s) of the weapon (or attack item) a conditional is being attached to, read
-// from its first damage part -- handles pf1 v11 {type:{values:[...]}} and the older {types:[...]}.
-function weaponDamageTypes(action) {
-  for (const p of ((action && action.damage && action.damage.parts) || [])) {
-    const t = p && p.type;
-    let vals = [];
-    if (t && Array.isArray(t.values)) vals = t.values;
-    else if (Array.isArray(p && p.types)) vals = p.types;
-    else if (Array.isArray(t)) vals = t;
-    vals = (vals || []).filter(Boolean);
-    if (vals.length) return vals.slice();
-  }
-  return [];
-}
-
-// Resolve a conditional DAMAGE modifier's damageType at attach time:
-//   * ["as-weapon"] sentinel -> the attached weapon's own type(s) (so bonus weapon dice like Gravity
-//     Bow / a martial strike show the weapon's real slashing/bludgeoning/piercing), untyped fallback;
-//   * empty on a DICE instance -> ["untyped"] (an empty Set renders "undefined": pf1 damage-roll ??=
-//     only defaults null/undefined). A curated element is left untouched, as are attack/flat mods.
-function dmgTypeOrUntyped(dt, target, formula, weaponTypes) {
-  const arr = Array.isArray(dt) ? dt.slice() : [];
-  if ((target || 'damage') !== 'damage') return arr;
-  if (arr.length === 1 && arr[0] === 'as-weapon')
-    return (Array.isArray(weaponTypes) && weaponTypes.length) ? weaponTypes.slice() : ['untyped'];
-  if (arr.length === 0 && /[\d)]d\d/.test(String(formula || ''))) return ['untyped'];
-  return arr;
-}
-
 async function addSpellRiders() {
   try {
     const spellRiders = characterData.spell_riders_dict || {};
@@ -2398,28 +2311,25 @@ async function addSpellRiders() {
             harmless: !!entry.save.harmless,
           };
         }
-        // Riders → default-on text conditionals (no structured modifier; the spell's own damage stands).
+        // Riders → default-on text conditionals (no structured modifier; the spell's own damage
+        // stands). The only attacher that targets a SPELL's actions rather than the weapon's — the
+        // engine does not care, since the action arrives on the entry.
         if (Array.isArray(entry.riders) && entry.riders.length) {
-          if (!Array.isArray(action.conditionals)) action.conditionals = [];
-          const seen = new Set(action.conditionals.map(c => c && c.name));
-          for (const riderText of entry.riders) {
-            const name = subSpellTokens(riderText, spell);
-            if (!name || seen.has(name)) continue;
-            seen.add(name);
-            action.conditionals.push({ _id: (await generateUniqueID('conditional', name)).slice(0, 8), name, default: true, modifiers: [] });
-            added++;
-          }
+          added += attachConditionals(ctx, entry.riders.map(riderText => ({
+            action,
+            name: subSpellTokens(riderText, spell),
+            default: true,
+            modifiers: [],
+          })));
         }
       }
     }
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Spells: attached ${added} spell rider(s) across ${Object.keys(spellRiders).length} spell(s).`);
   } catch (error) {
     console.error('Error attaching spell riders:', error);
   }
 }
 await addSpellRiders();
-
 
 
 // ----- End of Spell Section ----- //
@@ -2473,6 +2383,20 @@ function synthesizeEquipmentItem(name, descriptionText, slot) {
     effects: [], flags: {},
   };
 }
+
+/**
+ * The item `processItem` last built, by item type ("Weapon", "Armor", ...).
+ *
+ * This replaces a `localStorage` round trip: `processItem` used to write each built item out under
+ * `collected<Type>s` and `check_ammo()` read `collectedWeapons` straight back to find the weapon's
+ * ammo type. It was the second of the two load-bearing storage writes in the build (the other was
+ * `collectedSkills`); every other one was an unread breadcrumb. A live reference is equivalent to the
+ * JSON snapshot it replaces because nothing in the build ever writes `system.ammo`.
+ *
+ * Cross-stage state, so it belongs to the equipment stage, which owns both the weapon build and the
+ * ammo pick (ticket 08 stages 12 and 17).
+ */
+const collectedByType = {};
 
 async function processItem(itemType, templateName, itemName, enhancementList, defaultItemName, defaultItemNameFlag = 0, opts = {}) {
   try {
@@ -2531,9 +2455,8 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
         const details = opts.detailsByName?.[buffKeyLc] || {};
         const synthesized = synthesizeEquipmentItem(itemName, details.description, details.slot);
         applyBuffData(synthesized, itemChangesMap[buffKeyLc]);
-        writeToLocalStorage(`collected${itemType}s`, [synthesized]);
+        collectedByType[itemType] = [synthesized];
         appendJsonToTemplate([synthesized], exportTemplate, itemType);
-        writeToLocalStorage('exportTemplate', exportTemplate);
         return defaultItemNameFlag;
       }
 
@@ -2552,9 +2475,8 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
           if (itemType === "Weapon") defaultMatchedItem.system.showInCombat = false;
 
           appendEnhancementsToDescription(defaultMatchedItem, enhancementList);
-          writeToLocalStorage(`collected${itemType}s`, [defaultMatchedItem]);
+          collectedByType[itemType] = [defaultMatchedItem];
           appendJsonToTemplate([defaultMatchedItem], exportTemplate, itemType);
-          writeToLocalStorage('exportTemplate', exportTemplate);
           console.log(`Successfully added default ${itemType} data to the export template.`);
 
           // Set the flag to 1 to avoid adding default again
@@ -2582,14 +2504,11 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
     // already automates, so e.g. Circlet of Persuasion's official change never double-applies).
     applyBuffData(matchedItem, itemChangesMap[buffKeyLc]);
 
-    // Write matched item to localStorage
-    writeToLocalStorage(`collected${itemType}s`, [matchedItem]);
+    collectedByType[itemType] = [matchedItem];
 
     // Append the matched item to the exportTemplate
     appendJsonToTemplate([matchedItem], exportTemplate, itemType);
 
-    // Save the updated exportTemplate back to localStorage
-    writeToLocalStorage('exportTemplate', exportTemplate);
 
     console.log(`Successfully added ${itemType} data to the export template.`);
     return defaultItemNameFlag;  // Ensure the flag is returned
@@ -2599,9 +2518,6 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
     return defaultItemNameFlag;  // Ensure the flag is returned
   }
 }
-
-
-
 
 
 //Weapon with default fallback to "Longsword"
@@ -2672,21 +2588,20 @@ async function addManeuverConditionals() {
     const byNorm = {};
     for (const [k, v] of Object.entries(table)) byNorm[powNorm(k)] = v;
 
-    // One main weapon per character; prefer the one named by the backend, else the only weapon.
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     if (!weapon) { console.warn('Path of War: no weapon item to attach maneuver conditionals to.'); return; }
     const action = (weapon.system?.actions || [])[0];
     if (!action) { console.warn(`Path of War: weapon "${weapon.name}" has no attack action — skipping conditionals.`); return; }
-    if (!Array.isArray(action.conditionals)) action.conditionals = [];
 
     const descs = characterData.maneuvers_desc_dict || {};
     // Riders embed the initiation modifier as the token @INITMOD; substitute the character's REAL
     // initiating ability (see maneuverInitAttr) so the rider DC matches pf1-pow's computed DC.
     const init = maneuverInitAttr();
     const subInit = s => String(s == null ? '' : s).replaceAll('@INITMOD', `@abilities.${init}.mod`);
-    const seen = new Set(action.conditionals.map(c => c && c.name));
-    let added = 0;
+
+    // Strikes/boosts/counters first, then stances — one list, because the two used to share a `seen`
+    // set and the second could be deduped against the first.
+    const entries = [];
     for (const name of known) {
       const entry = byNorm[powNorm(name)];
       if (!entry) continue;
@@ -2696,33 +2611,13 @@ async function addManeuverConditionals() {
       const typeCap = capitalizeManeuverType((descs[name] || {}).type) || 'Strike';
       // The descriptive rider (saves / ability damage / conditions, with [[ ]] inline rolls) rides
       // in the conditional NAME; numeric damage/attack stays in modifiers (which may be empty).
-      const condName = rider ? `(${typeCap}) ${name}: ${subInit(rider)}` : `(${typeCap}) ${name}`;
-      if (seen.has(condName)) continue;
-      seen.add(condName);
-      const modifiers = [];
-      for (const m of (entry.modifiers || [])) {
-        const isAttack = m.target === 'attack';
-        let formula = subInit(m.formula);
-        // Source-label EVERY modifier (attack AND damage) with the maneuver name so the rolled term
-        // shows its source on the card (e.g. "8d6 (Maneuver Name)"). The label is also REQUIRED on
-        // attack formulas: a conditional name carrying [[ ]] inline rolls would otherwise make pf1
-        // embed the whole name as the term flavor, nest the brackets, and crash the d20 parser. The
-        // !/\[.*\]/ guard leaves an already-bracketed formula untouched (no double-label).
-        if (formula && !/\[.*\]/.test(formula)) {
-          formula = `${formula}[${String(name).replace(/[\[\]]/g, '').trim()}]`;
-        }
-        modifiers.push({
-          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
-          formula,
-          target: m.target || 'damage',
-          subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
-          type: m.type || 'untyped',
-          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
-          critical: m.critical || 'normal',
-        });
-      }
-      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers });
-      added++;
+      entries.push({
+        action,
+        name: rider ? `(${typeCap}) ${name}: ${subInit(rider)}` : `(${typeCap}) ${name}`,
+        default: false,
+        modifiers: entry.modifiers,
+        label: name,
+      });
     }
     // Stances with a damage/attack modifier (e.g. Savage Stance) become a default-ON weapon
     // conditional — the rolled dice scale off @attributes.hd.total and apply while the stance is
@@ -2731,32 +2626,15 @@ async function addManeuverConditionals() {
       const entry = byNorm[powNorm(name)];
       if (!entry || !(Array.isArray(entry.modifiers) && entry.modifiers.length)) continue;
       const rider = typeof entry.rider === 'string' ? entry.rider.trim() : '';
-      const condName = rider ? `(Stance) ${name}: ${subInit(rider)}` : `(Stance) ${name}`;
-      if (seen.has(condName)) continue;
-      seen.add(condName);
-      const modifiers = [];
-      for (const m of (entry.modifiers || [])) {
-        const isAttack = m.target === 'attack';
-        let formula = subInit(m.formula);
-        // Same source-label as strikes: tag attack AND damage with the stance name (shows on the
-        // roll; required on attack formulas to avoid bracket-nesting); guard skips already-labeled.
-        if (formula && !/\[.*\]/.test(formula)) {
-          formula = `${formula}[${String(name).replace(/[\[\]]/g, '').trim()}]`;
-        }
-        modifiers.push({
-          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
-          formula,
-          target: m.target || 'damage',
-          subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
-          type: m.type || 'untyped',
-          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
-          critical: m.critical || 'normal',
-        });
-      }
-      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: true, modifiers });
-      added++;
+      entries.push({
+        action,
+        name: rider ? `(Stance) ${name}: ${subInit(rider)}` : `(Stance) ${name}`,
+        default: true,
+        modifiers: entry.modifiers,
+        label: name,
+      });
     }
-    writeToLocalStorage('exportTemplate', exportTemplate);
+    const added = attachConditionals(ctx, entries, { sub: subInit });
     console.log(`Path of War: attached ${added} maneuver/stance conditional(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching Path of War maneuver conditionals:', error);
@@ -2773,42 +2651,19 @@ await addManeuverConditionals();
 async function addFeatConditionals() {
   try {
     if (!featConditionalsMap || !Object.keys(featConditionalsMap).length) return;
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     if (!weapon) { console.warn('Feat toggles: no weapon item to attach conditionals to.'); return; }
     const action = (weapon.system?.actions || [])[0];
     if (!action) { console.warn(`Feat toggles: weapon "${weapon.name}" has no attack action — skipping.`); return; }
-    if (!Array.isArray(action.conditionals)) action.conditionals = [];
-    const seen = new Set(action.conditionals.map(c => c && c.name));
-    let added = 0;
-    for (const entry of Object.values(featConditionalsMap)) {
-      const condName = (entry && entry.name) || '';
-      if (!condName || seen.has(condName)) continue;
-      seen.add(condName);
-      const modifiers = [];
-      for (const m of (entry.modifiers || [])) {
-        const isAttack = m.target === 'attack';
-        let formula = String(m.formula);
-        // Same as maneuvers: source-label attack AND damage with the clean feat name (before the
-        // ':' rider text) so the roll shows its source; required on attack formulas to avoid
-        // bracket-nesting under a [[ ]]-bearing name. Guard skips already-labeled formulas.
-        if (formula && !/\[.*\]/.test(formula)) {
-          formula = `${formula}[${condName.split(':')[0].replace(/[\[\]]/g, '').trim()}]`;
-        }
-        modifiers.push({
-          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
-          formula,
-          target: m.target || 'damage',
-          subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
-          type: m.type || 'untyped',
-          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
-          critical: m.critical || 'normal',
-        });
-      }
-      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers });
-      added++;
-    }
-    writeToLocalStorage('exportTemplate', exportTemplate);
+    // The clean feat name is everything before the ':' rider text — that is what the roll shows as
+    // the modifier's source.
+    const added = attachConditionals(ctx, Object.values(featConditionalsMap).map(entry => ({
+      action,
+      name: (entry && entry.name) || '',
+      default: false,
+      modifiers: entry && entry.modifiers,
+      label: String((entry && entry.name) || '').split(':')[0],
+    })));
     console.log(`Feats: attached ${added} feat toggle conditional(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching feat conditionals:', error);
@@ -2833,8 +2688,7 @@ async function addEnhancementEffects() {
     if (!Object.keys(wEff).length && !Object.keys(aEff).length && !Object.keys(sEff).length) return;
 
     // Weapon qualities -> conditionals on the main weapon's attack action
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     const action = weapon ? (weapon.system?.actions || [])[0] : null;
     // Rules text: every quality renders its full description under the WEAPON item. Safe now that
     // the weapon is never rolled — the rollable attack twin gets a stripped description instead.
@@ -2842,9 +2696,7 @@ async function addEnhancementEffects() {
       for (const [qName, entry] of Object.entries(wEff)) appendQualityDescription(weapon, qName, entry.description);
     }
     if (Object.keys(wEff).length && weapon && action) {
-      if (!Array.isArray(action.conditionals)) action.conditionals = [];
-      const seen = new Set(action.conditionals.map(c => c && c.name));
-      let added = 0;
+      const entries = [];
       for (const [qName, entry] of Object.entries(wEff)) {
         // Quality not yet curated (description-only safety net): a name-only toggle keeps the
         // quality visible on the roll; its rules text is on the weapon description above.
@@ -2852,36 +2704,18 @@ async function addEnhancementEffects() {
           : (entry.description ? [{ name: qName, default: true, modifiers: [] }] : []);
         for (const cond of conds) {
           const condName = cond.name || qName;
-          if (seen.has(condName)) continue;
-          seen.add(condName);
-          const modifiers = [];
-          for (const m of (cond.modifiers || [])) {
-            const isAttack = m.target === 'attack';
-            let formula = String(m.formula);
-            // Source-label attack AND damage with the clean quality name (before any ':' rider) —
-            // shows the source on the roll; required on attack formulas under a [[ ]]-bearing name.
-            if (formula && !/\[.*\]/.test(formula)) {
-              formula = `${formula}[${condName.split(':')[0].replace(/[\[\]]/g, '').trim()}]`;
-            }
-            modifiers.push({
-              _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
-              formula,
-              target: m.target || 'damage',
-              subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
-              type: m.type || 'untyped',
-              damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
-              critical: m.critical || 'normal',
-            });
-          }
-          action.conditionals.push({
-            _id: (await generateUniqueID('conditional', condName)).slice(0, 8),
+          entries.push({
+            action,
             name: condName,
+            // Curated qualities are always-on unless the curation says otherwise: a flaming weapon
+            // burns without the player ticking anything.
             default: cond.default !== false,
-            modifiers,
+            modifiers: cond.modifiers,
+            label: String(condName).split(':')[0],
           });
-          added++;
         }
       }
+      const added = attachConditionals(ctx, entries);
       console.log(`Enhancements: attached ${added} weapon quality conditional(s) to "${weapon.name}".`);
     }
 
@@ -2898,7 +2732,6 @@ async function addEnhancementEffects() {
       appendQualityDescription(shieldItem, qName, entry.description);
     }
 
-    writeToLocalStorage('exportTemplate', exportTemplate);
   } catch (error) {
     console.error('Error attaching enhancement effects:', error);
   }
@@ -2915,23 +2748,18 @@ await addEnhancementEffects();
 async function addItemAttackConditionals() {
   try {
     if (!itemAttackToggles.length) return;
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     if (!weapon) { console.warn('Item toggles: no weapon item to attach conditionals to.'); return; }
     const action = (weapon.system?.actions || [])[0];
     if (!action) { console.warn(`Item toggles: weapon "${weapon.name}" has no attack action — skipping.`); return; }
-    if (!Array.isArray(action.conditionals)) action.conditionals = [];
-    const seen = new Set(action.conditionals.map(c => c && c.name));
-    let added = 0;
-    for (const { itemName, text } of itemAttackToggles) {
-      // Same display-casing processItem gives the inventory item, so the toggle label matches it.
-      const condName = `(${capitalizeWords(itemName)}): ${text}`;
-      if (seen.has(condName)) continue;
-      seen.add(condName);
-      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers: [] });
-      added++;
-    }
-    writeToLocalStorage('exportTemplate', exportTemplate);
+    // Name-only riders: no modifiers, so nothing to substitute or source-label. The item name gets
+    // the same display-casing processItem gives the inventory item, so the toggle matches it.
+    const added = attachConditionals(ctx, itemAttackToggles.map(({ itemName, text }) => ({
+      action,
+      name: `(${capitalizeWords(itemName)}): ${text}`,
+      default: false,
+      modifiers: [],
+    })));
     console.log(`Items: attached ${added} item activation toggle(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching item attack conditionals:', error);
@@ -2950,14 +2778,11 @@ async function addSpellConditionals() {
   try {
     const spellChanges = characterData.spell_changes_dict || {};
     if (!Object.keys(spellChanges).length) return;
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     if (!weapon) { console.warn('Spell buffs: no weapon item to attach conditionals to.'); return; }
     const action = (weapon.system?.actions || [])[0];
     if (!action) { console.warn(`Spell buffs: weapon "${weapon.name}" has no attack action — skipping.`); return; }
-    if (!Array.isArray(action.conditionals)) action.conditionals = [];
-    const seen = new Set(action.conditionals.map(c => c && c.name));
-    let added = 0;
+    const entries = [];
     for (const [spellName, entry] of Object.entries(spellChanges)) {
       if (!entry) continue;
       // Resolve this spell's source modifier list + the toggle's display name.
@@ -2988,32 +2813,9 @@ async function addSpellConditionals() {
           i => i.type === 'spell' && (i.name || '').toLowerCase() === spellName.toLowerCase());
         condName += `; ${subSpellTokens(entry.rider, spellItem)}`;
       }
-      if (!condName || seen.has(condName)) continue;
-      seen.add(condName);
-      const modifiers = [];
-      for (const m of (mods || [])) {
-        const isAttack = m.target === 'attack';
-        let formula = String(m.formula);
-        // Same as feats/maneuvers: source-label attack AND damage with the spell name so the roll
-        // shows its source; required on attack formulas to avoid bracket-nesting under a [[ ]]-bearing
-        // name. Guard skips already-labeled formulas (no double-label).
-        if (formula && !/\[.*\]/.test(formula)) {
-          formula = `${formula}[${spellName.replace(/[\[\]]/g, '').trim()}]`;
-        }
-        modifiers.push({
-          _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
-          formula,
-          target: m.target || 'damage',
-          subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
-          type: m.type || 'untyped',
-          damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
-          critical: m.critical || 'normal',
-        });
-      }
-      action.conditionals.push({ _id: (await generateUniqueID('conditional', condName)).slice(0, 8), name: condName, default: false, modifiers });
-      added++;
+      entries.push({ action, name: condName, default: false, modifiers: mods, label: spellName });
     }
-    writeToLocalStorage('exportTemplate', exportTemplate);
+    const added = attachConditionals(ctx, entries);
     console.log(`Spells: attached ${added} spell buff toggle(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching spell conditionals:', error);
@@ -3094,7 +2896,6 @@ function applySpheresFlags(cam, pam) {
       }
     }
   }
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
 
 // Synthesize a "Destructive Blast" attack item (Destruction sphere base ability): a touch attack whose
@@ -3110,8 +2911,7 @@ async function addDestructiveBlastAttack(subSpheres) {
         && String(s.system || '').toLowerCase().startsWith('p'))
       || magic.some(t => t && String(t.sphere).toLowerCase() === 'destruction');
     if (!hasDestruction) return;
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     if (!weapon) { console.warn('Spheres: no weapon to base the Destructive Blast on.'); return; }
     const blast = structuredClone(weapon);
     blast.type = 'attack';
@@ -3141,7 +2941,6 @@ async function addDestructiveBlastAttack(subSpheres) {
       }],
     }];
     appendJsonToTemplate([blast], exportTemplate, 'Attack');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log('Spheres: added Destructive Blast attack item.');
   } catch (error) {
     console.error('Error adding Destructive Blast:', error);
@@ -3167,61 +2966,40 @@ async function addSphereTalentConditionals(subSpheres) {
     const combatByNorm = buildByNorm(templates.combatTalentConditionals);
     const magicByNorm = buildByNorm(templates.magicTalentConditionals);
 
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     const weaponAction = weapon && (weapon.system?.actions || [])[0];
     const blast = (exportTemplate.items || []).find(i => i.type === 'attack' && i.name === 'Destructive Blast');
     const blastAction = blast && (blast.system?.actions || [])[0];
 
-    let added = 0;
-    const attach = async (items, byNorm, isMagic) => {
+    // This is the caller that decides its target action PER TALENT rather than per batch, which is
+    // why the engine takes the action on the entry. Collect combat then magic in payload order and
+    // hand the interleaved list over as one batch: grouping the Destruction talents together first
+    // would produce the same two arrays but mint their ids in a different order, and the ids are
+    // content-derived so that this merge could be read as a diff.
+    const entries = [];
+    const collect = (items, byNorm, isMagic) => {
       for (const t of items) {
         if (!t) continue;
         const sKey = sphereNorm(t.sphere || '');
         const entry = (byNorm[sKey] || {})[sphereNorm(t.name || '')];
         if (!entry) continue;
-        // Destruction Power talents ride the Destructive Blast item; everything else the main weapon.
-        const action = (isMagic && sKey === 'destruction') ? blastAction : weaponAction;
-        if (!action) continue;
-        if (!Array.isArray(action.conditionals)) action.conditionals = [];
         const rider = typeof entry.rider === 'string' ? entry.rider.trim() : '';
         const hasMods = Array.isArray(entry.modifiers) && entry.modifiers.length;
         if (!rider && !hasMods) continue;
-        const condName = rider
-          ? `(${t.sphere}) ${t.name}: ${subSpheres(rider)}`
-          : `(${t.sphere}) ${t.name}`;
-        if (action.conditionals.some(c => c && c.name === condName)) continue;
-        const modifiers = [];
-        for (const m of (entry.modifiers || [])) {
-          const isAttack = m.target === 'attack';
-          let formula = subSpheres(m.formula);
-          // Source-label attack AND damage with the talent name (shows the source on the card; required
-          // on attack formulas so a [[ ]]-bearing name can't crash the d20 parser). Guard skips labeled.
-          if (formula && !/\[.*\]/.test(formula)) {
-            formula = `${formula}[${String(t.name).replace(/[\[\]]/g, '').trim()}]`;
-          }
-          modifiers.push({
-            _id: (await generateUniqueID('modifier', [condName, m])).slice(0, 8),
-            formula,
-            target: m.target || 'damage',
-            subTarget: m.subTarget || (isAttack ? 'allAttack' : 'allDamage'),
-            type: m.type || 'untyped',
-            damageType: dmgTypeOrUntyped(m.damageType, m.target, formula, weaponDamageTypes(action)),
-            critical: m.critical || 'normal',
-          });
-        }
-        action.conditionals.push({
-          _id: (await generateUniqueID('conditional', condName)).slice(0, 8),
-          name: condName,
+        entries.push({
+          // Destruction Power talents ride the Destructive Blast item; everything else the main
+          // weapon. A talent whose target does not exist (no blast built, no weapon) is skipped.
+          action: (isMagic && sKey === 'destruction') ? blastAction : weaponAction,
+          name: rider ? `(${t.sphere}) ${t.name}: ${subSpheres(rider)}` : `(${t.sphere}) ${t.name}`,
           default: entry.default === true,
-          modifiers,
+          modifiers: entry.modifiers,
+          label: t.name,
         });
-        added++;
       }
     };
-    await attach(combat, combatByNorm, false);
-    await attach(magic, magicByNorm, true);
-    writeToLocalStorage('exportTemplate', exportTemplate);
+    collect(combat, combatByNorm, false);
+    collect(magic, magicByNorm, true);
+    const added = attachConditionals(ctx, entries, { sub: subSpheres });
     console.log(`Spheres: attached ${added} talent conditional(s).`);
   } catch (error) {
     console.error('Error attaching sphere talent conditionals:', error);
@@ -3294,7 +3072,6 @@ async function addSphereAuraBuffs(subSpheres) {
     const all = [divider, ...buffs];
     assignSequentialSort(all, 4300);
     appendJsonToTemplate(all, exportTemplate, 'SphereAuraBuffs');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Spheres: injected ${buffs.length} affects-others buff(s) tagged (${tag}).`);
   } catch (error) {
     console.error('Error adding sphere aura buffs:', error);
@@ -3384,7 +3161,6 @@ async function addSpellBuffs() {
     if (!count) return;
     assignSequentialSort(all, 4400);
     appendJsonToTemplate(all, exportTemplate, 'SpellBuffs');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Spells: injected ${count} distributable spell buff(s) tagged (${tag}), grouped by duration.`);
   } catch (error) {
     console.error('Error adding spell buffs:', error);
@@ -3477,7 +3253,6 @@ async function addHouseFeatures() {
       clones.push(clone);
     }
     appendJsonToTemplate(clones, exportTemplate, 'Feature');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Added ${clones.length} house tracker feature(s) (Variable Modifiers / Natural AC / Death HP groups).`);
   } catch (error) {
     console.error('Error adding house tracker features:', error);
@@ -3492,7 +3267,6 @@ async function addSizeForDamageFeature() {
     // Pin it into the "Variable Modifiers" group (template actor slot), just under its divider.
     feature.sort = 121680;
     appendJsonToTemplate([feature], exportTemplate, 'Feature');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Added sizefordamage feature (sort ${feature.sort}, Variable Modifiers group).`);
   } catch (error) {
     console.error('Error adding sizefordamage feature:', error);
@@ -3502,8 +3276,7 @@ await addSizeForDamageFeature();
 
 async function createScalingAttackItem() {
   try {
-    const weapons = (exportTemplate.items || []).filter(i => i.type === 'weapon');
-    const weapon = weapons.find(w => w.name === (characterData.weapon_name || '')) || weapons[0];
+    const weapon = findMainWeapon(ctx);
     if (!weapon) { console.warn('Scaling: no weapon item.'); return; }
     const srcActions = (weapon.system && weapon.system.actions) || [];
     if (!srcActions.length) { console.warn(`Scaling: weapon "${weapon.name}" has no action — skipping.`); return; }
@@ -3553,7 +3326,6 @@ async function createScalingAttackItem() {
     attack.system.scriptCalls = [await freshScript()];
 
     appendJsonToTemplate([attack], exportTemplate, 'Attack');
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Scaling: weapon "${weapon.name}" + attack item set up (Attack + Don't Touch + Scaling Weapon Damage).`);
   } catch (error) {
     console.error('Error in scaling weapon/attack setup:', error);
@@ -3599,7 +3371,6 @@ async function applyEnhancementBonuses() {
           Number(characterData.shield_enhancement_bonus) || 0,
           characterData.shield_enhancement_chosen_list, false);
 
-    writeToLocalStorage('exportTemplate', exportTemplate);
     console.log(`Enhancement bonuses: stamped +N on ${stamped} item(s).`);
   } catch (error) {
     console.error('Error applying enhancement bonuses:', error);
@@ -3609,7 +3380,7 @@ await applyEnhancementBonuses();
 
 // ----- End of Weapon/Armor Section ----- //
 async function check_ammo() {
-  const collectedWeapons = JSON.parse(localStorage.getItem('collectedWeapons')); // Parse the JSON string
+  const collectedWeapons = collectedByType.Weapon;
 
     console.log("collectedWeapons:", collectedWeapons[0].system.ammo.type);
   // Check if collectedWeapons, its system property, and ammo exist
@@ -3661,16 +3432,12 @@ async function select_random_ammo(ammo_type) {
   console.log("Selected random ammo:", randomAmmo);
 
   // Perform any additional actions with the selected ammo
-  writeToLocalStorage('selectedAmmo', randomAmmo);
   appendJsonToTemplate([randomAmmo], exportTemplate, "Ammo");
-  writeToLocalStorage('exportTemplate', exportTemplate);
 }
 
 await check_ammo();
 
 // ----- End of Ammo Section ----- //
-
-
 
 
 // ----- Start of Skills Section ----- //
@@ -3758,17 +3525,17 @@ async function createUpdatedSkills(updatedCharacterData, baseSkillPathData, prof
     }
   }
 
-  // Instead of using fs, use localStorage to store the updated skill data
-  writeToLocalStorage('collectedSkills', baseSkillPathData);
+  return baseSkillPathData;
 }
 
-async function overwriteData(collectedData) {
-  // Need to parse the data, otherwise it is not in the right format
-  const parsedSkills = JSON.parse(collectedData);
-  // Directly modifying Export Template stored in localStorage
-  exportTemplate.system.skills = parsedSkills;
-  // Save the updated exportTemplate back to localStorage
-  writeToLocalStorage('exportTemplate', exportTemplate);
+// This used to receive `localStorage.getItem('collectedSkills')` -- createUpdatedSkills wrote the
+// object out as JSON and this read it straight back in. That was one of only TWO load-bearing
+// localStorage writes in the whole build (the other fed `check_ammo`; all 51 of the rest were
+// breadcrumbs nothing ever read). The round trip was only ever a deep copy: `baseSkillPathData` is
+// already a structuredClone of the template that nothing reads afterwards, and every entry in
+// base_skill.json carries all four of its fields, so nothing could be dropped by the stringify.
+function overwriteData(collectedSkills) {
+  exportTemplate.system.skills = collectedSkills;
 }
 
 // Load the collected skills into an accessible object
@@ -3788,9 +3555,9 @@ try {
   // template's skill entries, so the next character would start from these ranks instead of 0.
   const baseSkillTemplate = structuredClone(templates.baseSkill);
   // Now we have a JSON object with the proper names and ranks -> need to update the skills
-  await createUpdatedSkills(updatedCharacterData, baseSkillTemplate, professions, characterData.craft_type, professionRanks);
-  // Now that we have updated skills -> need to overwrite the export file (stored in localStorage)
-  await overwriteData(localStorage.getItem('collectedSkills'));
+  const collectedSkills = await createUpdatedSkills(
+    updatedCharacterData, baseSkillTemplate, professions, characterData.craft_type, professionRanks);
+  overwriteData(collectedSkills);
 } catch (error) {
   console.error("Error in skills processing:", error);
   console.log("characterData.skill_ranks:", characterData.skill_ranks);
