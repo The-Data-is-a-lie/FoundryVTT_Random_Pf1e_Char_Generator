@@ -3,19 +3,15 @@ import { loadTemplates } from './build/template-loader.js';
 import { attachConditionals } from './build/conditional-engine.js';
 import { findMainWeapon } from './build/weapon.js';
 import { addRace } from './build/race.js';
+import { addWeaponFinishing } from './build/weapon-finishing.js';
 // Path of War vocabulary shared by three stages: the toggles' rider DCs, the PoW items still in the
 // closure, and the Spheres casting-ability fallback all have to agree on the initiating ability.
 import { capitalizeManeuverType, resolveInitStat, maneuverInitAttr } from './build/initiation.js';
 import { addAttackToggles } from './build/attack-toggles.js';
-// appendEnhancementsToDescription/appendQualityDescription are the equipment stage's two exported
-// writers: the attack twin rebuilds its stripped description with one, the quality effects use the other.
-import { addEquipment, addAmmo, appendEnhancementsToDescription, appendQualityDescription } from './build/equipment.js';
+import { addEquipment, addAmmo } from './build/equipment.js';
 // subSpellTokens/spellCasterLevelNum are the spells stage's two exported readers: the spell-buff
 // conditionals substitute @slvl/@castMod, and the house auras want the combined caster level.
 import { addSpells, addSpellRiders, subSpellTokens, spellCasterLevelNum } from './build/spells.js';
-// The natural-armor probe is shared: the class-features stage asks before laying the Natural AC
-// divider, and the house-feature trackers below ask before cloning the items under it.
-import { characterHasNaturalArmor } from './build/natural-armor.js';
 import { addClassFeatures, addResourcePools } from './build/class-features.js';
 import { addClasses } from './build/classes.js';
 import { normalizeTraitShapes } from './build/pf1-compat.js';
@@ -1491,163 +1487,10 @@ async function addSpellBuffs() {
 }
 await addSpellBuffs();
 
-// ----- Size-based damage scaling ----- //
-// Every sheet gets a `sizefordamage` feature whose charge value (default 0) drives the
-// "Scaling Weapon Damage" script via @resources.sizefordamage. BOTH the main weapon and a separate
-// generated ATTACK item (pf1 "Create Attack" equivalent) carry that script and two actions in order:
-//   [0] "Attack"      -- the rollable copy (inherits the weapon's maneuver conditionals);
-//   [1] "Don't Touch" -- a duplicate the script reads as the pristine base damage to scale from.
-
-// The feature only PROVIDES the resource (@resources.sizefordamage); the operative script lives on
-// the attack item below.
-
-// House tracker features (Damage Dice Progression, Natural Armor HP items, Death HP Pool, ...)
-// cloned verbatim from house_features.json — sorts are baked in so each lands under its group
-// divider (Variable Modifiers / Natural AC / Death HP) exactly like the template actor.
-// Natural-armor tracker items are skipped for characters with no natural armor.
-async function addHouseFeatures() {
-  try {
-    let features = templates.houseFeatures;
-    if (!Array.isArray(features) || !features.length) {
-      console.warn('House features: house_features.json missing or empty — skipping.');
-      return;
-    }
-    if (!characterHasNaturalArmor(ctx)) {
-      features = features.filter((f) => !/natural\s*a(c|rmor)/i.test(String(f?.name)));
-    }
-    const clones = [];
-    for (const f of features) {
-      const clone = structuredClone(f);
-      clone._id = ctx.newId('houseFeature', f);
-      clones.push(clone);
-    }
-    appendJsonToTemplate(clones, exportTemplate, 'Feature');
-    console.log(`Added ${clones.length} house tracker feature(s) (Variable Modifiers / Natural AC / Death HP groups).`);
-  } catch (error) {
-    console.error('Error adding house tracker features:', error);
-  }
-}
-await addHouseFeatures();
-
-async function addSizeForDamageFeature() {
-  try {
-    const feature = structuredClone(templates.sizeForDamageFeature);
-    feature._id = ctx.newId('sizeForDamage', feature.name);
-    // Pin it into the "Variable Modifiers" group (template actor slot), just under its divider.
-    feature.sort = 121680;
-    appendJsonToTemplate([feature], exportTemplate, 'Feature');
-    console.log(`Added sizefordamage feature (sort ${feature.sort}, Variable Modifiers group).`);
-  } catch (error) {
-    console.error('Error adding sizefordamage feature:', error);
-  }
-}
-await addSizeForDamageFeature();
-
-async function createScalingAttackItem() {
-  try {
-    const weapon = findMainWeapon(ctx);
-    if (!weapon) { console.warn('Scaling: no weapon item.'); return; }
-    const srcActions = (weapon.system && weapon.system.actions) || [];
-    if (!srcActions.length) { console.warn(`Scaling: weapon "${weapon.name}" has no action — skipping.`); return; }
-
-    // "Don't Touch" = a copy of the rollable action that the Scaling Weapon Damage script reads as
-    // the pristine base damage (actions[1]); a fresh script-call clone (reads @resources.sizefordamage).
-    const dontTouchFrom = async (a0) => {
-      const a1 = structuredClone(a0);
-      a1._id = ctx.newId('action', ["Don't Touch", a0]);
-      a1.name = "Don't Touch";
-      return a1;
-    };
-    const freshScript = async () => {
-      const sc = structuredClone(templates.scalingWeaponDamage);
-      sc._id = (ctx.newId('scriptCall', sc)).slice(0, 8);
-      return sc;
-    };
-
-    // The WEAPON itself keeps the 2-action + script setup so it still scales if someone rolls it
-    // manually from inventory (it is no longer in the Combat tab — showInCombat false).
-    srcActions[0].name = 'Attack';
-    weapon.system.actions = [srcActions[0], await dontTouchFrom(srcActions[0])];
-    weapon.system.scriptCalls = [await freshScript()];
-
-    // The attack-type twin is the ONLY Combat-tab entry and thus what actually gets rolled
-    // (same setup, fresh ids so nothing collides).
-    const attack = structuredClone(weapon);
-    attack.type = 'attack';
-    attack._id = ctx.newId('attack', weapon.name);
-    // pf1's Combat tab sections attack items by ATTACK subType (weapon/natural/ability/...); the
-    // clone carries the WEAPON's subType ("simple"/"martial"), which matches no section, so the twin
-    // existed on the actor but never rendered — players had to click "Create Attack" themselves.
-    // Mirror what pf1's own Create Attack produces: subType "weapon", proficient.
-    attack.system.subType = 'weapon';
-    attack.system.proficient = true;
-    // pf1 bakes an item's description into its attack chat card unconditionally, so the twin
-    // carries only the one-line special-abilities summary — the full formatted rules text stays
-    // on the inventory weapon item.
-    if (attack.system?.description) {
-      attack.system.description.value = "";
-      appendEnhancementsToDescription(attack, characterData.weapon_enhancement_chosen_list);
-    }
-    const aAttack = structuredClone(weapon.system.actions[0]);
-    aAttack._id = ctx.newId('action', ['Attack', weapon.name]);
-    aAttack.name = 'Attack';
-    attack.system.actions = [aAttack, await dontTouchFrom(aAttack)];
-    attack.system.scriptCalls = [await freshScript()];
-
-    appendJsonToTemplate([attack], exportTemplate, 'Attack');
-    console.log(`Scaling: weapon "${weapon.name}" + attack item set up (Attack + Don't Touch + Scaling Weapon Damage).`);
-  } catch (error) {
-    console.error('Error in scaling weapon/attack setup:', error);
-  }
-}
-await createScalingAttackItem();
-
-// ----- Numeric enhancement bonus (+N): stamp and rename ----- //
-// weapon_/armor_/shield_enhancement_bonus (1-5; 0 = none) is the backend budget leftover after
-// buying qualities. Weapons get system.enh, armor/shields get system.armor.enh, all get
-// masterwork, and the item is renamed "+N <Qualities> <Base Name>" (e.g. "+1 Corrosive
-// Longsword"). MUST run after every other weapon/armor step: earlier attach functions find the
-// weapon by characterData.weapon_name, and the scaling attack item clones the weapon — both
-// twins are renamed here together.
-async function applyEnhancementBonuses() {
-  try {
-    const items = exportTemplate.items || [];
-    let stamped = 0;
-    const stamp = (item, bonus, qualities, isWeapon) => {
-      if (!item || !item.system || !(bonus > 0)) return;
-      if (isWeapon) item.system.enh = bonus;
-      else if (item.system.armor) item.system.armor.enh = bonus;
-      item.system.masterwork = true;
-      item.name = ['+' + bonus, ...(Array.isArray(qualities) ? qualities : []), item.name].join(' ');
-      stamped++;
-    };
-
-    const weaponItems = items.filter(i => i.type === 'weapon');
-    const mainWeapon = weaponItems.find(w => w.name === (characterData.weapon_name || '')) || weaponItems[0];
-    if (mainWeapon) {
-      const twins = items.filter(i => (i.type === 'weapon' || i.type === 'attack') && i.name === mainWeapon.name);
-      for (const t of twins) {
-        stamp(t, Number(characterData.weapon_enhancement_bonus) || 0,
-              characterData.weapon_enhancement_chosen_list, true);
-      }
-    }
-
-    const equipItems = items.filter(i => i.type === 'equipment');
-    stamp(equipItems.find(i => i.system?.subType === 'armor'),
-          Number(characterData.armor_enhancement_bonus) || 0,
-          characterData.armor_enhancement_chosen_list, false);
-    stamp(equipItems.find(i => i.system?.subType === 'shield'),
-          Number(characterData.shield_enhancement_bonus) || 0,
-          characterData.shield_enhancement_chosen_list, false);
-
-    console.log(`Enhancement bonuses: stamped +N on ${stamped} item(s).`);
-  } catch (error) {
-    console.error('Error applying enhancement bonuses:', error);
-  }
-}
-await applyEnhancementBonuses();
-
-// ----- End of Weapon/Armor Section ----- //
+// ----- Weapon finishing ----- //
+// HAZARD: the +N stamp inside renames the weapon and its attack twin together, so this whole block
+// runs after everything that attaches to the weapon and after the twin exists.
+await addWeaponFinishing(ctx);
 // ----- Ammo ----- //
 // Reads the weapon the equipment stage recorded, so it cannot move above it.
 await addAmmo(ctx);
