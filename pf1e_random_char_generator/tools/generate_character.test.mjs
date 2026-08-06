@@ -48,8 +48,16 @@ const UPDATE = process.argv.includes('--update');
  *
  * `modded` is a FLAG, not another fixture: the modded sheet swaps six template files for their
  * `_MODS` twins and is otherwise the same code, so it costs one fixture to cover rather than seven.
- * The one gap 01 found is still open — every payload's Spheres content is `might` (combat) only, so
- * the magic-talent branch has no recording yet and `magic_talent_items` is empty everywhere.
+ *
+ * `sop` is the one HAND-AUTHORED payload, and it closes the gap ticket 01 recorded: every payload the
+ * backend gave us has `might` (combat) Spheres content only, so `magic_talent_items` was empty in all
+ * seven and the Spheres-of-POWER half of the build had no golden at all — including the synthesized
+ * Destructive Blast attack item and the branch that decides, per talent, whether a conditional rides
+ * the blast or the main weapon. Ticket 06 merges that branch into the shared engine, so it had to be
+ * recorded first. It is `rogue.json` plus six real talents (names checked against the dumped
+ * pf1spheres.magic-talents pack and against magic_talent_conditionals.json), deliberately
+ * interleaved Destruction / not-Destruction so a refactor that groups by target action and reorders
+ * either list shows up as a diff. Replace it with a real backend payload when one exists.
  */
 const FIXTURE_ROSTER = [
   { name: 'martial',    payload: 'martial.json',    modded: 'n', buffs: 'n', covers: 'fighter 16 — the plain path: no casting, no subsystem' },
@@ -59,6 +67,7 @@ const FIXTURE_ROSTER = [
   { name: 'manifester', payload: 'manifester.json', modded: 'n', buffs: 'n', covers: 'psion 5 — psionic powers and manifester books' },
   { name: 'mentor',     payload: 'mentor.json',     modded: 'n', buffs: 'n', covers: 'fighter 15 — trainers/professions and Spheres of Might talents' },
   { name: 'companion',  payload: 'companion.json',  modded: 'y', buffs: 'y', covers: 'druid 4 — THE MODDED BRANCH (_MODS templates) + bonded creatures in the payload' },
+  { name: 'sop',        payload: 'sop.json',        modded: 'n', buffs: 'y', covers: 'rogue 18 + Spheres of POWER — magic talents, the Destructive Blast item, blast-vs-weapon conditional targets' },
 ];
 
 /** The packs the build reads, and the module whose active-check gates each one. */
