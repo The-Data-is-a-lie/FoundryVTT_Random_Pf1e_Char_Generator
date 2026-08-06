@@ -3,6 +3,9 @@ import { loadTemplates } from './build/template-loader.js';
 import { attachConditionals } from './build/conditional-engine.js';
 import { findMainWeapon } from './build/weapon.js';
 import { addRace } from './build/race.js';
+// addFeatSeparator is exported because the Path of War block still in the closure lays its own
+// section divider with it.
+import { addFeats, addTraits, addFeatSeparator } from './build/feats.js';
 import { addSkills } from './build/skills.js';
 import { addWeaponFinishing } from './build/weapon-finishing.js';
 // Path of War vocabulary shared by three stages: the toggles' rider DCs, the PoW items still in the
@@ -22,10 +25,7 @@ import {
   appendJsonToTemplate,
   synthesizeFeatItem,
   assignSequentialSort,
-  assignToFeatSection,
-  addingReceivedLocationToName,
   applyBuffData,
-  applyFeatBuffOverlay,
   appendFeatDivider,
 } from './build/items.js';
 import {
@@ -35,8 +35,6 @@ import {
 } from './shared/storage.js';
 import {
   capitalizeWords,
-  capitalizeFirstLetter,
-  toTitleCase,
   convertToStringSimple,
   sphereNorm,
   powNorm,
@@ -217,244 +215,6 @@ addRace(ctx);
    await addClassFeatures(ctx);
    await addResourcePools(ctx);
 
-// ----- Start of Feat/Trait section ----- //
-
-
-async function processFeatTrait(templateName, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null) {
-  try {
-    // Retrieve data by template name based on dataType (feats or traits)
-    const data = templates[templateName];
-
-    // Check if data is an array
-    if (!Array.isArray(data)) {
-      console.error(`${dataType} data is not an array or is undefined:`, data);
-      return;
-    }
-
-    console.log(`${dataType} list structure`, JSON.stringify(dataListChooseFrom, null, 2));
-
-    // Consolidate all data from the nested list
-    const allMatchedItems = [];
-    const matchedLabels = []; // per-feat labels (e.g. "Fighter 1"), aligned with allMatchedItems
-    const matchedTax = []; // per-feat tax chains (granted feats), aligned with allMatchedItems
-
-    for (let idx = 0; idx < dataListChooseFrom.length; idx++) {
-      const item = dataListChooseFrom[idx];
-      // Logs all data being processed
-      console.log(`Processing ${dataType}:`, item);
-
-      const itemLc = String(item).toLowerCase();
-      const matchedItem = data.find(r => {
-        // Extract the part of the name before the first parenthesis. Compare case-insensitively so a
-        // feat that differs only by casing/punctuation still resolves to its real compendium item.
-        const namePart = r.name.split(' (')[0];
-        // Ensuring that characters can't select mythic entries
-        return namePart.toLowerCase() === itemLc && !r.name.includes('(Mythic)');
-      });
-
-      if (matchedItem) {
-        // Clone so later name/description edits don't mutate the shared template object.
-        const _featItem = structuredClone(matchedItem);
-        if (dataType === 'feat') applyFeatBuffOverlay(ctx, _featItem, itemLc);
-        allMatchedItems.push(_featItem);
-        if (labelArray) matchedLabels.push(labelArray[idx]);
-        matchedTax.push(taxDict && taxDict[item] ? taxDict[item] : null);
-      } else if (dataType === 'feat') {
-        // Feat absent from every_feat.json (incomplete compendium export, homebrew style chains,
-        // Martial Training, etc.): SYNTHESIZE the row instead of dropping it. Dropping a feat shifts
-        // the positional "(Feat N)" labels and makes the sheet look short -- the backend already
-        // guarantees the right COUNT, so every feat must render. Use the backend-supplied description
-        // when present (homebrewFeatDescs, now populated for every placed feat), else a bare row.
-        const hb = homebrewFeatDescs[itemLc];
-        const _synthFeat = synthesizeFeatItem(hb ? hb.name : String(item), hb ? `<p>${hb.desc}</p>` : '');
-        applyFeatBuffOverlay(ctx, _synthFeat, itemLc);
-         allMatchedItems.push(_synthFeat);
-        if (labelArray) matchedLabels.push(labelArray[idx]);
-        matchedTax.push(taxDict && taxDict[item] ? taxDict[item] : null);
-      } else {
-        console.warn(`${dataType} "${item}" not found.`);
-      }
-    }
-
-    if (allMatchedItems.length > 0) {
-      // 🔥 Apply sort order
-      assignSequentialSort(allMatchedItems, startingSort);
-      if (dataType === 'feat') {
-      // Add Received location
-      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels, labelArray ? matchedLabels : null);
-      // Assign Feat subType
-      assignToFeatSection(allMatchedItems);
-      // Feat tax: bundle granted chain feats onto the primary entry (name + merged description)
-      applyFeatTax(allMatchedItems, data, matchedTax);      
-      }         
-      // Assign a unique ID to each item
-         
-
-      // Append matched items to the exportTemplate
-      appendJsonToTemplate(allMatchedItems, exportTemplate, capitalizeFirstLetter(dataType));
-
-    } else {
-      console.error(`No matching ${dataType}s were found in the list.`);
-    }
-  } catch (error) {
-    console.error(`Error reading or processing the ${dataType} Section:`, error);
-  }
-}
-
-// --- adding Feat separators --- //
-async function addFeatSeparator(templateName, dataType, startingSort = 0) {
-  try {
-    // Clone: assignSequentialSort() stamps .sort onto these objects and they are then appended to
-    // the sheet by reference, so the separator templates would accumulate the last run's sorts.
-    const data = structuredClone(templates[templateName]);
-    const wrappedData = Array.isArray(data) ? data : [data];
-
-    // 🔥 Apply sort
-    assignSequentialSort(wrappedData, startingSort);
-
-    appendJsonToTemplate(wrappedData, exportTemplate, capitalizeFirstLetter(dataType));
-    console.log(`${dataType} data successfully added from ${templateName}`);
-  } catch (error) {
-    console.error(`Error processing ${dataType} from ${templateName}:`, error);
-  }
-}
-
-async function Feats_n_Traits() {
-  // Feats section
-  await addFeatSeparator('spaceBackground', 'space_function', 1);
-  await processFeatTrait('everyFeat', characterData.flavor_feats, 'feat', 200, "Flavor", true, 1, 1, null, null, characterData.flavor_feat_tax_dict);
-  await processFeatTrait('everyFeat', characterData.flaw_feats, 'feat', 250, "Flaw", true, 1, 1, null, null, characterData.flaw_feat_tax_dict);
-  await processFeatTrait('everyFeat', characterData.story_feats, 'feat', 500, "Story Feat", true, 1, 5, [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], null, characterData.story_feat_tax_dict);
-  await addFeatSeparator('spaceFeats', 'space_function', 1000);
-  await processFeatTrait('everyFeat', characterData.feats, 'feat', 1500, "Feat", true, 1, 2, null, null, characterData.feats_feat_tax_dict);
-  await addFeatSeparator('spaceClassBonusFeats', 'space_function', 2000);
-  await processFeatTrait('everyFeat', characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3, null, characterData.teamwork_feat_labels);
-  await processFeatTrait('everyFeat', characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2, null, characterData.class_feat_labels, characterData.class_feat_tax_dict);
-  // Bloodline bonus feats (Sorcerer/Bloodrager), labeled by granting class + level
-  // (e.g. "Sorcerer 7: Combat Casting"). Guarded so an un-redeployed backend that doesn't
-  // send bloodline_feats simply skips this step instead of erroring.
-  if (Array.isArray(characterData.bloodline_feats) && characterData.bloodline_feats.length) {
-    await processFeatTrait('everyFeat', characterData.bloodline_feats, 'feat', 3500, "Bloodline Feat", true, 1, 1, null, characterData.bloodline_feat_labels);
-  }
-  // Homebrew Trainers -> bottom of the Feats section, rendered as normal feats: one item per taught
-  // feat-tax chain, grouped by its "(Trainer N)" label, full compendium text, NO caliber line.
-  if (Array.isArray(characterData.trainer_feats) && characterData.trainer_feats.length) {
-    await appendFeatDivider(ctx, "__________________________ Trainers _______________________", 3600);
-    await processFeatTrait('everyFeat', characterData.trainer_feats, 'feat', 3610, "Trainer", true, 1, 1, null, characterData.trainer_feat_labels, characterData.trainer_feat_tax_dict);
-  }
-  // Homebrew Professions -> bottom of the Feats section: tiered Rank 5 / Rank 15 ability items (+
-  // profession feats), each carrying pf1 changes/contextNotes/uses.
-  if (Array.isArray(characterData.profession_ability_items) && characterData.profession_ability_items.length) {
-    await appendFeatDivider(ctx, "__________________________ Professions _____________________", 3900);
-    await processProfessionAbilities(characterData.profession_ability_items, 3910);
-  }
-  // Spheres -> NATIVE pf1spheres talent items (Combat/Magic Talents section, not the Features list).
-  // processSpheres clones each talent from the pf1spheres compendium (or synthesizes a subType-tagged
-  // fallback) + adds a casting-tradition / mana-pool summary feat for magic dabblers. No feat divider:
-  // the talents live in the module's talents section, grouped by sphere.
-  if ((Array.isArray(characterData.magic_talent_items) && characterData.magic_talent_items.length)
-      || (Array.isArray(characterData.combat_talent_items) && characterData.combat_talent_items.length)) {
-    await processSpheres(characterData.magic_talent_items, characterData.combat_talent_items,
-      characterData.casting_tradition, characterData.sphere_mana_pool, 4210);
-  }
-  // Casting tradition -> its own section at the very TOP of the Traits tab. Every NPC carries one
-  // now (for non-casters it's latent flavor -- how their magic would work if they ever pick any up);
-  // old payloads without casting_tradition simply skip the section. The divider's underscore runs are
-  // deliberately SYMMETRIC (equal on both sides), unlike the legacy dividers around it.
-  const castingTrad = characterData.casting_tradition || {};
-  if (Object.keys(castingTrad).length) {
-    await appendFeatDivider(ctx, "____________________ Casting Traditions ____________________", -200000, 'trait');
-    const camName = castingTrad.casting_ability_modifier;
-    const tradItem = synthesizeFeatItem(
-      camName ? `Casting Tradition (${camName})` : "Casting Tradition",
-      buildTraditionHtml(castingTrad, characterData.sphere_mana_pool));
-    tradItem.system.subType = 'trait';
-    tradItem.sort = -199900;
-    appendJsonToTemplate([tradItem], exportTemplate, "Trait");
-  }
-  // Traits section: divider, then the creation traits (sorts 100+ from processFeatTrait).
-  await appendFeatDivider(ctx, "____________________ Traits______________________", -100000, 'trait');
-  await processFeatTrait('everyTrait', characterData.selected_traits, 'trait');
-  // Flaws: mechanical drawbacks from flaw_effects_dict — one trait item per flaw, named with its
-  // tier, full rules text as the description, pf1 changes/contextNotes via applyBuffData.
-  const flawEffects = characterData.flaw_effects_dict || {};
-  if (Object.keys(flawEffects).length) {
-    await appendFeatDivider(ctx, "____________________ Flaws______________________", 50000, 'trait');
-    let flawSort = 50100;
-    for (const [flawName, entry] of Object.entries(flawEffects)) {
-      const tierLabel = String(entry.tier || 'minor') === 'major' ? 'Major' : 'Minor';
-      const item = synthesizeFeatItem(`(Flaw, ${tierLabel}) ${flawName}`,
-        entry.description ? `<p>${entry.description}</p>` : "");
-      item.system.subType = 'trait';
-      item.sort = flawSort;
-      flawSort += 100;
-      applyBuffData(ctx, item, entry);
-      appendJsonToTemplate([item], exportTemplate, "Trait");
-    }
-    console.log(`Flaws: added ${Object.keys(flawEffects).length} mechanical flaw trait(s).`);
-  }
-}
-
-
-// Feat tax: fold each granted chain feat into its primary entry -- append " > <Feat>" to the name
-// (using the compendium's real casing) and merge the granted feat's description into the primary's
-// details under a labeled separator. `data` is the template feat array used to resolve each feat.
-function applyFeatTax(items, data, taxArray) {
-  for (let i = 0; i < items.length; i++) {
-    const tax = taxArray?.[i];
-    if (!Array.isArray(tax) || !tax.length) continue;
-
-    const names = [];
-    let desc = items[i].system?.description?.value || "";
-    for (const childRaw of tax) {
-      const child = String(childRaw);
-      const childItem = data.find(r => {
-        const namePart = r.name.split(' (')[0];
-        return namePart.toLowerCase() === child.toLowerCase() && !r.name.includes('(Mythic)');
-      });
-      // Homebrew chain children (style-chain followers, Martial Training partners) aren't in
-      // every_feat.json -- resolve display name + description from the backend export instead
-      // of falling through to toTitleCase (which would mangle apostrophes, e.g. "Fool'S").
-      const hb = !childItem ? homebrewFeatDescs[child.toLowerCase()] : null;
-      const displayName = childItem ? childItem.name.split(' (')[0] : (hb ? hb.name : toTitleCase(child));
-      names.push(displayName);
-      const childDesc = childItem?.system?.description?.value ?? (hb ? `<p>${hb.desc}</p>` : null);
-      if (childDesc) desc += `<hr><p><strong>${displayName}</strong></p>${childDesc}`;
-    }
-
-    items[i].name = `${items[i].name} > ${names.join(" > ")}`;
-    if (items[i].system?.description) items[i].system.description.value = desc;
-  }
-}
-
-
-// Homebrew profession abilities -> feat-section items (subType:"feat", bottom of the Feats tab).
-// Each backend item is {name, description, changes[], contextNotes[], uses{}}; passive `changes` are
-// mechanically applied, `uses` becomes a charge pool, and the rich HTML body is preserved verbatim
-// (Rank 5 / Rank 15 entries bundle several abilities, <hr>-separated, like the reference sheets).
-async function processProfessionAbilities(items, startingSort = 3900) {
-  if (!Array.isArray(items) || items.length === 0) return;
-  const built = [];
-  for (const it of items) {
-    const item = synthesizeFeatItem(it.name || "Profession", it.description || "");
-    const changes = Array.isArray(it.changes) ? it.changes : [];
-    if (changes.length) {
-      // Fill the pf1 ChangeModel defaults the backend omits (_id + value), keeping its formula/target.
-      item.system.changes = changes.map(ch => Object.assign(
-        { formula: "0", target: "", type: "untyped", operator: "add", priority: 0, value: 0 },
-        ch, { _id: (ch && ch._id) || ctx.newChangeId(ch) }
-      ));
-    }
-    if (Array.isArray(it.contextNotes) && it.contextNotes.length) item.system.contextNotes = it.contextNotes;
-    if (it.uses && typeof it.uses === "object") {
-      item.system.uses = Object.assign(
-        { value: null, per: "", autoDeductChargesCost: "", maxFormula: "", rechargeFormula: "" }, it.uses);
-    }
-    built.push(item);
-  }
-  assignSequentialSort(built, startingSort);
-  appendJsonToTemplate(built, exportTemplate, "Feat");
-}
 
 // camelCase a display sphere name for the flags.pf1spheres.sphere fallback when a talent isn't in the
 // compendium (e.g. "Dual Wielding" -> "dualWielding", "Fallen Fey" -> "fallenFey", "Lancer" -> "lancer").
@@ -616,7 +376,36 @@ async function processSpheres(magicItems, combatItems, tradition, manaPool, star
 }
 
 
-await Feats_n_Traits();
+// ----- Feats, then Spheres talents, then Traits ----- //
+// The Spheres block below used to sit INSIDE Feats_n_Traits, which built the talent items as a
+// side effect of placing feats (hazard 3). Splitting that function at this exact boundary pulls
+// them apart without moving anything: the append order is what it always was.
+await addFeats(ctx);
+// Spheres -> NATIVE pf1spheres talent items (Combat/Magic Talents section, not the Features list).
+// processSpheres clones each talent from the pf1spheres compendium (or synthesizes a subType-tagged
+// fallback) + adds a casting-tradition / mana-pool summary feat for magic dabblers. No feat divider:
+// the talents live in the module's talents section, grouped by sphere.
+if ((Array.isArray(characterData.magic_talent_items) && characterData.magic_talent_items.length)
+    || (Array.isArray(characterData.combat_talent_items) && characterData.combat_talent_items.length)) {
+  await processSpheres(characterData.magic_talent_items, characterData.combat_talent_items,
+    characterData.casting_tradition, characterData.sphere_mana_pool, 4210);
+}
+// Casting tradition -> its own section at the very TOP of the Traits tab. Every NPC carries one
+// now (for non-casters it's latent flavor -- how their magic would work if they ever pick any up);
+// old payloads without casting_tradition simply skip the section. The divider's underscore runs are
+// deliberately SYMMETRIC (equal on both sides), unlike the legacy dividers around it.
+const castingTrad = characterData.casting_tradition || {};
+if (Object.keys(castingTrad).length) {
+  await appendFeatDivider(ctx, "____________________ Casting Traditions ____________________", -200000, 'trait');
+  const camName = castingTrad.casting_ability_modifier;
+  const tradItem = synthesizeFeatItem(
+    camName ? `Casting Tradition (${camName})` : "Casting Tradition",
+    buildTraditionHtml(castingTrad, characterData.sphere_mana_pool));
+  tradItem.system.subType = 'trait';
+  tradItem.sort = -199900;
+  appendJsonToTemplate([tradItem], exportTemplate, "Trait");
+}
+await addTraits(ctx);
 
 // ----- Path of War maneuvers/stances section ----- //
 // Native pf1-pow integration. Every known maneuver/stance becomes a pf1-pow.maneuver item —
@@ -758,7 +547,7 @@ async function legacyProcessPathOfWarFeats() {
   const descs = characterData.maneuvers_desc_dict || {};
   const powSubType = (modded === "y") ? "combatTalent" : "martialDiscipline";
 
-  await addFeatSeparator('spacePathOfWar', 'space_function', 4000);
+  await addFeatSeparator(ctx, 'spacePathOfWar', 'space_function', 4000);
 
   const items = [];
   for (const name of [...known, ...stances]) {
