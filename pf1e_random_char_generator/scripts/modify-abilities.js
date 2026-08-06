@@ -4,6 +4,16 @@ import { loadTemplates } from './build/template-loader.js';
 import { attachConditionals } from './build/conditional-engine.js';
 import { findMainWeapon } from './build/weapon.js';
 import {
+  appendJsonToTemplate,
+  synthesizeFeatItem,
+  assignSequentialSort,
+  assignToFeatSection,
+  addingReceivedLocationToName,
+  applyBuffData,
+  applyFeatBuffOverlay,
+  appendFeatDivider,
+} from './build/items.js';
+import {
   readDeliverData,
   readCustomBuffsFlag,
   readCharacterPayload,
@@ -443,18 +453,6 @@ function collectItems(items, targetClass, classList) {
   return results;  // Ensure we're returning the updated results array
 }
 
-// Function to append collected items to the export template
-function appendJsonToTemplate(collectedItems, exportTemplate, sectionKey) {
-  if (!exportTemplate.items) {
-    exportTemplate.items = {}; // Initialize if it doesn't exist
-  }
-
-  // Append new items to the existing array under the sectionKey
-  exportTemplate.items = [...exportTemplate.items, ...collectedItems];
-
-  console.log(`Appended ${collectedItems.length} items to ${sectionKey} in exportTemplate.`);
-}
-
 
 // Function to filter items by level
 function filterByLevel(items, level) {
@@ -618,7 +616,7 @@ async function processArchetype(targetArchetype, sortValue = null) {
   // template also ships a fixed _id — re-id each clone (like addResourcePools does) so multiple
   // archetype items can't collide.
   archetypeInfo = structuredClone(archetypeInfo);
-  archetypeInfo._id = await generateUniqueID('archetype', archetypeInfo);
+  archetypeInfo._id = ctx.newId('archetype', archetypeInfo);
 
   console.log("archetype pre trial", archetypeInfo);
   console.log("targetArchetype", targetArchetype);
@@ -658,14 +656,6 @@ async function processArchetype(targetArchetype, sortValue = null) {
 
 // ------ Generalized Features Page Functions ------ //
 
-// Utility function to generate a unique 16-character alphanumeric ID.
-// `kind` and `key` are ignored by the production mint (which is random) and are what the harness's
-// content-derived mint hashes; see main()'s deps block. `key` may be any JSON-serialisable value --
-// pass the object being stamped, not a hand-written label, so the id tracks the content.
-// Delegates to the build context so an extracted stage mints through the same seam.
-async function generateUniqueID(kind = 'id', key = null) {
-  return ctx.newId(kind, key);
-}
 
 // ------ End of Generalized Features Page Functions ------ //
 
@@ -752,16 +742,16 @@ async function updateClassFeatures(baseFeatTemplate, classFeatures) {
 
   // Fixed group dividers (trackers/sizefordamage populate them). Natural AC only appears for
   // characters that actually have natural armor (see characterHasNaturalArmor).
-  await appendFeatDivider("__________________Variable Modifiers______________", CF_SORTS.variableModifiers, 'classFeat');
+  await appendFeatDivider(ctx, "__________________Variable Modifiers______________", CF_SORTS.variableModifiers, 'classFeat');
   if (characterHasNaturalArmor()) {
-    await appendFeatDivider("__________________Natural AC_________________", CF_SORTS.naturalAc, 'classFeat');
+    await appendFeatDivider(ctx, "__________________Natural AC_________________", CF_SORTS.naturalAc, 'classFeat');
   }
-  await appendFeatDivider("_________________Death HP____________________", CF_SORTS.deathHp, 'classFeat');
+  await appendFeatDivider(ctx, "_________________Death HP____________________", CF_SORTS.deathHp, 'classFeat');
 
   // One divider per rolled class, highest class level first (band order = classEntries order).
   const bandsInOrder = Object.values(classFeatureBands).sort((a, b) => a.base - b.base);
   for (const band of bandsInOrder) {
-    await appendFeatDivider(`_______________Class Features (${band.display})_______________`, band.base, 'classFeat');
+    await appendFeatDivider(ctx, `_______________Class Features (${band.display})_______________`, band.base, 'classFeat');
   }
   // Fallback band for buckets whose owning class is unknown; its divider is only added when used.
   const genericBase = CF_CLASS_BAND_BASE + bandsInOrder.length * CF_CLASS_BAND_STEP;
@@ -780,7 +770,7 @@ async function updateClassFeatures(baseFeatTemplate, classFeatures) {
       const feature = JSON.parse(stableStringify(baseFeatTemplate));
       // The base feat template carries a hardcoded _id, so every clone would share it and
       // Foundry would collapse them into one embedded item on actor.update().
-      feature._id = await generateUniqueID('classFeature', [name, sort]);
+      feature._id = ctx.newId('classFeature', [name, sort]);
       feature.name = name;
       feature.system.description.value = descriptionHtml;
       feature.sort = sort;
@@ -795,7 +785,7 @@ async function updateClassFeatures(baseFeatTemplate, classFeatures) {
       const band = classFeatureBands[owners[String(bucket).toLowerCase()]] || genericBand;
       if (band === genericBand && !genericDividerAdded) {
         genericDividerAdded = true;
-        await appendFeatDivider("_______________Class Features_______________", genericBand.base, 'classFeat');
+        await appendFeatDivider(ctx, "_______________Class Features_______________", genericBand.base, 'classFeat');
       }
       // Only genuine selection buckets (known key, or gain-levels recorded by the backend) get
       // exploded into per-choice items. Everything else (wizard school, Skill Unlock, ...) is a
@@ -815,7 +805,7 @@ async function updateClassFeatures(baseFeatTemplate, classFeatures) {
       const levels = levelsAll[bucket] || {};
       let sort;
       if (meta.ladder) {
-        await appendFeatDivider(`_______________${meta.title}__________________`, band.ladderSort, 'classFeat');
+        await appendFeatDivider(ctx, `_______________${meta.title}__________________`, band.ladderSort, 'classFeat');
         sort = band.ladderSort + 125;
         band.ladderSort += CF_SORTS.ladderStep;
       } else {
@@ -891,13 +881,13 @@ async function addResourcePools() {
     if (classes.includes('fighter') || hasStaminaFeat) wanted.push('stamina');
     for (const cls of classes) wanted.push(...(CLASS_RESOURCE_POOLS[cls] || []));
 
-    await appendFeatDivider("__________________Resource Pools______________", -137000, 'classFeat');
+    await appendFeatDivider(ctx, "__________________Resource Pools______________", -137000, 'classFeat');
     const clones = [];
     for (const key of [...new Set(wanted)]) {
       const src = pools[key];
       if (!src) { console.warn(`Resource pools: no "${key}" entry in resource_pools.json.`); continue; }
       const clone = structuredClone(src);
-      clone._id = await generateUniqueID('resourcePool', key);
+      clone._id = ctx.newId('resourcePool', key);
       if (key === 'heroPoints' && clone.system?.uses) {
         clone.system.uses.value = Number(characterData.hero_points) || 1;
       }
@@ -936,54 +926,6 @@ await addResourcePools();
 
 // ----- Start of Feat/Trait section ----- //
 
-// Minimal pf1 feat item for names with no every_feat.json template (homebrew style chains,
-// Martial Training, Path of War maneuvers). No _id -- Foundry assigns one on actor.update.
-function synthesizeFeatItem(name, descriptionHtml, img = "icons/svg/book.svg") {
-  return {
-    name, type: "feat", img,
-    system: {
-      description: { value: descriptionHtml || "" },
-      tags: [], actions: [], attackNotes: [], effectNotes: [],
-      uses: { value: null, per: "", autoDeductChargesCost: "", maxFormula: "", rechargeFormula: "" },
-      changes: [], contextNotes: [], links: { children: [], charges: [] },
-      tag: "", scriptCalls: [], subType: "feat", abilityType: "na",
-      associations: { classes: [] }, showInQuickbar: false, disabled: false,
-    },
-    effects: [], flags: {},
-  };
-}
-
-// Overlay backend-authored numeric buffs onto a resolved/synthesized feat item: always-on `changes`
-// (deduped by target against what the compendium item already automates, so a bonus never double-
-// applies) plus situational `contextNotes`. Keyed by the placed feat's lowercased name. Fills the pf1
-// ChangeModel defaults the backend omits (_id + value), exactly like processProfessionAbilities.
-function applyFeatBuffOverlay(item, itemLc) {
-  applyBuffData(item, featChangesMap[itemLc]);
-}
-
-// Generic form of the overlay: merge a backend {changes, contextNotes} entry onto ANY pf1 item
-// (feats via applyFeatBuffOverlay, equipment via processItem). Changes dedupe by target,
-// contextNotes by exact text (duplicate equipment names hit the same cached item twice).
-function applyBuffData(item, buff) {
-  if (!buff || !item) return;
-  item.system = item.system || {};
-  if (Array.isArray(buff.changes) && buff.changes.length) {
-    const existing = Array.isArray(item.system.changes) ? item.system.changes : [];
-    const existingTargets = new Set(existing.map(c => c && c.target));
-    const additions = buff.changes
-      .filter(ch => ch && !existingTargets.has(ch.target))
-      .map(ch => Object.assign(
-        { formula: "0", target: "", type: "untyped", operator: "add", priority: 0, value: 0 },
-        ch, { _id: (ch && ch._id) || randomChangeId(ch) }));
-    if (additions.length) item.system.changes = existing.concat(additions);
-  }
-  if (Array.isArray(buff.contextNotes) && buff.contextNotes.length) {
-    const existing = Array.isArray(item.system.contextNotes) ? item.system.contextNotes : [];
-    const existingTexts = new Set(existing.map(n => n && n.text));
-    const additions = buff.contextNotes.filter(n => n && !existingTexts.has(n.text));
-    if (additions.length) item.system.contextNotes = existing.concat(additions);
-  }
-}
 
 async function processFeatTrait(templateName, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null) {
   try {
@@ -1020,7 +962,7 @@ async function processFeatTrait(templateName, dataListChooseFrom, dataType, star
       if (matchedItem) {
         // Clone so later name/description edits don't mutate the shared template object.
         const _featItem = structuredClone(matchedItem);
-        if (dataType === 'feat') applyFeatBuffOverlay(_featItem, itemLc);
+        if (dataType === 'feat') applyFeatBuffOverlay(ctx, _featItem, itemLc);
         allMatchedItems.push(_featItem);
         if (labelArray) matchedLabels.push(labelArray[idx]);
         matchedTax.push(taxDict && taxDict[item] ? taxDict[item] : null);
@@ -1032,7 +974,7 @@ async function processFeatTrait(templateName, dataListChooseFrom, dataType, star
         // when present (homebrewFeatDescs, now populated for every placed feat), else a bare row.
         const hb = homebrewFeatDescs[itemLc];
         const _synthFeat = synthesizeFeatItem(hb ? hb.name : String(item), hb ? `<p>${hb.desc}</p>` : '');
-        applyFeatBuffOverlay(_synthFeat, itemLc);
+        applyFeatBuffOverlay(ctx, _synthFeat, itemLc);
          allMatchedItems.push(_synthFeat);
         if (labelArray) matchedLabels.push(labelArray[idx]);
         matchedTax.push(taxDict && taxDict[item] ? taxDict[item] : null);
@@ -1084,23 +1026,6 @@ async function addFeatSeparator(templateName, dataType, startingSort = 0) {
   }
 }
 
-async function assignSequentialSort(items, startingSort = 0, step = 10) {
-  let currentSort = startingSort;
-  for (const item of items) {
-    item.sort = currentSort;
-    currentSort += step;
-  }
-}
-
-async function assignToFeatSection(items) {
-  for (const item of items) {
-    if (item.system) {
-      item.system.subType = "feat";
-    } else {
-      console.warn("Item missing 'system' property:", item);
-    }
-  }
-}
 async function Feats_n_Traits() {
   // Feats section
   await addFeatSeparator('spaceBackground', 'space_function', 1);
@@ -1121,13 +1046,13 @@ async function Feats_n_Traits() {
   // Homebrew Trainers -> bottom of the Feats section, rendered as normal feats: one item per taught
   // feat-tax chain, grouped by its "(Trainer N)" label, full compendium text, NO caliber line.
   if (Array.isArray(characterData.trainer_feats) && characterData.trainer_feats.length) {
-    await appendFeatDivider("__________________________ Trainers _______________________", 3600);
+    await appendFeatDivider(ctx, "__________________________ Trainers _______________________", 3600);
     await processFeatTrait('everyFeat', characterData.trainer_feats, 'feat', 3610, "Trainer", true, 1, 1, null, characterData.trainer_feat_labels, characterData.trainer_feat_tax_dict);
   }
   // Homebrew Professions -> bottom of the Feats section: tiered Rank 5 / Rank 15 ability items (+
   // profession feats), each carrying pf1 changes/contextNotes/uses.
   if (Array.isArray(characterData.profession_ability_items) && characterData.profession_ability_items.length) {
-    await appendFeatDivider("__________________________ Professions _____________________", 3900);
+    await appendFeatDivider(ctx, "__________________________ Professions _____________________", 3900);
     await processProfessionAbilities(characterData.profession_ability_items, 3910);
   }
   // Spheres -> NATIVE pf1spheres talent items (Combat/Magic Talents section, not the Features list).
@@ -1145,7 +1070,7 @@ async function Feats_n_Traits() {
   // deliberately SYMMETRIC (equal on both sides), unlike the legacy dividers around it.
   const castingTrad = characterData.casting_tradition || {};
   if (Object.keys(castingTrad).length) {
-    await appendFeatDivider("____________________ Casting Traditions ____________________", -200000, 'trait');
+    await appendFeatDivider(ctx, "____________________ Casting Traditions ____________________", -200000, 'trait');
     const camName = castingTrad.casting_ability_modifier;
     const tradItem = synthesizeFeatItem(
       camName ? `Casting Tradition (${camName})` : "Casting Tradition",
@@ -1155,13 +1080,13 @@ async function Feats_n_Traits() {
     appendJsonToTemplate([tradItem], exportTemplate, "Trait");
   }
   // Traits section: divider, then the creation traits (sorts 100+ from processFeatTrait).
-  await appendFeatDivider("____________________ Traits______________________", -100000, 'trait');
+  await appendFeatDivider(ctx, "____________________ Traits______________________", -100000, 'trait');
   await processFeatTrait('everyTrait', characterData.selected_traits, 'trait');
   // Flaws: mechanical drawbacks from flaw_effects_dict — one trait item per flaw, named with its
   // tier, full rules text as the description, pf1 changes/contextNotes via applyBuffData.
   const flawEffects = characterData.flaw_effects_dict || {};
   if (Object.keys(flawEffects).length) {
-    await appendFeatDivider("____________________ Flaws______________________", 50000, 'trait');
+    await appendFeatDivider(ctx, "____________________ Flaws______________________", 50000, 'trait');
     let flawSort = 50100;
     for (const [flawName, entry] of Object.entries(flawEffects)) {
       const tierLabel = String(entry.tier || 'minor') === 'major' ? 'Major' : 'Minor';
@@ -1170,27 +1095,13 @@ async function Feats_n_Traits() {
       item.system.subType = 'trait';
       item.sort = flawSort;
       flawSort += 100;
-      applyBuffData(item, entry);
+      applyBuffData(ctx, item, entry);
       appendJsonToTemplate([item], exportTemplate, "Trait");
     }
     console.log(`Flaws: added ${Object.keys(flawEffects).length} mechanical flaw trait(s).`);
   }
 }
 
-function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null) {
-  let current = startingNumber;
-
-  for (let i = 0; i < items.length; i++) {
-    if (labelArray && labelArray[i] != null) {
-      // Per-feat label from the backend, e.g. "Fighter 1: Weapon Focus"
-      items[i].name = `${labelArray[i]}: ${items[i].name}`;
-    } else {
-      const level = customLevels?.[i] ?? current;
-      items[i].name = `(${label} ${level}) ${items[i].name}`;
-      if (!customLevels && shouldIncrement) current += step;
-    }
-  }
-}
 
 // Feat tax: fold each granted chain feat into its primary entry -- append " > <Feat>" to the name
 // (using the compendium's real casing) and merge the granted feat's description into the primary's
@@ -1223,22 +1134,6 @@ function applyFeatTax(items, data, taxArray) {
   }
 }
 
-// Inline section divider (no template file needed): a feat item with an underscore name, sorted
-// into place. subType picks the sheet section: "feat" (Feats), "classFeat" (Class Features),
-// "trait" (Traits). Used to head the Trainers / Professions blocks and the Class Features /
-// Traits / Flaws groups.
-async function appendFeatDivider(title, sort, subType = 'feat') {
-  const div = synthesizeFeatItem(title, "");
-  div.sort = sort;
-  div.system.subType = subType;
-  appendJsonToTemplate([div], exportTemplate, "Feat");
-}
-
-// Short id for embedded change rows -- pf1's ChangeModel expects an _id on each change.
-// `key` is the change row itself; see generateUniqueID above for why.
-function randomChangeId(key = null) {
-  return ctx.newChangeId(key);
-}
 
 // Homebrew profession abilities -> feat-section items (subType:"feat", bottom of the Feats tab).
 // Each backend item is {name, description, changes[], contextNotes[], uses{}}; passive `changes` are
@@ -1254,7 +1149,7 @@ async function processProfessionAbilities(items, startingSort = 3900) {
       // Fill the pf1 ChangeModel defaults the backend omits (_id + value), keeping its formula/target.
       item.system.changes = changes.map(ch => Object.assign(
         { formula: "0", target: "", type: "untyped", operator: "add", priority: 0, value: 0 },
-        ch, { _id: (ch && ch._id) || randomChangeId(ch) }
+        ch, { _id: (ch && ch._id) || ctx.newChangeId(ch) }
       ));
     }
     if (Array.isArray(it.contextNotes) && it.contextNotes.length) item.system.contextNotes = it.contextNotes;
@@ -1393,7 +1288,7 @@ async function processSpheres(magicItems, combatItems, tradition, manaPool, star
       const ex = Array.isArray(item.system.changes) ? item.system.changes : [];
       item.system.changes = ex.concat(t.changes.map(ch => Object.assign(
         { formula: "0", target: "", type: "untyped", operator: "add", priority: 0, value: 0 },
-        ch, { _id: (ch && ch._id) || randomChangeId(ch) })));
+        ch, { _id: (ch && ch._id) || ctx.newChangeId(ch) })));
     }
     if (Array.isArray(t.contextNotes) && t.contextNotes.length) {
       item.system = item.system || {};
@@ -1546,7 +1441,7 @@ async function addStanceBuffs(stances, descs, matchedDocs) {
     const curated = changesByNorm[powNorm(name)] || {};
     const changes = structuredClone(Array.isArray(curated.changes) ? curated.changes : []);
     for (const ch of changes) {
-      if (!ch._id) ch._id = (await generateUniqueID('change', [name, ch])).slice(0, 8);
+      if (!ch._id) ch._id = (ctx.newId('change', [name, ch])).slice(0, 8);
     }
     buffs.push({
       name: `(Stance) ${doc ? powDisplayName(doc.name) : name}`,
@@ -1845,7 +1740,7 @@ function synthesizePowerItem(name, d, slot, level) {
 // point pool so the number the backend computed is still on the sheet somewhere.
 async function legacyProcessPsionicsFeats(books) {
   const descs = characterData.powers_desc_dict || {};
-  await appendFeatDivider("__________________Psionics______________", 4200, 'feat');
+  await appendFeatDivider(ctx, "__________________Psionics______________", 4200, 'feat');
 
   const items = [];
   for (const book of books) {
@@ -1965,7 +1860,7 @@ async function changeStatBuff(dataArray, stats, label) {
   // loops through each stat in the relevant stat array and assigns the value to the corresponding stat in the dataArray
   for (const item of dataArray) {
     item.name = label;
-    item._id = await generateUniqueID('statBuff', [label, item]); // Generate a unique ID for each item
+    item._id = ctx.newId('statBuff', [label, item]); // Generate a unique ID for each item
 
     // The template's ActiveEffect carries its OWN baked-in name and origin, and re-identifying the
     // item above does not reach them. Both stat buffs come from the same template, so without this
@@ -2454,7 +2349,7 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
         console.warn(`${itemType} "${itemName}" not in compendium — synthesizing from backend data.`);
         const details = opts.detailsByName?.[buffKeyLc] || {};
         const synthesized = synthesizeEquipmentItem(itemName, details.description, details.slot);
-        applyBuffData(synthesized, itemChangesMap[buffKeyLc]);
+        applyBuffData(ctx, synthesized, itemChangesMap[buffKeyLc]);
         collectedByType[itemType] = [synthesized];
         appendJsonToTemplate([synthesized], exportTemplate, itemType);
         return defaultItemNameFlag;
@@ -2502,7 +2397,7 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
 
     // Overlay backend-parsed changes/context notes (deduped against what the compendium item
     // already automates, so e.g. Circlet of Persuasion's official change never double-applies).
-    applyBuffData(matchedItem, itemChangesMap[buffKeyLc]);
+    applyBuffData(ctx, matchedItem, itemChangesMap[buffKeyLc]);
 
     collectedByType[itemType] = [matchedItem];
 
@@ -2724,11 +2619,11 @@ async function addEnhancementEffects() {
     const armorItem = equipItems.find(i => i.system?.subType === 'armor');
     const shieldItem = equipItems.find(i => i.system?.subType === 'shield') || armorItem;
     for (const [qName, entry] of Object.entries(aEff)) {
-      applyBuffData(armorItem, entry);
+      applyBuffData(ctx, armorItem, entry);
       appendQualityDescription(armorItem, qName, entry.description);
     }
     for (const [qName, entry] of Object.entries(sEff)) {
-      applyBuffData(shieldItem, entry);
+      applyBuffData(ctx, shieldItem, entry);
       appendQualityDescription(shieldItem, qName, entry.description);
     }
 
@@ -2891,7 +2786,7 @@ function applySpheresFlags(cam, pam) {
       feat.system = feat.system || {};
       const ch = Array.isArray(feat.system.changes) ? feat.system.changes : [];
       if (!ch.some(c => c && c.target === 'spherecl')) {
-        ch.push({ _id: randomChangeId('spherecl'), formula: sphereCLExpr(), target: 'spherecl', type: 'untyped', operator: 'add', priority: 0, value: 0 });
+        ch.push({ _id: ctx.newChangeId('spherecl'), formula: sphereCLExpr(), target: 'spherecl', type: 'untyped', operator: 'add', priority: 0, value: 0 });
         feat.system.changes = ch;
       }
     }
@@ -2915,14 +2810,14 @@ async function addDestructiveBlastAttack(subSpheres) {
     if (!weapon) { console.warn('Spheres: no weapon to base the Destructive Blast on.'); return; }
     const blast = structuredClone(weapon);
     blast.type = 'attack';
-    blast._id = await generateUniqueID('attack', 'Destructive Blast');
+    blast._id = ctx.newId('attack', 'Destructive Blast');
     blast.name = 'Destructive Blast';
     blast.flags = {};
     blast.system = blast.system || {};
     blast.system.description = { value: '<p><strong>Destructive Blast</strong> (Destruction sphere) &mdash; a ranged or melee touch attack within close range (25 ft + 5 ft / 2 caster levels), subject to spell resistance. Deals <strong>(ceil(CL/2))d6</strong> bludgeoning by default (1d6 for a caster-level-1 dabbler). Blast-type talents (Fire/Frost/Acid/&hellip;) change the damage type and add a save rider; blast-shape talents change the delivery; toggle "Empowered Blast" to spend a spell point for one die per caster level.</p>' };
     const action = (blast.system.actions || [])[0];
     if (!action) { console.warn('Spheres: cloned weapon has no action for the blast.'); return; }
-    action._id = await generateUniqueID('action', 'Destructive Blast');
+    action._id = ctx.newId('action', 'Destructive Blast');
     action.name = 'Destructive Blast';
     action.actionType = 'rwak';
     action.ability = Object.assign({}, action.ability, { attack: 'dex', damage: '', damageMult: 0 });
@@ -2931,11 +2826,11 @@ async function addDestructiveBlastAttack(subSpheres) {
     action.damage.critParts = [];
     action.damage.nonCritParts = [];
     action.conditionals = [{
-      _id: (await generateUniqueID('conditional', 'Empowered Blast')).slice(0, 8),
+      _id: (ctx.newId('conditional', 'Empowered Blast')).slice(0, 8),
       name: '(Destruction) Empowered Blast: spend [[1]] spell point — blast dice increase to one die per caster level',
       default: false,
       modifiers: [{
-        _id: (await generateUniqueID('modifier', 'Empowered Blast')).slice(0, 8),
+        _id: (ctx.newId('modifier', 'Empowered Blast')).slice(0, 8),
         formula: subSpheres('(floor(@spheres.cl.total / 2))d6') + '[Empowered Blast]',
         target: 'damage', subTarget: 'allDamage', type: 'untyped', damageType: ['bludgeoning'], critical: 'nonCrit',
       }],
@@ -3042,7 +2937,7 @@ async function addSphereAuraBuffs(subSpheres) {
       if (e.description) parts.push(`<p>${subSpheres(e.description)}</p>`);
       const changes = (Array.isArray(e.changes) ? e.changes : []).map(ch => Object.assign(
         { formula: '0', target: '', type: 'untyped', operator: 'add', priority: 0, value: 0 },
-        ch, { formula: subSpheres(String(ch.formula ?? '0')), _id: randomChangeId(ch) }));
+        ch, { formula: subSpheres(String(ch.formula ?? '0')), _id: ctx.newChangeId(ch) }));
       buffs.push({
         name: `(${tag}) ${t.name}`, type: 'buff', img: 'icons/svg/aura.svg',
         system: {
@@ -3152,7 +3047,7 @@ async function addSpellBuffs() {
         if (e.description) parts.push(String(e.description));   // pre-formatted spell stat-block HTML, raw
         const changes = (Array.isArray(e.changes) ? e.changes : []).map(ch => Object.assign(
           { formula: '0', target: '', type: 'untyped', operator: 'add', priority: 0, value: 0 },
-          ch, { _id: randomChangeId(ch) }));
+          ch, { _id: ctx.newChangeId(ch) }));
         const title = `(${tag}) ${name}` + (e.level != null ? ` (level ${e.level})` : '');
         all.push(mkBuff(title, parts.join(''), changes, false, e.contextNotes));
         count++;
@@ -3249,7 +3144,7 @@ async function addHouseFeatures() {
     const clones = [];
     for (const f of features) {
       const clone = structuredClone(f);
-      clone._id = await generateUniqueID('houseFeature', f);
+      clone._id = ctx.newId('houseFeature', f);
       clones.push(clone);
     }
     appendJsonToTemplate(clones, exportTemplate, 'Feature');
@@ -3263,7 +3158,7 @@ await addHouseFeatures();
 async function addSizeForDamageFeature() {
   try {
     const feature = structuredClone(templates.sizeForDamageFeature);
-    feature._id = await generateUniqueID('sizeForDamage', feature.name);
+    feature._id = ctx.newId('sizeForDamage', feature.name);
     // Pin it into the "Variable Modifiers" group (template actor slot), just under its divider.
     feature.sort = 121680;
     appendJsonToTemplate([feature], exportTemplate, 'Feature');
@@ -3285,13 +3180,13 @@ async function createScalingAttackItem() {
     // the pristine base damage (actions[1]); a fresh script-call clone (reads @resources.sizefordamage).
     const dontTouchFrom = async (a0) => {
       const a1 = structuredClone(a0);
-      a1._id = await generateUniqueID('action', ["Don't Touch", a0]);
+      a1._id = ctx.newId('action', ["Don't Touch", a0]);
       a1.name = "Don't Touch";
       return a1;
     };
     const freshScript = async () => {
       const sc = structuredClone(templates.scalingWeaponDamage);
-      sc._id = (await generateUniqueID('scriptCall', sc)).slice(0, 8);
+      sc._id = (ctx.newId('scriptCall', sc)).slice(0, 8);
       return sc;
     };
 
@@ -3305,7 +3200,7 @@ async function createScalingAttackItem() {
     // (same setup, fresh ids so nothing collides).
     const attack = structuredClone(weapon);
     attack.type = 'attack';
-    attack._id = await generateUniqueID('attack', weapon.name);
+    attack._id = ctx.newId('attack', weapon.name);
     // pf1's Combat tab sections attack items by ATTACK subType (weapon/natural/ability/...); the
     // clone carries the WEAPON's subType ("simple"/"martial"), which matches no section, so the twin
     // existed on the actor but never rendered — players had to click "Create Attack" themselves.
@@ -3320,7 +3215,7 @@ async function createScalingAttackItem() {
       appendEnhancementsToDescription(attack, characterData.weapon_enhancement_chosen_list);
     }
     const aAttack = structuredClone(weapon.system.actions[0]);
-    aAttack._id = await generateUniqueID('action', ['Attack', weapon.name]);
+    aAttack._id = ctx.newId('action', ['Attack', weapon.name]);
     aAttack.name = 'Attack';
     attack.system.actions = [aAttack, await dontTouchFrom(aAttack)];
     attack.system.scriptCalls = [await freshScript()];
