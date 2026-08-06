@@ -482,7 +482,10 @@ function filterByLevel(items, level) {
 
 // Main function to process class data and update class level
 function processClass(targetClass, newLevel, classList) {
-  const everyClassPathData = templates.everyClass;
+  // Clone before touching: updateLevel() writes levels onto these very objects and collectItems()
+  // hands them to exportTemplate.items uncloned, so without this the loaded bundle carries one
+  // character's levels into the next generation in the same session.
+  const everyClassPathData = structuredClone(templates.everyClass);
   const items = extractItems(everyClassPathData);
   if (!items) return;
 
@@ -576,7 +579,9 @@ for (const classEntry of classEntries) {
 
 // ------ Start of Race Section ------ //
 async function gatherRace(race) {
-  const everyRacePathData = templates.everyRace;
+  // Clone: the matched race items go onto the sheet by reference, and the trait-normalization
+  // pass at the end of the build then rewrites their system fields.
+  const everyRacePathData = structuredClone(templates.everyRace);
   const items = extractItems(everyRacePathData);
   const matchedItems = items.filter(item => item.name === race);
   console.log("matchedItems", matchedItems);
@@ -1095,7 +1100,9 @@ async function processFeatTrait(templateName, dataListChooseFrom, dataType, star
 // --- adding Feat separators --- //
 async function addFeatSeparator(templateName, dataType, startingSort = 0) {
   try {
-    const data = templates[templateName];
+    // Clone: assignSequentialSort() stamps .sort onto these objects and they are then appended to
+    // the sheet by reference, so the separator templates would accumulate the last run's sorts.
+    const data = structuredClone(templates[templateName]);
     const wrappedData = Array.isArray(data) ? data : [data];
 
     // 🔥 Apply sort
@@ -2511,6 +2518,10 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
       matchedItem = items.find(r => r.name.split(' (')[0].toLowerCase() === itemNameLc);
       if (matchedItem) console.log(`${itemType} "${itemName}" matched compendium variant "${matchedItem.name}".`);
     }
+    // Clone the ONE matched row rather than the bundle: every_item.json is 25 MB and this runs
+    // once per worn item. Everything below stamps proficiency, enhancements and buff overlays onto
+    // this object and then appends it to the sheet by reference.
+    if (matchedItem) matchedItem = structuredClone(matchedItem);
 
     if (!matchedItem) {
       // Slot equipment: build the item from backend data (name + description + parsed buffs)
@@ -2528,7 +2539,8 @@ async function processItem(itemType, templateName, itemName, enhancementList, de
 
       console.warn(`${itemType} "${itemName}" not found, using default item.`);
       // Try to use the default item if the selected one is not found
-      const defaultMatchedItem = items.find(r => r.name === defaultItemName);
+      const found = items.find(r => r.name === defaultItemName);
+      const defaultMatchedItem = found ? structuredClone(found) : undefined;   // same reason as above
       if (defaultMatchedItem) {
         if (defaultItemNameFlag === 0) {
           // Set the proficient section to true
@@ -3640,7 +3652,10 @@ async function select_random_ammo(ammo_type) {
   // Select a random ammo from the filtered list.
   // The ONLY semantic use of randomness in this file: it changes what is on the sheet, not just an
   // id, so the golden harness has to seed it rather than normalise it away. See main()'s deps block.
-  const randomAmmo = filteredAmmo[Math.floor(rng() * filteredAmmo.length)];
+  // Cloned before it goes on the sheet: nothing here writes to it, but the trait-shape
+  // normalization pass at the end of the build rewrites system fields on every item in
+  // exportTemplate.items -- which would reach back into the loaded weapon table.
+  const randomAmmo = structuredClone(filteredAmmo[Math.floor(rng() * filteredAmmo.length)]);
 
   // Log the selected ammo
   console.log("Selected random ammo:", randomAmmo);
@@ -3769,7 +3784,9 @@ try {
   if (typeof professionRanks === 'string') {
     try { professionRanks = JSON.parse(professionRanks); } catch (e) { professionRanks = []; }
   }
-  const baseSkillTemplate = templates.baseSkill; // Example, replace with your actual path
+  // Clone: createUpdatedSkills() writes this character's ranks and subSkills straight into the
+  // template's skill entries, so the next character would start from these ranks instead of 0.
+  const baseSkillTemplate = structuredClone(templates.baseSkill);
   // Now we have a JSON object with the proper names and ranks -> need to update the skills
   await createUpdatedSkills(updatedCharacterData, baseSkillTemplate, professions, characterData.craft_type, professionRanks);
   // Now that we have updated skills -> need to overwrite the export file (stored in localStorage)

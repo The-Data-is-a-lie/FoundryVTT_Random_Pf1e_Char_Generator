@@ -15,18 +15,24 @@
  * the bundle it wanted. So the loader owns path construction and hands back an object keyed by
  * stable name: `templates.everyFeat`, `templates.maneuverChanges`, and so on.
  *
- * ## No cache yet — deliberately
+ * ## The cache
  *
- * The whole point of naming the loader is to be able to cache behind it, and that is the next
- * commit, not this one. Caching cannot land until the bundles are safe to keep: the build mutates
- * its own template data in place in **nine** files on a single generation, which the golden
- * harness measures and records as `mutatedTemplates`. That is harmless only because every run
- * currently starts from freshly parsed data and pays ~90 MB for the privilege. Turn the cache on
- * before fixing those writes and the SECOND character built in a session inherits the first one's
- * damage — a bug no single-run fixture can see.
+ * Module-scoped and keyed by branch, because `modded_char_sheet` is re-read from the dialog's
+ * saved state on every click and can change between them. The second branch evicts the first
+ * rather than both staying resident — holding two full bundles is ~180 MB of parsed object graph
+ * for a switch almost nobody makes twice in a session.
  *
- * So this module is a pure move first, proven by an unchanged golden diff, and the cache arrives
- * on top of a clone-on-read audit that can be reverted on its own.
+ * **Every bundle handed out here is shared, so writing to one is a cross-run bug.** That was
+ * harmless while the dictionary was rebuilt per click; with the cache it corrupts the SECOND
+ * character built in a session, which single-run fixtures cannot catch. The build did exactly
+ * this in nine files, and the six sites responsible now clone on read — the golden harness
+ * measures the damage as `mutatedTemplates` and that list is empty.
+ *
+ * A new entry in `mutatedTemplates` is not a cosmetic regression any more. It is a live bug.
+ *
+ * The directory listings are re-browsed on every call, cache hit or not. They are cheap, and they
+ * are what the missing-templates fallback reads — skipping them would silently change when that
+ * warning fires and when a modded run gets downgraded.
  */
 
 const CHAR_SHEET_DIR = 'modules/pf1e_random_char_generator/templates/character_sheet_folder';
@@ -89,6 +95,9 @@ const SWAPPED_TEMPLATES = {
   baseFeat: ['base', 'base_feat.json', 'base_feat_MODS.json'],
 };
 
+/** branch (`"base"` | `"mods"`) -> the loaded bundles. At most one entry. */
+const cache = new Map();
+
 /**
  * Read a JSON template.
  *
@@ -142,6 +151,8 @@ export async function loadTemplates({ modded }) {
   }
 
   const branch = branchFlag === "y" ? 'mods' : 'base';
+  const cached = cache.get(branch);
+  if (cached) return { templates: cached, modded: branchFlag };
 
   const paths = {};
   for (const [name, file] of Object.entries(CHAR_SHEET_TEMPLATES)) {
@@ -159,5 +170,23 @@ export async function loadTemplates({ modded }) {
     templates[name] = await readFile(filePath);
   }
 
+  cache.clear();                 // the other branch, if resident, goes
+  cache.set(branch, templates);
+
   return { templates, modded: branchFlag };
+}
+
+/**
+ * Drop the cached bundles so the next generation re-reads them from disk.
+ *
+ * Without a cache, editing a template by hand and clicking Generate again picked the change up.
+ * With one it does not, which is a real regression for whoever is authoring `spell_buffs.json` or
+ * `quality_effects.json` against a live world. This is the escape hatch, reachable from the
+ * console as:
+ *
+ *     game.modules.get('pf1e_random_char_generator').api.reloadTemplates()
+ */
+export function reloadTemplates() {
+  cache.clear();
+  console.log('Character Generator: template cache cleared — the next character re-reads from disk.');
 }

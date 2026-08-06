@@ -223,16 +223,23 @@ for (const fixture of FIXTURE_ROSTER) {
     assert.equal(result.mintedIds.size, result.mintCalls,
       'the content-derived mint issued the same id twice');
 
-    // Two findings that predate this harness, recorded rather than asserted away. Neither can be
-    // fixed inside ticket 02 without changing output, and both are the kind of thing that goes
-    // unnoticed forever unless it is written down where a diff will show it moving:
+    // Two findings this harness surfaced, kept as tracked lists rather than asserted away:
     //
-    //   mutatedTemplates — the build mutates its own template data in place (nine files on the very
-    //     first fixture). Harmless today only because production re-parses all ~90 MB per click;
-    //     the moment ticket 03's cache lands it becomes cross-generation corruption.
+    //   mutatedTemplates — the build used to mutate its own template data in place, nine files on
+    //     the very first fixture. It was harmless only because every generation re-parsed all
+    //     ~90 MB; the template cache turned it into cross-generation corruption and five of these
+    //     fixtures went red. All six sites now clone on read and the list is EMPTY, so a new entry
+    //     here is no longer a cosmetic regression — it is a live bug.
+    //
+    //     Read it knowing what it can and cannot see. The stub restores its own parsed copy after
+    //     each fixture, but the loader holds the objects it was handed, so from the second run
+    //     onward this list reports on data the build no longer reads. It is an honest detector for
+    //     the FIRST generation in the process; the cross-payload test at the bottom of this file
+    //     is what covers the rest.
+    //
     //   duplicateItemIds — on the MODDED branch three spells are appended twice carrying the same
     //     `_id` from every_spell_MODS.json, and `actor.update()` collapses same-id siblings into
-    //     one. That is `_MODS` twin drift, which this map puts out of scope on purpose.
+    //     one. That is `_MODS` twin drift, which the map puts out of scope on purpose.
     //
     // A new entry in either list is a regression; an entry leaving one is progress.
     const snapshot = {
@@ -259,6 +266,42 @@ for (const fixture of FIXTURE_ROSTER) {
       + 'If that is intended, re-record with:  node tools/generate_character.test.mjs --update');
   });
 }
+
+/**
+ * The case the fixtures above cannot cover, and the one a template cache breaks.
+ *
+ * Every test above builds ONE character. Production does not: the loader parses ~90 MB of template
+ * JSON once and hands the same objects to every generation for the rest of the Foundry session, so
+ * a build that writes into its own template data produces a correct first character and a quietly
+ * wrong second one. Six sites did exactly that.
+ *
+ * REBUILDING THE SAME PAYLOAD TWICE DOES NOT CATCH IT, which is worth stating because it is the
+ * obvious test to write. Nearly every one of those six writes is a plain assignment — a sort, a
+ * level, a rank — so replaying one payload re-writes the identical value and the two sheets agree
+ * even while the template is being corrupted. The damage only becomes visible when a DIFFERENT
+ * character runs against the leftovers: one that never touches the skill the last one ranked, or
+ * whose class harvests a feat the last one levelled.
+ *
+ * So this builds A, then B, then A again, and asserts the two A's agree. It checks the PROPERTY
+ * rather than a recorded value, so it cannot be satisfied by re-recording it.
+ */
+test('a character built after a different one is unaffected by it', async () => {
+  const a = FIXTURE_ROSTER.find((f) => f.name === 'martial') ?? FIXTURE_ROSTER[0];
+  const b = FIXTURE_ROSTER.find((f) => f.name === 'rogue' && f !== a)
+    ?? FIXTURE_ROSTER.find((f) => f !== a);
+
+  const clean = await runFixture(a);
+  await runFixture(b);
+  const after = await runFixture(a);
+
+  assert.equal(after.thrown, null, 'the rebuild threw: ' + after.thrown?.stack);
+  assert.deepEqual(
+    normalise(after.template), normalise(clean.template),
+    'building "' + a.name + '" gave a different sheet once "' + b.name + '" had run first.\n'
+    + '"' + b.name + '" left state behind — almost certainly a loaded template mutated in place.\n'
+    + 'Clone before writing; the loader hands every generation the same objects.',
+  );
+});
 
 after(() => {
   if (UPDATE) console.log('\nGoldens re-recorded. Review the diff — that diff IS the review.\n');

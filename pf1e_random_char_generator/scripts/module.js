@@ -1,3 +1,5 @@
+import { reloadTemplates } from './build/template-loader.js';
+
 export default class MyModule {
     static registerSettings() {
       // Where the generator POSTs the character inputs. Kept as a setting (not a hardcoded const in
@@ -37,6 +39,23 @@ export default class MyModule {
     static init() {
       // Register the settings when the module is initialized
       this.registerSettings();
+      this.exposeApi();
+    }
+
+    /**
+     * Hang the module's console-facing helpers off its Foundry module entry.
+     *
+     * Only one so far, and it exists because the template cache has a cost: templates are parsed
+     * once per session, so editing spell_buffs.json (or any other template) by hand and clicking
+     * Generate again no longer picks the change up. Whoever is authoring template data against a
+     * live world needs a way out that isn't reloading Foundry:
+     *
+     *     game.modules.get('pf1e_random_char_generator').api.reloadTemplates()
+     */
+    static exposeApi() {
+      const module = game.modules?.get('pf1e_random_char_generator');
+      if (!module) return;
+      module.api = { ...(module.api || {}), reloadTemplates };
     }
   }
 

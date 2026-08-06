@@ -1,15 +1,5 @@
 {
- "mutatedTemplates": [
-  "templates/base_folder/base_skill.json",
-  "templates/character_sheet_folder/every_armor.json",
-  "templates/character_sheet_folder/every_class_MODS.json",
-  "templates/character_sheet_folder/every_item.json",
-  "templates/character_sheet_folder/every_race.json",
-  "templates/character_sheet_folder/every_weapon_MODS.json",
-  "templates/character_sheet_folder/space_Background.json",
-  "templates/character_sheet_folder/space_ClassBonusFeats.json",
-  "templates/character_sheet_folder/space_Feats.json"
- ],
+ "mutatedTemplates": [],
  "duplicateItemIds": [
   "items -> eg67vvykmv9c6j7h",
   "items -> ej87t487r59demgy",
