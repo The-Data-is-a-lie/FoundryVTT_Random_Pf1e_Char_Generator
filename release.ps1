@@ -184,9 +184,14 @@ New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 # the generator backend's validate_class_feature_effects.py gate reads them across repos; only the
 # zip loses them. .pytest_cache is a stray from a Python tool that was never part of this module.
 #
+# packs/ is 2.5 MB of LevelDB left over from the removed spell-conditionals compendium. module.json
+# declares "packs": [], so Foundry never opens it, and .gitignore already keeps it out of the repo --
+# but robocopy had no exclusion, so every release shipped it to end users anyway. Being gitignored is
+# not the same as not shipping: git and robocopy read different lists.
+#
 # The *_MODS.json templates MUST ship: main() fetches them whenever the dialog's "modded character
 # sheet" answer is Yes (the default), and a missing one 404s -> HTML -> JSON.parse blows up.
-& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
+& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache packs /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { Fail "robocopy failed (exit $LASTEXITCODE)." }
 $global:LASTEXITCODE = 0
 
