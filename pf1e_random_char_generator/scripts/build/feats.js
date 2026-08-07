@@ -57,13 +57,11 @@ async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType,
       console.log(`Processing ${dataType}:`, item);
 
       const itemLc = String(item).toLowerCase();
-      const matchedItem = data.find(r => {
-        // Extract the part of the name before the first parenthesis. Compare case-insensitively so a
-        // feat that differs only by casing/punctuation still resolves to its real compendium item.
-        const namePart = r.name.split(' (')[0];
-        // Ensuring that characters can't select mythic entries
-        return namePart.toLowerCase() === itemLc && !r.name.includes('(Mythic)');
-      });
+      // Match on the name before the first parenthesis, case-insensitively, skipping mythic entries.
+      // That rule and its index now live in build/catalog.js: this used to be a `.find()` over all
+      // 8,816 rows of every_feat.json PER FEAT, re-lowercasing every candidate to compare it against
+      // one query, nine buckets deep.
+      const matchedItem = ctx.catalog.lookup(templateName, item);
 
       if (matchedItem) {
         // Clone so later name/description edits don't mutate the shared template object.
@@ -98,7 +96,7 @@ async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType,
       // Assign Feat subType
       assignToFeatSection(allMatchedItems);
       // Feat tax: bundle granted chain feats onto the primary entry (name + merged description)
-      applyFeatTax(ctx, allMatchedItems, data, matchedTax);      
+      applyFeatTax(ctx, allMatchedItems, templateName, matchedTax);
       }         
       // Assign a unique ID to each item
          
@@ -134,8 +132,9 @@ export async function addFeatSeparator(ctx, templateName, dataType, startingSort
 
 // Feat tax: fold each granted chain feat into its primary entry -- append " > <Feat>" to the name
 // (using the compendium's real casing) and merge the granted feat's description into the primary's
-// details under a labeled separator. `data` is the template feat array used to resolve each feat.
-function applyFeatTax(ctx, items, data, taxArray) {
+// details under a labeled separator. `bundleName` names the template bundle each chain feat is
+// resolved from, and the catalog owns the resolving.
+function applyFeatTax(ctx, items, bundleName, taxArray) {
   for (let i = 0; i < items.length; i++) {
     const tax = taxArray?.[i];
     if (!Array.isArray(tax) || !tax.length) continue;
@@ -144,10 +143,8 @@ function applyFeatTax(ctx, items, data, taxArray) {
     let desc = items[i].system?.description?.value || "";
     for (const childRaw of tax) {
       const child = String(childRaw);
-      const childItem = data.find(r => {
-        const namePart = r.name.split(' (')[0];
-        return namePart.toLowerCase() === child.toLowerCase() && !r.name.includes('(Mythic)');
-      });
+      // The second full scan of the same array, once per granted chain feat. Same rule, same index.
+      const childItem = ctx.catalog.lookup(bundleName, child);
       // Homebrew chain children (style-chain followers, Martial Training partners) aren't in
       // every_feat.json -- resolve display name + description from the backend export instead
       // of falling through to toTitleCase (which would mangle apostrophes, e.g. "Fool'S").

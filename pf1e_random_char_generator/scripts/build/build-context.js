@@ -49,6 +49,12 @@ export function createBuildContext({ rng, mintId }) {
     characterData: null,
     /** The loaded template JSON, by stable name. Read by every template consumer. */
     templates: null,
+    /**
+     * Name -> row lookup over those same bundles, from `build/catalog.js`. Ask this rather than
+     * scanning `templates.everyFeat` by hand: it owns the matching rule and the index, and a row it
+     * returns is the SHARED object out of the session cache, so clone before writing to one.
+     */
+    catalog: null,
     /** `"y"`/`"n"` — whether this run is on the `_MODS` template branch. */
     modded: null,
 

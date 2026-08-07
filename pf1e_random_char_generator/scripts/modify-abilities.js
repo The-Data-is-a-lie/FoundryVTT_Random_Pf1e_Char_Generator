@@ -1,5 +1,6 @@
 import { createBuildContext } from './build/build-context.js';
 import { loadTemplates } from './build/template-loader.js';
+import { createCatalog } from './build/catalog.js';
 import { applyCoreAttributes } from './build/core-attributes.js';
 import { addClasses } from './build/classes.js';
 import { addRace } from './build/race.js';
@@ -112,6 +113,9 @@ export async function main(deps = {}) {
     modded = loaded.modded;
     ctx.templates = templates;
     ctx.modded = modded;
+    // Name -> row lookup over those same bundles. Built here rather than inside a stage because the
+    // indexes hang off the cached arrays and are worth sharing across every stage that asks.
+    ctx.catalog = createCatalog(templates);
 
     const characterData = readCharacterPayload();
     // The backend wraps any generation exception as {"error": "..."} (app.py process_input_values), so
