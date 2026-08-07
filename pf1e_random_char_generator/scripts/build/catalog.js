@@ -44,8 +44,11 @@ const indexes = new WeakMap();
  * Applied to the ROW, never to the query. A query of "Weapon Focus (Longsword)" matched nothing
  * before this module existed — the candidate keys never contain " (" — and normalising the query too
  * would quietly start resolving it to plain "Weapon Focus".
+ *
+ * Exported so `tools/compendium_census.macro.js` measures pack coverage with THIS rule rather than
+ * its own copy of it — a census that normalised differently would answer a question nobody asked.
  */
-const baseKey = (name) => name.split(' (')[0].toLowerCase();
+export const baseKey = (name) => name.split(' (')[0].toLowerCase();
 
 function indexFor(bundle) {
   const cached = indexes.get(bundle);
