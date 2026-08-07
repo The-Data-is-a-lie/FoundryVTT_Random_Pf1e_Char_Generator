@@ -47,6 +47,10 @@ import {
  *              golden diff into noise on the very changes that need to read it. Content-derived ids
  *              can collide where a sequence could not, so the harness asserts uniqueness to recover
  *              what the counter gave for free.
+ *   onStage() - MEASUREMENT only, and the one dep that cannot change output at all. Called with
+ *              (name, ms) after each stage below returns. Nothing in this repo timed anything, so
+ *              every claim about which stage is slow was an estimate; tools/bench.mjs supplies this
+ *              and prints the ranked table that replaces the guessing.
  *
  * PRODUCTION PASSES NOTHING. The defaults below are exactly what this file did before the seam
  * existed -- Math.random and 16 random characters -- so live output is unchanged and `kind`/`key`
@@ -59,7 +63,30 @@ export async function main(deps = {}) {
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       return [...Array(16)].map(() => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
     },
+    onStage = null,
   } = deps;
+
+  /**
+   * Run a stage, timing it only if somebody asked.
+   *
+   * Unmeasured -- which is every production run -- this is `fn()` and nothing else: one extra call
+   * frame per stage, no clock reads, no allocation.
+   *
+   * THE SYNC STAGES STAY SYNC. Five of the calls below are not awaited today, and wrapping them in
+   * an `async` helper would insert a microtask boundary where the code has none, changing ordering
+   * for the sake of a measurement. The thenable check hands a plain return value straight back, so
+   * only the stages that were already promises stay promises.
+   */
+  const step = onStage
+    ? (name, fn) => {
+        const started = performance.now();
+        const finish = () => onStage(name, performance.now() - started);
+        const out = fn();
+        if (out && typeof out.then === 'function') return out.then((value) => { finish(); return value; });
+        finish();
+        return out;
+      }
+    : (_name, fn) => fn();
 
   // Everything the stages share travels on this. See build/build-context.js.
   const ctx = createBuildContext({ rng, mintId });
@@ -80,7 +107,7 @@ export async function main(deps = {}) {
     // missing-file fallback, and the session cache -- see build/template-loader.js. `modded` is
     // reassigned from what it RETURNS, not from what it was asked for: the fallback downgrades a
     // modded run to the base bundles when the _MODS templates aren't installed.
-    const loaded = await loadTemplates({ modded });
+    const loaded = await step('load-templates', () => loadTemplates({ modded }));
     const templates = loaded.templates;
     modded = loaded.modded;
     ctx.templates = templates;
@@ -167,59 +194,59 @@ export async function main(deps = {}) {
 
     // ----- The stages, in order ----- //
 
-    applyCoreAttributes(ctx);
+    step('core-attributes', () => applyCoreAttributes(ctx));
 
     // The classes stage produces ctx.classFeatureBands and the class-features stage consumes it.
     // HAZARD 4: the bands carry live sort counters that addClassFeatures MUTATES WHILE ITERATING,
     // and that mutation is what orders items inside each class's band on the sheet. The bands are
     // not read-only; freezing or cloning them silently reshuffles the Class Features tab.
-    await addClasses(ctx);
-    addRace(ctx);
+    await step('classes', () => addClasses(ctx));
+    step('race', () => addRace(ctx));
     // Order within class features: addResourcePools removes the harvested duplicate of any ability
     // that became a pool, so it cannot run before the features it deduplicates against exist.
-    await addClassFeatures(ctx);
-    await addResourcePools(ctx);
+    await step('class-features', () => addClassFeatures(ctx));
+    await step('resource-pools', () => addResourcePools(ctx));
 
     // HAZARD 3, now dissolved: the Spheres talents used to be built from inside the feats function,
     // as a side effect of placing feats. The function was split at exactly this boundary instead of
     // the call being moved, so the sequence is unchanged and the dependency is visible.
-    await addFeats(ctx);
-    await addSphereTalents(ctx);
-    await addCastingTradition(ctx);
-    await addTraits(ctx);
+    await step('feats', () => addFeats(ctx));
+    await step('sphere-talents', () => addSphereTalents(ctx));
+    await step('casting-tradition', () => addCastingTradition(ctx));
+    await step('traits', () => addTraits(ctx));
 
-    await addPathOfWar(ctx);
-    await addPsionics(ctx);
+    await step('path-of-war', () => addPathOfWar(ctx));
+    await step('psionics', () => addPsionics(ctx));
 
-    addStatBuffs(ctx);
-    addCustomBuffs(ctx);
+    step('stat-buffs', () => addStatBuffs(ctx));
+    step('custom-buffs', () => addCustomBuffs(ctx));
 
     // Riders attach to the spell items the first call appends.
-    await addSpells(ctx);
-    await addSpellRiders(ctx);
+    await step('spells', () => addSpells(ctx));
+    await step('spell-riders', () => addSpellRiders(ctx));
 
     // HAZARD 2: everything below finds the weapon through findMainWeapon(ctx) and WARNS AND RETURNS
     // when there is none. Move equipment later and no conditional attaches to anything — the sheet
     // still builds, still looks complete, and simply has no toggles on it.
-    await addEquipment(ctx);
+    await step('equipment', () => addEquipment(ctx));
 
     // The two conditional attachers share one window: after the weapon exists, and before weapon
     // finishing clones the rollable attack twin, because the clone inherits what they attach.
-    await addAttackToggles(ctx);
-    await addSphereConditionals(ctx);
-    await addSpellBuffs(ctx);
+    await step('attack-toggles', () => addAttackToggles(ctx));
+    await step('sphere-conditionals', () => addSphereConditionals(ctx));
+    await step('spell-buffs', () => addSpellBuffs(ctx));
 
     // HAZARD 1: inside this stage the +N stamp renames the weapon AND its already-cloned attack twin
     // together, by matching their shared name. It is ordered last within the stage for that reason,
     // and the stage itself has to come after everything that attaches to the weapon.
-    await addWeaponFinishing(ctx);
+    await step('weapon-finishing', () => addWeaponFinishing(ctx));
     // Reads the weapon the equipment stage recorded, so it cannot move above it.
-    await addAmmo(ctx);
+    await step('ammo', () => addAmmo(ctx));
 
-    await addSkills(ctx);
+    await step('skills', () => addSkills(ctx));
 
     // Last, because it sweeps every item the stages built.
-    normalizeTraitShapes(ctx);
+    step('pf1-compat', () => normalizeTraitShapes(ctx));
 
     // ----- The output ----- //
 

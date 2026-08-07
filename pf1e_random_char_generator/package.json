@@ -4,6 +4,7 @@
   "type": "module",
   "description": "DEV-ONLY. Foundry never reads this file -- it reads module.json, whose esmodules entry makes the browser load scripts/main.js over HTTP as an ES module. This exists so bare `node` can import scripts/*.js as ESM without the temp-dir staging hack the old harness needed, and it is excluded from the release zip by release.ps1. See tickets 11 (test tooling) and 02 (golden harness).",
   "scripts": {
-    "test": "node --test tools/"
+    "test": "node --test tools/",
+    "bench": "node tools/bench.mjs"
   }
 }
