@@ -17,6 +17,11 @@
  * Nudging one step away first forces the event. Documents that already differ from the target skip
  * the nudge, so for them this is just the plain update.
  *
+ * THE NUDGE DOES NOT RENDER. It writes a value that is wrong by one and is corrected on the very
+ * next line, so painting it costs a full sheet re-render to show a number nobody should ever see.
+ * `render: false` suppresses only the UI pass — the change event still fires and pf1 still
+ * re-derives, which is the entire reason the nudge exists. The settling update renders normally.
+ *
  * @param {object} doc      the Document to update.
  * @param {string} path     the update path, e.g. `"system.level"`.
  * @param {number} value    the value it must end up at.
@@ -28,7 +33,7 @@
  */
 export async function forceRederive(doc, path, value, { current, extra } = {}) {
   if (Number(current) === value) {
-    await doc.update({ [path]: value > 1 ? value - 1 : value + 1 });
+    await doc.update({ [path]: value > 1 ? value - 1 : value + 1 }, { render: false });
   }
   await doc.update({ [path]: value, ...(extra || {}) });
 }

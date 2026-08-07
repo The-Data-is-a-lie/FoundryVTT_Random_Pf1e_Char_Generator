@@ -14,7 +14,7 @@ async function createCharacterFunc() {
 }
 
 // Grab data from localStorage and inject into charactersheet
-async function injectJsonDataIntoNewActor(actor) {
+async function injectJsonDataIntoNewActor(actor, folderId) {
   const parsedData = readExportPath();
 
   if (!parsedData) {
@@ -22,6 +22,15 @@ async function injectJsonDataIntoNewActor(actor) {
   }
 
   console.log("parsedData part1:", parsedData)
+
+  // The folder rides IN on this update rather than following it as a second one.
+  //
+  // Both export templates carry their own top-level `folder` key, so injecting the sheet overwrites
+  // whatever folder the actor was created in -- which is why a separate `actor.update({folder})`
+  // used to run afterwards to put it back. That second write lands on a fully populated actor and
+  // makes Foundry re-prepare all ~90-215 items to change one metadata field. Setting the key here
+  // makes one write do both jobs.
+  parsedData.folder = folderId;
 
   // Inject the parsed data into the actor to overwrite all Data
   try {
@@ -111,9 +120,7 @@ export async function createAndAssignActor() {
 
   const actor = await createCharacterFunc();
 
-  await injectJsonDataIntoNewActor(actor);
-
-  await actor.update({ folder: folderId });
+  await injectJsonDataIntoNewActor(actor, folderId);
 
   await adjustLevel(actor);
 
