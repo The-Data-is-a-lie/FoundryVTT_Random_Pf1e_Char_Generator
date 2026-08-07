@@ -24,6 +24,7 @@ import { appendJsonToTemplate, synthesizeFeatItem, assignSequentialSort } from '
 import { addFeatSeparator } from './feats.js';
 import { capitalizeManeuverType, resolveInitStat, maneuverInitAttr } from './initiation.js';
 import { powNorm } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 // The display half of the same defect (see powNorm in shared/text.js). Matching a corrupted compendium name is only half a fix: the
 // clone carries `doc.name` onto the sheet verbatim, so without this a warder's stance reads
@@ -78,7 +79,7 @@ function applyManeuverProgression(ctx) {
   }
   ctx.exportTemplate.flags = ctx.exportTemplate.flags || {};
   ctx.exportTemplate.flags['pf1-pow'] = { ...(ctx.exportTemplate.flags['pf1-pow'] || {}), maneuverAttr: initStat };
-  console.log(`Path of War: archetype maneuverProgression + maneuverAttr "${initStat}" set (Martial Training).`);
+  log.debug(`Path of War: archetype maneuverProgression + maneuverAttr "${initStat}" set (Martial Training).`);
 }
 
 // Each chosen stance becomes an inactive temporary buff under a "____ Path of War ____" buff
@@ -139,7 +140,7 @@ async function addStanceBuffs(ctx, stances, descs, matchedDocs) {
   const all = [divider, ...buffs];
   assignSequentialSort(all, 4000);   // divider 4000, stance buffs 4010+ (Buffs tab "temp" section)
   appendJsonToTemplate(all, ctx.exportTemplate, 'PathOfWarBuffs');
-  console.log(`Path of War: injected ${buffs.length} stance buff(s) under the buff divider.`);
+  log.debug(`Path of War: injected ${buffs.length} stance buff(s) under the buff divider.`);
 }
 
 // Pre-pf1-pow fallback: maneuvers/stances as plain feat items under a feats-section divider
@@ -172,7 +173,7 @@ async function legacyProcessPathOfWarFeats(ctx) {
   }
   assignSequentialSort(items, 4010);
   appendJsonToTemplate(items, ctx.exportTemplate, 'PathOfWar');
-  console.log(`Path of War (legacy): injected ${items.length} maneuver/stance feat items (${powSubType}).`);
+  log.debug(`Path of War (legacy): injected ${items.length} maneuver/stance feat items (${powSubType}).`);
 }
 
 // Native pf1-pow integration. Every known maneuver/stance becomes a pf1-pow.maneuver item —
@@ -258,7 +259,7 @@ export async function addPathOfWar(ctx) {
     applyManeuverProgression(ctx);
     await addStanceBuffs(ctx, stances, descs, matchedDocs);
 
-    console.log(`Path of War: injected ${items.length} native pf1-pow.maneuver items (${misses} synthesized).`);
+    log.debug(`Path of War: injected ${items.length} native pf1-pow.maneuver items (${misses} synthesized).`);
   } catch (error) {
     console.error('Error processing the Path of War section:', error);
   }

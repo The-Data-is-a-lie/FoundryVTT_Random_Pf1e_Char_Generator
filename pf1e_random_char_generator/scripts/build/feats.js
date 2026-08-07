@@ -32,6 +32,7 @@ import {
   applyFeatBuffOverlay,
 } from './items.js';
 import { capitalizeFirstLetter, toTitleCase } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null) {
   try {
@@ -44,7 +45,9 @@ async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType,
       return;
     }
 
-    console.log(`${dataType} list structure`, JSON.stringify(dataListChooseFrom, null, 2));
+    // The object, not JSON.stringify(..., null, 2): arguments are evaluated before the call, so a
+    // stringify here would still build the string with logging off. See shared/log.js.
+    log.debug(`${dataType} list structure`, dataListChooseFrom);
 
     // Consolidate all data from the nested list
     const allMatchedItems = [];
@@ -54,7 +57,7 @@ async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType,
     for (let idx = 0; idx < dataListChooseFrom.length; idx++) {
       const item = dataListChooseFrom[idx];
       // Logs all data being processed
-      console.log(`Processing ${dataType}:`, item);
+      log.debug(`Processing ${dataType}:`, item);
 
       const itemLc = String(item).toLowerCase();
       // Match on the name before the first parenthesis, case-insensitively, skipping mythic entries.
@@ -124,7 +127,7 @@ export async function addFeatSeparator(ctx, templateName, dataType, startingSort
     assignSequentialSort(wrappedData, startingSort);
 
     appendJsonToTemplate(wrappedData, ctx.exportTemplate, capitalizeFirstLetter(dataType));
-    console.log(`${dataType} data successfully added from ${templateName}`);
+    log.debug(`${dataType} data successfully added from ${templateName}`);
   } catch (error) {
     console.error(`Error processing ${dataType} from ${templateName}:`, error);
   }
@@ -240,6 +243,6 @@ export async function addTraits(ctx) {
       applyBuffData(ctx, item, entry);
       appendJsonToTemplate([item], ctx.exportTemplate, "Trait");
     }
-    console.log(`Flaws: added ${Object.keys(flawEffects).length} mechanical flaw trait(s).`);
+    log.debug(`Flaws: added ${Object.keys(flawEffects).length} mechanical flaw trait(s).`);
   }
 }

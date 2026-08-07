@@ -22,6 +22,7 @@ import { appendQualityDescription } from './equipment.js';
 import { subSpellTokens } from './spells.js';
 import { capitalizeManeuverType, maneuverInitAttr } from './initiation.js';
 import { capitalizeWords, powNorm } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 // ----- Path of War: maneuver conditionals on the main weapon ----- //
 // Each KNOWN strike/boost/counter that has a curated combat modifier (maneuver_changes.json)
@@ -90,7 +91,7 @@ async function addManeuverConditionals(ctx) {
       });
     }
     const added = attachConditionals(ctx, entries, { sub: subInit });
-    console.log(`Path of War: attached ${added} maneuver/stance conditional(s) to "${weapon.name}".`);
+    log.debug(`Path of War: attached ${added} maneuver/stance conditional(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching Path of War maneuver conditionals:', error);
   }
@@ -118,7 +119,7 @@ async function addFeatConditionals(ctx) {
       modifiers: entry && entry.modifiers,
       label: String((entry && entry.name) || '').split(':')[0],
     })));
-    console.log(`Feats: attached ${added} feat toggle conditional(s) to "${weapon.name}".`);
+    log.debug(`Feats: attached ${added} feat toggle conditional(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching feat conditionals:', error);
   }
@@ -169,7 +170,7 @@ async function addEnhancementEffects(ctx) {
         }
       }
       const added = attachConditionals(ctx, entries);
-      console.log(`Enhancements: attached ${added} weapon quality conditional(s) to "${weapon.name}".`);
+      log.debug(`Enhancements: attached ${added} weapon quality conditional(s) to "${weapon.name}".`);
     }
 
     // Armor/shield qualities -> changes + context notes + rules text on the armor/shield item
@@ -212,7 +213,7 @@ async function addItemAttackConditionals(ctx) {
       default: false,
       modifiers: [],
     })));
-    console.log(`Items: attached ${added} item activation toggle(s) to "${weapon.name}".`);
+    log.debug(`Items: attached ${added} item activation toggle(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching item attack conditionals:', error);
   }
@@ -267,7 +268,7 @@ async function addSpellConditionals(ctx) {
       entries.push({ action, name: condName, default: false, modifiers: mods, label: spellName });
     }
     const added = attachConditionals(ctx, entries);
-    console.log(`Spells: attached ${added} spell buff toggle(s) to "${weapon.name}".`);
+    log.debug(`Spells: attached ${added} spell buff toggle(s) to "${weapon.name}".`);
   } catch (error) {
     console.error('Error attaching spell conditionals:', error);
   }

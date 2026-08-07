@@ -20,6 +20,7 @@
  * line is now inlined at the bottom of this stage rather than kept as a function that only forwards.
  */
 import { skillsDict } from '../shared/skills-dict.js';
+import { log } from '../shared/log.js';
 
 async function convertSkillNames(characterData, skillsDict) {
   // The backend sends skill_ranks as a JSON string; parse it if it hasn't been already.
@@ -127,8 +128,8 @@ export async function addSkills(ctx) {
     ctx.exportTemplate.system.skills = collectedSkills;
   } catch (error) {
     console.error("Error in skills processing:", error);
-    console.log("characterData.skill_ranks:", characterData.skill_ranks);
-    console.log("skillsDict:", skillsDict);
-    console.log("baseSkill template:", ctx.templates.baseSkill);
+    log.debug("characterData.skill_ranks:", characterData.skill_ranks);
+    log.debug("skillsDict:", skillsDict);
+    log.debug("baseSkill template:", ctx.templates.baseSkill);
   }
 }

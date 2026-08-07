@@ -6,6 +6,7 @@
  * that a stage can leave the closure and change nothing.
  */
 import { extractItems, appendJsonToTemplate } from './items.js';
+import { log } from '../shared/log.js';
 
 export function addRace(ctx) {
   const race = ctx.characterData.chosen_race;
@@ -16,7 +17,7 @@ export function addRace(ctx) {
   const everyRacePathData = structuredClone(ctx.templates.everyRace);
   const items = extractItems(everyRacePathData);
   const matchedItems = items.filter(item => item.name === race);
-  console.log("matchedItems", matchedItems);
+  log.debug("matchedItems", matchedItems);
   if (!matchedItems) return;
 
   // "Class" is the log label, not a destination — see appendJsonToTemplate on why sectionKey has

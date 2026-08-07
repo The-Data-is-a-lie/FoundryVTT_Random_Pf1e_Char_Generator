@@ -1,4 +1,5 @@
 import { reloadTemplates } from './build/template-loader.js';
+import { setLogging } from './shared/log.js';
 
 export default class MyModule {
     static registerSettings() {
@@ -34,28 +35,48 @@ export default class MyModule {
         type: String,
         default: "http://localhost:5001/update_character_data",
       });
+
+      // The build narrates itself through ~100 log lines per character. CLIENT scope, default off:
+      // it is a debugging aid, and left on it both buries the console and stops devtools releasing
+      // every object it was handed. See shared/log.js.
+      game.settings.register("pf1e_random_char_generator", "verboseLogging", {
+        name: "Verbose logging (dev)",
+        hint: "Narrate every build step to the browser console. Off by default; warnings and errors are always shown either way.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: (value) => setLogging(value),
+      });
     }
 
     static init() {
       // Register the settings when the module is initialized
       this.registerSettings();
+      // Settings only take effect on change once registered, so seed the current value.
+      setLogging(game.settings.get("pf1e_random_char_generator", "verboseLogging"));
       this.exposeApi();
     }
 
     /**
      * Hang the module's console-facing helpers off its Foundry module entry.
      *
-     * Only one so far, and it exists because the template cache has a cost: templates are parsed
-     * once per session, so editing spell_buffs.json (or any other template) by hand and clicking
-     * Generate again no longer picks the change up. Whoever is authoring template data against a
-     * live world needs a way out that isn't reloading Foundry:
+     * `reloadTemplates` exists because the template cache has a cost: templates are parsed once per
+     * session, so editing spell_buffs.json (or any other template) by hand and clicking Generate
+     * again no longer picks the change up. Whoever is authoring template data against a live world
+     * needs a way out that isn't reloading Foundry:
      *
      *     game.modules.get('pf1e_random_char_generator').api.reloadTemplates()
+     *
+     * `setLogging` is the same setting as "Verbose logging" in the module config, reachable without
+     * leaving the console mid-investigation:
+     *
+     *     game.modules.get('pf1e_random_char_generator').api.setLogging(true)
      */
     static exposeApi() {
       const module = game.modules?.get('pf1e_random_char_generator');
       if (!module) return;
-      module.api = { ...(module.api || {}), reloadTemplates };
+      module.api = { ...(module.api || {}), reloadTemplates, setLogging };
     }
   }
 

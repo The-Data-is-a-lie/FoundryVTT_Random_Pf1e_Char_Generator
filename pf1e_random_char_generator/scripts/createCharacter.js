@@ -2,6 +2,7 @@ import { createBondedCreatures } from './createCompanions.js';
 import { capitalizeWords } from './shared/text.js';
 import { forceRederive } from './shared/foundry-doc.js';
 import { readExportPath, hasExportPath, readCharacterPayload } from './shared/storage.js';
+import { log } from './shared/log.js';
 
 async function createCharacterFunc() {
   const actor = await Actor.create({
@@ -9,7 +10,7 @@ async function createCharacterFunc() {
     type: "character",
   });
 
-  console.log("Actor created:", actor);
+  log.debug("Actor created:", actor);
   return actor;
 }
 
@@ -21,7 +22,7 @@ async function injectJsonDataIntoNewActor(actor, folderId) {
     throw new Error("No data found in localStorage under 'exportFoundryPath'");
   }
 
-  console.log("parsedData part1:", parsedData)
+  log.debug("parsedData part1:", parsedData)
 
   // The folder rides IN on this update rather than following it as a second one.
   //
@@ -35,7 +36,7 @@ async function injectJsonDataIntoNewActor(actor, folderId) {
   // Inject the parsed data into the actor to overwrite all Data
   try {
     await actor.update(parsedData);
-    console.log("Actor data successfully overwritten with exportFoundryPath:", parsedData);
+    log.debug("Actor data successfully overwritten with exportFoundryPath:", parsedData);
   } catch (error) {
     console.error("Error updating actor with parsed data:", error);
   }
@@ -52,9 +53,9 @@ async function generateRandomizedCharacterFolder() {
       type: "Actor", 
       parent: null,  
     });
-    console.log("Created new folder:", folder);
+    log.debug("Created new folder:", folder);
   } else {
-    console.log("Found existing folder:", folder);
+    log.debug("Found existing folder:", folder);
   }
 
   return folder.id;
@@ -62,10 +63,10 @@ async function generateRandomizedCharacterFolder() {
 
 async function adjustLevel(actor) {
   const parsedData = readCharacterPayload();
-  console.log("actor:", actor)
+  log.debug("actor:", actor)
   if (parsedData) {
     try {
-      console.log("this is the adjustLevel function", parsedData);
+      log.debug("this is the adjustLevel function", parsedData);
 
       // Extract c_class and level with proper error handling
       if (!parsedData.c_class) {
@@ -84,7 +85,7 @@ async function adjustLevel(actor) {
         const c_class = entry.display || capitalizeWords(entry.name || '');
         const target = Number(entry.level);
 
-        console.log("Extracted c_class and level:", c_class, target);
+        log.debug("Extracted c_class and level:", c_class, target);
 
         // Find the class item in the actor's items
         const classItem = actor.items.find(item => item.type === 'class' && item.name === c_class);
@@ -93,7 +94,7 @@ async function adjustLevel(actor) {
           // max-level character this update is a same-value no-op Foundry fires no change event
           // for — see forceRederive in shared/foundry-doc.js.
           await forceRederive(classItem, 'system.level', target, { current: classItem.system.level });
-          console.log(`Updated ${c_class} level to ${target}`);
+          log.debug(`Updated ${c_class} level to ${target}`);
         } else {
           console.error(`Class item ${c_class} not found in actor's items.`);
         }
@@ -124,7 +125,7 @@ export async function createAndAssignActor() {
 
   await adjustLevel(actor);
 
-  console.log("Actor successfully created and added to the 'Random Characters' folder.");
+  log.debug("Actor successfully created and added to the 'Random Characters' folder.");
 
   // §8 D1: a bonded creature is its own Actor, never a block on its master's sheet. Runs last and
   // never throws upward -- a companion that fails to build must not cost the character that was

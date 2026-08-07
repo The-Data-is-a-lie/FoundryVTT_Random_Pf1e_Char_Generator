@@ -1,3 +1,4 @@
+import { log } from '../shared/log.js';
 /**
  * The item-building layer every stage sits on.
  *
@@ -37,7 +38,7 @@ export function appendJsonToTemplate(collectedItems, exportTemplate, sectionKey)
   // Append new items to the existing array under the sectionKey
   exportTemplate.items = [...exportTemplate.items, ...collectedItems];
 
-  console.log(`Appended ${collectedItems.length} items to ${sectionKey} in exportTemplate.`);
+  log.debug(`Appended ${collectedItems.length} items to ${sectionKey} in exportTemplate.`);
 }
 
 /**

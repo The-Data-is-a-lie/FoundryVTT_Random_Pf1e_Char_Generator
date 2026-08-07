@@ -37,6 +37,7 @@ import { attachConditionals } from './conditional-engine.js';
 import { resolveInitStat } from './initiation.js';
 import { spellCasterLevelNum } from './spells.js';
 import { capitalizeWords, sphereNorm } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 // camelCase a display sphere name for the flags.pf1spheres.sphere fallback when a talent isn't in the
 // compendium (e.g. "Dual Wielding" -> "dualWielding", "Fallen Fey" -> "fallenFey", "Lancer" -> "lancer").
@@ -194,7 +195,7 @@ async function processSpheres(ctx, magicItems, combatItems, tradition, manaPool,
 
   assignSequentialSort(built, startingSort);
   appendJsonToTemplate(built, ctx.exportTemplate, "Feat");
-  console.log(`Spheres: injected ${built.length} item(s) (${misses} synthesized).`);
+  log.debug(`Spheres: injected ${built.length} item(s) (${misses} synthesized).`);
 }
 
 // ----- Spheres of Power / Might: talent conditionals + a Destructive Blast ----- //
@@ -315,7 +316,7 @@ async function addDestructiveBlastAttack(ctx, subSpheres) {
       }],
     }];
     appendJsonToTemplate([blast], ctx.exportTemplate, 'Attack');
-    console.log('Spheres: added Destructive Blast attack item.');
+    log.debug('Spheres: added Destructive Blast attack item.');
   } catch (error) {
     console.error('Error adding Destructive Blast:', error);
   }
@@ -374,7 +375,7 @@ async function addSphereTalentConditionals(ctx, subSpheres) {
     collect(combat, combatByNorm, false);
     collect(magic, magicByNorm, true);
     const added = attachConditionals(ctx, entries, { sub: subSpheres });
-    console.log(`Spheres: attached ${added} talent conditional(s).`);
+    log.debug(`Spheres: attached ${added} talent conditional(s).`);
   } catch (error) {
     console.error('Error attaching sphere talent conditionals:', error);
   }
@@ -446,7 +447,7 @@ async function addSphereAuraBuffs(ctx, subSpheres) {
     const all = [divider, ...buffs];
     assignSequentialSort(all, 4300);
     appendJsonToTemplate(all, ctx.exportTemplate, 'SphereAuraBuffs');
-    console.log(`Spheres: injected ${buffs.length} affects-others buff(s) tagged (${tag}).`);
+    log.debug(`Spheres: injected ${buffs.length} affects-others buff(s) tagged (${tag}).`);
   } catch (error) {
     console.error('Error adding sphere aura buffs:', error);
   }
@@ -535,7 +536,7 @@ export async function addSpellBuffs(ctx) {
     if (!count) return;
     assignSequentialSort(all, 4400);
     appendJsonToTemplate(all, ctx.exportTemplate, 'SpellBuffs');
-    console.log(`Spells: injected ${count} distributable spell buff(s) tagged (${tag}), grouped by duration.`);
+    log.debug(`Spells: injected ${count} distributable spell buff(s) tagged (${tag}), grouped by duration.`);
   } catch (error) {
     console.error('Error adding spell buffs:', error);
   }

@@ -23,6 +23,7 @@
  */
 import { appendJsonToTemplate, applyBuffData } from './items.js';
 import { capitalizeWords } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 // One-line special-abilities summary on the item description. Also reused to rebuild the rollable
 // attack twin's stripped description (createScalingAttackItem): pf1 bakes an item's description
@@ -126,7 +127,8 @@ async function processItem(ctx, itemType, templateName, itemName, enhancementLis
       return defaultItemNameFlag;  // Ensure the flag is returned
     }
 
-    console.log(`${itemType} data structure`, JSON.stringify(itemName, null, 2));
+    // The object, not a pre-built string -- see shared/log.js.
+    log.debug(`${itemType} data structure`, itemName);
 
     // Find the matching item from the items data: exact case-insensitive first, then ignoring a
     // parenthesised compendium suffix ("Belt of Physical Might +2 (Str & Dex)") the backend's
@@ -135,7 +137,7 @@ async function processItem(ctx, itemType, templateName, itemName, enhancementLis
     let matchedItem = items.find(r => r.name.toLowerCase() === itemNameLc);
     if (!matchedItem) {
       matchedItem = items.find(r => r.name.split(' (')[0].toLowerCase() === itemNameLc);
-      if (matchedItem) console.log(`${itemType} "${itemName}" matched compendium variant "${matchedItem.name}".`);
+      if (matchedItem) log.debug(`${itemType} "${itemName}" matched compendium variant "${matchedItem.name}".`);
     }
     // Clone the ONE matched row rather than the bundle: every_item.json is 25 MB and this runs
     // once per worn item. Everything below stamps proficiency, enhancements and buff overlays onto
@@ -172,7 +174,7 @@ async function processItem(ctx, itemType, templateName, itemName, enhancementLis
           appendEnhancementsToDescription(defaultMatchedItem, enhancementList);
           collectedByType(ctx)[itemType] = [defaultMatchedItem];
           appendJsonToTemplate([defaultMatchedItem], exportTemplate, itemType);
-          console.log(`Successfully added default ${itemType} data to the export template.`);
+          log.debug(`Successfully added default ${itemType} data to the export template.`);
 
           // Set the flag to 1 to avoid adding default again
           return 1; // Set flag here to indicate the default item has been added
@@ -192,7 +194,7 @@ async function processItem(ctx, itemType, templateName, itemName, enhancementLis
     if (itemType === "Weapon") matchedItem.system.showInCombat = false;
 
     // Append enhancements to the item (only once)
-    console.log(matchedItem);
+    log.debug(matchedItem);
     appendEnhancementsToDescription(matchedItem, enhancementList);
 
     // Overlay backend-parsed changes/context notes (deduped against what the compendium item
@@ -205,7 +207,7 @@ async function processItem(ctx, itemType, templateName, itemName, enhancementLis
     appendJsonToTemplate([matchedItem], exportTemplate, itemType);
 
 
-    console.log(`Successfully added ${itemType} data to the export template.`);
+    log.debug(`Successfully added ${itemType} data to the export template.`);
     return defaultItemNameFlag;  // Ensure the flag is returned
 
   } catch (error) {
@@ -286,7 +288,7 @@ async function select_random_ammo(ctx, ammo_type) {
   const randomAmmo = structuredClone(filteredAmmo[Math.floor(ctx.rng() * filteredAmmo.length)]);
 
   // Log the selected ammo
-  console.log("Selected random ammo:", randomAmmo);
+  log.debug("Selected random ammo:", randomAmmo);
 
   // Perform any additional actions with the selected ammo
   appendJsonToTemplate([randomAmmo], ctx.exportTemplate, "Ammo");
@@ -295,16 +297,16 @@ async function select_random_ammo(ctx, ammo_type) {
 export async function addAmmo(ctx) {
   const collectedWeapons = collectedByType(ctx).Weapon;
 
-    console.log("collectedWeapons:", collectedWeapons[0].system.ammo.type);
+    log.debug("collectedWeapons:", collectedWeapons[0].system.ammo.type);
   // Check if collectedWeapons, its system property, and ammo exist
   if (!collectedWeapons[0] || !collectedWeapons[0].system || !collectedWeapons[0].system.ammo || !collectedWeapons[0].system.ammo.type) {
-    console.log("No ammo found or ammo type is missing. Ending function.");
+    log.debug("No ammo found or ammo type is missing. Ending function.");
     return; // End the function
   }
 
   // Access the ammo type
   const ammo_type = collectedWeapons[0].system.ammo.type;
-  console.log("Ammo type:", ammo_type);
+  log.debug("Ammo type:", ammo_type);
 
   // Continue with the rest of the function
   select_random_ammo(ctx, ammo_type);

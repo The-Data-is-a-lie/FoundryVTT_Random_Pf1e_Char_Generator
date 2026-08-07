@@ -24,6 +24,7 @@ import { appendJsonToTemplate, appendFeatDivider } from './items.js';
 import { CF_CLASS_BAND_BASE, CF_CLASS_BAND_STEP } from './classes.js';
 import { characterHasNaturalArmor } from './natural-armor.js';
 import { toTitleCase, stableStringify, convertToStringSimple } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 // Display metadata for the backend's class-feature selection buckets (class_features payload,
 // {bucket: {choice: data}}). `ladder: true` = a multi-pick talent ladder that gets its OWN
@@ -101,7 +102,7 @@ export async function addClassFeatures(ctx) {
   const baseFeatTemplate = ctx.templates.baseFeat;
   const classFeatures = characterData.class_features;
 
-  console.log("****************** starting class features ******************");
+  log.debug("****************** starting class features ******************");
   if (!baseFeatTemplate || typeof baseFeatTemplate !== 'object' || !classFeatures || typeof classFeatures !== 'object') {
       console.error("Invalid input data.");
       return;
@@ -280,7 +281,7 @@ export async function addResourcePools(ctx) {
     });
 
     appendJsonToTemplate(clones, exportTemplate, 'Feature');
-    console.log(`Resource pools: added ${clones.length} pool(s) [${[...new Set(wanted)].join(', ')}], removed ${removed} duplicate class feature(s).`);
+    log.debug(`Resource pools: added ${clones.length} pool(s) [${[...new Set(wanted)].join(', ')}], removed ${removed} duplicate class feature(s).`);
   } catch (error) {
     console.error('Error adding resource pools:', error);
   }

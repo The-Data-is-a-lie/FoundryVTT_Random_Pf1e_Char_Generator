@@ -11,6 +11,7 @@
  */
 import { appendJsonToTemplate, appendFeatDivider, synthesizeFeatItem, assignSequentialSort } from './items.js';
 import { capitalizeWords, powNorm } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 // Psionics is the Path of War shape one more time: the backend picks the powers and computes the
 // numbers, a third-party module (pf1-psionics) renders them.
@@ -97,7 +98,7 @@ function configureManifesters(ctx, books) {
       autoMaxPowerLevel: true,
     });
     slotFor.set(book.name, slot);
-    console.log(`Manifester ${slot} <- ${display} (${book.caster_type}, ${book.manifesting_stat}, ML ${book.manifester_level}, ${book.pp_per_day} pp)`);
+    log.debug(`Manifester ${slot} <- ${display} (${book.caster_type}, ${book.manifesting_stat}, ML ${book.manifester_level}, ${book.pp_per_day} pp)`);
   }
 
   const pp = books.slice(0, MANIFESTER_SLOTS.length)
@@ -191,7 +192,7 @@ async function legacyProcessPsionicsFeats(ctx, books) {
   }
   assignSequentialSort(items, 4210);
   appendJsonToTemplate(items, ctx.exportTemplate, 'Psionics');
-  console.log(`Psionics (legacy): injected ${items.length} power/pool feat items.`);
+  log.debug(`Psionics (legacy): injected ${items.length} power/pool feat items.`);
 }
 
 export async function addPsionics(ctx) {
@@ -252,7 +253,7 @@ export async function addPsionics(ctx) {
 
     assignSequentialSort(items, 4210);
     appendJsonToTemplate(items, ctx.exportTemplate, 'Psionics');
-    console.log(`Psionics: ${books.length} manifester book(s), ${items.length} native pf1-psionics.power items (${misses} synthesized).`);
+    log.debug(`Psionics: ${books.length} manifester book(s), ${items.length} native pf1-psionics.power items (${misses} synthesized).`);
   } catch (error) {
     console.error('Error processing the Psionics section:', error);
   }

@@ -20,10 +20,11 @@ import { DIVINE_CASTERS } from '../shared/class-roster.js';
 import { appendJsonToTemplate } from './items.js';
 import { attachConditionals } from './conditional-engine.js';
 import { capitalizeWords } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 async function determineSpellType(ctx, className = ctx.upperCaseClass){
   let type = 'prepared';
-  console.log("determineSpellType for class ", className);
+  log.debug("determineSpellType for class ", className);
 
   const classUpper = String(className).toUpperCase();
   // Convert the list to uppercase for a case-insensitive check
@@ -31,18 +32,18 @@ async function determineSpellType(ctx, className = ctx.upperCaseClass){
 
   // Check if the class is in the list (case insensitive)
   if (prepared_caster_list_upper.includes(classUpper)) {
-    console.log("Prepared Casters");
+    log.debug("Prepared Casters");
     type = "prepared";
   }
   // // Arcanist
   else if (classUpper === "ARCANIST") {
-    console.log("Arcanist caster -> hybrid");
+    log.debug("Arcanist caster -> hybrid");
     // need to name it type hybrid (instead of Arcanist for some reason)
     type = "hybrid";
   }
   // Spontaneous casters
   else {
-    console.log("Spontaneous Casters");
+    log.debug("Spontaneous Casters");
     type = "spontaneous";
   }
 
@@ -72,7 +73,7 @@ async function configureSpellbook(ctx, slot, book) {
   pfBook.kind = isDivine ? 'divine' : 'arcane';
   pfBook.arcaneSpellFailure = !isDivine;
   pfBook.spellPreparationMode = await determineSpellType(ctx, display);
-  console.log(`Spellbook ${slot} <- ${display} (${pfBook.casterType}, ${pfBook.ability}, ${pfBook.kind}, ${pfBook.spellPreparationMode})`);
+  log.debug(`Spellbook ${slot} <- ${display} (${pfBook.casterType}, ${pfBook.ability}, ${pfBook.kind}, ${pfBook.spellPreparationMode})`);
 }
 
 
@@ -82,10 +83,10 @@ async function assignSpellTypes(ctx, type) {
     const primarySpellbook = exportTemplate.system.attributes.spells.spellbooks.primary;
 
     if (primarySpellbook) {
-      console.log('Before change:', primarySpellbook.spellPreparationMode);  // Log current value
+      log.debug('Before change:', primarySpellbook.spellPreparationMode);  // Log current value
       primarySpellbook.spellPreparationMode = type;
       // primarySpellbook.arcaneSpellFailure = false; // Set arcaneSpellFailure to false
-      console.log('After change:', primarySpellbook.spellPreparationMode);  // Log updated value
+      log.debug('After change:', primarySpellbook.spellPreparationMode);  // Log updated value
     } else {
       console.error('Primary spellbook not found in the exportTemplate.');
     }
@@ -115,7 +116,8 @@ async function processSpell(ctx, spellListChooseFrom, slot = 'primary', book = n
       return;
     }
 
-    console.log("spell list structure", JSON.stringify(spellListChooseFrom, null, 2));
+    // The object, not a pre-built string -- see shared/log.js.
+    log.debug("spell list structure", spellListChooseFrom);
 
     // Determine the spellbook's casting type up front so we know whether to mark spells prepared.
     const type = await determineSpellType(ctx, book ? (book.display || capitalizeWords(book.name || '')) : ctx.upperCaseClass);
@@ -299,7 +301,7 @@ export async function addSpellRiders(ctx) {
         }
       }
     }
-    console.log(`Spells: attached ${added} spell rider(s) across ${Object.keys(spellRiders).length} spell(s).`);
+    log.debug(`Spells: attached ${added} spell rider(s) across ${Object.keys(spellRiders).length} spell(s).`);
   } catch (error) {
     console.error('Error attaching spell riders:', error);
   }

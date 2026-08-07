@@ -1,3 +1,4 @@
+import { log } from '../shared/log.js';
 /**
  * Loading the module's template JSON — the paths, the modded/base swap, and the session cache.
  *
@@ -188,5 +189,5 @@ export async function loadTemplates({ modded }) {
  */
 export function reloadTemplates() {
   cache.clear();
-  console.log('Character Generator: template cache cleared — the next character re-reads from disk.');
+  log.debug('Character Generator: template cache cleared — the next character re-reads from disk.');
 }

@@ -13,6 +13,7 @@
  * surface (build-context ticket 05): the harness stubs them instead.
  */
 import { DIVINE_CASTERS } from '../shared/class-roster.js';
+import { log } from '../shared/log.js';
 
 /**
  * `attributePath[type] = variable`, and nothing else.
@@ -24,7 +25,7 @@ import { DIVINE_CASTERS } from '../shared/class-roster.js';
  */
 function updateAttribute(variable, attributePath, type) {
   attributePath[type] = variable;
-  console.log(attributePath[type]);
+  log.debug(attributePath[type]);
 }
 
 export function applyCoreAttributes(ctx) {
@@ -119,7 +120,7 @@ export function applyCoreAttributes(ctx) {
   updateAttribute(characterData.main_stat, exportTemplate.system.attributes.spells.spellbooks.primary, 'ability');
   updateAttribute(characterData.main_stat, exportTemplate.system.attributes.spells.spellbooks.secondary, 'ability');
 
-  console.log("this is the casting level", characterData.casting_level_str_foundry);
+  log.debug("this is the casting level", characterData.casting_level_str_foundry);
   //  Arcane spell failure
   // Check if the class (in lower case) is in the list
   if (DIVINE_CASTERS.some(cls => cls.toLowerCase() === characterData.c_class.toLowerCase())) {

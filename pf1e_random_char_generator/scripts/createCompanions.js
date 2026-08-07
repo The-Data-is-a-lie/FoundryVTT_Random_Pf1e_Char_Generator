@@ -32,6 +32,7 @@
 import { skillsDict } from './shared/skills-dict.js';
 import { forceRederive } from './shared/foundry-doc.js';
 import { buildSectionItems } from './companion-sections.js';
+import { log } from './shared/log.js';
 
 // D1: the body comes from pf-content. Actors there are type `character`, NOT `npc` -- which is also
 // how a companion inherits the world's character health config, where the house maximised-HP rule
@@ -215,7 +216,7 @@ async function reconcile(actor, stats) {
 
   if (Object.keys(corrections).length) {
     await actor.update(corrections);
-    console.log(`Companion ${actor.name}: reconciled ${notes.join(', ')}.`);
+    log.debug(`Companion ${actor.name}: reconciled ${notes.join(', ')}.`);
   }
 
 }
@@ -408,7 +409,7 @@ export async function createBondedCreatures(payload, folderId) {
   for (const entry of entries) {
     if (!entry?.species || !entry?.stats) {
       summary.absent += 1;
-      console.log(`Companion: ${entry?.grantor ?? 'unknown'} granted nothing (${entry?.outcome ?? 'no outcome'}).`);
+      log.debug(`Companion: ${entry?.grantor ?? 'unknown'} granted nothing (${entry?.outcome ?? 'no outcome'}).`);
       continue;
     }
     try {
@@ -418,7 +419,7 @@ export async function createBondedCreatures(payload, folderId) {
         console.warn(`Companion: no pf-content Actor named "${entry.species}" — built from payload ` +
                      `numbers alone (no art, no natural attacks).`);
       }
-      console.log(`Companion created: ${actor.name} (${entry.type}, ${entry.stats.hd} HD).`);
+      log.debug(`Companion created: ${actor.name} (${entry.type}, ${entry.stats.hd} HD).`);
     } catch (error) {
       summary.failed += 1;
       console.error(`Companion: failed to create ${entry.species}:`, error);

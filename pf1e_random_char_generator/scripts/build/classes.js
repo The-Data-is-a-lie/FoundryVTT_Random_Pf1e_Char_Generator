@@ -23,6 +23,7 @@
 import { CLASS_ITEM_ORDER } from '../shared/class-roster.js';
 import { extractItems, appendJsonToTemplate } from './items.js';
 import { capitalizeWords, convertToStringSimple } from '../shared/text.js';
+import { log } from '../shared/log.js';
 
 /**
  * Per-class "Class Features (Class)" bands on the Class Features tab, in classEntries (level-desc)
@@ -57,11 +58,11 @@ function updateLevel(items, targetClass, newLevel) {
     // console.log('Processing item:', item);
 
     if (item.name === targetClass) {
-      console.log('Found target class:', targetClass);
+      log.debug('Found target class:', targetClass);
       if (item.system && typeof item.system.level === 'number') {
-        console.log(`Current level: ${item.system.level}, Updating to: ${newLevel}`);
+        log.debug(`Current level: ${item.system.level}, Updating to: ${newLevel}`);
         item.system.level = newLevel;
-        console.log(`Updated "level" for class: ${targetClass} to ${newLevel}`);
+        log.debug(`Updated "level" for class: ${targetClass} to ${newLevel}`);
         found = true;
         break;
       } else {
@@ -99,7 +100,7 @@ function collectItems(items, targetClass, classList) {
     }
   }
 
-  console.log(`Collected ${results.length} items for ${targetClass}`);
+  log.debug(`Collected ${results.length} items for ${targetClass}`);
   return results;  // Ensure we're returning the updated results array
 }
 
@@ -148,12 +149,12 @@ function processClass(ctx, targetClass, newLevel, classList) {
 
 // ------ Archetypes ------ //
 async function processArchetype(ctx, targetArchetype, sortValue = null) {
-  console.log(typeof targetArchetype);
+  log.debug(typeof targetArchetype);
     // If the targetArchetype is a string, try parsing it
     if (typeof targetArchetype === 'string') {
       try {
           targetArchetype = JSON.parse(targetArchetype);
-          console.log("Parsed archetype_info:", targetArchetype);
+          log.debug("Parsed archetype_info:", targetArchetype);
       } catch (error) {
           console.error("Error parsing archetype_info:", error);
           return;
@@ -162,7 +163,7 @@ async function processArchetype(ctx, targetArchetype, sortValue = null) {
 
   // No archetype for this class (backend sends {} when a class has none) — nothing to append.
   if (!targetArchetype || typeof targetArchetype !== 'object' || !Object.keys(targetArchetype).length) {
-      console.log("processArchetype: no archetype to add:", targetArchetype);
+      log.debug("processArchetype: no archetype to add:", targetArchetype);
       return;
   }
 
@@ -187,8 +188,8 @@ async function processArchetype(ctx, targetArchetype, sortValue = null) {
   archetypeInfo = structuredClone(archetypeInfo);
   archetypeInfo._id = ctx.newId('archetype', archetypeInfo);
 
-  console.log("archetype pre trial", archetypeInfo);
-  console.log("targetArchetype", targetArchetype);
+  log.debug("archetype pre trial", archetypeInfo);
+  log.debug("targetArchetype", targetArchetype);
 
   // Extract the first key from targetArchetype (e.g., "Cold Iron Warden")
   const archetypeKey = Object.keys(targetArchetype)[0];

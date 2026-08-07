@@ -12,6 +12,7 @@
  * an Amulet of Natural Armor in the equipment, or any backend buff-dict change targeting 'nac'.
  */
 import { extractItems } from './items.js';
+import { log } from '../shared/log.js';
 
 /**
  * Memoized PER BUILD, not per session: the answer is a property of one character, and the module
@@ -58,6 +59,6 @@ export function characterHasNaturalArmor(ctx) {
       (v) => Array.isArray(v?.changes) && v.changes.some((c) => c && c.target === 'nac')));
   }
   cache.set(ctx, has);
-  console.log(`Natural armor detected: ${has} — Natural AC section ${has ? 'kept' : 'omitted'}.`);
+  log.debug(`Natural armor detected: ${has} — Natural AC section ${has ? 'kept' : 'omitted'}.`);
   return has;
 }

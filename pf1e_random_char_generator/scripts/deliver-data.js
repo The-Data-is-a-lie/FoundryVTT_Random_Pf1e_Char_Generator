@@ -1,8 +1,9 @@
 import { writeCharacterPayload } from './shared/storage.js';
+import { log } from './shared/log.js';
 
 export async function sendDataToServer(data, location) {
     // Log the data before sending it
-    console.log("1st data send check: ", data);
+    log.debug("1st data send check: ", data);
 
     // NOTE: this is awaited fully (previously it was fire-and-forget). The returned character is
     // written to localStorage BEFORE this resolves, so the caller can safely build the actor from
@@ -18,7 +19,7 @@ export async function sendDataToServer(data, location) {
         });
 
         // Log the response status before processing
-        console.log("Response status: ", response.status);
+        log.debug("Response status: ", response.status);
         if (!response.ok) {
             console.error('Failed to send data:', response.status, response.statusText);
             throw new Error(`Network response was not ok (${response.status})`);
@@ -26,7 +27,7 @@ export async function sendDataToServer(data, location) {
 
         const responseData = await response.json();
         // Log the response data returned from the server
-        console.log("2nd data send check:", responseData);
+        log.debug("2nd data send check:", responseData);
         writeCharacterPayload(responseData);
         return responseData;
     } catch (error) {

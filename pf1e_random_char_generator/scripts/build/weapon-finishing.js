@@ -21,6 +21,7 @@ import { appendJsonToTemplate } from './items.js';
 import { findMainWeapon } from './weapon.js';
 import { appendEnhancementsToDescription } from './equipment.js';
 import { characterHasNaturalArmor } from './natural-armor.js';
+import { log } from '../shared/log.js';
 
 // ----- Size-based damage scaling ----- //
 // Every sheet gets a `sizefordamage` feature whose charge value (default 0) drives the
@@ -53,7 +54,7 @@ async function addHouseFeatures(ctx) {
       clones.push(clone);
     }
     appendJsonToTemplate(clones, ctx.exportTemplate, 'Feature');
-    console.log(`Added ${clones.length} house tracker feature(s) (Variable Modifiers / Natural AC / Death HP groups).`);
+    log.debug(`Added ${clones.length} house tracker feature(s) (Variable Modifiers / Natural AC / Death HP groups).`);
   } catch (error) {
     console.error('Error adding house tracker features:', error);
   }
@@ -66,7 +67,7 @@ async function addSizeForDamageFeature(ctx) {
     // Pin it into the "Variable Modifiers" group (template actor slot), just under its divider.
     feature.sort = 121680;
     appendJsonToTemplate([feature], ctx.exportTemplate, 'Feature');
-    console.log(`Added sizefordamage feature (sort ${feature.sort}, Variable Modifiers group).`);
+    log.debug(`Added sizefordamage feature (sort ${feature.sort}, Variable Modifiers group).`);
   } catch (error) {
     console.error('Error adding sizefordamage feature:', error);
   }
@@ -124,7 +125,7 @@ async function createScalingAttackItem(ctx) {
     attack.system.scriptCalls = [await freshScript()];
 
     appendJsonToTemplate([attack], ctx.exportTemplate, 'Attack');
-    console.log(`Scaling: weapon "${weapon.name}" + attack item set up (Attack + Don't Touch + Scaling Weapon Damage).`);
+    log.debug(`Scaling: weapon "${weapon.name}" + attack item set up (Attack + Don't Touch + Scaling Weapon Damage).`);
   } catch (error) {
     console.error('Error in scaling weapon/attack setup:', error);
   }
@@ -168,7 +169,7 @@ async function applyEnhancementBonuses(ctx) {
           Number(ctx.characterData.shield_enhancement_bonus) || 0,
           ctx.characterData.shield_enhancement_chosen_list, false);
 
-    console.log(`Enhancement bonuses: stamped +N on ${stamped} item(s).`);
+    log.debug(`Enhancement bonuses: stamped +N on ${stamped} item(s).`);
   } catch (error) {
     console.error('Error applying enhancement bonuses:', error);
   }

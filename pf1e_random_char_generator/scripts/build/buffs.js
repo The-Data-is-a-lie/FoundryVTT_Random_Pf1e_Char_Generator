@@ -7,6 +7,7 @@
  */
 import { appendJsonToTemplate } from './items.js';
 import { readCustomBuffsFlag } from '../shared/storage.js';
+import { log } from '../shared/log.js';
 
 /**
  * One stat-tracker buff item, built from the `inherents` template and named for what it tracks.
@@ -24,7 +25,7 @@ function addStatBuff(ctx, templateName, stats, label) {
   let wrappedData = Array.isArray(data) ? data : [data];
 
   wrappedData = changeStatBuff(ctx, wrappedData, stats, label);
-  console.log("this is the wrapped data", wrappedData);
+  log.debug("this is the wrapped data", wrappedData);
 
   appendJsonToTemplate(wrappedData, ctx.exportTemplate, label);
 }
@@ -124,5 +125,5 @@ export function addCustomBuffs(ctx) {
   }
 
   appendJsonToTemplate(result, ctx.exportTemplate, 'CustomBuffs');
-  console.log(`Added ${result.length} custom buffs (mental=${mentalBuff}, acroFlat=${acroFlat}).`);
+  log.debug(`Added ${result.length} custom buffs (mental=${mentalBuff}, acroFlat=${acroFlat}).`);
 }

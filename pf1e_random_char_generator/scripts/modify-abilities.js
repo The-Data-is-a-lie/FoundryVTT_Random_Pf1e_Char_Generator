@@ -22,6 +22,7 @@ import {
   readCharacterPayload,
   writeExportPath,
 } from './shared/storage.js';
+import { log } from './shared/log.js';
 
 /**
  * Build the pf1 actor payload from the generated character data.
@@ -102,7 +103,7 @@ export async function main(deps = {}) {
 
     var savedData = readDeliverData();
     var modded = savedData.modded_char_sheet; // y or n
-    console.log("Is it modded????????????", modded);
+    log.debug("Is it modded????????????", modded);
 
     // Templates, by stable name. The loader owns the paths, the modded/base swap and its
     // missing-file fallback, and the session cache -- see build/template-loader.js. `modded` is
@@ -254,16 +255,16 @@ export async function main(deps = {}) {
 
     // ----- The output ----- //
 
-    console.log("About to write exportFoundryPath to localStorage");
-    console.log("exportTemplate exists:", !!exportTemplate);
-    console.log("exportTemplate:", exportTemplate);
+    log.debug("About to write exportFoundryPath to localStorage");
+    log.debug("exportTemplate exists:", !!exportTemplate);
+    log.debug("exportTemplate:", exportTemplate);
 
     if (exportTemplate) {
       writeExportPath(exportTemplate);
-      console.log("Successfully wrote exportFoundryPath to localStorage");
+      log.debug("Successfully wrote exportFoundryPath to localStorage");
     } else {
       console.error("exportTemplate is undefined! Cannot write to localStorage.");
-      console.log("Available template names:", Object.keys(templates));
+      log.debug("Available template names:", Object.keys(templates));
     }
 
     if (!exportTemplate) return false;

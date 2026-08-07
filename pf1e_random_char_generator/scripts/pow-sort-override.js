@@ -1,3 +1,4 @@
+import { log } from './shared/log.js';
 // Re-registers pf1-pow's `sortManeuvers` Handlebars helper so the Path of War tab lists each
 // level block's maneuvers grouped by discipline and, within a discipline, ordered
 // Strike -> Boost -> Counter -> Stance (then name). pf1-pow's own helper
@@ -29,7 +30,7 @@ Hooks.once('ready', () => {
     });
     return maneuvers;
   });
-  console.log('pf1e_random_char_generator | sortManeuvers override registered (discipline -> type -> level).');
+  log.debug('pf1e_random_char_generator | sortManeuvers override registered (discipline -> type -> level).');
 
   // Re-registers pf1-pow's `filteredLevelsArray` so the Path of War tab renders a level section
   // for EVERY maneuver level actually present on the actor, not just up to pf1-pow's computed
@@ -51,5 +52,5 @@ Hooks.once('ready', () => {
     cap = Math.min(cap, 9);
     return [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(lvl => lvl <= cap);
   });
-  console.log('pf1e_random_char_generator | filteredLevelsArray override registered (show all granted maneuver levels).');
+  log.debug('pf1e_random_char_generator | filteredLevelsArray override registered (show all granted maneuver levels).');
 });

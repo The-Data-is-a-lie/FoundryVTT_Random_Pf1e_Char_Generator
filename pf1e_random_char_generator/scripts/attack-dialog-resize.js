@@ -1,3 +1,4 @@
+import { log } from './shared/log.js';
 // Make the pf1 attack-roll dialog a resizable window so a weapon stacked with many conditionals can
 // be dragged larger. pf1's AttackDialog (ApplicationV1) ships with resizable:false; patch its static
 // defaultOptions getter so every new instance opts in. Paired with styles/attack-dialog.css, which
@@ -23,5 +24,5 @@ Hooks.once("ready", () => {
       return foundry.utils.mergeObject(superGet.call(this), { resizable: true, height: 600 }, { inplace: false });
     },
   });
-  console.log("pf1e_random_char_generator | AttackDialog is now resizable");
+  log.debug("pf1e_random_char_generator | AttackDialog is now resizable");
 });
