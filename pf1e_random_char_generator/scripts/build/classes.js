@@ -116,21 +116,30 @@ function filterByLevel(items, level) {
 
 // Main function to process class data and update class level
 function processClass(ctx, targetClass, newLevel, classList) {
-  // Clone before touching: updateLevel() writes levels onto these very objects and collectItems()
-  // hands them to exportTemplate.items uncloned, so without this the loaded bundle carries one
-  // character's levels into the next generation in the same session.
-  const everyClassPathData = structuredClone(ctx.templates.everyClass);
-  const items = extractItems(everyClassPathData);
+  // CLONE THE SLICE, NOT THE BUNDLE. updateLevel() writes levels onto these very objects and
+  // collectItems() hands them to exportTemplate.items uncloned, so something has to be copied or the
+  // loaded bundle carries one character's levels into the next generation in the same session.
+  //
+  // That used to be `structuredClone(ctx.templates.everyClass)` -- 3.4 MB and 949 rows deep-copied
+  // once per ROLLED CLASS, so a multiclass build paid it three or four times. It was 40% of the whole
+  // build (`npm run bench`) to protect two writes that only ever land inside this class's own slice.
+  // `equipment.js` already had the rule written down -- "clone the ONE matched row rather than the
+  // bundle" -- and this is the same rule applied one level up.
+  //
+  // Collect first, off the SHARED array, which is safe because collectItems only reads. Then clone
+  // what was collected, and mutate that. Nothing outside the slice was ever appended, so a write the
+  // old order made to some earlier same-named row was discarded with the throwaway clone anyway.
+  const items = extractItems(ctx.templates.everyClass);
   if (!items) return;
 
+  // Collect the items for the given class
+  const newCollectedItems = structuredClone(collectItems(items, targetClass, classList));
+
   // We only want class abilities from where level received <= characterData.level
-  const filteredItems = filterByLevel(items, newLevel);
+  const filteredItems = filterByLevel(newCollectedItems, newLevel);
 
   // Update level in the class data
   updateLevel(filteredItems, targetClass, newLevel);
-
-  // Collect the items for the given class
-  const newCollectedItems = collectItems(items, targetClass, classList);
 
   // Append the collected items to exportTemplate
   appendJsonToTemplate(newCollectedItems, ctx.exportTemplate, "Class");
