@@ -43,9 +43,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "links": {
        "classAssociations": {
@@ -88,7 +86,6 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "classSkills": {
       "acr": false,
       "apr": false,
@@ -128,7 +125,6 @@
       "swm": true,
       "umd": false
      },
-     "contextNotes": [],
      "customHD": "",
      "description": {
       "instructions": "",
@@ -146,16 +142,10 @@
        "value": 0
       }
      },
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hd": 10,
      "hp": 3,
-     "languages": [],
      "level": 20,
      "links": {
-      "children": [],
       "classAssociations": [
        {
         "level": 1,
@@ -194,7 +184,6 @@
        "value": "low"
       }
      },
-     "scriptCalls": [],
      "skillsPerLevel": 2,
      "sources": [
       {
@@ -204,7 +193,6 @@
      ],
      "subType": "base",
      "tag": "fighter",
-     "tags": [],
      "wealth": "5d6 * 10",
      "weaponProf": [
       "simple",
@@ -226,9 +214,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -243,14 +229,11 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Fighter"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -273,27 +256,14 @@
       }
      ],
      "class": "fighter",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<841 chars sha256:eb2347f2c14ed3dc>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -305,7 +275,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -314,8 +283,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -332,9 +300,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -349,14 +315,11 @@
     "system": {
      "abilityType": "ex",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Fighter"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -368,9 +331,7 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "fighter",
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "will",
@@ -383,19 +344,8 @@
       "value": "<p>Starting at 2nd level, a fighter gains a +1 bonus on <em>Will</em> saves against fear. This bonus increases by +1 for every four levels beyond 2nd.</p>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -407,7 +357,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -416,8 +365,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -434,9 +382,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -451,14 +397,11 @@
     "system": {
      "abilityType": "ex",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Fighter"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -489,27 +432,14 @@
       }
      ],
      "class": "fighter",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<562 chars sha256:10a6ba0f784f2ebc>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -521,7 +451,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -530,8 +459,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -548,9 +476,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -565,14 +491,11 @@
     "system": {
      "abilityType": "ex",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Fighter"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -584,29 +507,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "fighter",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<6190 chars sha256:6c9fb930843b7615>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -618,7 +527,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -627,8 +535,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -645,9 +552,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -662,14 +567,11 @@
     "system": {
      "abilityType": "ex",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Fighter"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": true,
       "immuneToMorale": false,
@@ -681,29 +583,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "fighter",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<p>At 7th level, a fighter can move at his normal speed while wearing heavy armor.</p>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -715,7 +603,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -724,8 +611,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -742,9 +628,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -759,14 +643,11 @@
     "system": {
      "abilityType": "ex",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Fighter"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -778,29 +659,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "fighter",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<324 chars sha256:7622d5d286840b3a>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -812,7 +679,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -821,8 +687,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -965,19 +830,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/races/human.jpg",
-    "links": {},
     "name": "Human",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "armorProf": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -1005,22 +864,13 @@
        "value": 0
       }
      ],
-     "contextNotes": [],
      "creatureType": "humanoid",
      "description": {
       "value": "<2169 chars sha256:d6acaab841c840d8>"
      },
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "languages": [
       "common"
      ],
-     "links": {
-      "children": []
-     },
-     "scriptCalls": [],
      "size": "med",
      "sources": [
       {
@@ -1045,8 +895,7 @@
       "Eastern (Casmaron)",
       "Northern (Crown of the World)",
       "Southern (Garund)"
-     ],
-     "weaponProf": []
+     ]
     },
     "type": "race"
    },
@@ -2116,25 +1965,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/red_34.jpg",
-    "links": {},
     "name": "(Flavor 1) Coordinated Maneuvers",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 200,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2142,8 +1980,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "cmb",
@@ -2155,18 +1991,7 @@
       "value": "<556 chars sha256:1c42edfd07c7bc43>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "coordinatedManeuvers",
@@ -2182,8 +2007,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2196,25 +2020,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/toughness.jpg",
-    "links": {},
     "name": "(Flaw 1) Toughness",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 250,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2233,25 +2046,12 @@
        "value": 0
       }
      ],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<294 chars sha256:1b33f2bf4e5b34a0>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -2273,8 +2073,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2287,25 +2086,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/yellow_19.jpg",
-    "links": {},
     "name": "(Flaw 2) Charge of the Righteous",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 260,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2313,26 +2101,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<580 chars sha256:97635c606f096660>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "chargeOfTheRighteous",
@@ -2347,8 +2121,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2439,25 +2212,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/gray_06.jpg",
-    "links": {},
     "name": "(Story Feat 10) Skilled Driver",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 520,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2465,26 +2227,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<222 chars sha256:6d14b7a6c76a46b3>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "skilledDriver",
@@ -2499,8 +2247,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2513,25 +2260,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/red_03.jpg",
-    "links": {},
     "name": "(Story Feat 15) Desperate Battler",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 530,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2539,26 +2275,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<591 chars sha256:28499b7b10f8230d>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "desperateBattler",
@@ -2573,8 +2295,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2698,25 +2419,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/alertness.jpg",
-    "links": {},
     "name": "(Feat 1) Lookout",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1500,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2724,26 +2434,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<833 chars sha256:5477fc160d1ff4a0>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "lookout",
@@ -2759,8 +2455,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2812,25 +2507,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/inventory/monster-chitin-green.jpg",
-    "links": {},
     "name": "(Feat 5) Dragoncrafting",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1520,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2838,26 +2522,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<2274 chars sha256:8b4fca914ac7adaf>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "dragoncrafting",
@@ -2872,8 +2542,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2886,25 +2555,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/inventory/torch.jpg",
-    "links": {},
     "name": "(Feat 7) Firebrand",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1530,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2912,26 +2570,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<585 chars sha256:e68f5f15a7242744>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "firebrand",
@@ -2946,8 +2590,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2960,25 +2603,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/sundries/documents/document-sealed-white-orange.webp",
-    "links": {},
     "name": "(Feat 9) Scholar",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1540,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2986,26 +2618,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<520 chars sha256:2ac0a17cab5b5bb9>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "scholar",
@@ -3020,8 +2638,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3073,25 +2690,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/athletic.jpg",
-    "links": {},
     "name": "(Feat 13) Enforcer",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1560,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3099,26 +2705,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<767 chars sha256:c7f91fdb82c1b85a>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "enforcer",
@@ -3133,8 +2725,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3147,25 +2738,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/blue_23.jpg",
-    "links": {},
     "name": "(Feat 15) Sure Grasp",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1570,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3173,26 +2753,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<279 chars sha256:563b492a646617b8>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "sureGrasp",
@@ -3207,8 +2773,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3410,25 +2975,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/red_07.jpg",
-    "links": {},
     "name": "Fighter 1: Ferocious Loyalty",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3000,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3436,26 +2990,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<451 chars sha256:ed9667f68531c099>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "ferociousLoyalty",
@@ -3470,8 +3010,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3562,25 +3101,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/inventory/book-grey.jpg",
-    "links": {},
     "name": "Fighter 6: Stone Read",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3030,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3588,8 +3116,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "skills",
@@ -3601,18 +3127,7 @@
       "value": "<345 chars sha256:1742be9c9e48a7f8>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "stoneRead",
@@ -3627,8 +3142,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3641,16 +3155,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/combat-reflexes.jpg",
-    "links": {},
     "name": "Fighter 8: Combat Reflexes > Bodyguard > In Harm'S Way > Pin Down > Porcupine Defense > Stand Still",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3040,
     "system": {
      "abilityType": "na",
@@ -3667,11 +3176,6 @@
        "name": "Use"
       }
      ],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3679,8 +3183,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "attack",
@@ -3692,18 +3194,7 @@
       "value": "<4029 chars sha256:c3ae3aa8b0cc2740>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -3726,8 +3217,7 @@
       "per": "round",
       "rechargeFormula": "",
       "value": 0
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3740,25 +3230,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/improved-feint.jpg",
-    "links": {},
     "name": "Fighter 10: Ensemble",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3050,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3766,26 +3245,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<919 chars sha256:82e6ab45204b4c6e>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "ensemble",
@@ -3800,8 +3265,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3814,25 +3278,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/armor/madu.png",
-    "links": {},
     "name": "Fighter 12: Duck and Cover",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3060,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3840,26 +3293,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<648 chars sha256:175da128dce6d6b0>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "duckAndCover",
@@ -3874,8 +3313,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3888,25 +3326,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/environment/settlement/city-night.webp",
-    "links": {},
     "name": "Fighter 14: Cosmopolitan",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3070,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3914,26 +3341,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<343 chars sha256:23eeba7f6ddcfe11>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "cosmopolitan",
@@ -3948,8 +3361,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3962,25 +3374,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/lunge.jpg",
-    "links": {},
     "name": "Fighter 16: Opening Volley",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3080,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3988,26 +3389,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<615 chars sha256:616b188e34b40c9f>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "openingVolley",
@@ -4022,8 +3409,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4402,25 +3788,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/persuasive.jpg",
-    "links": {},
     "name": "Talented",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 100,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4442,24 +3817,12 @@
      "classSkills": {
       "prf": true
      },
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<374 chars sha256:793ddbbd58c2d0ba>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4469,7 +3832,6 @@
      ],
      "subType": "trait",
      "tag": "talented",
-     "tags": [],
      "traitCategory": "",
      "traitType": "social",
      "uses": {
@@ -4478,8 +3840,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4492,25 +3853,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/environment/wilderness/cave-entrance-rocky.webp",
-    "links": {},
     "name": "Seasoned Climber (Wall of Heaven)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 110,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4532,24 +3882,12 @@
      "classSkills": {
       "clm": true
      },
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<699 chars sha256:e31454d7c1b709a2>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4571,8 +3909,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4585,25 +3922,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/tools/navigation/map-chart-tan.webp",
-    "links": {},
     "name": "Younger Sibling (Jade Regent)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 120,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4621,7 +3947,6 @@
        "value": 0
       }
      ],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "attack",
@@ -4633,18 +3958,7 @@
       "value": "<1898 chars sha256:460b98c13ae98416>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4665,8 +3979,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4679,25 +3992,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/tools/navigation/map-chart-tan.webp",
-    "links": {},
     "name": "Rescued (Jade Regent)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 130,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4715,7 +4017,6 @@
        "value": 0
       }
      ],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "",
@@ -4731,18 +4032,7 @@
       "value": "<1829 chars sha256:2bba8d340fb01f7d>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4763,8 +4053,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4777,25 +4066,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/environment/wilderness/cave-entrance-rocky.webp",
-    "links": {},
     "name": "Viking Blood (Lands of the Linnorm Kings)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 140,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4817,24 +4095,12 @@
      "classSkills": {
       "int": true
      },
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<479 chars sha256:417a0f1a7da393fb>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4855,8 +4121,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4869,25 +4134,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/persuasive.jpg",
-    "links": {},
     "name": "Adopted",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 150,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4895,26 +4149,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<291 chars sha256:1e3113702216d92c>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4932,7 +4172,6 @@
      ],
      "subType": "trait",
      "tag": "adopted",
-     "tags": [],
      "traitCategory": "",
      "traitType": "social",
      "uses": {
@@ -4941,8 +4180,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4955,25 +4193,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/environment/wilderness/cave-entrance-rocky.webp",
-    "links": {},
     "name": "Uskwood Hunter (Nidal)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 160,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4995,24 +4222,12 @@
      "classSkills": {
       "ste": true
      },
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<626 chars sha256:9332fda98927bc1f>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -5033,8 +4248,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -5047,16 +4261,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/environment/wilderness/cave-entrance-rocky.webp",
-    "links": {},
     "name": "Isger Fixer (Halfling; Isger)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 170,
     "system": {
      "abilityType": "na",
@@ -5074,11 +4283,6 @@
        "name": "Tinker with broken object"
       }
      ],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -5086,26 +4290,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<750 chars sha256:7f4d348b198d144f>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -5128,8 +4318,7 @@
       "per": "day",
       "rechargeFormula": "",
       "value": 1
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -5567,16 +4756,11 @@
      "systemId": "pf1",
      "systemVersion": "11.3"
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/weapons/thrown/dagger-ringed-guard.webp",
-    "links": {},
     "name": "+5 Dispelling Guided Kerambit",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -5685,8 +4869,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 3, @size)",
@@ -5706,13 +4888,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -5729,10 +4908,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -5748,7 +4923,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -5758,7 +4932,7 @@
        }
       },
       {
-       "_id": "HrgJvqjbHrfP1U4x",
+       "_id": "YxyQTH8SDzjSppnp",
        "ability": {
         "attack": "_default",
         "critMult": 3,
@@ -5862,8 +5036,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 3, @size)",
@@ -5883,13 +5055,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -5906,10 +5075,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -5925,7 +5090,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -5942,7 +5106,6 @@
       "type": ""
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": ""
@@ -5963,22 +5126,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "cl": 0,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "instructions": "",
       "unidentified": "",
       "value": "<1598 chars sha256:537203cea216c3dc>"
      },
-     "effectNotes": [],
      "enh": 5,
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hands": 1,
      "hardness": {
       "base": 10,
@@ -5992,12 +5148,8 @@
       "value": 2
      },
      "identified": true,
-     "links": {
-      "children": []
-     },
      "masterwork": true,
      "material": {
-      "addon": [],
       "base": {
        "custom": false,
        "value": "steel"
@@ -6036,7 +5188,6 @@
      ],
      "subType": "martial",
      "tag": "kerambit",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -6073,19 +5224,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/armor/stone-plate.png",
-    "links": {},
     "name": "+3 Delving Stoneplate",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -6097,7 +5242,6 @@
       "dex": 1,
       "enh": 3,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": "stone"
@@ -6111,7 +5255,6 @@
       "value": 9
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": ""
@@ -6128,7 +5271,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 0,
      "contextNotes": [
       {
@@ -6141,14 +5283,9 @@
       "unidentified": "",
       "value": "<806 chars sha256:c92e5c2fd5c9c6fd>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "heavyArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 8,
      "held": "normal",
      "hp": {
@@ -6156,23 +5293,17 @@
       "value": 45
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": true,
      "price": 1800,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "armor",
      "spellFailure": 35,
      "subType": "armor",
      "tag": "stoneplate",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -6205,19 +5336,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/waist/belt-coiled-leather-steel.webp",
-    "links": {},
     "name": "Windwave Kilt",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -6229,7 +5354,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -6243,12 +5367,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -6281,14 +5403,9 @@
       "unidentified": "",
       "value": "<870 chars sha256:fc2542a9d5b207b2>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -6296,16 +5413,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 7000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "belt",
@@ -6317,7 +5429,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "windwaveKilt",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -6350,19 +5461,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/chest/coat-collared-red-gold.webp",
-    "links": {},
     "name": "Monk's Robe",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -6374,7 +5479,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -6388,12 +5492,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -6403,7 +5505,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 10,
      "contextNotes": [
       {
@@ -6416,14 +5517,9 @@
       "unidentified": "",
       "value": "<611 chars sha256:996bbe1613e1d16f>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -6431,16 +5527,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 13000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "body",
@@ -6452,7 +5543,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "monksRobe",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -6485,19 +5575,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/chest/vest-leather-pink.webp",
-    "links": {},
     "name": "Cackling Hag's Blouse",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -6509,7 +5593,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -6523,12 +5606,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "enc"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -6561,14 +5642,9 @@
       "unidentified": "",
       "value": "<482 chars sha256:992154038a260353>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -6576,16 +5652,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 6000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "chest",
@@ -6597,7 +5668,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "cacklingHagsBlouse",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -6630,19 +5700,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/head/goggles-leather-blue.webp",
-    "links": {},
     "name": "Sniper Goggles, Greater",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -6654,7 +5718,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -6668,12 +5731,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "div"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -6683,22 +5744,15 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 8,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "unidentified": "",
       "value": "<359 chars sha256:b9263f760e0937f5>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -6706,16 +5760,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 50000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "eyes",
@@ -6727,7 +5776,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "sniperGogglesGreater",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -6760,19 +5808,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/feet/boots-armored-steel-purple.webp",
-    "links": {},
     "name": "Winged Boots",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -6784,7 +5826,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -6798,12 +5839,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -6813,7 +5852,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 8,
      "contextNotes": [
       {
@@ -6826,14 +5864,9 @@
       "unidentified": "",
       "value": "<385 chars sha256:44d943871432d0f9>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -6841,16 +5874,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 16000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "feet",
@@ -6862,7 +5890,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "wingedBoots",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -6895,19 +5922,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/hand/glove-cuffed-leather-grey.webp",
-    "links": {},
     "name": "Irongrip Gauntlets",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -6919,7 +5940,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -6933,12 +5953,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -6948,22 +5966,15 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 3,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "unidentified": "",
       "value": "<470 chars sha256:08a8d9a25f477784>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -6971,16 +5982,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 4000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "hands",
@@ -6992,7 +5998,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "irongripGauntlets",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -7025,19 +6030,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/head/hood-cloth-blue-white.webp",
-    "links": {},
     "name": "Animal Mask",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -7049,7 +6048,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -7063,12 +6061,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -7078,22 +6074,15 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 5,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "unidentified": "",
       "value": "<1147 chars sha256:5aea24485fd34d0f>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -7101,16 +6090,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 2700,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "head",
@@ -7122,7 +6106,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "animalMask",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -7155,19 +6138,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/finger/ring-crown-teal-gold.webp",
-    "links": {},
     "name": "Moon Circlet",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -7179,7 +6156,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -7193,12 +6169,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "evo"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -7208,7 +6182,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 15,
      "contextNotes": [
       {
@@ -7221,14 +6194,9 @@
       "unidentified": "",
       "value": "<1126 chars sha256:9407b81a5dde1495>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -7236,23 +6204,17 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 20000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "headband",
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "moonCirclet",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -7285,19 +6247,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/neck/pendant-rough-gold-purple.webp",
-    "links": {},
     "name": "Vishkanya Periapt",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -7309,7 +6265,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -7323,12 +6278,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "nec"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -7338,7 +6291,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 7,
      "contextNotes": [
       {
@@ -7351,14 +6303,9 @@
       "unidentified": "",
       "value": "<677 chars sha256:c855a42e79425a90>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -7366,16 +6313,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 10000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "neck",
@@ -7387,7 +6329,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "vishkanyaPeriapt",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -7420,19 +6361,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/back/mantle-collared-brown.webp",
-    "links": {},
     "name": "Wyvern Cloak",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -7444,7 +6379,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -7458,12 +6392,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -7473,7 +6405,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 7,
      "contextNotes": [
       {
@@ -7486,14 +6417,9 @@
       "unidentified": "",
       "value": "<675 chars sha256:bdbfdf530adecf49>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -7501,16 +6427,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 78600,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "shoulders",
@@ -7522,7 +6443,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "wyvernCloak",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -7555,19 +6475,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/jewelry/ring-red.jpg",
-    "links": {},
     "name": "Deadeye's Spotter Ring",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -7579,7 +6493,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -7593,12 +6506,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -7640,14 +6551,9 @@
       "unidentified": "",
       "value": "<372 chars sha256:65b183eaf26a4749>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -7655,16 +6561,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 1500,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "ring",
@@ -7676,7 +6577,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "deadeyesSpotterRing",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -7937,16 +6837,11 @@
      "systemId": "pf1",
      "systemVersion": "11.3"
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/weapons/thrown/dagger-ringed-guard.webp",
-    "links": {},
     "name": "+5 Dispelling Guided Kerambit",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -8055,8 +6950,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 3, @size)",
@@ -8076,13 +6969,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -8099,10 +6989,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -8118,7 +7004,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -8128,7 +7013,7 @@
        }
       },
       {
-       "_id": "Kp7hBc6L0SAkVybt",
+       "_id": "p9COQWEsZCVGOj4t",
        "ability": {
         "attack": "_default",
         "critMult": 3,
@@ -8232,8 +7117,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 3, @size)",
@@ -8253,13 +7136,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -8276,10 +7156,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -8295,7 +7171,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -8312,7 +7187,6 @@
       "type": ""
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": ""
@@ -8333,22 +7207,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "cl": 0,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "instructions": "",
       "unidentified": "",
       "value": "<p><strong>Special abilities:</strong> Dispelling, Guided</p>"
      },
-     "effectNotes": [],
      "enh": 5,
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hands": 1,
      "hardness": {
       "base": 10,
@@ -8362,12 +7229,8 @@
       "value": 2
      },
      "identified": true,
-     "links": {
-      "children": []
-     },
      "masterwork": true,
      "material": {
-      "addon": [],
       "base": {
        "custom": false,
        "value": "steel"
@@ -8406,7 +7269,6 @@
      ],
      "subType": "weapon",
      "tag": "kerambit",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",

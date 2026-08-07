@@ -32,7 +32,11 @@ import { log } from '../shared/log.js';
  */
 export function appendJsonToTemplate(collectedItems, exportTemplate, sectionKey) {
   if (!exportTemplate.items) {
-    exportTemplate.items = {}; // Initialize if it doesn't exist
+    // An ARRAY. This said `{}` and got away with it only because pre_export_template.json ships
+    // `items: []`, so the guard never fired -- the line below spreads this value into an array
+    // literal, and `[...{}]` throws "is not iterable". Dropping the empty array from that template
+    // is enough to turn a dead branch into a build that returns false with no items on it.
+    exportTemplate.items = [];
   }
 
   // Append new items to the existing array under the sectionKey

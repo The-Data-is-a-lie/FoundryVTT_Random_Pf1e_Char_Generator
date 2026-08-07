@@ -49,9 +49,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "links": {
        "classAssociations": {
@@ -108,7 +106,6 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "classSkills": {
       "acr": false,
       "apr": false,
@@ -148,7 +145,6 @@
       "swm": false,
       "umd": true
      },
-     "contextNotes": [],
      "customHD": "",
      "description": {
       "instructions": "",
@@ -166,16 +162,10 @@
        "value": 0
       }
      },
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hd": 8,
      "hp": 7,
-     "languages": [],
      "level": 20,
      "links": {
-      "children": [],
       "classAssociations": [
        {
         "level": 1,
@@ -255,7 +245,6 @@
        "value": "high"
       }
      },
-     "scriptCalls": [],
      "skillsPerLevel": 2,
      "sources": [
       {
@@ -265,7 +254,6 @@
      ],
      "subType": "base",
      "tag": "summonerUnchained",
-     "tags": [],
      "wealth": "2d6 * 10",
      "weaponProf": [
       "simple"
@@ -286,9 +274,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -319,17 +305,14 @@
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2
-       },
-       "uses": {}
+       }
       }
      ],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -341,35 +324,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<2763 chars sha256:2f1ac9b999f87640>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -378,8 +346,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -396,9 +363,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -429,17 +394,14 @@
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2
-       },
-       "uses": {}
+       }
       }
      ],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -451,35 +413,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<1097 chars sha256:7f336a5d59822f99>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -488,8 +435,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -506,9 +452,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -543,17 +487,14 @@
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2
-       },
-       "uses": {}
+       }
       }
      ],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -565,35 +506,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<1443 chars sha256:a86db1ea23b47b42>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "classFeat_summonMonsterUc",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -602,8 +528,7 @@
       "per": "day",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -620,9 +545,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -637,8 +560,6 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Arcanist",
@@ -652,7 +573,6 @@
        "Wizard"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -664,29 +584,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<231 chars sha256:2ecabbed0edac251>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -714,7 +620,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -723,8 +628,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -741,9 +645,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -778,17 +680,14 @@
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2
-       },
-       "uses": {}
+       }
       }
      ],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -800,35 +699,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<403 chars sha256:cfa2b80b88548767>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "classFeat_bondSensesUc",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -837,8 +721,7 @@
       "per": "day",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -855,9 +738,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -872,14 +753,11 @@
     "system": {
      "abilityType": "ex",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -891,35 +769,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<702 chars sha256:af8359fc7d85e62c>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -928,8 +791,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -946,9 +808,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -963,8 +823,6 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Bard",
@@ -978,7 +836,6 @@
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -990,35 +847,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<877 chars sha256:28093d47d55d80f3>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1027,8 +869,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1045,9 +886,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1078,17 +917,14 @@
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2
-       },
-       "uses": {}
+       }
       }
      ],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1100,29 +936,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<521 chars sha256:c795baff1f87275c>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -1134,7 +956,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "classFeat_makersCallUc",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1143,8 +964,7 @@
       "per": "day",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1161,9 +981,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1178,14 +996,11 @@
     "system": {
      "abilityType": "su",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1197,35 +1012,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<391 chars sha256:0c448c68804f8e4f>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1234,8 +1034,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1252,9 +1051,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1269,14 +1066,11 @@
     "system": {
      "abilityType": "su",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1288,35 +1082,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<639 chars sha256:b3aa75cd4fba84ff>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1325,8 +1104,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1343,9 +1121,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1360,14 +1136,11 @@
     "system": {
      "abilityType": "su",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1379,35 +1152,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<768 chars sha256:0c37dc5b7705224b>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1416,8 +1174,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1434,9 +1191,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1451,14 +1206,11 @@
     "system": {
      "abilityType": "su",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1470,35 +1222,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<816 chars sha256:003b2c8d4a050fc3>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1507,8 +1244,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1525,9 +1261,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1562,17 +1296,14 @@
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2
-       },
-       "uses": {}
+       }
       }
      ],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1584,35 +1315,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<1212 chars sha256:35f050fbb45358d9>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "classFeat_mergeFormsUc",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1621,8 +1337,7 @@
       "per": "day",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1639,9 +1354,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1656,14 +1369,11 @@
     "system": {
      "abilityType": "su",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1675,35 +1385,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<472 chars sha256:bb7cfb9f8f4fb75f>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1712,8 +1407,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1730,9 +1424,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -1773,17 +1465,14 @@
        },
        "target": {
         "value": "self"
-       },
-       "uses": {}
+       }
       }
      ],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Summoner (Unchained)"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -1795,35 +1484,20 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "summonerUnchained",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<950 chars sha256:0a85dc14a68bdc69>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "subType": "classFeat",
      "summons": false,
      "tag": "classFeat_twinEidolonUc",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -1832,8 +1506,7 @@
       "per": "day",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -1980,9 +1653,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "links": {
        "classAssociations": {
@@ -2033,7 +1704,6 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "classSkills": {
       "acr": false,
       "apr": true,
@@ -2073,7 +1743,6 @@
       "swm": false,
       "umd": false
      },
-     "contextNotes": [],
      "customHD": "",
      "description": {
       "instructions": "",
@@ -2091,16 +1760,10 @@
        "value": 0
       }
      },
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hd": 8,
      "hp": 0,
-     "languages": [],
      "level": 20,
      "links": {
-      "children": [],
       "classAssociations": [
        {
         "level": 1,
@@ -2143,7 +1806,6 @@
        "value": "high"
       }
      },
-     "scriptCalls": [],
      "skillsPerLevel": 2,
      "sources": [
       {
@@ -2153,7 +1815,6 @@
      ],
      "subType": "base",
      "tag": "cleric",
-     "tags": [],
      "wealth": "4d6 * 10",
      "weaponProf": [
       "simple",
@@ -2175,9 +1836,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -2192,14 +1851,11 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Cleric"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -2211,29 +1867,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "cleric",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<1267 chars sha256:286f504add139f4d>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -2245,7 +1887,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -2254,8 +1895,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2272,9 +1912,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -2289,14 +1927,11 @@
     "system": {
      "abilityType": "ex",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Cleric"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -2308,29 +1943,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "cleric",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<202 chars sha256:4867d82def9ba113>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -2342,7 +1963,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -2351,8 +1971,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2369,9 +1988,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -2386,14 +2003,11 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Cleric"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -2405,29 +2019,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "cleric",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<874 chars sha256:bef14b909c205c81>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -2439,7 +2039,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -2448,8 +2047,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2466,9 +2064,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -2483,8 +2079,6 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Cleric",
@@ -2492,7 +2086,6 @@
        "Hunter"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -2504,29 +2097,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "cleric",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<245 chars sha256:8f643c14dd44bee8>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -2542,7 +2121,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -2551,8 +2129,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2569,9 +2146,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -2586,14 +2161,11 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Cleric"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -2605,29 +2177,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "cleric",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<262 chars sha256:faa3708f943c62f0>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -2639,7 +2197,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -2648,8 +2205,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2666,9 +2222,7 @@
      "systemId": "pf1",
      "systemVersion": "10.8"
     },
-    "effects": [],
     "flags": {
-     "core": {},
      "pf1": {
       "migration": "11.11"
      }
@@ -2683,8 +2237,6 @@
     "system": {
      "abilityType": "na",
      "acquired": false,
-     "actions": [],
-     "armorProf": [],
      "associations": {
       "classes": [
        "Cleric",
@@ -2695,7 +2247,6 @@
        "Warpriest"
       ]
      },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "immuneToMorale": false,
@@ -2707,29 +2258,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "class": "cleric",
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "instructions": "",
       "value": "<p>The character can prepare a number of orisons, or 0-level spells, each day. These spells are cast like any other spell, but they are not expended when cast and may be used again.</p>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "inherited": false,
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "simple": false,
      "sources": [
@@ -2749,7 +2286,6 @@
      "subType": "classFeat",
      "summons": false,
      "tag": "",
-     "tags": [],
      "traitCategory": "",
      "traitType": "",
      "uses": {
@@ -2758,8 +2294,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -2902,19 +2437,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/races/human.jpg",
-    "links": {},
     "name": "Human",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "armorProf": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -2942,22 +2471,13 @@
        "value": 0
       }
      ],
-     "contextNotes": [],
      "creatureType": "humanoid",
      "description": {
       "value": "<2169 chars sha256:d6acaab841c840d8>"
      },
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "languages": [
       "common"
      ],
-     "links": {
-      "children": []
-     },
-     "scriptCalls": [],
      "size": "med",
      "sources": [
       {
@@ -2982,8 +2502,7 @@
       "Eastern (Casmaron)",
       "Northern (Crown of the World)",
       "Southern (Garund)"
-     ],
-     "weaponProf": []
+     ]
     },
     "type": "race"
    },
@@ -3813,25 +3332,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/shield/oval-wooden-boss-bronze.webp",
-    "links": {},
     "name": "(Flavor 1) Shield Wall",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 200,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3839,26 +3347,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<977 chars sha256:b68e93c8fca47588>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "shieldWall",
@@ -3874,8 +3368,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -3888,25 +3381,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/weapons/slings/slingshot-wood.webp",
-    "links": {},
     "name": "(Flaw 1) Prone Slinger",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 250,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -3914,26 +3396,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<479 chars sha256:d9e4fe878032070a>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "proneSlinger",
@@ -3948,8 +3416,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4001,25 +3468,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/catch-off-guard.jpg",
-    "links": {},
     "name": "(Story Feat 1) Catch Off-Guard (EitR)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 500,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4027,8 +3483,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "rangedWeapon",
@@ -4040,18 +3494,7 @@
       "value": "<517 chars sha256:548270264c13aa46>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "catchOffguardEitr",
@@ -4068,8 +3511,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4082,25 +3524,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/point-blank-shot.jpg",
-    "links": {},
     "name": "(Story Feat 5) Point-Blank Shot (EitR) > Charging Hurler > Disrupting Shot > Far Shot > Improved Charging Hurler > Precise Shot",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 510,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4108,26 +3539,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<3517 chars sha256:a6542f3247e46b80>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "pointblankShotEitr",
@@ -4145,8 +3562,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4198,25 +3614,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/mech_12.jpg",
-    "links": {},
     "name": "(Story Feat 15) Quick Preparation",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 530,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4224,26 +3629,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<394 chars sha256:6daae649eb95a459>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "quickPreparation",
@@ -4258,8 +3649,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4383,25 +3773,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/acrobatic.jpg",
-    "links": {},
     "name": "(Feat 1) Acrobatic",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1500,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4429,25 +3808,12 @@
        "value": 0
       }
      ],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<240 chars sha256:c83a5ebf002281f2>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4468,8 +3834,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4482,25 +3847,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/commodities/currency/coins-plain-stack-gold-yellow.webp",
-    "links": {},
     "name": "(Feat 3) Improved Day Job",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1510,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4508,26 +3862,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<470 chars sha256:5872b397dac548b3>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "improvedDayJob",
@@ -4542,8 +3882,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4595,25 +3934,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/alertness.jpg",
-    "links": {},
     "name": "(Feat 7) Alertness > Uncanny Alertness",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1530,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4641,25 +3969,12 @@
        "value": 0
       }
      ],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<629 chars sha256:e6d59c5fb15510d0>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4681,8 +3996,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4695,25 +4009,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/endurance.png",
-    "links": {},
     "name": "(Feat 9) Endurance > Altitude Affinity > Cold Celerity",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1540,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4721,26 +4024,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<1702 chars sha256:8bfd3ff2c3c7f1b7>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -4761,8 +4050,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -4853,25 +4141,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/affliction_04.jpg",
-    "links": {},
     "name": "(Feat 15) Blighted Critical",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 1570,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -4879,26 +4156,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<524 chars sha256:47850f0f7ed21dfe>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "blightedCritical",
@@ -4913,8 +4176,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -5194,25 +4456,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/tools/hand/hammer-and-nail.webp",
-    "links": {},
     "name": "(Trainer 1): Cooperative Crafting",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3620,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -5220,26 +4471,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<593 chars sha256:c2ebbacfea5ac25b>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "cooperativeCrafting",
@@ -5254,8 +4491,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -5268,25 +4504,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/skills/yellow_18.jpg",
-    "links": {},
     "name": "(Trainer 1): Selective Spell",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3630,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -5294,26 +4519,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<747 chars sha256:09baf6e238bdf0b6>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "selectiveSpell",
@@ -5328,8 +4539,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -5342,25 +4552,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/races/tiefling.png",
-    "links": {},
     "name": "(Trainer 2): Firesight",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3640,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -5368,26 +4567,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<443 chars sha256:2d92282ff1125420>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "subType": "feat",
      "tag": "firesight",
@@ -5403,8 +4588,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -5417,16 +4601,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/skills/melee/strike-slashes-orange.webp",
-    "links": {},
     "name": "(Trainer 2): Pack Attack",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 3650,
     "system": {
      "abilityType": "na",
@@ -5448,11 +4627,6 @@
        }
       }
      ],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -5460,26 +4634,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<701 chars sha256:f760b60fcf45955c>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -5501,8 +4661,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7157,25 +6316,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
-    "links": {},
     "name": "Easy Way or the Hard Way",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 100,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7183,8 +6331,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "attack",
@@ -7196,18 +6342,7 @@
       "value": "<347 chars sha256:a0b9b5e8645972fe>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -7217,7 +6352,6 @@
      ],
      "subType": "trait",
      "tag": "easyWayOrTheHardWay",
-     "tags": [],
      "traitCategory": "",
      "traitType": "combat",
      "uses": {
@@ -7226,8 +6360,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7240,25 +6373,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
-    "links": {},
     "name": "Reincarnated",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 110,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7266,8 +6388,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "allSavingThrows",
@@ -7279,18 +6399,7 @@
       "value": "<248 chars sha256:b948341b254bd3d5>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -7300,7 +6409,6 @@
      ],
      "subType": "trait",
      "tag": "reincarnated",
-     "tags": [],
      "traitCategory": "",
      "traitType": "faith",
      "uses": {
@@ -7309,8 +6417,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7323,25 +6430,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/sundries/books/book-embossed-jewel-gold-purple.webp",
-    "links": {},
     "name": "Pathfinder's Focus",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 120,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7349,26 +6445,12 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<518 chars sha256:b71a1c43aba5505d>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -7378,7 +6460,6 @@
      ],
      "subType": "trait",
      "tag": "pathfindersFocus",
-     "tags": [],
      "traitCategory": "",
      "traitType": "magic",
      "uses": {
@@ -7387,8 +6468,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7401,25 +6481,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/magic/life/ankh-shadow-green.webp",
-    "links": {},
     "name": "Unspeakable Bond (any Elder God)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 130,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7427,8 +6496,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "skill.dip",
@@ -7440,18 +6507,7 @@
       "value": "<283 chars sha256:4f19d098a585c3cf>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -7500,8 +6556,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7514,25 +6569,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/environment/wilderness/cave-entrance-rocky.webp",
-    "links": {},
     "name": "Goblin Pirate (Goblin; The Shackles)",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 140,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7562,24 +6606,12 @@
      "classSkills": {
       "swm": true
      },
-     "contextNotes": [],
      "crOffset": "",
      "description": {
       "value": "<864 chars sha256:0cdc1381103f3b71>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -7602,8 +6634,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7616,16 +6647,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/feats/persuasive.jpg",
-    "links": {},
     "name": "Gregarious",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 150,
     "system": {
      "abilityType": "na",
@@ -7641,11 +6667,6 @@
        "name": "Reroll Diplomancy influence check"
       }
      ],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7653,8 +6674,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "skill.dip",
@@ -7666,16 +6685,6 @@
       "value": "<744 chars sha256:13e8067935145f82>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
      "scriptCalls": [
       {
@@ -7697,7 +6706,6 @@
      ],
      "subType": "trait",
      "tag": "gregarious",
-     "tags": [],
      "traitCategory": "",
      "traitType": "social",
      "uses": {
@@ -7707,8 +6715,7 @@
       "per": "day",
       "rechargeFormula": "",
       "value": 1
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7721,25 +6728,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
-    "links": {},
     "name": "Principled",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 160,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7758,7 +6754,6 @@
        "value": 0
       }
      ],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "allSavingThrows",
@@ -7770,18 +6765,7 @@
       "value": "<271 chars sha256:3ae87da7ae6800d6>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -7791,7 +6775,6 @@
      ],
      "subType": "trait",
      "tag": "principled",
-     "tags": [],
      "traitCategory": "",
      "traitType": "faith",
      "uses": {
@@ -7800,8 +6783,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -7814,25 +6796,14 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
-    "links": {},
     "name": "Wanderer's Shroud",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 170,
     "system": {
      "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": []
-     },
-     "attackNotes": [],
      "changeFlags": {
       "heavyArmorFullSpeed": false,
       "loseDexToAC": false,
@@ -7840,8 +6811,6 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
-     "classSkills": {},
      "contextNotes": [
       {
        "target": "allSavingThrows",
@@ -7853,18 +6822,7 @@
       "value": "<288 chars sha256:b5d5a0854e9d246c>"
      },
      "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "racePoints": null,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "sources": [
       {
@@ -7874,7 +6832,6 @@
      ],
      "subType": "trait",
      "tag": "wanderersShroud",
-     "tags": [],
      "traitCategory": "",
      "traitType": "faith",
      "uses": {
@@ -7883,8 +6840,7 @@
       "per": "",
       "rechargeFormula": "",
       "value": null
-     },
-     "weaponProf": []
+     }
     },
     "type": "feat"
    },
@@ -9527,15 +8483,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
-    "links": {},
     "name": "Daze",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -9575,7 +8527,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -9594,13 +8545,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 0,
        "bard": 0,
@@ -9618,15 +8563,9 @@
        "summonerUnchained": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -9637,7 +8576,6 @@
       "value": 1
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -9652,7 +8590,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -9668,15 +8605,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Detect Magic",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -9706,7 +8639,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -9721,15 +8653,8 @@
      "description": {
       "value": "<2558 chars sha256:8a35da640c48cdf1>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "arcanist": 0,
@@ -9753,15 +8678,9 @@
        "warpriest": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -9772,7 +8691,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -9787,7 +8705,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -9803,15 +8720,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
-    "links": {},
     "name": "Guidance",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -9844,7 +8757,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -9859,15 +8771,8 @@
      "description": {
       "value": "<246 chars sha256:1a62c3c8a67a1e19>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "cleric": 0,
@@ -9883,15 +8788,9 @@
        "summonerUnchained": 0,
        "warpriest": 0,
        "witch": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -9902,7 +8801,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -9917,7 +8815,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -9933,15 +8830,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/light/beam-explosion-orange.webp",
-    "links": {},
     "name": "Light",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -9968,7 +8861,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -9987,13 +8879,7 @@
       "light"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "arcanist": 0,
@@ -10017,15 +8903,9 @@
        "warpriest": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -10036,7 +8916,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10051,7 +8930,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -10067,15 +8945,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Message",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -10102,7 +8976,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -10121,13 +8994,7 @@
       "languageDependent"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 0,
        "bard": 0,
@@ -10142,15 +9009,9 @@
        "summonerUnchained": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a piece of copper wire",
       "gpValue": 0,
@@ -10161,7 +9022,6 @@
       "value": 1
      },
      "school": "trs",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10176,7 +9036,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -10192,15 +9051,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Read Magic",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -10227,7 +9082,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -10242,15 +9096,8 @@
      "description": {
       "value": "<829 chars sha256:23868a4e0694ef1a>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "antipaladin": 1,
@@ -10277,15 +9124,9 @@
        "warpriest": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a clear crystal or mineral prism",
       "gpValue": 0,
@@ -10296,7 +9137,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10311,7 +9151,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -10327,15 +9166,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Compel Hostility",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -10366,7 +9201,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -10385,13 +9219,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "bard": 1,
        "cleric": 1,
@@ -10408,15 +9236,9 @@
        "summonerUnchained": 1,
        "warpriest": 1,
        "witch": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -10427,7 +9249,6 @@
       "value": 0
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10442,7 +9263,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -10458,15 +9278,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Daze Monster",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -10506,7 +9322,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -10525,13 +9340,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "bard": 2,
@@ -10546,15 +9355,9 @@
        "summonerUnchained": 1,
        "witch": 2,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -10565,7 +9368,6 @@
       "value": 0
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10580,7 +9382,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -10596,15 +9397,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Detect Metal",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -10635,7 +9432,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -10650,15 +9446,8 @@
      "description": {
       "value": "<320 chars sha256:479a8048aa5ec783>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 1,
        "arcanist": 1,
@@ -10668,15 +9457,9 @@
        "sorcerer": 1,
        "summoner": 1,
        "wizard": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a magnetized nail or nugget of ore",
       "gpValue": 0,
@@ -10687,7 +9470,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10702,7 +9484,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -10718,15 +9499,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/creatures/eyes/humanoid-single-blind.webp",
-    "links": {},
     "name": "Identify",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -10756,7 +9533,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -10771,13 +9547,7 @@
      "description": {
       "value": "<304 chars sha256:1b1687cc050a7ffa>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
       "bloodline": {
        "Arcane": 1
@@ -10800,14 +9570,9 @@
       },
       "domain": {
        "Magic": 1
-      },
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -10818,7 +9583,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10833,7 +9597,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -10849,15 +9612,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Planar Orientation",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -10883,7 +9642,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -10898,15 +9656,8 @@
      "description": {
       "value": "<1242 chars sha256:578a10b7edbbc28f>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 1,
        "bard": 1,
@@ -10925,15 +9676,9 @@
        "warpriest": 1,
        "witch": 1,
        "wizard": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -10944,7 +9689,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -10959,7 +9703,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -10975,15 +9718,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
-    "links": {},
     "name": "Detect Magic, Greater",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11015,7 +9754,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -11030,15 +9768,8 @@
      "description": {
       "value": "<2032 chars sha256:b15ef892e17ad74a>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "bard": 2,
@@ -11061,15 +9792,9 @@
        "warpriest": 2,
        "witch": 2,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -11080,7 +9805,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -11095,7 +9819,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -11111,15 +9834,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Detect Thoughts",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11162,7 +9881,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 3,
@@ -11181,13 +9899,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 2,
        "arcanist": 2,
@@ -11207,14 +9919,9 @@
       },
       "domain": {
        "Knowledge": 2
-      },
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a copper piece",
       "gpValue": 0,
@@ -11225,7 +9932,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -11240,7 +9946,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -11256,15 +9961,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
-    "links": {},
     "name": "See Invisibility",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11291,7 +9992,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -11306,13 +10006,7 @@
      "description": {
       "value": "<643 chars sha256:ecec75b205602b6d>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
       "bloodline": {
        "Marid": 2
@@ -11336,16 +10030,11 @@
        "witch": 2,
        "wizard": 2
       },
-      "domain": {},
-      "elementalSchool": {},
       "subDomain": {
        "Revelation": 2
       }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -11356,7 +10045,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -11371,7 +10059,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -11387,15 +10074,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/air/air-wave-gust-blue.webp",
-    "links": {},
     "name": "Wind Wall",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11424,7 +10107,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -11443,13 +10125,7 @@
       "air"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 3,
        "bloodrager": 3,
@@ -11470,14 +10146,9 @@
       },
       "domain": {
        "Air": 2
-      },
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -11488,7 +10159,6 @@
       "value": 0
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -11503,7 +10173,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -11519,15 +10188,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Control Summoned Creature",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11559,7 +10224,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -11578,13 +10242,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 4,
        "bard": 3,
@@ -11599,15 +10257,9 @@
        "summonerUnchained": 3,
        "warpriest": 4,
        "wizard": 4
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 4,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -11618,7 +10270,6 @@
       "value": 0
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -11633,7 +10284,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -11649,15 +10299,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Insect Scouts",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11682,7 +10328,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -11697,15 +10342,8 @@
      "description": {
       "value": "<1692 chars sha256:52e3550e15431d4f>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "antipaladin": 4,
        "arcanist": 3,
@@ -11722,15 +10360,9 @@
        "summonerUnchained": 3,
        "witch": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -11741,7 +10373,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -11756,7 +10387,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -11772,15 +10402,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Pack Empathy",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11808,7 +10434,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -11823,15 +10448,8 @@
      "description": {
       "value": "<487 chars sha256:25102cbf04ac697f>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 3,
        "bloodrager": 3,
@@ -11846,15 +10464,9 @@
        "summonerUnchained": 3,
        "witch": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -11865,7 +10477,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -11880,7 +10491,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -11896,15 +10506,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Seek Thoughts",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -11939,7 +10545,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -11958,13 +10563,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 3,
        "arcanist": 3,
@@ -11983,16 +10582,11 @@
        "witch": 3,
        "wizard": 3
       },
-      "domain": {},
-      "elementalSchool": {},
       "subDomain": {
        "Thought": 3
       }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -12003,7 +10597,6 @@
       "value": 0
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12018,7 +10611,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -12034,15 +10626,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Detect Magic",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12072,7 +10660,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -12087,15 +10674,8 @@
      "description": {
       "value": "<2558 chars sha256:8a35da640c48cdf1>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "arcanist": 0,
@@ -12119,15 +10699,9 @@
        "warpriest": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -12138,7 +10712,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12153,7 +10726,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -12169,15 +10741,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Detect Poison",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12208,7 +10776,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -12223,15 +10790,8 @@
      "description": {
       "value": "<471 chars sha256:ebac477e85e1ca25>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "antipaladin": 1,
        "arcanist": 0,
@@ -12250,15 +10810,9 @@
        "warpriest": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -12269,7 +10823,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12284,7 +10837,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -12300,15 +10852,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
-    "links": {},
     "name": "Guidance",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12341,7 +10889,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -12356,15 +10903,8 @@
      "description": {
       "value": "<246 chars sha256:1a62c3c8a67a1e19>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "cleric": 0,
@@ -12380,15 +10920,9 @@
        "summonerUnchained": 0,
        "warpriest": 0,
        "witch": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -12399,7 +10933,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12414,7 +10947,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -12430,15 +10962,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/light/beam-explosion-orange.webp",
-    "links": {},
     "name": "Light",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12465,7 +10993,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -12484,13 +11011,7 @@
       "light"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "arcanist": 0,
@@ -12514,15 +11035,9 @@
        "warpriest": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -12533,7 +11048,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12548,7 +11062,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -12564,15 +11077,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Read Magic",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12599,7 +11108,6 @@
       }
      ],
      "atWill": true,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -12614,15 +11122,8 @@
      "description": {
       "value": "<829 chars sha256:23868a4e0694ef1a>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 0,
        "antipaladin": 1,
@@ -12649,15 +11150,9 @@
        "warpriest": 0,
        "witch": 0,
        "wizard": 0
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 0,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a clear crystal or mineral prism",
       "gpValue": 0,
@@ -12668,7 +11163,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12683,7 +11177,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": "0"
      }
@@ -12699,15 +11192,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Abadar's Truthtelling",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12739,7 +11228,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 1,
@@ -12758,28 +11246,16 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "cleric": 1,
        "inquisitor": 1,
        "oracle": 1,
        "paladin": 1,
        "warpriest": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -12790,7 +11266,6 @@
       "value": 1
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12813,7 +11288,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -12829,15 +11303,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Carrion Compass",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12869,7 +11339,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -12884,15 +11353,8 @@
      "description": {
       "value": "<1379 chars sha256:9ae18958799e30b5>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "cleric": 1,
@@ -12903,15 +11365,9 @@
        "warpriest": 1,
        "witch": 1,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -12922,7 +11378,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -12937,7 +11392,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -12953,15 +11407,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/control/silhouette-grow-shrink-tan.webp",
-    "links": {},
     "name": "Enlarge Person",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -12994,7 +11444,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -13009,13 +11458,7 @@
      "description": {
       "value": "<1613 chars sha256:45ea66ac83195845>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
       "bloodline": {
        "Boreal": 1,
@@ -13039,15 +11482,11 @@
       "domain": {
        "Strength": 1
       },
-      "elementalSchool": {},
       "subDomain": {
        "Growth": 1
       }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -13058,7 +11497,6 @@
       "value": 1
      },
      "school": "trs",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13073,7 +11511,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13089,15 +11526,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Mighty Fist of the Earth",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13123,7 +11556,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 1,
@@ -13142,28 +11574,16 @@
       "earth"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "cleric": 1,
        "druid": 1,
        "hunter": 1,
        "oracle": 1,
        "warpriest": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -13174,7 +11594,6 @@
       "value": 1
      },
      "school": "con",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13189,7 +11608,6 @@
      "subschool": [
       "creation"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13205,15 +11623,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Moment of Greatness",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13241,7 +11655,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -13260,11 +11673,6 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
       "bloodline": {
        "Imperious": 1
@@ -13279,15 +11687,9 @@
        "sorcerer": 1,
        "warpriest": 1,
        "wizard": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -13298,7 +11700,6 @@
       "value": 1
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13313,7 +11714,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13329,15 +11729,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Speechreader's Sight",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13365,7 +11761,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -13380,15 +11775,8 @@
      "description": {
       "value": "<549 chars sha256:296dc0b5d1062b9d>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 1,
        "arcanist": 1,
@@ -13407,15 +11795,9 @@
        "warpriest": 1,
        "witch": 1,
        "wizard": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -13426,7 +11808,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13441,7 +11822,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13457,15 +11837,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Starsight",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13492,7 +11868,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -13507,15 +11882,8 @@
      "description": {
       "value": "<578 chars sha256:b75ddcc3c238a6eb>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 1,
        "arcanist": 1,
@@ -13531,15 +11899,9 @@
        "warpriest": 1,
        "witch": 1,
        "wizard": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -13550,7 +11912,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13565,7 +11926,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13581,15 +11941,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Sure Casting",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13616,7 +11972,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -13631,15 +11986,8 @@
      "description": {
       "value": "<410 chars sha256:0141216433a99b9e>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 1,
        "bard": 1,
@@ -13651,15 +11999,9 @@
        "warpriest": 1,
        "witch": 1,
        "wizard": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a square of cloth and a needle",
       "gpValue": 0,
@@ -13670,7 +12012,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13685,7 +12026,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13701,15 +12041,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Tap Inner Beauty",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13736,7 +12072,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -13751,15 +12086,8 @@
      "description": {
       "value": "<240 chars sha256:c25889cdba112e90>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "bard": 1,
        "cleric": 1,
@@ -13767,15 +12095,9 @@
        "skald": 1,
        "warpriest": 1,
        "witch": 1
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -13786,7 +12108,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13805,7 +12126,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13821,15 +12141,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/skills/targeting/target-strike-gray.webp",
-    "links": {},
     "name": "True Strike",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13855,7 +12171,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -13870,13 +12185,7 @@
      "description": {
       "value": "<323 chars sha256:0600cb6aeb285849>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
       "bloodline": {
        "Shaitan": 1
@@ -13897,15 +12206,11 @@
        "Destruction": 1,
        "Luck": 1
       },
-      "elementalSchool": {},
       "subDomain": {
        "Fist": 1
       }
      },
      "level": 1,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "small wooden replica of an archery target",
       "gpValue": 0,
@@ -13916,7 +12221,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -13931,7 +12235,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -13947,15 +12250,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Aid",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -13996,7 +12295,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 1,
@@ -14015,13 +12313,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 2,
        "alchemist": 2,
@@ -14037,15 +12329,11 @@
       "domain": {
        "Luck": 2
       },
-      "elementalSchool": {},
       "subDomain": {
        "Tactics": 2
       }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -14056,7 +12344,6 @@
       "value": 1
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -14071,7 +12358,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -14087,15 +12373,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Bestow Weapon Proficiency",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -14128,7 +12410,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -14147,13 +12428,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 2,
        "antipaladin": 2,
@@ -14171,15 +12446,9 @@
        "warpriest": 2,
        "witch": 2,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -14190,7 +12459,6 @@
       "value": 1
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -14205,7 +12473,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -14221,15 +12488,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
-    "links": {},
     "name": "Bull's Strength",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -14262,7 +12525,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -14277,13 +12539,7 @@
      "description": {
       "value": "<p>The subject becomes stronger. The spell grants a +4 enhancement bonus to Strength, adding the usual benefits to melee attack rolls, melee damage rolls, and other uses of the Strength modifier.</p>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
       "bloodline": {
        "Abyssal": 2,
@@ -14314,15 +12570,11 @@
       "domain": {
        "Strength": 2
       },
-      "elementalSchool": {},
       "subDomain": {
        "Rage": 2
       }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -14333,7 +12585,6 @@
       "value": 1
      },
      "school": "trs",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -14348,7 +12599,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -14364,15 +12614,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Heroic Fortune",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -14405,7 +12651,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 1,
@@ -14420,15 +12665,8 @@
      "description": {
       "value": "<211 chars sha256:12765d1c91de4f7d>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 2,
        "bard": 2,
@@ -14438,15 +12676,9 @@
        "paladin": 3,
        "skald": 2,
        "warpriest": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 100,
@@ -14457,7 +12689,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -14472,7 +12703,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -14488,15 +12718,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Know Peerage",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -14529,7 +12755,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -14548,13 +12773,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "bard": 1,
@@ -14570,15 +12789,9 @@
        "sorcerer": 2,
        "warpriest": 2,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -14589,7 +12802,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -14604,7 +12816,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -14620,15 +12831,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Protective Penumbra",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -14661,7 +12868,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -14680,13 +12886,7 @@
       "darkness"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "cleric": 2,
@@ -14698,15 +12898,9 @@
        "warpriest": 2,
        "witch": 2,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -14717,7 +12911,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -14732,7 +12925,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -14748,15 +12940,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/sonic/scream-wail-shout-teal.webp",
-    "links": {},
     "name": "Share Language",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -14789,7 +12977,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -14804,15 +12991,8 @@
      "description": {
       "value": "<1258 chars sha256:5f9db3e0533ffe46>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "bard": 1,
@@ -14829,17 +13009,12 @@
        "warpriest": 2,
        "wizard": 2
       },
-      "domain": {},
-      "elementalSchool": {},
       "subDomain": {
        "Cooperation": 2,
        "Language": 2
       }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -14850,7 +13025,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -14865,7 +13039,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -14881,15 +13054,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Shatter",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -14954,7 +13123,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -14973,13 +13141,7 @@
       "sonic"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "bard": 2,
@@ -14996,14 +13158,9 @@
       },
       "domain": {
        "Destruction": 2
-      },
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -15014,7 +13171,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15029,7 +13185,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15045,15 +13200,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Spell Gauge",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15084,7 +13235,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -15103,13 +13253,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "bard": 2,
@@ -15121,15 +13265,9 @@
        "warpriest": 2,
        "witch": 2,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a silver piece",
       "gpValue": 0,
@@ -15140,7 +13278,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15159,7 +13296,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15175,15 +13311,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Status",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15216,7 +13348,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -15231,15 +13362,8 @@
      "description": {
       "value": "<637 chars sha256:fbb1687b6e7631e8>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "cleric": 2,
        "medium": 2,
@@ -15249,15 +13373,9 @@
        "spiritualist": 2,
        "warpriest": 2,
        "witch": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -15268,7 +13386,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15283,7 +13400,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15299,15 +13415,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Twisted Futures",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15343,7 +13455,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -15358,15 +13469,8 @@
      "description": {
       "value": "<669 chars sha256:a7e297652a5d9f7b>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 2,
        "bard": 1,
@@ -15380,15 +13484,9 @@
        "warpriest": 2,
        "witch": 1,
        "wizard": 2
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 2,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -15399,7 +13497,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15414,7 +13511,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15430,15 +13526,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Aura Sight",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15466,7 +13558,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -15481,15 +13572,8 @@
      "description": {
       "value": "<896 chars sha256:e3fbce11b53c9ed8>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "alchemist": 3,
        "arcanist": 3,
@@ -15505,15 +13589,9 @@
        "warpriest": 3,
        "witch": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -15524,7 +13602,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15539,7 +13616,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15555,15 +13631,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Champion's Bout",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15595,7 +13667,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -15614,13 +13685,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "bard": 3,
        "cleric": 3,
@@ -15628,15 +13693,9 @@
        "oracle": 3,
        "skald": 3,
        "warpriest": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -15647,7 +13706,6 @@
       "value": 1
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15662,7 +13720,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15678,15 +13735,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Charitable Impulse",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15718,7 +13771,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 3,
@@ -15737,13 +13789,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 3,
        "bard": 2,
@@ -15754,15 +13800,9 @@
        "warpriest": 3,
        "witch": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a miniature collection plate",
       "gpValue": 0,
@@ -15773,7 +13813,6 @@
       "value": 1
      },
      "school": "enc",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15788,7 +13827,6 @@
      "subschool": [
       "compulsion"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15804,15 +13842,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Dark-Light",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15848,7 +13882,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -15867,13 +13900,7 @@
       "light"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 3,
        "cleric": 3,
@@ -15883,15 +13910,9 @@
        "sorcerer": 3,
        "warpriest": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -15902,7 +13923,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -15917,7 +13937,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -15933,15 +13952,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/light/beam-rays-yellow.webp",
-    "links": {},
     "name": "Daylight",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -15969,7 +13984,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -15988,13 +14002,7 @@
       "light"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "adept": 3,
        "arcanist": 3,
@@ -16013,17 +14021,12 @@
        "warpriest": 3,
        "wizard": 3
       },
-      "domain": {},
-      "elementalSchool": {},
       "subDomain": {
        "Day": 3,
        "Light": 3
       }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -16034,7 +14037,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16049,7 +14051,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16065,15 +14066,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Detect Anxieties",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16109,7 +14106,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 3,
@@ -16128,13 +14124,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "antipaladin": 2,
        "arcanist": 3,
@@ -16152,15 +14142,9 @@
        "warpriest": 3,
        "witch": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a medallion",
       "gpValue": 0,
@@ -16171,7 +14155,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16186,7 +14169,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16202,15 +14184,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
-    "links": {},
     "name": "Detect Desires",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16246,7 +14224,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 3,
@@ -16265,13 +14242,7 @@
       "mindAffecting"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "antipaladin": 2,
        "arcanist": 3,
@@ -16289,15 +14260,9 @@
        "warpriest": 3,
        "witch": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a medallion",
       "gpValue": 0,
@@ -16308,7 +14273,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16323,7 +14287,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16339,15 +14302,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Helping Hand",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16373,7 +14332,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 1,
@@ -16388,15 +14346,8 @@
      "description": {
       "value": "<2530 chars sha256:b00a411974966c7f>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "cleric": 3,
        "medium": 2,
@@ -16404,15 +14355,9 @@
        "psychic": 3,
        "spiritualist": 3,
        "warpriest": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -16423,7 +14368,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16438,7 +14382,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16454,15 +14397,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Magic Vestment",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16495,7 +14434,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 1,
@@ -16510,15 +14448,8 @@
      "description": {
       "value": "<234 chars sha256:cd2a10a571ed86d0>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "cleric": 3,
        "inquisitor": 3,
@@ -16531,14 +14462,9 @@
        "Nobility": 3,
        "Strength": 3,
        "War": 3
-      },
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -16549,7 +14475,6 @@
       "value": 1
      },
      "school": "trs",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16564,7 +14489,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16580,15 +14504,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Mark of Obvious Ethics",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16620,7 +14540,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -16639,26 +14558,14 @@
       "curse"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "cleric": 3,
        "oracle": 3,
        "warpriest": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -16669,7 +14576,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16684,7 +14590,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16700,15 +14605,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/defensive/shield-barrier-glowing-triangle-teal.webp",
-    "links": {},
     "name": "Protection from Energy",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16741,7 +14642,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 1,
@@ -16756,13 +14656,7 @@
      "description": {
       "value": "<535 chars sha256:8b8d4129948c6252>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
       "bloodline": {
        "Destined": 3,
@@ -16792,14 +14686,9 @@
       "domain": {
        "Luck": 3,
        "Protection": 3
-      },
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -16810,7 +14699,6 @@
       "value": 1
      },
      "school": "abj",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16825,7 +14713,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16841,15 +14728,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Riversight",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16877,7 +14760,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 3,
@@ -16892,15 +14774,8 @@
      "description": {
       "value": "<952 chars sha256:b1a92c4ecde17c14>"
      },
-     "descriptors": [],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "cleric": 3,
        "druid": 2,
@@ -16910,15 +14785,9 @@
        "ranger": 2,
        "warpriest": 3,
        "witch": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "a smooth river stone",
       "gpValue": 0,
@@ -16929,7 +14798,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -16944,7 +14812,6 @@
      "subschool": [
       "scrying"
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -16960,15 +14827,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "systems/pf1/icons/misc/magic-swirl.png",
-    "links": {},
     "name": "Spirit Bonds",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -16994,7 +14857,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 0,
@@ -17013,13 +14875,7 @@
       "meditative"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 3,
        "cleric": 3,
@@ -17027,15 +14883,9 @@
        "warpriest": 3,
        "witch": 3,
        "wizard": 3
-      },
-      "domain": {},
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 300,
@@ -17046,7 +14896,6 @@
       "value": 1
      },
      "school": "div",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -17061,7 +14910,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -17077,15 +14925,11 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "flags": {},
     "img": "icons/magic/air/air-wave-gust-blue.webp",
-    "links": {},
     "name": "Wind Wall",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -17114,7 +14958,6 @@
       }
      ],
      "atWill": false,
-     "attackNotes": [],
      "clOffset": 0,
      "components": {
       "divineFocus": 2,
@@ -17133,13 +14976,7 @@
       "air"
      ],
      "domain": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "learnedAt": {
-      "bloodline": {},
       "class": {
        "arcanist": 3,
        "bloodrager": 3,
@@ -17160,14 +14997,9 @@
       },
       "domain": {
        "Air": 2
-      },
-      "elementalSchool": {},
-      "subDomain": {}
+      }
      },
      "level": 3,
-     "links": {
-      "children": []
-     },
      "materials": {
       "focus": "",
       "gpValue": 0,
@@ -17178,7 +15010,6 @@
       "value": 1
      },
      "school": "evo",
-     "scriptCalls": [],
      "showInQuickbar": false,
      "slOffset": 0,
      "slotCost": 1,
@@ -17193,7 +15024,6 @@
      "subschool": [
       ""
      ],
-     "tags": [],
      "uses": {
       "autoDeductChargesCost": ""
      }
@@ -17211,16 +15041,11 @@
      "systemId": "pf1",
      "systemVersion": "11.3"
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/weapons/morningstar.PNG",
-    "links": {},
     "name": "+2 Morningstar",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -17505,8 +15330,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 8, @size)",
@@ -17527,13 +15350,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -17550,10 +15370,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -17569,7 +15385,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -17579,7 +15394,7 @@
        }
       },
       {
-       "_id": "Ljd297GAie4b8JHm",
+       "_id": "bV6PeDzkLHeb3gx7",
        "ability": {
         "attack": "_default",
         "critMult": 2,
@@ -17859,8 +15674,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 8, @size)",
@@ -17881,13 +15694,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -17904,10 +15714,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -17923,7 +15729,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -17940,7 +15745,6 @@
       "type": ""
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": ""
@@ -17961,22 +15765,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "cl": 0,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "instructions": "",
       "unidentified": "",
       "value": "<p>A morningstar is a spiked metal ball affixed to a handle.</p>"
      },
-     "effectNotes": [],
      "enh": 2,
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hands": 1,
      "hardness": {
       "base": 10,
@@ -17990,12 +15787,8 @@
       "value": 5
      },
      "identified": true,
-     "links": {
-      "children": []
-     },
      "masterwork": true,
      "material": {
-      "addon": [],
       "base": {
        "custom": false,
        "value": "steel"
@@ -18007,7 +15800,6 @@
      },
      "price": 8,
      "proficient": true,
-     "properties": {},
      "quantity": 1,
      "resizing": false,
      "scriptCalls": [
@@ -18036,7 +15828,6 @@
      ],
      "subType": "simple",
      "tag": "morningstar",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -18073,19 +15864,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/armor/half-plate.png",
-    "links": {},
     "name": "+2 Agile Half-Plate",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -18097,7 +15882,6 @@
       "dex": 0,
       "enh": 2,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": "steel"
@@ -18111,7 +15895,6 @@
       "value": 8
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": ""
@@ -18128,22 +15911,15 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 0,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "unidentified": "",
       "value": "<408 chars sha256:f8cac26536837a08>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "heavyArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 10,
      "held": "normal",
      "hp": {
@@ -18151,23 +15927,17 @@
       "value": 40
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": true,
      "price": 850,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "armor",
      "spellFailure": 40,
      "subType": "armor",
      "tag": "agileHalfplate",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -18200,19 +15970,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/waist/belt-coiled-leather-steel.webp",
-    "links": {},
     "name": "Anaconda's Coils",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -18224,7 +15988,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -18238,12 +16001,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -18285,14 +16046,9 @@
       "unidentified": "",
       "value": "<537 chars sha256:f7a900ec6dff31bc>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -18300,16 +16056,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 18500,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "belt",
@@ -18321,7 +16072,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "anacondasCoils",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -18354,19 +16104,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "icons/equipment/chest/coat-collared-red-gold.webp",
-    "links": {},
     "name": "Liar's Robe",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -18378,7 +16122,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -18392,12 +16135,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -18407,22 +16148,15 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 5,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "unidentified": "",
       "value": "<1375 chars sha256:08df1ef886204c43>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -18430,23 +16164,17 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 4180,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "body",
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "liarsRobe",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -18479,19 +16207,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/jewelry/ring-red.jpg",
-    "links": {},
     "name": "Steelhand Circle",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -18503,7 +16225,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -18517,12 +16238,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": "trs"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -18532,22 +16251,15 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 8,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "unidentified": "",
       "value": "<865 chars sha256:2db0d0ff1df121b3>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -18555,16 +16267,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 12000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "ring",
@@ -18576,7 +16283,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "steelhandCircle",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -18609,19 +16315,13 @@
      "systemId": null,
      "systemVersion": null
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/jewelry/ring-red.jpg",
-    "links": {},
     "name": "Heavenly Aegis Ring",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
-     "actions": [],
      "ammo": {
       "capacity": null,
       "explode": null,
@@ -18633,7 +16333,6 @@
       "dex": null,
       "enh": 0,
       "material": {
-       "addon": [],
        "base": {
         "custom": false,
         "value": ""
@@ -18647,12 +16346,10 @@
       "value": 0
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": true,
       "school": "evocation [good]"
      },
-     "baseTypes": [],
      "broken": false,
      "carried": true,
      "changeFlags": {
@@ -18662,22 +16359,15 @@
       "noHeavyEncumbrance": false,
       "noMediumEncumbrance": false
      },
-     "changes": [],
      "cl": 10,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "unidentified": "",
       "value": "<987 chars sha256:473bce0a41c09361>"
      },
-     "effectNotes": [],
      "enh": null,
      "equipmentSubtype": "lightArmor",
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hardness": 0,
      "held": "normal",
      "hp": {
@@ -18685,16 +16375,11 @@
       "value": 10
      },
      "identified": true,
-     "links": {
-      "charges": [],
-      "children": []
-     },
      "masterwork": false,
      "price": 16000,
      "proficient": true,
      "quantity": 1,
      "resizing": false,
-     "scriptCalls": [],
      "showInQuickbar": false,
      "size": "med",
      "slot": "ring",
@@ -18706,7 +16391,6 @@
      "spellFailure": 0,
      "subType": "wondrous",
      "tag": "heavenlyAegisRing",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
@@ -19337,16 +17021,11 @@
      "systemId": "pf1",
      "systemVersion": "11.3"
     },
-    "actions": {},
-    "changes": {},
-    "flags": {},
     "img": "systems/pf1/icons/items/weapons/morningstar.PNG",
-    "links": {},
     "name": "+2 Morningstar",
     "ownership": {
      "default": 0
     },
-    "scriptCalls": {},
     "sort": 0,
     "system": {
      "actions": [
@@ -19631,8 +17310,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 8, @size)",
@@ -19653,13 +17330,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -19676,10 +17350,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -19695,7 +17365,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -19705,7 +17374,7 @@
        }
       },
       {
-       "_id": "lY1rxShhlTmEPG0y",
+       "_id": "F606ZYpyu2ZT1GoR",
        "ability": {
         "attack": "_default",
         "critMult": 2,
@@ -19985,8 +17654,6 @@
         }
        ],
        "damage": {
-        "critParts": [],
-        "nonCritParts": [],
         "parts": [
          {
           "formula": "sizeRoll(1, 8, @size)",
@@ -20007,13 +17674,10 @@
         "value": null
        },
        "extraAttacks": {
-        "formula": {},
-        "manual": [],
         "type": "standard"
        },
        "img": null,
        "material": {
-        "addon": [],
         "normal": {
          "custom": false
         }
@@ -20030,10 +17694,6 @@
         }
        },
        "nonlethal": false,
-       "notes": {
-        "effect": [],
-        "footer": []
-       },
        "powerAttack": {
         "critMultiplier": 1,
         "damageBonus": 2,
@@ -20049,7 +17709,6 @@
        },
        "soundEffect": null,
        "splash": false,
-       "target": {},
        "touch": false,
        "uses": {
         "perAttack": false,
@@ -20066,7 +17725,6 @@
       "type": ""
      },
      "artifact": false,
-     "attackNotes": [],
      "aura": {
       "custom": false,
       "school": ""
@@ -20087,22 +17745,15 @@
       "seeInDarkness": false,
       "seeInvisibility": false
      },
-     "changes": [],
      "cl": 0,
-     "contextNotes": [],
      "cursed": false,
      "description": {
       "instructions": "",
       "unidentified": "",
       "value": ""
      },
-     "effectNotes": [],
      "enh": 2,
      "equipped": true,
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
      "hands": 1,
      "hardness": {
       "base": 10,
@@ -20116,12 +17767,8 @@
       "value": 5
      },
      "identified": true,
-     "links": {
-      "children": []
-     },
      "masterwork": true,
      "material": {
-      "addon": [],
       "base": {
        "custom": false,
        "value": "steel"
@@ -20133,7 +17780,6 @@
      },
      "price": 8,
      "proficient": true,
-     "properties": {},
      "quantity": 1,
      "resizing": false,
      "scriptCalls": [
@@ -20162,7 +17808,6 @@
      ],
      "subType": "weapon",
      "tag": "morningstar",
-     "tags": [],
      "timeworn": false,
      "unidentified": {
       "name": "",
