@@ -190,9 +190,20 @@ New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 # .gitignore entry hiding it from the repo went at the same time -- git and robocopy read different
 # lists, and undoing only one would leave the pack building fine locally and reaching nobody.
 #
-# The *_MODS.json templates MUST ship: main() fetches them whenever the dialog's "modded character
-# sheet" answer is Yes (the default), and a missing one 404s -> HTML -> JSON.parse blows up.
-& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
+# The *_MODS.json templates MUST ship -- EXCEPT the four excluded below: main() fetches the rest
+# whenever the dialog's "modded character sheet" answer is Yes (the default), and a missing one
+# 404s -> HTML -> JSON.parse blows up.
+#
+# every_feat / every_trait and their _MODS twins are compendium packs now (packs/feats, packs/traits,
+# and their -mods twins), read through build/catalog.js. template-loader.js no longer lists them, so
+# nothing fetches them and shipping them would put ~31 MB in the zip to answer nothing. They stay in
+# the REPO because they are what the packs are rebuilt from and what the golden harness serves packs
+# out of -- excluded from the zip only, exactly like every_class_feature.json.
+#
+# THE ORDER OF OPERATIONS MATTERS if this is ever reverted: drop the exclusion and re-add them to
+# SWAPPED_TEMPLATES together. Shipping them without the loader entry is dead weight; removing them
+# from the zip without a working pack leaves every feat synthesized from backend text alone.
+& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json every_feat.json every_feat_MODS.json every_trait.json every_trait_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { Fail "robocopy failed (exit $LASTEXITCODE)." }
 $global:LASTEXITCODE = 0
 

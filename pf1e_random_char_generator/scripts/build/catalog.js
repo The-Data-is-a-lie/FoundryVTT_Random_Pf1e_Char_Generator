@@ -64,6 +64,24 @@ const PACK_FOR = {
 const indexes = new WeakMap();
 
 /**
+ * Pack id -> `{index, rows}`, kept for the whole session rather than per generation.
+ *
+ * MODULE-LEVEL ON PURPOSE, mirroring what the JSON path gets from the WeakMap above. Held on the
+ * catalog instance instead, every generation re-walked all 8,816 index entries to rebuild the same
+ * name map and re-fetched documents it already had — the bench caught it as a warm build going from
+ * 12 ms to 26 ms, which would have made pack-reading a regression for the second character onward.
+ *
+ * Safe because a shipped pack is locked and cannot change mid-session. `reloadTemplates()` clears
+ * this alongside the template cache for whoever is authoring pack data against a live world.
+ */
+const packState = new Map();
+
+/** Drop the per-session pack indexes and fetched rows. Paired with `reloadTemplates()`. */
+export function clearPackCache() {
+  packState.clear();
+}
+
+/**
  * The name a row is found by: everything before the first " (", lowercased.
  *
  * Applied to the ROW, never to the query. A query of "Weapon Focus (Longsword)" matched nothing
@@ -131,7 +149,7 @@ function indexFor(bundle) {
 export function createCatalog(templates, { modded } = {}) {
   const branch = modded === 'y' ? 'mods' : 'base';
 
-  /** family -> {index: Map<key, {id, idx}>, rows: Map<key, row>} once primed. */
+  /** family -> the shared `packState` entry for its pack, once primed. */
   const packed = new Map();
   /** Families that tried to use a pack and could not. Logged once, then treated as JSON. */
   const declined = new Set();
@@ -160,7 +178,9 @@ export function createCatalog(templates, { modded } = {}) {
     const pack = packFor(family);
     if (!pack) return false;
 
-    let state = packed.get(family);
+    const packId = pack.metadata?.id ?? PACK_FOR[family][branch];
+    let state = packState.get(packId);
+
     if (!state) {
       // The index is requested WITH the order field, because getIndex caches per field set: asking
       // once with it costs a single query, asking without and then with costs two.
@@ -195,8 +215,9 @@ export function createCatalog(templates, { modded } = {}) {
       }
 
       state = { index, rows: new Map() };
-      packed.set(family, state);
+      packState.set(packId, state);
     }
+    packed.set(family, state);
 
     const wanted = [];
     for (const raw of names) {

@@ -36,14 +36,11 @@ import { log } from '../shared/log.js';
 
 async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null) {
   try {
-    // Retrieve data by template name based on dataType (feats or traits)
-    const data = ctx.templates[templateName];
-
-    // Check if data is an array
-    if (!Array.isArray(data)) {
-      console.error(`${dataType} data is not an array or is undefined:`, data);
-      return;
-    }
+    // No `ctx.templates[templateName]` guard any more. Feats and traits come from compendium packs
+    // and the loader no longer fetches their JSON at all, so an "is it an array" check on a bundle
+    // that is deliberately absent would abort every bucket. The catalog owns source selection now,
+    // and a name it cannot resolve falls through to the synthesize branch below exactly as an
+    // unmatched name always did.
 
     // The object, not JSON.stringify(..., null, 2): arguments are evaluated before the call, so a
     // stringify here would still build the string with logging off. See shared/log.js.

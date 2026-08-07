@@ -36,6 +36,8 @@ import { log } from '../shared/log.js';
  * warning fires and when a modded run gets downgraded.
  */
 
+import { clearPackCache } from './catalog.js';
+
 const CHAR_SHEET_DIR = 'modules/pf1e_random_char_generator/templates/character_sheet_folder';
 const BASE_DIR = 'modules/pf1e_random_char_generator/templates/base_folder';
 
@@ -83,15 +85,24 @@ const BASE_TEMPLATES = {
 };
 
 /**
- * The six bundles that swap on the modded branch: `[folder, base file, _MODS file]`.
+ * The bundles that swap on the modded branch: `[folder, base file, _MODS file]`.
  * The `_MODS` twins are hand-maintained and have drifted from their base counterparts; that drift
  * is deliberately out of scope here. This loader only picks a branch, it never reconciles them.
+ *
+ * **`everyFeat` and `everyTrait` are gone from here and that is the point.** They are compendium
+ * packs now (`packs/feats`, `packs/traits`, and their `-mods` twins), read through
+ * `build/catalog.js`, which asks Foundry for an index and fetches the ~50 documents a character
+ * actually uses. Loading the JSON as well would parse ~31 MB per session to answer nothing, so the
+ * files stay in the repo as the packs' rebuild source and the harness's fixture, and
+ * `release.ps1` keeps them out of the zip.
+ *
+ * If a pack is missing, the catalog says so loudly and the feat stage falls through to its
+ * synthesize-on-miss branch — the same path that already handles the ~45% of requested feat names
+ * the bundle never resolved. Degraded, visible, and not a crash.
  */
 const SWAPPED_TEMPLATES = {
   everyClass: ['charSheet', 'every_class.json', 'every_class_MODS.json'],
-  everyFeat: ['charSheet', 'every_feat.json', 'every_feat_MODS.json'],
   everySpell: ['charSheet', 'every_spell.json', 'every_spell_MODS.json'],
-  everyTrait: ['charSheet', 'every_trait.json', 'every_trait_MODS.json'],
   everyWeapon: ['charSheet', 'every_weapon.json', 'every_weapon_MODS.json'],
   baseFeat: ['base', 'base_feat.json', 'base_feat_MODS.json'],
 };
@@ -189,5 +200,8 @@ export async function loadTemplates({ modded }) {
  */
 export function reloadTemplates() {
   cache.clear();
+  // The catalog holds its own per-session state for the pack-backed families, so clearing only this
+  // one would leave feats and traits answering from a cache the escape hatch claims to have dropped.
+  clearPackCache();
   log.debug('Character Generator: template cache cleared — the next character re-reads from disk.');
 }
