@@ -25,6 +25,13 @@ downloads/*- Copy.zip
 /pf1-buff-distributor/
 /pf1-conditional-applier/
 
-# ---- leftover build artifact of the removed spell-conditionals compendium ----
-#      module.json ships "packs": [], so nothing here is distributed.
-/pf1e_random_char_generator/packs/
+# ---- packs/ is SHIPPED CONTENT now, deliberately NOT ignored ----
+#      This was `/pf1e_random_char_generator/packs/`, hiding a leftover LevelDB directory from the
+#      removed spell-conditionals compendium, on the reasoning that module.json declared
+#      "packs": [] so nothing there was distributed. That reasoning expired: the feat compendium
+#      (tools/build_feat_pack.macro.js) lives there and IS declared and distributed.
+#
+#      Leaving it would have failed silently and twice -- the pack would never be committed, and
+#      release.ps1 excluded packs/ from the zip for the same dead reason. Both were undone together,
+#      because git and robocopy read different lists and a pack that works only on the authoring
+#      machine is the worst shape this can take.

@@ -77,21 +77,51 @@
     return copy;
   });
 
-  let made = 0;
+  // The pack id, taken from metadata rather than the `collection` getter, which has moved between
+  // core versions. Everything below writes into this and nothing else.
+  const packId = pack.metadata?.id ?? pack.collection;
+
+  // ONE document first, as a probe. The previous version of this macro caught every batch error and
+  // carried on, so a run where all 8,816 rows were rejected still printed the copy instructions and
+  // a "Built 0/8816" line that is easy to read past -- which is exactly what happened: a 7 KB pack
+  // with no .ldb files at all. Fail here, loudly, with the real message.
+  let probe;
+  try {
+    probe = await Item.createDocuments([clean[0]], { pack: packId, keepId: false, render: false });
+  } catch (error) {
+    console.error('PROBE FAILED — the first document could not be created:', error);
+    return fail(`Import rejected the first row: ${error.message}. `
+      + `Nothing was written. Pack id was "${packId}". See F12 for the full error.`);
+  }
+  if (!probe?.length) {
+    return fail(`Import silently created nothing for the first row (pack id "${packId}"). See F12.`);
+  }
+
+  let made = probe.length;
   const started = performance.now();
-  for (let i = 0; i < clean.length; i += BATCH) {
+  for (let i = 1; i < clean.length; i += BATCH) {
     const slice = clean.slice(i, i + BATCH);
     try {
-      const created = await Item.createDocuments(slice, { pack: pack.collection, keepId: false, render: false });
+      const created = await Item.createDocuments(slice, { pack: packId, keepId: false, render: false });
       made += created.length;
     } catch (error) {
+      // Stop at the first failure rather than grinding through 35 more. A partial pack is worse
+      // than none, because it looks like it worked.
       console.error(`Batch at ${i} failed:`, error);
+      return fail(`Batch at row ${i} failed: ${error.message}. `
+        + `${made} document(s) were written before it stopped -- delete the world compendium and `
+        + `re-run once the cause is fixed. See F12.`);
     }
-    if (i % (BATCH * 8) === 0) console.log(`  ${made}/${clean.length}…`);
+    if ((i - 1) % (BATCH * 8) === 0) console.log(`  ${made}/${clean.length}…`);
   }
   const elapsed = ((performance.now() - started) / 1000).toFixed(1);
 
-  await pack.getIndex();
+  const index = await pack.getIndex();
+  const indexed = index.size ?? index.length ?? 0;
+  if (indexed !== clean.length) {
+    return fail(`Built ${made} documents but the pack index reports ${indexed} of ${clean.length}. `
+      + `Do NOT copy this pack. See F12.`);
+  }
 
   // ---- 5. tell the operator exactly what to do next ---------------------------------------------
   const worldId = game.world.id;
@@ -105,7 +135,7 @@
   };
 
   const steps = [
-    `Built ${made}/${clean.length} documents in ${elapsed}s.`,
+    `Built ${made}/${clean.length} documents in ${elapsed}s, index confirms ${indexed}.`,
     ``,
     `NEXT — Foundry must be SHUT DOWN before copying, or the LevelDB files will be mid-write.`,
     ``,
