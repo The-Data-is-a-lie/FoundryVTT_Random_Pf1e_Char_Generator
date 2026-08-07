@@ -9,8 +9,56 @@
   "packs": [
     {
       "name": "feats",
-      "label": "RCG — All Feats",
+      "label": "RCG — Feats",
       "path": "packs/feats",
+      "type": "Item",
+      "system": "pf1",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "feats-mods",
+      "label": "RCG — Feats (modded)",
+      "path": "packs/feats-mods",
+      "type": "Item",
+      "system": "pf1",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "items",
+      "label": "RCG — Items",
+      "path": "packs/items",
+      "type": "Item",
+      "system": "pf1",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "spells",
+      "label": "RCG — Spells",
+      "path": "packs/spells",
+      "type": "Item",
+      "system": "pf1",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "spells-mods",
+      "label": "RCG — Spells (modded)",
+      "path": "packs/spells-mods",
+      "type": "Item",
+      "system": "pf1",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "traits",
+      "label": "RCG — Traits",
+      "path": "packs/traits",
+      "type": "Item",
+      "system": "pf1",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "traits-mods",
+      "label": "RCG — Traits (modded)",
+      "path": "packs/traits-mods",
       "type": "Item",
       "system": "pf1",
       "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
