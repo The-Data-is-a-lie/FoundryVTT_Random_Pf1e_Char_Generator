@@ -6,7 +6,16 @@
   "author": "Tabletopsoftware",
   "esmodules": ["scripts/main.js"],
   "styles": ["styles/attack-dialog.css"],
-  "packs": [],
+  "packs": [
+    {
+      "name": "feats",
+      "label": "RCG — All Feats",
+      "path": "packs/feats",
+      "type": "Item",
+      "system": "pf1",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    }
+  ],
   "system": "pf1e",
   "dependencies": [],
   "compatibility": {

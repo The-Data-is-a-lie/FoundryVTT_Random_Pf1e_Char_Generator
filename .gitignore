@@ -35,3 +35,11 @@ downloads/*- Copy.zip
 #      release.ps1 excluded packs/ from the zip for the same dead reason. Both were undone together,
 #      because git and robocopy read different lists and a pack that works only on the authoring
 #      machine is the worst shape this can take.
+#
+#      The DATA files (*.ldb, the numbered write-ahead *.log, CURRENT, MANIFEST-*) are committed.
+#      These three are not: LOCK is a lock file Foundry holds open while a world is loaded -- git
+#      cannot even read it then -- and LOG/LOG.old are LevelDB's own operational text. All three are
+#      recreated on open, so shipping them is noise at best.
+/pf1e_random_char_generator/packs/*/LOCK
+/pf1e_random_char_generator/packs/*/LOG
+/pf1e_random_char_generator/packs/*/LOG.old
