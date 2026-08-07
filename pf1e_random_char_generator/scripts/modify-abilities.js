@@ -116,7 +116,9 @@ export async function main(deps = {}) {
     ctx.modded = modded;
     // Name -> row lookup over those same bundles. Built here rather than inside a stage because the
     // indexes hang off the cached arrays and are worth sharing across every stage that asks.
-    ctx.catalog = createCatalog(templates);
+    // `modded` is the value the loader RETURNED, not the one it was asked for, so a run downgraded
+    // by the missing-_MODS fallback reads the base packs and the base bundles together.
+    ctx.catalog = createCatalog(templates, { modded });
 
     const characterData = readCharacterPayload();
     // The backend wraps any generation exception as {"error": "..."} (app.py process_input_values), so

@@ -34,7 +34,8 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import {
-  installFoundryStubs, loadPackFixtures, deterministicDeps, drainMutatedTemplates, MODULE_ROOT, FIXTURES,
+  installFoundryStubs, loadPackFixtures, loadModulePacks, deterministicDeps, drainMutatedTemplates,
+  MODULE_ROOT, FIXTURES,
 } from './foundry-stubs.mjs';
 import { FIXTURE_ROSTER, WANTED_PACKS } from './fixture-roster.mjs';
 
@@ -122,6 +123,9 @@ before(async () => {
   // directly. That file is dev-only and excluded from the release zip.
   ({ main: mainFn } = await import(pathToFileURL(path.join(MODULE_ROOT, 'scripts', 'modify-abilities.js')).href));
   packFixtures = loadPackFixtures(WANTED_PACKS);
+  // The module's OWN packs, served from the template JSON they were generated from. Merged in
+  // alongside the third-party dumps so `game.packs.get()` answers for both kinds. See loadModulePacks.
+  for (const [id, stub] of loadModulePacks()) packFixtures.packs.set(id, stub);
   if (!existsSync(GOLDEN_DIR)) mkdirSync(GOLDEN_DIR, { recursive: true });
 });
 

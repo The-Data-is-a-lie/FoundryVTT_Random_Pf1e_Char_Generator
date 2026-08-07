@@ -37,8 +37,10 @@
   const out = [];
   const say = (line) => { out.push(line); console.log(line); };
 
-  say(`pack           index   bundle   names        automation     verdict`);
-  say(`──────────────────────────────────────────────────────────────────────`);
+  const IDX_FIELD = `flags.${MODULE_ID}.idx`;
+
+  say(`pack           index   bundle   names        order      automation     verdict`);
+  say(`──────────────────────────────────────────────────────────────────────────────────`);
 
   let allPass = true;
   const detail = [];
@@ -64,12 +66,27 @@
       continue;
     }
 
-    const index = await pack.getIndex();
+    // The idx field is requested here, not on a second call: getIndex caches by the field set it
+    // was asked for, so asking once with the field is cheaper than asking twice.
+    const index = await pack.getIndex({ fields: [IDX_FIELD] });
     const count = index.size ?? index.length ?? 0;
 
     // names
     const packNames = new Set([...index].map((r) => String(r.name)));
     const missing = rows.map((r) => String(r.name)).filter((n) => !packNames.has(n));
+
+    // ORDER STAMP. Lookups resolve a name to the lowest-idx candidate, reproducing the JSON's
+    // first-in-array-order winner. A pack built before that stamp existed, or one where the field
+    // did not survive, must FAIL here -- silently falling back to whatever order LevelDB returns is
+    // exactly the bug this check exists to prevent.
+    const idxValues = [...index].map((r) => r?.flags?.[MODULE_ID]?.idx);
+    const stamped = idxValues.filter((v) => Number.isInteger(v));
+    const uniqueIdx = new Set(stamped);
+    const orderOk = stamped.length === count && uniqueIdx.size === count
+      && Math.min(...stamped) === 0 && Math.max(...stamped) === count - 1;
+    const orderText = stamped.length === 0 ? 'NO STAMP'
+      : orderOk ? 'contiguous'
+      : `${stamped.length}/${count} bad`;
 
     // automation, probed from this bundle's own content
     const candidates = rows.filter((r) => Array.isArray(r.system?.changes) && r.system.changes.length).slice(0, PROBE_COUNT);
@@ -88,18 +105,24 @@
     const countOk = count === rows.length;
     const namesOk = missing.length === 0;
     const autoOk = candidates.length === 0 || intact === candidates.length;
-    const pass = countOk && namesOk && autoOk;
+    const pass = countOk && namesOk && autoOk && orderOk;
     if (!pass) allPass = false;
 
     const autoText = candidates.length ? `${intact}/${candidates.length} intact` : 'none to check';
     say(`${target.pack.padEnd(13)} ${String(count).padStart(6)}  ${String(rows.length).padStart(6)}   `
-      + `${(namesOk ? 'all resolve' : `${missing.length} MISSING`).padEnd(12)} ${autoText.padEnd(14)} ${pass ? 'PASS' : 'FAIL'}`);
+      + `${(namesOk ? 'all resolve' : `${missing.length} MISSING`).padEnd(12)} ${orderText.padEnd(10)} `
+      + `${autoText.padEnd(14)} ${pass ? 'PASS' : 'FAIL'}`);
 
     if (missing.length) detail.push(`${target.pack}: missing ${missing.length} — e.g. ${missing.slice(0, 5).join(', ')}`);
     if (badProbes.length) detail.push(`${target.pack}: automation — ${badProbes.join('; ')}`);
+    if (!orderOk) {
+      detail.push(`${target.pack}: order stamp — ${stamped.length} of ${count} documents carry `
+        + `${IDX_FIELD}. Rebuild with the current build_all_packs macro; without it, names with more `
+        + `than one candidate resolve arbitrarily.`);
+    }
   }
 
-  say(`──────────────────────────────────────────────────────────────────────`);
+  say(`──────────────────────────────────────────────────────────────────────────────────`);
   if (detail.length) { say(''); for (const d of detail) say(`  ${d}`); }
   say('');
   say(allPass ? 'ALL PASS — every pack is complete and automation survived.'

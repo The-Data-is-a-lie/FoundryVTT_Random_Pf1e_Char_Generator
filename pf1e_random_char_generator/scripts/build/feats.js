@@ -192,7 +192,44 @@ async function processProfessionAbilities(ctx, items, startingSort = 3900) {
   appendJsonToTemplate(built, ctx.exportTemplate, "Feat");
 }
 
+/**
+ * Every feat or trait name this stage will ask the catalog for, flattened out of the payload.
+ *
+ * The catalog resolves a pack-backed family in ONE batch — see `prime` in build/catalog.js — and
+ * that only works because nothing here is computed mid-build: every name is already a field on
+ * `characterData` before the stage starts.
+ *
+ * THE TAX CHAINS ARE THE EASY HALF TO MISS. `applyFeatTax` resolves a second wave of names taken
+ * from the VALUES of the `*_tax_dict` maps, not from the `*_feats` arrays. Leave them out and the
+ * chain feats quietly stop resolving, which shows up as granted feats losing their real names and
+ * descriptions rather than as an error.
+ */
+function namesToResolve(characterData, { arrays, taxDicts = [] }) {
+  const names = [];
+  for (const field of arrays) {
+    const value = characterData?.[field];
+    if (Array.isArray(value)) names.push(...value.flat(Infinity));
+  }
+  for (const field of taxDicts) {
+    const dict = characterData?.[field];
+    if (!dict || typeof dict !== 'object') continue;
+    for (const chain of Object.values(dict)) {
+      if (Array.isArray(chain)) names.push(...chain.flat(Infinity));
+    }
+  }
+  return names.filter((n) => typeof n === 'string' && n);
+}
+
+const FEAT_ARRAYS = ['flavor_feats', 'flaw_feats', 'story_feats', 'feats', 'teamwork_feats',
+                     'class_feats', 'bloodline_feats', 'trainer_feats'];
+const FEAT_TAX_DICTS = ['flavor_feat_tax_dict', 'flaw_feat_tax_dict', 'story_feat_tax_dict',
+                        'feats_feat_tax_dict', 'class_feat_tax_dict', 'trainer_feat_tax_dict'];
+
 export async function addFeats(ctx) {
+  // One batch for the whole stage, before any of it runs. A no-op when everyFeat is JSON-backed.
+  await ctx.catalog.prime('everyFeat',
+    namesToResolve(ctx.characterData, { arrays: FEAT_ARRAYS, taxDicts: FEAT_TAX_DICTS }));
+
   // Feats section
   await addFeatSeparator(ctx, 'spaceBackground', 'space_function', 1);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.flavor_feats, 'feat', 200, "Flavor", true, 1, 1, null, null, ctx.characterData.flavor_feat_tax_dict);
@@ -224,6 +261,10 @@ export async function addFeats(ctx) {
 }
 
 export async function addTraits(ctx) {
+  // Traits carry no tax chains -- only the one array.
+  await ctx.catalog.prime('everyTrait',
+    namesToResolve(ctx.characterData, { arrays: ['selected_traits'] }));
+
   // Traits section: divider, then the creation traits (sorts 100+ from processFeatTrait).
   await appendFeatDivider(ctx, "____________________ Traits______________________", -100000, 'trait');
   await processFeatTrait(ctx, 'everyTrait', ctx.characterData.selected_traits, 'trait');

@@ -29,7 +29,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 import {
-  installFoundryStubs, loadPackFixtures, deterministicDeps, MODULE_ROOT, FIXTURES,
+  installFoundryStubs, loadPackFixtures, loadModulePacks, deterministicDeps, MODULE_ROOT, FIXTURES,
 } from './foundry-stubs.mjs';
 import { FIXTURE_ROSTER, WANTED_PACKS } from './fixture-roster.mjs';
 
@@ -131,6 +131,9 @@ const { main } = await import(
   pathToFileURL(path.join(MODULE_ROOT, 'scripts', 'modify-abilities.js')).href
 );
 const packFixtures = loadPackFixtures(WANTED_PACKS);
+// The module's own packs, same as the suite. Without these the bench would measure the JSON
+// fallback path and report a saving that production does not get.
+for (const [id, stub] of loadModulePacks()) packFixtures.packs.set(id, stub);
 
 if (packFixtures.missing.length) {
   console.log('\n  NOTE — no pack dump for: ' + packFixtures.missing.join(', '));

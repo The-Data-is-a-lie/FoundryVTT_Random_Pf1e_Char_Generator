@@ -135,6 +135,106 @@ export function loadPackFixtures(wanted) {
   return { packs, present, missing, stale };
 }
 
+// ---- this module's OWN packs, served out of the template JSON ------------------------------------
+
+/**
+ * The module ships `packs/feats`, `packs/traits` and their `_MODS` twins as LevelDB compendiums, and
+ * `catalog.js` reads them. Bare node cannot open LevelDB (ticket 11 again), so the harness has to
+ * fake them — and the honest way is to build the fakes from the SAME JSON the packs were generated
+ * from. `templates/character_sheet_folder/every_feat.json` is already in the repo as the pack's
+ * rebuild source, so serving it here costs nothing: no dumped fixture, no extra committed bytes, and
+ * no second copy that can drift from the first.
+ *
+ * WHAT IS AND IS NOT UNDER TEST. The catalog's real code path runs — pack resolution, the indexed
+ * lookup, `getIndex({fields})`, `getDocument()`, the lowest-`idx` tiebreak. What does not run is
+ * LevelDB itself, which is Foundry's code, not ours. That is the same trade `fetch` already makes by
+ * reading real files off disk instead of speaking HTTP.
+ *
+ * IDS ARE DERIVED, NOT RANDOM, for the same reason `mintId` is: a golden that changed every run
+ * would be worthless. Same row, same id, run after run.
+ */
+const MODULE_ID = 'pf1e_random_char_generator';
+const IDX_FLAG = `flags.${MODULE_ID}.idx`;
+
+/** Which template bundle backs which shipped pack. Mirrors `tools/build_all_packs.macro.js`. */
+const MODULE_PACK_SOURCES = {
+  [`${MODULE_ID}.feats`]: 'every_feat.json',
+  [`${MODULE_ID}.feats-mods`]: 'every_feat_MODS.json',
+  [`${MODULE_ID}.traits`]: 'every_trait.json',
+  [`${MODULE_ID}.traits-mods`]: 'every_trait_MODS.json',
+};
+
+const setPath = (target, path, value) => {
+  const parts = path.split('.');
+  let node = target;
+  for (const part of parts.slice(0, -1)) node = (node[part] ??= {});
+  node[parts.at(-1)] = value;
+};
+
+const getPath = (source, path) => path.split('.').reduce((node, part) => node?.[part], source);
+
+/**
+ * Build stubs for the module's own packs, keyed by pack id, ready to merge into `installFoundryStubs`'s
+ * `packs` map.
+ *
+ * The `idx` flag is stamped from the array position exactly as the build macro does it, because it is
+ * what makes a lookup deterministic: 445 feat names have more than one candidate, and the catalog
+ * resolves them by lowest `idx`. A harness that omitted the stamp would pass while production
+ * resolved those names differently.
+ */
+export function loadModulePacks() {
+  const packs = new Map();
+
+  for (const [packId, file] of Object.entries(MODULE_PACK_SOURCES)) {
+    const absolute = path.join(MODULE_ROOT, 'templates', 'character_sheet_folder', file);
+    if (!existsSync(absolute)) continue;
+
+    const parsed = loadTemplate(absolute);
+    const rows = Array.isArray(parsed) ? parsed : (parsed.items ?? []);
+
+    // Built once per process and shared, like the template cache above. Each document is cloned on
+    // the way out, so a build that writes to what it fetched cannot corrupt the next fixture.
+    const documents = rows.map((row, i) => {
+      const id = createHash('sha256').update(`${packId}:${i}:${row?.name ?? ''}`)
+        .digest('hex').slice(0, 16);
+      const doc = { ...row, _id: id };
+      setPath(doc, IDX_FLAG, i);
+      return doc;
+    });
+    const byId = new Map(documents.map((d) => [d._id, d]));
+
+    packs.set(packId, {
+      documents,
+      locked: true,
+      metadata: { id: packId, type: 'Item' },
+      /**
+       * Foundry's index carries `_id`/`name`/`img` and nothing else unless asked. Honour that
+       * exactly: a stub that handed back whole documents would let a catalog bug — reading a field
+       * it never requested — pass here and fail in a real world.
+       */
+      async getIndex({ fields = [] } = {}) {
+        return documents.map((doc) => {
+          const entry = { _id: doc._id, name: doc.name, img: doc.img };
+          for (const field of fields) {
+            const value = getPath(doc, field);
+            if (value !== undefined) setPath(entry, field, value);
+          }
+          return entry;
+        });
+      },
+      async getDocument(id) {
+        const found = byId.get(id);
+        return found ? { ...found, toObject: () => structuredClone(found) } : undefined;
+      },
+      async getDocuments() {
+        return documents.map((d) => ({ ...d, toObject: () => structuredClone(d) }));
+      },
+    });
+  }
+
+  return packs;
+}
+
 // ---- the stub surface ---------------------------------------------------------------------------
 
 /**

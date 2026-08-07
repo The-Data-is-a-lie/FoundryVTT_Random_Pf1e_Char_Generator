@@ -100,10 +100,18 @@
     // `_id`/`_stats` dropped so Foundry mints its own; `ownership` is the pack's to manage. Nothing
     // else is touched: the build clones a matched row straight onto the sheet, so any alteration
     // here would show up as a difference from a JSON run.
-    const clean = rows.map((row) => {
+    //
+    // EXCEPT `flags.<module>.idx`, WHICH IS LOAD-BEARING. Lookups resolve a name to the FIRST
+    // matching row in array order -- and 445 feat keys have more than one candidate ("skill focus"
+    // has 39, "signature skill" 27). A compendium is keyed by _id, so LevelDB hands rows back in an
+    // order unrelated to the bundle's, and without this stamp a character asking for Skill Focus
+    // would silently get a different variant than the JSON path gives it. The catalog reads this
+    // back via getIndex({fields:['flags.pf1e_random_char_generator.idx']}) and keeps the lowest.
+    const clean = rows.map((row, i) => {
       const copy = foundry.utils.deepClone(row);
       delete copy._id; delete copy._stats; delete copy.ownership;
       if (!copy.name) copy.name = 'Unnamed';
+      copy.flags = { ...(copy.flags ?? {}), [MODULE_ID]: { idx: i } };
       return copy;
     });
 
