@@ -107,17 +107,15 @@ async function processSpell(ctx, spellListChooseFrom, slot = 'primary', book = n
     }
 
 
-    // Retrieve spells data by template name
-    const spells = ctx.templates.everySpell;
-
-    // Check if spells is an array
-    if (!Array.isArray(spells)) {
-      console.error('Spells data is not an array or is undefined:', spells);
-      return;
-    }
-
     // The object, not a pre-built string -- see shared/log.js.
     log.debug("spell list structure", spellListChooseFrom);
+
+    // Every spell this book will ask for, resolved in one batch before the loop. everySpell is a
+    // compendium now, so this is what turns ~40 lookups into one index read plus ~40 document
+    // fetches instead of parsing 5.8 MB of JSON. A no-op if the pack is missing and the JSON is
+    // still there.
+    await ctx.catalog.prime('everySpell',
+      spellListChooseFrom.flat(Infinity).filter((n) => typeof n === 'string'));
 
     // Determine the spellbook's casting type up front so we know whether to mark spells prepared.
     const type = await determineSpellType(ctx, book ? (book.display || capitalizeWords(book.name || '')) : ctx.upperCaseClass);
@@ -131,19 +129,18 @@ async function processSpell(ctx, spellListChooseFrom, slot = 'primary', book = n
     // Consolidate all matched spells from the nested spell list, marking the prepared ones per level.
     const allMatchedSpells = [];
 
-    // Case-insensitive name index. The backend sends names from data/spells.csv, whose article /
+    // Case-insensitive name match. The backend sends names from data/spells.csv, whose article /
     // preposition casing ("Shield Of The Dawnflower") can differ from the compendium's canonical
     // casing ("Shield of the Dawnflower"). A strict === would silently drop ~250 such spells (while
     // their weapon conditional still attaches from spell_changes_dict, leaving an orphaned toggle).
-    // Match leniently here, mirroring addSpellRiders and the feat lookups.
-    const spellByLower = new Map();
-    for (const r of spells) spellByLower.set((r.name || '').toLowerCase(), r);
-
+    // The lenient match now lives in build/catalog.js as the everySpell family's rule: exact
+    // lowercased name only, no parenthesis-stripping fallback, LAST row wins -- which is what the
+    // `Map` built here did, because Map.set overwrites.
     for (let level = 0; level < spellListChooseFrom.length; level++) {
       const spellArray = spellListChooseFrom[level] || [];
       let prepRemaining = markPrepared ? (Number(preparedPerLevel[level]) || 0) : 0;
       for (const spell of spellArray) {
-        const matchedSpell = spellByLower.get((spell || '').toLowerCase());
+        const matchedSpell = ctx.catalog.lookup('everySpell', spell || '');
         if (!matchedSpell) {
           console.warn(`Spell "${spell}" not found.`);
           continue;

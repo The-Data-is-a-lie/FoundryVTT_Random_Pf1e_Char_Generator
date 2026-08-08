@@ -203,7 +203,7 @@ New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 # THE ORDER OF OPERATIONS MATTERS if this is ever reverted: drop the exclusion and re-add them to
 # SWAPPED_TEMPLATES together. Shipping them without the loader entry is dead weight; removing them
 # from the zip without a working pack leaves every feat synthesized from backend text alone.
-& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json every_feat.json every_feat_MODS.json every_trait.json every_trait_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
+& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json every_feat.json every_feat_MODS.json every_trait.json every_trait_MODS.json every_item.json every_spell.json every_spell_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { Fail "robocopy failed (exit $LASTEXITCODE)." }
 $global:LASTEXITCODE = 0
 

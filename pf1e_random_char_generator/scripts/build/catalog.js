@@ -4,64 +4,108 @@
  *
  * ## Why this exists
  *
- * `template-loader.js` hands out the parsed bundles as bare arrays, so every stage that wanted a row
- * by name wrote its own scan. `every_feat.json` is 8,816 rows and the feat stage scanned it once per
- * placed feat across nine buckets, then AGAIN inside `applyFeatTax` for every granted chain feat —
- * each scan re-deriving `name.split(' (')[0].toLowerCase()` for all 8,816 candidates to compare
- * against one query. `npm run bench` put the feat stage at 68% of everything the build did.
+ * `template-loader.js` used to hand out the parsed bundles as bare arrays, so every stage that
+ * wanted a row by name wrote its own scan. `every_feat.json` is 8,816 rows and the feat stage
+ * scanned it once per placed feat across nine buckets, then again inside `applyFeatTax` for every
+ * granted chain feat. `npm run bench` put the feat stage at 68% of everything the build did.
  *
- * Indexing fixed the CPU. Reading a pack fixes the rest: Foundry keeps a compendium's index (names
- * and ids) and fetches documents only when asked, so a build stops parsing and holding ~31 MB of
- * feat and trait JSON to use about fifty rows of it.
+ * Indexing fixed the CPU. Reading a pack fixed the rest: Foundry keeps a compendium's index and
+ * fetches documents only when asked, so a build stops parsing ~50 MB of feat, trait, item and spell
+ * JSON to use about a hundred rows of it.
+ *
+ * ## The matching rules were never the same, and pretending otherwise would break sheets
+ *
+ * Three stages resolved names three different ways, each written out by hand:
+ *
+ *   feats, traits  — match on the name before the first " (", skip `(Mythic)` rows, FIRST wins.
+ *   items, weapons — exact full name first; only if that misses, the name before " (". No mythic
+ *                    exclusion. First wins. (`equipment.js` called this the "compendium variant"
+ *                    fallback, for rows like "Belt of Physical Might +2 (Str & Dex)".)
+ *   spells         — exact full name only, and LAST wins, because it built a `Map` in a loop and
+ *                    `Map.set` overwrites. There are no duplicate spell names today so first and
+ *                    last agree, but encoding the rule that was actually there costs one comparison
+ *                    and means a future duplicate behaves as it always would have.
+ *
+ * `FAMILIES` below is those rules, written down once. A stage names the family it wants and gets
+ * that family's semantics; nothing outside this file decides how a name resolves any more.
  *
  * ## Two sources, one interface
  *
- * `lookup()` is SYNCHRONOUS and stays that way, so the call sites in `feats.js` did not change.
- * What changed is that a pack-backed family must be **primed** first: `await prime(family, names)`
- * resolves the names it is given and fetches just those documents. Every name is knowable before the
- * stage runs — they are all fields on the backend payload — which is what makes one batch possible
- * instead of an await per lookup. The precedent is `createCompanions.js`'s `featResolver`, which
- * already does `getIndex()` → match names → `getDocument()` for the hits only.
+ * `lookup()` is SYNCHRONOUS. What a pack-backed family needs first is a **prime**:
+ * `await prime(family, names)` resolves the names it is given and fetches just those documents.
+ * Every name is knowable before its stage runs — they are all fields on the backend payload — which
+ * is what makes one batch possible instead of an await per lookup. The precedent is
+ * `createCompanions.js`'s `featResolver`.
  *
- * A JSON-backed family ignores `prime` entirely and indexes the array on first ask, exactly as
- * before. `everyClass`, `everyWeapon` and `everyArmor` stay on that path — see the notes in
- * `tools/build_all_packs.macro.js` for why they cannot be packs.
+ * A JSON-backed family ignores `prime` and indexes the array on first ask. `everyWeapon`,
+ * `everyArmor` and `everyClass` stay on that path — see `tools/build_all_packs.macro.js` for why
+ * they cannot be packs.
  *
  * ## The order stamp is load-bearing
  *
- * A lookup resolves a name to the FIRST matching row in bundle order, and 445 feat keys have more
- * than one candidate — "skill focus" has 39, "signature skill" 27. A compendium is keyed by `_id`,
- * so LevelDB returns rows in an order unrelated to the bundle's. Each document therefore carries
- * `flags.pf1e_random_char_generator.idx`, its position in the source array, and the index keeps the
- * LOWEST. Without it a character asking for Skill Focus would quietly get a different variant than
- * the JSON path gives, on every fixture, with nothing to say so.
+ * "First wins" needs an order, and a compendium is keyed by `_id`, so LevelDB returns rows in an
+ * order unrelated to the bundle's. Each document carries `flags.pf1e_random_char_generator.idx`,
+ * its position in the source array; the index keeps the lowest (or highest, for `prefer: 'last'`).
+ * 445 feat keys and 142 item keys have more than one candidate — "skill focus" alone has 39 — so
+ * without this a character would quietly get a different variant on every sheet.
  *
- * **A pack whose documents lack the stamp is not used.** It falls back to JSON with a warning rather
- * than resolving arbitrarily — silence there would be the worst outcome.
+ * **A pack whose documents lack the stamp is refused**, with a warning, rather than resolved
+ * arbitrarily. Silence there would be the worst outcome, because it looks like it works.
  *
  * ## Rows come back SHARED, not cloned
  *
- * Unchanged from the JSON-only version: a returned row is the live object out of the session cache
- * (JSON) or the primed map (pack), so **clone before you write**. The callers that mutate already
- * do, right where they mutate. `applyFeatTax` resolves a row only to read its name and description,
- * and cloning on its behalf would add a deep copy per tax child to pay for a write that never
- * happens.
+ * A returned row is the live object out of the session cache (JSON) or the primed map (pack), so
+ * **clone before you write**. The callers that mutate already do, right where they mutate.
+ * `applyFeatTax` resolves a row only to read its name and description, and cloning on its behalf
+ * would add a deep copy per tax child to pay for a write that never happens.
  */
 
 const MODULE_ID = 'pf1e_random_char_generator';
 const IDX_FIELD = `flags.${MODULE_ID}.idx`;
 
 /**
- * Which shipped pack backs which bundle name, per branch. A family absent here is JSON-only.
- * Mirrors the `packs` block in `module.json` and the targets in `tools/build_all_packs.macro.js`.
+ * Every bundle the stages resolve names in, its matching rule, and its pack when it has one.
+ *
+ * `packs` absent means JSON-only. `everyItem` names the same pack on both branches because
+ * `every_item.json` has no `_MODS` twin — it never swapped.
  */
-const PACK_FOR = {
-  everyFeat: { base: `${MODULE_ID}.feats`, mods: `${MODULE_ID}.feats-mods` },
-  everyTrait: { base: `${MODULE_ID}.traits`, mods: `${MODULE_ID}.traits-mods` },
+const FAMILIES = {
+  everyFeat: {
+    packs: { base: `${MODULE_ID}.feats`, mods: `${MODULE_ID}.feats-mods` },
+    match: 'base', skipMythic: true, prefer: 'first',
+  },
+  everyTrait: {
+    packs: { base: `${MODULE_ID}.traits`, mods: `${MODULE_ID}.traits-mods` },
+    match: 'base', skipMythic: true, prefer: 'first',
+  },
+  everyItem: {
+    packs: { base: `${MODULE_ID}.items`, mods: `${MODULE_ID}.items` },
+    match: 'both', skipMythic: false, prefer: 'first',
+  },
+  everySpell: {
+    packs: { base: `${MODULE_ID}.spells`, mods: `${MODULE_ID}.spells-mods` },
+    match: 'exact', skipMythic: false, prefer: 'last',
+  },
+  // JSON-only, but they still resolve through here so the rule lives in one place.
+  everyWeapon: { match: 'both', skipMythic: false, prefer: 'first' },
+  everyArmor: { match: 'both', skipMythic: false, prefer: 'first' },
 };
 
-/** Bundle array -> `Map<lowercased base name, first matching row>`. The JSON path. Built on first ask. */
-const indexes = new WeakMap();
+/**
+ * The name a row is found by when the exact name misses: everything before the first " (",
+ * lowercased.
+ *
+ * Applied to the ROW, never to the query. A query of "Weapon Focus (Longsword)" matched nothing
+ * before this module existed — the candidate keys never contain " (" — and normalising the query too
+ * would quietly start resolving it to plain "Weapon Focus".
+ *
+ * Exported so `tools/compendium_census.macro.js` measures pack coverage with THIS rule rather than
+ * its own copy of it.
+ */
+export const baseKey = (name) => name.split(' (')[0].toLowerCase();
+
+/** Bundle array -> `Map<family, index>`. The JSON path, per session. */
+const jsonIndexes = new WeakMap();
 
 /**
  * Pack id -> `{index, rows}`, kept for the whole session rather than per generation.
@@ -69,10 +113,7 @@ const indexes = new WeakMap();
  * MODULE-LEVEL ON PURPOSE, mirroring what the JSON path gets from the WeakMap above. Held on the
  * catalog instance instead, every generation re-walked all 8,816 index entries to rebuild the same
  * name map and re-fetched documents it already had — the bench caught it as a warm build going from
- * 12 ms to 26 ms, which would have made pack-reading a regression for the second character onward.
- *
- * Safe because a shipped pack is locked and cannot change mid-session. `reloadTemplates()` clears
- * this alongside the template cache for whoever is authoring pack data against a live world.
+ * 12 ms to 26 ms. Safe because a shipped pack is locked and cannot change mid-session.
  */
 const packState = new Map();
 
@@ -81,20 +122,62 @@ export function clearPackCache() {
   packState.clear();
 }
 
-/**
- * The name a row is found by: everything before the first " (", lowercased.
- *
- * Applied to the ROW, never to the query. A query of "Weapon Focus (Longsword)" matched nothing
- * before this module existed — the candidate keys never contain " (" — and normalising the query too
- * would quietly start resolving it to plain "Weapon Focus".
- *
- * Exported so `tools/compendium_census.macro.js` measures pack coverage with THIS rule rather than
- * its own copy of it — a census that normalised differently would answer a question nobody asked.
- */
-export const baseKey = (name) => name.split(' (')[0].toLowerCase();
+const usable = (policy, name) =>
+  typeof name === 'string' && (!policy.skipMythic || !name.includes('(Mythic)'));
 
-/** Shared by both sources: is this row eligible to own a key at all? */
-const eligible = (name) => typeof name === 'string' && !name.includes('(Mythic)');
+/** Should a later candidate displace the one already held for this key? */
+const displaces = (policy, incomingIdx, heldIdx) =>
+  policy.prefer === 'last' ? incomingIdx > heldIdx : incomingIdx < heldIdx;
+
+/**
+ * `{exact, base}` name maps for one bundle, built to that family's rule.
+ *
+ * Both maps are populated only when the rule needs both; a family that matches one way pays for one
+ * map. `value` is whatever the caller wants keyed — the row itself on the JSON path, `{id, idx}` on
+ * the pack path — so the same builder serves both.
+ */
+function buildIndex(policy, entries) {
+  const exact = new Map();
+  const base = new Map();
+
+  entries.forEach(({ name, idx, value }) => {
+    if (!usable(policy, name)) return;
+
+    if (policy.match === 'exact' || policy.match === 'both') {
+      const key = name.toLowerCase();
+      const held = exact.get(key);
+      if (!held || displaces(policy, idx, held.idx)) exact.set(key, { idx, value });
+    }
+    if (policy.match === 'base' || policy.match === 'both') {
+      const key = baseKey(name);
+      const held = base.get(key);
+      if (!held || displaces(policy, idx, held.idx)) base.set(key, { idx, value });
+    }
+  });
+
+  return { exact, base };
+}
+
+/** Apply the family's rule to one query against a built index. */
+function resolve(policy, index, query) {
+  const key = String(query).toLowerCase();
+  if (policy.match === 'exact') return index.exact.get(key)?.value ?? null;
+  if (policy.match === 'base') return index.base.get(key)?.value ?? null;
+  // 'both': exact name first, then the parenthesis-stripped fallback.
+  return (index.exact.get(key) ?? index.base.get(key))?.value ?? null;
+}
+
+function jsonIndexFor(bundle, family, policy) {
+  let byFamily = jsonIndexes.get(bundle);
+  if (!byFamily) { byFamily = new Map(); jsonIndexes.set(bundle, byFamily); }
+
+  const cached = byFamily.get(family);
+  if (cached) return cached;
+
+  const index = buildIndex(policy, bundle.map((row, idx) => ({ name: row?.name, idx, value: row })));
+  byFamily.set(family, index);
+  return index;
+}
 
 /**
  * Make a pack document indistinguishable from the JSON row it was built from.
@@ -103,9 +186,8 @@ const eligible = (name) => typeof name === 'string' && !name.includes('(Mythic)'
  * sheet and show up as a difference from a JSON run:
  *
  *   `_id`  — Foundry minted it on import. The bundle rows have never carried one.
- *   `flags.pf1e_random_char_generator.idx` — the source-order stamp this module puts on at build
- *          time purely so lookups can reproduce first-in-array-order. It is build metadata, not
- *          sheet data, and the golden harness caught it reaching the actor on the first run.
+ *   `flags.pf1e_random_char_generator.idx` — the source-order stamp, build metadata rather than
+ *          sheet data. The golden harness caught it reaching the actor on the first run.
  *
  * `flags` itself is removed when emptying the namespace leaves nothing behind, because the bundles
  * were stripped of empty containers and a bare `flags: {}` would be one more difference.
@@ -117,24 +199,6 @@ function stripPackMetadata(data) {
     if (!Object.keys(data.flags).length) delete data.flags;
   }
   return data;
-}
-
-function indexFor(bundle) {
-  const cached = indexes.get(bundle);
-  if (cached) return cached;
-
-  const index = new Map();
-  for (const row of bundle) {
-    // Mythic rows are excluded at build time rather than at lookup: a `.find()` skipped them and
-    // returned the next match, and a key that never holds a mythic row does the same thing.
-    if (!row || !eligible(row.name)) continue;
-    const key = baseKey(row.name);
-    // First one wins, because `.find()` returned the first match in array order.
-    if (!index.has(key)) index.set(key, row);
-  }
-
-  indexes.set(bundle, index);
-  return index;
 }
 
 /**
@@ -151,12 +215,12 @@ export function createCatalog(templates, { modded } = {}) {
 
   /** family -> the shared `packState` entry for its pack, once primed. */
   const packed = new Map();
-  /** Families that tried to use a pack and could not. Logged once, then treated as JSON. */
+  /** Families that tried to use a pack and could not. Warned once, then treated as JSON. */
   const declined = new Set();
 
   function packFor(family) {
     if (declined.has(family)) return null;
-    const id = PACK_FOR[family]?.[branch];
+    const id = FAMILIES[family]?.packs?.[branch];
     if (!id) return null;
     const pack = globalThis.game?.packs?.get(id);
     if (!pack) {
@@ -175,10 +239,12 @@ export function createCatalog(templates, { modded } = {}) {
    * paying twice.
    */
   async function prime(family, names) {
+    const policy = FAMILIES[family];
+    if (!policy) return false;
     const pack = packFor(family);
     if (!pack) return false;
 
-    const packId = pack.metadata?.id ?? PACK_FOR[family][branch];
+    const packId = pack.metadata?.id ?? policy.packs[branch];
     let state = packState.get(packId);
 
     if (!state) {
@@ -188,49 +254,45 @@ export function createCatalog(templates, { modded } = {}) {
       try {
         entries = await pack.getIndex({ fields: [IDX_FIELD] });
       } catch (error) {
-        console.warn(`Catalog: could not index "${pack.metadata?.id ?? family}" — falling back to JSON.`, error);
+        console.warn(`Catalog: could not index "${packId}" — falling back to ${family} JSON.`, error);
         declined.add(family);
         return false;
       }
 
-      const index = new Map();
+      const rowsForIndex = [];
       let stamped = 0;
       for (const entry of entries) {
-        if (!eligible(entry?.name)) continue;
         const idx = entry?.flags?.[MODULE_ID]?.idx;
         if (!Number.isInteger(idx)) continue;
         stamped++;
-        const key = baseKey(entry.name);
-        const held = index.get(key);
-        // Lowest idx wins: that is the row `.find()` would have reached first in the source array.
-        if (!held || idx < held.idx) index.set(key, { id: entry._id, idx });
+        rowsForIndex.push({ name: entry.name, idx, value: entry._id });
       }
 
       if (!stamped) {
-        console.warn(`Catalog: "${pack.metadata?.id ?? family}" carries no ${IDX_FIELD} on any document. `
-          + `Its rows would resolve in an arbitrary order, so it is being ignored — rebuild it with `
+        console.warn(`Catalog: "${packId}" carries no ${IDX_FIELD} on any document. Its rows would `
+          + `resolve in an arbitrary order, so it is being ignored — rebuild it with `
           + `tools/build_all_packs.macro.js. Falling back to ${family} JSON.`);
         declined.add(family);
         return false;
       }
 
-      state = { index, rows: new Map() };
+      state = { index: buildIndex(policy, rowsForIndex), rows: new Map() };
       packState.set(packId, state);
     }
     packed.set(family, state);
 
-    const wanted = [];
+    const wanted = new Map();
     for (const raw of names) {
       const key = String(raw).toLowerCase();
       if (state.rows.has(key)) continue;
-      const hit = state.index.get(key);
+      const id = resolve(policy, state.index, key);
       // A miss is recorded as null so the stage's synthesize-on-miss branch fires exactly as it did
       // on the JSON path, and so a repeated prime does not re-look-up a name known to be absent.
-      if (!hit) { state.rows.set(key, null); continue; }
-      wanted.push({ key, id: hit.id });
+      if (!id) { state.rows.set(key, null); continue; }
+      wanted.set(key, id);
     }
 
-    await Promise.all(wanted.map(async ({ key, id }) => {
+    await Promise.all([...wanted].map(async ([key, id]) => {
       try {
         const doc = await pack.getDocument(id);
         const data = doc?.toObject ? doc.toObject() : (doc ? { ...doc } : null);
@@ -245,14 +307,15 @@ export function createCatalog(templates, { modded } = {}) {
   }
 
   const lookup = (family, query) => {
-    const key = String(query).toLowerCase();
+    const policy = FAMILIES[family];
+    if (!policy) return null;
 
     const state = packed.get(family);
-    if (state) return state.rows.get(key) ?? null;
+    if (state) return state.rows.get(String(query).toLowerCase()) ?? null;
 
     const bundle = templates?.[family];
     if (!Array.isArray(bundle)) return null;
-    return indexFor(bundle).get(key) ?? null;
+    return resolve(policy, jsonIndexFor(bundle, family, policy), query);
   };
 
   return {
@@ -264,5 +327,9 @@ export function createCatalog(templates, { modded } = {}) {
     feat: (name) => lookup('everyFeat', name),
     /** A trait row, or null. */
     trait: (name) => lookup('everyTrait', name),
+    /** An item row, or null. Exact name first, then the parenthesised-variant fallback. */
+    item: (name) => lookup('everyItem', name),
+    /** A spell row, or null. Exact name only. */
+    spell: (name) => lookup('everySpell', name),
   };
 }

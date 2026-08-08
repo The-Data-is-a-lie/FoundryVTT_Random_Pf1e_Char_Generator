@@ -118,31 +118,19 @@ async function processItem(ctx, itemType, templateName, itemName, enhancementLis
     // Backend buff overlay is keyed by the backend's item name, lowercased
     const buffKeyLc = String(itemName).toLowerCase();
 
-    // Retrieve the items data by template name
-    const items = ctx.templates[templateName];
-
-    // Check if the items data is an array
-    if (!Array.isArray(items)) {
-      console.error(`${itemType} data is not an array or is undefined:`, items);
-      return defaultItemNameFlag;  // Ensure the flag is returned
-    }
-
     // The object, not a pre-built string -- see shared/log.js.
     log.debug(`${itemType} data structure`, itemName);
 
-    // Find the matching item from the items data: exact case-insensitive first, then ignoring a
-    // parenthesised compendium suffix ("Belt of Physical Might +2 (Str & Dex)") the backend's
-    // item data doesn't encode.
-    const itemNameLc = itemName.toLowerCase();
-    let matchedItem = items.find(r => r.name.toLowerCase() === itemNameLc);
-    if (!matchedItem) {
-      matchedItem = items.find(r => r.name.split(' (')[0].toLowerCase() === itemNameLc);
-      if (matchedItem) log.debug(`${itemType} "${itemName}" matched compendium variant "${matchedItem.name}".`);
-    }
-    // Clone the ONE matched row rather than the bundle: every_item.json is 25 MB and this runs
+    // Exact case-insensitive name first, then ignoring a parenthesised compendium suffix
+    // ("Belt of Physical Might +2 (Str & Dex)") the backend's item data doesn't encode. That rule
+    // and its two indexes now live in build/catalog.js -- this used to be a pair of `.find()` scans
+    // over all 6,035 rows of every_item.json per worn item, and everyItem is a compendium now.
+    // `everyWeapon` and `everyArmor` resolve through the same call and stay on the JSON path.
+    const matchedRow = ctx.catalog.lookup(templateName, itemName);
+    // Clone the ONE matched row rather than the bundle: every_item.json is 12 MB and this runs
     // once per worn item. Everything below stamps proficiency, enhancements and buff overlays onto
     // this object and then appends it to the sheet by reference.
-    if (matchedItem) matchedItem = structuredClone(matchedItem);
+    let matchedItem = matchedRow ? structuredClone(matchedRow) : undefined;
 
     if (!matchedItem) {
       // Slot equipment: build the item from backend data (name + description + parsed buffs)
@@ -158,8 +146,14 @@ async function processItem(ctx, itemType, templateName, itemName, enhancementLis
       }
 
       console.warn(`${itemType} "${itemName}" not found, using default item.`);
-      // Try to use the default item if the selected one is not found
-      const found = items.find(r => r.name === defaultItemName);
+      // Try to use the default item if the selected one is not found. This one is CASE-SENSITIVE
+      // and matches the whole name against a literal ("Longsword", "Leather Armor"), which is
+      // neither of the catalog's two rules, so it stays a direct scan. It only ever runs on
+      // everyWeapon/everyArmor, which are still JSON, and only after a miss.
+      const fallbackBundle = ctx.templates[templateName];
+      const found = Array.isArray(fallbackBundle)
+        ? fallbackBundle.find(r => r.name === defaultItemName)
+        : undefined;
       const defaultMatchedItem = found ? structuredClone(found) : undefined;   // same reason as above
       if (defaultMatchedItem) {
         if (defaultItemNameFlag === 0) {
@@ -238,6 +232,11 @@ async function processEquipment(ctx) {
       };
     }
   }
+
+  // One batch for the whole list, before any of it runs. `processItem` runs each name through
+  // capitalizeWords before looking it up, and that only changes case, so the lowercased keys the
+  // catalog stores from these raw names are the ones the lookups will ask for.
+  await ctx.catalog.prime('everyItem', characterData.equipment_list.filter((n) => typeof n === 'string'));
 
   for (const item of characterData.equipment_list) {
     await processItem(ctx, "WondrousItem", 'everyItem', item, '', "", 1,

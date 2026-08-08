@@ -160,6 +160,9 @@ const IDX_FLAG = `flags.${MODULE_ID}.idx`;
 const MODULE_PACK_SOURCES = {
   [`${MODULE_ID}.feats`]: 'every_feat.json',
   [`${MODULE_ID}.feats-mods`]: 'every_feat_MODS.json',
+  [`${MODULE_ID}.items`]: 'every_item.json',
+  [`${MODULE_ID}.spells`]: 'every_spell.json',
+  [`${MODULE_ID}.spells-mods`]: 'every_spell_MODS.json',
   [`${MODULE_ID}.traits`]: 'every_trait.json',
   [`${MODULE_ID}.traits-mods`]: 'every_trait_MODS.json',
 };

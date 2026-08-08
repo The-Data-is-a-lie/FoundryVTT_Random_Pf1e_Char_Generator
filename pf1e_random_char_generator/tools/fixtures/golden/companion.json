@@ -1,10 +1,6 @@
 {
  "mutatedTemplates": [],
- "duplicateItemIds": [
-  "items -> eg67vvykmv9c6j7h",
-  "items -> ej87t487r59demgy",
-  "items -> be8yiccvifj38hd1"
- ],
+ "duplicateItemIds": [],
  "synthesised": [],
  "template": {
   "_stats": {
@@ -11469,7 +11465,6 @@
     "type": "buff"
    },
    {
-    "_id": "pv6jcelxrxjqn8ab",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -11569,7 +11564,6 @@
     "type": "spell"
    },
    {
-    "_id": "snj78r5rw96btfjn",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -11673,7 +11667,6 @@
     "type": "spell"
    },
    {
-    "_id": "eg67vvykmv9c6j7h",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -11789,7 +11782,6 @@
     "type": "spell"
    },
    {
-    "_id": "24zg8a05hqum3e6j",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -11905,7 +11897,6 @@
     "type": "spell"
    },
    {
-    "_id": "xi1uouy7qlpfaqlr",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12009,7 +12000,6 @@
     "type": "spell"
    },
    {
-    "_id": "22x4iooz3c3vqof9",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12111,7 +12101,6 @@
     "type": "spell"
    },
    {
-    "_id": "14he8rp5zehzk7tx",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12220,7 +12209,6 @@
     "type": "spell"
    },
    {
-    "_id": "ivn5nm9bp0l7uzch",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12323,7 +12311,6 @@
     "type": "spell"
    },
    {
-    "_id": "nkd3xocluvt1rovu",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12430,7 +12417,6 @@
     "type": "spell"
    },
    {
-    "_id": "ngcx59msygjom4h2",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12543,7 +12529,6 @@
     "type": "spell"
    },
    {
-    "_id": "ej87t487r59demgy",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12643,7 +12628,6 @@
     "type": "spell"
    },
    {
-    "_id": "be8yiccvifj38hd1",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12754,7 +12738,6 @@
     "type": "spell"
    },
    {
-    "_id": "oqwkzmt5vihwyil9",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12863,7 +12846,6 @@
     "type": "spell"
    },
    {
-    "_id": "aldwednxmpolaik4",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -12972,7 +12954,6 @@
     "type": "spell"
    },
    {
-    "_id": "u5ss3ac14t6h5l50",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13080,7 +13061,6 @@
     "type": "spell"
    },
    {
-    "_id": "34niukp5dho42r12",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13180,7 +13160,6 @@
     "type": "spell"
    },
    {
-    "_id": "uaznzgoz4h9bw9fr",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13289,7 +13268,6 @@
     "type": "spell"
    },
    {
-    "_id": "i8yzlekyl29dm3zz",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13385,7 +13363,6 @@
     "type": "spell"
    },
    {
-    "_id": "3mfmhx8avu7h3iom",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13496,7 +13473,6 @@
     "type": "spell"
    },
    {
-    "_id": "opk75a0wqvbkdod7",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13601,7 +13577,6 @@
     "type": "spell"
    },
    {
-    "_id": "hk3xhc08blqzniv0",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13719,7 +13694,6 @@
     "type": "spell"
    },
    {
-    "_id": "dm579aw5x8e3tcwf",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13825,7 +13799,6 @@
     "type": "spell"
    },
    {
-    "_id": "eg67vvykmv9c6j7h",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -13933,7 +13906,6 @@
     "type": "spell"
    },
    {
-    "_id": "p8lm7khq3ynyif21",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14038,7 +14010,6 @@
     "type": "spell"
    },
    {
-    "_id": "ug7ycubjoxgp7ppc",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14146,7 +14117,6 @@
     "type": "spell"
    },
    {
-    "_id": "j0bc0iii8zp1jiwr",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14262,7 +14232,6 @@
     "type": "spell"
    },
    {
-    "_id": "80ojk5ktyh531ul1",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14548,7 +14517,6 @@
     "type": "spell"
    },
    {
-    "_id": "a6fs9lf27jsw3t66",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14650,7 +14618,6 @@
     "type": "spell"
    },
    {
-    "_id": "t5kvp1upv2re3v8e",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14758,7 +14725,6 @@
     "type": "spell"
    },
    {
-    "_id": "09juighnblqlqwro",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14865,7 +14831,6 @@
     "type": "spell"
    },
    {
-    "_id": "dpdfv4rvj5quxo7e",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -14967,7 +14932,6 @@
     "type": "spell"
    },
    {
-    "_id": "jnk5sfl5thmgdb3a",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15081,7 +15045,6 @@
     "type": "spell"
    },
    {
-    "_id": "q2z1tw7ehj8684yw",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15182,7 +15145,6 @@
     "type": "spell"
    },
    {
-    "_id": "ypi1hhleb25gbw4l",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15279,7 +15241,6 @@
     "type": "spell"
    },
    {
-    "_id": "ej87t487r59demgy",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15379,7 +15340,6 @@
     "type": "spell"
    },
    {
-    "_id": "5s4e2iifhflglr1t",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15490,7 +15450,6 @@
     "type": "spell"
    },
    {
-    "_id": "e185z4g1taqtaq9d",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15606,7 +15565,6 @@
     "type": "spell"
    },
    {
-    "_id": "2nn2tshkn4p7k25l",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15717,7 +15675,6 @@
     "type": "spell"
    },
    {
-    "_id": "wqpl7isf6ejukk7k",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15822,7 +15779,6 @@
     "type": "spell"
    },
    {
-    "_id": "hosf489xyoexmp57",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -15919,7 +15875,6 @@
     "type": "spell"
    },
    {
-    "_id": "be8yiccvifj38hd1",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -16030,7 +15985,6 @@
     "type": "spell"
    },
    {
-    "_id": "86xra7zolqibyn7d",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",
@@ -16129,7 +16083,6 @@
     "type": "spell"
    },
    {
-    "_id": "fbzut7nb7lvr83e4",
     "_stats": {
      "compendiumSource": null,
      "coreVersion": "13.346",

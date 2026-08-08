@@ -46,7 +46,7 @@ const CHAR_SHEET_TEMPLATES = {
   unmodifiedPreExportTemplate: 'unmodified_pre_export_template.json',
   preExportTemplate: 'pre_export_template.json',
   everyArmor: 'every_armor.json',
-  everyItem: 'every_item.json',
+  // everyItem is a compendium now (`packs/items`) -- see the note on SWAPPED_TEMPLATES below.
   everyRace: 'every_race.json',
   archetype: 'archetype.json',
   spaceBackground: 'space_Background.json',
@@ -89,20 +89,25 @@ const BASE_TEMPLATES = {
  * The `_MODS` twins are hand-maintained and have drifted from their base counterparts; that drift
  * is deliberately out of scope here. This loader only picks a branch, it never reconciles them.
  *
- * **`everyFeat` and `everyTrait` are gone from here and that is the point.** They are compendium
- * packs now (`packs/feats`, `packs/traits`, and their `-mods` twins), read through
- * `build/catalog.js`, which asks Foundry for an index and fetches the ~50 documents a character
- * actually uses. Loading the JSON as well would parse ~31 MB per session to answer nothing, so the
- * files stay in the repo as the packs' rebuild source and the harness's fixture, and
- * `release.ps1` keeps them out of the zip.
+ * **`everyFeat`, `everyTrait`, `everyItem` and `everySpell` are gone from here and that is the
+ * point.** They are compendium packs now (`packs/feats`, `packs/traits`, `packs/items`,
+ * `packs/spells`, plus `-mods` twins where the bundle had one), read through `build/catalog.js`,
+ * which asks Foundry for an index and fetches the ~100 documents a character actually uses. Loading
+ * the JSON as well would parse ~50 MB per session to answer nothing, so the files stay in the repo
+ * as the packs' rebuild source and the harness's fixture, and `release.ps1` keeps them out of the
+ * zip.
  *
- * If a pack is missing, the catalog says so loudly and the feat stage falls through to its
+ * `everyItem` never had a `_MODS` twin, so its family names the same pack on both branches.
+ *
+ * If a pack is missing, the catalog says so loudly and the stage falls through to its
  * synthesize-on-miss branch — the same path that already handles the ~45% of requested feat names
  * the bundle never resolved. Degraded, visible, and not a crash.
+ *
+ * What is left here cannot be a pack: `everyClass` is sliced by array adjacency, `everyWeapon` is
+ * filtered on non-indexed fields for the ammo pick, and `baseFeat` is a single template row.
  */
 const SWAPPED_TEMPLATES = {
   everyClass: ['charSheet', 'every_class.json', 'every_class_MODS.json'],
-  everySpell: ['charSheet', 'every_spell.json', 'every_spell_MODS.json'],
   everyWeapon: ['charSheet', 'every_weapon.json', 'every_weapon_MODS.json'],
   baseFeat: ['base', 'base_feat.json', 'base_feat_MODS.json'],
 };
