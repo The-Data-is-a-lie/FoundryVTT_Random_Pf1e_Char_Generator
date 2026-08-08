@@ -39,8 +39,8 @@
 
   const IDX_FIELD = `flags.${MODULE_ID}.idx`;
 
-  say(`pack           index   bundle   names        order      automation     verdict`);
-  say(`──────────────────────────────────────────────────────────────────────────────────`);
+  say(`pack           index   bundle   names        order      resolution   automation     verdict`);
+  say(`──────────────────────────────────────────────────────────────────────────────────────────────`);
 
   let allPass = true;
   const detail = [];
@@ -88,6 +88,39 @@
       : orderOk ? 'contiguous'
       : `${stamped.length}/${count} bad`;
 
+    // RESOLUTION. The stamp being present is not the same as it producing the right answer, so this
+    // replays the actual tiebreak: for every normalised key, which full name does the JSON's
+    // first-in-array-order rule pick, and which does the pack's lowest-idx rule pick? They must
+    // agree on all of them. 445 feat keys have more than one candidate, so this is the check that
+    // says characters still get the same Dodge they got before the migration.
+    const baseKey = (n) => n.split(' (')[0].toLowerCase();
+    const eligible = (n) => typeof n === 'string' && !n.includes('(Mythic)');
+
+    const jsonWinner = new Map();
+    for (const row of rows) {
+      if (!eligible(row?.name)) continue;
+      const key = baseKey(row.name);
+      if (!jsonWinner.has(key)) jsonWinner.set(key, row.name);
+    }
+
+    const packWinner = new Map();
+    for (const entry of index) {
+      if (!eligible(entry?.name)) continue;
+      const idx = entry?.flags?.[MODULE_ID]?.idx;
+      if (!Number.isInteger(idx)) continue;
+      const key = baseKey(entry.name);
+      const held = packWinner.get(key);
+      if (!held || idx < held.idx) packWinner.set(key, { name: entry.name, idx });
+    }
+
+    const disagree = [];
+    for (const [key, wanted] of jsonWinner) {
+      const got = packWinner.get(key)?.name;
+      if (got !== wanted) disagree.push(`${key}: JSON picks "${wanted}", pack picks "${got ?? 'nothing'}"`);
+    }
+    const resolveOk = disagree.length === 0;
+    const resolveText = resolveOk ? `${jsonWinner.size} agree` : `${disagree.length} DIFFER`;
+
     // automation, probed from this bundle's own content
     const candidates = rows.filter((r) => Array.isArray(r.system?.changes) && r.system.changes.length).slice(0, PROBE_COUNT);
     let intact = 0;
@@ -105,14 +138,18 @@
     const countOk = count === rows.length;
     const namesOk = missing.length === 0;
     const autoOk = candidates.length === 0 || intact === candidates.length;
-    const pass = countOk && namesOk && autoOk && orderOk;
+    const pass = countOk && namesOk && autoOk && orderOk && resolveOk;
     if (!pass) allPass = false;
 
     const autoText = candidates.length ? `${intact}/${candidates.length} intact` : 'none to check';
     say(`${target.pack.padEnd(13)} ${String(count).padStart(6)}  ${String(rows.length).padStart(6)}   `
       + `${(namesOk ? 'all resolve' : `${missing.length} MISSING`).padEnd(12)} ${orderText.padEnd(10)} `
-      + `${autoText.padEnd(14)} ${pass ? 'PASS' : 'FAIL'}`);
+      + `${resolveText.padEnd(12)} ${autoText.padEnd(14)} ${pass ? 'PASS' : 'FAIL'}`);
 
+    if (disagree.length) {
+      detail.push(`${target.pack}: resolution — ${disagree.length} key(s) pick a different row than the `
+        + `JSON did. First few: ${disagree.slice(0, 4).join(' | ')}`);
+    }
     if (missing.length) detail.push(`${target.pack}: missing ${missing.length} — e.g. ${missing.slice(0, 5).join(', ')}`);
     if (badProbes.length) detail.push(`${target.pack}: automation — ${badProbes.join('; ')}`);
     if (!orderOk) {
@@ -122,11 +159,12 @@
     }
   }
 
-  say(`──────────────────────────────────────────────────────────────────────────────────`);
+  say(`──────────────────────────────────────────────────────────────────────────────────────────────`);
   if (detail.length) { say(''); for (const d of detail) say(`  ${d}`); }
   say('');
-  say(allPass ? 'ALL PASS — every pack is complete and automation survived.'
-              : 'FAILURES ABOVE — do not wire the catalog to these yet.');
+  say(allPass
+    ? 'ALL PASS — complete, automation survived, and every name resolves to the row the JSON chose.'
+    : 'FAILURES ABOVE — the catalog reads these packs, so a failure here is live on generated sheets.');
 
   ChatMessage.create({ content: `<pre style="white-space:pre-wrap">${out.join('\n')}</pre>`, whisper: [game.user.id] });
   ui.notifications[allPass ? 'info' : 'error'](allPass ? 'All packs verified.' : 'Pack verification FAILED — see chat.');
