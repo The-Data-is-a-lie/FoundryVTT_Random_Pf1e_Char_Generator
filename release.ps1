@@ -220,14 +220,10 @@ $RequiredTemplates = @(
     'character_sheet_folder/every_armor.json'
     'character_sheet_folder/every_class.json'
     'character_sheet_folder/every_class_MODS.json'
-    'character_sheet_folder/every_feat.json'
-    'character_sheet_folder/every_feat_MODS.json'
-    'character_sheet_folder/every_item.json'
+    # every_feat / every_trait / every_item / every_spell and their _MODS twins are NOT listed on
+    # purpose: they are compendium packs now, checked by $RequiredPacks below. template-loader.js
+    # no longer fetches their JSON, so demanding it here would require ~50 MB nothing reads.
     'character_sheet_folder/every_race.json'
-    'character_sheet_folder/every_spell.json'
-    'character_sheet_folder/every_spell_MODS.json'
-    'character_sheet_folder/every_trait.json'
-    'character_sheet_folder/every_trait_MODS.json'
     'character_sheet_folder/every_weapon.json'
     'character_sheet_folder/every_weapon_MODS.json'
     'character_sheet_folder/archetype.json'
@@ -262,13 +258,29 @@ $nameSet = [System.Collections.Generic.HashSet[string]]::new([string[]]$names)
 $missing = $RequiredTemplates | Where-Object { -not $nameSet.Contains("$ModName/templates/$_") }
 if ($missing) { Fail "Zip is missing runtime templates that main() fetches:`n$($missing -join "`n")" }
 Ok "All $($RequiredTemplates.Count) runtime templates present."
+
+# The compendiums that replaced seven of those templates. build/catalog.js reads them and there is no
+# JSON fallback in the zip any more, so a pack missing here means every generated character loses its
+# feat, trait, item and spell rules text -- silently, and only for whoever installed the zip.
+# CURRENT is LevelDB's entry point: present means the database is really there, not an empty folder.
+$RequiredPacks = @('feats','feats-mods','items','spells','spells-mods','traits','traits-mods')
+$missingPacks = $RequiredPacks | Where-Object { -not $nameSet.Contains("$ModName/packs/$_/CURRENT") }
+if ($missingPacks) { Fail "Zip is missing compendium packs that build/catalog.js reads:`n$($missingPacks -join "`n")" }
+# Segment count catches the other failure mode: a pack folder that copied its metadata and no data.
+# The seven packs carry 24 .ldb between them; 14 is a floor, not a target.
+$ldbCount = @($names | Where-Object { $_ -match "\.ldb$" }).Count
+if ($ldbCount -lt 14) { Fail "Zip has only $ldbCount pack .ldb segments -- the compendiums look empty or truncated." }
+Ok "All $($RequiredPacks.Count) compendium packs present ($ldbCount .ldb segments)."
 # Floor, not a target: it exists to catch a zip that lost its big templates, since a mirror that
 # silently copied nothing still zips and still passes every other check. Dropping
 # every_class_feature*.json took the zip from 18.05 MB to 14.99 MB, so the old 15 MB floor would
 # now fail every release. 12 MB keeps roughly the same margin: every_feat.json, every_item.json and
 # every_feat_MODS.json are most of what is left, and losing any one of them lands well under it.
+# Raised to 18 MB for v2.3.0: the seven compendium packs are ~21 MB compressed on their own, so a
+# 12 MB floor would now pass a zip that lost every pack AND every template. Same margin as before,
+# against the new baseline of ~23 MB.
 $zipMB = [math]::Round((Get-Item $zipTarget).Length / 1MB, 1)
-if ($zipMB -lt 12) { Fail "Rebuilt zip is only ${zipMB} MB (<12 MB) -- likely incomplete." }
+if ($zipMB -lt 18) { Fail "Rebuilt zip is only ${zipMB} MB (<18 MB) -- likely incomplete." }
 Ok "Zip: $zipTarget  (${zipMB} MB, $($names.Count) entries)"
 
 # ---- DRY-RUN stops here --------------------------------------------------------------------------
