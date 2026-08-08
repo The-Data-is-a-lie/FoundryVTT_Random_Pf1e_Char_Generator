@@ -41,7 +41,34 @@ import { clearPackCache } from './catalog.js';
 const CHAR_SHEET_DIR = 'modules/pf1e_random_char_generator/templates/character_sheet_folder';
 const BASE_DIR = 'modules/pf1e_random_char_generator/templates/base_folder';
 
-/** Bundles in `character_sheet_folder` that are the same on both branches. */
+/**
+ * Bundles in `character_sheet_folder` that are the same on both branches.
+ *
+ * WHY WHAT IS LEFT IS LEFT. Four families moved to compendium packs (see SWAPPED_TEMPLATES below)
+ * and the migration then STOPPED, deliberately. The reason is not effort, it is that packs cost more
+ * to download than the JSON they replace:
+ *
+ *     the 7 bundles that became packs   57 MB raw   10 MB gzipped
+ *     the 7 packs that replaced them    39 MB raw   21 MB gzipped
+ *
+ * LevelDB compresses each document on its own, which throws away the cross-document redundancy a
+ * single gzip stream lives on — the same schema field names repeated 8,816 times cost almost nothing
+ * in one stream and full price across separate ones. The module's zip went from 18.2 MB to ~23 MB.
+ *
+ * That was accepted knowingly: a GM installs once and generates characters for years, and the
+ * runtime side went from 124.7 MB fetched and a 612 ms first build to 9.5 MB and 113 ms. But it
+ * means every FURTHER migration buys a little runtime and costs more download, and the bundles below
+ * are worth ~5.5 MB of runtime between them. Hence:
+ *
+ *   `every_armor.json`  — 66 rows, 0.1 MB, 0.4 ms of parse. There is nothing here to win.
+ *   `spell_buffs.json`  — NOT DOCUMENTS. 922 keys whose values are {changes, contextNotes,
+ *                         only_others, level, duration_bucket, ...} with no `name` and no `type`.
+ *                         It is a lookup table, read once at spheres.js's addSpellBuffs. Packing it
+ *                         would mean inventing a document wrapper for data that is not items.
+ *
+ * See `tks/pathfinder-char-creator/architecture/compendium-packs/` in the tickets repo for the
+ * measurements and the decision.
+ */
 const CHAR_SHEET_TEMPLATES = {
   unmodifiedPreExportTemplate: 'unmodified_pre_export_template.json',
   preExportTemplate: 'pre_export_template.json',
@@ -103,8 +130,25 @@ const BASE_TEMPLATES = {
  * synthesize-on-miss branch — the same path that already handles the ~45% of requested feat names
  * the bundle never resolved. Degraded, visible, and not a crash.
  *
- * What is left here cannot be a pack: `everyClass` is sliced by array adjacency, `everyWeapon` is
- * filtered on non-indexed fields for the ammo pick, and `baseFeat` is a single template row.
+ * What is left here stays JSON, and the reasons differ:
+ *
+ * **`everyClass` is BLOCKED ON MISSING DATA, not on effort.** `collectItems` attributes a feature to
+ * a class by ARRAY ADJACENCY — everything between that class's row and the next class row. Of the
+ * 876 feature rows, **187 (21%) carry no `system.class` at all**, and some are duplicated by name
+ * INSIDE the same class block: the Monk block holds `Stunning Fist` twice, one tagged `monk`, one
+ * untagged, and `Improved Unarmed Strike` twice with neither tagged. Five `loot` rows (Spellbook,
+ * Formula Book, ...) have no class field either. For all of those, array position is the only
+ * ownership signal that exists. `class_feature_owners` cannot stand in: it maps selection BUCKETS
+ * (`rage_powers`, `hexes`) to classes, which is a disjoint dataset from these rows. Packing this
+ * means backfilling the export and disambiguating the twins, and getting it wrong hands a feature to
+ * the wrong class silently.
+ *
+ * **`everyWeapon` is possible but not worth it.** The ammo pick filters on `system.subType` and
+ * `system.extraType`, which an earlier note called impossible for a pack index — that was wrong,
+ * `getIndex({fields:[...]})` supplies them. It is 1.3 MB of runtime for roughly +1 MB of download,
+ * on the arithmetic in CHAR_SHEET_TEMPLATES above.
+ *
+ * **`baseFeat` is a single template row**, cloned as the skeleton for synthesized feats.
  */
 const SWAPPED_TEMPLATES = {
   everyClass: ['charSheet', 'every_class.json', 'every_class_MODS.json'],
