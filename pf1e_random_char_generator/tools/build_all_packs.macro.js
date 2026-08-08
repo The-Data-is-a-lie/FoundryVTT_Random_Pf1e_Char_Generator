@@ -77,12 +77,22 @@
     const packId = `world.${target.name}`;
     let pack = game.packs.get(packId);
     if (pack) {
-      const existing = await pack.getIndex();
+      // Count alone is NOT enough to call a pack done. A pack built before the idx stamp existed
+      // has exactly the right number of documents and is still unusable -- the catalog refuses it
+      // and every feat falls back to synthesized text. Check the stamp before skipping.
+      const existing = await pack.getIndex({ fields: [`flags.${MODULE_ID}.idx`] });
       const have = existing.size ?? existing.length ?? 0;
-      if (have === rows.length) { say(`   already built — ${have} documents, skipping`); built.push(target); continue; }
+      const stamped = [...existing].filter((e) => Number.isInteger(e?.flags?.[MODULE_ID]?.idx)).length;
+      if (have === rows.length && stamped === have) {
+        say(`   already built and stamped — ${have} documents, skipping`);
+        built.push(target);
+        continue;
+      }
       if (have > 0) {
-        say(`   SKIPPED — exists with ${have} of ${rows.length}. Delete it and re-run.`);
-        failed.push(`${target.name}: partial (${have}/${rows.length})`);
+        const why = have !== rows.length ? `${have} of ${rows.length} documents`
+          : `${stamped} of ${have} carry the order stamp`;
+        say(`   SKIPPED — exists with ${why}. Delete it (Compendium tab -> right-click -> Delete) and re-run.`);
+        failed.push(`${target.name}: ${why}`);
         continue;
       }
     }
@@ -166,7 +176,9 @@
     say('\n  Then set "packs" in module.json to:\n');
     say(JSON.stringify(manifest, null, 2));
     say('\n  Restart, run the verify macro, then delete the WORLD copies.');
-    say('\n  The build still reads the JSON — nothing changes until the catalog is wired.');
+    say('\n  THE CATALOG READS THESE NOW, and the loader no longer fetches every_feat/every_trait');
+    say('  JSON at all. Until the stamped packs are copied into the module, feats and traits will');
+    say('  fall back to synthesized rows -- visible on the sheet as feats with no rules text.');
   }
 
   ChatMessage.create({ content: `<pre style="white-space:pre-wrap">${out.join('\n')}</pre>`, whisper: [game.user.id] });
