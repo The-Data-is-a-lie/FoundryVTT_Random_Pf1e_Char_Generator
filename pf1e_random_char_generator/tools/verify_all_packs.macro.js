@@ -2,7 +2,6 @@
  * FOUNDRY GM MACRO — not a Node script. Paste into a script macro and run it.
  *
  * Verifies every shipped compendium against the JSON bundle it was built from, in one pass.
- * Supersedes running `verify_feat_pack.macro.js` seven times.
  *
  * Three checks per pack, and the third is the one worth having:
  *

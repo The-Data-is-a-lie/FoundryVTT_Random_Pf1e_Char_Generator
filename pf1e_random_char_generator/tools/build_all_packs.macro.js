@@ -1,9 +1,9 @@
 /**
  * FOUNDRY GM MACRO — not a Node script. Paste into a script macro and run it.
  *
- * Builds every JSON bundle that can become a compendium, in one pass. Supersedes
- * `build_feat_pack.macro.js`, which did one bundle; that file stays because it is the smaller thing
- * to reach for when only the feats need rebuilding.
+ * Builds every JSON bundle that can become a compendium, in one pass. To rebuild only some of them,
+ * trim `TARGETS` below — a run skips any pack that is already built and correctly stamped, so
+ * re-running the whole list is cheap anyway.
  *
  * RESUMABLE AND IDEMPOTENT. A pack that already exists with the right document count is skipped, so
  * a run interrupted halfway can simply be run again. A pack that exists with the WRONG count is

@@ -99,8 +99,8 @@ const FAMILIES = {
  * before this module existed — the candidate keys never contain " (" — and normalising the query too
  * would quietly start resolving it to plain "Weapon Focus".
  *
- * Exported so `tools/compendium_census.macro.js` measures pack coverage with THIS rule rather than
- * its own copy of it.
+ * Exported so `tools/verify_all_packs.macro.js` replays the resolution with THIS rule rather than a
+ * copy of it — a verifier that normalised differently would answer a question nobody asked.
  */
 export const baseKey = (name) => name.split(' (')[0].toLowerCase();
 
