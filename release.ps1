@@ -190,6 +190,12 @@ New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 # .gitignore entry hiding it from the repo went at the same time -- git and robocopy read different
 # lists, and undoing only one would leave the pack building fine locally and reaching nobody.
 #
+# That same split is why LOCK, LOG and LOG.old are excluded below. .gitignore already skips all
+# three per pack -- LOCK is the lock file Foundry holds open while a world is loaded, LOG/LOG.old
+# are LevelDB's own operational text -- but robocopy does not read .gitignore, so the first
+# pack-shipping build put 21 of them (7 packs x 3) in the zip. LevelDB recreates all three on open,
+# so they answer nothing for the user and only carry this machine's session paths to them.
+#
 # The *_MODS.json templates MUST ship -- EXCEPT the four excluded below: main() fetches the rest
 # whenever the dialog's "modded character sheet" answer is Yes (the default), and a missing one
 # 404s -> HTML -> JSON.parse blows up.
@@ -203,7 +209,7 @@ New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 # THE ORDER OF OPERATIONS MATTERS if this is ever reverted: drop the exclusion and re-add them to
 # SWAPPED_TEMPLATES together. Shipping them without the loader entry is dead weight; removing them
 # from the zip without a working pack leaves every feat synthesized from backend text alone.
-& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json every_feat.json every_feat_MODS.json every_trait.json every_trait_MODS.json every_item.json every_spell.json every_spell_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
+& robocopy $ModDir $stageMod /MIR /XD .claude .git node_modules tools .pytest_cache /XF LOCK LOG LOG.old *.bak *.tmp .env package.json package-lock.json every_class_feature.json every_class_feature_MODS.json every_feat.json every_feat_MODS.json every_trait.json every_trait_MODS.json every_item.json every_spell.json every_spell_MODS.json /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { Fail "robocopy failed (exit $LASTEXITCODE)." }
 $global:LASTEXITCODE = 0
 
@@ -252,7 +258,7 @@ $RequiredTemplates = @(
 # sanity: right root, no forbidden files, every runtime template present, plausible size
 $zi = [System.IO.Compression.ZipFile]::OpenRead($zipTarget)
 try { $names = @($zi.Entries | ForEach-Object { $_.FullName }) } finally { $zi.Dispose() }
-$bad = $names | Where-Object { $_ -match '\.bak$' -or $_ -match '/\.claude/' -or $_ -match '(^|/)\.env$' }
+$bad = $names | Where-Object { $_ -match '\.bak$' -or $_ -match '/\.claude/' -or $_ -match '(^|/)\.env$' -or $_ -match '/(LOCK|LOG|LOG\.old)$' }
 if ($bad) { Fail "Zip contains files that must not ship:`n$($bad -join "`n")" }
 $nameSet = [System.Collections.Generic.HashSet[string]]::new([string[]]$names)
 $missing = $RequiredTemplates | Where-Object { -not $nameSet.Contains("$ModName/templates/$_") }
