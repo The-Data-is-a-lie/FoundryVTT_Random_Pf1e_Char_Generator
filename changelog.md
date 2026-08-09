@@ -1,5 +1,7 @@
 Unreleased
 
+Version 2.3.0 (2026-08-08)
+
 - Fixed: A companion's AC was a point low whenever a feat contributed to it. Feats arrive with their automation stripped, because the generator already counted them — but that only works where the sheet has somewhere to write the difference back, and AC is the one number pf1 derives entirely from bonuses with no such place. Dodge's point simply vanished. AC-granting feats now keep their own bonus, with its type intact, so a reef snake's Dodge lands as +1 dodge and shows up in AC and touch AC but not flat-footed. Natural armour is deliberately still stripped: that one does have somewhere to go, and keeping it would count it twice.
 - Fixed: Twelve Path of War maneuvers arrived with no automation at all. Their names in the pf1-pow compendium carry a mangled apostrophe — "Turtle Knight’s Stance", "Don’t Die On Me" — so the module never matched them and built a plain feat item instead: no maneuver type, no discipline, and for the four stances, no stance buff. They now match, and the sheet prints the apostrophe the book prints.
 - Fixed: A thirteenth maneuver went the same way for a different reason. The Solar Wind strike Solar Flare had been recorded under a name no compendium entry carries, so it too arrived as a plain feat. It now matches, with its discipline and its "(Strike)" type.
