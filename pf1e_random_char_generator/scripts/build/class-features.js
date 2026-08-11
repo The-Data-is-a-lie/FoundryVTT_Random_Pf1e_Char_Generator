@@ -20,7 +20,7 @@
  * What stayed with the caller: nothing. What moved out sideways: `characterHasNaturalArmor`, which
  * weapon finishing also asks (see build/natural-armor.js).
  */
-import { appendJsonToTemplate, appendFeatDivider } from './items.js';
+import { appendJsonToTemplate, appendFeatDivider, synthesizeFeatItem, applyBuffData } from './items.js';
 import { CF_CLASS_BAND_BASE, CF_CLASS_BAND_STEP } from './classes.js';
 import { characterHasNaturalArmor } from './natural-armor.js';
 import { toTitleCase, stableStringify, convertToStringSimple } from '../shared/text.js';
@@ -225,6 +225,124 @@ const CLASS_RESOURCE_POOLS = {
   'inquisitor':            ['judgment'],
 };
 
+/**
+ * The item that DELIVERS a seller's payout, and shows its working.
+ *
+ * This is not a report. The three budgets the sale pays into — hit points, skill ranks and
+ * attribute points — deliberately no longer apply the payout on the backend; this item's `changes`
+ * are what apply it, on pf1's own targets (`mhp`, `bonusSkillRanks`, and the ability keys).
+ *
+ * That was a fix, not a preference. The module builds actor HP from `total_rolled_hp` — the raw
+ * dice — and never from `Total_HP`, so every hit point the backend added for a luck sale was
+ * invisible on the sheet the character is played from. Two sellers paid 18 and 8 HP both shipped
+ * the same `hp.base`. A change lands where an added-up total did not.
+ *
+ * The table below is the audit that made that discoverable: each pool's budget before, what a BUYER
+ * spent from it, and what the sale is owed. `final` is the budget the sheet uses, which no longer
+ * includes the payout precisely because the payout now arrives as a change instead.
+ *
+ * Sorted far below every class-feature band so it lands at the bottom of Class Features.
+ */
+async function addLuckAudit(ctx) {
+  try {
+    const luck = ctx.characterData.luck;
+    const audit = luck?.audit;
+    if (!audit || !Object.keys(audit).length) return;
+    // Sellers only. record_audit runs for every character, so without this the ~75% with no luck
+    // stake would each carry an all-zero table named "Negative Luck Payout". A buyer's spending is
+    // already spelled out on the Personal Luck item's derivation ("Bought +8 (30 skill ranks…)").
+    if (luck?.stake?.direction !== 'sell') return;
+
+    // Both spellings on purpose: the audit rows are keyed by POOL (`skill_ranks`, the budget that
+    // moved) and the stake's payout is keyed by what the Doc SELLS (`skill_points`). Mapping only
+    // one left the "Promised" line printing a raw key.
+    const LABELS = {
+      hp: 'Hit points',
+      skill_ranks: 'Skill ranks',
+      skill_points: 'Skill ranks',
+      attribute_points: 'Attribute points',
+      feats: 'Feats',
+    };
+    const num = (n) => (Number(n) || 0);
+    const signed = (n) => (num(n) > 0 ? `+${num(n)}` : String(num(n)));
+    // WHERE each pool's payout actually arrives, so the table is not just numbers with no mechanism.
+    const DELIVERY = {
+      hp: 'Max HP change',
+      skill_ranks: 'Bonus Skill Ranks change',
+      attribute_points: 'ability score change',
+      feats: 'Negative Luck feats',
+    };
+    // Ordered so the table reads the same on every character, rather than following object order.
+    const ORDER = ['hp', 'skill_ranks', 'attribute_points', 'feats'];
+    const entries = ORDER.filter((k) => audit[k]).map((k) => [k, audit[k]]);
+    let running = 0;
+    const rows = entries.map(([key, r]) => {
+      const balances = num(r.before) - num(r.spent) === num(r.after);
+      running += num(r.luck_cost);
+      return `<tr>
+        <td>${LABELS[key] || key}</td>
+        <td style="text-align:right">${num(r.before)}</td>
+        <td style="text-align:right"><strong>${num(r.received) ? signed(r.received) : '—'}</strong></td>
+        <td style="text-align:right">${num(r.luck_cost) ? `−${num(r.luck_cost)}` : '—'}</td>
+        <td style="text-align:right">${running ? `−${running}` : '—'}</td>
+        <td style="text-align:right">${num(r.final)}</td>
+        <td style="font-size:0.9em">${num(r.received) ? DELIVERY[key] || '' : '—'}</td>
+        <td style="text-align:center">${balances ? '✓' : '✗'}</td>
+      </tr>`;
+    }).join('');
+
+    // The table has to CLOSE, or the columns are four unrelated numbers. Compared against what was
+    // SOLD rather than the final score: a Luck Trait (Increase Luck) can move the score afterwards,
+    // so the two legitimately differ by a point or two and only the sale is what these rows bought.
+    const sold = Math.abs(num(luck?.stake?.target));
+    const totalRow = `<tr style="border-top:1px solid currentColor">
+      <td><strong>Total</strong></td><td></td><td></td>
+      <td style="text-align:right"><strong>−${running}</strong></td>
+      <td style="text-align:right"><strong>−${running}</strong></td>
+      <td colspan="3" style="font-size:0.9em">${running === sold
+        ? `matches the ${sold} luck sold ✓`
+        : `<strong>does not match the ${sold} luck sold ✗</strong>`}</td>
+    </tr>`;
+
+    const bumps = luck?.attribute_bumps || {};
+    const bumpText = Object.entries(bumps).map(([a, n]) => `+${n} ${a.toUpperCase()}`).join(', ');
+    const changeText = (luck?.payout_changes || [])
+      .map((c) => `${signed(c.formula)} ${c.target}`).join(', ');
+
+    const html = `
+      <p><strong>Luck score ${num(luck.score)}.</strong> This item <em>delivers</em> the payout —
+      the bonuses below are on its Changes tab, not baked into the numbers the backend sent.</p>
+      ${changeText ? `<p><em>Applied as changes:</em> ${changeText}${bumpText ? ` (${bumpText})` : ''}</p>` : ''}
+      <table style="width:100%; border-collapse:collapse">
+        <thead><tr>
+          <th style="text-align:left">Pool</th><th>Budget</th><th>Sale paid</th>
+          <th>Luck cost</th><th>Total spent</th><th>Sheet budget</th>
+          <th style="text-align:left">Arrives as</th><th>=</th>
+        </tr></thead>
+        <tbody>${rows}${totalRow}</tbody>
+      </table>
+      <p style="font-size:0.9em"><em>Luck cost</em> is what that row was paid for at the Doc's rates
+      (2 HP or 2 skill points per −1 luck; 5 luck for an attribute point or a feat), and
+      <em>Total spent</em> is the running sum — so the table closes against the luck actually sold
+      instead of being four unrelated numbers. The payout is deliberately NOT in "Sheet budget":
+      it arrives through the Changes tab, so it stays visible and attributable rather than folded
+      silently into a total. ("Sheet budget" still includes ordinary later additions — favored-class
+      HP, background skill points.)</p>`;
+
+    const item = synthesizeFeatItem('Negative Luck Payout', html);
+    item.system.subType = 'classFeat';
+    item._id = ctx.newId('luckAudit', 'audit');
+    item.sort = 9000000;   // far below every class-feature band, so it lands last
+    // THE CHANGES ARE THE POINT. applyBuffData mints ids and dedupes by target, the same path the
+    // feat overlay and the E-Kat traits use.
+    applyBuffData(ctx, item, { changes: luck?.payout_changes || [] });
+    appendJsonToTemplate([item], ctx.exportTemplate, 'Feature');
+    log.debug(`Negative Luck Payout: ${(luck?.payout_changes || []).length} change(s) attached.`);
+  } catch (error) {
+    console.error('Error adding the luck audit row:', error);
+  }
+}
+
 export async function addResourcePools(ctx) {
   const characterData = ctx.characterData;
   const exportTemplate = ctx.exportTemplate;
@@ -244,6 +362,27 @@ export async function addResourcePools(ctx) {
       .some(n => String(n).toLowerCase().includes('combat stamina')));
 
     const wanted = ['heroPoints'];
+    // E-Kats sit directly beneath Hero Points, matching the hand-built reference sheet. Only for a
+    // character actually in the E-Kat economy -- the backend sends  when the house-rule
+    // flag is off, and an empty pool on every NPC in the game is clutter.
+    const luck = characterData.luck;
+    const inEKatEconomy = !!luck && (luck.stake || (luck.feats || []).length
+      || luck.e_kat_reserve || (luck.traits || []).length);
+    if (inEKatEconomy) {
+      wanted.push('eKats');
+      // Luck doubles as a daily DR pool ("Gary has 20 luck ... uses 11 points ... refreshes
+      // daily"), so it is a charge pool rather than a readout. A NEGATIVE score still gets the
+      // item: it used to be gated on score > 0 on the reasoning that a negative-luck character has
+      // no pool to spend, which is true but threw away the only place the sheet shows the score at
+      // all -- and its derivation, the audit trail explaining where the number came from. A seller
+      // generated correctly and then displayed as though nothing had happened. See the negative
+      // branch below for how it renders.
+      wanted.push('personalLuck');
+      // Ass Pull grants 4 temporary E-Kats per session; It Just Works a temporary Hero Point.
+      const featNames = new Set((luck.feats || []).map(n => String(n).toLowerCase()));
+      if (featNames.has('ass pull')) wanted.push('eKatsTemporary');
+      if (featNames.has('it just works')) wanted.push('heroPointsTemporary');
+    }
     if (classes.includes('fighter') || hasStaminaFeat) wanted.push('stamina');
     for (const cls of classes) wanted.push(...(CLASS_RESOURCE_POOLS[cls] || []));
 
@@ -256,6 +395,39 @@ export async function addResourcePools(ctx) {
       clone._id = ctx.newId('resourcePool', key);
       if (key === 'heroPoints' && clone.system?.uses) {
         clone.system.uses.value = Number(characterData.hero_points) || 1;
+      }
+      // Current charges = what the character actually carries into play; the cap is its own store
+      // cap, which Enhanced Luck Storage raises by 100 a stack, so it is read rather than assumed.
+      if (key === 'personalLuck' && clone.system?.uses) {
+        const score = Number(luck?.score) || 0;
+        clone.system.uses.value = score;
+        clone.system.uses.maxFormula = String(score);
+        // EXPLICIT TAG, and it is load-bearing. The negative Luck Traits carry live change formulas
+        // reading @resources.personalLuck.value, and pf1 derives a resource's key from the item's
+        // TAG -- falling back to its NAME when the tag is blank, which every pool item ships. The
+        // "(Negative)" prefix below would therefore move the path and silently zero every trait
+        // bonus. Pinning the tag makes the path independent of what the item is called.
+        clone.system.tag = 'personalLuck';
+        // A negative score is carried as negative charges (-6 / -6) so the number on the sheet IS
+        // the character's luck, and the name says so up front -- matching this module's own
+        // "(E-Kat Trait) X" / "(-5 Luck) Y" prefix convention. pf1 stores this: uses.max is rolled
+        // from maxFormula, and its only clamp lives in recharge(), behind a `uses.max > 0` branch
+        // that a negative max never enters -- so a daily refresh cannot quietly reset it to 0.
+        // The prefix is deliberately belt-and-braces: if a future pf1 paints the charge bar oddly
+        // for negatives, the name still carries the meaning.
+        if (score < 0) clone.name = `(Negative) ${clone.name}`;
+        // Show the working, the way the hand-built sheets do -- the score is auditable on the sheet
+        // instead of being a bare number nobody can check.
+        const lines = luck?.derivation || [];
+        clone.system.description.value = lines.length
+          ? lines.map(l => `<p>${l}</p>`).join('')
+          : (score < 0
+            ? '<p>Negative luck. Applies to percentile rolls made about you; there is no DR pool to spend.</p>'
+            : '<p>Luck score, spendable as a daily DR pool. Refreshes daily.</p>');
+      }
+      if (key === 'eKats' && clone.system?.uses) {
+        clone.system.uses.value = Number(luck?.e_kat_reserve) || 0;
+        clone.system.uses.maxFormula = String(Number(luck?.e_kat_store_cap) || 99);
       }
       clones.push(clone);
     }
@@ -285,4 +457,8 @@ export async function addResourcePools(ctx) {
   } catch (error) {
     console.error('Error adding resource pools:', error);
   }
+  // TEMPORARY. Called from here rather than as its own build step so the whole diagnostic is one
+  // function plus this line, in one file, and deleting it later is trivial. Outside the try above
+  // so a resource-pool failure does not also swallow the audit.
+  await addLuckAudit(ctx);
 }

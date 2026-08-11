@@ -85,13 +85,26 @@ export function convertToStringSimple(key, featureData) {
       return "<p>No feature data available.</p>";
   }
 
-  let htmlString = `<p><strong>${key}</strong></p><ul>`;
+  // A nested plain object becomes its OWN sub-heading and list rather than a JSON blob. Sections
+  // that carry several kinds of thing (the E-Kat Exchange: your reserve, the feats you took, the
+  // actions you can spend on) read as one undifferentiated twenty-row wall otherwise -- and a
+  // stringified object in a description was never useful to anyone. Flat sections are untouched:
+  // same markup as before, byte for byte.
+  const isGroup = v => v && typeof v === "object" && !Array.isArray(v);
+  const row = (k, v) =>
+    `<li><strong>${k}:</strong> ${typeof v === "object" ? stableStringify(v, null, 2) : v}</li>`;
 
-  for (const [key, value] of Object.entries(featureData)) {
-      htmlString += `<li><strong>${key}:</strong> ${typeof value === "object" ? stableStringify(value, null, 2) : value}</li>`;
+  const entries = Object.entries(featureData);
+  const flat = entries.filter(([, v]) => !isGroup(v));
+  const groups = entries.filter(([, v]) => isGroup(v));
+
+  let htmlString = `<p><strong>${key}</strong></p>`;
+  if (flat.length) htmlString += `<ul>${flat.map(([k, v]) => row(k, v)).join("")}</ul>`;
+  for (const [groupName, groupValue] of groups) {
+    htmlString += `<p><strong>${groupName}:</strong></p><ul>`
+      + Object.entries(groupValue).map(([k, v]) => row(k, v)).join("")
+      + "</ul>";
   }
-
-  htmlString += "</ul>";
   return htmlString;
 }
 

@@ -233,7 +233,72 @@ export async function addFeats(ctx) {
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.flaw_feats, 'feat', 250, "Flaw", true, 1, 1, null, null, ctx.characterData.flaw_feat_tax_dict);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.story_feats, 'feat', 500, "Story Feat", true, 1, 5, [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], null, ctx.characterData.story_feat_tax_dict);
   await addFeatSeparator(ctx, 'spaceFeats', 'space_function', 1000);
-  await processFeatTrait(ctx, 'everyFeat', ctx.characterData.feats, 'feat', 1500, "Feat", true, 1, 2, null, null, ctx.characterData.feats_feat_tax_dict);
+  // ----- Luck: E-Kat Traits, and the feats negative luck paid for ----------------------------- //
+  // Both live in the FEATS area (subType 'feat'), matching the hand-built reference sheet -- the
+  // divider text and sorts are copied from it so a generated sheet lands in the same place a
+  // hand-built one does. Luck Traits are NOT character traits ("may only be purchased with
+  // E-Kats"), which is why they are here and not on the Traits tab.
+  const _luck = ctx.characterData.luck;
+  const _luckTraits = _luck?.traits || [];
+  if (_luckTraits.length) {
+    const benefits = _luck?.trait_benefits || {};
+    await appendFeatDivider(ctx, "__________________________ E-Kat Traits _____________________", -99999);
+    // Repeats are real -- Expanded Luck twice is +10 to the cap -- so they are counted and shown as
+    // "(x2)" on ONE row rather than as indistinguishable twins.
+    const counts = new Map();
+    for (const n of _luckTraits) counts.set(n, (counts.get(n) || 0) + 1);
+    // The MECHANICS of the negative Luck Traits, from the backend's `trait_changes`. These items are
+    // SYNTHESIZED rather than looked up in a compendium, so the changes attach directly here -- no
+    // trait_changes.json and no change to the trait pipeline (which never runs the buff overlay).
+    //
+    // Formulas are live and read `@resources.personalLuck.value`, which only resolves because the
+    // Personal Luck pool carries an explicit `tag` (see class-features.js). Pool items ship tag:''
+    // and pf1 otherwise derives the key from the item NAME -- which the "(Negative)" prefix changes.
+    const _traitChanges = _luck?.trait_changes || {};
+    let sort = -98999;
+    for (const [name, count] of counts) {
+      const label = count > 1 ? `(E-Kat Trait) ${name} (x${count})` : `(E-Kat Trait) ${name}`;
+      const item = synthesizeFeatItem(label, benefits[name] ? `<p>${benefits[name]}</p>` : "");
+      item.system.subType = 'feat';
+      item.sort = sort;
+      sort += 100;
+      // A repeated trait applies its change once per stack, so the same change is attached `count`
+      // times -- but applyBuffData dedupes by target, so stacking would silently collapse to one.
+      // None of the eight mechanical traits is repeatable, so this is asserted rather than handled:
+      // if a repeatable one ever gains a change, this is where it has to be dealt with.
+      applyBuffData(ctx, item, _traitChanges[name]);
+      if (count > 1 && (_traitChanges[name]?.changes || []).length) {
+        console.warn(`Luck: "${name}" is held x${count} but its change is applied once — `
+          + `repeatable traits with changes need explicit stacking.`);
+      }
+      appendJsonToTemplate([item], ctx.exportTemplate, "Feat");
+    }
+    log.debug(`Luck: added ${counts.size} E-Kat Trait row(s).`);
+  }
+
+  // Feats bought with negative luck, labelled with the running cost: "(-5 Luck) X", "(-10 Luck) Y".
+  // The backend picks these and guarantees none is a feat-tax primary or child, so lifting them out
+  // of the ordinary list below cannot orphan a chain.
+  const _negFeats = _luck?.negative_feats || [];
+  const _negNames = new Set(_negFeats.map(e => String(e.name).toLowerCase()));
+  const _ordinaryFeats = (ctx.characterData.feats || [])
+    .filter(n => !_negNames.has(String(n).toLowerCase()));
+  if (_negFeats.length) {
+    await appendFeatDivider(ctx, "_________________Negative Luck_________________", -97000);
+    let sort = -96999;
+    for (const entry of _negFeats) {
+      const item = synthesizeFeatItem(`(${entry.cumulative} Luck) ${entry.name}`,
+        ctx.homebrewFeatDescs[String(entry.name).toLowerCase()]
+          ? `<p>${ctx.homebrewFeatDescs[String(entry.name).toLowerCase()].desc}</p>` : "");
+      item.system.subType = 'feat';
+      item.sort = sort;
+      sort += 100;
+      appendJsonToTemplate([item], ctx.exportTemplate, "Feat");
+    }
+    log.debug(`Luck: added ${_negFeats.length} negative-luck feat row(s).`);
+  }
+
+  await processFeatTrait(ctx, 'everyFeat', _ordinaryFeats, 'feat', 1500, "Feat", true, 1, 2, null, null, ctx.characterData.feats_feat_tax_dict);
   await addFeatSeparator(ctx, 'spaceClassBonusFeats', 'space_function', 2000);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3, null, ctx.characterData.teamwork_feat_labels);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2, null, ctx.characterData.class_feat_labels, ctx.characterData.class_feat_tax_dict);
@@ -283,4 +348,5 @@ export async function addTraits(ctx) {
     }
     log.debug(`Flaws: added ${Object.keys(flawEffects).length} mechanical flaw trait(s).`);
   }
+
 }

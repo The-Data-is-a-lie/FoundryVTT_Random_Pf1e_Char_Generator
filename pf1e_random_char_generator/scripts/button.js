@@ -124,6 +124,17 @@ export async function createPersistentButton() {
       }
     }
 
+    // Dev toggle (client-scoped, ships OFF): force the backend's luck branch. Merged in HERE rather
+    // than stored with the dialog's inputs, so it is a per-click testing switch and never becomes
+    // part of the saved character request. The backend ignores anything that is not 'buy'/'sell'.
+    try {
+      const forceLuck = game.settings.get('pf1e_random_char_generator', 'forceLuckDirection');
+      if (forceLuck) {
+        savedData.luck_direction = forceLuck;
+        ui.notifications?.info(`Character Generator DEV: forcing luck direction "${forceLuck}".`);
+      }
+    } catch (e) { /* setting not registered — behave exactly as before */ }
+
     ui.notifications?.info("Character Generator: contacting the backend… (the first request after the server has idled can take up to a minute).");
     console.log('deliver_location', deliver_location)
     // Fully awaited: sendDataToServer stores the returned character in localStorage before

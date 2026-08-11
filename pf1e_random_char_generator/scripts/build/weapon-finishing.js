@@ -47,10 +47,25 @@ async function addHouseFeatures(ctx) {
     if (!characterHasNaturalArmor(ctx)) {
       features = features.filter((f) => !/natural\s*a(c|rmor)/i.test(String(f?.name)));
     }
+    // Trauma Survivor: "Add your negative luck score to the hitpoint threshold at which you die."
+    // The Death HP Pool item IS that threshold on this sheet, so the trait extends its maxFormula
+    // rather than inventing a second number that would immediately disagree with it. The formula
+    // negates the score (which is negative) to get a magnitude, matching the trait's other half.
+    //
+    // Deliberately NOT touching the item's description, which already claims "level + 3*HD + 2*Con"
+    // against an actual formula of 2*Con + 4*HD. That drift predates this change; fixing it here
+    // would bury a real bug inside an unrelated diff.
+    const deathBonus = ((ctx.characterData?.luck?.trait_changes) || {})['Trauma Survivor']
+      ?.death_hp_pool_bonus;
     const clones = [];
     for (const f of features) {
       const clone = structuredClone(f);
       clone._id = ctx.newId('houseFeature', f);
+      if (deathBonus && /death\s*hp/i.test(String(clone.name)) && clone.system?.uses) {
+        const base = String(clone.system.uses.maxFormula || '0').trim();
+        clone.system.uses.maxFormula = `${base} + ${deathBonus}`;
+        log.debug(`Trauma Survivor: Death HP Pool max is now "${clone.system.uses.maxFormula}".`);
+      }
       clones.push(clone);
     }
     appendJsonToTemplate(clones, ctx.exportTemplate, 'Feature');

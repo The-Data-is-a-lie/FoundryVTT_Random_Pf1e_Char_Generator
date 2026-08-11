@@ -36,6 +36,22 @@ export default class MyModule {
         default: "http://localhost:5001/update_character_data",
       });
 
+      // Inherent luck is a MINORITY trait by design: a quarter of characters take a stake and a
+      // quarter of those sell, so a negative-luck character is roughly 1 in 13. That is the right
+      // number for play and a miserable one for testing — you can roll ten characters and see none.
+      // This forces the backend's `luck_direction` input, which exists for exactly this and is
+      // otherwise unreachable from Foundry. CLIENT scope + default "" so it is per-machine, never
+      // syncs to players, and can never ship enabled.
+      game.settings.register("pf1e_random_char_generator", "forceLuckDirection", {
+        name: "Force luck direction (dev)",
+        hint: "Testing aid. 'Sell' makes every generated character take NEGATIVE luck; 'Buy' makes every one positive. Off means the normal weighted roll (~1 in 13 characters sells). Per-machine setting.",
+        scope: "client",
+        config: true,
+        type: String,
+        choices: { "": "Off (normal roll)", "sell": "Sell — always negative luck", "buy": "Buy — always positive luck" },
+        default: "",
+      });
+
       // The build narrates itself through ~100 log lines per character. CLIENT scope, default off:
       // it is a debugging aid, and left on it both buries the console and stops devtools releasing
       // every object it was handed. See shared/log.js.
