@@ -1,5 +1,7 @@
 Unreleased
 
+- Added: An **Optimized builds (dev)** setting, under the module's settings. Switch it on and every character generated on your machine is requested in the backend's optimized mode — the backend picks the character's power role from its class map and makes every choice the dialog leaves open well, instead of randomly. Like the luck toggle, it is per-machine, never syncs to your players, and ships off. It needs a backend that understands the request: leave it OFF against the hosted server, which predates the option and would misread the request.
+
 Version 2.4.0 (2026-08-10)
 
 - Added: Characters now carry inherent luck, and the sheet shows all of it. A lucky character gets a **Personal Luck** pool — the score doubles as a daily damage-reduction pool — sitting under Hero Points with **E-Kats** beside it, an **E-Kat Exchange** table listing what a reserve can be spent on, and any **Luck Traits** it bought as their own entries. The Personal Luck item shows its own working, so the number is auditable rather than a figure you have to take on faith: "Bought +8 (30 skill ranks, 10 HP), +15 from 9 E-Kat feat(s), = 25".
