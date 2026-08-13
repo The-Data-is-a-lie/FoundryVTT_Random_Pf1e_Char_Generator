@@ -52,6 +52,19 @@ export default class MyModule {
         default: "",
       });
 
+      // Optimized mode (backend spec §15) is a named backend key the dialog does not carry. Same
+      // shape as forceLuckDirection: CLIENT scope + default false, merged in at click time so it
+      // is a per-machine testing switch that never joins the saved character request and can never
+      // ship enabled.
+      game.settings.register("pf1e_random_char_generator", "optimizeBuilds", {
+        name: "Optimized builds (dev)",
+        hint: "Testing aid. Generate every character in optimized mode — the backend picks the power role from its class map and makes every unspecified choice well. Requires a backend that supports optimized mode (the local dev server); leave OFF against the hosted server, which would misread the request. Per-machine setting.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+      });
+
       // The build narrates itself through ~100 log lines per character. CLIENT scope, default off:
       // it is a debugging aid, and left on it both buries the console and stops devtools releasing
       // every object it was handed. See shared/log.js.

@@ -135,6 +135,17 @@ export async function createPersistentButton() {
       }
     } catch (e) { /* setting not registered — behave exactly as before */ }
 
+    // Dev toggle (client-scoped, ships OFF): request optimized mode. Merged in HERE for the same
+    // reason as luck_direction above — per-click, never persisted with the dialog's inputs.
+    // CAUTION: a backend without optimized mode parses the request positionally and an unknown
+    // key corrupts it, so this must stay off against the hosted server until it ships there.
+    try {
+      if (game.settings.get('pf1e_random_char_generator', 'optimizeBuilds')) {
+        savedData.optimize = true;
+        ui.notifications?.info('Character Generator DEV: OPTIMIZED build requested.');
+      }
+    } catch (e) { /* setting not registered — behave exactly as before */ }
+
     ui.notifications?.info("Character Generator: contacting the backend… (the first request after the server has idled can take up to a minute).");
     console.log('deliver_location', deliver_location)
     // Fully awaited: sendDataToServer stores the returned character in localStorage before
