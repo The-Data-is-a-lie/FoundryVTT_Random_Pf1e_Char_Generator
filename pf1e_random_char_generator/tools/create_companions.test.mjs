@@ -92,6 +92,28 @@ const BODY = {
   ],
 };
 
+// The eidolon's stand-in body. Deliberately NOT the wolf's shape: a `pf-eidolon-forms` actor carries
+// no STR/DEX or Natural Armor feat, because pf1 has no eidolon progression to drive them from --
+// every number on an eidolon comes off `eidolon_table.json` and lands through `reconcile()`.
+const EIDOLON_BODY = {
+  name: 'Biped Baseform',
+  type: 'character',
+  system: {
+    abilities: { str: { value: 16 }, dex: { value: 12 }, con: { value: 13 }, int: { value: 7 }, wis: { value: 10 }, cha: { value: 11 } },
+    attributes: { naturalAC: 2, savingThrows: { fort: { base: 0 }, ref: { base: 0 }, will: { base: 0 } }, hp: {}, speed: {} },
+    traits: { size: 'med' }, skills: {}, details: {},
+  },
+  items: [
+    {
+      name: 'Eidolon', type: 'class',
+      system: {
+        subType: 'base', level: 1, hd: 10, hp: 10, bab: 'high',
+        savingThrows: { fort: { value: 'high' }, ref: { value: 'high' }, will: { value: 'low' } },
+      },
+    },
+  ],
+};
+
 let nextId = 1;
 const mod = (score) => Math.floor((Number(score) - 10) / 2);
 const SIZE_AC = { fine: 8, dim: 4, tiny: 2, sm: 1, med: 0, lg: -1, huge: -2, grg: -4, col: -8 };
@@ -234,7 +256,9 @@ FEAT_BODIES['Iron Will'].system.changes =
 const packs = new Map([
   ['pf-content.pf-companions', pack({ bird: BODY })],
   ['pf-content.pf-familiars', pack({})],
-  ['pf-content.pf-eidolon-forms', pack({})],
+  // Keyed by its REAL pack name, not by the species slug: an eidolon's species is `biped` and its
+  // actor is "Biped Baseform", which is the whole reason `findSource` reads `entry.pf_content`.
+  ['pf-content.pf-eidolon-forms', pack({ biped: EIDOLON_BODY })],
   ['pf1.feats', pack(FEAT_BODIES)],
 ]);
 globalThis.game = { packs: { get: (id) => packs.get(id) } };
@@ -286,20 +310,32 @@ for (const [index, actor] of created.entries()) {
     .filter((record) => record.target === target)
     .reduce((sum, record) => sum + Number(record.value ?? 0), 0);
 
+  // The "no correction" half of that claim is CHASSIS-SPECIFIC and an eidolon is exempt from it, on
+  // purpose: pf1 ships an Animal Companion progression that IS the animal-companion table, and ships
+  // nothing at all for `eidolon_table.json`. There is no progression for the seed to be zero
+  // against, so the seed is whatever `reconcile()` had to write. What must still hold for an eidolon
+  // is the outcome -- every total equals the payload -- and that is checked for both.
+  const isEidolon = entry.type === 'eidolon';
+
   for (const save of ['fort', 'ref', 'will']) {
     check(`${where} ${save} save matches the payload`,
       attributes.savingThrows[save].total === stats.saves[save],
       `${attributes.savingThrows[save].total} vs ${stats.saves[save]}`);
+    if (isEidolon) continue;
     check(`${where} ${save} seed is exactly what the fold added`,
       (Number(attributes.savingThrows[save].base) || 0) === folded(save),
       `seed ${attributes.savingThrows[save].base}, folded ${folded(save)}`);
   }
   check(`${where} HP matches the payload`, attributes.hp.max === stats.hp, `${attributes.hp.max} vs ${stats.hp}`);
-  check(`${where} HP seed is exactly what the fold added`,
-    (Number(attributes.hp.base) || 0) === folded('mhp'),
-    `seed ${attributes.hp.base}, folded ${folded('mhp')}`);
+  if (!isEidolon) {
+    check(`${where} HP seed is exactly what the fold added`,
+      (Number(attributes.hp.base) || 0) === folded('mhp'),
+      `seed ${attributes.hp.base}, folded ${folded('mhp')}`);
+  }
   check(`${where} BAB matches the payload`, attributes.bab.total === stats.bab, `${attributes.bab.total} vs ${stats.bab}`);
-  check(`${where} BAB needed no correction`, !attributes.bab.value, `seed ${attributes.bab.value}`);
+  if (!isEidolon) {
+    check(`${where} BAB needed no correction`, !attributes.bab.value, `seed ${attributes.bab.value}`);
+  }
   check(`${where} AC matches the payload`, attributes.ac.normal.total === stats.ac,
     `${attributes.ac.normal.total} vs ${stats.ac}`);
 
@@ -321,21 +357,72 @@ for (const [index, actor] of created.entries()) {
   // ---- parity sections (§8 D14/D15/D16) --------------------------------------------------------
   const named = (pattern) => actor.items.filter((item) => pattern.test(String(item.name)));
 
+  // The band names the creature type, so the expected divider follows `entry.type` -- reading
+  // "(Animal Companion)" over an eidolon's own table specials was simply wrong.
+  const bandLabel = { companion: 'Animal Companion', mount: 'Mount', familiar: 'Familiar', eidolon: 'Eidolon' }[entry.type]
+    ?? 'Animal Companion';
   for (const [label, pattern] of [
     ['Variable Modifiers', /_Variable Modifiers_/],
     ['Natural AC', /_Natural AC_/],
     ['Death HP', /_Death HP_/],
-    ['Class Features (Animal Companion)', /_Class Features \(Animal Companion\)_/],
+    [`Class Features (${bandLabel})`, new RegExp(`_Class Features \\(${bandLabel}\\)_`)],
     ['Background', /_ Background _/],
   ]) {
     check(`${where} has the ${label} divider`, named(pattern).length === 1,
       `${named(pattern).length} found`);
   }
+  check(`${where} has an Evolutions divider only if it is an eidolon`,
+    named(/_Evolutions_/).length === (isEidolon ? 1 : 0),
+    `${named(/_Evolutions_/).length} found on a ${entry.type}`);
 
   // The species abilities used to be prose in the Actor description; they must be real items now.
   const featureBand = actor.items.filter((item) => item.system?.subType === 'classFeat'
     && !String(item.name).startsWith('__'));
   check(`${where} promoted its species abilities into items`, featureBand.length > 0);
+
+  // ---- the Evolutions band (spec §8 "Eidolon (v1.1)") ------------------------------------------
+  //
+  // The eidolon is BUILT rather than picked, and until this band existed not one of the choices it
+  // was built from reached a sheet. Every claim below is about a key no other creature type has.
+  if (isEidolon) {
+    const titleCase = (t) => String(t).replace(/\b\w/g, (c) => c.toUpperCase());
+    const groups = new Map();
+    for (const pick of entry.evolutions ?? []) {
+      const shown = pick.choice ? `${pick.name} (${titleCase(pick.choice)})` : String(pick.name);
+      groups.set(shown, { pick, count: (groups.get(shown)?.count ?? 0) + 1 });
+    }
+    const heldBack = new Set((stats.unapplied ?? [])
+      .map((line) => String(line).slice(0, String(line).indexOf(': '))));
+
+    check(`${where} carries its evolution pool line`,
+      !!actor.items.find((i) => String(i.name) === `Evolution Pool — ${entry.ep?.pool} EP`),
+      `ep ${JSON.stringify(entry.ep)}`);
+    check(`${where} names the base form's free evolutions`,
+      !Object.keys(entry.free_evolutions ?? {}).length
+        || actor.items.some((i) => String(i.name).startsWith('Free Evolutions —')));
+
+    for (const [shown, { pick, count }] of groups) {
+      // The `×N` suffix is not cosmetic: `attachSections` dedupes creations by normalised name, so
+      // an evolution bought twice as two identically named items would silently collapse to one.
+      const expected = `${shown} (${pick.cost} EP)${count > 1 ? ` ×${count}` : ''}`;
+      const item = actor.items.find((i) => String(i.name) === expected);
+      check(`${where} carries evolution "${expected}"`, !!item,
+        `evolution items: ${actor.items.filter((i) => / \(\d+ EP\)/.test(i.name)).map((i) => i.name).join(' | ') || 'none'}`);
+      if (!item) continue;
+
+      // D12's discipline, on the face of the item: 73 of the 81 evolutions cannot be expressed as a
+      // number, and one that says "Folded" when the block never counted it would be a lie the reader
+      // has no way to catch.
+      const rawShown = pick.choice ? `${pick.name} (${pick.choice})` : String(pick.name);
+      const text = String(item.system?.description?.value ?? '');
+      const shouldHold = heldBack.has(rawShown) || heldBack.has(shown);
+      check(`${where} "${expected}" states the right provenance`,
+        text.includes(shouldHold ? 'Not folded into this stat block' : 'Folded into this stat block'),
+        shouldHold ? 'on stats.unapplied but the item claims it was folded'
+                   : 'folded into the numbers but the item claims it was not');
+      check(`${where} "${expected}" carries its rules text`, text.includes(String(pick.benefit ?? '').slice(0, 40)));
+    }
+  }
 
   // D15: every rolled feat is on the sheet, named `Animal Companion <level>: <feat>`.
   for (const [index, feat] of (entry.feats ?? []).entries()) {
@@ -411,6 +498,28 @@ for (const [index, actor] of created.entries()) {
   // The house trackers, cloned from house_features.json + sizefordamage_feature.json.
   check(`${where} carries the natural-armour trackers`,
     actor.items.some((item) => /natural\s*a(c|rmor)/i.test(String(item.name))));
+}
+
+// ---- the degraded unchained eidolon, against the pure builder ----------------------------------
+//
+// It cannot ride the loop above: an unchained summoner's entry has `stats: null` by ruling, so the
+// `granted` filter drops it before an Actor is ever built. `evolutionItems` is pure by design, which
+// is exactly what lets the branch be exercised without one. What matters is that the band still
+// SHIPS and says why it is empty -- a feature that is merely absent reads identically to a bug.
+{
+  const { evolutionItems } = await import(pathToFileURL(path.join(SCRIPTS, 'companion-sections.js')).href);
+  const holdback = 'The unchained eidolon\'s subtype-granted evolutions are not sourced.';
+  const items = evolutionItems({
+    type: 'eidolon', flags: ['unchained_degraded'], holdback, stats: null,
+  });
+  check('the degraded unchained eidolon still gets an Evolutions divider',
+    items.some((item) => /_Evolutions_/.test(String(item.name))));
+  const note = items.find((item) => String(item.name) === 'Evolutions — not modelled');
+  check('the degraded unchained eidolon names its debt on the band', !!note);
+  check('the debt is the backend\'s own holdback sentence, not invented here',
+    String(note?.system?.description?.value ?? '').includes(holdback));
+  check('a non-eidolon gets no Evolutions band at all',
+    evolutionItems({ type: 'companion', stats: {} }).length === 0);
 }
 
 console.log(`${created.length} actor(s) built from ${payloadPath}`);

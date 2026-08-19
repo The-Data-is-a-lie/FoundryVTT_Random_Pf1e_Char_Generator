@@ -65,18 +65,32 @@ const TABLE_ITEMS = new Set(['str/dex bonus', 'natural armor bonus']);
 
 const norm = (value) => String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
-/** The pf-content Actor for this creature's species, or null -- a miss is the D3 degrade. */
+/**
+ * The pf-content Actor for this creature, or null -- a miss is the D3 degrade.
+ *
+ * `species` is the match key for every creature the pack names after its species, which is every
+ * animal, mount and familiar: the Bird actor is called "Bird". An EIDOLON is not one of those. Its
+ * species is the base-form slug (`biped`) and its actor is "Biped Baseform", so the backend authors
+ * the exact actor name on `entry.pf_content` and `validate_eidolon_data.py` asserts that mapping is
+ * 1:1 against `pf_content_companions.json`. Ignoring the field made every eidolon miss and degrade
+ * to a bare npc -- no art, no natural attacks -- while the data proving the match sat on the entry.
+ *
+ * `pf_content` is tried FIRST and `species` remains the fallback, so nothing that matched before
+ * stops matching.
+ */
 async function findSource(entry) {
   const preferred = PACK_BY_TYPE[entry.type];
   const packIds = [...new Set([preferred, ...ALL_PACKS].filter(Boolean))];
-  const wanted = norm(entry.species);
+  const wanted = [entry.pf_content, entry.species].map(norm).filter(Boolean);
 
   for (const packId of packIds) {
     const pack = game.packs.get(packId);
     if (!pack) continue;
     const index = await pack.getIndex();
-    const hit = index.find((row) => norm(row.name) === wanted);
-    if (hit) return pack.getDocument(hit._id);
+    for (const name of wanted) {
+      const hit = index.find((row) => norm(row.name) === name);
+      if (hit) return pack.getDocument(hit._id);
+    }
   }
   return null;
 }
@@ -416,7 +430,7 @@ export async function createBondedCreatures(payload, folderId) {
       const { actor, cloned } = await createBondedCreature(entry, folderId, masterName);
       summary[cloned ? 'created' : 'degraded'] += 1;
       if (!cloned) {
-        console.warn(`Companion: no pf-content Actor named "${entry.species}" — built from payload ` +
+        console.warn(`Companion: no pf-content Actor named "${entry.pf_content ?? entry.species}" — built from payload ` +
                      `numbers alone (no art, no natural attacks).`);
       }
       log.debug(`Companion created: ${actor.name} (${entry.type}, ${entry.stats.hd} HD).`);
