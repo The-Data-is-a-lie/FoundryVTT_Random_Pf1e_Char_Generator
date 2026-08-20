@@ -16,12 +16,18 @@
  *    whose changes RE-APPLY the companion table off `floor(@class.level / 3)`. The backend already
  *    applied that table (`companion_stats.py`), so they are deleted on sight. Leaving them in is a
  *    silent double-count, the same shape as the size-package bug (D11).
- *    Handing the numbers to pf1 instead is not the alternative: `floor(level / 3)` bumps at 3rd,
- *    6th, 9th... where PF1e bumps at 4th, 7th, 10th, so at every third level it is a point of Str
- *    AND Dex and two points of natural armour ahead of the rules.
- * 3. The clone's class item is driven at the creature's HD COUNT, not its effective level. At
- *    effective level 11 a companion has 9 HD; pf1 derives HD, BAB and both save progressions from
- *    that one number, off the same table the backend read, so they agree by construction.
+ * 3. The clone's class item is driven at the MASTER'S EFFECTIVE LEVEL (`entry.effective_level`),
+ *    which is what every formula pf-content writes on these bodies expects: `floor(@class.level/3)`
+ *    reproduces the animal-companion Str/Dex column exactly at all twenty levels, and an eidolon
+ *    body states its own HD as `round((@class.level - 1) * .75) + 1` -- a lag it can only compute
+ *    because `@class.level` is the summoner's. Driving the item at the HD COUNT instead (which this
+ *    file did until 2026-08-19) put a level-10 druid's companion on the sheet as "Animal Companion
+ *    9" and a level-10 summoner's eidolon as "Eidolon 8".
+ *    The cost is that pf1 core derives HD, and therefore BAB, saves and HP, straight from the class
+ *    level with no table -- so above the first lag level it runs 1-2 points ahead of PF1e. The
+ *    numbers stay RAW anyway because `reconcile()` seeds the difference back out (ruled 2026-08-19:
+ *    the displayed level is worth a seed; letting the creature actually grow to the master's HD
+ *    would be a house buff, and would put Foundry out of step with the web sheet).
  *
  * And then `reconcile()` proves it rather than trusting it: whatever pf1 derived is diffed against
  * the payload and the remainder is written into the stored seeds pf1 adds on top
@@ -62,6 +68,15 @@ const SIZE_IDS = {
 // all 205 `pf-companions` Actors found these two and nothing else carrying a change, with all three
 // formulas identical pack-wide.
 const TABLE_ITEMS = new Set(['str/dex bonus', 'natural armor bonus']);
+
+// pf-content's eidolon bodies ship an item addressed to a human -- "Requires Manual Setup" -- asking
+// for the two things the pack cannot know: pick the eidolon's four extra class skills by editing the
+// class item, and keep whichever evolution-pool tracker matches your summoner. Both are answered by
+// the payload (the skills it spent ranks on; `unchained_degraded` on the entry), so the module does
+// them and the note goes with them. An instruction nobody has to follow should not be on the sheet:
+// left there it reads as work outstanding on a creature that is finished.
+const SETUP_NOTE = 'requires manual setup';
+const POOL_ITEMS = { chained: 'evolution pool (chained)', unchained: 'evolution pool (unchained)' };
 
 const norm = (value) => String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
@@ -124,22 +139,27 @@ function speedsFrom(prose) {
 /**
  * The class item a degraded (un-cloned) creature needs.
  *
- * Not an approximation of the chassis -- pf1's own med-BAB and high/high/low save progressions ARE
- * the animal-companion table, so at the right HD they reproduce it exactly. `reconcile()` catches
- * the cases where they do not (a familiar, say) and writes the difference into the stored seeds.
+ * Its level is the master's, for the same reason the cloned body's is (see 3 in the header) -- a
+ * degraded creature is still the same creature, and a sheet that reads two levels lower than its
+ * twin would be a difference nobody chose. pf1's med-BAB and high/high/low progressions then run
+ * ahead of the animal-companion table by the HD lag, and `reconcile()` seeds that back out.
  */
-function classItemData(stats) {
+function classItemData(stats, level) {
   const die = Number(String(stats?.hit_die ?? 'd8').replace(/\D/g, '')) || 8;
   return {
     name: 'Animal Companion',
     type: 'class',
     system: {
       subType: 'base',
-      level: Number(stats?.hd) || 1,
+      level: Number(level) || Number(stats?.hd) || 1,
       hd: die,
       hp: 0,
       bab: 'med',
       skillsPerLevel: 0,
+      // Same rule as the cloned path, through the same owner -- a degraded creature has no pack list
+      // to merge into, so without this every one of its trained skills reads 3 low.
+      classSkills: Object.fromEntries(
+        Object.keys(classSkillPatch(stats)).map((path) => [path.split('.').pop(), true])),
       savingThrows: {
         fort: { value: 'high' },
         ref: { value: 'high' },
@@ -147,6 +167,34 @@ function classItemData(stats) {
       },
     },
   };
+}
+
+/**
+ * The class-skill flags the creature's own numbers imply, as dotted paths onto the class item.
+ *
+ * pf1 grants the +3 trained-in-a-class-skill bonus off `system.classSkills` on the class item, and
+ * the backend has already granted it: `companion_stats._skills` adds 3 to every skill it puts a rank
+ * in. So every ranked skill has to be flagged here or the sheet quietly reads 3 lower than the
+ * payload and the web sheet on each one -- which it did, unseen, because nothing compares skill
+ * TOTALS: the harness sums ranks and `reconcile()` covers saves, HP and BAB only.
+ *
+ * The gap is not small and it is not confined to the eidolon. `pf-content`'s Animal Companion class
+ * item declares six class skills; PF1e's animal companion has NINE (the missing three are Escape
+ * Artist, Intimidate and Survival, and the backend's `ANIMAL_SKILLS` is the RAW nine). The eidolon
+ * body declares six and expects a human to add four -- which is half of what its "Requires Manual
+ * Setup" item is asking for, and is why doing this here retires that note.
+ *
+ * Existing flags are merged, never replaced: a body's own list is the pack's claim about the
+ * species, and dotted paths leave everything they do not name alone.
+ */
+function classSkillPatch(stats) {
+  const patch = {};
+  for (const [skill, spend] of Object.entries(stats?.skills ?? {})) {
+    if (!(Number(spend?.ranks) > 0)) continue;
+    const id = skillsDict[skill];
+    if (id) patch[`system.classSkills.${id}`] = true;
+  }
+  return patch;
 }
 
 /** Everything that is a STORED field, so everything that survives a re-render. */
@@ -198,6 +246,12 @@ function systemPatch(entry) {
  * changes accumulate on top of (`actor-pf.mjs`), so a delta written here lands exactly. AC is
  * deliberately NOT corrected: its inputs (natural armour, Dex, size) are already ours, so a
  * disagreement means something else is on the body and is worth seeing rather than papering over.
+ *
+ * Since the class item moved to the master's effective level (header, 3) this corrects nearly every
+ * creature rather than nearly none. pf1 has no companion table -- it reads a class level as a count
+ * of hit dice -- so above the first lag level it derives 1-2 points too much BAB, save and HP, and
+ * the seed written here is what keeps the sheet on the PF1e numbers the payload and the web sheet
+ * both carry. A correction is now expected; its ABSENCE on a lagging creature would be the surprise.
  */
 async function reconcile(actor, stats) {
   const attributes = actor.system.attributes ?? {};
@@ -368,33 +422,46 @@ async function createBondedCreature(entry, folderId, masterName) {
   delete data._id;
   data.name = name;
   data.folder = folderId;
-  if (!source) data.items = [classItemData(stats)];
+
+  // The number the class item is driven at. `effective_level` is the grantor's own class level after
+  // stacking, which is what the sheet must read; `hd` is the fallback for a payload old enough not to
+  // carry it, and keeps this file working against a recorded fixture from before the field existed.
+  const classLevel = Number(entry.effective_level) || Number(stats.hd) || 1;
+
+  if (!source) data.items = [classItemData(stats, classLevel)];
 
   const actor = await Actor.create(data);
   if (!actor) throw new Error(`Actor.create returned nothing for ${name}`);
 
-  // 1. Delete the companion table the clone re-applies (see the header).
-  const doubled = actor.items.filter((item) => TABLE_ITEMS.has(String(item.name).trim().toLowerCase()));
+  // 1. Delete the companion table the clone re-applies (see the header), the pack's manual-setup
+  // note, and whichever evolution-pool tracker does not match this summoner. Exactly one of the two
+  // pools applies and the body ships both; the one that stays prints the same figure the Evolutions
+  // band does, off `@class.level`, which agrees with `eidolon_table.json` at all twenty levels.
+  const stale = new Set([...TABLE_ITEMS, SETUP_NOTE]);
+  if (entry.type === 'eidolon') {
+    stale.add((entry.flags ?? []).includes('unchained_degraded')
+      ? POOL_ITEMS.chained : POOL_ITEMS.unchained);
+  }
+  const doubled = actor.items.filter((item) => stale.has(String(item.name).trim().toLowerCase()));
   if (doubled.length) {
     await actor.deleteEmbeddedDocuments('Item', doubled.map((item) => item.id));
   }
 
-  // 2. Drive the class item at the HD COUNT. Prefer the one with a real progression: 35 of the 205
-  // bodies carry a second, level-0 class item naming the creature type (Vermin, Plant, ...) whose
-  // bab and saves are empty, and levelling that one would grant nothing.
+  // 2. Drive the class item at the MASTER'S EFFECTIVE LEVEL. Prefer the one with a real progression:
+  // 35 of the 205 bodies carry a second, level-0 class item naming the creature type (Vermin, Plant,
+  // ...) whose bab and saves are empty, and levelling that one would grant nothing.
   const classes = actor.itemTypes.class;
   const chassis = classes.find((item) => item.system?.bab) ?? classes[0];
-  const hd = Number(stats.hd) || 1;
   if (chassis) {
     const die = Number(String(stats.hit_die ?? '').replace(/\D/g, ''));
     // A same-value update is a no-op Foundry fires no change event for, and pf1 then never
     // re-derives — see forceRederive in shared/foundry-doc.js.
-    await forceRederive(chassis, 'system.level', hd, {
+    await forceRederive(chassis, 'system.level', classLevel, {
       current: chassis.system.level,
-      extra: die ? { 'system.hd': die } : {},
+      extra: { ...(die ? { 'system.hd': die } : {}), ...classSkillPatch(stats) },
     });
   } else {
-    await actor.createEmbeddedDocuments('Item', [classItemData(stats)]);
+    await actor.createEmbeddedDocuments('Item', [classItemData(stats, classLevel)]);
   }
 
   // 3. Stored fields, then prove the derived ones.
@@ -433,7 +500,8 @@ export async function createBondedCreatures(payload, folderId) {
         console.warn(`Companion: no pf-content Actor named "${entry.pf_content ?? entry.species}" — built from payload ` +
                      `numbers alone (no art, no natural attacks).`);
       }
-      log.debug(`Companion created: ${actor.name} (${entry.type}, ${entry.stats.hd} HD).`);
+      log.debug(`Companion created: ${actor.name} (${entry.type}, level ${entry.effective_level}, ` +
+                `${entry.stats.hd} HD).`);
     } catch (error) {
       summary.failed += 1;
       console.error(`Companion: failed to create ${entry.species}:`, error);

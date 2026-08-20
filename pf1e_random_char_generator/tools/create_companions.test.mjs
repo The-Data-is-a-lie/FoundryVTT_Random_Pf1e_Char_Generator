@@ -8,12 +8,15 @@
  * Stubs the parts of Foundry and pf1 the renderer touches and replays a real generated payload
  * through it. It exists to answer one question no console can, without a live world:
  *
- *   Does driving the cloned body's class item at the creature's HD COUNT reproduce the backend's
- *   HP, BAB, saves and AC *with no correction*?
+ *   Does the sheet pf1 derives end up on the backend's HP, BAB, saves and AC?
  *
- * That is claim 3 of the companion-sheets map's ticket 02. If `reconcile()` ever has to fix
- * something on the golden companion, either the chassis table or pf1's progressions moved, and the
- * `assert` below fails loudly instead of the mismatch reaching a sheet.
+ * That was claim 3 of the companion-sheets map's ticket 02, and it was originally the sharper
+ * question of whether driving the class item at the HD COUNT reproduced them with NO correction.
+ * The class item now sits at the master's effective level instead (ruled 2026-08-19, so a level-10
+ * summoner's eidolon reads "Eidolon 10"), which pf1 reads as a count of hit dice -- so the
+ * no-correction claim survives only where level and HD coincide, and is gated on that below. The
+ * outcome claim is asserted for every creature either way: a total that disagrees with the payload
+ * fails loudly here instead of reaching a sheet.
  *
  * THE pf1 STUB IS DELIBERATELY SMALL and is not a second implementation of the system: it derives
  * only what `createCompanions.js` reads back (saves, HP, BAB, AC) and does it the way
@@ -85,6 +88,9 @@ const BODY = {
       name: 'Animal Companion', type: 'class',
       system: {
         subType: 'base', level: 1, hd: 8, hp: 8, bab: 'med',
+        // The six the real pack declares on all 205 bodies. PF1e's animal companion has nine, so
+        // the module has to merge -- and must not clobber these while doing it.
+        classSkills: { acr: true, clm: true, fly: true, per: true, ste: true, swm: true },
         savingThrows: { fort: { value: 'high' }, ref: { value: 'high' }, will: { value: 'low' } },
       },
     },
@@ -108,10 +114,26 @@ const EIDOLON_BODY = {
       name: 'Eidolon', type: 'class',
       system: {
         subType: 'base', level: 1, hd: 10, hp: 10, bab: 'high',
+        // The six the real body declares; the other four are the player's pick, which is half of
+        // what "Requires Manual Setup" below is asking for.
+        classSkills: { blf: true, crf: true, kpl: true, per: true, sen: true, ste: true },
         savingThrows: { fort: { value: 'high' }, ref: { value: 'high' }, will: { value: 'low' } },
       },
     },
+    // The three items the pack ships for a human to sort out. Exactly one pool applies; the note
+    // goes once both halves are answered.
+    { name: 'Requires Manual Setup', type: 'feat', system: {} },
+    { name: 'Evolution Pool (Chained)', type: 'feat', system: {} },
+    { name: 'Evolution Pool (Unchained)', type: 'feat', system: {} },
   ],
+};
+
+// What each stub body declares before the module touches it, read off the bodies themselves so the
+// two cannot drift. The merge check below asserts none of it is lost.
+const classItemOf = (body) => body.items.find((item) => item.type === 'class').system.classSkills;
+const BODY_CLASS_SKILLS = {
+  companion: classItemOf(BODY), mount: classItemOf(BODY), familiar: classItemOf(BODY),
+  eidolon: classItemOf(EIDOLON_BODY),
 };
 
 let nextId = 1;
@@ -265,6 +287,9 @@ globalThis.game = { packs: { get: (id) => packs.get(id) } };
 
 // ---- run ---------------------------------------------------------------------------------------
 const { createBondedCreatures } = await import(pathToFileURL(path.join(SCRIPTS, 'createCompanions.js')).href);
+// The renderer's own name -> pf1 skill id table, so the class-skill assertion below reads the same
+// mapping the code under test does instead of a second copy of it.
+const { skillsDict } = await import(pathToFileURL(path.join(SCRIPTS, 'shared', 'skills-dict.js')).href);
 
 const granted = (payload.bonded_creatures ?? []).filter((entry) => entry?.species && entry?.stats);
 const summary = await createBondedCreatures(payload, 'folder-under-test');
@@ -294,9 +319,42 @@ for (const [index, actor] of created.entries()) {
     !actor.items.some((item) => /^(str\/dex bonus|natural armor bonus)$/i.test(item.name)));
 
   const cls = actor.items.find((item) => item.type === 'class' && item.system?.bab);
-  check(`${where} drives the class item at HD, not effective level`,
-    Number(cls?.system?.level) === Number(stats.hd),
-    `class level ${cls?.system?.level} vs ${stats.hd} HD (effective ${entry.effective_level})`);
+  check(`${where} drives the class item at the master's effective level, not at HD`,
+    Number(cls?.system?.level) === Number(entry.effective_level),
+    `class level ${cls?.system?.level} vs effective ${entry.effective_level} (${stats.hd} HD)`);
+
+  // Every skill the backend put a rank in was given the +3 class-skill bonus when its total was
+  // computed, so pf1 has to be told the same or the sheet reads 3 low on each one. The +3 itself is
+  // pf1's arithmetic and is deliberately not reimplemented here; what is asserted is the flag.
+  const classSkills = cls?.system?.classSkills ?? {};
+  const rankedIds = Object.entries(stats.skills ?? {})
+    .filter(([, spend]) => Number(spend?.ranks) > 0)
+    .map(([skill]) => skillsDict[skill]).filter(Boolean);
+  const unflagged = rankedIds.filter((id) => !classSkills[id]);
+  check(`${where} flags every ranked skill as a class skill`, unflagged.length === 0,
+    `${unflagged.length} of ${rankedIds.length} unflagged: ${unflagged.join(', ')}`);
+
+  // A degrade has no pack list to preserve and no pack furniture to clear, so the two claims below
+  // are about the CLONED path only. Whether this creature took it is read off the renderer's own
+  // warning rather than guessed at from the items, which is the same signal a live import gives.
+  const cloned = !captured.warn.some((line) => line.includes(`named "${entry.pf_content ?? entry.species}"`));
+  const byName = (name) => actor.items.some((item) => String(item.name).toLowerCase() === name);
+  if (cloned) {
+    const packList = Object.keys(BODY_CLASS_SKILLS[entry.type] ?? {});
+    check(`${where} merged into the body's class skills rather than replacing them`,
+      packList.every((id) => classSkills[id]),
+      `pack list ${packList.join(',')}, merged ${Object.keys(classSkills).sort().join(',')}`);
+
+    // The pack's own to-do list, answered rather than passed on to the player.
+    check(`${where} removed the "Requires Manual Setup" note`, !byName('requires manual setup'));
+    if (entry.type === 'eidolon') {
+      const unchained = (entry.flags ?? []).includes('unchained_degraded');
+      const keep = `evolution pool (${unchained ? 'unchained' : 'chained'})`;
+      const drop = `evolution pool (${unchained ? 'chained' : 'unchained'})`;
+      check(`${where} kept only the pool tracker that applies`, byName(keep) && !byName(drop),
+        `chained ${byName('evolution pool (chained)')}, unchained ${byName('evolution pool (unchained)')}`);
+    }
+  }
 
   // The claim this harness exists for.
   //
@@ -310,31 +368,48 @@ for (const [index, actor] of created.entries()) {
     .filter((record) => record.target === target)
     .reduce((sum, record) => sum + Number(record.value ?? 0), 0);
 
-  // The "no correction" half of that claim is CHASSIS-SPECIFIC and an eidolon is exempt from it, on
-  // purpose: pf1 ships an Animal Companion progression that IS the animal-companion table, and ships
-  // nothing at all for `eidolon_table.json`. There is no progression for the seed to be zero
-  // against, so the seed is whatever `reconcile()` had to write. What must still hold for an eidolon
-  // is the outcome -- every total equals the payload -- and that is checked for both.
+  // The "no correction" half of that claim now holds only where pf1 CAN agree, which is narrower
+  // than it was, for two separate reasons:
+  //
+  //   - an eidolon was always exempt: pf1 ships an Animal Companion progression that IS the
+  //     animal-companion table, and ships nothing at all for `eidolon_table.json`;
+  //   - and since the class item moved to the master's effective level (2026-08-19), pf1 reads that
+  //     level as a count of hit dice, so on any creature whose HD lag behind its level it derives
+  //     too much and `reconcile()` seeds the difference out. That is the ruling, not a defect.
+  //
+  // Where level and HD coincide -- every companion up to 5th, which is what `companion.json` is --
+  // the original exact-seed claim still runs and still bites. Everywhere else the outcome is what
+  // is asserted: every total equals the payload, which is checked for all of them.
   const isEidolon = entry.type === 'eidolon';
+  const lags = Number(entry.effective_level) !== Number(stats.hd);
+  const derivable = !isEidolon && !lags;
 
   for (const save of ['fort', 'ref', 'will']) {
     check(`${where} ${save} save matches the payload`,
       attributes.savingThrows[save].total === stats.saves[save],
       `${attributes.savingThrows[save].total} vs ${stats.saves[save]}`);
-    if (isEidolon) continue;
+    if (!derivable) continue;
     check(`${where} ${save} seed is exactly what the fold added`,
       (Number(attributes.savingThrows[save].base) || 0) === folded(save),
       `seed ${attributes.savingThrows[save].base}, folded ${folded(save)}`);
   }
   check(`${where} HP matches the payload`, attributes.hp.max === stats.hp, `${attributes.hp.max} vs ${stats.hp}`);
-  if (!isEidolon) {
+  if (derivable) {
     check(`${where} HP seed is exactly what the fold added`,
       (Number(attributes.hp.base) || 0) === folded('mhp'),
       `seed ${attributes.hp.base}, folded ${folded('mhp')}`);
   }
   check(`${where} BAB matches the payload`, attributes.bab.total === stats.bab, `${attributes.bab.total} vs ${stats.bab}`);
-  if (!isEidolon) {
+  if (derivable) {
     check(`${where} BAB needed no correction`, !attributes.bab.value, `seed ${attributes.bab.value}`);
+  }
+  // A lagging creature is the case the exact-seed claims cannot cover, so pin the direction instead:
+  // pf1 reads the class level as hit dice, so it must have derived MORE BAB than PF1e grants and the
+  // seed must be pulling back. A zero seed here would mean the level never moved.
+  if (lags && !isEidolon) {
+    check(`${where} BAB was seeded back down off the master's level`,
+      Number(attributes.bab.value) < 0,
+      `seed ${attributes.bab.value} at level ${entry.effective_level} for ${stats.hd} HD`);
   }
   check(`${where} AC matches the payload`, attributes.ac.normal.total === stats.ac,
     `${attributes.ac.normal.total} vs ${stats.ac}`);
