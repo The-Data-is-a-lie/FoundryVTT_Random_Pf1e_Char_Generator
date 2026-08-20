@@ -1,5 +1,7 @@
 Unreleased
 
+Version 2.5.0 (2026-08-20)
+
 - Added: The **Character Generator button can now live where you want it**, not only floating over the canvas. Four checkboxes in the module's settings — one per location, each per-machine, so where a button sits on your screen stays your business and never syncs to your players:
   - **Floating (draggable)** — the original button. On by default, so upgrading rearranges nobody's screen.
   - **Scene controls** — a Random Character Generator tool in the Token controls on the left toolbar. It fires and forgets rather than becoming the active tool, so clicking it doesn't leave you unable to drag a token afterwards.
