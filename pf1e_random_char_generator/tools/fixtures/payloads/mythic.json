@@ -1,0 +1,1672 @@
+{
+ "class features": {
+  "customizations": {
+   "Deflector Suit": "(Source: Arcforge: Psibertech) Your astral suit is impervious to all assaults, shrugging off attacks that normally pierce it. The astral suit’s armor bonus applies against touch attacks and ignores any armor penetration that weapons may have when used against it. [3-point Customizations]",
+   "Crystallized Weapon": "The aegis’s astral suit envelopes his melee weapon. The weapon is treated as if made from deep crystal. This treats the weapon as a masterwork weapon if it was not already and the aegis can pay two power points to charge the weapon with psionic energy which deals 2d6 additional points of damage on its next hit. The weapon stays charged for 1 minute or until it successfully hits, whichever comes first. [2-point Customizations]",
+   "Darkvision": "The aegis gains darkvision out to a range of 60 feet. [1-point Customizations]",
+   "Improved Damage": "The aegis’s melee attacks deal additional damage. If wielding a two-handed weapon, the aegis deals 3 additional points of damage on a successful hit. If wielding a one-handed weapon, the aegis deals 2 additional points of damage on a successful hit. If wielding a light weapon, the aegis deals 1 additional point of damage on a successful hit. If dual-wielding, each weapon is affected separately. [2-point Customizations]",
+   "Chakra Bind, Improved": "An aegis with this customization gains the Access Middle Chakra Slot feat as a bonus feat as long as his astral suit is formed. The aegis chooses which slot to apply this feat to the first time he forms his astral suit for the day and cannot select a different slot for 24 hours, regardless of whether he reforms or reconfigures his suit. The aegis must be at least 9th level and have the Lesser Chakra Bind customization before selecting this customization. [3-Point Customizations]"
+  },
+  "Mythic Path": {
+   "Champion": {
+    "benefit": "Mythic path (Champion); one path ability per tier, mythic feats at tiers 1/3/5/7/9."
+   },
+   "Champion's Strike: Sudden Attack": {
+    "benefit": "As a swift action, you can expend one use of mythic power to make a melee attack at your highest attack bonus. This is in addition to any other attacks you make this round. When making a sudden attack, you roll twice and take the better result, adding your tier to the attack roll. Damage from this attack bypasses all damage reduction."
+   }
+  },
+  "Mythic Path Abilities": {
+   "Akitonian Physiology (Ex) [Doorway to the Red Star]": {
+    "benefit": "When you select this path ability, you permanently reshape your body in imitation of the alien species of Akiton, permanently gaining the benefits of one of the following alchemist discoveries: chameleonARG, preserve organsUM, tumor familiarUM, or vestigial armUM. Your alchemist level for the purpose of this ability is equal to your tier plus your alchemist level. You can select this path ability multiple times, each time selecting a new permanent mutation. Each time beyond the first that you take this path ability, your pool of mythic power is permanently reduced by 1 (as that power is used to maintain your alien physiology) and you take a cumulative -1 penalty on all Charisma checks and Charisma-based skill checks when interacting with animals, fey, and humanoids."
+   },
+   "Always a Chance": {
+    "benefit": "You don't automatically miss when you roll a 1 on an attack roll."
+   },
+   "Groundshaker": {
+    "benefit": "As a standard action, you can expend one use of mythic power to stomp or punch the ground with mighty force, forcing creatures within 5 feet per tier to attempt a Reflex save (DC = 10 + your tier + your Strength modifier). Non-mythic creatures that fail their saves fall prone and are staggered for 1 round. Non-mythic creatures that succeed at their saves and mythic creatures that fail are staggered for 1 round. Mythic creatures that succeed at their saves are unaffected. You are not affected by this ability, and you may designate a number of creatures up to your tier to also not be affected."
+   },
+   "Maximized Critical": {
+    "benefit": "Whenever you score a critical hit, the weapon's damage result is always the maximum possible amount you could roll. This doesn't affect other dice added to the damage, such as from sneak attack or the flaming weapon special ability. For example, if you score a critical hit with a longsword (1d8/×2), treat the sword's damage dice as if you had rolled 8 both times, then add any other damage bonuses that you would normally apply to a critical hit."
+   },
+   "Commune with Power": {
+    "benefit": "You can tap into your mythic nature to seek answers to the quandaries you encounter in your adventures. Once per day, in a special ritual that requires you to spend 1 hour of uninterrupted meditation, you can commune with the source of your power. This acts as the commune spell, using your tier as your caster level. The source of your power may be limited in the knowledge it possesses or can deliver, as decided upon by the GM."
+   },
+   "Waters of Contemplation (Su) [Doorway to the Red Star]": {
+    "benefit": "You can meditate for 1 hour and expend one use of mythic power to transmute any magical potion into an alchemical cognatogen that increases your mental faculties at the expense of your physical prowess (Pathfinder RPG Ultimate Magic 15) usable only by you. Your effective alchemist level for this cognatogen is equal to your tier plus your alchemist level. If you are at least 6th tier, you can use this ability to create a greater cognatogen. If you are at least 9th tier, you can use this ability to create a grand cognatogen. If you expend one additional use of mythic power when brewing the waters of contemplation, you gain the benefit of tongues for as long as the cognatogen lasts."
+   },
+   "Defy Death (Su) [Cenotaph]": {
+    "benefit": "As an immediate action, you can expend one use of mythic power to gain a +5 bonus on a single saving throw made to resist energy drain, a death effect, or a negative level becoming permanent. You can select this path ability multiple times. If you take it a second time, you gain a +10 bonus on saving throws to resist the above effects. If you take it three times, you can instead expend one use of mythic power to automatically succeed at a saving throw made to resist the above effects."
+   }
+  },
+  "Mythic Tradition": {
+   "Drawback: Mythic Vulnerability": {
+    "benefit": "You are vulnerable to a specific material or damage type, selected by the GM, such as acid damage or cold iron. This mythic vulnerability bypasses any special defenses you have (like damage reduction, spell resistance, or temporary hit points), does 50% more damage to you, and being within 5 feet of it for more than 1 round (such as marching through a cold snowfield or standing near an enemy brandishing a silver weapon) drains one use of mythic power per round. If your vulnerability drains your last use of mythic power, you lose access to all of your mythic abilities until you've been more than 5 feet away from the substance and unharmed by it for at least 1 minute. This mythic drawback may be taken more than once. Each time it is, you become vulnerable to an additional material or damage type."
+   },
+   "Drawback: Master Of One": {
+    "benefit": "You may only expend mythic power on abilities that affect yourself or creatures of a single type (such as outsider or undead). You may take this drawback a second time. If you do, you may only expend mythic power on abilities that affect yourself or creatures of a single subtype (such as devils or elves). You cannot take this drawback a second time if your mythic power is limited to a creature type that does not have subtypes. You must have at least one ability that expends mythic power and is usable on creatures besides yourself to take this mythic drawback."
+   },
+   "Drawback: Radiant Power": {
+    "benefit": "You have a hard time hiding your presence. All creatures gain a bonus equal to three times your tier to notice you (such as by using the Perception skill). You also leave lingering trails of magic that others can find and follow for one day per tier. Finally, all creatures you interact with can sense that you are not normal and get a general understanding of your abilities, regardless of any disguises you use."
+   },
+   "Boon: Mythic Exemplar": {
+    "benefit": "You gain a first-tier path ability (from any path), a first-tier universal path ability (like a mythic sphere mastery), a mythic feat, or a mythic class ability thematically appropriate for your character, selected by the GM. You must meet the prerequisites for this choice, if any. If that ability requires spending mythic power to activate its effects, you may use it once per day without spending mythic power. This mythic boon can be taken more than once.",
+    "grants — Display of Intelligence": "(Mythic Exemplar: a bonus 1st-tier path ability) As a free action, you can expend one use of mythic power to attempt a feat of Intelligence, gaining a +20 circumstance bonus on one Intelligence-based skill check or Intelligence ability check."
+   },
+   "Boon: Native-Born": {
+    "benefit": "Your ascension to mythic power allows you to survive like a native in areas related to the origin of your mythic power. For example, if your patron is a deity that resides within the Plane of Chaos, you can survive there without being subject to the negative effects of a chaotically-shifting realm. Similarly, if you achieved mythic power from a font of power in the heart of the Plane of Fire, you can survive in that Plane without you or your belongings burning and may constantly have harmless flames swirling around you. You also count as a native resident (and not extraplanar, unless it would be beneficial) for the purpose of effects that apply to native or extraplanar creatures while in relevant areas. The GM should set the exact benefits of being Native-Born, but as a general rule, you should be able to survive in and traverse relevant areas with no more difficulty or danger than any creature normally calling it home. Appropriate areas generally include specific planes or types of terrain."
+   },
+   "Boon: Additional Mythic Power": {
+    "benefit": "+1 use(s) of mythic power per day, bought with this tradition's drawbacks."
+   },
+   "Quality: Challenged Duelist": {
+    "benefit": "You must accept any challenge to a duel (see Ultimate Combat), regardless of the circumstances, unless doing so is impossible or you are at less than half of your maximum hit points. (For example, a foe cannot challenge you to a duel on a floor of lava unless you can survive walking on lava.) When participating in a duel, your mythic powers enforce the rules on both combatants, usually by rendering you impervious to all outside influences but also forcing all combatants to abide by both the word and the spirit of the agreed-upon rules until the duel ends. This protection from outside forces extends to covering the negotiation of the rules of the duel, if any. In addition, once per day when a foe rejects your challenge to a duel, you may regain two uses of mythic power."
+   }
+  },
+  "Mythic Abilities": {
+   "Hard to Kill": {
+    "benefit": "Whenever you are below 0 hit points, you automatically stabilize; you die at negative Constitution x 2 instead of negative Constitution."
+   },
+   "Mythic Power": {
+    "benefit": "Current pool: 18/day. A pool of mythic power fueling surge and many mythic abilities: 3 + 2 per tier uses per day (plus any tradition bonus)."
+   },
+   "Surge": {
+    "benefit": "Current surge die: 1d10. Expend one use of mythic power to add the surge die to a d20 roll you just made, possibly turning failure into success. The die grows with tier (1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th)."
+   },
+   "Amazing Initiative": {
+    "benefit": "A bonus on initiative checks equal to your mythic tier. Also, as a free action on your turn, expend one use of mythic power to take an additional standard action this turn (not usable to cast a second spell in a round)."
+   },
+   "Recuperation": {
+    "benefit": "Restored to full hit points after 8 hours of rest. Also, expend one use of mythic power and rest 1 hour to regain half your maximum hit points and all class abilities normally regained by resting 8 hours."
+   },
+   "Mythic Saving Throws": {
+    "benefit": "Whenever you succeed at a saving throw against a spell or special ability from a non-mythic source, you suffer no effect."
+   },
+   "Force of Will": {
+    "benefit": "As an immediate action, expend one use of mythic power to reroll a d20 roll you just made, or force any non-mythic creature to reroll one it just made; the affected creature takes the second result."
+   }
+  },
+  "Skill Unlock: Acrobatics": {
+   "5 Ranks": "You can move at normal speed through a threatened square without provoking an attack of opportunity by increasing the DC of the check by 5 (instead of moving at half speed).",
+   "10 Ranks": "You can use your Acrobatics modifier as your CMD against trip maneuvers, use an Acrobatics check in place of a Reflex save to avoid falling, and reduce falling damage.",
+   "15 Ranks": "You do not provoke attacks of opportunity when standing up from prone.",
+   "20 Ranks": "Double your Acrobatics result when jumping, and you never fall prone from falls as long as you are conscious."
+  }
+ },
+ "class feature levels": {
+  "customizations": {
+   "Chakra Bind, Improved": 1,
+   "Crystallized Weapon": 3,
+   "Deflector Suit": 5,
+   "Darkvision": 7,
+   "Improved Damage": 9
+  },
+  "Mythic Path": {
+   "Champion": 1,
+   "Champion's Strike: Sudden Attack": 1
+  },
+  "Mythic Path Abilities": {
+   "Akitonian Physiology (Ex) [Doorway to the Red Star]": 1,
+   "Always a Chance": 2,
+   "Groundshaker": 3,
+   "Maximized Critical": 4,
+   "Commune with Power": 5,
+   "Waters of Contemplation (Su) [Doorway to the Red Star]": 6,
+   "Defy Death (Su) [Cenotaph]": 7
+  },
+  "Mythic Tradition": {
+   "Drawback: Mythic Vulnerability": 1,
+   "Drawback: Master Of One": 1,
+   "Drawback: Radiant Power": 1,
+   "Boon: Mythic Exemplar": 1,
+   "Boon: Native-Born": 1,
+   "Boon: Additional Mythic Power": 1,
+   "Quality: Challenged Duelist": 1
+  },
+  "Mythic Abilities": {
+   "Hard to Kill": 1,
+   "Mythic Power": 1,
+   "Surge": 1,
+   "Amazing Initiative": 2,
+   "Recuperation": 3,
+   "Mythic Saving Throws": 5,
+   "Force of Will": 7
+  }
+ },
+ "class feature owners": {
+  "customizations": "aegis",
+  "Mythic Path": "mythic",
+  "Mythic Path Abilities": "mythic",
+  "Mythic Tradition": "mythic",
+  "Mythic Abilities": "mythic"
+ },
+ "region": "Tal-falko",
+ "chosen_race": "Tiefling",
+ "land_speed": 30,
+ "character_full_name": "Antoine Lapointe",
+ "c_class": "aegis",
+ "c_class_display": "Aegis",
+ "c_class_2": "",
+ "alignment": "Chaotic Neutral",
+ "age_number": 87,
+ "height_number": "5'11\"",
+ "weight_number": 171,
+ "dex": 16,
+ "str": 14,
+ "con": 18,
+ "int": 17,
+ "wis": 17,
+ "cha": 9,
+ "inherents": {
+  "str": 0,
+  "dex": 0,
+  "con": 10,
+  "int": 0,
+  "wis": 1,
+  "cha": 0
+ },
+ "level_up_stats": {
+  "str": 0,
+  "dex": 1,
+  "con": 0,
+  "int": 1,
+  "wis": 0,
+  "cha": 0
+ },
+ "racial_stats": {
+  "str": 0,
+  "dex": 2,
+  "con": 0,
+  "int": 2,
+  "wis": 0,
+  "cha": -2
+ },
+ "flaw": [
+  "Animal Phobia"
+ ],
+ "Total_HP": 235,
+ "sheet_health": 100,
+ "bab_total": 10,
+ "armor_ac": "8",
+ "shield_ac": 0,
+ "armor_name": "Agile half-plate",
+ "armor_spell_failure": 0,
+ "armor_weight": "55 lbs.",
+ "armor_armor_check_penalty": "-7",
+ "armor_max_dex_bonus": "0",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "shield_armor_check_penalty": " ",
+ "shield_max_dex_bonus": " ",
+ "spell_list_choose_from": [],
+ "day_list": [],
+ "known_list": [],
+ "spells_prepared_per_level": [],
+ "martial_disciplines": [
+  "Piercing Thunder"
+ ],
+ "initiator_level": 5,
+ "maneuvers_known_list": [
+  2,
+  2,
+  2,
+  1
+ ],
+ "maneuvers_readied_list": [
+  0,
+  1,
+  2,
+  1
+ ],
+ "maneuvers_choose_from": [
+  [
+   "Bronze Lancet Charge",
+   "Piercing Strike"
+  ],
+  [
+   "Throwing Thunder",
+   "Thunderous Fall"
+  ],
+  [
+   "Piercing Thunder Hammer",
+   "Goring Strike"
+  ],
+  [
+   "Iron Lancet Charge"
+  ]
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Thunderous Fall"
+  ],
+  [
+   "Piercing Thunder Hammer",
+   "Goring Strike"
+  ],
+  [
+   "Iron Lancet Charge"
+  ]
+ ],
+ "stances_chosen": [
+  "Phalanx Lancer",
+  "Twin Thunder Stance"
+ ],
+ "mt_feats": [
+  "Martial Training I (Piercing Thunder)",
+  "Martial Training III (Piercing Thunder)"
+ ],
+ "initiation_stat": "int",
+ "manifesters": [
+  {
+   "name": "aegis",
+   "display": "Aegis",
+   "level": 10,
+   "manifester_level": 10,
+   "manifesting_stat": "int",
+   "caster_type": "low",
+   "pp_per_day": 40,
+   "max_power_level": 0,
+   "powers_known_list": [],
+   "powers_by_level": [],
+   "powers_chosen": [],
+   "talents_known": 0,
+   "discipline": "",
+   "subsystem_bucket": "customizations",
+   "mind_blade": null
+  }
+ ],
+ "magic_talent_items": [],
+ "combat_talent_items": [],
+ "sphere_feats": [],
+ "sphere_feat_tax": {},
+ "sphere_mana_pool": 0,
+ "spheres_chosen": [],
+ "sphere_counts": {},
+ "casting_tradition": {
+  "casting_ability_modifier": "Intelligence",
+  "drawbacks": [
+   "Draining Casting",
+   "Wild Magic",
+   "Material Casting",
+   "Verbal Casting"
+  ],
+  "boons": [
+   "Overcharge",
+   "Fortified Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "name": "Draining Casting",
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "counts_as": 1
+   },
+   {
+    "name": "Wild Magic",
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "counts_as": 1
+   },
+   {
+    "name": "Material Casting",
+    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
+    "counts_as": 1
+   },
+   {
+    "name": "Verbal Casting",
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "counts_as": 1
+   }
+  ],
+  "boons_detail": [
+   {
+    "name": "Overcharge",
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward."
+   },
+   {
+    "name": "Fortified Casting",
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one."
+   }
+  ],
+  "bonus_spell_points": 0
+ },
+ "sphere_drawbacks": [
+  "Draining Casting",
+  "Wild Magic",
+  "Material Casting",
+  "Verbal Casting"
+ ],
+ "sphere_boons": [
+  "Overcharge",
+  "Fortified Casting"
+ ],
+ "sphere_traits": [
+  "Draining Casting",
+  "Wild Magic",
+  "Material Casting",
+  "Verbal Casting",
+  "Overcharge",
+  "Fortified Casting"
+ ],
+ "deity_name": "Calistria",
+ "skill_ranks": {
+  "sleight of hand": 16,
+  "acrobatics": 6,
+  "escape artist": 13,
+  "knowledge religion": 4,
+  "bluff": 11,
+  "perform": 11,
+  "knowledge geography": 8,
+  "fly": 2,
+  "swim": 10,
+  "profession": 1,
+  "knowledge history": 7,
+  "appraise": 3,
+  "climb": 0,
+  "craft": 3,
+  "diplomacy": 0,
+  "disable device": 0,
+  "disguise": 0,
+  "handle animal": 1,
+  "heal": 0,
+  "intimidate": 0,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 0,
+  "knowledge engineering": 2,
+  "knowledge local": 0,
+  "knowledge nobility": 0,
+  "knowledge planes": 0,
+  "linguistics": 2,
+  "perception": 0,
+  "ride": 0,
+  "sense motive": 0,
+  "spellcraft": 0,
+  "stealth": 0,
+  "survival": 0,
+  "use magic device": 0
+ },
+ "weapon_enhancement_chosen_list": [],
+ "armor_enhancement_chosen_list": [],
+ "shield_enhancement_chosen_list": [],
+ "weapon_enhancement_bonus": 3,
+ "armor_enhancement_bonus": 2,
+ "shield_enhancement_bonus": 0,
+ "selected_traits": [
+  "Long Jumper",
+  "Valashmai Veteran",
+  "Magical Talent",
+  "Hongal Bloodrider",
+  "Mwangi Scholar",
+  "Intense Artist",
+  "Sense of Order",
+  "Rabble Rebel"
+ ],
+ "equipment_list": [
+  "Belt of Equilibrium",
+  "Vest of the Vengeful Tracker",
+  "Eyes of the Eagle",
+  "Acrobat Slippers",
+  "Gauntlets of the Deep",
+  "Cloak of Resistance +1",
+  "Crusader's Tabard",
+  "Gag of Silence"
+ ],
+ "level": 10,
+ "archetype1": null,
+ "hair_color": [
+  "Red"
+ ],
+ "hair_type": [
+  "Frizzy"
+ ],
+ "eye_color": [
+  "Blue"
+ ],
+ "appearance": [
+  "Sensitive"
+ ],
+ "language_text": [
+  "Common",
+  "Infernal",
+  "Gnome",
+  "Elven",
+  "Orc",
+  "Goblin",
+  "Dwarven"
+ ],
+ "feats": [
+  "Cleave",
+  "Martial Training I (Piercing Thunder)",
+  "Martial Training III (Piercing Thunder)",
+  "Multi Talented",
+  "True Calling",
+  "Always Improving",
+  "Multi Talented (2nd)",
+  "Cleave (Mythic)",
+  "Weapon Focus (Mythic)",
+  "Deft Hands (Mythic)",
+  "Nimble Moves (Mythic)"
+ ],
+ "teamwork_feats": 0,
+ "teamwork_feat_labels": [],
+ "story_feats": [
+  "Step Up",
+  "Weapon Focus",
+  "Cornugon Smash"
+ ],
+ "flaw_feats": [
+  "Nimble Moves"
+ ],
+ "class_feats": [],
+ "class_feat_labels": [],
+ "flavor_feats": [
+  "Run"
+ ],
+ "bloodline_feats": [],
+ "bloodline_feat_labels": [],
+ "trainer_feats": [
+  "Opening Volley",
+  "Healer's Mercy",
+  "Heavy Armor Proficiency",
+  "Improved Initiative",
+  "Arcane Weaponry (combat)",
+  "Coordinated Distraction",
+  "Toughness",
+  "Plague Doctor",
+  "Stealthy",
+  "Rugged Northerner",
+  "Prodigy",
+  "Bloody Vengeance",
+  "Deft Hands"
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 5)",
+  "(Trainer 5)",
+  "(Trainer 5)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Improved Initiative": [
+   "surprising combatant"
+  ],
+  "Deft Hands": [
+   "close call"
+  ]
+ },
+ "trainer_calibers": [
+  3,
+  3,
+  2,
+  2,
+  3
+ ],
+ "profession_feats": [
+  "Multi Talented",
+  "True Calling",
+  "Always Improving",
+  "Multi Talented (2nd)"
+ ],
+ "profession_feat_desc": {
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat."
+ },
+ "profession_ranks": [
+  {
+   "name": "Relic Hunter",
+   "skill_label": "Profession (Relic Hunter)",
+   "ranks": 15,
+   "cap": 15,
+   "associate_skills": [
+    "Knowledge (local)",
+    "Diplomacy",
+    "Craft",
+    "Perception"
+   ],
+   "ability_theme": "wayfarer",
+   "ability_tier": "average",
+   "rank15_abilities": [
+    {
+     "name": "Second Wind (Ex)",
+     "desc": "<p>When the fight turns desperate you dig deep and rally. Once per day as a standard action you may heal yourself a number of hit points equal to your level + your Constitution modifier and remove the fatigued condition.</p>",
+     "changes": [],
+     "contextNotes": [],
+     "uses": {
+      "per": "day",
+      "maxFormula": "1",
+      "value": null
+     }
+    },
+    {
+     "name": "Monster Lore (Ex)",
+     "desc": "<p>You have studied the beasts that prowl the dark places of the world. You gain a +2 competence bonus on Knowledge checks to identify creatures, and against any foe whose weaknesses you have identified you deal +1 bonus damage.</p>",
+     "changes": [],
+     "contextNotes": [
+      {
+       "text": "+1 damage vs a foe whose type you have identified with Knowledge",
+       "target": "damage"
+      }
+     ],
+     "uses": null
+    },
+    {
+     "name": "Improvised Arsenal (Ex)",
+     "desc": "<p>A chair leg, a torch, a length of chain — any of it is a weapon in your hands. You take no penalty for wielding improvised weapons, treat them as having one size category larger, and gain a +1 competence bonus on attack rolls made with them.</p>",
+     "changes": [],
+     "contextNotes": [
+      {
+       "text": "+1 attack with improvised weapons and no improvised penalty",
+       "target": "attack"
+      }
+     ],
+     "uses": null
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "name": "Nimble Delver (Ex)",
+     "desc": "<p>Tight crawls and treacherous footing hold no fear for you. You gain a +2 competence bonus on Acrobatics checks and on Climb checks made underground or amid ruins.</p>",
+     "changes": [
+      {
+       "formula": "2",
+       "target": "skill.acr",
+       "type": "competence",
+       "operator": "add",
+       "priority": 0
+      }
+     ],
+     "contextNotes": [],
+     "uses": null
+    },
+    {
+     "name": "Lockpick's Touch (Ex)",
+     "desc": "<p>You have coaxed open more strongboxes than you can count. You gain a +2 competence bonus on Disable Device checks and on Sleight of Hand checks, the deft hands of a seasoned treasure-hunter.</p>",
+     "changes": [
+      {
+       "formula": "2",
+       "target": "skill.dev",
+       "type": "competence",
+       "operator": "add",
+       "priority": 0
+      }
+     ],
+     "contextNotes": [],
+     "uses": null
+    }
+   ]
+  },
+  {
+   "name": "Whittler",
+   "skill_label": "Profession (Whittler)",
+   "ranks": 7,
+   "cap": 10,
+   "associate_skills": [
+    "Sense Motive",
+    "Profession",
+    "Sleight of Hand"
+   ],
+   "ability_theme": "craft",
+   "ability_tier": "bad",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "name": "Patient Mender (Ex)",
+     "desc": "<p>Given 1 hour and any scrap materials at hand, you can repair a broken (but not destroyed) object, restoring it to working order; the repair lasts 24 hours before the object becomes broken again unless properly fixed. Once per day this same repair can instead be permanent. You also gain a +2 competence bonus on Craft checks made to repair items.</p>",
+     "changes": [
+      {
+       "formula": "2",
+       "target": "skill.crf",
+       "type": "competence",
+       "operator": "add",
+       "priority": 0
+      }
+     ],
+     "contextNotes": [],
+     "uses": {
+      "per": "day",
+      "maxFormula": "1",
+      "value": null
+     }
+    },
+    {
+     "name": "Calloused Grip (Ex)",
+     "desc": "<p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
+     "changes": [
+      {
+       "formula": "1",
+       "target": "skill.crf",
+       "type": "competence",
+       "operator": "add",
+       "priority": 0
+      }
+     ],
+     "contextNotes": [],
+     "uses": null
+    }
+   ]
+  },
+  {
+   "name": "Halberd Maker",
+   "skill_label": "Profession (Halberd Maker)",
+   "ranks": 10,
+   "cap": 10,
+   "associate_skills": [
+    "Craft",
+    "Handle Animal",
+    "Appraise",
+    "Use Magic Device"
+   ],
+   "ability_theme": "martial",
+   "ability_tier": "average",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "name": "Bloodied Resolve (Ex)",
+     "desc": "<p>A veteran does not flinch when the fighting turns grim. You gain a +1 morale bonus on saving throws against fear and on Will saves while an enemy is adjacent to you.</p>",
+     "changes": [],
+     "contextNotes": [
+      {
+       "text": "+1 morale vs fear and on Will saves while an enemy is adjacent",
+       "target": "will"
+      }
+     ],
+     "uses": null
+    },
+    {
+     "name": "Weapon Discipline (Ex)",
+     "desc": "<p>You have trained relentlessly with your favored weapon. You gain a +1 bonus on attack rolls and a +1 bonus on damage rolls with it (treat as Weapon Focus and the start of Weapon Specialization).</p>",
+     "changes": [
+      {
+       "formula": "1",
+       "target": "attack",
+       "type": "untyped",
+       "operator": "add",
+       "priority": 0
+      },
+      {
+       "formula": "1",
+       "target": "damage",
+       "type": "untyped",
+       "operator": "add",
+       "priority": 0
+      }
+     ],
+     "contextNotes": [],
+     "uses": null
+    }
+   ]
+  },
+  {
+   "name": "Pike Recruit",
+   "skill_label": "Profession (Pike Recruit)",
+   "ranks": 4,
+   "cap": 10,
+   "associate_skills": [
+    "Craft",
+    "Diplomacy"
+   ],
+   "ability_theme": "martial",
+   "ability_tier": "bad",
+   "rank15_abilities": [],
+   "rank5_abilities": []
+  }
+ ],
+ "profession_pool": 35,
+ "profession_ability_items": [
+  {
+   "name": "Profession Rank 5: (Relic Hunter)",
+   "description": "<p><em>Profession (Relic Hunter) - rank 15/15. Associate skills (ranks 1/4/7/10): Knowledge (local), Diplomacy, Craft, Perception.</em></p><hr><p><strong>Nimble Delver (Ex)</strong></p><p>Tight crawls and treacherous footing hold no fear for you. You gain a +2 competence bonus on Acrobatics checks and on Climb checks made underground or amid ruins.</p><hr><p><strong>Lockpick's Touch (Ex)</strong></p><p>You have coaxed open more strongboxes than you can count. You gain a +2 competence bonus on Disable Device checks and on Sleight of Hand checks, the deft hands of a seasoned treasure-hunter.</p>",
+   "changes": [
+    {
+     "formula": "2",
+     "target": "skill.acr",
+     "type": "competence",
+     "operator": "add",
+     "priority": 0
+    },
+    {
+     "formula": "2",
+     "target": "skill.dev",
+     "type": "competence",
+     "operator": "add",
+     "priority": 0
+    }
+   ],
+   "contextNotes": [],
+   "uses": null
+  },
+  {
+   "name": "Profession Rank 15: (Relic Hunter)",
+   "description": "<p><em>Profession (Relic Hunter) - rank 15/15.</em></p><hr><p><strong>Second Wind (Ex)</strong></p><p>When the fight turns desperate you dig deep and rally. Once per day as a standard action you may heal yourself a number of hit points equal to your level + your Constitution modifier and remove the fatigued condition.</p><hr><p><strong>Monster Lore (Ex)</strong></p><p>You have studied the beasts that prowl the dark places of the world. You gain a +2 competence bonus on Knowledge checks to identify creatures, and against any foe whose weaknesses you have identified you deal +1 bonus damage.</p><hr><p><strong>Improvised Arsenal (Ex)</strong></p><p>A chair leg, a torch, a length of chain — any of it is a weapon in your hands. You take no penalty for wielding improvised weapons, treat them as having one size category larger, and gain a +1 competence bonus on attack rolls made with them.</p>",
+   "changes": [],
+   "contextNotes": [
+    {
+     "text": "+1 damage vs a foe whose type you have identified with Knowledge",
+     "target": "damage"
+    },
+    {
+     "text": "+1 attack with improvised weapons and no improvised penalty",
+     "target": "attack"
+    }
+   ],
+   "uses": {
+    "per": "day",
+    "maxFormula": "1",
+    "value": null
+   }
+  },
+  {
+   "name": "Profession Rank 5: (Whittler)",
+   "description": "<p><em>Profession (Whittler) - rank 7/10. Associate skills (ranks 1/4/7/10): Sense Motive, Profession, Sleight of Hand.</em></p><hr><p><strong>Patient Mender (Ex)</strong></p><p>Given 1 hour and any scrap materials at hand, you can repair a broken (but not destroyed) object, restoring it to working order; the repair lasts 24 hours before the object becomes broken again unless properly fixed. Once per day this same repair can instead be permanent. You also gain a +2 competence bonus on Craft checks made to repair items.</p><hr><p><strong>Calloused Grip (Ex)</strong></p><p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
+   "changes": [
+    {
+     "formula": "2",
+     "target": "skill.crf",
+     "type": "competence",
+     "operator": "add",
+     "priority": 0
+    },
+    {
+     "formula": "1",
+     "target": "skill.crf",
+     "type": "competence",
+     "operator": "add",
+     "priority": 0
+    }
+   ],
+   "contextNotes": [],
+   "uses": {
+    "per": "day",
+    "maxFormula": "1",
+    "value": null
+   }
+  },
+  {
+   "name": "Profession Rank 5: (Halberd Maker)",
+   "description": "<p><em>Profession (Halberd Maker) - rank 10/10. Associate skills (ranks 1/4/7/10): Craft, Handle Animal, Appraise, Use Magic Device.</em></p><hr><p><strong>Bloodied Resolve (Ex)</strong></p><p>A veteran does not flinch when the fighting turns grim. You gain a +1 morale bonus on saving throws against fear and on Will saves while an enemy is adjacent to you.</p><hr><p><strong>Weapon Discipline (Ex)</strong></p><p>You have trained relentlessly with your favored weapon. You gain a +1 bonus on attack rolls and a +1 bonus on damage rolls with it (treat as Weapon Focus and the start of Weapon Specialization).</p>",
+   "changes": [
+    {
+     "formula": "1",
+     "target": "attack",
+     "type": "untyped",
+     "operator": "add",
+     "priority": 0
+    },
+    {
+     "formula": "1",
+     "target": "damage",
+     "type": "untyped",
+     "operator": "add",
+     "priority": 0
+    }
+   ],
+   "contextNotes": [
+    {
+     "text": "+1 morale vs fear and on Will saves while an enemy is adjacent",
+     "target": "will"
+    }
+   ],
+   "uses": null
+  }
+ ],
+ "skill_unlock": {
+  "skill": "Acrobatics",
+  "base_skill": "acrobatics",
+  "ranks": 6,
+  "unlock": {
+   "5": "You can move at normal speed through a threatened square without provoking an attack of opportunity by increasing the DC of the check by 5 (instead of moving at half speed).",
+   "10": "You can use your Acrobatics modifier as your CMD against trip maneuvers, use an Acrobatics check in place of a Reflex save to avoid falling, and reduce falling damage.",
+   "15": "You do not provoke attacks of opportunity when standing up from prone.",
+   "20": "Double your Acrobatics result when jumping, and you never fall prone from falls as long as you are conscious."
+  },
+  "unlock_html": "<h2>Acrobatics</h2><p><strong>5 Ranks</strong>: You can move at normal speed through a threatened square without provoking an attack of opportunity by increasing the DC of the check by 5 (instead of moving at half speed).</p><p><strong>10 Ranks</strong>: You can use your Acrobatics modifier as your CMD against trip maneuvers, use an Acrobatics check in place of a Reflex save to avoid falling, and reduce falling damage.</p><p><strong>15 Ranks</strong>: You do not provoke attacks of opportunity when standing up from prone.</p><p><strong>20 Ranks</strong>: Double your Acrobatics result when jumping, and you never fall prone from falls as long as you are conscious.</p>"
+ },
+ "gold": 0,
+ "platnium": 0.0,
+ "animal_companion": null,
+ "bonded_creatures": [],
+ "full_domain": [],
+ "school": "N/A",
+ "opposing_school": "N/A",
+ "bloodline": "N/A",
+ "background_traits": [
+  "Demonic Persuasion",
+  "Wharf Rat",
+  "Best Friend",
+  "Buccaneer's Blood"
+ ],
+ "professions": [
+  "Relic Hunter",
+  "Whittler",
+  "Halberd Maker",
+  "Pike Recruit"
+ ],
+ "craft_type": "Wagonmaking",
+ "mannerisms": [
+  "Flexes muscles",
+  "Rests chin in hand"
+ ],
+ "personality_traits": [
+  "Sensitive",
+  "Outgoing",
+  "Fearless",
+  "Cynic"
+ ],
+ "hero_points": 0,
+ "gender": "Male",
+ "class_ability_desc": {
+  "astral repair": "An aegis is capable of repairing mundane items, restoring 2 hit points of damage to the touched item as a standard action usable at will. If the object has the broken condition, this condition is removed if the object is restored to at least half its original hit points. All of the pieces of an object must be present for this ability to function. This ability has no effect on objects that have been warped or otherwise transmuted, but it can still repair damage done to such items.",
+  "form astral suit": "Every aegis learns to draw forth ectoplasm and form an astral suit around their form. The aegis can select from three different types when forming his astral suit— skin, armor, or juggernaut. An aegis is always considered to be proficient with his astral suit, even if he does not have the appropriate armor proficiency. The amount of time forming this astral suit takes depends on the type of suit being formed. Different astral suit forms grant different free customizations. These free customizations never count against the aegis’s total number of customization points spent on his astral suit.\n\nThe aegis chooses the appearance of his astral suit, although its shape must reflect the selections the aegis has chosen: astral skin would cover the aegis like a psychoactive skin, astral juggernaut would appear to cover the aegis like plate armor, etc.\n\nAn astral suit can be dismissed as a free action.\n\nAn astral suit does not function in areas where psionics do not work, such as a null psionics field. Dismiss ectoplasm can be used against an astral suit; treat the manifester level as the aegis’s class level, although the aegis can simply form his astral suit again on his next turn. Information on astral suits and customizations can be found here.",
+  "craftsman": "Beginning at 2nd level, an aegis gains a +1 bonus to any one Craft skill of his choice. At 6th level and every four levels thereafter, this bonus increases by 1.",
+  "damage reduction": "Starting at 2nd level, when an aegis is wearing his astral suit, he gains damage reduction 2/-, regardless of what type of astral suit he is wearing. At 5th level and every three levels thereafter, this damage reduction improves by 1.",
+  "invigorating suit": "An aegis of at least 3rd level wearing his astral suit gains a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.",
+  "reconfigure": "Starting at 3rd level, an aegis can reconfigure up to his Intelligence modifier in customization points on his astral suit once per day as a standard action. Every two levels thereafter, he can use this ability an additional time per day.",
+  "augment suit": "An aegis learns how to infuse his astral suit with his psionic power, augmenting the capacity of his suit. Beginning at 4th level, the aegis may spend up to one power point per four class levels to customize his Astral Suit, gaining one temporary customization point for each power point spent.\n\nThis ability, activated as a standard action, lasts for a number of rounds equal to the aegis’ Intelligence modifier.\n\nActivating this ability again, while already in use, immediately causes the previous duration to end.\n\nAn aegis may end the duration as a free action at any time.",
+  "master craftsman": "At 5th level, an aegis gains the Master Craftsman feat as a bonus feat. He must still meet the prerequisites of the feat in order to gain its benefits.",
+  "cannibalize suit": "Starting at 12th level, an aegis learns to convert the psionic energy used to create his suit into healing power. Once per day as a standard action, he can dismiss his astral suit and heal a number of hit points equal to his customization pool. The aegis cannot reform his suit again for one minute after using this ability. Every two levels thereafter, the aegis can use this ability an additional time per day. Additional customization points gained from Augment Suit are not counted for this ability.",
+  "perfect merger": "An aegis of 20th level has learned to become one with his suit. His suit cannot be dispelled or removed against his will by any means, although his astral suit ability still does not function within areas where psionics do not work, such as a null psionics field.\n\nIn addition, the aegis can spend two daily uses of his reconfigure ability to alter all of the customizations on his astral suit.\n\nFinally, once per day, the aegis can boost his cannibalize suit ability, healing all of his hit point damage, although he cannot reform his suit for ten minutes after using this ability, rather than the standard one minute."
+ },
+ "class_ability": [
+  "astral repair_aegis",
+  "form astral suit_aegis",
+  "craftsman_aegis",
+  "damage reduction_aegis",
+  "invigorating suit_aegis",
+  "reconfigure_aegis",
+  "augment suit_aegis",
+  "master craftsman_aegis",
+  "cannibalize suit_aegis",
+  "perfect merger_aegis"
+ ],
+ "class_features": {
+  "customizations": {
+   "Deflector Suit": "(Source: Arcforge: Psibertech) Your astral suit is impervious to all assaults, shrugging off attacks that normally pierce it. The astral suit’s armor bonus applies against touch attacks and ignores any armor penetration that weapons may have when used against it. [3-point Customizations]",
+   "Crystallized Weapon": "The aegis’s astral suit envelopes his melee weapon. The weapon is treated as if made from deep crystal. This treats the weapon as a masterwork weapon if it was not already and the aegis can pay two power points to charge the weapon with psionic energy which deals 2d6 additional points of damage on its next hit. The weapon stays charged for 1 minute or until it successfully hits, whichever comes first. [2-point Customizations]",
+   "Darkvision": "The aegis gains darkvision out to a range of 60 feet. [1-point Customizations]",
+   "Improved Damage": "The aegis’s melee attacks deal additional damage. If wielding a two-handed weapon, the aegis deals 3 additional points of damage on a successful hit. If wielding a one-handed weapon, the aegis deals 2 additional points of damage on a successful hit. If wielding a light weapon, the aegis deals 1 additional point of damage on a successful hit. If dual-wielding, each weapon is affected separately. [2-point Customizations]",
+   "Chakra Bind, Improved": "An aegis with this customization gains the Access Middle Chakra Slot feat as a bonus feat as long as his astral suit is formed. The aegis chooses which slot to apply this feat to the first time he forms his astral suit for the day and cannot select a different slot for 24 hours, regardless of whether he reforms or reconfigures his suit. The aegis must be at least 9th level and have the Lesser Chakra Bind customization before selecting this customization. [3-Point Customizations]"
+  },
+  "Mythic Path": {
+   "Champion": {
+    "benefit": "Mythic path (Champion); one path ability per tier, mythic feats at tiers 1/3/5/7/9."
+   },
+   "Champion's Strike: Sudden Attack": {
+    "benefit": "As a swift action, you can expend one use of mythic power to make a melee attack at your highest attack bonus. This is in addition to any other attacks you make this round. When making a sudden attack, you roll twice and take the better result, adding your tier to the attack roll. Damage from this attack bypasses all damage reduction."
+   }
+  },
+  "Mythic Path Abilities": {
+   "Akitonian Physiology (Ex) [Doorway to the Red Star]": {
+    "benefit": "When you select this path ability, you permanently reshape your body in imitation of the alien species of Akiton, permanently gaining the benefits of one of the following alchemist discoveries: chameleonARG, preserve organsUM, tumor familiarUM, or vestigial armUM. Your alchemist level for the purpose of this ability is equal to your tier plus your alchemist level. You can select this path ability multiple times, each time selecting a new permanent mutation. Each time beyond the first that you take this path ability, your pool of mythic power is permanently reduced by 1 (as that power is used to maintain your alien physiology) and you take a cumulative -1 penalty on all Charisma checks and Charisma-based skill checks when interacting with animals, fey, and humanoids."
+   },
+   "Always a Chance": {
+    "benefit": "You don't automatically miss when you roll a 1 on an attack roll."
+   },
+   "Groundshaker": {
+    "benefit": "As a standard action, you can expend one use of mythic power to stomp or punch the ground with mighty force, forcing creatures within 5 feet per tier to attempt a Reflex save (DC = 10 + your tier + your Strength modifier). Non-mythic creatures that fail their saves fall prone and are staggered for 1 round. Non-mythic creatures that succeed at their saves and mythic creatures that fail are staggered for 1 round. Mythic creatures that succeed at their saves are unaffected. You are not affected by this ability, and you may designate a number of creatures up to your tier to also not be affected."
+   },
+   "Maximized Critical": {
+    "benefit": "Whenever you score a critical hit, the weapon's damage result is always the maximum possible amount you could roll. This doesn't affect other dice added to the damage, such as from sneak attack or the flaming weapon special ability. For example, if you score a critical hit with a longsword (1d8/×2), treat the sword's damage dice as if you had rolled 8 both times, then add any other damage bonuses that you would normally apply to a critical hit."
+   },
+   "Commune with Power": {
+    "benefit": "You can tap into your mythic nature to seek answers to the quandaries you encounter in your adventures. Once per day, in a special ritual that requires you to spend 1 hour of uninterrupted meditation, you can commune with the source of your power. This acts as the commune spell, using your tier as your caster level. The source of your power may be limited in the knowledge it possesses or can deliver, as decided upon by the GM."
+   },
+   "Waters of Contemplation (Su) [Doorway to the Red Star]": {
+    "benefit": "You can meditate for 1 hour and expend one use of mythic power to transmute any magical potion into an alchemical cognatogen that increases your mental faculties at the expense of your physical prowess (Pathfinder RPG Ultimate Magic 15) usable only by you. Your effective alchemist level for this cognatogen is equal to your tier plus your alchemist level. If you are at least 6th tier, you can use this ability to create a greater cognatogen. If you are at least 9th tier, you can use this ability to create a grand cognatogen. If you expend one additional use of mythic power when brewing the waters of contemplation, you gain the benefit of tongues for as long as the cognatogen lasts."
+   },
+   "Defy Death (Su) [Cenotaph]": {
+    "benefit": "As an immediate action, you can expend one use of mythic power to gain a +5 bonus on a single saving throw made to resist energy drain, a death effect, or a negative level becoming permanent. You can select this path ability multiple times. If you take it a second time, you gain a +10 bonus on saving throws to resist the above effects. If you take it three times, you can instead expend one use of mythic power to automatically succeed at a saving throw made to resist the above effects."
+   }
+  },
+  "Mythic Tradition": {
+   "Drawback: Mythic Vulnerability": {
+    "benefit": "You are vulnerable to a specific material or damage type, selected by the GM, such as acid damage or cold iron. This mythic vulnerability bypasses any special defenses you have (like damage reduction, spell resistance, or temporary hit points), does 50% more damage to you, and being within 5 feet of it for more than 1 round (such as marching through a cold snowfield or standing near an enemy brandishing a silver weapon) drains one use of mythic power per round. If your vulnerability drains your last use of mythic power, you lose access to all of your mythic abilities until you've been more than 5 feet away from the substance and unharmed by it for at least 1 minute. This mythic drawback may be taken more than once. Each time it is, you become vulnerable to an additional material or damage type."
+   },
+   "Drawback: Master Of One": {
+    "benefit": "You may only expend mythic power on abilities that affect yourself or creatures of a single type (such as outsider or undead). You may take this drawback a second time. If you do, you may only expend mythic power on abilities that affect yourself or creatures of a single subtype (such as devils or elves). You cannot take this drawback a second time if your mythic power is limited to a creature type that does not have subtypes. You must have at least one ability that expends mythic power and is usable on creatures besides yourself to take this mythic drawback."
+   },
+   "Drawback: Radiant Power": {
+    "benefit": "You have a hard time hiding your presence. All creatures gain a bonus equal to three times your tier to notice you (such as by using the Perception skill). You also leave lingering trails of magic that others can find and follow for one day per tier. Finally, all creatures you interact with can sense that you are not normal and get a general understanding of your abilities, regardless of any disguises you use."
+   },
+   "Boon: Mythic Exemplar": {
+    "benefit": "You gain a first-tier path ability (from any path), a first-tier universal path ability (like a mythic sphere mastery), a mythic feat, or a mythic class ability thematically appropriate for your character, selected by the GM. You must meet the prerequisites for this choice, if any. If that ability requires spending mythic power to activate its effects, you may use it once per day without spending mythic power. This mythic boon can be taken more than once.",
+    "grants — Display of Intelligence": "(Mythic Exemplar: a bonus 1st-tier path ability) As a free action, you can expend one use of mythic power to attempt a feat of Intelligence, gaining a +20 circumstance bonus on one Intelligence-based skill check or Intelligence ability check."
+   },
+   "Boon: Native-Born": {
+    "benefit": "Your ascension to mythic power allows you to survive like a native in areas related to the origin of your mythic power. For example, if your patron is a deity that resides within the Plane of Chaos, you can survive there without being subject to the negative effects of a chaotically-shifting realm. Similarly, if you achieved mythic power from a font of power in the heart of the Plane of Fire, you can survive in that Plane without you or your belongings burning and may constantly have harmless flames swirling around you. You also count as a native resident (and not extraplanar, unless it would be beneficial) for the purpose of effects that apply to native or extraplanar creatures while in relevant areas. The GM should set the exact benefits of being Native-Born, but as a general rule, you should be able to survive in and traverse relevant areas with no more difficulty or danger than any creature normally calling it home. Appropriate areas generally include specific planes or types of terrain."
+   },
+   "Boon: Additional Mythic Power": {
+    "benefit": "+1 use(s) of mythic power per day, bought with this tradition's drawbacks."
+   },
+   "Quality: Challenged Duelist": {
+    "benefit": "You must accept any challenge to a duel (see Ultimate Combat), regardless of the circumstances, unless doing so is impossible or you are at less than half of your maximum hit points. (For example, a foe cannot challenge you to a duel on a floor of lava unless you can survive walking on lava.) When participating in a duel, your mythic powers enforce the rules on both combatants, usually by rendering you impervious to all outside influences but also forcing all combatants to abide by both the word and the spirit of the agreed-upon rules until the duel ends. This protection from outside forces extends to covering the negotiation of the rules of the duel, if any. In addition, once per day when a foe rejects your challenge to a duel, you may regain two uses of mythic power."
+   }
+  },
+  "Mythic Abilities": {
+   "Hard to Kill": {
+    "benefit": "Whenever you are below 0 hit points, you automatically stabilize; you die at negative Constitution x 2 instead of negative Constitution."
+   },
+   "Mythic Power": {
+    "benefit": "Current pool: 18/day. A pool of mythic power fueling surge and many mythic abilities: 3 + 2 per tier uses per day (plus any tradition bonus)."
+   },
+   "Surge": {
+    "benefit": "Current surge die: 1d10. Expend one use of mythic power to add the surge die to a d20 roll you just made, possibly turning failure into success. The die grows with tier (1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th)."
+   },
+   "Amazing Initiative": {
+    "benefit": "A bonus on initiative checks equal to your mythic tier. Also, as a free action on your turn, expend one use of mythic power to take an additional standard action this turn (not usable to cast a second spell in a round)."
+   },
+   "Recuperation": {
+    "benefit": "Restored to full hit points after 8 hours of rest. Also, expend one use of mythic power and rest 1 hour to regain half your maximum hit points and all class abilities normally regained by resting 8 hours."
+   },
+   "Mythic Saving Throws": {
+    "benefit": "Whenever you succeed at a saving throw against a spell or special ability from a non-mythic source, you suffer no effect."
+   },
+   "Force of Will": {
+    "benefit": "As an immediate action, expend one use of mythic power to reroll a d20 roll you just made, or force any non-mythic creature to reroll one it just made; the affected creature takes the second result."
+   }
+  },
+  "Skill Unlock: Acrobatics": {
+   "5 Ranks": "You can move at normal speed through a threatened square without provoking an attack of opportunity by increasing the DC of the check by 5 (instead of moving at half speed).",
+   "10 Ranks": "You can use your Acrobatics modifier as your CMD against trip maneuvers, use an Acrobatics check in place of a Reflex save to avoid falling, and reduce falling damage.",
+   "15 Ranks": "You do not provoke attacks of opportunity when standing up from prone.",
+   "20 Ranks": "Double your Acrobatics result when jumping, and you never fall prone from falls as long as you are conscious."
+  }
+ },
+ "class_feature_levels": {
+  "customizations": {
+   "Chakra Bind, Improved": 1,
+   "Crystallized Weapon": 3,
+   "Deflector Suit": 5,
+   "Darkvision": 7,
+   "Improved Damage": 9
+  },
+  "Mythic Path": {
+   "Champion": 1,
+   "Champion's Strike: Sudden Attack": 1
+  },
+  "Mythic Path Abilities": {
+   "Akitonian Physiology (Ex) [Doorway to the Red Star]": 1,
+   "Always a Chance": 2,
+   "Groundshaker": 3,
+   "Maximized Critical": 4,
+   "Commune with Power": 5,
+   "Waters of Contemplation (Su) [Doorway to the Red Star]": 6,
+   "Defy Death (Su) [Cenotaph]": 7
+  },
+  "Mythic Tradition": {
+   "Drawback: Mythic Vulnerability": 1,
+   "Drawback: Master Of One": 1,
+   "Drawback: Radiant Power": 1,
+   "Boon: Mythic Exemplar": 1,
+   "Boon: Native-Born": 1,
+   "Boon: Additional Mythic Power": 1,
+   "Quality: Challenged Duelist": 1
+  },
+  "Mythic Abilities": {
+   "Hard to Kill": 1,
+   "Mythic Power": 1,
+   "Surge": 1,
+   "Amazing Initiative": 2,
+   "Recuperation": 3,
+   "Mythic Saving Throws": 5,
+   "Force of Will": 7
+  }
+ },
+ "archetype_info": "{}",
+ "parents": "absent mother, absent father, adopted into a poor family",
+ "older_brothers": " you have 0 older brothers",
+ "younger_brothers": " you have 0 younger brothers",
+ "older_sisters": " you have 0 older sisters",
+ "younger_sisters": " you have 0 younger sisters",
+ "weapon_name": "Glaive",
+ "specialty_schools": [
+  "necromancy",
+  "evocation"
+ ],
+ "counter_schools": [
+  "illusion",
+  "enchantment"
+ ],
+ "chosen_spell_descriptor": [
+  "evil",
+  "cold"
+ ],
+ "counter_spell_descriptor": [
+  "good",
+  "light"
+ ],
+ "total_rolled_hp": 90,
+ "mini_alignment": "cn",
+ "casting_level_str_foundry": "None",
+ "main_stat": "con",
+ "story_feat_tax_dict": {
+  "Step Up": [
+   "following step",
+   "step up and strike"
+  ],
+  "Weapon Focus": [
+   "greater weapon focus",
+   "weapon specialization"
+  ]
+ },
+ "flaw_feat_tax_dict": {
+  "Nimble Moves": [
+   "acrobatic steps"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "class_feat_tax_dict": {},
+ "feats_feat_tax_dict": {
+  "Cleave": [
+   "cleaving finish",
+   "great cleave",
+   "improved cleaving finish",
+   "surprise follow-through"
+  ],
+  "Martial Training I (Piercing Thunder)": [
+   "Martial Training II (Piercing Thunder)"
+  ],
+  "Martial Training III (Piercing Thunder)": [
+   "Martial Training IV (Piercing Thunder)"
+  ]
+ },
+ "feat_budget": {
+  "story": 3,
+  "flaw": 1,
+  "flavor": 1,
+  "class": 0,
+  "normal": 3,
+  "teamwork": 0,
+  "bloodline": 0,
+  "trainer": 13,
+  "profession": 4
+ },
+ "mod_char_sheet_var": false,
+ "backstory": "",
+ "formatted_bio": "Antoine Lapointe\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Tiefling\n- Class: Level 10 Aegis\n- Archetype: HP Tank\n- Tactics: Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.\n- Stat Focus: Con\n- Disciplines: Piercing Thunder\n- Homeland: Tal-falko\n\nVocation\n- Profession: Relic Hunter (rank 15)\n- Profession: Whittler (rank 7)\n- Profession: Halberd Maker (rank 10)\n- Profession: Pike Recruit (rank 4)\n- Known for: Wagonmaking\n- Training: An excellent trainer who taught them Opening Volley, Healer's Mercy, Heavy Armor Proficiency\n- Training: An excellent trainer who taught them Improved Initiative, Arcane Weaponry (combat), Coordinated Distraction\n- Training: An average trainer who taught them Toughness, Plague Doctor\n- Training: An average trainer who taught them Stealthy, Rugged Northerner\n- Training: An excellent trainer who taught them Prodigy, Bloody Vengeance, Deft Hands\n\nFamily\n- Absent Mother\n- Absent Father\n- Adopted Into A Poor Family\n- No Siblings\n\nPersonality\n- Personality: Sensitive, Outgoing, Fearless, Cynic\n- Mannerisms: Flexes muscles, Rests chin in hand\n- Flaws: Animal Phobia\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Blue\n- Build: Sensitive",
+ "classes": [
+  {
+   "name": "aegis",
+   "display": "Aegis",
+   "level": 10,
+   "archetype": {}
+  }
+ ],
+ "total_level": 10,
+ "save_bases": {
+  "fort": 7,
+  "ref": 3,
+  "will": 7
+ },
+ "spellbooks": [],
+ "class_feature_owners": {
+  "customizations": "aegis",
+  "Mythic Path": "mythic",
+  "Mythic Path Abilities": "mythic",
+  "Mythic Tradition": "mythic",
+  "Mythic Abilities": "mythic"
+ },
+ "build_archetype": "HP Tank",
+ "build_tactics": "Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.",
+ "generation_seed": 41,
+ "spell_list_choose_from_dict": [],
+ "equip_descrip": {
+  "belts": {
+   "item_name": "Belt of Equilibrium",
+   "description": " as long as this belt's wearer doesn't move more than 5 feet\r during her turn, she ignores the penalties for being fatigued, \r shaken, or sickened until the end of her next turn or until\r she moves more than 5 feet, whichever occurs first. While\r she does not take any of the penalties of those conditions, \r she is considered to be under the effect of those conditions\r until they end or are removed. "
+  },
+  "chest": {
+   "item_name": "Vest of the Vengeful Tracker",
+   "description": " this green-and-brown vest has pockets sewn along its length, \r each with a tiny lodestone button. The wearer feels a surge of\r heroism when she tracks down prey. She gains a +1 morale\r bonus on the first attack and damage rolls made with weapons\r against creatures she has successfully tracked within the previous\r 24 hours. If her target is flat-footed, this bonus increases to +2. \r if her target is also her favored enemy, she gains a +4 bonus on\r critical hit confirmation rolls against the target. "
+  },
+  "eyes": {
+   "item_name": "Eyes of the Eagle",
+   "description": " these lenses are made of special\r crystal and fit over the eyes of the\r wearer. They grant a +5 competence\r bonus on perception checks. Both\r lenses must be worn to gain the benefit. Wearing only one\r causes a character to become dizzy and stunned for 1 round. "
+  },
+  "feet": {
+   "item_name": "Acrobat Slippers",
+   "description": " these supple gray leather slippers enable the wearer to keep his\r balance in precarious positions. The wearer retains his dexterity\r bonus to ac when climbing, running, or using the acrobatics skill\r to move on narrow surfaces or uneven ground without falling. \r in addition, the wearer gains a +2 competence bonus to cmd\r against trip maneuvers and on reflex saves to avoid falling\r (including falling prone). "
+  },
+  "hands": {
+   "item_name": "Gauntlets of the Deep",
+   "description": " these gloves are covered in fish scales and always feel cold and wet to the touch. While wearing these gauntlets, after a 24-hour attunement period, the wearer can throw a weapon that deals piercing damage underwater without penalty, using the weapon's normal range increment. When the wielder attacks a target in water from land, regardless of the weapon the wielder is using, the target doesn't benefit from cover or total cover for being in water. "
+  },
+  "shoulders": {
+   "item_name": "Cloak of Resistance +1",
+   "description": " flecks of silver or steel are often sown amid the fabric of\r these magical cloaks. This garment offers magical protection\r in the form of a +1 to +5 resistance bonus on all saving throws\r (fortitude, reflex, and will). "
+  },
+  "body": {
+   "item_name": "Crusader's Tabard",
+   "description": " a crusader's tabard is a sturdy cloth vestment worn over armor and other clothing. It is normally decorated with the symbol or heraldic device of the owner, and may be trimmed with expensive and delicate materials (such as silk, fur, or cloth of gold). Once per day, the wearer of the tabard may say its command word (often a family motto); thereafter, the wearer can spend a standard action (instead of a full-round action) to move up to his speed and make a single charge attack. This ability lasts until used or for 1 minute, whichever duration is shorter. "
+  },
+  "head": {
+   "item_name": "Gag of Silence",
+   "description": " this black leather cord has a red wooden ball attached at its center. When the cord is tied around a creature's head and the wooden ball is placed in the creature's mouth, the creature cannot speak or make any vocal sounds, including verbal components of spells. When removed from the creature, the ball breaks off from the leather cord, ending the effect. A creature that is not otherwise restrained can easily untie the gag and remove it. "
+  }
+ },
+ "maneuvers_desc_dict": {
+  "Bronze Lancet Charge": {
+   "description": "You make a thunderous charge and deliver a powerful attack. Make a charge attack that does not provoke attacks of opportunity. If your attack hits, it deals weapon damage as normal plus an additional 1d6 points of damage.",
+   "type": "strike",
+   "level": 1,
+   "discipline": "Piercing Thunder",
+   "action": "1 full-round action",
+   "range": "Melee attack",
+   "duration": "Instantaneous"
+  },
+  "Piercing Strike": {
+   "description": "You issue a potent impaling blow with your weapon, battering defenses aside and striking bloodily at your foe. During this strike, your weapons reach increases by 5 feet. Make a melee attack roll and compare it to the ACs of up to two creatures within your reach that are adjacent to each other. If the attack roll hits a target, it deals weapon damage as normal. Use the same damage roll for each target.",
+   "type": "strike",
+   "level": 1,
+   "discipline": "Piercing Thunder",
+   "action": "1 standard action",
+   "range": "Melee attack",
+   "duration": "Instantaneous"
+  },
+  "Throwing Thunder": {
+   "description": "By rearing back for a powerful throw, you are capable of turning any pole arm into a deadly and dangerous missile. Make a ranged attack, using a discipline weapon youre wielding as a thrown weapon. The weapons range increment increases by 20 feet for this attack. If the weapon does not normally have a range increment, it instead gains a 20-foot range increment for this attack, and you do not take the normal penalty for throwing a nonstandard weapon. If your attack hits, it deals weapon damage as normal plus an additional 2d6 points of damage, and the target must succeed at a Reflex save DC 12 + your initiation modifier or be knocked prone.",
+   "type": "strike",
+   "level": 2,
+   "discipline": "Piercing Thunder",
+   "action": "1 standard action",
+   "range": "Ranged attack",
+   "duration": "Instantaneous"
+  },
+  "Thunderous Fall": {
+   "description": "Using the principles of Piercing Thunder, you are well-suited to taking advantage of your superior reach to bring your foes to the ground, be they cavalry or infantry. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 2d6 points of damage, and if the target is riding a mount, they must succeed at a Reflex save DC 12 + your initiation modifier or be dismounted, falling prone in a square of your choice adjacent to their mount. If the target is not mounted, you may instead make a trip attempt against them as a free action with a +2 competence bonus to your combat maneuver check. This strike can only be initiated with a discipline weapon.",
+   "type": "strike",
+   "level": 2,
+   "discipline": "Piercing Thunder",
+   "action": "1 standard action",
+   "range": "Melee attack",
+   "duration": "Instantaneous"
+  },
+  "Piercing Thunder Hammer": {
+   "description": "As a seasoned spearman, you know how to leverage your strength properly. By drawing up your strength, you deliver a crushing strike that can bring even the most stable enemies to their knees. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 2d6 points of damage, and the target must succeed at a Reflex save DC 13 + your initiation modifier or be knocked prone.",
+   "type": "strike",
+   "level": 3,
+   "discipline": "Piercing Thunder",
+   "action": "1 standard action",
+   "range": "Melee attack",
+   "duration": "Instantaneous"
+  },
+  "Goring Strike": {
+   "description": "With a mighty thrust with your weapon, you pierce your enemies, delivering a devastating attack to multiple foes within your reach. During this strike, your weapons reach increases by 5 feet. When you initiate this maneuver, your strike targets every creature in a line with a range equal to your reach. Make a melee attack roll and compare it to the AC of each creature within the area. If the attack roll hits a target, it deals weapon damage as normal plus an additional 2d6 points of damage, and the target must succeed at a Fortitude save DC 13 + your initiation modifier or suffer 1d4 points of bleed damage. Use the same damage roll for each target. This strike can only be initiated with a discipline weapon or a piercing weapon.",
+   "type": "strike",
+   "level": 3,
+   "discipline": "Piercing Thunder",
+   "action": "1 standard action",
+   "range": "See text",
+   "duration": "Instantaneous"
+  },
+  "Iron Lancet Charge": {
+   "description": "Your knowledge of how to deliver a powerful charge that delivers bone-shattering force is unparalleled. Make a charge attack that does not provoke attacks of opportunity. If it hits, it deals weapon damage as normal plus an additional 6d6 points of damage, and the target must succeed at a Reflex save DC 14 + your initiation modifier or be knocked prone.",
+   "type": "strike",
+   "level": 4,
+   "discipline": "Piercing Thunder",
+   "action": "1 full-round action",
+   "range": "Melee attack",
+   "duration": "Instantaneous"
+  },
+  "Phalanx Lancer": {
+   "description": "AuraRange: 5\n\nThough heavy conditioning and strength training, you have become adept at using a shield in tandem with a polearm to great effect. While maintain this stance, you can wield a normally two-handed discipline weapon as a one-handed weapon or a normally one-handed discipline weapon as a light weapon when using a shield in your off hand. When fighting in this manner, your attacks with discipline weapons and shield bashes deal an additional 1d6 points of damage +1d6 per ten initiator levels. In addition, adjacent allies up to a maximum number equal to your initiation modifier wearing shields may interlock their shields with yours as a free action on their turn. Each shield-bearing character improves their shield bonus to AC by +1 for each ally in this position up to a maximum of +5. Allies linking shields with you in this manner do not need to be in this stance unless they wish to increase the number of allies within the phalanx as well.",
+   "type": "stance",
+   "level": 1,
+   "discipline": "Piercing Thunder",
+   "action": "1 swift action",
+   "range": "Personal",
+   "duration": "Stance"
+  },
+  "Twin Thunder Stance": {
+   "description": "You have learned how to use normally two-handed weapons in one hand, using the weapons size and momentum to strike your foes with powerful blows. While you maintain this stance, You can wield normally two-handed weapons as one-handed weapons, and you gain the benefits of the Two-Weapon Fighting feat while using two discipline weapons in either hand even if you do not meet its prerequisites. If you already possess the Two-Weapon Fighting feat, you may instead wield one or both of weapons as light weapons reducing the penalties further and making them eligible for use with feats such as Weapon Finesse or Deadly Agility, and you gain the benefits of the Improved Two-Weapon Fighting feat, or the Greater Two-Weapon Fighting if you already possessed Improved Two-Weapon Fighting, even if you do not meet these feats prerequisites. You do not need to be wielding multiple weapons to gain the benefits of this stance.",
+   "type": "stance",
+   "level": 3,
+   "discipline": "Piercing Thunder",
+   "action": "1 swift action",
+   "range": "Personal",
+   "duration": "Stance"
+  }
+ },
+ "powers_desc_dict": {},
+ "homebrew_feat_desc_dict": {
+  "Martial Training I (Piercing Thunder)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Piercing Thunder)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Piercing Thunder)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Piercing Thunder)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
+  "Cleave (Mythic)": "Whenever you use Cleave or Great Cleave, one of your attacks can be made against a foe that is within your reach, but not adjacent to the foe you attacked. You can expend one use of mythic power when you use Cleave or Great Cleave to continue making attacks against foes within your reach, regardless of their position, as long as you continue to hit each foe. You can't use this ability to attack a foe more than once per round.",
+  "Weapon Focus (Mythic)": "Double the bonuses on your attack rolls from Weapon Focus and Greater Weapon Focus. As a swift action, you can expend one use of mythic power to gain a bonus on attack rolls with your selected weapon equal to half your tier until the end of your turn.",
+  "Deft Hands (Mythic)": "The bonus on Disable Device and Sleight of Hand skill checks from Deft Hands increases by 2. In addition, you can expend one use of mythic power to treat a Disable Device or Sleight of Hand check as if you had rolled a natural 20. You must decide to use this ability before making the roll.",
+  "Nimble Moves (Mythic)": "For every 2 tiers you possess, you can move through up to 5 feet of difficult terrain each round as if it were normal terrain (minimum 5 feet). This effect stacks with those provided by Nimble Moves and Acrobatic Steps.",
+  "Cleave": "You can strike two adjacent foes with a single swing",
+  "Step Up": "You can close the distance when a foe tries to move away",
+  "Weapon Focus": "Choose one type of weapon You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat",
+  "Cornugon Smash": "Your terrible attacks strike fear into your enemies",
+  "Nimble Moves": "You can move across a single obstacle with ease",
+  "Run": "You are swift of foot",
+  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
+  "Healer's Mercy": "Sometimes a creature is beyond your ability to heal, but you know how to grant them a swift and painless death. when you use a coup de grace action, you can substitute a heal check in place of the normal damage roll for your weapon, but still use your weapons normal critical multiplier. in addition, if the creature you are coup de gracing has regeneration of a type that can be overcome, you suppress that creatures regeneration for the duration of the round in which you coup de grace them",
+  "Heavy Armor Proficiency": "You are skilled at wearing heavy armor",
+  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
+  "Arcane Weaponry (combat)": "You force additional power from your magical weapons. increase the dc of any weapon special properties that require a saving throw by +1. this bonus increases by +1 upon reaching a base attack bonus of +8 and for every four base attack bonus gained thereafter. this cannot cause the dc of any effect to exceed 10 + your base attack bonus. this only applies to weapons you are wielding (and applies for up to 1 round after leaving your grip or being fired, in the case of thrown weapons or ammunition, respectively).",
+  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
+  "Toughness": "You have enhanced physical stamina",
+  "Plague Doctor": "You know how to treat disease and prevent its spread if you have successfully treated someone for a disease using the heal skill, you can perform a heal check on healthy individuals to give them a bonus on saving throws against that disease for one month equal to your wisdom modifier. the dc of this heal check is the same as the dc to treat the disease.",
+  "Stealthy": "You are good at avoiding unwanted attention and slipping out of bonds",
+  "Rugged Northerner": "You live a hard life in a cold climate and gain some benefit from it",
+  "Prodigy": "You are naturally skilled at arts, professions, and the acquisition of knowledge",
+  "Bloody Vengeance": "Your retaliatory strikes have long-lasting effects",
+  "Deft Hands": "You have exceptional manual dexterity"
+ },
+ "feat_changes_dict": {
+  "Weapon Focus": {
+   "changes": [
+    {
+     "formula": "2",
+     "target": "attack",
+     "type": "untyped",
+     "operator": "add",
+     "priority": 0
+    },
+    {
+     "formula": "2",
+     "target": "wdamage",
+     "type": "untyped",
+     "operator": "add",
+     "priority": 0
+    }
+   ],
+   "contextNotes": []
+  }
+ },
+ "feat_conditionals_dict": {
+  "Bloody Vengeance": {
+   "name": "Bloody Vengeance: vs a studied foe that has damaged you within the last minute, your melee hits deal +[[1]] bleed damage",
+   "default": false,
+   "modifiers": []
+  }
+ },
+ "spell_changes_dict": {},
+ "spell_riders_dict": {},
+ "selected_traits_desc": [
+  {
+   "name": "Long Jumper",
+   "description": "When using the Acrobatics skill to make a long jump, you treat the DC of the skill check as if the distance being jumped were 5 feet shorter than it actually is."
+  },
+  {
+   "name": "Valashmai Veteran",
+   "description": "You gain a +1 trait bonus on Perception checks, and a +1 trait bonus on Survival checks in jungle terrain. One of these skills becomes a class skill for you."
+  },
+  {
+   "name": "Magical Talent",
+   "description": "Choose a 0-level spell. You may cast that spell once per day as a spell-like ability. This spell-like ability is cast at your highest caster level gained; if you have no caster level, it functions at CL 1st. The spell-like ability’s save DC is Charisma-based."
+  },
+  {
+   "name": "Hongal Bloodrider",
+   "description": "You gain a +1 trait bonus on Handle Animal and Ride checks."
+  },
+  {
+   "name": "Mwangi Scholar",
+   "description": "You gain Polyglot as a bonus language and receive a +1 trait bonus on all Knowledge (history) checks regarding the jungle."
+  },
+  {
+   "name": "Intense Artist",
+   "description": "You gain a +1 trait bonus on two Perform skills of your choice, and Perform is always a class skill for you."
+  },
+  {
+   "name": "Sense of Order",
+   "description": "You gain a +3 trait bonus on any Perception check made to identify any changes to a location that have occurred since you last visited it."
+  },
+  {
+   "name": "Rabble Rebel",
+   "description": "If you have at least three allies threatening your opponent, you gain a +2 bonus on Bluff checks to feint him and a +2 bonus on Sleight of Hand checks against him."
+  }
+ ],
+ "item_changes_dict": {
+  "Belt of Equilibrium": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "As long as this belt's wearer doesn't move more than 5 feet during her turn, she ignores the penalties for being fatigued, shaken, or sickened until the end of her next turn or until she moves more than 5 feet, whichever occurs first."
+   ]
+  },
+  "Vest of the Vengeful Tracker": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "She gains a +[[1]] morale bonus on the first attack and damage rolls made with weapons against creatures she has successfully tracked within the previous [[24]] hours. If her target is flat-footed, this bonus increases to +[[2]]. If her target is also her favored enemy, she gains a +[[4]] bonus on critical hit confirmation rolls against the target."
+    }
+   ]
+  },
+  "Eyes of the Eagle": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.per",
+     "text": "Wearing only one causes a character to become dizzy and stunned for [[1]] round."
+    }
+   ]
+  },
+  "Acrobat Slippers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ref",
+     "text": "In addition, the wearer gains a +[[2]] competence bonus to cmd against trip maneuvers and on reflex saves to avoid falling (including falling prone)."
+    }
+   ]
+  },
+  "Gauntlets of the Deep": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "While wearing these gauntlets, after a 24-hour attunement period, the wearer can throw a weapon that deals piercing damage underwater without penalty, using the weapon's normal range increment."
+   ]
+  },
+  "Cloak of Resistance +1": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "allSavingThrows",
+     "type": "resist"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Crusader's Tabard": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Once per day, the wearer of the tabard may say its command word (often a family motto); Thereafter, the wearer can spend a standard action (instead of a full-round action) to move up to his speed and make a single charge attack. This ability lasts until used or for [[1]] minute, whichever duration is shorter."
+    }
+   ]
+  }
+ },
+ "enhancement_effects_dict": {},
+ "flaw_effects_dict": {
+  "Animal Phobia": {
+   "tier": "minor",
+   "description": "One kind of animal (chosen when this flaw is gained) terrifies you. You take a -2 penalty on attack rolls, saving throws, skill checks, and ability checks while in the presence of your phobia.",
+   "changes": [],
+   "contextNotes": [
+    {
+     "text": "Animal Phobia: -[[2]] on attacks, saves, skill checks, and ability checks in the presence of your phobia.",
+     "target": "allChecks"
+    }
+   ]
+  }
+ },
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "skill_rank_budget": 100,
+ "normal_feat_amount": 3,
+ "luck": {
+  "type": "Default",
+  "score": 0,
+  "values": {
+   "negative": 0,
+   "default": 0,
+   "proximity": 0
+  },
+  "mod": 0,
+  "cap": 25,
+  "floor": -50,
+  "e_kat_earned": 0,
+  "e_kat_reserve": 0,
+  "e_kat_store_cap": 99,
+  "traits": [],
+  "trait_benefits": {},
+  "trait_changes": {},
+  "vault": 0,
+  "vault_cap": 77,
+  "dr_pool": 0,
+  "twist_fate_per_day": 0,
+  "feats": [],
+  "luck_feats": [],
+  "derivation": [
+   "= 0"
+  ],
+  "negative_feats": [],
+  "audit": {
+   "attribute_points": {
+    "before": 2,
+    "spent": 0,
+    "received": 0,
+    "after": 2,
+    "final": 2,
+    "luck_cost": 0
+   },
+   "hp": {
+    "before": 190,
+    "spent": 0,
+    "received": 0,
+    "after": 190,
+    "final": 200,
+    "luck_cost": 0
+   },
+   "skill_ranks": {
+    "before": 80,
+    "spent": 0,
+    "received": 0,
+    "after": 80,
+    "final": 100,
+    "luck_cost": 0
+   },
+   "feats": {
+    "before": 0,
+    "spent": 0,
+    "received": 0,
+    "after": 0,
+    "final": 0,
+    "luck_cost": 0
+   }
+  },
+  "payout_changes": [],
+  "attribute_bumps": {},
+  "stake": null
+ },
+ "mythic": {
+  "tier": 7,
+  "path": "champion",
+  "path_display": "Champion",
+  "power_pool": 18,
+  "surge_die": "1d10",
+  "amazing_initiative_bonus": 7,
+  "bonus_hp": 35,
+  "ability_bumps": {
+   "con": 2,
+   "wis": 2,
+   "cha": 2
+  },
+  "base_abilities": [
+   {
+    "name": "Hard to Kill",
+    "tier": 1,
+    "description": "Whenever you are below 0 hit points, you automatically stabilize; you die at negative Constitution x 2 instead of negative Constitution."
+   },
+   {
+    "name": "Mythic Power",
+    "tier": 1,
+    "description": "A pool of mythic power fueling surge and many mythic abilities: 3 + 2 per tier uses per day (plus any tradition bonus)."
+   },
+   {
+    "name": "Surge",
+    "tier": 1,
+    "description": "Expend one use of mythic power to add the surge die to a d20 roll you just made, possibly turning failure into success. The die grows with tier (1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th)."
+   },
+   {
+    "name": "Amazing Initiative",
+    "tier": 2,
+    "description": "A bonus on initiative checks equal to your mythic tier. Also, as a free action on your turn, expend one use of mythic power to take an additional standard action this turn (not usable to cast a second spell in a round)."
+   },
+   {
+    "name": "Recuperation",
+    "tier": 3,
+    "description": "Restored to full hit points after 8 hours of rest. Also, expend one use of mythic power and rest 1 hour to regain half your maximum hit points and all class abilities normally regained by resting 8 hours."
+   },
+   {
+    "name": "Mythic Saving Throws",
+    "tier": 5,
+    "description": "Whenever you succeed at a saving throw against a spell or special ability from a non-mythic source, you suffer no effect."
+   },
+   {
+    "name": "Force of Will",
+    "tier": 7,
+    "description": "As an immediate action, expend one use of mythic power to reroll a d20 roll you just made, or force any non-mythic creature to reroll one it just made; the affected creature takes the second result."
+   }
+  ],
+  "tier1_feature": {
+   "feature": "Champion's Strike",
+   "name": "Sudden Attack",
+   "type": "Ex",
+   "description": "As a swift action, you can expend one use of mythic power to make a melee attack at your highest attack bonus. This is in addition to any other attacks you make this round. When making a sudden attack, you roll twice and take the better result, adding your tier to the attack roll. Damage from this attack bypasses all damage reduction."
+  },
+  "path_abilities": [
+   {
+    "name": "Akitonian Physiology (Ex) [Doorway to the Red Star]",
+    "tier": 1,
+    "type": "",
+    "source": "Mythic Realms pg. 9",
+    "description": "When you select this path ability, you permanently reshape your body in imitation of the alien species of Akiton, permanently gaining the benefits of one of the following alchemist discoveries: chameleonARG, preserve organsUM, tumor familiarUM, or vestigial armUM. Your alchemist level for the purpose of this ability is equal to your tier plus your alchemist level. You can select this path ability multiple times, each time selecting a new permanent mutation. Each time beyond the first that you take this path ability, your pool of mythic power is permanently reduced by 1 (as that power is used to maintain your alien physiology) and you take a cumulative -1 penalty on all Charisma checks and Charisma-based skill checks when interacting with animals, fey, and humanoids.",
+    "universal": true
+   },
+   {
+    "name": "Always a Chance",
+    "tier": 2,
+    "type": "Ex",
+    "source": "Mythic Adventures pg. 20",
+    "description": "You don't automatically miss when you roll a 1 on an attack roll.",
+    "universal": false
+   },
+   {
+    "name": "Groundshaker",
+    "tier": 3,
+    "type": "Su",
+    "source": "Mythic Origins pg. 22",
+    "description": "As a standard action, you can expend one use of mythic power to stomp or punch the ground with mighty force, forcing creatures within 5 feet per tier to attempt a Reflex save (DC = 10 + your tier + your Strength modifier). Non-mythic creatures that fail their saves fall prone and are staggered for 1 round. Non-mythic creatures that succeed at their saves and mythic creatures that fail are staggered for 1 round. Mythic creatures that succeed at their saves are unaffected. You are not affected by this ability, and you may designate a number of creatures up to your tier to also not be affected.",
+    "universal": false
+   },
+   {
+    "name": "Maximized Critical",
+    "tier": 4,
+    "type": "Ex",
+    "source": "Mythic Adventures pg. 24",
+    "description": "Whenever you score a critical hit, the weapon's damage result is always the maximum possible amount you could roll. This doesn't affect other dice added to the damage, such as from sneak attack or the flaming weapon special ability. For example, if you score a critical hit with a longsword (1d8/×2), treat the sword's damage dice as if you had rolled 8 both times, then add any other damage bonuses that you would normally apply to a critical hit.",
+    "universal": false
+   },
+   {
+    "name": "Commune with Power",
+    "tier": 5,
+    "type": "Su",
+    "source": "Mythic Adventures pg. 50",
+    "description": "You can tap into your mythic nature to seek answers to the quandaries you encounter in your adventures. Once per day, in a special ritual that requires you to spend 1 hour of uninterrupted meditation, you can commune with the source of your power. This acts as the commune spell, using your tier as your caster level. The source of your power may be limited in the knowledge it possesses or can deliver, as decided upon by the GM.",
+    "universal": true
+   },
+   {
+    "name": "Waters of Contemplation (Su) [Doorway to the Red Star]",
+    "tier": 6,
+    "type": "",
+    "source": "Mythic Realms pg. 9",
+    "description": "You can meditate for 1 hour and expend one use of mythic power to transmute any magical potion into an alchemical cognatogen that increases your mental faculties at the expense of your physical prowess (Pathfinder RPG Ultimate Magic 15) usable only by you. Your effective alchemist level for this cognatogen is equal to your tier plus your alchemist level. If you are at least 6th tier, you can use this ability to create a greater cognatogen. If you are at least 9th tier, you can use this ability to create a grand cognatogen. If you expend one additional use of mythic power when brewing the waters of contemplation, you gain the benefit of tongues for as long as the cognatogen lasts.",
+    "universal": true
+   },
+   {
+    "name": "Defy Death (Su) [Cenotaph]",
+    "tier": 7,
+    "type": "",
+    "source": "Mythic Realms pg. 7",
+    "description": "As an immediate action, you can expend one use of mythic power to gain a +5 bonus on a single saving throw made to resist energy drain, a death effect, or a negative level becoming permanent. You can select this path ability multiple times. If you take it a second time, you gain a +10 bonus on saving throws to resist the above effects. If you take it three times, you can instead expend one use of mythic power to automatically succeed at a saving throw made to resist the above effects.",
+    "universal": true
+   }
+  ],
+  "tradition": {
+   "drawbacks": [
+    {
+     "name": "Mythic Vulnerability",
+     "description": "You are vulnerable to a specific material or damage type, selected by the GM, such as acid damage or cold iron. This mythic vulnerability bypasses any special defenses you have (like damage reduction, spell resistance, or temporary hit points), does 50% more damage to you, and being within 5 feet of it for more than 1 round (such as marching through a cold snowfield or standing near an enemy brandishing a silver weapon) drains one use of mythic power per round. If your vulnerability drains your last use of mythic power, you lose access to all of your mythic abilities until you've been more than 5 feet away from the substance and unharmed by it for at least 1 minute. This mythic drawback may be taken more than once. Each time it is, you become vulnerable to an additional material or damage type."
+    },
+    {
+     "name": "Master Of One",
+     "description": "You may only expend mythic power on abilities that affect yourself or creatures of a single type (such as outsider or undead). You may take this drawback a second time. If you do, you may only expend mythic power on abilities that affect yourself or creatures of a single subtype (such as devils or elves). You cannot take this drawback a second time if your mythic power is limited to a creature type that does not have subtypes. You must have at least one ability that expends mythic power and is usable on creatures besides yourself to take this mythic drawback."
+    },
+    {
+     "name": "Radiant Power",
+     "description": "You have a hard time hiding your presence. All creatures gain a bonus equal to three times your tier to notice you (such as by using the Perception skill). You also leave lingering trails of magic that others can find and follow for one day per tier. Finally, all creatures you interact with can sense that you are not normal and get a general understanding of your abilities, regardless of any disguises you use."
+    }
+   ],
+   "boons": [
+    {
+     "name": "Mythic Exemplar",
+     "description": "You gain a first-tier path ability (from any path), a first-tier universal path ability (like a mythic sphere mastery), a mythic feat, or a mythic class ability thematically appropriate for your character, selected by the GM. You must meet the prerequisites for this choice, if any. If that ability requires spending mythic power to activate its effects, you may use it once per day without spending mythic power. This mythic boon can be taken more than once.",
+     "grants": {
+      "name": "Display of Intelligence",
+      "description": "As a free action, you can expend one use of mythic power to attempt a feat of Intelligence, gaining a +20 circumstance bonus on one Intelligence-based skill check or Intelligence ability check.",
+      "via": "Mythic Exemplar: a bonus 1st-tier path ability"
+     }
+    },
+    {
+     "name": "Native-Born",
+     "description": "Your ascension to mythic power allows you to survive like a native in areas related to the origin of your mythic power. For example, if your patron is a deity that resides within the Plane of Chaos, you can survive there without being subject to the negative effects of a chaotically-shifting realm. Similarly, if you achieved mythic power from a font of power in the heart of the Plane of Fire, you can survive in that Plane without you or your belongings burning and may constantly have harmless flames swirling around you. You also count as a native resident (and not extraplanar, unless it would be beneficial) for the purpose of effects that apply to native or extraplanar creatures while in relevant areas. The GM should set the exact benefits of being Native-Born, but as a general rule, you should be able to survive in and traverse relevant areas with no more difficulty or danger than any creature normally calling it home. Appropriate areas generally include specific planes or types of terrain."
+    }
+   ],
+   "extra_mythic_power": 1,
+   "quality": {
+    "name": "Challenged Duelist",
+    "description": "You must accept any challenge to a duel (see Ultimate Combat), regardless of the circumstances, unless doing so is impossible or you are at less than half of your maximum hit points. (For example, a foe cannot challenge you to a duel on a floor of lava unless you can survive walking on lava.) When participating in a duel, your mythic powers enforce the rules on both combatants, usually by rendering you impervious to all outside influences but also forcing all combatants to abide by both the word and the spirit of the agreed-upon rules until the duel ends. This protection from outside forces extends to covering the negotiation of the rules of the duel, if any. In addition, once per day when a foe rejects your challenge to a duel, you may regain two uses of mythic power."
+   }
+  },
+  "mythic_feats": [
+   {
+    "name": "Cleave (Mythic)",
+    "base_name": "Cleave",
+    "tier": 1,
+    "description": "Whenever you use Cleave or Great Cleave, one of your attacks can be made against a foe that is within your reach, but not adjacent to the foe you attacked. You can expend one use of mythic power when you use Cleave or Great Cleave to continue making attacks against foes within your reach, regardless of their position, as long as you continue to hit each foe. You can't use this ability to attack a foe more than once per round."
+   },
+   {
+    "name": "Weapon Focus (Mythic)",
+    "base_name": "Weapon Focus",
+    "tier": 3,
+    "description": "Double the bonuses on your attack rolls from Weapon Focus and Greater Weapon Focus. As a swift action, you can expend one use of mythic power to gain a bonus on attack rolls with your selected weapon equal to half your tier until the end of your turn."
+   },
+   {
+    "name": "Deft Hands (Mythic)",
+    "base_name": "Deft Hands",
+    "tier": 5,
+    "description": "The bonus on Disable Device and Sleight of Hand skill checks from Deft Hands increases by 2. In addition, you can expend one use of mythic power to treat a Disable Device or Sleight of Hand check as if you had rolled a natural 20. You must decide to use this ability before making the roll."
+   },
+   {
+    "name": "Nimble Moves (Mythic)",
+    "base_name": "Nimble Moves",
+    "tier": 7,
+    "description": "For every 2 tiers you possess, you can move through up to 5 feet of difficult terrain each round as if it were normal terrain (minimum 5 feet). This effect stacks with those provided by Nimble Moves and Acrobatic Steps."
+   }
+  ],
+  "spell_annotations": {}
+ },
+ "buff_gaps": [],
+ "generator_version": "2026-07-15 racial-stats",
+ "license_url": "http://localhost/license"
+}

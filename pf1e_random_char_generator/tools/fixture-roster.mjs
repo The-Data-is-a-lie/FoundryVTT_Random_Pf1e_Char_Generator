@@ -32,6 +32,11 @@ export const FIXTURE_ROSTER = [
   { name: 'mentor',     payload: 'mentor.json',     modded: 'n', buffs: 'n', covers: 'fighter 15 — trainers/professions and Spheres of Might talents' },
   { name: 'companion',  payload: 'companion.json',  modded: 'y', buffs: 'y', covers: 'druid 4 — THE MODDED BRANCH (_MODS templates) + bonded creatures in the payload' },
   { name: 'sop',        payload: 'sop.json',        modded: 'n', buffs: 'y', covers: 'rogue 18 + Spheres of POWER — magic talents, the Destructive Blast item, blast-vs-weapon conditional targets' },
+  // Backend seed 41, `mythic: 7`. Chosen for tradition RICHNESS: 3 drawbacks, 2 boons, a quality,
+  // a boon-with-grant (the granted option's rules text folded inside its boon's entry) and
+  // +1 mythic power — every tag branch of the Mythic band in one payload, plus the mythic path
+  // class item (Champion, tier 7) from mythic_paths.json.
+  { name: 'mythic',     payload: 'mythic.json',     modded: 'n', buffs: 'n', covers: 'aegis 10 + MYTHIC tier 7 — the Champion class item, the Mythic band, all five feature tags' },
 ];
 
 /** The packs the build reads, and the module whose active-check gates each one. */

@@ -104,6 +104,10 @@ const CHAR_SHEET_TEMPLATES = {
   // Resource pool items ({poolKey: pf1 classFeat item with a uses/charges formula}): Hero Points
   // for everyone, Stamina for fighters / Combat Stamina takers, plus per-class pools.
   resourcePools: 'resource_pools.json',
+  // The six mythic path CLASS items ({lowercase path: pf1 class item, subType "mythic"}),
+  // harvested once from the pf1 system's own mythic-paths compendium — real rules text, tags
+  // (mythicArchmage, ...), and empty classAssociations, so nothing auto-attaches on import.
+  mythicPaths: 'mythic_paths.json',
 };
 
 /** Bundles in `base_folder` that are the same on both branches. */

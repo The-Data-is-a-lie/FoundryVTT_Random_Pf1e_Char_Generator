@@ -283,4 +283,29 @@ export async function addClasses(ctx) {
       classItemSort + 1000);
     classIdx++;
   }
+
+  // Mythic path chassis (backend payload `mythic` block, spec §14): a REAL pf1 class item with
+  // subType "mythic", harvested once from the pf1 system's mythic-paths compendium into
+  // mythic_paths.json. Being a genuine class item is what buys the sheet everything pf1 derives
+  // natively: @details.mythicTier, a selectable class for the mythic features' class-association
+  // dropdown (class-features.js points them here), and ceil(tier/2) bonus feat slots — exactly
+  // covering the backend's mythic-feat grants at tiers 1/3/5/7/9, so the feat counter balances.
+  // system.hp carries the payload's bonus_hp (path hp/tier × tier — the same arithmetic pf1's own
+  // mythic health path uses): the backend folds that HP into Total_HP, which this module never
+  // reads (the luck-payout lesson), so the class item is where it lands visibly and attributably.
+  const myth = characterData.mythic;
+  if (myth && myth.path) {
+    const src = ctx.templates.mythicPaths?.[String(myth.path).toLowerCase()];
+    if (!src) {
+      console.warn(`Mythic: no "${myth.path}" entry in mythic_paths.json — the path class item is skipped.`);
+    } else {
+      const item = structuredClone(src);
+      item._id = ctx.newId('mythicPath', myth.path);
+      item.system.level = Number(myth.tier) || 1;
+      item.system.hp = Number(myth.bonus_hp) || 0;
+      item.sort = (classIdx + 1) * 100000;   // after every real class in the sheet summary
+      appendJsonToTemplate([item], exportTemplate, 'Class');
+      log.debug(`Mythic: added ${item.name} (tier ${item.system.level}, ${item.system.hp} hp).`);
+    }
+  }
 }

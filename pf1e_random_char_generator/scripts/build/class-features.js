@@ -121,20 +121,26 @@ export async function addClassFeatures(ctx) {
   for (const band of bandsInOrder) {
     await appendFeatDivider(ctx, `_______________Class Features (${band.display})_______________`, band.base, 'classFeat');
   }
-  // Fallback band for buckets whose owning class is unknown; its divider is only added when used.
-  const genericBase = CF_CLASS_BAND_BASE + bandsInOrder.length * CF_CLASS_BAND_STEP;
-  const genericBand = { display: null, base: genericBase, generalSort: genericBase + 125, ladderSort: genericBase + 500000 };
-  let genericDividerAdded = false;
-
   // bucket (lowercase) -> owning class name (lowercase), from the backend's chooser bookkeeping.
   const owners = {};
   for (const [k, v] of Object.entries(characterData.class_feature_owners || {})) {
     owners[String(k).toLowerCase()] = String(v).toLowerCase();
   }
 
+  // The mythic band (owner 'mythic', spec §14) sits between the class bands and the generic
+  // fallback; its buckets are collected out of the main loop and rendered together below.
+  const hasMythic = Object.values(owners).includes('mythic');
+  const mythicBase = CF_CLASS_BAND_BASE + bandsInOrder.length * CF_CLASS_BAND_STEP;
+  const mythicBuckets = new Map();
+
+  // Fallback band for buckets whose owning class is unknown; its divider is only added when used.
+  const genericBase = mythicBase + (hasMythic ? CF_CLASS_BAND_STEP : 0);
+  const genericBand = { display: null, base: genericBase, generalSort: genericBase + 125, ladderSort: genericBase + 500000 };
+  let genericDividerAdded = false;
+
   const levelsAll = characterData.class_feature_levels || {};
 
-  const mkFeature = async (name, descriptionHtml, sort) => {
+  const mkFeature = async (name, descriptionHtml, sort, assoc) => {
       const feature = JSON.parse(stableStringify(baseFeatTemplate));
       // The base feat template carries a hardcoded _id, so every clone would share it and
       // Foundry would collapse them into one embedded item on actor.update().
@@ -142,12 +148,22 @@ export async function addClassFeatures(ctx) {
       feature.name = name;
       feature.system.description.value = descriptionHtml;
       feature.sort = sort;
+      if (assoc?.tag) {
+        // Class association (the dropdown on the feature's own sheet): system.class wants the
+        // class item's TAG, associations.classes its NAME — both, matching the harvested items.
+        feature.system.class = assoc.tag;
+        feature.system.associations = { classes: [assoc.name] };
+      }
       appendJsonToTemplate([feature], exportTemplate, "classFeature");
   };
 
   for (const [bucket, choices] of Object.entries(classFeatures)) {
       if (!choices || typeof choices !== 'object') {
           console.warn(`Skipping invalid feature bucket: ${bucket}`);
+          continue;
+      }
+      if (owners[String(bucket).toLowerCase()] === 'mythic') {
+          mythicBuckets.set(String(bucket).toLowerCase(), { bucket, choices });
           continue;
       }
       const band = ctx.classFeatureBands[owners[String(bucket).toLowerCase()]] || genericBand;
@@ -194,6 +210,67 @@ export async function addClassFeatures(ctx) {
           sort += 125;
       }
       if (!meta.ladder) band.generalSort = sort;
+  }
+
+  // ----- Mythic band (owner-'mythic' buckets + the payload `mythic` block, spec §14) ----- //
+  // Everything mythic renders under ONE "Mythic" divider, each entry wearing exactly one of five
+  // tags: (Mythic Path) for the path row, its tier-1 feature choice, the capstone, and the
+  // per-tier path abilities; (Mythic Ability) for the base chassis (Surge, Mythic Power, ...);
+  // and the tradition's (Mythic Boon) / (Mythic Quality) / (Mythic Flaw) — drawbacks are flaws.
+  // The backend's stamps for these buckets are TIERS, not levels, so the tier goes into the
+  // description text instead of borrowing the "(Rage Power 4)" level convention, which here
+  // would read as a character level. Every entry is class-associated to the mythic path class
+  // item that build/classes.js appended, so the path is selectable on each feature's sheet.
+  if (mythicBuckets.size) {
+    await appendFeatDivider(ctx, "__________________Mythic__________________", mythicBase, 'classFeat');
+    const myth = characterData.mythic || {};
+    const mythSrc = ctx.templates.mythicPaths?.[String(myth.path || '').toLowerCase()];
+    const assoc = mythSrc ? { tag: mythSrc.system?.tag, name: mythSrc.name } : null;
+    const TRADITION_TAGS = { Drawback: 'Mythic Flaw', Boon: 'Mythic Boon', Quality: 'Mythic Quality' };
+    const BUCKET_TAGS = {
+      'mythic path': 'Mythic Path',
+      'mythic path abilities': 'Mythic Path',
+      'mythic abilities': 'Mythic Ability',
+    };
+    const ORDER = ['mythic path', 'mythic abilities', 'mythic path abilities', 'mythic tradition'];
+    const orderedKeys = [...ORDER.filter(k => mythicBuckets.has(k)),
+                         ...[...mythicBuckets.keys()].filter(k => !ORDER.includes(k))];
+    let sort = mythicBase + 125;
+    for (const key of orderedKeys) {
+      const { bucket, choices } = mythicBuckets.get(key);
+      const levels = levelsAll[bucket] || {};
+      const names = Object.keys(choices).sort((a, b) =>
+        (Number.isFinite(levels[a]) ? levels[a] : 99) - (Number.isFinite(levels[b]) ? levels[b] : 99));
+      for (const choice of names) {
+        let tag = BUCKET_TAGS[key] || 'Mythic Ability';
+        let display = choice;
+        if (key === 'mythic tradition') {
+          const m = choice.match(/^(Drawback|Boon|Quality):\s*(.*)$/);
+          if (m) {
+            tag = TRADITION_TAGS[m[1]];
+            display = m[2];
+          } else {
+            // LEGACY payloads only: the backend used to ship a grant as its own
+            // "Parent → Granted Thing" row (it now folds the grant into the parent's entry);
+            // a replayed old payload still renders, wearing its parent's tag.
+            const parent = choice.split(' → ')[0];
+            tag = Object.entries(TRADITION_TAGS)
+              .find(([prefix]) => choices[`${prefix}: ${parent}`])?.[1] || 'Mythic Boon';
+          }
+        }
+        const lvl = levels[choice];
+        const choiceData = choices[choice];
+        let html = (choiceData && typeof choiceData === 'object')
+          ? convertToStringSimple(display, choiceData)
+          : `<p>${choiceData ?? ''}</p>`;
+        if (key !== 'mythic tradition' && Number.isFinite(lvl)) {
+          html = `<p><em>Gained at mythic tier ${lvl}.</em></p>` + html;
+        }
+        await mkFeature(`(${tag}) ${display}`, html, sort, assoc);
+        sort += 125;
+      }
+    }
+    log.debug(`Mythic band: ${orderedKeys.length} bucket(s) rendered under the Mythic divider.`);
   }
 }
 

@@ -71,6 +71,25 @@ export default class MyModule {
         default: false,
       });
 
+      // Mythic is opt-in by design — the backend's `mythic` input is the gate, and the dialog does
+      // not carry it — so without this switch no Foundry click can ever roll mythic. Same shape as
+      // forceLuckDirection: CLIENT scope + default "", merged in at click time, never part of the
+      // saved character request, can never ship enabled.
+      game.settings.register("pf1e_random_char_generator", "forceMythic", {
+        name: "Force mythic (dev)",
+        hint: "Testing aid. Make every generated character mythic — 'Random tier' rolls 1–10 with low tiers most likely; a number forces exactly that tier. Requires a backend that supports mythic (the local dev server); leave OFF against the hosted server, which would misread the request. Per-machine setting.",
+        scope: "client",
+        config: true,
+        type: String,
+        choices: {
+          "": "Off (never mythic)",
+          "y": "Random tier (weighted low)",
+          "1": "Tier 1", "2": "Tier 2", "3": "Tier 3", "4": "Tier 4", "5": "Tier 5",
+          "6": "Tier 6", "7": "Tier 7", "8": "Tier 8", "9": "Tier 9", "10": "Tier 10",
+        },
+        default: "",
+      });
+
       // The build narrates itself through ~100 log lines per character. CLIENT scope, default off:
       // it is a debugging aid, and left on it both buries the console and stops devtools releasing
       // every object it was handed. See shared/log.js.
