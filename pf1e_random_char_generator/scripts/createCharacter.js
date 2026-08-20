@@ -15,7 +15,7 @@ async function createCharacterFunc() {
 }
 
 // Grab data from localStorage and inject into charactersheet
-async function injectJsonDataIntoNewActor(actor, folderId) {
+async function injectJsonDataIntoNewActor(actor, folderId, name) {
   const parsedData = readExportPath();
 
   if (!parsedData) {
@@ -32,6 +32,12 @@ async function injectJsonDataIntoNewActor(actor, folderId) {
   // makes Foundry re-prepare all ~90-215 items to change one metadata field. Setting the key here
   // makes one write do both jobs.
   parsedData.folder = folderId;
+
+  // The name rides in on the same update, for the same reason. A name typed into Foundry's Create
+  // Actor dialog has to beat the generated one, and the injected sheet carries its own `name` key —
+  // so setting it anywhere earlier (on Actor.create, say) would just be overwritten a moment later.
+  // Blank means the user left the placeholder alone: keep whatever the backend named the character.
+  if (name) parsedData.name = name;
 
   // Inject the parsed data into the actor to overwrite all Data
   try {
@@ -110,18 +116,21 @@ async function adjustLevel(actor) {
 
 // Calls all Actor Creation functions. Exported: button.js imports this — the file used to be a
 // classic script in module.json's "scripts" array that defined it as a global.
-export async function createAndAssignActor() {
+export async function createAndAssignActor(overrides = {}) {
   // Bail before creating anything: an actor with no sheet data to inject would just be a blank
   // "New Test Actor" littering the Random Characters folder.
   if (!hasExportPath()) {
     throw new Error("No generated character data to inject ('exportFoundryPath' is empty)");
   }
 
-  const folderId = await generateRandomizedCharacterFolder();
+  // A folder chosen in the Create Actor dialog wins; no choice (or any other entry point) keeps the
+  // auto-created "Random Characters" folder this has always used. Bonded creatures below take the
+  // same id, so a companion follows its master into whichever folder that was.
+  const folderId = overrides.folder || await generateRandomizedCharacterFolder();
 
   const actor = await createCharacterFunc();
 
-  await injectJsonDataIntoNewActor(actor, folderId);
+  await injectJsonDataIntoNewActor(actor, folderId, overrides.name);
 
   await adjustLevel(actor);
 

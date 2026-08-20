@@ -1,4 +1,14 @@
 import { log } from './shared/log.js';
+import { registerButtonLocations } from './button-locations.js';
+
+// Registered SYNCHRONOUSLY, before the async IIFE below and before Foundry's "init".
+//
+// `getSceneControlButtons` fires ONCE per control-list build, and the IIFE is not awaited by
+// Foundry — module evaluation returns the moment it hits its first `await`, so anything registered
+// inside it is registered a few network round trips late and can miss a hook that never fires again.
+// Each callback reads its own setting when it fires, so registering this early costs nothing.
+registerButtonLocations();
+
 (async () => {
 
   // Settings FIRST: module.js registers the module settings inside Hooks.once("init"), and

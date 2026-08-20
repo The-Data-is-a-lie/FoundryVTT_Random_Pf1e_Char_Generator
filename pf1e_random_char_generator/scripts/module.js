@@ -1,5 +1,11 @@
 import { reloadTemplates } from './build/template-loader.js';
 import { setLogging } from './shared/log.js';
+import {
+  SETTINGS,
+  syncFloatingButtonVisibility,
+  syncSidebarButton,
+  refreshSceneControls,
+} from './button-locations.js';
 
 export default class MyModule {
     static registerSettings() {
@@ -77,6 +83,60 @@ export default class MyModule {
         default: false,
         onChange: (value) => setLogging(value),
       });
+
+      // WHERE the Character Generator button lives. Four independent toggles rather than one
+      // dropdown, because these are not mutually exclusive: a GM who puts it in the Create Actor
+      // dialog usually still wants it on the scene controls. CLIENT scope throughout — where a
+      // button sits on your screen is your business, not the world's, and a player at the same
+      // table should not have the GM's layout pushed at them.
+      //
+      // Defaults reproduce today's UI exactly: the floating button on, the three new locations off.
+      // An upgrade must not silently rearrange anyone's interface. Turning all four off leaves no
+      // button at all, which is a legitimate thing to want (macro users) and is always undone from
+      // this same settings page.
+      //
+      // Each onChange applies the change live; button-locations.js reads these settings inside its
+      // render hooks, so nothing here needs a reload.
+      game.settings.register("pf1e_random_char_generator", SETTINGS.floating, {
+        name: "Button: floating (draggable)",
+        hint: "Show the draggable Character Generator button that floats over the canvas. This is the original location and is on by default.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: true,
+        onChange: () => syncFloatingButtonVisibility(),
+      });
+
+      game.settings.register("pf1e_random_char_generator", SETTINGS.sceneControls, {
+        name: "Button: scene controls",
+        hint: "Add a Character Generator tool to the Token controls on the left toolbar. Needs a loaded scene, like every other scene-control tool.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: () => refreshSceneControls(),
+      });
+
+      game.settings.register("pf1e_random_char_generator", SETTINGS.createActor, {
+        name: "Button: Create Actor dialog",
+        hint: "Add a Character Generator button to Foundry's Create Actor dialog, above 'Create Actor'. It uses the Name and Folder you typed there and generates straight away — it does not open the generator's options dialog.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+        // No onChange: the dialog reads this setting each time it renders, so the next one is right.
+      });
+
+      game.settings.register("pf1e_random_char_generator", SETTINGS.sidebar, {
+        name: "Button: sidebar tabs",
+        hint: "Add a Character Generator icon to the bottom of the sidebar tab bar, below the settings gear.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: () => syncSidebarButton(),
+      });
+
     }
 
     static init() {

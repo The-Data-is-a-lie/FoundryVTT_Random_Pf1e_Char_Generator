@@ -1,0 +1,427 @@
+import { sendDataToServer } from './deliver-data.js';
+import { main } from './modify-abilities.js';
+import { createAndAssignActor } from './createCharacter.js';
+import { CLASS_GROUPS, classSlug } from './shared/class-roster.js';
+import {
+  readDeliverData,
+  writeDeliverData,
+  readCustomBuffsFlag,
+  writeCustomBuffsFlag,
+  clearExportPath,
+} from './shared/storage.js';
+
+/**
+ * Everything a "generate a character" click does, independent of where that click came from.
+ *
+ * This used to be the body of the floating button's listener in button.js, which made the floating
+ * button the only possible entry point: the scene-control tool, the sidebar tab and the Create Actor
+ * dialog all want the SAME sequence, and none of them can reach into another module's event handler
+ * to get it. Extracting it changes no behaviour — the code below is the old listener verbatim — it
+ * just gives the other three locations something to call.
+ *
+ * @param {object} [overrides]         Actor metadata the caller already knows, from the UI it was
+ *                                     invoked from. Empty for every location except Create Actor.
+ * @param {string} [overrides.name]    Name to give the actor instead of the generated one.
+ * @param {string} [overrides.folder]  Folder id to file it under instead of "Random Characters".
+ */
+export async function runGenerator(overrides = {}) {
+  // Drop the previous run's built sheet before doing anything else (see clearExportPath).
+  clearExportPath();
+
+  // Import deliver-data.js
+  try {
+    const savedData = readDeliverData();
+
+    // Read the backend endpoint from the module setting at click time, so a settings change takes
+    // effect without reloading Foundry. Fall back to the hosted server if the setting is somehow
+    // unavailable (e.g. registration hasn't run) — we must never silently POST to localhost.
+    let deliver_location;
+    try {
+      deliver_location = game.settings.get('pf1e_random_char_generator', 'backendUrl');
+    } catch (e) {
+      deliver_location = null;
+    }
+    if (!deliver_location) {
+      deliver_location = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
+    }
+
+    // Dev toggle (client-scoped, ships OFF): try the local backend first, falling back to the
+    // hosted endpoint above when it isn't running — a dead Flask never breaks generation.
+    // Liveness probe: any HTTP response from the local origin (even a 404) means the server is
+    // up; only a network error / ~1.5s timeout means it's down. flask-cors makes this legal.
+    let preferLocal = false;
+    let localUrl = '';
+    try {
+      preferLocal = !!game.settings.get('pf1e_random_char_generator', 'preferLocalBackend');
+      localUrl = game.settings.get('pf1e_random_char_generator', 'localBackendUrl') || '';
+    } catch (e) { /* settings not registered — behave exactly as before */ }
+    if (preferLocal && localUrl) {
+      let localAlive = false;
+      try {
+        const probeOrigin = new URL(localUrl).origin;
+        const abort = new AbortController();
+        const timer = setTimeout(() => abort.abort(), 1500);
+        await fetch(probeOrigin, { method: 'GET', signal: abort.signal, cache: 'no-store' });
+        clearTimeout(timer);
+        localAlive = true;
+      } catch (e) {
+        localAlive = false;
+      }
+      if (localAlive) {
+        deliver_location = localUrl;
+        ui.notifications?.info(`Character Generator DEV: using LOCAL backend (${localUrl}).`);
+      } else {
+        ui.notifications?.info('Character Generator DEV: local backend not reachable — falling back to the hosted server.');
+      }
+    }
+
+    // Dev toggle (client-scoped, ships OFF): force the backend's luck branch. Merged in HERE rather
+    // than stored with the dialog's inputs, so it is a per-click testing switch and never becomes
+    // part of the saved character request. The backend ignores anything that is not 'buy'/'sell'.
+    try {
+      const forceLuck = game.settings.get('pf1e_random_char_generator', 'forceLuckDirection');
+      if (forceLuck) {
+        savedData.luck_direction = forceLuck;
+        ui.notifications?.info(`Character Generator DEV: forcing luck direction "${forceLuck}".`);
+      }
+    } catch (e) { /* setting not registered — behave exactly as before */ }
+
+    // Dev toggle (client-scoped, ships OFF): request optimized mode. Merged in HERE for the same
+    // reason as luck_direction above — per-click, never persisted with the dialog's inputs.
+    // CAUTION: a backend without optimized mode parses the request positionally and an unknown
+    // key corrupts it, so this must stay off against the hosted server until it ships there.
+    try {
+      if (game.settings.get('pf1e_random_char_generator', 'optimizeBuilds')) {
+        savedData.optimize = true;
+        ui.notifications?.info('Character Generator DEV: OPTIMIZED build requested.');
+      }
+    } catch (e) { /* setting not registered — behave exactly as before */ }
+
+    // Dev toggle (client-scoped, ships OFF): request a mythic character. Merged in HERE for the
+    // same reason as the two above — per-click, never part of the saved character request, can
+    // never ship enabled. Same CAUTION as optimize: keep it off against a hosted server that
+    // predates the mythic input.
+    try {
+      const forceMythic = game.settings.get('pf1e_random_char_generator', 'forceMythic');
+      if (forceMythic) {
+        savedData.mythic = forceMythic;
+        ui.notifications?.info(`Character Generator DEV: MYTHIC requested (${forceMythic === 'y' ? 'random tier' : `tier ${forceMythic}`}).`);
+      }
+    } catch (e) { /* setting not registered — behave exactly as before */ }
+
+    ui.notifications?.info("Character Generator: contacting the backend… (the first request after the server has idled can take up to a minute).");
+    console.log('deliver_location', deliver_location)
+    // Fully awaited: sendDataToServer stores the returned character in localStorage before
+    // resolving, so main()/createAndAssignActor() below read THIS click's fresh data.
+    await sendDataToServer(savedData, deliver_location);
+
+  } catch (error) {
+    console.error("Error deliver-data.js in generator-launch.js:", error);
+    // deliver-data.js already notified the user; abort so we don't build an actor from stale data.
+    return;
+  }
+
+  // Import main from modify-abilities.js (bulk of the character creation)
+  // main() returns false (and notifies) when it couldn't build the sheet; abort rather than
+  // handing createAndAssignActor() a half-built or absent exportFoundryPath.
+  let built = false;
+  try {
+    built = await main();
+  } catch (error) {
+    console.error("Error importing modify-abilities in generator-launch.js:", error);
+    ui.notifications?.error("Character Generator: character build failed. No character was created.");
+  }
+  if (!built) return;
+
+  // Import createCharacterFunc from createCharacter.js
+  try {
+    await createAndAssignActor(overrides);
+  } catch (error) {
+    console.error("Error importing createCharacter in generator-launch.js:", error);
+    ui.notifications?.error(`Character Generator: couldn't create the actor (${error.message}).`);
+  }
+}
+
+/**
+ * The class dropdown: a top-level Random, then one <optgroup> per family from class-roster.js.
+ *
+ * Each group is labelled with its size ("Occult Adventures (6)") and opens with a
+ * "Random <group>" entry whose value is `random-<token>`. That token is not a class name and is
+ * not meant to match one -- the backend's chooseClass recognises it and narrows the random pool to
+ * that family (Backend/utils/util.py::_group_pool). The counts are computed, never typed, so a
+ * class added to the roster cannot leave a stale number behind.
+ */
+function classOptions(selected) {
+  const option = (value, label) =>
+    `<option value="${value}" ${selected === value ? 'selected' : ''}>${label}</option>`;
+
+  return option('random', 'Random (any class)')
+    + CLASS_GROUPS.map(({ token, label, classes }) =>
+        `<optgroup label="${label} (${classes.length})">`
+          + option(`random-${token}`, `Random ${label}`)
+          + classes.map(name => option(classSlug(name), name)).join('')
+        + '</optgroup>').join('');
+}
+
+/**
+ * The generator's input form.
+ *
+ * Note what this dialog does NOT do: its button writes the inputs to localStorage for the NEXT run.
+ * It does not generate anything. Every location that opens it also calls runGenerator() alongside
+ * it, which builds a character from the PREVIOUSLY saved inputs.
+ */
+export function openGeneratorDialog() {
+  // Get the saved character data from localStorage
+  const savedData = readDeliverData();
+  const savedAddBuffs = readCustomBuffsFlag();
+
+  const html = `
+    <div>
+      <label for="character-region">Select Region:</label>
+      <select id="character-region">
+        <option value="Random" ${savedData.region === "Random" ? "selected" : ""}>Random</option>
+        <option value="Tal-falko" ${savedData.region === "Tal-falko" ? "selected" : ""}>Tal-falko</option>
+        <option value="Dolestan" ${savedData.region === "Dolestan" ? "selected" : ""}>Dolestan</option>
+        <option value="Sojoria" ${savedData.region === "Sojoria" ? "selected" : ""}>Sojoria</option>
+        <option value="Ieso" ${savedData.region === "Ieso" ? "selected" : ""}>Ieso</option>
+        <option value="Spire" ${savedData.region === "Spire" ? "selected" : ""}>Spire</option>
+        <option value="Feyador" ${savedData.region === "Feyador" ? "selected" : ""}>Feyador</option>
+        <option value="Esterdragon" ${savedData.region === "Esterdragon" ? "selected" : ""}>Esterdragon</option>
+        <option value="Grundykin Damplands" ${savedData.region === "Grundykin Damplands" ? "selected" : ""}>Grundykin Damplands</option>
+        <option value="Dust Cairn" ${savedData.region === "Dust Cairn" ? "selected" : ""}>Dust Cairn</option>
+        <option value="Kaeru no Tochi" ${savedData.region === "Kaeru no Tochi" ? "selected" : ""}>Kaeru no Tochi</option>
+      </select>
+    </div>
+    <div>
+      <label for="character-race">Select Race:</label>
+      <select id="character-race">
+        ${[
+          'Random', 'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human',
+          'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow',
+          'Fetchling', 'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli',
+          'Hobgoblin', 'Ifrit', 'Kitsune', 'Kobold', 'Locathah', 'Merfolk',
+          'Monkey Goblin', 'Nagaji', 'Orc', 'Oread', 'Ratfolk', 'Sahuagin',
+          'Skinwalker', 'Strix', 'Svirfneblin', 'Sylph', 'Syrinx', 'Tengu',
+          'Tiefling', 'Triaxian', 'Triton', 'Undine', 'Vanara', 'Vine Leshy',
+          'Vishkanya', 'Wayang', 'Wyrwood', 'Wyvaran', 'Yaddithian'
+        ].map(race =>
+          `<option value="${race.toLowerCase().replace(/\s/g, '-')}"
+            ${savedData.race === race.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
+            ${race}
+          </option>`
+        ).join('')}
+      </select>
+    </div>
+    <div>
+      <label for="character-class">Select Class:</label>
+      <select id="character-class">
+        ${classOptions(savedData.class)}
+      </select>
+    </div>
+    <div>
+      <label for="character-bab">Select BAB:</label>
+      <select id="character-bab">
+        ${[
+          'H', 'M', 'L', 'Random'
+        ].map(bab =>
+          `<option value="${bab.toLowerCase().replace(/\s/g, '-')}"
+            ${savedData.bab === bab.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
+            ${bab}
+          </option>`
+        ).join('')}
+      </select>
+    </div>
+    </div>
+    <div>
+      <label for="character-caster_level">Select Caster Level:</label>
+      <select id="character-caster_level">
+        ${[
+          'High', 'Medium', 'Low', 'None', 'Random'
+        ].map(caster_level =>
+          `<option value="${caster_level.toLowerCase().replace(/\s/g, '-')}"
+            ${savedData.caster_level === caster_level.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
+            ${caster_level}
+          </option>`
+        ).join('')}
+      </select>
+    </div>
+    </div>
+    <div>
+      <label for="multiclass">Multiclass:</label>
+      <select id="multiclass">
+        <option value="n" ${savedData.multiclass === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedData.multiclass === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
+    <div>
+      <label for="deity">Choose Deity:</label>
+      <select id="deity">
+        <option value="random" ${savedData.deity === "random" ? "selected" : ""}>Random</option>
+        <option value="Abadar" ${savedData.deity === "Abadar" ? "selected" : ""}>Abadar</option>
+        <option value="Achaekek" ${savedData.deity === "Achaekek" ? "selected" : ""}>Achaekek</option>
+        <option value="Ahriman" ${savedData.deity === "Ahriman" ? "selected" : ""}>Ahriman</option>
+        <option value="Alazhra" ${savedData.deity === "Alazhra" ? "selected" : ""}>Alazhra</option>
+        <option value="Alseta" ${savedData.deity === "Alseta" ? "selected" : ""}>Alseta</option>
+        <option value="Apsu" ${savedData.deity === "Apsu" ? "selected" : ""}>Apsu</option>
+        <option value="Arazni" ${savedData.deity === "Arazni" ? "selected" : ""}>Arazni</option>
+        <option value="Asmodeus" ${savedData.deity === "Asmodeus" ? "selected" : ""}>Asmodeus</option>
+        <option value="Besmara" ${savedData.deity === "Besmara" ? "selected" : ""}>Besmara</option>
+        <option value="Calistria" ${savedData.deity === "Calistria" ? "selected" : ""}>Calistria</option>
+        <option value="Cayden Cailean" ${savedData.deity === "Cayden Cailean" ? "selected" : ""}>Cayden Cailean</option>
+        <option value="Desna" ${savedData.deity === "Desna" ? "selected" : ""}>Desna</option>
+        <option value="Easivra" ${savedData.deity === "Easivra" ? "selected" : ""}>Easivra</option>
+        <option value="Erastil" ${savedData.deity === "Erastil" ? "selected" : ""}>Erastil</option>
+        <option value="Erecura" ${savedData.deity === "Erecura" ? "selected" : ""}>Erecura</option>
+        <option value="Gorum" ${savedData.deity === "Gorum" ? "selected" : ""}>Gorum</option>
+        <option value="Gozreh" ${savedData.deity === "Gozreh" ? "selected" : ""}>Gozreh</option>
+        <option value="Groetus" ${savedData.deity === "Groetus" ? "selected" : ""}>Groetus</option>
+        <option value="Hanspur" ${savedData.deity === "Hanspur" ? "selected" : ""}>Hanspur</option>
+        <option value="Iomedae" ${savedData.deity === "Iomedae" ? "selected" : ""}>Iomedae</option>
+        <option value="Irori" ${savedData.deity === "Irori" ? "selected" : ""}>Irori</option>
+        <option value="Kurgess" ${savedData.deity === "Kurgess" ? "selected" : ""}>Kurgess</option>
+        <option value="Lamashtu" ${savedData.deity === "Lamashtu" ? "selected" : ""}>Lamashtu</option>
+        <option value="Lissala" ${savedData.deity === "Lissala" ? "selected" : ""}>Lissala</option>
+        <option value="Nethys" ${savedData.deity === "Nethys" ? "selected" : ""}>Nethys</option>
+        <option value="Norgorber" ${savedData.deity === "Norgorber" ? "selected" : ""}>Norgorber</option>
+        <option value="Pharasma" ${savedData.deity === "Pharasma" ? "selected" : ""}>Pharasma</option>
+        <option value="Rovagug" ${savedData.deity === "Rovagug" ? "selected" : ""}>Rovagug</option>
+        <option value="Sarenrae" ${savedData.deity === "Sarenrae" ? "selected" : ""}>Sarenrae</option>
+        <option value="Shelyn" ${savedData.deity === "Shelyn" ? "selected" : ""}>Shelyn</option>
+        <option value="Torag" ${savedData.deity === "Torag" ? "selected" : ""}>Torag</option>
+        <option value="Urgathoa" ${savedData.deity === "Urgathoa" ? "selected" : ""}>Urgathoa</option>
+        <option value="Zon-Kuthon" ${savedData.deity === "Zon-Kuthon" ? "selected" : ""}>Zon-Kuthon</option>
+        <option value="Zyphus" ${savedData.deity === "Zyphus" ? "selected" : ""}>Zyphus</option>
+      </select>
+    </div>
+    <div>
+      <label for="alignment">Choose Alignment:</label>
+      <select id="alignment">
+        <option value="random" ${savedData.alignment === "random" ? "selected" : ""}>Random</option>
+        <option value="cg" ${savedData.alignment === "cg" ? "selected" : ""}>Chaotic Good</option>
+        <option value="cn" ${savedData.alignment === "cn" ? "selected" : ""}>Chaotic Neutral</option>
+        <option value="ce" ${savedData.alignment === "ce" ? "selected" : ""}>Chaotic Evil</option>
+        <option value="ng" ${savedData.alignment === "ng" ? "selected" : ""}>Neutral Good</option>
+        <option value="n"  ${savedData.alignment === "tn" ? "selected" : ""}>Neutral</option>
+        <option value="ne" ${savedData.alignment === "ne" ? "selected" : ""}>Neutral Evil</option>
+        <option value="lg" ${savedData.alignment === "lg" ? "selected" : ""}>Lawful Good</option>
+        <option value="ln" ${savedData.alignment === "ln" ? "selected" : ""}>Lawful Neutral</option>
+        <option value="le" ${savedData.alignment === "le" ? "selected" : ""}>Lawful Evil</option>
+      </select>
+    </div>
+    <div>
+      <label for="gender">Choose Gender:</label>
+      <select id="gender">
+        <option value="random" ${savedData.gender === "random" ? "selected" : ""}>Random</option>
+        <option value="male" ${savedData.gender === "male" ? "selected" : ""}>Male</option>
+        <option value="female" ${savedData.gender === "female" ? "selected" : ""}>Female</option>
+      </select>
+    </div>
+    <div>
+      <label for="random-feats">Truly Randomized Feats:</label>
+      <select id="random-feats">
+        <option value="y" ${savedData.randomFeats === "y" ? "selected" : ""}>Yes</option>
+        <option value="n" ${savedData.randomFeats === "n" ? "selected" : ""}>No</option>
+      </select>
+    </div>
+    <div>
+      <label for="inherents">Do you want inherent stats:</label>
+      <select id="inherents">
+        <option value="y" ${savedData.inherents === "y" ? "selected" : ""}>Yes</option>
+        <option value="n" ${savedData.inherents === "n" ? "selected" : ""}>No</option>
+      </select>
+    </div>
+    <div>
+      <label for="modded_char_sheet">Do you use mods that affect your character sheet:</label>
+      <select id="modded_char_sheet">
+        <option value="y" ${savedData.modded_char_sheet === "y" ? "selected" : ""}>Yes</option>
+        <option value="n" ${savedData.modded_char_sheet === "n" ? "selected" : ""}>No</option>
+      </select>
+    </div>
+    <div>
+      <label for="add_custom_buffs">Add custom buffs:</label>
+      <select id="add_custom_buffs">
+        <option value="n" ${savedAddBuffs === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedAddBuffs === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
+    <div>
+      <label for="homebrew_feat_amount">Do you want my homebrew feat amount:</label>
+      <select id="homebrew_feat_amount">
+        <option value="y" ${savedData.homebrew_feat_amount === "y" ? "selected" : ""}>Yes</option>
+        <option value="n" ${savedData.homebrew_feat_amount === "n" ? "selected" : ""}>No</option>
+      </select>
+    </div>
+    <div>
+      <label for="spheres_of_power">Do you want Spheres of Power/Might:</label>
+      <select id="spheres_of_power">
+        <option value="n" ${savedData.spheres_of_power === "n" ? "selected" : ""}>No</option>
+        <option value="y" ${savedData.spheres_of_power === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
+    <div>
+      <label for="dice-rolls">Number of Dice:</label>
+      <input type="number" id="dice-rolls" min="1" value="${savedData.diceRolls || ''}">
+    </div>
+    <div>
+      <label for="dice-sides">Number of Sides on Each Die:</label>
+      <input type="number" id="dice-sides" min="1" value="${savedData.diceSides || ''}">
+    </div>
+    <div>
+      <label for="highest-level">Enter Highest Level:</label>
+      <input type="number" id="highest-level" min="1" value="${savedData.highestLevel || ''}">
+    </div>
+    <div>
+      <label for="lowest-level">Enter Lowest Level:</label>
+      <input type="number" id="lowest-level" min="1" value="${savedData.lowestLevel || ''}">
+    </div>
+    <div>
+      <label for="gold-amount">Desired Gold Amount (or leave blank):</label>
+      <input type="number" id="gold-amount" min="0" value="${savedData.goldAmount || ''}" placeholder="Optional">
+    </div>
+    <div class="resizable-handle"></div> <!-- Resizable handle -->
+  `;
+
+  const dialog = new Dialog({
+    title: "Random Character Generator",
+    content: html,
+    buttons: {
+      generate: {
+        label: "Change Generated Character Info",
+        callback: () => {
+          // Get form data
+          const characterData = {
+            input: "Y",  // Ensure the first value is "Y"
+            region: document.getElementById('character-region').value,
+            race: document.getElementById('character-race').value,
+            class: document.getElementById('character-class').value,
+            bab: document.getElementById('character-bab').value,
+            caster_level: document.getElementById('character-caster_level').value,
+            multiclass: document.getElementById('multiclass').value,
+            alignment: document.getElementById('alignment').value,
+            deity: document.getElementById('deity').value,
+            gender: document.getElementById('gender').value,
+            randomFeats: document.getElementById('random-feats').value,
+            inherents: document.getElementById('inherents').value,
+            modded_char_sheet: document.getElementById('modded_char_sheet').value,
+            homebrew_feat_amount: document.getElementById('homebrew_feat_amount').value,
+            spheres_of_power: document.getElementById('spheres_of_power').value,
+            diceRolls: document.getElementById('dice-rolls').value,
+            diceSides: document.getElementById('dice-sides').value,
+            highestLevel: document.getElementById('highest-level').value,
+            lowestLevel: document.getElementById('lowest-level').value,
+            goldAmount: document.getElementById('gold-amount').value,
+          };
+
+          // Save the data to localStorage
+          writeDeliverData(characterData);
+          // Stored separately (NOT in the backend payload) so it doesn't break the fixed 19-input endpoint
+          writeCustomBuffsFlag(document.getElementById('add_custom_buffs').value);
+
+          // You can proceed with your logic for generating the character here
+          console.log("Character Data Generated: ", characterData);
+        }
+      }
+    }
+  }).render(true);
+
+}
