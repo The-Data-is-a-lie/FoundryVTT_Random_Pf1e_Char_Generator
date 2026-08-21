@@ -3,3 +3,12 @@
 
 # Keep the distributable archive byte-for-byte binary (never LF-normalize it)
 *.zip binary
+
+# ---- Foundry compendium packs (LevelDB) — never line-ending convert ----
+#      These are database files, not text. CURRENT holds a bare "MANIFEST-NNNNNN\n" pointer that
+#      LevelDB reads verbatim; with core.autocrlf=true the `* text=auto` rule above rewrites that
+#      LF to CRLF on checkout, so a fresh clone opens "MANIFEST-000042\r", finds nothing, and the
+#      compendium fails to load. The .ldb and MANIFEST-* files escape the same fate only by
+#      accident, through git's NUL-byte binary heuristic -- one manifest without a NUL byte early
+#      enough and it corrupts too. Mark the whole pack tree binary so none of it is ever converted.
+pf1e_random_char_generator/packs/** binary
