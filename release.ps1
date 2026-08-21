@@ -277,6 +277,33 @@ if ($missingPacks) { Fail "Zip is missing compendium packs that build/catalog.js
 $ldbCount = @($names | Where-Object { $_ -match "\.ldb$" }).Count
 if ($ldbCount -lt 14) { Fail "Zip has only $ldbCount pack .ldb segments -- the compendiums look empty or truncated." }
 Ok "All $($RequiredPacks.Count) compendium packs present ($ldbCount .ldb segments)."
+
+# Present is not the same as readable. LevelDB reads CURRENT verbatim -- it holds "MANIFEST-NNNNNN"
+# and a newline, nothing else -- so two zips that pass every check above still ship a dead compendium.
+# A release built from a fresh clone can carry a CRLF CURRENT: the pack tree used to inherit git's
+# `* text=auto`, and core.autocrlf=true rewrites that LF on checkout, so LevelDB hunts for a manifest
+# whose name ends in \r and finds none. That is fixed in .gitattributes; it is re-checked here because
+# the next rule to reach these files will not announce itself either. And a pack zipped mid-compaction
+# points CURRENT at a manifest that never made it into the archive. Both die at open with
+# "Database is not open", which names neither cause -- and only on the machine that installed the zip.
+$zi = [System.IO.Compression.ZipFile]::OpenRead($zipTarget)
+try {
+    foreach ($p in $RequiredPacks) {
+        $entry = $zi.GetEntry("$ModName/packs/$p/CURRENT")
+        if (-not $entry) { Fail "packs/$p/CURRENT vanished between checks." }
+        $sr = New-Object System.IO.StreamReader($entry.Open())
+        try { $raw = $sr.ReadToEnd() } finally { $sr.Dispose() }
+        if ($raw.IndexOf([char]13) -ge 0) {
+            Fail "packs/$p/CURRENT has CRLF endings -- LevelDB will not find its manifest. Confirm .gitattributes marks packs/** binary, then re-clone before releasing."
+        }
+        $manifest = $raw.Trim()
+        if ($manifest -notmatch '^MANIFEST-\d+$') { Fail "packs/$p/CURRENT reads '$manifest', which is not a LevelDB manifest name." }
+        if (-not $nameSet.Contains("$ModName/packs/$p/$manifest")) {
+            Fail "packs/$p/CURRENT points at $manifest, which is not in the zip -- the pack was captured mid-compaction."
+        }
+    }
+} finally { $zi.Dispose() }
+Ok "All $($RequiredPacks.Count) pack manifests resolve (LF-terminated, present in the zip)."
 # Floor, not a target: it exists to catch a zip that lost its big templates, since a mirror that
 # silently copied nothing still zips and still passes every other check. Dropping
 # every_class_feature*.json took the zip from 18.05 MB to 14.99 MB, so the old 15 MB floor would
