@@ -214,9 +214,14 @@ export async function addClassFeatures(ctx) {
 
   // ----- Mythic band (owner-'mythic' buckets + the payload `mythic` block, spec §14) ----- //
   // Everything mythic renders under ONE "Mythic" divider, each entry wearing exactly one of five
-  // tags: (Mythic Path) for the path row, its tier-1 feature choice, the capstone, and the
-  // per-tier path abilities; (Mythic Ability) for the base chassis (Surge, Mythic Power, ...);
-  // and the tradition's (Mythic Boon) / (Mythic Quality) / (Mythic Flaw) — drawbacks are flaws.
+  // tags: (Mythic) for the single per-character chassis entry that leads the band — tier, pool,
+  // surge, the grant schedule and the universal abilities' text, all in one item; (Mythic Path)
+  // for the tier-1 feature choice, the capstone and the per-tier path abilities; and the
+  // tradition's (Mythic Boon) / (Mythic Quality) / (Mythic Flaw) — drawbacks are flaws.
+  // The band below the chassis entry carries ONLY what the character chose or was dealt. The
+  // backend used to synthesize a row for the path itself (restating a schedule the mythic class
+  // item below already encodes) and a row per universal ability (identical on every mythic
+  // character of that tier); both were folded into the chassis entry on 2026-08-29.
   // The backend's stamps for these buckets are TIERS, not levels, so the tier goes into the
   // description text instead of borrowing the "(Rage Power 4)" level convention, which here
   // would read as a character level. Every entry is class-associated to the mythic path class
@@ -228,11 +233,14 @@ export async function addClassFeatures(ctx) {
     const assoc = mythSrc ? { tag: mythSrc.system?.tag, name: mythSrc.name } : null;
     const TRADITION_TAGS = { Drawback: 'Mythic Flaw', Boon: 'Mythic Boon', Quality: 'Mythic Quality' };
     const BUCKET_TAGS = {
+      'mythic': 'Mythic',
       'mythic path': 'Mythic Path',
       'mythic path abilities': 'Mythic Path',
+      // LEGACY: pre-2026-08-29 payloads shipped the universals as their own bucket.
       'mythic abilities': 'Mythic Ability',
     };
-    const ORDER = ['mythic path', 'mythic abilities', 'mythic path abilities', 'mythic tradition'];
+    const ORDER = ['mythic', 'mythic path', 'mythic abilities', 'mythic path abilities',
+                   'mythic tradition'];
     const orderedKeys = [...ORDER.filter(k => mythicBuckets.has(k)),
                          ...[...mythicBuckets.keys()].filter(k => !ORDER.includes(k))];
     let sort = mythicBase + 125;
@@ -250,9 +258,11 @@ export async function addClassFeatures(ctx) {
             tag = TRADITION_TAGS[m[1]];
             display = m[2];
           } else {
-            // LEGACY payloads only: the backend used to ship a grant as its own
-            // "Parent → Granted Thing" row (it now folds the grant into the parent's entry);
-            // a replayed old payload still renders, wearing its parent's tag.
+            // LEGACY payloads only: the backend used to ship a granting boon as TWO rows — its
+            // own generic promise, plus a "Parent → Granted Thing" row beside it. Since
+            // 2026-08-29 it emits one row, named for the granted ability and keeping the
+            // parent's "Boon: " prefix, so it matches the regex above and never reaches here.
+            // A replayed old payload still renders, wearing its parent's tag.
             const parent = choice.split(' → ')[0];
             tag = Object.entries(TRADITION_TAGS)
               .find(([prefix]) => choices[`${prefix}: ${parent}`])?.[1] || 'Mythic Boon';

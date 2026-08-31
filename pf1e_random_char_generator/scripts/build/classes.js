@@ -303,6 +303,16 @@ export async function addClasses(ctx) {
       item._id = ctx.newId('mythicPath', myth.path);
       item.system.level = Number(myth.tier) || 1;
       item.system.hp = Number(myth.bonus_hp) || 0;
+      // The decision ledger (backend `mythic.ledger_html`): the picks by tier and the
+      // flaws-for-boons trade, appended under the path's own flavour text. The same string also
+      // rides the 'Mythic' chassis entry in the feature band — this is the OTHER surface a reader
+      // lands on, the class row, and it has never said anything about what was chosen. Rendered
+      // once in the backend and reused here rather than re-derived, so the two cannot disagree.
+      // Guarded: an older payload has no such key and the item keeps the description it shipped.
+      if (myth.ledger_html) {
+        const desc = item.system.description ??= {};
+        desc.value = `${desc.value ?? ''}<hr /><h3>Mythic decisions</h3>${myth.ledger_html}`;
+      }
       item.sort = (classIdx + 1) * 100000;   // after every real class in the sheet summary
       appendJsonToTemplate([item], exportTemplate, 'Class');
       log.debug(`Mythic: added ${item.name} (tier ${item.system.level}, ${item.system.hp} hp).`);
