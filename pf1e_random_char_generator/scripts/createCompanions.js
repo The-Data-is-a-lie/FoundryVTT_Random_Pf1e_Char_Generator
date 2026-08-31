@@ -37,6 +37,8 @@
  */
 import { skillsDict } from './shared/skills-dict.js';
 import { forceRederive } from './shared/foundry-doc.js';
+import { readDeliverData } from './shared/storage.js';
+import { createCatalog } from './build/catalog.js';
 import { buildSectionItems } from './companion-sections.js';
 import { log } from './shared/log.js';
 
@@ -366,21 +368,63 @@ function nameCandidates(name) {
   return out;
 }
 
-/** A name -> compendium feat data resolver, prefetched so `buildSectionItems` can stay pure. */
+/**
+ * A name -> feat-row resolver, prefetched so `buildSectionItems` can stay pure.
+ *
+ * ## It reads THIS MODULE'S catalog, not `pf1.feats`, and that is the whole point
+ *
+ * It used to read `pf1.feats` — the pf1 SYSTEM's compendium, which carries the SRD and nothing
+ * else. That was invisible while the creature feat pool was a 29-name allowlist of Core and APG
+ * feats, because every one of them hit. Ticket 06 derived the pool from the whole of
+ * `data/feats.csv` instead, and a live summoner 12's eidolon came back with FOUR OF ITS FIVE FEATS
+ * BARE: Divine Defiance (Faiths & Philosophies), Desert Dweller, Storm-Lashed and Focused
+ * Discipline (Inner Sea World Guide) are campaign-setting feats, so they are not in the SRD and
+ * were never in that pack.
+ *
+ * The module already ships the text. `every_feat.json` is 8,816 rows, it is the
+ * `pf1e_random_char_generator.feats` pack, and it is what a PC's OWN feats resolve against — this
+ * path was simply never pointed at it. Measured over the pool both bodies can draw from (852 names,
+ * hands and language included): **848 resolve here, all with a non-empty description**, against a
+ * handful under `pf1.feats`. The four that do not are name defects in `data/feats.csv`, and
+ * `validate_companion_feats.py::check_names` now fails on them instead of normalising them away.
+ *
+ * Reading the same catalog as the PC also means a companion's Dodge is its master's Dodge — same
+ * row, same `idx` order stamp deciding which of 39 `Skill Focus` variants wins. Two catalogs could
+ * not promise that.
+ *
+ * ## Why `createCatalog(null, ...)`
+ *
+ * `catalog.js` owns the matching rule (base name before `" ("`, `(Mythic)` rows skipped, lowest
+ * `idx` wins) and nothing outside it should re-decide how a name resolves. Its JSON fallback is
+ * deliberately NOT wired up here: the packs ship inside this module, so a missing one is a broken
+ * install rather than a supported configuration, and fetching 13 MB of `every_feat.json` per
+ * companion would undo the reason the packs exist. A declined pack warns from `catalog.js` and
+ * every feat then synthesizes bare — exactly what a miss did before.
+ *
+ * Tax children are primed too. They are not items of their own (a taxed feat cost one slot, so it
+ * is one entry), but `featItems` appends each child's rules text under the parent's, the way
+ * `feats.js::applyFeatTax` does on the PC side.
+ */
 async function featResolver(entry) {
-  const wanted = [...(entry.feats ?? []), ...(entry.flaw_feats ?? [])].filter(Boolean);
+  const wanted = [...(entry.feats ?? []), ...(entry.flaw_feats ?? []),
+                  ...Object.values(entry.feat_tax_dict ?? {}).flat()].filter(Boolean);
   const resolved = new Map();
   if (!wanted.length) return () => null;
 
-  const pack = game.packs.get('pf1.feats');
-  const index = pack ? await pack.getIndex() : null;
+  // The branch the master's own feats were built on, so the two sheets cannot disagree about which
+  // spelling of a feat they got.
+  const catalog = createCatalog(null, { modded: readDeliverData().modded_char_sheet });
+  await catalog.prime('everyFeat', wanted.flatMap(nameCandidates));
+
   for (const name of wanted) {
-    const hit = index?.find((row) => nameCandidates(name).some((alt) => norm(row.name) === norm(alt)));
-    if (!hit) {
-      console.warn(`Companion: no pf1.feats entry for "${name}" — it will render with no rules text.`);
+    const row = nameCandidates(name).map((alt) => catalog.feat(alt)).find(Boolean);
+    if (!row) {
+      console.warn(`Companion: no every_feat row for "${name}" — it will render with no rules text.`);
       continue;
     }
-    const data = (await pack.getDocument(hit._id)).toObject();
+    // `catalog.lookup` hands back the SHARED row out of the session cache; `featItems` writes to
+    // `system`, so clone before it can.
+    const data = structuredClone(row);
     delete data._id;
     resolved.set(norm(name), data);
   }

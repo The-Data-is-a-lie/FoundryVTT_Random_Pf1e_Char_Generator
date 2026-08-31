@@ -104,17 +104,71 @@ function contextNotes(records) {
 }
 
 /**
+ * What the stat block DID with each source, keyed by the name the backend wrote.
+ *
+ * The same three payload fields the Evolutions band reads, in the same shape, because it is the same
+ * question asked of a different band: `applied_changes` is a folded number with its target,
+ * `unapplied` is an effect the block could not express and the reason why, `context_notes` is the
+ * situational text nobody totalled. Sources are matched EXACTLY -- every one of these strings is a
+ * feat, flaw or size label the backend itself emitted, so a fuzzy match could only ever be wrong.
+ *
+ * `unapplied` lines are `"<label>: <holdback>"`; `companion_stats.py` writes them that way and does
+ * not double the label when the curated sentence already starts with it.
+ */
+function foldProvenance(stats) {
+  const notes = new Map();
+  for (const note of stats.context_notes ?? []) {
+    if (!note?.text || !note.source) continue;
+    notes.set(note.source, [...(notes.get(note.source) ?? []), note]);
+  }
+  const folded = new Map();
+  for (const change of stats.applied_changes ?? []) {
+    const source = String(change?.source ?? '');
+    if (!source) continue;
+    const value = Number(change.value) >= 0 ? `+${change.value}` : String(change.value);
+    folded.set(source, [...(folded.get(source) ?? []), `${value} ${change.target}`]);
+  }
+  const held = new Map();
+  for (const line of stats.unapplied ?? []) {
+    const split = String(line).indexOf(': ');
+    if (split > 0) held.set(String(line).slice(0, split), String(line).slice(split + 2));
+  }
+  return { notes, folded, held };
+}
+
+/**
  * The creature's feats, named the way a PC's class bonus feats are named.
  *
  * `feat_labels` is parallel to `feats` and carries the grant level the chassis table dates each slot
  * at, so this reads `Animal Companion 5: Weapon Focus` beside a PC's `Fighter 1: Weapon Focus`. Tax
  * children append ` > Child`, the same bundling `applyFeatTax` does on the PC side -- a taxed feat
- * is one entry, not two, because it cost one slot.
+ * is one entry, not two, because it cost one slot. Their RULES TEXT is appended under the parent's
+ * for the same reason `applyFeatTax` appends it there: the child is on the creature, and an item
+ * that names it without saying what it does is a name.
+ *
+ * ## The arithmetic says so on its face, and that is not a reversal of D14
+ *
+ * `companion_feat_changes.json` carries a contextNote on 33 of its 42 feats and an `unapplied`
+ * holdback on four, and until this function read them NONE of it reached a feat item -- only the
+ * flaw band called the helper. So a creature carrying Iron Will showed a Will save two points
+ * higher than its chassis with nothing on the sheet saying which feat put it there.
+ *
+ * `system.changes` STAYS STRIPPED (below). A contextNote asserts nothing to pf1 and a description
+ * paragraph asserts less; they say what the fold already counted, which is the opposite of counting
+ * it again. Re-attaching the changes themselves would double Toughness into `mhp`, Iron Will into
+ * `will` and Improved Natural Armor into `nac`, which is exactly what D14 exists to prevent.
+ *
+ * Where the backend has notes for a feat they REPLACE the compendium's rather than joining them:
+ * both sets are the same sentence written twice (`every_feat`'s Combat Reflexes note says
+ * "[[@resources...]] AoO available", the backend's says the same in prose), and the backend's is
+ * the one authored against a stat block whose numbers were already folded. Five pool feats have
+ * both. The other 33 keep the compendium's, untouched.
  */
 export function featItems(entry, resolveFeat) {
   const out = [];
   const labels = entry.feat_labels ?? [];
   const tax = entry.feat_tax_dict ?? {};
+  const { notes, folded, held } = foldProvenance(entry.stats ?? {});
 
   const build = (name, displayName, sort) => {
     const source = resolveFeat?.(name);
@@ -143,6 +197,28 @@ export function featItems(entry, resolveFeat) {
     // Armor's change would count it twice. `ac` is the only target with no home.
     item.system.changes = (item.system.changes ?? []).filter((change) => change?.target === 'ac');
     item.system.subType = 'feat';
+
+    const own = notes.get(name);
+    if (own?.length) item.system.contextNotes = contextNotes(own);
+
+    const parts = [item.system.description?.value ?? ''];
+    for (const child of tax[name] ?? []) {
+      const childDesc = resolveFeat?.(child)?.system?.description?.value;
+      if (childDesc) parts.push(`<hr><p><strong>${child}</strong></p>${childDesc}`);
+    }
+    const numbers = folded.get(name);
+    const holdback = held.get(name);
+    if (numbers) {
+      parts.push(`<p><strong>Folded into this stat block.</strong> ${numbers.join(', ')}</p>`);
+    }
+    if (holdback) {
+      parts.push('<p><strong>Not folded into this stat block — apply at the table.</strong> '
+        + `${holdback}</p>`);
+    }
+    // A NEW description object: `item.system` is a shallow copy, so writing through the old one
+    // would edit the resolver's cached row and leak into the next creature that takes this feat.
+    item.system.description = { ...(item.system.description ?? {}), value: parts.join('') };
+
     item.sort = sort;
     return item;
   };
