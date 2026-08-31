@@ -1480,7 +1480,7 @@
     "type": "feat"
    },
    {
-    "_id": "kfztquIZtPqcVJ1b",
+    "_id": "5212cPQ3S7SLyAK1",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -1494,7 +1494,7 @@
     "flags": {},
     "img": "systems/pf1/icons/conditions/frightened.svg",
     "links": {},
-    "name": "(Mythic Path) Champion",
+    "name": "(Mythic) Champion, Mythic Tier 7",
     "ownership": {
      "default": 0
     },
@@ -1523,7 +1523,7 @@
      "contextNotes": [],
      "crOffset": "",
      "description": {
-      "value": "<p><em>Gained at mythic tier 1.</em></p><p><strong>Champion</strong></p><ul><li><strong>benefit:</strong> Mythic path (Champion); one path ability per tier, mythic feats at tiers 1/3/5/7/9.</li></ul>"
+      "value": "<1923 chars sha256:a8f5ab556e6c812e>"
      },
      "disabled": false,
      "effectNotes": [],
@@ -1636,553 +1636,7 @@
     "type": "feat"
    },
    {
-    "_id": "9V9smUGCnAO2NwuU",
-    "_stats": {
-     "coreVersion": null,
-     "createdTime": null,
-     "lastModifiedBy": null,
-     "modifiedTime": null,
-     "systemId": null,
-     "systemVersion": null
-    },
-    "actions": {},
-    "changes": {},
-    "flags": {},
-    "img": "systems/pf1/icons/conditions/frightened.svg",
-    "links": {},
-    "name": "(Mythic Ability) Hard to Kill",
-    "ownership": {
-     "default": 0
-    },
-    "scriptCalls": {},
-    "sort": 3000375,
-    "system": {
-     "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": [
-       "Champion"
-      ]
-     },
-     "attackNotes": [],
-     "changeFlags": {
-      "heavyArmorFullSpeed": false,
-      "loseDexToAC": false,
-      "mediumArmorFullSpeed": false,
-      "noHeavyEncumbrance": false,
-      "noMediumEncumbrance": false
-     },
-     "changes": [],
-     "class": "mythicChampion",
-     "classSkills": {},
-     "contextNotes": [],
-     "crOffset": "",
-     "description": {
-      "value": "<256 chars sha256:0ba64a5121759ee0>"
-     },
-     "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
-     "racePoints": null,
-     "scriptCalls": [],
-     "showInQuickbar": false,
-     "subType": "classFeat",
-     "tag": "carefulSpeaker",
-     "tags": [
-      "General"
-     ],
-     "traitCategory": "",
-     "traitType": "",
-     "uses": {
-      "autoDeductChargesCost": "",
-      "maxFormula": "",
-      "per": "",
-      "rechargeFormula": "",
-      "value": null
-     },
-     "weaponProf": []
-    },
-    "type": "feat"
-   },
-   {
-    "_id": "CIX6TGpjlcb5w4I2",
-    "_stats": {
-     "coreVersion": null,
-     "createdTime": null,
-     "lastModifiedBy": null,
-     "modifiedTime": null,
-     "systemId": null,
-     "systemVersion": null
-    },
-    "actions": {},
-    "changes": {},
-    "flags": {},
-    "img": "systems/pf1/icons/conditions/frightened.svg",
-    "links": {},
-    "name": "(Mythic Ability) Mythic Power",
-    "ownership": {
-     "default": 0
-    },
-    "scriptCalls": {},
-    "sort": 3000500,
-    "system": {
-     "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": [
-       "Champion"
-      ]
-     },
-     "attackNotes": [],
-     "changeFlags": {
-      "heavyArmorFullSpeed": false,
-      "loseDexToAC": false,
-      "mediumArmorFullSpeed": false,
-      "noHeavyEncumbrance": false,
-      "noMediumEncumbrance": false
-     },
-     "changes": [],
-     "class": "mythicChampion",
-     "classSkills": {},
-     "contextNotes": [],
-     "crOffset": "",
-     "description": {
-      "value": "<261 chars sha256:1915362376e9e782>"
-     },
-     "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
-     "racePoints": null,
-     "scriptCalls": [],
-     "showInQuickbar": false,
-     "subType": "classFeat",
-     "tag": "carefulSpeaker",
-     "tags": [
-      "General"
-     ],
-     "traitCategory": "",
-     "traitType": "",
-     "uses": {
-      "autoDeductChargesCost": "",
-      "maxFormula": "",
-      "per": "",
-      "rechargeFormula": "",
-      "value": null
-     },
-     "weaponProf": []
-    },
-    "type": "feat"
-   },
-   {
-    "_id": "mEBBDIgKvXgWwJX7",
-    "_stats": {
-     "coreVersion": null,
-     "createdTime": null,
-     "lastModifiedBy": null,
-     "modifiedTime": null,
-     "systemId": null,
-     "systemVersion": null
-    },
-    "actions": {},
-    "changes": {},
-    "flags": {},
-    "img": "systems/pf1/icons/conditions/frightened.svg",
-    "links": {},
-    "name": "(Mythic Ability) Surge",
-    "ownership": {
-     "default": 0
-    },
-    "scriptCalls": {},
-    "sort": 3000625,
-    "system": {
-     "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": [
-       "Champion"
-      ]
-     },
-     "attackNotes": [],
-     "changeFlags": {
-      "heavyArmorFullSpeed": false,
-      "loseDexToAC": false,
-      "mediumArmorFullSpeed": false,
-      "noHeavyEncumbrance": false,
-      "noMediumEncumbrance": false
-     },
-     "changes": [],
-     "class": "mythicChampion",
-     "classSkills": {},
-     "contextNotes": [],
-     "crOffset": "",
-     "description": {
-      "value": "<330 chars sha256:98a8853b04804a63>"
-     },
-     "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
-     "racePoints": null,
-     "scriptCalls": [],
-     "showInQuickbar": false,
-     "subType": "classFeat",
-     "tag": "carefulSpeaker",
-     "tags": [
-      "General"
-     ],
-     "traitCategory": "",
-     "traitType": "",
-     "uses": {
-      "autoDeductChargesCost": "",
-      "maxFormula": "",
-      "per": "",
-      "rechargeFormula": "",
-      "value": null
-     },
-     "weaponProf": []
-    },
-    "type": "feat"
-   },
-   {
-    "_id": "myJWi73i0qQLg4Pm",
-    "_stats": {
-     "coreVersion": null,
-     "createdTime": null,
-     "lastModifiedBy": null,
-     "modifiedTime": null,
-     "systemId": null,
-     "systemVersion": null
-    },
-    "actions": {},
-    "changes": {},
-    "flags": {},
-    "img": "systems/pf1/icons/conditions/frightened.svg",
-    "links": {},
-    "name": "(Mythic Ability) Amazing Initiative",
-    "ownership": {
-     "default": 0
-    },
-    "scriptCalls": {},
-    "sort": 3000750,
-    "system": {
-     "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": [
-       "Champion"
-      ]
-     },
-     "attackNotes": [],
-     "changeFlags": {
-      "heavyArmorFullSpeed": false,
-      "loseDexToAC": false,
-      "mediumArmorFullSpeed": false,
-      "noHeavyEncumbrance": false,
-      "noMediumEncumbrance": false
-     },
-     "changes": [],
-     "class": "mythicChampion",
-     "classSkills": {},
-     "contextNotes": [],
-     "crOffset": "",
-     "description": {
-      "value": "<345 chars sha256:1a01446fb3abbc67>"
-     },
-     "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
-     "racePoints": null,
-     "scriptCalls": [],
-     "showInQuickbar": false,
-     "subType": "classFeat",
-     "tag": "carefulSpeaker",
-     "tags": [
-      "General"
-     ],
-     "traitCategory": "",
-     "traitType": "",
-     "uses": {
-      "autoDeductChargesCost": "",
-      "maxFormula": "",
-      "per": "",
-      "rechargeFormula": "",
-      "value": null
-     },
-     "weaponProf": []
-    },
-    "type": "feat"
-   },
-   {
-    "_id": "xboSlfALeZgSZcTh",
-    "_stats": {
-     "coreVersion": null,
-     "createdTime": null,
-     "lastModifiedBy": null,
-     "modifiedTime": null,
-     "systemId": null,
-     "systemVersion": null
-    },
-    "actions": {},
-    "changes": {},
-    "flags": {},
-    "img": "systems/pf1/icons/conditions/frightened.svg",
-    "links": {},
-    "name": "(Mythic Ability) Recuperation",
-    "ownership": {
-     "default": 0
-    },
-    "scriptCalls": {},
-    "sort": 3000875,
-    "system": {
-     "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": [
-       "Champion"
-      ]
-     },
-     "attackNotes": [],
-     "changeFlags": {
-      "heavyArmorFullSpeed": false,
-      "loseDexToAC": false,
-      "mediumArmorFullSpeed": false,
-      "noHeavyEncumbrance": false,
-      "noMediumEncumbrance": false
-     },
-     "changes": [],
-     "class": "mythicChampion",
-     "classSkills": {},
-     "contextNotes": [],
-     "crOffset": "",
-     "description": {
-      "value": "<324 chars sha256:95fd9af75415601f>"
-     },
-     "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
-     "racePoints": null,
-     "scriptCalls": [],
-     "showInQuickbar": false,
-     "subType": "classFeat",
-     "tag": "carefulSpeaker",
-     "tags": [
-      "General"
-     ],
-     "traitCategory": "",
-     "traitType": "",
-     "uses": {
-      "autoDeductChargesCost": "",
-      "maxFormula": "",
-      "per": "",
-      "rechargeFormula": "",
-      "value": null
-     },
-     "weaponProf": []
-    },
-    "type": "feat"
-   },
-   {
-    "_id": "1poPls5i5cgas8YZ",
-    "_stats": {
-     "coreVersion": null,
-     "createdTime": null,
-     "lastModifiedBy": null,
-     "modifiedTime": null,
-     "systemId": null,
-     "systemVersion": null
-    },
-    "actions": {},
-    "changes": {},
-    "flags": {},
-    "img": "systems/pf1/icons/conditions/frightened.svg",
-    "links": {},
-    "name": "(Mythic Ability) Mythic Saving Throws",
-    "ownership": {
-     "default": 0
-    },
-    "scriptCalls": {},
-    "sort": 3001000,
-    "system": {
-     "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": [
-       "Champion"
-      ]
-     },
-     "attackNotes": [],
-     "changeFlags": {
-      "heavyArmorFullSpeed": false,
-      "loseDexToAC": false,
-      "mediumArmorFullSpeed": false,
-      "noHeavyEncumbrance": false,
-      "noMediumEncumbrance": false
-     },
-     "changes": [],
-     "class": "mythicChampion",
-     "classSkills": {},
-     "contextNotes": [],
-     "crOffset": "",
-     "description": {
-      "value": "<249 chars sha256:1cd7ce486ad8baed>"
-     },
-     "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
-     "racePoints": null,
-     "scriptCalls": [],
-     "showInQuickbar": false,
-     "subType": "classFeat",
-     "tag": "carefulSpeaker",
-     "tags": [
-      "General"
-     ],
-     "traitCategory": "",
-     "traitType": "",
-     "uses": {
-      "autoDeductChargesCost": "",
-      "maxFormula": "",
-      "per": "",
-      "rechargeFormula": "",
-      "value": null
-     },
-     "weaponProf": []
-    },
-    "type": "feat"
-   },
-   {
-    "_id": "YkgAXol7lxmkmTJ5",
-    "_stats": {
-     "coreVersion": null,
-     "createdTime": null,
-     "lastModifiedBy": null,
-     "modifiedTime": null,
-     "systemId": null,
-     "systemVersion": null
-    },
-    "actions": {},
-    "changes": {},
-    "flags": {},
-    "img": "systems/pf1/icons/conditions/frightened.svg",
-    "links": {},
-    "name": "(Mythic Ability) Force of Will",
-    "ownership": {
-     "default": 0
-    },
-    "scriptCalls": {},
-    "sort": 3001125,
-    "system": {
-     "abilityType": "na",
-     "actions": [],
-     "armorProf": [],
-     "associations": {
-      "classes": [
-       "Champion"
-      ]
-     },
-     "attackNotes": [],
-     "changeFlags": {
-      "heavyArmorFullSpeed": false,
-      "loseDexToAC": false,
-      "mediumArmorFullSpeed": false,
-      "noHeavyEncumbrance": false,
-      "noMediumEncumbrance": false
-     },
-     "changes": [],
-     "class": "mythicChampion",
-     "classSkills": {},
-     "contextNotes": [],
-     "crOffset": "",
-     "description": {
-      "value": "<319 chars sha256:7935f952192044b5>"
-     },
-     "disabled": false,
-     "effectNotes": [],
-     "flags": {
-      "boolean": {},
-      "dictionary": {}
-     },
-     "languages": [],
-     "links": {
-      "charges": [],
-      "children": []
-     },
-     "racePoints": null,
-     "scriptCalls": [],
-     "showInQuickbar": false,
-     "subType": "classFeat",
-     "tag": "carefulSpeaker",
-     "tags": [
-      "General"
-     ],
-     "traitCategory": "",
-     "traitType": "",
-     "uses": {
-      "autoDeductChargesCost": "",
-      "maxFormula": "",
-      "per": "",
-      "rechargeFormula": "",
-      "value": null
-     },
-     "weaponProf": []
-    },
-    "type": "feat"
-   },
-   {
-    "_id": "C9Re6vMBawVKgOvf",
+    "_id": "zai9YtLbzN6sP8Mb",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2201,7 +1655,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3001250,
+    "sort": 3000375,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2260,7 +1714,7 @@
     "type": "feat"
    },
    {
-    "_id": "DVpccJWFziIK17K7",
+    "_id": "z3pWxBceuCZOrpfl",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2279,7 +1733,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3001375,
+    "sort": 3000500,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2338,7 +1792,7 @@
     "type": "feat"
    },
    {
-    "_id": "kWODPbiOH3Qqm746",
+    "_id": "GvJ0c9QYUsybdHTF",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2357,7 +1811,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3001500,
+    "sort": 3000625,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2416,7 +1870,7 @@
     "type": "feat"
    },
    {
-    "_id": "8BdSNXEzukLzfOHc",
+    "_id": "aqH8xBTzapTx4GIR",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2435,7 +1889,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3001625,
+    "sort": 3000750,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2494,7 +1948,7 @@
     "type": "feat"
    },
    {
-    "_id": "49aPpiFD0MaYP3TB",
+    "_id": "5I6mSqr50My4Xz9t",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2513,7 +1967,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3001750,
+    "sort": 3000875,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2572,7 +2026,7 @@
     "type": "feat"
    },
    {
-    "_id": "Km4mf8MRv8EXPPDZ",
+    "_id": "CHElGJAwkLJ7jHpZ",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2591,7 +2045,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3001875,
+    "sort": 3001000,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2650,7 +2104,7 @@
     "type": "feat"
    },
    {
-    "_id": "NKM9thPqbFRSK0Sh",
+    "_id": "AMk5PNDaQPQBm98u",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2669,7 +2123,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002000,
+    "sort": 3001125,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2728,7 +2182,7 @@
     "type": "feat"
    },
    {
-    "_id": "lce3tUlo9xSZURCS",
+    "_id": "g8QzooLzDK9dzFDZ",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2747,7 +2201,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002125,
+    "sort": 3001250,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2806,7 +2260,7 @@
     "type": "feat"
    },
    {
-    "_id": "8xrr83uPgvH07TUg",
+    "_id": "kC3471ei4Wk2FPfg",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2825,7 +2279,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002250,
+    "sort": 3001375,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2884,7 +2338,7 @@
     "type": "feat"
    },
    {
-    "_id": "najjKTEHkeGClCU4",
+    "_id": "QXX7V43UZD6Zcwn9",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2903,7 +2357,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002375,
+    "sort": 3001500,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -2962,7 +2416,7 @@
     "type": "feat"
    },
    {
-    "_id": "Rp0Bj2ALRUabYPFI",
+    "_id": "MRcEeCAb5eSJQA1R",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -2981,7 +2435,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002500,
+    "sort": 3001625,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -3040,7 +2494,7 @@
     "type": "feat"
    },
    {
-    "_id": "jfr1d2Qo1VvtqA1A",
+    "_id": "4zjb2YY9Fj00WfEG",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -3059,7 +2513,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002625,
+    "sort": 3001750,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -3118,7 +2572,7 @@
     "type": "feat"
    },
    {
-    "_id": "BGwVgID4YxtWnr3D",
+    "_id": "HWwTFJJd3oRX1nh4",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -3137,7 +2591,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002750,
+    "sort": 3001875,
     "system": {
      "abilityType": "na",
      "actions": [],
@@ -3196,7 +2650,7 @@
     "type": "feat"
    },
    {
-    "_id": "Nscv17JaaBvY9Thm",
+    "_id": "78DeQqO5ezuetV3D",
     "_stats": {
      "coreVersion": null,
      "createdTime": null,
@@ -3215,7 +2669,7 @@
      "default": 0
     },
     "scriptCalls": {},
-    "sort": 3002875,
+    "sort": 3002000,
     "system": {
      "abilityType": "na",
      "actions": [],

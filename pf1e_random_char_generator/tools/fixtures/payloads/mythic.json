@@ -7,10 +7,13 @@
    "Improved Damage": "The aegis’s melee attacks deal additional damage. If wielding a two-handed weapon, the aegis deals 3 additional points of damage on a successful hit. If wielding a one-handed weapon, the aegis deals 2 additional points of damage on a successful hit. If wielding a light weapon, the aegis deals 1 additional point of damage on a successful hit. If dual-wielding, each weapon is affected separately. [2-point Customizations]",
    "Chakra Bind, Improved": "An aegis with this customization gains the Access Middle Chakra Slot feat as a bonus feat as long as his astral suit is formed. The aegis chooses which slot to apply this feat to the first time he forms his astral suit for the day and cannot select a different slot for 24 hours, regardless of whether he reforms or reconfigures his suit. The aegis must be at least 9th level and have the Lesser Chakra Bind customization before selecting this customization. [3-Point Customizations]"
   },
+  "Mythic": {
+   "Champion, Mythic Tier 7": {
+    "benefit": "Mythic path Champion, tier 7. Power pool 18/day, surge 1d10, +7 on initiative checks, +35 bonus HP, +2 CHA, +2 CON, +2 WIS from the even-tier increases. One path ability per tier; mythic feats at tiers 1/3/5/7/9.",
+    "universal abilities": "<p><strong>Tier 1 — Hard to Kill.</strong> Whenever you are below 0 hit points, you automatically stabilize; you die at negative Constitution x 2 instead of negative Constitution.</p><p><strong>Tier 1 — Mythic Power.</strong> Current pool: 18/day. A pool of mythic power fueling surge and many mythic abilities: 3 + 2 per tier uses per day (plus any tradition bonus).</p><p><strong>Tier 1 — Surge.</strong> Current surge die: 1d10. Expend one use of mythic power to add the surge die to a d20 roll you just made, possibly turning failure into success. The die grows with tier (1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th).</p><p><strong>Tier 2 — Amazing Initiative.</strong> A bonus on initiative checks equal to your mythic tier. Also, as a free action on your turn, expend one use of mythic power to take an additional standard action this turn (not usable to cast a second spell in a round).</p><p><strong>Tier 3 — Recuperation.</strong> Restored to full hit points after 8 hours of rest. Also, expend one use of mythic power and rest 1 hour to regain half your maximum hit points and all class abilities normally regained by resting 8 hours.</p><p><strong>Tier 5 — Mythic Saving Throws.</strong> Whenever you succeed at a saving throw against a spell or special ability from a non-mythic source, you suffer no effect.</p><p><strong>Tier 7 — Force of Will.</strong> As an immediate action, expend one use of mythic power to reroll a d20 roll you just made, or force any non-mythic creature to reroll one it just made; the affected creature takes the second result.</p>"
+   }
+  },
   "Mythic Path": {
-   "Champion": {
-    "benefit": "Mythic path (Champion); one path ability per tier, mythic feats at tiers 1/3/5/7/9."
-   },
    "Champion's Strike: Sudden Attack": {
     "benefit": "As a swift action, you can expend one use of mythic power to make a melee attack at your highest attack bonus. This is in addition to any other attacks you make this round. When making a sudden attack, you roll twice and take the better result, adding your tier to the attack roll. Damage from this attack bypasses all damage reduction."
    }
@@ -62,29 +65,6 @@
     "benefit": "You must accept any challenge to a duel (see Ultimate Combat), regardless of the circumstances, unless doing so is impossible or you are at less than half of your maximum hit points. (For example, a foe cannot challenge you to a duel on a floor of lava unless you can survive walking on lava.) When participating in a duel, your mythic powers enforce the rules on both combatants, usually by rendering you impervious to all outside influences but also forcing all combatants to abide by both the word and the spirit of the agreed-upon rules until the duel ends. This protection from outside forces extends to covering the negotiation of the rules of the duel, if any. In addition, once per day when a foe rejects your challenge to a duel, you may regain two uses of mythic power."
    }
   },
-  "Mythic Abilities": {
-   "Hard to Kill": {
-    "benefit": "Whenever you are below 0 hit points, you automatically stabilize; you die at negative Constitution x 2 instead of negative Constitution."
-   },
-   "Mythic Power": {
-    "benefit": "Current pool: 18/day. A pool of mythic power fueling surge and many mythic abilities: 3 + 2 per tier uses per day (plus any tradition bonus)."
-   },
-   "Surge": {
-    "benefit": "Current surge die: 1d10. Expend one use of mythic power to add the surge die to a d20 roll you just made, possibly turning failure into success. The die grows with tier (1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th)."
-   },
-   "Amazing Initiative": {
-    "benefit": "A bonus on initiative checks equal to your mythic tier. Also, as a free action on your turn, expend one use of mythic power to take an additional standard action this turn (not usable to cast a second spell in a round)."
-   },
-   "Recuperation": {
-    "benefit": "Restored to full hit points after 8 hours of rest. Also, expend one use of mythic power and rest 1 hour to regain half your maximum hit points and all class abilities normally regained by resting 8 hours."
-   },
-   "Mythic Saving Throws": {
-    "benefit": "Whenever you succeed at a saving throw against a spell or special ability from a non-mythic source, you suffer no effect."
-   },
-   "Force of Will": {
-    "benefit": "As an immediate action, expend one use of mythic power to reroll a d20 roll you just made, or force any non-mythic creature to reroll one it just made; the affected creature takes the second result."
-   }
-  },
   "Skill Unlock: Acrobatics": {
    "5 Ranks": "You can move at normal speed through a threatened square without provoking an attack of opportunity by increasing the DC of the check by 5 (instead of moving at half speed).",
    "10 Ranks": "You can use your Acrobatics modifier as your CMD against trip maneuvers, use an Acrobatics check in place of a Reflex save to avoid falling, and reduce falling damage.",
@@ -101,7 +81,6 @@
    "Improved Damage": 9
   },
   "Mythic Path": {
-   "Champion": 1,
    "Champion's Strike: Sudden Attack": 1
   },
   "Mythic Path Abilities": {
@@ -121,15 +100,6 @@
    "Boon: Native-Born": 1,
    "Boon: Additional Mythic Power": 1,
    "Quality: Challenged Duelist": 1
-  },
-  "Mythic Abilities": {
-   "Hard to Kill": 1,
-   "Mythic Power": 1,
-   "Surge": 1,
-   "Amazing Initiative": 2,
-   "Recuperation": 3,
-   "Mythic Saving Throws": 5,
-   "Force of Will": 7
   }
  },
  "class feature owners": {
@@ -137,7 +107,7 @@
   "Mythic Path": "mythic",
   "Mythic Path Abilities": "mythic",
   "Mythic Tradition": "mythic",
-  "Mythic Abilities": "mythic"
+  "Mythic": "mythic"
  },
  "region": "Tal-falko",
  "chosen_race": "Tiefling",
@@ -895,10 +865,13 @@
    "Improved Damage": "The aegis’s melee attacks deal additional damage. If wielding a two-handed weapon, the aegis deals 3 additional points of damage on a successful hit. If wielding a one-handed weapon, the aegis deals 2 additional points of damage on a successful hit. If wielding a light weapon, the aegis deals 1 additional point of damage on a successful hit. If dual-wielding, each weapon is affected separately. [2-point Customizations]",
    "Chakra Bind, Improved": "An aegis with this customization gains the Access Middle Chakra Slot feat as a bonus feat as long as his astral suit is formed. The aegis chooses which slot to apply this feat to the first time he forms his astral suit for the day and cannot select a different slot for 24 hours, regardless of whether he reforms or reconfigures his suit. The aegis must be at least 9th level and have the Lesser Chakra Bind customization before selecting this customization. [3-Point Customizations]"
   },
+  "Mythic": {
+   "Champion, Mythic Tier 7": {
+    "benefit": "Mythic path Champion, tier 7. Power pool 18/day, surge 1d10, +7 on initiative checks, +35 bonus HP, +2 CHA, +2 CON, +2 WIS from the even-tier increases. One path ability per tier; mythic feats at tiers 1/3/5/7/9.",
+    "universal abilities": "<p><strong>Tier 1 — Hard to Kill.</strong> Whenever you are below 0 hit points, you automatically stabilize; you die at negative Constitution x 2 instead of negative Constitution.</p><p><strong>Tier 1 — Mythic Power.</strong> Current pool: 18/day. A pool of mythic power fueling surge and many mythic abilities: 3 + 2 per tier uses per day (plus any tradition bonus).</p><p><strong>Tier 1 — Surge.</strong> Current surge die: 1d10. Expend one use of mythic power to add the surge die to a d20 roll you just made, possibly turning failure into success. The die grows with tier (1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th).</p><p><strong>Tier 2 — Amazing Initiative.</strong> A bonus on initiative checks equal to your mythic tier. Also, as a free action on your turn, expend one use of mythic power to take an additional standard action this turn (not usable to cast a second spell in a round).</p><p><strong>Tier 3 — Recuperation.</strong> Restored to full hit points after 8 hours of rest. Also, expend one use of mythic power and rest 1 hour to regain half your maximum hit points and all class abilities normally regained by resting 8 hours.</p><p><strong>Tier 5 — Mythic Saving Throws.</strong> Whenever you succeed at a saving throw against a spell or special ability from a non-mythic source, you suffer no effect.</p><p><strong>Tier 7 — Force of Will.</strong> As an immediate action, expend one use of mythic power to reroll a d20 roll you just made, or force any non-mythic creature to reroll one it just made; the affected creature takes the second result.</p>"
+   }
+  },
   "Mythic Path": {
-   "Champion": {
-    "benefit": "Mythic path (Champion); one path ability per tier, mythic feats at tiers 1/3/5/7/9."
-   },
    "Champion's Strike: Sudden Attack": {
     "benefit": "As a swift action, you can expend one use of mythic power to make a melee attack at your highest attack bonus. This is in addition to any other attacks you make this round. When making a sudden attack, you roll twice and take the better result, adding your tier to the attack roll. Damage from this attack bypasses all damage reduction."
    }
@@ -950,29 +923,6 @@
     "benefit": "You must accept any challenge to a duel (see Ultimate Combat), regardless of the circumstances, unless doing so is impossible or you are at less than half of your maximum hit points. (For example, a foe cannot challenge you to a duel on a floor of lava unless you can survive walking on lava.) When participating in a duel, your mythic powers enforce the rules on both combatants, usually by rendering you impervious to all outside influences but also forcing all combatants to abide by both the word and the spirit of the agreed-upon rules until the duel ends. This protection from outside forces extends to covering the negotiation of the rules of the duel, if any. In addition, once per day when a foe rejects your challenge to a duel, you may regain two uses of mythic power."
    }
   },
-  "Mythic Abilities": {
-   "Hard to Kill": {
-    "benefit": "Whenever you are below 0 hit points, you automatically stabilize; you die at negative Constitution x 2 instead of negative Constitution."
-   },
-   "Mythic Power": {
-    "benefit": "Current pool: 18/day. A pool of mythic power fueling surge and many mythic abilities: 3 + 2 per tier uses per day (plus any tradition bonus)."
-   },
-   "Surge": {
-    "benefit": "Current surge die: 1d10. Expend one use of mythic power to add the surge die to a d20 roll you just made, possibly turning failure into success. The die grows with tier (1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th)."
-   },
-   "Amazing Initiative": {
-    "benefit": "A bonus on initiative checks equal to your mythic tier. Also, as a free action on your turn, expend one use of mythic power to take an additional standard action this turn (not usable to cast a second spell in a round)."
-   },
-   "Recuperation": {
-    "benefit": "Restored to full hit points after 8 hours of rest. Also, expend one use of mythic power and rest 1 hour to regain half your maximum hit points and all class abilities normally regained by resting 8 hours."
-   },
-   "Mythic Saving Throws": {
-    "benefit": "Whenever you succeed at a saving throw against a spell or special ability from a non-mythic source, you suffer no effect."
-   },
-   "Force of Will": {
-    "benefit": "As an immediate action, expend one use of mythic power to reroll a d20 roll you just made, or force any non-mythic creature to reroll one it just made; the affected creature takes the second result."
-   }
-  },
   "Skill Unlock: Acrobatics": {
    "5 Ranks": "You can move at normal speed through a threatened square without provoking an attack of opportunity by increasing the DC of the check by 5 (instead of moving at half speed).",
    "10 Ranks": "You can use your Acrobatics modifier as your CMD against trip maneuvers, use an Acrobatics check in place of a Reflex save to avoid falling, and reduce falling damage.",
@@ -989,7 +939,6 @@
    "Improved Damage": 9
   },
   "Mythic Path": {
-   "Champion": 1,
    "Champion's Strike: Sudden Attack": 1
   },
   "Mythic Path Abilities": {
@@ -1009,15 +958,6 @@
    "Boon: Native-Born": 1,
    "Boon: Additional Mythic Power": 1,
    "Quality: Challenged Duelist": 1
-  },
-  "Mythic Abilities": {
-   "Hard to Kill": 1,
-   "Mythic Power": 1,
-   "Surge": 1,
-   "Amazing Initiative": 2,
-   "Recuperation": 3,
-   "Mythic Saving Throws": 5,
-   "Force of Will": 7
   }
  },
  "archetype_info": "{}",
@@ -1112,7 +1052,7 @@
   "Mythic Path": "mythic",
   "Mythic Path Abilities": "mythic",
   "Mythic Tradition": "mythic",
-  "Mythic Abilities": "mythic"
+  "Mythic": "mythic"
  },
  "build_archetype": "HP Tank",
  "build_tactics": "Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.",

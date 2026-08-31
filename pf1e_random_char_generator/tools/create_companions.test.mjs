@@ -241,13 +241,25 @@ const created = [];
 globalThis.Actor = { create: async (data) => { const actor = new FakeActor(data); created.push(actor); return actor; } };
 
 const pack = (bodies) => ({
-  async getIndex() { return Object.entries(bodies).map(([id, body]) => ({ _id: id, name: body.name })); },
+  // The order stamp rides on the INDEX, because that is where `build/catalog.js` reads it from --
+  // a pack whose documents carry no `idx` is refused rather than resolved in LevelDB order.
+  async getIndex() {
+    return Object.entries(bodies).map(([id, body]) => ({
+      _id: id, name: body.name, flags: body.flags,
+    }));
+  },
   async getDocument(id) { return { toObject: () => structuredClone(bodies[id]) }; },
 });
-// A stand-in feat compendium. `Toughness` carries automation so the harness can prove the D14 strip
-// actually happens, and the armour proficiencies use FOUNDRY'S comma spelling so the two-sided name
-// match is exercised rather than assumed -- that inversion is the whole reason those three feats do
-// not silently arrive as bare items.
+// A stand-in for the MODULE'S OWN feat pack, `pf1e_random_char_generator.feats`, which is what the
+// resolver reads -- not `pf1.feats`. It read the pf1 SYSTEM's compendium until ticket 07, and that
+// pack carries the SRD only, so the moment ticket 06 derived the feat pool from the whole of
+// `data/feats.csv` a live eidolon came back with four of its five feats bare. `every_feat.json`
+// covers 848 of the 852 names both bodies can draw from; `pf1.feats` covers a fraction of them.
+//
+// `Toughness` carries automation so the harness can prove the D14 strip actually happens, and the
+// armour proficiencies use FOUNDRY'S comma spelling so the two-sided name match is exercised rather
+// than assumed -- that inversion is the whole reason those three feats do not silently arrive as
+// bare items.
 const FEAT_BODIES = {};
 for (const name of ['Toughness', 'Dodge', 'Iron Will', 'Weapon Focus', 'Run', 'Acrobatic',
                     'Improved Initiative', 'Lightning Reflexes', 'Blind-Fight', 'Agile Maneuvers',
@@ -255,9 +267,18 @@ for (const name of ['Toughness', 'Dodge', 'Iron Will', 'Weapon Focus', 'Run', 'A
                     'Skill Focus', 'Stealthy', 'Athletic', 'Combat Reflexes', 'Power Attack',
                     'Mobility', 'Spring Attack', 'Diehard', 'Intimidating Prowess',
                     'Improved Natural Attack', 'Improved Bull Rush', 'Improved Overrun',
-                    'Armor Proficiency, Light', 'Armor Proficiency, Medium', 'Armor Proficiency, Heavy']) {
+                    'Armor Proficiency, Light', 'Armor Proficiency, Medium', 'Armor Proficiency, Heavy',
+                    // Tax CHILDREN. They are never items of their own, but the resolver primes them
+                    // so their rules text can be appended under the parent that paid for them.
+                    'Improved Iron Will', 'Improved Great Fortitude',
+                    // The eidolon fixture's five, which `create_eidolon.test.mjs` replays through
+                    // this same stub. Two of them (Prone Slinger, Opening Volley) are pre-06 picks
+                    // the derived pool no longer offers a creature with no gear; they stay until
+                    // the fixture is re-recorded off a post-06 payload.
+                    'Step Up', 'Prone Slinger', 'Opening Volley', 'Sure Grasp', 'Deceitful']) {
   FEAT_BODIES[name] = {
     name, type: 'feat',
+    flags: { pf1e_random_char_generator: { idx: Object.keys(FEAT_BODIES).length } },
     system: {
       subType: 'feat',
       description: { value: `<p>${name} rules text.</p>` },
@@ -265,8 +286,8 @@ for (const name of ['Toughness', 'Dodge', 'Iron Will', 'Weapon Focus', 'Run', 'A
     },
   };
 }
-// Three feats carry their REAL automation, copied verbatim from `every_feat.json` (itself an export
-// of the same `pf1.feats` compendium the resolver reads). They are here because the generic
+// Three feats carry their REAL automation, copied verbatim from `every_feat.json`. They are here
+// because the generic
 // `mhp` body above cannot exercise the rule that AC changes survive the D14 strip while `nac` ones do
 // not -- and getting that backwards is precisely how a companion's AC came to render a point low.
 FEAT_BODIES.Dodge.system.changes =
@@ -281,9 +302,12 @@ const packs = new Map([
   // Keyed by its REAL pack name, not by the species slug: an eidolon's species is `biped` and its
   // actor is "Biped Baseform", which is the whole reason `findSource` reads `entry.pf_content`.
   ['pf-content.pf-eidolon-forms', pack({ biped: EIDOLON_BODY })],
-  ['pf1.feats', pack(FEAT_BODIES)],
+  ['pf1e_random_char_generator.feats', pack(FEAT_BODIES)],
 ]);
 globalThis.game = { packs: { get: (id) => packs.get(id) } };
+// `featResolver` asks which template branch the master's own feats were built on. The dialog stores
+// that in localStorage, which a headless run has none of; an empty bus reads as the base branch.
+globalThis.localStorage = { getItem: () => null, setItem() {}, removeItem() {} };
 
 // ---- run ---------------------------------------------------------------------------------------
 const { createBondedCreatures } = await import(pathToFileURL(path.join(SCRIPTS, 'createCompanions.js')).href);
@@ -499,6 +523,37 @@ for (const [index, actor] of created.entries()) {
     }
   }
 
+  // TICKET 07: a feat item must SAY SOMETHING. The resolver read `pf1.feats` until this ticket --
+  // the SRD, and nothing else -- so the moment ticket 06 derived the pool from the whole of
+  // `data/feats.csv` a live eidolon rendered four of its five feats as a name and an empty body.
+  // The bare-item path still exists (a name the catalog genuinely has no row for), which is why
+  // this asserts on the ROLLED feats rather than on every item on the sheet.
+  //
+  // The provenance line is the second half, and it is checked the same way the Evolutions band's is:
+  // an item that claims a fold the block never made would be a lie the reader cannot catch.
+  const heldBackFeat = new Map((stats.unapplied ?? [])
+    .map((line) => String(line))
+    .filter((line) => line.indexOf(': ') > 0)
+    .map((line) => [line.slice(0, line.indexOf(': ')), line.slice(line.indexOf(': ') + 2)]));
+  const checkFeatText = (label, feat, item) => {
+    const text = String(item?.system?.description?.value ?? '');
+    // Matched on the stub's marker rather than on the feat's own name: three of these resolve
+    // through the comma inversion, so the row that answers `Light Armor Proficiency` is spelled
+    // `Armor Proficiency, Light` and always will be.
+    check(`${label} "${feat}" carries rules text`, text.includes('rules text'), text.slice(0, 80));
+    const numbers = (stats.applied_changes ?? []).filter((change) => change.source === feat);
+    check(`${label} "${feat}" states what the fold counted`,
+      numbers.length === 0 || text.includes('Folded into this stat block'),
+      `applied_changes ${JSON.stringify(numbers)} but the item does not say so`);
+    check(`${label} "${feat}" names what the fold could not count`,
+      !heldBackFeat.has(feat) || text.includes('Not folded into this stat block'),
+      `on stats.unapplied as "${heldBackFeat.get(feat)}" but the item does not say so`);
+    const notes = (stats.context_notes ?? []).filter((note) => note.source === feat);
+    check(`${label} "${feat}" carries its ${notes.length} backend contextNote(s)`,
+      notes.every((note) => (item?.system?.contextNotes ?? []).some((got) => got.text === note.text)),
+      JSON.stringify(item?.system?.contextNotes ?? []));
+  };
+
   // D15: every rolled feat is on the sheet, named `Animal Companion <level>: <feat>`.
   for (const [index, feat] of (entry.feats ?? []).entries()) {
     const label = entry.feat_labels?.[index];
@@ -511,11 +566,19 @@ for (const [index, actor] of created.entries()) {
     if (children.length) {
       check(`${where} bundles ${feat}'s tax children onto it`,
         String(hit?.name ?? '').includes(` > ${children[0]}`), hit?.name);
+      // ...and says what the child DOES. A bundled name with no text is the same defect this
+      // ticket was opened on, one level down.
+      check(`${where} carries ${children[0]}'s rules text under ${feat}`,
+        String(hit?.system?.description?.value ?? '').includes(`<strong>${children[0]}</strong>`),
+        hit?.system?.description?.value);
     }
+    checkFeatText(where, feat, hit);
   }
   for (const [index, feat] of (entry.flaw_feats ?? []).entries()) {
-    check(`${where} carries flaw feat "(Flaw ${index + 1}) ${feat}"`,
-      actor.items.some((item) => String(item.name).startsWith(`(Flaw ${index + 1}) ${feat}`)));
+    const hit = actor.items.find((item) => String(item.name).startsWith(`(Flaw ${index + 1}) ${feat}`));
+    check(`${where} carries flaw feat "(Flaw ${index + 1}) ${feat}"`, !!hit);
+    // The flaw band and the chassis band go through the same resolver, so they pass or fail together.
+    checkFeatText(where, feat, hit);
   }
 
   // D14, the load-bearing one: a feat or flaw item that kept its changes would double-apply every
