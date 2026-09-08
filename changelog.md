@@ -1,5 +1,7 @@
 Unreleased
 
+- Changed: The **DEV notices now speak once per session, not once per character**. Each enabled dev toggle — local backend, forced luck direction, optimized builds, forced mythic — posted a blue notification on every generation, so testing a dozen characters meant reading the same four banners a dozen times. A banner you see on every click is one you learn to read past, which is worse than silence: these notices exist so an enabled toggle is impossible to forget. A toggle that *changes* still speaks again — "tier 3" after "tier 7", the hosted fallback after your local backend went down — because a notice is remembered by its finished text, not by which setting produced it. Nothing is remembered across a reload: a fresh page should warn you once more that generation is not running stock. The ordinary "contacting the backend…" notice is untouched; that one is progress feedback for a request that can take a minute, not a standing warning.
+
 Version 2.5.0 (2026-08-20)
 
 - Added: The **Character Generator button can now live where you want it**, not only floating over the canvas. Four checkboxes in the module's settings — one per location, each per-machine, so where a button sits on your screen stays your business and never syncs to your players:

@@ -11,6 +11,26 @@ import {
 } from './shared/storage.js';
 
 /**
+ * A dev-toggle notice, shown at most once per session.
+ *
+ * The DEV toggles below narrate what they changed, and that narration matters exactly once: at the
+ * moment you notice generation is not running stock. Repeating it on every character turns a useful
+ * warning into wallpaper you read past -- which is worse than silence, because the whole point of
+ * these notices is that an enabled toggle should be impossible to forget.
+ *
+ * Keyed on the finished message rather than on the setting, so a toggle that CHANGES value speaks
+ * again ("tier 3" after "tier 7", the hosted fallback after the local backend went down) while an
+ * unchanged one stays quiet. Deliberately not persisted: a reload is a fresh session and should
+ * re-warn you once that the toggles are still on.
+ */
+const devNoticesShown = new Set();
+function devNotice(message) {
+  if (devNoticesShown.has(message)) return;
+  devNoticesShown.add(message);
+  ui.notifications?.info(message);
+}
+
+/**
  * Everything a "generate a character" click does, independent of where that click came from.
  *
  * This used to be the body of the floating button's listener in button.js, which made the floating
@@ -69,9 +89,9 @@ export async function runGenerator(overrides = {}) {
       }
       if (localAlive) {
         deliver_location = localUrl;
-        ui.notifications?.info(`Character Generator DEV: using LOCAL backend (${localUrl}).`);
+        devNotice(`Character Generator DEV: using LOCAL backend (${localUrl}).`);
       } else {
-        ui.notifications?.info('Character Generator DEV: local backend not reachable — falling back to the hosted server.');
+        devNotice('Character Generator DEV: local backend not reachable — falling back to the hosted server.');
       }
     }
 
@@ -82,7 +102,7 @@ export async function runGenerator(overrides = {}) {
       const forceLuck = game.settings.get('pf1e_random_char_generator', 'forceLuckDirection');
       if (forceLuck) {
         savedData.luck_direction = forceLuck;
-        ui.notifications?.info(`Character Generator DEV: forcing luck direction "${forceLuck}".`);
+        devNotice(`Character Generator DEV: forcing luck direction "${forceLuck}".`);
       }
     } catch (e) { /* setting not registered — behave exactly as before */ }
 
@@ -93,7 +113,7 @@ export async function runGenerator(overrides = {}) {
     try {
       if (game.settings.get('pf1e_random_char_generator', 'optimizeBuilds')) {
         savedData.optimize = true;
-        ui.notifications?.info('Character Generator DEV: OPTIMIZED build requested.');
+        devNotice('Character Generator DEV: OPTIMIZED build requested.');
       }
     } catch (e) { /* setting not registered — behave exactly as before */ }
 
@@ -105,7 +125,7 @@ export async function runGenerator(overrides = {}) {
       const forceMythic = game.settings.get('pf1e_random_char_generator', 'forceMythic');
       if (forceMythic) {
         savedData.mythic = forceMythic;
-        ui.notifications?.info(`Character Generator DEV: MYTHIC requested (${forceMythic === 'y' ? 'random tier' : `tier ${forceMythic}`}).`);
+        devNotice(`Character Generator DEV: MYTHIC requested (${forceMythic === 'y' ? 'random tier' : `tier ${forceMythic}`}).`);
       }
     } catch (e) { /* setting not registered — behave exactly as before */ }
 
