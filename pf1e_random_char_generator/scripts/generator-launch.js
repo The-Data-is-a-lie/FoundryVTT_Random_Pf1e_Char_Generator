@@ -344,7 +344,14 @@ export function openGeneratorDialog() {
       </select>
     </div>
     <div>
-      <label for="inherents">Do you want inherent stats:</label>
+      <label for="homebrew" title="Sieg's Guide house rules: feat tax, story and flavour feats, trainers, professions, flaws, luck, inherent stats, combined caster level. Off = plain Pathfinder 1e plus its subsystems.">House rules (Sieg's Guide):</label>
+      <select id="homebrew">
+        <option value="n" ${savedData.homebrew === "n" ? "selected" : ""}>No (plain Pathfinder)</option>
+        <option value="y" ${savedData.homebrew === "y" ? "selected" : ""}>Yes</option>
+      </select>
+    </div>
+    <div>
+      <label for="inherents">Do you want inherent stats (house rules only):</label>
       <select id="inherents">
         <option value="y" ${savedData.inherents === "y" ? "selected" : ""}>Yes</option>
         <option value="n" ${savedData.inherents === "n" ? "selected" : ""}>No</option>
@@ -365,7 +372,7 @@ export function openGeneratorDialog() {
       </select>
     </div>
     <div>
-      <label for="homebrew_feat_amount">Do you want my homebrew feat amount:</label>
+      <label for="homebrew_feat_amount">Do you want my homebrew feat amount (house rules only):</label>
       <select id="homebrew_feat_amount">
         <option value="y" ${savedData.homebrew_feat_amount === "y" ? "selected" : ""}>Yes</option>
         <option value="n" ${savedData.homebrew_feat_amount === "n" ? "selected" : ""}>No</option>
@@ -425,6 +432,10 @@ export function openGeneratorDialog() {
             modded_char_sheet: document.getElementById('modded_char_sheet').value,
             homebrew_feat_amount: document.getElementById('homebrew_feat_amount').value,
             spheres_of_power: document.getElementById('spheres_of_power').value,
+            // The master house-rule switch, popped by NAME server-side like spheres_of_power, so it
+            // never shifts the positional fields. Needs a backend that knows it: an older one would
+            // read it positionally.
+            homebrew: document.getElementById('homebrew').value,
             diceRolls: document.getElementById('dice-rolls').value,
             diceSides: document.getElementById('dice-sides').value,
             highestLevel: document.getElementById('highest-level').value,

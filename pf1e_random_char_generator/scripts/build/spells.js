@@ -257,14 +257,27 @@ export async function addSpells(ctx) {
 // spellbooks and floored to 1 -- the pf1-spell analog of sphereCLExpr(). Uses @classes.<tag>.level,
 // NOT @spells.<book>.cl.total (which pf1 leaves at full class level even for low casters, since
 // casterType only drives slots/max spell level).
-function spellCLExpr(ctx) {
+//
+// THE SUM IS A HOUSE RULE (Sieg's Guide), so it applies only when the payload says `homebrew`.
+// Plain PF1e (homebrew: false) gives each spell its OWN book's caster level. A payload from before
+// the key existed was generated under house rules, which is why only an explicit false turns it off.
+export function homebrewOn(ctx) {
+  return ctx.characterData?.homebrew !== false;
+}
+function bookCLTerm(b) {
+  const lvl = `@classes.${b.class}.level`;
+  return b.casterType === 'low' ? `max(${lvl} - 3, 0)` : lvl;   // high/med -> full level
+}
+function spellCLExpr(ctx, bookSlot = 'primary') {
   const books = ctx.exportTemplate.system?.attributes?.spells?.spellbooks || {};
+  if (!homebrewOn(ctx)) {
+    const own = books[bookSlot];
+    const b = (own && own.inUse && own.class) ? own : books.primary;
+    return (b && b.inUse && b.class) ? `max(${bookCLTerm(b)}, 1)` : '1';
+  }
   const terms = ['primary', 'secondary', 'tertiary']
     .map(s => books[s]).filter(b => b && b.inUse && b.class)
-    .map(b => {
-      const lvl = `@classes.${b.class}.level`;
-      return b.casterType === 'low' ? `max(${lvl} - 3, 0)` : lvl;   // high/med -> full level
-    });
+    .map(bookCLTerm);
   return `max(${terms.join(' + ') || '0'}, 1)`;
 }
 // NUMERIC twin of spellCLExpr(): the same homebrew combined caster level as a concrete integer, for
@@ -277,7 +290,9 @@ export function spellCasterLevelNum(ctx) {
   const characterData = ctx.characterData;
   const books = characterData.spellbooks;
   if (!Array.isArray(books) || !books.length) return Number(characterData.level) || 1;
-  const total = books.reduce((n, b) => n + Math.max(0, Number(b?.casting_level_num) || 0), 0);
+  const levels = books.map(b => Math.max(0, Number(b?.casting_level_num) || 0));
+  // Plain PF1e: the best single book, which is also what the backend's casting_level_num reports.
+  const total = homebrewOn(ctx) ? levels.reduce((n, l) => n + l, 0) : Math.max(0, ...levels);
   return Math.max(1, total);
 }
 export function subSpellTokens(ctx, text, spell) {
@@ -286,7 +301,7 @@ export function subSpellTokens(ctx, text, spell) {
   const ability = (books[bk] && books[bk].ability) || (books.primary && books.primary.ability) || 'int';
   const level = spell?.system?.level ?? 0;
   return String(text == null ? '' : text)
-    .replaceAll('@spells.primary.cl.total', spellCLExpr(ctx))
+    .replaceAll('@spells.primary.cl.total', spellCLExpr(ctx, bk))
     .replaceAll('@slvl', String(level))
     .replaceAll('@castMod', `@abilities.${ability}.mod`);
 }
