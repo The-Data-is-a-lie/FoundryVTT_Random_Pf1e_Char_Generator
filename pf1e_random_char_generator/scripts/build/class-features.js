@@ -48,9 +48,17 @@ const CLASS_FEATURE_BUCKETS = {
   mercy:                { title: 'Mercies',              singular: 'Mercy',               ladder: true },
   cruelty:              { title: 'Cruelties',            singular: 'Cruelty',             ladder: true },
   ki_powers:            { title: 'Ki Powers',            singular: 'Ki Power',            ladder: true },
-  mysteries:            { title: 'Mystery & Revelations', singular: 'Revelation',         ladder: true },
+  // The oracle's mystery and its revelations were ONE backend bucket until 2026-10-01 (the
+  // revelations call overwrote the mystery pick); they are now two, like the web sheet expects.
+  mysteries:            { title: 'Oracle Mystery',       singular: 'Mystery',             ladder: false },
+  revelations:          { title: 'Revelations',          singular: 'Revelation',          ladder: true },
   curses:               { title: 'Oracle Curse',         singular: 'Curse',               ladder: false },
   spirits:              { title: 'Shaman Spirit',        singular: 'Spirit',              ladder: false },
+  // Six backend call sites wrote these into a shared default 'Talents' bucket until 2026-10-01.
+  bloodline:            { title: 'Bloodline',            singular: 'Bloodline',           ladder: false },
+  orders:               { title: 'Order',                singular: 'Order',               ladder: false },
+  blessings:            { title: 'Blessings',            singular: 'Blessing',            ladder: false },
+  inquisitions:         { title: 'Inquisitions',         singular: 'Inquisition',         ladder: false },
   // Psionics (backend utils/class_func/psionics.py -> SUBSYSTEM_BUCKET). The fallback below would
   // already render these, but not well: it lands them in the generic band with no divider of their
   // own, and its trailing-s trim turns 'strategies' into "Strategie". The aegis and the soulknife
