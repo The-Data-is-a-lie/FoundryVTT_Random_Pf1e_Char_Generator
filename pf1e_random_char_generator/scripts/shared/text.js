@@ -135,3 +135,9 @@ export function powNorm(s) {
     .replace(/â€™/g, '')
     .toLowerCase().replace(/['’`]/g, '').replace(/\s+/g, ' ').trim();
 }
+
+// Plain text -> HTML-safe text, for backend prose spliced into an item description.
+export function escapeHtml(str) {
+  return String(str ?? '').replace(/[&<>"']/g, (c) => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}

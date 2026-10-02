@@ -19,7 +19,7 @@
 import { DIVINE_CASTERS } from '../shared/class-roster.js';
 import { appendJsonToTemplate } from './items.js';
 import { attachConditionals } from './conditional-engine.js';
-import { capitalizeWords } from '../shared/text.js';
+import { capitalizeWords, escapeHtml } from '../shared/text.js';
 import { log } from '../shared/log.js';
 
 async function determineSpellType(ctx, className = ctx.upperCaseClass){
@@ -96,6 +96,32 @@ async function assignSpellTypes(ctx, type) {
 }
 
 
+// Mythic spell modes (tickets: feature/mythic 05/06). `mythic.spell_annotations` is keyed by spells
+// the character ALREADY knows -- an annotation, never a pick -- each carrying `mythic_text` and
+// sometimes `augmented`. Same treatment as the web sheet (tabs/spells.js mythicAnnotationHtml): the
+// mode's text at the TOP of the spell's description. The item's name is left alone on purpose:
+// conditionals and spell riders attach by name, and a renamed spell would orphan them.
+// Matched case-insensitively on the trimmed name, like the catalog lookup above it.
+function mythicAnnotationIndex(ctx) {
+  const ann = ctx.characterData?.mythic?.spell_annotations;
+  const index = new Map();
+  if (!ann || typeof ann !== 'object') return index;
+  for (const [name, v] of Object.entries(ann)) {
+    if (v && typeof v === 'object') index.set(String(name).trim().toLowerCase(), v);
+  }
+  return index;
+}
+
+function annotateMythicSpell(item, ann) {
+  if (!ann || !item.system) return;
+  let html = '';
+  if (ann.mythic_text) html += `<p><strong>Mythic:</strong> ${escapeHtml(ann.mythic_text)}</p>`;
+  if (ann.augmented) html += `<p><strong>Augmented:</strong> ${escapeHtml(ann.augmented)}</p>`;
+  if (!html) return;
+  const desc = item.system.description || (item.system.description = {});
+  desc.value = html + '<hr>' + (desc.value || '');
+}
+
 async function processSpell(ctx, spellListChooseFrom, slot = 'primary', book = null) {
   const characterData = ctx.characterData;
   const exportTemplate = ctx.exportTemplate;
@@ -128,6 +154,7 @@ async function processSpell(ctx, spellListChooseFrom, slot = 'primary', book = n
 
     // Consolidate all matched spells from the nested spell list, marking the prepared ones per level.
     const allMatchedSpells = [];
+    const mythicAnn = mythicAnnotationIndex(ctx);
 
     // Case-insensitive name match. The backend sends names from data/spells.csv, whose article /
     // preposition casing ("Shield Of The Dawnflower") can differ from the compendium's canonical
@@ -150,6 +177,8 @@ async function processSpell(ctx, spellListChooseFrom, slot = 'primary', book = n
         // every_spell.json items ship with spellbook:"primary" baked in — point each spell at the
         // book that actually granted it (secondary/tertiary for the lower-leveled caster classes).
         if (item.system) item.system.spellbook = slot;
+        annotateMythicSpell(item, mythicAnn.get(String(spell).trim().toLowerCase())
+          || mythicAnn.get(String(item.name || '').trim().toLowerCase()));
         if (item.system && item.system.level === 0) {
           // Cantrips/orisons: always prepared AND infinitely castable, for EVERY caster type
           // (prepared and spontaneous). Detected by the spell's own level so low casters with no
