@@ -1,10 +1,14 @@
-import { runGenerator, openGeneratorDialog } from './generator-launch.js';
-import { FLOATING_BUTTON_ID, syncFloatingButtonVisibility } from './button-locations.js';
+import { runGenerator, openGeneratorDialog, openBlankGenerator } from './generator-launch.js';
+import {
+  FLOATING_BUTTON_ID, FLOATING_BLANK_BUTTON_ID, syncFloatingButtonVisibility,
+} from './button-locations.js';
 
 /** Breathing room between the button and the player list it sits above. */
 const BUTTON_GAP_PX = 8;
 /** Never sit lower than this fraction of the viewport — the original hardcoded `bottom: 10%`. */
 const BUTTON_MIN_BOTTOM = 0.10;
+/** The floating buttons' width, and how far the second one sits to the right of the first. */
+const BUTTON_WIDTH_PX = 125;
 
 /**
  * Park the button just above Foundry's player list.
@@ -36,17 +40,25 @@ function positionButton(button) {
   button.style.bottom = `${Math.min(bottom, maxBottom)}px`;
 }
 
-// Function to create the persistent button
-// need export so we can import in main.js
-export async function createPersistentButton() {
+/**
+ * One floating, draggable button, parked above the player list until it is dragged.
+ *
+ * @param {object}   spec
+ * @param {string}   spec.id       Element id (the handle the visibility setting uses).
+ * @param {string}   spec.text     The label.
+ * @param {string}   spec.left     CSS `left`.
+ * @param {Function} spec.onClick  What a click does.
+ * @returns {{ button: HTMLButtonElement, reposition: Function }}
+ */
+function createFloatingButton({ id, text, left, onClick }) {
   const button = document.createElement('button');
-  button.textContent = "Character Generator";
-  button.id = FLOATING_BUTTON_ID;
+  button.textContent = text;
+  button.id = id;
 
   // Button Style options
   button.style.position = 'fixed';
-  button.style.left = '2%';
-  button.style.width = '125px';
+  button.style.left = left;
+  button.style.width = `${BUTTON_WIDTH_PX}px`;
   button.style.height = '75px';
   button.style.border = '1px solid #ccc';
   button.style.borderRadius = '5px';
@@ -57,16 +69,7 @@ export async function createPersistentButton() {
   button.style.textAlign = 'center';
   button.style.lineHeight = '50px';
 
-  // Add event listener to show the dialog when clicked
-  // clicking the persistent button should only show the dialog
-  //
-  // Deliberately un-awaited and side by side: the dialog edits the inputs for the NEXT run while
-  // the generation below builds a character from the ones already saved. That is what this button
-  // has always done, and the extraction into generator-launch.js does not change it.
-  button.addEventListener('click', async () => {
-    openGeneratorDialog();
-    await runGenerator();
-  });
+  button.addEventListener('click', onClick);
 
   // Add dragging functionality
   let isDragging = false;
@@ -106,11 +109,41 @@ export async function createPersistentButton() {
   button.hidden = true;
   document.body.appendChild(button);
 
-  // Place it now, then again whenever the thing it sits above can have changed size: the player
+  return { button, reposition: () => { if (!hasBeenDragged) positionButton(button); } };
+}
+
+// Function to create the persistent buttons
+// need export so we can import in main.js
+export async function createPersistentButton() {
+  // clicking the persistent button should only show the dialog
+  //
+  // Deliberately un-awaited and side by side: the dialog edits the inputs for the NEXT run while
+  // the generation below builds a character from the ones already saved. That is what this button
+  // has always done, and the extraction into generator-launch.js does not change it.
+  const generator = createFloatingButton({
+    id: FLOATING_BUTTON_ID,
+    text: 'Character Generator',
+    left: '2%',
+    onClick: async () => {
+      openGeneratorDialog();
+      await runGenerator();
+    },
+  });
+  // The Blank Character Generator sits beside it: the same place to reach for, and the two are
+  // shown and hidden by the same setting. Its click only opens a dialog -- nothing is created
+  // until that dialog's own button is pressed.
+  const blank = createFloatingButton({
+    id: FLOATING_BLANK_BUTTON_ID,
+    text: 'Blank Character',
+    left: `calc(2% + ${BUTTON_WIDTH_PX + BUTTON_GAP_PX}px)`,
+    onClick: () => openBlankGenerator(),
+  });
+
+  // Place them now, then again whenever the thing they sit above can have changed size: the player
   // list re-renders on every join, leave and connection change, and a window resize moves the floor
-  // under both of them. `renderPlayerList` fires after Foundry has drawn the list, so the
+  // under all of them. `renderPlayerList` fires after Foundry has drawn the list, so the
   // measurement reads the new height rather than the one being replaced.
-  const reposition = () => { if (!hasBeenDragged) positionButton(button); };
+  const reposition = () => { generator.reposition(); blank.reposition(); };
   reposition();
   Hooks.on('renderPlayerList', reposition);
   window.addEventListener('resize', reposition);

@@ -1,4 +1,4 @@
-import { runGenerator, openGeneratorDialog } from './generator-launch.js';
+import { runGenerator, openGeneratorDialog, openBlankGenerator } from './generator-launch.js';
 import { log } from './shared/log.js';
 
 /**
@@ -33,13 +33,21 @@ const MODULE_ID = 'pf1e_random_char_generator';
 
 /** The floating button's element id — the handle `buttonFloating` shows and hides. */
 export const FLOATING_BUTTON_ID = 'character-generator-button';
+/** The Blank Character Generator's floating button, shown and hidden with the one above. */
+export const FLOATING_BLANK_BUTTON_ID = 'blank-character-generator-button';
 /** Ids on the injected elements: they double as the "already here" guard on re-render. */
 const SIDEBAR_ENTRY_ID = 'rcg-sidebar-entry';
+const SIDEBAR_BLANK_ENTRY_ID = 'rcg-sidebar-blank-entry';
 const CREATE_ACTOR_ROW_ID = 'rcg-create-actor-row';
 const SCENE_CONTROL_TOOL = 'rcg-generate';
+const SCENE_CONTROL_BLANK_TOOL = 'rcg-blank';
 
 const ICON = 'fa-solid fa-dice-d20';
 const LABEL = 'Random Character Generator';
+// The Blank Character Generator appears wherever the generator does: the four location settings
+// answer "where do this module's buttons live", not "where does the random one live".
+const BLANK_ICON = 'fa-solid fa-file-circle-plus';
+const BLANK_LABEL = 'Blank Character Generator';
 
 /**
  * Read a location setting, defaulting to the shipped value if it isn't registered yet.
@@ -100,16 +108,26 @@ function onGetSceneControlButtons(controls) {
     visible: true,
     order: 99,
   };
+  const blankTool = {
+    name: SCENE_CONTROL_BLANK_TOOL,
+    title: BLANK_LABEL,
+    icon: BLANK_ICON,
+    button: true,
+    visible: true,
+    order: 100,
+  };
 
   try {
     if (Array.isArray(controls)) {
       tool.onClick = () => launch();      // v10–v12 shape, v10–v12 callback
+      blankTool.onClick = () => openBlankGenerator();
       const tokens = controls.find(c => c?.name === 'tokens' || c?.name === 'token');
       if (!Array.isArray(tokens?.tools)) {
         log.debug('Button locations: no Token scene-control group to add the generator to.');
         return;
       }
       if (!tokens.tools.some(t => t?.name === SCENE_CONTROL_TOOL)) tokens.tools.push(tool);
+      if (!tokens.tools.some(t => t?.name === SCENE_CONTROL_BLANK_TOOL)) tokens.tools.push(blankTool);
       return;
     }
 
@@ -119,7 +137,9 @@ function onGetSceneControlButtons(controls) {
       return;
     }
     tool.onChange = () => launch();       // v13 shape, v13 callback
+    blankTool.onChange = () => openBlankGenerator();
     tokens.tools[SCENE_CONTROL_TOOL] = tool;
+    tokens.tools[SCENE_CONTROL_BLANK_TOOL] = blankTool;
   } catch (error) {
     console.warn('Character Generator: could not add the scene-control tool —', error);
   }
@@ -148,36 +168,46 @@ export function syncSidebarButton(root = null) {
 
     // Idempotent: a re-render replaces the rail's children, but a setting toggle does not.
     nav.querySelector(`#${SIDEBAR_ENTRY_ID}`)?.remove();
+    nav.querySelector(`#${SIDEBAR_BLANK_ENTRY_ID}`)?.remove();
     if (!buttonLocationEnabled(SETTINGS.sidebar)) return;
+
+    // The random generator, then the blank one beside it.
+    const entries = [
+      { id: SIDEBAR_ENTRY_ID, icon: ICON, label: LABEL, onClick: launch },
+      { id: SIDEBAR_BLANK_ENTRY_ID, icon: BLANK_ICON, label: BLANK_LABEL, onClick: () => openBlankGenerator() },
+    ];
 
     const menu = nav.querySelector('menu');
     if (menu) {
-      const entry = document.createElement('li');
-      entry.id = SIDEBAR_ENTRY_ID;
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = `ui-control plain icon ${ICON}`;
-      button.setAttribute('aria-label', LABEL);
-      button.dataset.tooltip = LABEL;
-      button.addEventListener('click', launch);
-      entry.appendChild(button);
-
       const collapse = menu.querySelector('.collapse')?.closest('li');
-      if (collapse) menu.insertBefore(entry, collapse);
-      else menu.appendChild(entry);
+      for (const { id, icon, label, onClick } of entries) {
+        const entry = document.createElement('li');
+        entry.id = id;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `ui-control plain icon ${icon}`;
+        button.setAttribute('aria-label', label);
+        button.dataset.tooltip = label;
+        button.addEventListener('click', onClick);
+        entry.appendChild(button);
+        if (collapse) menu.insertBefore(entry, collapse);
+        else menu.appendChild(entry);
+      }
       return;
     }
 
     // v10–v12 rail: flat anchors, collapse control last.
-    const entry = document.createElement('a');
-    entry.id = SIDEBAR_ENTRY_ID;
-    entry.className = 'item';
-    entry.title = LABEL;
-    entry.innerHTML = `<i class="${ICON}"></i>`;
-    entry.addEventListener('click', launch);
     const collapse = nav.querySelector('.collapse');
-    if (collapse) nav.insertBefore(entry, collapse);
-    else nav.appendChild(entry);
+    for (const { id, icon, label, onClick } of entries) {
+      const entry = document.createElement('a');
+      entry.id = id;
+      entry.className = 'item';
+      entry.title = label;
+      entry.innerHTML = `<i class="${icon}"></i>`;
+      entry.addEventListener('click', onClick);
+      if (collapse) nav.insertBefore(entry, collapse);
+      else nav.appendChild(entry);
+    }
   } catch (error) {
     console.warn('Character Generator: could not add the sidebar button —', error);
   }
@@ -257,6 +287,22 @@ function onRenderCreateDialog(app, html) {
 
     row.appendChild(button);
 
+    // The blank one, under it: same Name and Folder, but it opens its own dialog (classes, levels,
+    // race) and creates the actor from there instead of generating one straight away.
+    const blankButton = document.createElement('button');
+    blankButton.type = 'button';
+    blankButton.innerHTML = `<i class="${BLANK_ICON}"></i> ${BLANK_LABEL}`;
+    blankButton.style.width = '100%';
+    blankButton.addEventListener('click', async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const name = form.elements.name?.value?.trim() ?? '';
+      const folder = form.elements.folder?.value ?? '';
+      await app.close?.();
+      await openBlankGenerator({ name, folder });
+    });
+    row.appendChild(blankButton);
+
     // The footer holding "Create Actor" is a sibling of the fields, so inserting before it puts the
     // button exactly where the screenshots asked for it: under Folder, above Create Actor.
     const footer = form.querySelector('footer.form-footer, footer, .form-footer');
@@ -296,8 +342,10 @@ export function registerButtonLocations() {
 /** Show or hide the floating button to match `buttonFloating`. Called by button.js and by onChange. */
 export function syncFloatingButtonVisibility() {
   try {
-    const button = document.getElementById(FLOATING_BUTTON_ID);
-    if (button) button.hidden = !buttonLocationEnabled(SETTINGS.floating);
+    for (const id of [FLOATING_BUTTON_ID, FLOATING_BLANK_BUTTON_ID]) {
+      const button = document.getElementById(id);
+      if (button) button.hidden = !buttonLocationEnabled(SETTINGS.floating);
+    }
   } catch (error) {
     console.warn('Character Generator: could not toggle the floating button —', error);
   }

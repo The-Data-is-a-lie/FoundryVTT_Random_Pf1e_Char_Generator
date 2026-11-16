@@ -20,6 +20,8 @@ import assert from 'node:assert/strict';
 
 const MODULE_ID = 'pf1e_random_char_generator';
 const TOOL = 'rcg-generate';
+/** The Blank Character Generator's tool, added beside the generator's wherever that one appears. */
+const BLANK_TOOL = 'rcg-blank';
 
 /** Settings the fake `game.settings.get` will report. Mutated per test. */
 const settingValues = new Map();
@@ -76,6 +78,13 @@ test('scene controls, Foundry v13: the tool lands in the `tokens` group as a but
   assert.equal(tool.button, true);
   assert.equal(typeof tool.onChange, 'function', 'v13 dispatches through onChange, not onClick');
   assert.equal(controls.tokens.tools.select.name, 'select', 'existing tools must survive');
+
+  // The Blank Character Generator rides the same setting, as its own button with ONE handler.
+  const blank = controls.tokens.tools[BLANK_TOOL];
+  assert.ok(blank, 'no blank-generator tool was added beside the generator');
+  assert.equal(blank.button, true);
+  assert.equal(typeof blank.onChange, 'function');
+  assert.equal(blank.onClick, undefined, 'v13 would call this as well as onChange');
 });
 
 test('the scene-control tool carries EXACTLY ONE click handler', () => {
@@ -107,10 +116,13 @@ test('scene controls, Foundry v10–v12: the tool is pushed onto the `token` gro
   hooks.get('getSceneControlButtons')(controls);
 
   const tools = controls[0].tools;
-  assert.equal(tools.length, 2);
+  assert.equal(tools.length, 3, 'the existing tool, the generator and the blank generator');
   assert.equal(tools[1].name, TOOL);
   assert.equal(typeof tools[1].onClick, 'function', 'v12 dispatches through onClick');
   assert.equal(tools[1].onChange, undefined, 'and only through onClick — see the double-fire test');
+  assert.equal(tools[2].name, BLANK_TOOL);
+  assert.equal(typeof tools[2].onClick, 'function');
+  assert.equal(tools[2].onChange, undefined, 'the blank tool obeys the same one-handler rule');
   assert.equal(controls[1].tools.length, 0, 'only the Token group is touched');
 });
 
@@ -120,12 +132,12 @@ test('scene controls: calling the hook twice does not add the tool twice', () =>
   const record = { tokens: { tools: {} } };
   hooks.get('getSceneControlButtons')(record);
   hooks.get('getSceneControlButtons')(record);
-  assert.equal(Object.keys(record.tokens.tools).length, 1);
+  assert.deepEqual(Object.keys(record.tokens.tools), [TOOL, BLANK_TOOL]);
 
   const array = [{ name: 'tokens', tools: [] }];
   hooks.get('getSceneControlButtons')(array);
   hooks.get('getSceneControlButtons')(array);
-  assert.equal(array[0].tools.length, 1);
+  assert.deepEqual(array[0].tools.map((tool) => tool.name), [TOOL, BLANK_TOOL]);
 });
 
 test('scene controls: nothing is added while the setting is off', () => {

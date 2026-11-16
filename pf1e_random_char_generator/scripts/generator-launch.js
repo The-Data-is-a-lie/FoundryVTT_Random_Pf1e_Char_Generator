@@ -2,6 +2,7 @@ import { sendDataToServer } from './deliver-data.js';
 import { main } from './modify-abilities.js';
 import { createAndAssignActor } from './createCharacter.js';
 import { CLASS_GROUPS, classSlug } from './shared/class-roster.js';
+import { openBlankCharacterDialog } from './blank-character.js';
 import {
   applySelectionToRequest,
   conceptDropdownOptions,
@@ -38,6 +39,21 @@ import {
 const HOSTED_BACKEND = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
 
 /**
+ * The races the generator's dialog offers, in its order. One list, because the Blank Character
+ * Generator offers the same ones (without "Random": a blank sheet has to be something).
+ */
+export const RACE_NAMES = Object.freeze([
+  'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human',
+  'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow',
+  'Fetchling', 'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli',
+  'Hobgoblin', 'Ifrit', 'Kitsune', 'Kobold', 'Locathah', 'Merfolk',
+  'Monkey Goblin', 'Nagaji', 'Orc', 'Oread', 'Ratfolk', 'Sahuagin',
+  'Skinwalker', 'Strix', 'Svirfneblin', 'Sylph', 'Syrinx', 'Tengu',
+  'Tiefling', 'Triaxian', 'Triton', 'Undine', 'Vanara', 'Vine Leshy',
+  'Vishkanya', 'Wayang', 'Wyrwood', 'Wyvaran', 'Yaddithian',
+]);
+
+/**
  * The generation endpoint the concept EDITOR should read its lists from.
  *
  * Not the same question runGenerator answers at click time (it probes the local backend for
@@ -46,7 +62,7 @@ const HOSTED_BACKEND = 'https://pathfinder-char-creator-web-public-use.onrender.
  * one a developer is about to generate against; otherwise, or if it does not answer, the configured
  * backend.
  */
-async function conceptEditorBackendUrl() {
+export async function conceptEditorBackendUrl() {
   let configured = null;
   let preferLocal = false;
   let localUrl = '';
@@ -224,6 +240,17 @@ export async function runGenerator(overrides = {}) {
 }
 
 /**
+ * Open the Blank Character Generator (blank-character.js) against the backend this client talks
+ * to. Here rather than there because which backend that is, and which races exist, are this
+ * file's two facts.
+ *
+ * @param {object} [overrides]  Actor name / folder from the Create Actor dialog, as for runGenerator.
+ */
+export function openBlankGenerator(overrides = {}) {
+  return openBlankCharacterDialog({ backendUrl: conceptEditorBackendUrl, races: RACE_NAMES, overrides });
+}
+
+/**
  * The class dropdown: a top-level Random, then one <optgroup> per family from class-roster.js.
  *
  * Each group is labelled with its size ("Occult Adventures (6)") and opens with a
@@ -286,16 +313,7 @@ export function openGeneratorDialog() {
     <div>
       <label for="character-race">Select Race:</label>
       <select id="character-race">
-        ${[
-          'Random', 'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human',
-          'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow',
-          'Fetchling', 'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli',
-          'Hobgoblin', 'Ifrit', 'Kitsune', 'Kobold', 'Locathah', 'Merfolk',
-          'Monkey Goblin', 'Nagaji', 'Orc', 'Oread', 'Ratfolk', 'Sahuagin',
-          'Skinwalker', 'Strix', 'Svirfneblin', 'Sylph', 'Syrinx', 'Tengu',
-          'Tiefling', 'Triaxian', 'Triton', 'Undine', 'Vanara', 'Vine Leshy',
-          'Vishkanya', 'Wayang', 'Wyrwood', 'Wyvaran', 'Yaddithian'
-        ].map(race =>
+        ${['Random', ...RACE_NAMES].map(race =>
           `<option value="${race.toLowerCase().replace(/\s/g, '-')}"
             ${savedData.race === race.toLowerCase().replace(/\s/g, '-') ? "selected" : ""}>
             ${race}

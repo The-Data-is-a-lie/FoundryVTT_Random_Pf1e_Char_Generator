@@ -6,6 +6,7 @@ import { addClasses } from './build/classes.js';
 import { addRace } from './build/race.js';
 import { addClassFeatures, addResourcePools } from './build/class-features.js';
 import { addFeats, addTraits } from './build/feats.js';
+import { seedClassFeatureSlots, addSlots, slotRows } from './build/slots.js';
 import { addSphereTalents, addCastingTradition, addSphereConditionals, addSpellBuffs } from './build/spheres.js';
 import { addPathOfWar } from './build/path-of-war.js';
 import { addPsionics } from './build/psionics.js';
@@ -209,6 +210,10 @@ export async function main(deps = {}) {
     // not read-only; freezing or cloning them silently reshuffles the Class Features tab.
     await step('classes', () => addClasses(ctx));
     step('race', () => addRace(ctx));
+    // A BLANK character's class choices arrive as `slots` rows, not as picks. They are written
+    // into the fields the class-features stage lays out, so they have to be there before it runs.
+    // A no-op for every generated character (no slots).
+    step('class-feature-slots', () => seedClassFeatureSlots(ctx));
     // Order within class features: addResourcePools removes the harvested duplicate of any ability
     // that became a pool, so it cannot run before the features it deduplicates against exist.
     await step('class-features', () => addClassFeatures(ctx));
@@ -221,6 +226,8 @@ export async function main(deps = {}) {
     await step('sphere-talents', () => addSphereTalents(ctx));
     await step('casting-tradition', () => addCastingTradition(ctx));
     await step('traits', () => addTraits(ctx));
+    // The rest of a blank character's placeholders, after the stages whose dividers they sit under.
+    await step('slots', () => addSlots(ctx));
 
     await step('path-of-war', () => addPathOfWar(ctx));
     await step('psionics', () => addPsionics(ctx));
@@ -235,7 +242,14 @@ export async function main(deps = {}) {
     // HAZARD 2: everything below finds the weapon through findMainWeapon(ctx) and WARNS AND RETURNS
     // when there is none. Move equipment later and no conditional attaches to anything — the sheet
     // still builds, still looks complete, and simply has no toggles on it.
-    await step('equipment', () => addEquipment(ctx));
+    //
+    // A BLANK character skips it altogether. addEquipment falls back to "Longsword" and "Leather
+    // Armor" when a name does not resolve -- right for a generated character whose item was
+    // misspelled, wrong for a sheet that is meant to carry nothing. The stages below already
+    // tolerate having no weapon (that is what HAZARD 2 describes); the ammo stage further down
+    // does not -- it reads the weapon this stage records -- so it is skipped with it.
+    const blankSheet = slotRows(ctx.characterData).length > 0;
+    if (!blankSheet) await step('equipment', () => addEquipment(ctx));
 
     // The two conditional attachers share one window: after the weapon exists, and before weapon
     // finishing clones the rollable attack twin, because the clone inherits what they attach.
@@ -248,7 +262,7 @@ export async function main(deps = {}) {
     // and the stage itself has to come after everything that attaches to the weapon.
     await step('weapon-finishing', () => addWeaponFinishing(ctx));
     // Reads the weapon the equipment stage recorded, so it cannot move above it.
-    await step('ammo', () => addAmmo(ctx));
+    if (!blankSheet) await step('ammo', () => addAmmo(ctx));
 
     await step('skills', () => addSkills(ctx));
 
