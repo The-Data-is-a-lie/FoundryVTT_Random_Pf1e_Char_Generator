@@ -3,6 +3,18 @@ import { main } from './modify-abilities.js';
 import { createAndAssignActor } from './createCharacter.js';
 import { CLASS_GROUPS, classSlug } from './shared/class-roster.js';
 import {
+  applySelectionToRequest,
+  conceptDropdownOptions,
+  conceptPinsClasses,
+  conceptSummary,
+  fetchSelectionOptions,
+  openConceptEditor,
+  readActiveConceptName,
+  readConcepts,
+  setActiveConcept,
+  showUnmetPins,
+} from './selection-concepts.js';
+import {
   readDeliverData,
   writeDeliverData,
   readCustomBuffsFlag,
@@ -23,6 +35,30 @@ import {
  * unchanged one stays quiet. Deliberately not persisted: a reload is a fresh session and should
  * re-warn you once that the toggles are still on.
  */
+const HOSTED_BACKEND = 'https://pathfinder-char-creator-web-public-use.onrender.com/update_character_data';
+
+/**
+ * The generation endpoint the concept EDITOR should read its lists from.
+ *
+ * Not the same question runGenerator answers at click time (it probes the local backend for
+ * liveness and narrates the result); the editor only needs "which backend will tell me what can be
+ * pinned". With the local-backend dev toggle on, the local one is asked first, since that is the
+ * one a developer is about to generate against; otherwise, or if it does not answer, the configured
+ * backend.
+ */
+async function conceptEditorBackendUrl() {
+  let configured = null;
+  let preferLocal = false;
+  let localUrl = '';
+  try {
+    configured = game.settings.get('pf1e_random_char_generator', 'backendUrl');
+    preferLocal = !!game.settings.get('pf1e_random_char_generator', 'preferLocalBackend');
+    localUrl = game.settings.get('pf1e_random_char_generator', 'localBackendUrl') || '';
+  } catch (e) { /* settings not registered — fall through to the hosted default */ }
+  if (preferLocal && localUrl && await fetchSelectionOptions(localUrl)) return localUrl;
+  return configured || HOSTED_BACKEND;
+}
+
 const devNoticesShown = new Set();
 function devNotice(message) {
   if (devNoticesShown.has(message)) return;
@@ -47,6 +83,11 @@ function devNotice(message) {
 export async function runGenerator(overrides = {}) {
   // Drop the previous run's built sheet before doing anything else (see clearExportPath).
   clearExportPath();
+
+  // What this click did with the player's build concept, and what the backend answered -- both
+  // read AFTER the actor exists, to report any pin that could not be honoured.
+  let conceptRun = { status: 'none' };
+  let generated = null;
 
   // Import deliver-data.js
   try {
@@ -129,11 +170,27 @@ export async function runGenerator(overrides = {}) {
       }
     } catch (e) { /* setting not registered — behave exactly as before */ }
 
+    // Selection mode: the player's active build concept, as the named `selection` key. Merged in
+    // HERE like the toggles above -- per click, never stored with the dialog's inputs -- but unlike
+    // them it is a real feature, per player (a User flag), and it is only sent to a backend that has
+    // said it knows the key: an older backend would fail the whole request on it. See
+    // applySelectionToRequest.
+    try {
+      conceptRun = await applySelectionToRequest(savedData, { user: game.user, deliverUrl: deliver_location });
+      if (conceptRun.status === 'unsupported') {
+        ui.notifications?.warn(
+          `Character Generator: this backend does not support build concepts yet, so "${conceptRun.name}" `
+          + 'was not applied. Generating a fully random character.');
+      }
+    } catch (e) {
+      conceptRun = { status: 'none' };   // a concept must never be the reason nothing generates
+    }
+
     ui.notifications?.info("Character Generator: contacting the backend… (the first request after the server has idled can take up to a minute).");
     console.log('deliver_location', deliver_location)
     // Fully awaited: sendDataToServer stores the returned character in localStorage before
     // resolving, so main()/createAndAssignActor() below read THIS click's fresh data.
-    await sendDataToServer(savedData, deliver_location);
+    generated = await sendDataToServer(savedData, deliver_location);
 
   } catch (error) {
     console.error("Error deliver-data.js in generator-launch.js:", error);
@@ -160,6 +217,10 @@ export async function runGenerator(overrides = {}) {
     console.error("Error importing createCharacter in generator-launch.js:", error);
     ui.notifications?.error(`Character Generator: couldn't create the actor (${error.message}).`);
   }
+
+  // Pins are guarantees, so a pin the backend could NOT honour is something the player has to be
+  // told -- the character was still created, and nothing on the sheet says what is missing.
+  if (conceptRun.status === 'sent') showUnmetPins(conceptRun.name, generated);
 }
 
 /**
@@ -194,8 +255,18 @@ export function openGeneratorDialog() {
   // Get the saved character data from localStorage
   const savedData = readDeliverData();
   const savedAddBuffs = readCustomBuffsFlag();
+  const concepts = readConcepts(game.user);
+  const activeConceptName = readActiveConceptName(game.user);
 
   const html = `
+    <div>
+      <label for="rcg-build-concept">Build concept:</label>
+      <select id="rcg-build-concept">
+        ${conceptDropdownOptions(concepts, activeConceptName)}
+      </select>
+      <button type="button" id="rcg-edit-concepts" style="width:auto;">Edit concepts</button>
+      <p id="rcg-build-concept-summary" class="notes" style="font-size:0.85em;opacity:0.8;margin:2px 0 6px;"></p>
+    </div>
     <div>
       <label for="character-region">Select Region:</label>
       <select id="character-region">
@@ -436,11 +507,49 @@ export function openGeneratorDialog() {
           writeDeliverData(characterData);
           // Stored separately (NOT in the backend payload) so it doesn't break the fixed 19-input endpoint
           writeCustomBuffsFlag(document.getElementById('add_custom_buffs').value);
+          // The build concept is per PLAYER, so it goes on the User document rather than into the
+          // per-browser inputs above. Saved here, with everything else this button saves.
+          setActiveConcept(game.user, document.getElementById('rcg-build-concept').value)
+            .catch((error) => ui.notifications?.error(
+              `Character Generator: could not save the build concept choice (${error.message}).`));
 
           // You can proceed with your logic for generating the character here
           console.log("Character Data Generated: ", characterData);
         }
       }
+    },
+    // Build concepts: keep the dropdown honest about what it does. A concept that pins classes
+    // makes the class dropdown moot (the backend takes the pinned list), so it is disabled rather
+    // than left looking like it still decides something; the line under the dropdown says what the
+    // chosen concept pins.
+    render: (rendered) => {
+      const root = rendered?.[0] ?? rendered;
+      const pick = root.querySelector('#rcg-build-concept');
+      const summary = root.querySelector('#rcg-build-concept-summary');
+      const classSelect = root.querySelector('#character-class');
+      if (!pick) return;
+      const refresh = () => {
+        const all = readConcepts(game.user);
+        const chosen = all[pick.value];
+        if (summary) summary.textContent = chosen ? `Pins: ${conceptSummary(chosen)}` : '';
+        if (classSelect) {
+          const pinned = conceptPinsClasses(chosen);
+          classSelect.disabled = pinned;
+          classSelect.title = pinned ? 'The build concept pins the classes.' : '';
+        }
+      };
+      pick.addEventListener('change', refresh);
+      root.querySelector('#rcg-edit-concepts')?.addEventListener('click', async () => {
+        openConceptEditor({
+          deliverUrl: await conceptEditorBackendUrl(),
+          name: pick.value,
+          onChange: (name) => {
+            pick.innerHTML = conceptDropdownOptions(readConcepts(game.user), name);
+            refresh();
+          },
+        });
+      });
+      refresh();
     }
   }).render(true);
 
