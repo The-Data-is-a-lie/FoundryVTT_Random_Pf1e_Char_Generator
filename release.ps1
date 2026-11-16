@@ -36,6 +36,8 @@
       ./release.ps1 -Version 2.0.0 -NoPublish      # push + GitLab release, but DON'T submit to Foundry
       ./release.ps1 -Version 2.0.0 -DryRun         # local only: apply edits + build zip, touch nothing remote
       ./release.ps1 -Version 2.0.0 -AllowDirty     # skip the clean-tree / fast-forward preconditions
+      ./release.ps1 -Version 2.0.0 -EnvFile C:\path\.env   # read the tokens from another checkout's .env
+                                                   #   (a git worktree has no .env of its own)
 
     A real run always submits a Foundry dry-run (dry-run:true) FIRST and only publishes if it passes,
     so every publish is pre-flighted. -DryRun is a fully local rehearsal that makes no remote changes.
@@ -47,7 +49,8 @@ param(
     [string]$Maximum,
     [switch]$DryRun,
     [switch]$NoPublish,
-    [switch]$AllowDirty
+    [switch]$AllowDirty,
+    [string]$EnvFile
 )
 
 $ErrorActionPreference = 'Stop'
@@ -63,7 +66,7 @@ $ZipRel         = "downloads/$ModName.zip"
 $ManifestPath   = Join-Path $Root "$ModName\module.json"
 $ChangelogPath  = Join-Path $Root 'changelog.md'
 $ZipPath        = Join-Path $Root "downloads\$ModName.zip"
-$EnvPath        = Join-Path $Root '.env'
+$EnvPath        = if ($EnvFile) { $EnvFile } else { Join-Path $Root '.env' }
 $PkgId          = $ModName
 # The Foundry-registered package id is HYPHENATED (the URL slug), NOT the underscore module.json id.
 # Submitting the underscore id to the Release API returns 403 "Invalid Release API token".
