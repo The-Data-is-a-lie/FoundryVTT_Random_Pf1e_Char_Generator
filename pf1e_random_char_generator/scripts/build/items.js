@@ -103,13 +103,15 @@ export function assignToFeatSection(items) {
  * Prefix each item's name with where the character received it — `"(Level 3) Weapon Focus"`, or the
  * backend's own per-item label when it supplied one (`"Fighter 1: Weapon Focus"`).
  */
-export function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null) {
+export function addingReceivedLocationToName(items, label = "Level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, tagged = false) {
   let current = startingNumber;
 
   for (let i = 0; i < items.length; i++) {
     if (labelArray && labelArray[i] != null) {
-      // Per-feat label from the backend, e.g. "Fighter 1: Weapon Focus"
-      items[i].name = `${labelArray[i]}: ${items[i].name}`;
+      // Per-feat label from the backend. Class bonus feats read "Fighter 1: Weapon Focus"; a
+      // `tagged` list is written the way the counted rows are -- "(Feat 3) Dodge", "(Human) Alertness"
+      // -- which is what the general feats' source labels (`feat_labels`) want.
+      items[i].name = tagged ? `(${labelArray[i]}) ${items[i].name}` : `${labelArray[i]}: ${items[i].name}`;
     } else {
       const level = customLevels?.[i] ?? current;
       items[i].name = `(${label} ${level}) ${items[i].name}`;

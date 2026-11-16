@@ -250,33 +250,33 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat",
+   "label": "Human",
    "class": "",
-   "level": 1,
+   "level": null,
    "bucket": ""
   },
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat",
+   "label": "Feat 1",
    "class": "",
-   "level": 1,
+   "level": null,
    "bucket": ""
   },
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat",
+   "label": "Feat 3",
    "class": "",
-   "level": 3,
+   "level": null,
    "bucket": ""
   },
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat",
+   "label": "Feat 5",
    "class": "",
-   "level": 5,
+   "level": null,
    "bucket": ""
   },
   {
@@ -368,6 +368,7 @@
    "bucket": ""
   }
  ],
+ "feat_labels": [],
  "generator_version": "fixture",
  "license_url": "/license"
 }

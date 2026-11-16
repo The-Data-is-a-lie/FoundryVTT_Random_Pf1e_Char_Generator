@@ -34,7 +34,7 @@ import {
 import { capitalizeFirstLetter, toTitleCase } from '../shared/text.js';
 import { log } from '../shared/log.js';
 
-async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null) {
+async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType, startingSort = 100, label = "level", shouldIncrement = true, startingNumber = 1, step = 1, customLevels = null, labelArray = null, taxDict = null, labelsAreTags = false) {
   try {
     // No `ctx.templates[templateName]` guard any more. Feats and traits come from compendium packs
     // and the loader no longer fetches their JSON at all, so an "is it an array" check on a bundle
@@ -92,7 +92,7 @@ async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType,
       assignSequentialSort(allMatchedItems, startingSort);
       if (dataType === 'feat') {
       // Add Received location
-      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels, labelArray ? matchedLabels : null);
+      addingReceivedLocationToName(allMatchedItems, label, shouldIncrement, startingNumber, step, customLevels, labelArray ? matchedLabels : null, labelsAreTags);
       // Assign Feat subType
       assignToFeatSection(allMatchedItems);
       // Feat tax: bundle granted chain feats onto the primary entry (name + merged description)
@@ -127,6 +127,7 @@ export const FEAT_ROW_NUMBERING = Object.freeze({
   flaw_feats:   { label: 'Flaw', start: 1, step: 1, levels: null },
   story_feats:  { label: 'Story Feat', start: 1, step: 5,
                   levels: [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100] },
+  // The general feats are counted this way only for a backend that sends no `feat_labels`.
   feats:        { label: 'Feat', start: 1, step: 2, levels: null },
 });
 
@@ -300,8 +301,21 @@ export async function addFeats(ctx) {
   // of the ordinary list below cannot orphan a chain.
   const _negFeats = _luck?.negative_feats || [];
   const _negNames = new Set(_negFeats.map(e => String(e.name).toLowerCase()));
-  const _ordinaryFeats = (ctx.characterData.feats || [])
-    .filter(n => !_negNames.has(String(n).toLowerCase()));
+  // WHERE EACH GENERAL FEAT COMES FROM. A backend with feat source tracing sends `feat_labels`,
+  // one per row of `feats`: "Human", "Creation 1", "Feat 5", "Profession 2", "Martial Training 1".
+  // Those name the row instead of the position count, which numbered every row as a level feat --
+  // a 20th-level character showed "(Feat 23)", and a human's racial feat was an anonymous
+  // "(Feat 1)". The labels are paired with their feats BEFORE the luck rows are lifted out below,
+  // so the two lists cannot slip against each other. An older backend sends none, and the rows
+  // are counted by position as they always were.
+  const _allFeats = ctx.characterData.feats || [];
+  const _allLabels = ctx.characterData.feat_labels;
+  const _labelled = Array.isArray(_allLabels) && _allLabels.length > 0 && _allLabels.length === _allFeats.length;
+  const _ordinary = _allFeats
+    .map((name, index) => ({ name, label: _labelled ? _allLabels[index] : null }))
+    .filter(entry => !_negNames.has(String(entry.name).toLowerCase()));
+  const _ordinaryFeats = _ordinary.map(entry => entry.name);
+  const _ordinaryLabels = _labelled ? _ordinary.map(entry => entry.label) : null;
   if (_negFeats.length) {
     await appendFeatDivider(ctx, "_________________Negative Luck_________________", -97000);
     let sort = -96999;
@@ -317,7 +331,7 @@ export async function addFeats(ctx) {
     log.debug(`Luck: added ${_negFeats.length} negative-luck feat row(s).`);
   }
 
-  await processFeatTrait(ctx, 'everyFeat', _ordinaryFeats, 'feat', 1500, general.label, true, general.start, general.step, general.levels, null, ctx.characterData.feats_feat_tax_dict);
+  await processFeatTrait(ctx, 'everyFeat', _ordinaryFeats, 'feat', 1500, general.label, true, general.start, general.step, general.levels, _ordinaryLabels, ctx.characterData.feats_feat_tax_dict, true);
   await addFeatSeparator(ctx, 'spaceClassBonusFeats', 'space_function', 2000);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3, null, ctx.characterData.teamwork_feat_labels);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2, null, ctx.characterData.class_feat_labels, ctx.characterData.class_feat_tax_dict);

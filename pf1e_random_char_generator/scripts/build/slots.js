@@ -8,9 +8,9 @@
  * player drags the real feat onto the sheet and deletes the placeholder.
  *
  * A PLACEHOLDER IS A TAG AND NOTHING ELSE (ruled 2026-11-16, after the first sheets were looked at):
- * its name is the tag a generated row of the same kind carries -- "(Feat 3)", "(Story Feat 5)",
- * "(Fighter 4)", "(Rogue Talent 2)", "(Flaw, Minor)" -- with no name after it, and its description
- * is empty. So a blank sheet reads like a generated one with the names rubbed out.
+ * its name is the tag a generated row of the same kind carries -- "(Human)", "(Feat 3)",
+ * "(Story Feat 5)", "(Fighter 4)", "(Rogue Talent 2)", "(Flaw, Minor)" -- with no name after it, and
+ * its description is empty. So a blank sheet reads like a generated one with the names rubbed out.
  *
  * NOTHING HERE COUNTS ANYTHING. How many feats a fighter 10 gets, at which class levels, and whether
  * the house rules add story feats to that, is the backend's answer (`utils/class_func/blank.py`);
@@ -53,7 +53,6 @@ export const SLOT_SECTIONS = Object.freeze({
   feats:           { sort: 1500,  subType: 'feat' },
   teamwork_feats:  { sort: 2500,  subType: 'feat' },
   class_feats:     { sort: 3000,  subType: 'feat' },
-  monk_feats:      { sort: 3300,  subType: 'feat' },
   bloodline_feats: { sort: 3500,  subType: 'feat' },
   trainer_feats:   { sort: 3610,  subType: 'feat',
                      divider: { title: '__________________________ Trainers _______________________', sort: 3600 } },
@@ -70,6 +69,13 @@ export const SLOT_SECTIONS = Object.freeze({
 const SEEDED_CHOICE = 'Empty slot';
 const SEEDED_CHOICE_NAME = new RegExp(`^(\\(.+\\)) ${SEEDED_CHOICE} \\d+$`);
 
+/**
+ * The slot sections this module numbers itself, by position, with `FEAT_ROW_NUMBERING`. The general
+ * feats are NOT among them: the backend names each of those rows by its source ("Human",
+ * "Creation 1", "Feat 5"), exactly as it does for a generated character's `feat_labels`.
+ */
+const POSITION_NUMBERED = ['flavor_feats', 'flaw_feats', 'story_feats'];
+
 /** The payload's slot rows, or [] -- tolerant of an absent or malformed key. */
 export function slotRows(characterData) {
   const rows = characterData?.slots;
@@ -79,14 +85,16 @@ export function slotRows(characterData) {
 /**
  * The name of every non-class-choice placeholder, in the order of `rows`.
  *
- * The general, story, flavor and flaw feats are numbered by POSITION with the very table and the
- * very function a generated character's rows go through -- "(Feat 1)", "(Feat 3)", "(Story Feat 5)"
- * -- so the two kinds of sheet cannot drift apart. Every other row is its backend label in
- * parentheses: "(Fighter 4)", "(Trainer 1)", "(Flaw, Minor)", "(Trait 3)".
+ * The story, flavor and flaw feats are numbered by POSITION with the very table and the very
+ * function a generated character's rows go through -- "(Story Feat 5)", "(Flaw 2)", "(Flavor 1)" --
+ * so the two kinds of sheet cannot drift apart. Every other row is its backend label in
+ * parentheses: "(Human)", "(Creation 1)", "(Feat 5)", "(Fighter 4)", "(Trainer 1)",
+ * "(Flaw, Minor)", "(Trait 3)".
  */
 export function slotNames(rows) {
   const names = new Map();
-  for (const [section, numbering] of Object.entries(FEAT_ROW_NUMBERING)) {
+  for (const section of POSITION_NUMBERED) {
+    const numbering = FEAT_ROW_NUMBERING[section];
     const inSection = rows.filter((row) => row.section === section);
     const numbered = inSection.map(() => ({ name: '' }));
     addingReceivedLocationToName(numbered, numbering.label, true, numbering.start, numbering.step, numbering.levels, null);

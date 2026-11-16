@@ -158,34 +158,36 @@ test('a placeholder is a flagged feat item with a name and NO text', () => {
 test('placeholders are named with the tags a generated sheet uses', () => {
   const row = (section, label, extra = {}) => ({ section, kind: 'feat', label, class: '', level: null, bucket: '', ...extra });
   const rows = [
-    row('feats', 'Feat'), row('feats', 'Feat'), row('feats', 'Feat'), row('feats', 'Feat'),
+    row('feats', 'Human'), row('feats', 'Creation 1'), row('feats', 'Creation 2'),
+    row('feats', 'Feat 1'), row('feats', 'Feat 3'), row('feats', 'Feat 19'),
     row('story_feats', 'Story Feat'), row('story_feats', 'Story Feat'), row('story_feats', 'Story Feat'),
     row('flavor_feats', 'Flavor'),
     row('flaw_feats', 'Flaw'), row('flaw_feats', 'Flaw'),
     row('class_feats', 'Fighter 1', { class: 'Fighter', level: 1 }),
     row('class_feats', 'Fighter 4', { class: 'Fighter', level: 4 }),
+    row('class_feats', 'Monk (Unchained) 2'), row('class_feats', 'Ranger 6'),
     row('teamwork_feats', 'Inquisitor 3'), row('bloodline_feats', 'Sorcerer 7'),
-    row('monk_feats', 'Monk (Unchained) 2'),
     row('trainer_feats', 'Trainer 1'), row('trainer_feats', 'Trainer 2'),
     row('flaws', 'Flaw, Minor'), row('flaws', 'Flaw, Major'),
     row('traits', 'Trait 1'), row('traits', 'Trait 8'),
   ];
   assert.deepEqual(slotNames(rows), [
-    // General feats count by position in twos, exactly as a generated character's do.
-    '(Feat 1)', '(Feat 3)', '(Feat 5)', '(Feat 7)',
-    // Story feats walk their own ladder.
+    // General feats carry the SOURCE the backend named: the human feat, the house creation
+    // feats, then level feats by the level they are gained at -- never a position count.
+    '(Human)', '(Creation 1)', '(Creation 2)', '(Feat 1)', '(Feat 3)', '(Feat 19)',
+    // Story, flavor and flaw feats are counted here, as a generated character's are.
     '(Story Feat 1)', '(Story Feat 5)', '(Story Feat 10)',
     '(Flavor 1)',
     '(Flaw 1)', '(Flaw 2)',
     // Everything else is the backend's tag in parentheses.
-    '(Fighter 1)', '(Fighter 4)', '(Inquisitor 3)', '(Sorcerer 7)', '(Monk (Unchained) 2)',
+    '(Fighter 1)', '(Fighter 4)', '(Monk (Unchained) 2)', '(Ranger 6)', '(Inquisitor 3)', '(Sorcerer 7)',
     '(Trainer 1)', '(Trainer 2)',
     '(Flaw, Minor)', '(Flaw, Major)',
     '(Trait 1)', '(Trait 8)',
   ]);
   // The order rows arrive in is the order names come back in, whatever the sections are.
-  assert.deepEqual(slotNames([row('traits', 'Trait 1'), row('feats', 'Feat'), row('traits', 'Trait 2'), row('feats', 'Feat')]),
-    ['(Trait 1)', '(Feat 1)', '(Trait 2)', '(Feat 3)']);
+  assert.deepEqual(slotNames([row('traits', 'Trait 1'), row('story_feats', 'Story Feat'), row('traits', 'Trait 2'), row('story_feats', 'Story Feat')]),
+    ['(Trait 1)', '(Story Feat 1)', '(Trait 2)', '(Story Feat 5)']);
   assert.deepEqual(slotNames([]), []);
 });
 
@@ -316,13 +318,40 @@ test('a blank fighter 10 reads like a generated one with the names rubbed out', 
   const result = await build(payloadOf('blank_fighter'));
   const names = flagged(result.template).map((item) => item.name);
   for (const name of [
-    '(Feat 1)', '(Feat 3)', '(Feat 5)', '(Story Feat 1)', '(Story Feat 5)', '(Story Feat 10)',
+    '(Human)', '(Creation 1)', '(Creation 2)', '(Feat 1)', '(Feat 3)', '(Feat 5)', '(Feat 7)', '(Feat 9)',
+    '(Story Feat 1)', '(Story Feat 5)', '(Story Feat 10)',
     '(Flavor 1)', '(Flaw 1)', '(Flaw 2)',
     '(Fighter 1)', '(Fighter 2)', '(Fighter 4)', '(Fighter 6)', '(Fighter 8)', '(Fighter 10)',
     '(Trainer 1)', '(Trainer 2)', '(Armor Training 7)', '(Weapon Training 9)',
     '(Flaw, Minor)', '(Flaw, Major)', '(Trait 1)', '(Trait 8)',
   ]) assert.ok(names.includes(name), `${name} is missing from: ${names.join(', ')}`);
   assert.ok(!names.some((name) => /Bonus Feat|Level/.test(name)), 'an old-style label survived');
+  // A level feat is numbered by the level it is gained at, so none is past the character's level.
+  const levelFeats = names.map((name) => /^\(Feat (\d+)\)$/.exec(name)).filter(Boolean).map((m) => Number(m[1]));
+  assert.deepEqual(levelFeats, [1, 3, 5, 7, 9]);
+});
+
+test('a generated character with feat_labels shows each general feat under its source', async () => {
+  const payload = payloadOf('martial');
+  const labels = payload.feats.map((_name, index) =>
+    ['Human', 'Creation 1', 'Creation 2', 'Profession 1'][index] ?? `Feat ${2 * (index - 4) + 1}`);
+  const result = await build({ ...payload, feat_labels: labels });
+  assert.equal(result.returned, true);
+  const names = (result.template.items ?? []).map((item) => item.name);
+  // Feats bought with luck are filed under Negative Luck with their running cost, not here.
+  const bought = new Set((payload.luck?.negative_feats ?? []).map((entry) => String(entry.name).toLowerCase()));
+  payload.feats.forEach((feat, index) => {
+    if (bought.has(String(feat).toLowerCase())) return;
+    assert.ok(names.some((name) => name.startsWith(`(${labels[index]}) `)),
+      `no general feat is tagged (${labels[index]}) for ${feat}`);
+  });
+  assert.equal(names.filter((name) => /^\(Human\) /.test(name)).length, 1);
+
+  // A list that does not line up with the feats is not trusted: the rows are counted as before.
+  const mismatched = await build({ ...payload, feat_labels: labels.slice(1) });
+  const counted = (mismatched.template.items ?? []).map((item) => item.name);
+  assert.ok(counted.some((name) => /^\(Feat 1\) /.test(name)));
+  assert.ok(!counted.some((name) => /^\(Human\) /.test(name)));
 });
 
 test('an ordinary generated character gets no placeholder at all', async () => {
