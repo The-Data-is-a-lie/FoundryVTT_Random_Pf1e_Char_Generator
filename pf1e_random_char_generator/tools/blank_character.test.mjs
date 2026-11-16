@@ -31,7 +31,7 @@ import {
   DEFAULT_BLANK_LEVEL, DEFAULT_BLANK_RACE, blankFormHtml, blankRequest, raceSlug, readBlankForm, slotCount,
 } from '../scripts/blank-character.js';
 import {
-  MODULE_ID, SLOT_FLAG, SLOT_SECTIONS, seedClassFeatureSlots, slotItem, slotRows,
+  MODULE_ID, SLOT_FLAG, SLOT_SECTIONS, seedClassFeatureSlots, slotItem, slotNames, slotRows,
 } from '../scripts/build/slots.js';
 
 const PAYLOAD_DIR = path.join(FIXTURES, 'payloads');
@@ -144,15 +144,49 @@ test('slot rows are read tolerantly', () => {
   assert.equal(slotCount({}), 0);
 });
 
-test('a placeholder is a flagged feat item in the right sheet section', () => {
+test('a placeholder is a flagged feat item with a name and NO text', () => {
   const row = { section: 'traits', kind: 'trait', label: 'Trait 1', class: '', level: null, bucket: '' };
-  const item = slotItem(row, 100, 'trait');
-  assert.equal(item.name, 'Trait 1');
+  const item = slotItem(row, '(Trait 1)', 100, 'trait');
+  assert.equal(item.name, '(Trait 1)');
   assert.equal(item.type, 'feat');
   assert.equal(item.system.subType, 'trait');
   assert.equal(item.sort, 100);
   assert.deepEqual(item.flags[MODULE_ID][SLOT_FLAG], { section: 'traits', kind: 'trait', class: '', level: null });
-  assert.match(item.system.description.value, /empty trait slot/i);
+  assert.equal(item.system.description.value, '', 'a placeholder carries no description');
+});
+
+test('placeholders are named with the tags a generated sheet uses', () => {
+  const row = (section, label, extra = {}) => ({ section, kind: 'feat', label, class: '', level: null, bucket: '', ...extra });
+  const rows = [
+    row('feats', 'Feat'), row('feats', 'Feat'), row('feats', 'Feat'), row('feats', 'Feat'),
+    row('story_feats', 'Story Feat'), row('story_feats', 'Story Feat'), row('story_feats', 'Story Feat'),
+    row('flavor_feats', 'Flavor'),
+    row('flaw_feats', 'Flaw'), row('flaw_feats', 'Flaw'),
+    row('class_feats', 'Fighter 1', { class: 'Fighter', level: 1 }),
+    row('class_feats', 'Fighter 4', { class: 'Fighter', level: 4 }),
+    row('teamwork_feats', 'Inquisitor 3'), row('bloodline_feats', 'Sorcerer 7'),
+    row('monk_feats', 'Monk (Unchained) 2'),
+    row('trainer_feats', 'Trainer 1'), row('trainer_feats', 'Trainer 2'),
+    row('flaws', 'Flaw, Minor'), row('flaws', 'Flaw, Major'),
+    row('traits', 'Trait 1'), row('traits', 'Trait 8'),
+  ];
+  assert.deepEqual(slotNames(rows), [
+    // General feats count by position in twos, exactly as a generated character's do.
+    '(Feat 1)', '(Feat 3)', '(Feat 5)', '(Feat 7)',
+    // Story feats walk their own ladder.
+    '(Story Feat 1)', '(Story Feat 5)', '(Story Feat 10)',
+    '(Flavor 1)',
+    '(Flaw 1)', '(Flaw 2)',
+    // Everything else is the backend's tag in parentheses.
+    '(Fighter 1)', '(Fighter 4)', '(Inquisitor 3)', '(Sorcerer 7)', '(Monk (Unchained) 2)',
+    '(Trainer 1)', '(Trainer 2)',
+    '(Flaw, Minor)', '(Flaw, Major)',
+    '(Trait 1)', '(Trait 8)',
+  ]);
+  // The order rows arrive in is the order names come back in, whatever the sections are.
+  assert.deepEqual(slotNames([row('traits', 'Trait 1'), row('feats', 'Feat'), row('traits', 'Trait 2'), row('feats', 'Feat')]),
+    ['(Trait 1)', '(Feat 1)', '(Trait 2)', '(Feat 3)']);
+  assert.deepEqual(slotNames([]), []);
 });
 
 test('class-choice slots are written into the fields the class-features stage lays out', () => {
@@ -217,28 +251,48 @@ for (const name of ['blank_fighter', 'blank_wizard_rogue', 'blank_sorcerer_pf1']
     const rows = payload.slots;
     const classChoices = rows.filter((row) => row.section === 'class_features');
     const others = rows.filter((row) => row.section !== 'class_features');
+    const sectionOf = (item) => item.flags[MODULE_ID][SLOT_FLAG].section;
 
-    // Every non-class-choice row: exactly one flagged item, carrying its label, in its section.
-    const placeholders = flagged(result.template);
-    assert.deepEqual(placeholders.map((item) => item.name).sort(), others.map((row) => row.label).sort());
-    for (const row of others) {
-      const item = placeholders.find((p) => p.name === row.label
-        && p.flags[MODULE_ID][SLOT_FLAG].section === row.section);
-      assert.ok(item, `no placeholder for ${row.label}`);
-      assert.equal(item.system.subType, SLOT_SECTIONS[row.section].subType, row.label);
-    }
+    // Every non-class-choice row: exactly one flagged item, named with its tag, in its section.
+    const placeholders = flagged(result.template).filter((item) => sectionOf(item) !== 'class_features');
+    const expected = slotNames(others);
+    assert.deepEqual(placeholders.map((item) => item.name).sort(), [...expected].sort());
+    others.forEach((row, index) => {
+      const item = placeholders.find((p) => p.name === expected[index] && sectionOf(p) === row.section);
+      assert.ok(item, `no placeholder for ${expected[index]}`);
+      assert.equal(item.system.subType, SLOT_SECTIONS[row.section].subType, expected[index]);
+    });
     // Sorts never collide inside a sheet section, so the order on the sheet is the order sent.
     const sorts = placeholders.map((item) => `${item.system.subType}:${item.sort}`);
     assert.equal(new Set(sorts).size, sorts.length, 'two placeholders share a sort');
 
-    // Every class-choice row: one "Empty slot" class feature, drawn by the class-features stage.
-    assert.equal(named(result.template, /\) Empty slot \d+$/).length, classChoices.length);
+    // Every class-choice row: one class feature that is the bare tag -- "(Rogue Talent 2)" --
+    // drawn by the class-features stage, with the seed name gone.
+    const choices = flagged(result.template).filter((item) => sectionOf(item) === 'class_features');
+    assert.equal(choices.length, classChoices.length);
+    for (const item of choices) assert.match(item.name, /^\(.+ \d+\)$/, item.name);
+    assert.equal(named(result.template, /Empty slot/).length, 0, 'a seed name reached the sheet');
 
-    // The headings a real pick would sit under are there, and Flaws only when a flaw is owed.
+    // No placeholder says anything: a name and an empty description.
+    for (const item of flagged(result.template)) {
+      assert.equal(item.system.description.value, '', `${item.name} has text in it`);
+      assert.match(item.name, /^\(.+\)$/, `${item.name} is more than a tag`);
+    }
+
+    // The headings a real pick would sit under are there; Flaws and Trainers only when owed.
+    const owes = (section) => others.some((row) => row.section === section);
     assert.equal(named(result.template, /^_+ Feats _+$/).length, 1, 'the Feats divider');
     assert.equal(named(result.template, /^_+ Traits_+$/).length, 1, 'the Traits divider');
-    assert.equal(named(result.template, /^_+ Flaws_+$/).length, others.some((row) => row.section === 'flaws') ? 1 : 0);
-    assert.equal(named(result.template, /Still To Choose/).length, 1);
+    assert.equal(named(result.template, /^_+ Flaws_+$/).length, owes('flaws') ? 1 : 0);
+    assert.equal(named(result.template, /^_+ Trainers _+$/).length, owes('trainer_feats') ? 1 : 0);
+    assert.equal(named(result.template, /Still To Choose|Ability Score|Skill Ranks|Spells Known/).length, 0,
+      'ability increases, skill ranks and spells known are not slots');
+    assert.equal(placeholders.filter((item) => sectionOf(item) === 'traits').length, 8, 'eight blank traits');
+
+    // The item a generated sheet records ability increases on is there, and blank.
+    const increases = (result.template.items ?? []).filter((item) => item.name === 'level_up_stats');
+    assert.equal(increases.length, 1, 'the level_up_stats buff');
+    for (const change of increases[0].system?.changes ?? []) assert.equal(String(change.formula), '0', change.target);
 
     // Nothing rolled reached the sheet: the class items are there, and no gear.
     const classes = (result.template.items ?? []).filter((item) => item.type === 'class').map((item) => item.name);
@@ -254,7 +308,21 @@ test('the house-rule sheet has flaw and story slots, the PF1 sheet has neither',
     assert.ok(sections('blank_fighter').has(section), section);
     assert.ok(!sections('blank_sorcerer_pf1').has(section), section);
   }
-  assert.ok(sections('blank_sorcerer_pf1').has('spells'), 'a sorcerer is owed spells known');
+  // Trainers are a house rule of their own and both fixtures were recorded with them on.
+  assert.ok(sections('blank_fighter').has('trainer_feats'));
+});
+
+test('a blank fighter 10 reads like a generated one with the names rubbed out', async () => {
+  const result = await build(payloadOf('blank_fighter'));
+  const names = flagged(result.template).map((item) => item.name);
+  for (const name of [
+    '(Feat 1)', '(Feat 3)', '(Feat 5)', '(Story Feat 1)', '(Story Feat 5)', '(Story Feat 10)',
+    '(Flavor 1)', '(Flaw 1)', '(Flaw 2)',
+    '(Fighter 1)', '(Fighter 2)', '(Fighter 4)', '(Fighter 6)', '(Fighter 8)', '(Fighter 10)',
+    '(Trainer 1)', '(Trainer 2)', '(Armor Training 7)', '(Weapon Training 9)',
+    '(Flaw, Minor)', '(Flaw, Major)', '(Trait 1)', '(Trait 8)',
+  ]) assert.ok(names.includes(name), `${name} is missing from: ${names.join(', ')}`);
+  assert.ok(!names.some((name) => /Bonus Feat|Level/.test(name)), 'an old-style label survived');
 });
 
 test('an ordinary generated character gets no placeholder at all', async () => {

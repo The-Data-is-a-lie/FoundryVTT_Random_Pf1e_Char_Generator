@@ -250,7 +250,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -258,7 +258,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -266,7 +266,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 3)",
+   "label": "Feat",
    "class": "",
    "level": 3,
    "bucket": ""
@@ -274,15 +274,31 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 5)",
+   "label": "Feat",
    "class": "",
    "level": 5,
    "bucket": ""
   },
   {
+   "section": "trainer_feats",
+   "kind": "feat",
+   "label": "Trainer 1",
+   "class": "",
+   "level": 1,
+   "bucket": ""
+  },
+  {
+   "section": "trainer_feats",
+   "kind": "feat",
+   "label": "Trainer 2",
+   "class": "",
+   "level": 2,
+   "bucket": ""
+  },
+  {
    "section": "class_features",
    "kind": "class_feature",
-   "label": "Talents (Sorcerer 1)",
+   "label": "Talents 1",
    "class": "Sorcerer",
    "level": 1,
    "bucket": "Talents"
@@ -304,51 +320,51 @@
    "bucket": ""
   },
   {
-   "section": "abilities",
-   "kind": "ability_increase",
-   "label": "Ability Score Increase (Level 4)",
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 3",
    "class": "",
-   "level": 4,
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Sorcerer Spells Known, 0-level: 7",
-   "class": "Sorcerer",
-   "level": 0,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 4",
+   "class": "",
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Sorcerer Spells Known, 1st-level: 4",
-   "class": "Sorcerer",
-   "level": 1,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 5",
+   "class": "",
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Sorcerer Spells Known, 2nd-level: 2",
-   "class": "Sorcerer",
-   "level": 2,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 6",
+   "class": "",
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Sorcerer Spells Known, 3rd-level: 1",
-   "class": "Sorcerer",
-   "level": 3,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 7",
+   "class": "",
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "skills",
-   "kind": "skill_ranks",
-   "label": "Skill Ranks: Sorcerer 2 per level x 6 = 12 (plus Int modifier per level)",
-   "class": "Sorcerer",
-   "level": 6,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 8",
+   "class": "",
+   "level": null,
    "bucket": ""
   }
  ],

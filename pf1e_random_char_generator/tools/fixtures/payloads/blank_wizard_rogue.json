@@ -256,7 +256,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -264,7 +264,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -272,7 +272,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -280,7 +280,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 3)",
+   "label": "Feat",
    "class": "",
    "level": 3,
    "bucket": ""
@@ -288,7 +288,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 5)",
+   "label": "Feat",
    "class": "",
    "level": 5,
    "bucket": ""
@@ -296,7 +296,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 7)",
+   "label": "Feat",
    "class": "",
    "level": 7,
    "bucket": ""
@@ -304,7 +304,7 @@
   {
    "section": "story_feats",
    "kind": "feat",
-   "label": "Story Feat 1",
+   "label": "Story Feat",
    "class": "",
    "level": null,
    "bucket": ""
@@ -312,7 +312,7 @@
   {
    "section": "story_feats",
    "kind": "feat",
-   "label": "Story Feat 2",
+   "label": "Story Feat",
    "class": "",
    "level": null,
    "bucket": ""
@@ -320,7 +320,7 @@
   {
    "section": "flavor_feats",
    "kind": "feat",
-   "label": "Flavor Feat",
+   "label": "Flavor",
    "class": "",
    "level": null,
    "bucket": ""
@@ -328,7 +328,7 @@
   {
    "section": "flaw_feats",
    "kind": "feat",
-   "label": "Flaw Feat 1",
+   "label": "Flaw",
    "class": "",
    "level": null,
    "bucket": ""
@@ -336,7 +336,7 @@
   {
    "section": "flaw_feats",
    "kind": "feat",
-   "label": "Flaw Feat 2",
+   "label": "Flaw",
    "class": "",
    "level": null,
    "bucket": ""
@@ -344,15 +344,31 @@
   {
    "section": "class_feats",
    "kind": "feat",
-   "label": "Wizard Bonus Feat (Level 5)",
+   "label": "Wizard 5",
    "class": "Wizard",
    "level": 5,
    "bucket": ""
   },
   {
+   "section": "trainer_feats",
+   "kind": "feat",
+   "label": "Trainer 1",
+   "class": "",
+   "level": 1,
+   "bucket": ""
+  },
+  {
+   "section": "trainer_feats",
+   "kind": "feat",
+   "label": "Trainer 2",
+   "class": "",
+   "level": 2,
+   "bucket": ""
+  },
+  {
    "section": "class_features",
    "kind": "class_feature",
-   "label": "Rogue Talents (Rogue 2)",
+   "label": "Rogue Talents 2",
    "class": "Rogue",
    "level": 2,
    "bucket": "rogue_talents"
@@ -390,67 +406,51 @@
    "bucket": ""
   },
   {
-   "section": "abilities",
-   "kind": "ability_increase",
-   "label": "Ability Score Increase (Level 4)",
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 3",
    "class": "",
-   "level": 4,
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "abilities",
-   "kind": "ability_increase",
-   "label": "Ability Score Increase (Level 8)",
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 4",
    "class": "",
-   "level": 8,
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Wizard Spells Known, 0-level: 6",
-   "class": "Wizard",
-   "level": 0,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 5",
+   "class": "",
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Wizard Spells Known, 1st-level: 5",
-   "class": "Wizard",
-   "level": 1,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 6",
+   "class": "",
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Wizard Spells Known, 2nd-level: 4",
-   "class": "Wizard",
-   "level": 2,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 7",
+   "class": "",
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "spells",
-   "kind": "spells_known",
-   "label": "Wizard Spells Known, 3rd-level: 2",
-   "class": "Wizard",
-   "level": 3,
-   "bucket": ""
-  },
-  {
-   "section": "skills",
-   "kind": "skill_ranks",
-   "label": "Skill Ranks: Wizard 4 per level x 5 = 20 (plus Int modifier per level)",
-   "class": "Wizard",
-   "level": 5,
-   "bucket": ""
-  },
-  {
-   "section": "skills",
-   "kind": "skill_ranks",
-   "label": "Skill Ranks: Rogue 8 per level x 3 = 24 (plus Int modifier per level)",
-   "class": "Rogue",
-   "level": 3,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 8",
+   "class": "",
+   "level": null,
    "bucket": ""
   }
  ],

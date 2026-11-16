@@ -229,7 +229,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -237,7 +237,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -245,7 +245,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -253,7 +253,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 1)",
+   "label": "Feat",
    "class": "",
    "level": 1,
    "bucket": ""
@@ -261,7 +261,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 3)",
+   "label": "Feat",
    "class": "",
    "level": 3,
    "bucket": ""
@@ -269,7 +269,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 5)",
+   "label": "Feat",
    "class": "",
    "level": 5,
    "bucket": ""
@@ -277,7 +277,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 7)",
+   "label": "Feat",
    "class": "",
    "level": 7,
    "bucket": ""
@@ -285,7 +285,7 @@
   {
    "section": "feats",
    "kind": "feat",
-   "label": "Feat (Level 9)",
+   "label": "Feat",
    "class": "",
    "level": 9,
    "bucket": ""
@@ -293,7 +293,7 @@
   {
    "section": "story_feats",
    "kind": "feat",
-   "label": "Story Feat 1",
+   "label": "Story Feat",
    "class": "",
    "level": null,
    "bucket": ""
@@ -301,7 +301,7 @@
   {
    "section": "story_feats",
    "kind": "feat",
-   "label": "Story Feat 2",
+   "label": "Story Feat",
    "class": "",
    "level": null,
    "bucket": ""
@@ -309,7 +309,7 @@
   {
    "section": "story_feats",
    "kind": "feat",
-   "label": "Story Feat 3",
+   "label": "Story Feat",
    "class": "",
    "level": null,
    "bucket": ""
@@ -317,7 +317,7 @@
   {
    "section": "flavor_feats",
    "kind": "feat",
-   "label": "Flavor Feat",
+   "label": "Flavor",
    "class": "",
    "level": null,
    "bucket": ""
@@ -325,7 +325,7 @@
   {
    "section": "flaw_feats",
    "kind": "feat",
-   "label": "Flaw Feat 1",
+   "label": "Flaw",
    "class": "",
    "level": null,
    "bucket": ""
@@ -333,7 +333,7 @@
   {
    "section": "flaw_feats",
    "kind": "feat",
-   "label": "Flaw Feat 2",
+   "label": "Flaw",
    "class": "",
    "level": null,
    "bucket": ""
@@ -341,7 +341,7 @@
   {
    "section": "class_feats",
    "kind": "feat",
-   "label": "Fighter Bonus Feat (Level 1)",
+   "label": "Fighter 1",
    "class": "Fighter",
    "level": 1,
    "bucket": ""
@@ -349,7 +349,7 @@
   {
    "section": "class_feats",
    "kind": "feat",
-   "label": "Fighter Bonus Feat (Level 2)",
+   "label": "Fighter 2",
    "class": "Fighter",
    "level": 2,
    "bucket": ""
@@ -357,7 +357,7 @@
   {
    "section": "class_feats",
    "kind": "feat",
-   "label": "Fighter Bonus Feat (Level 4)",
+   "label": "Fighter 4",
    "class": "Fighter",
    "level": 4,
    "bucket": ""
@@ -365,7 +365,7 @@
   {
    "section": "class_feats",
    "kind": "feat",
-   "label": "Fighter Bonus Feat (Level 6)",
+   "label": "Fighter 6",
    "class": "Fighter",
    "level": 6,
    "bucket": ""
@@ -373,7 +373,7 @@
   {
    "section": "class_feats",
    "kind": "feat",
-   "label": "Fighter Bonus Feat (Level 8)",
+   "label": "Fighter 8",
    "class": "Fighter",
    "level": 8,
    "bucket": ""
@@ -381,15 +381,31 @@
   {
    "section": "class_feats",
    "kind": "feat",
-   "label": "Fighter Bonus Feat (Level 10)",
+   "label": "Fighter 10",
    "class": "Fighter",
    "level": 10,
    "bucket": ""
   },
   {
+   "section": "trainer_feats",
+   "kind": "feat",
+   "label": "Trainer 1",
+   "class": "",
+   "level": 1,
+   "bucket": ""
+  },
+  {
+   "section": "trainer_feats",
+   "kind": "feat",
+   "label": "Trainer 2",
+   "class": "",
+   "level": 2,
+   "bucket": ""
+  },
+  {
    "section": "class_features",
    "kind": "class_feature",
-   "label": "Armor Training (Fighter 7)",
+   "label": "Armor Training 7",
    "class": "Fighter",
    "level": 7,
    "bucket": "armor_training"
@@ -397,7 +413,7 @@
   {
    "section": "class_features",
    "kind": "class_feature",
-   "label": "Weapon Training (Fighter 9)",
+   "label": "Weapon Training 9",
    "class": "Fighter",
    "level": 9,
    "bucket": "weapon_training"
@@ -435,27 +451,51 @@
    "bucket": ""
   },
   {
-   "section": "abilities",
-   "kind": "ability_increase",
-   "label": "Ability Score Increase (Level 4)",
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 3",
    "class": "",
-   "level": 4,
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "abilities",
-   "kind": "ability_increase",
-   "label": "Ability Score Increase (Level 8)",
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 4",
    "class": "",
-   "level": 8,
+   "level": null,
    "bucket": ""
   },
   {
-   "section": "skills",
-   "kind": "skill_ranks",
-   "label": "Skill Ranks: Fighter 4 per level x 10 = 40 (plus Int modifier per level)",
-   "class": "Fighter",
-   "level": 10,
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 5",
+   "class": "",
+   "level": null,
+   "bucket": ""
+  },
+  {
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 6",
+   "class": "",
+   "level": null,
+   "bucket": ""
+  },
+  {
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 7",
+   "class": "",
+   "level": null,
+   "bucket": ""
+  },
+  {
+   "section": "traits",
+   "kind": "trait",
+   "label": "Trait 8",
+   "class": "",
+   "level": null,
    "bucket": ""
   }
  ],
