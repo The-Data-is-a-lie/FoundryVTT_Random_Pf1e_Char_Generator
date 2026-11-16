@@ -21,6 +21,7 @@ import { appendJsonToTemplate } from './items.js';
 import { findMainWeapon } from './weapon.js';
 import { appendEnhancementsToDescription } from './equipment.js';
 import { characterHasNaturalArmor } from './natural-armor.js';
+import { applyItemDurability, applyMaterial, materialLabel } from './item-durability.js';
 import { log } from '../shared/log.js';
 
 // ----- Size-based damage scaling ----- //
@@ -153,16 +154,30 @@ async function createScalingAttackItem(ctx) {
 // Longsword"). MUST run after every other weapon/armor step: earlier attach functions find the
 // weapon by ctx.characterData.weapon_name, and the scaling attack item clones the weapon — both
 // twins are renamed here together.
+//
+// The special material rides the same rename, between the qualities and the base name
+// ("+1 Corrosive Adamantine Longsword", or just "Mithral Chain Shirt" with no bonus), for the
+// same reason the bonus does: it has to be the last thing that touches the name. The material
+// fields and the durability breakdown are written here too -- on the INVENTORY item only; the
+// attack twin takes the material (it is what gets rolled against DR) but keeps its stripped
+// description. All of it is a no-op on a payload that carries none of these keys.
 async function applyEnhancementBonuses(ctx) {
   try {
     const items = ctx.exportTemplate.items || [];
+    const durability = ctx.characterData.item_durability || {};
     let stamped = 0;
-    const stamp = (item, bonus, qualities, isWeapon) => {
-      if (!item || !item.system || !(bonus > 0)) return;
-      if (isWeapon) item.system.enh = bonus;
-      else if (item.system.armor) item.system.armor.enh = bonus;
-      item.system.masterwork = true;
-      item.name = ['+' + bonus, ...(Array.isArray(qualities) ? qualities : []), item.name].join(' ');
+    const stamp = (item, bonus, qualities, isWeapon, material) => {
+      if (!item || !item.system) return;
+      const label = materialLabel(material);
+      if (!(bonus > 0) && !label) return;
+      if (bonus > 0) {
+        if (isWeapon) item.system.enh = bonus;
+        else if (item.system.armor) item.system.armor.enh = bonus;
+        item.system.masterwork = true;
+      }
+      item.name = [bonus > 0 ? '+' + bonus : null,
+                   ...(bonus > 0 && Array.isArray(qualities) ? qualities : []),
+                   label, item.name].filter(Boolean).join(' ');
       stamped++;
     };
 
@@ -170,19 +185,28 @@ async function applyEnhancementBonuses(ctx) {
     const mainWeapon = weaponItems.find(w => w.name === (ctx.characterData.weapon_name || '')) || weaponItems[0];
     if (mainWeapon) {
       const twins = items.filter(i => (i.type === 'weapon' || i.type === 'attack') && i.name === mainWeapon.name);
+      const weaponMaterial = ctx.characterData.weapon_material;
       for (const t of twins) {
+        if (t.type === 'weapon') applyItemDurability(t, weaponMaterial, durability.weapon);
+        else applyMaterial(t, weaponMaterial);
         stamp(t, Number(ctx.characterData.weapon_enhancement_bonus) || 0,
-              ctx.characterData.weapon_enhancement_chosen_list, true);
+              ctx.characterData.weapon_enhancement_chosen_list, true, weaponMaterial);
       }
     }
 
     const equipItems = items.filter(i => i.type === 'equipment');
-    stamp(equipItems.find(i => i.system?.subType === 'armor'),
+    const armor = equipItems.find(i => i.system?.subType === 'armor');
+    applyItemDurability(armor, ctx.characterData.armor_material, durability.armor);
+    stamp(armor,
           Number(ctx.characterData.armor_enhancement_bonus) || 0,
-          ctx.characterData.armor_enhancement_chosen_list, false);
-    stamp(equipItems.find(i => i.system?.subType === 'shield'),
+          ctx.characterData.armor_enhancement_chosen_list, false,
+          ctx.characterData.armor_material);
+    const shield = equipItems.find(i => i.system?.subType === 'shield');
+    applyItemDurability(shield, ctx.characterData.shield_material, durability.shield);
+    stamp(shield,
           Number(ctx.characterData.shield_enhancement_bonus) || 0,
-          ctx.characterData.shield_enhancement_chosen_list, false);
+          ctx.characterData.shield_enhancement_chosen_list, false,
+          ctx.characterData.shield_material);
 
     log.debug(`Enhancement bonuses: stamped +N on ${stamped} item(s).`);
   } catch (error) {
