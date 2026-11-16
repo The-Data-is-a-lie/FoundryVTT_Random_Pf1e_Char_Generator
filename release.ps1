@@ -6,8 +6,24 @@
     distributable zip from source, commit + tag, push to GitLab (main + tag), create a GitLab
     Release, then submit the version to the FoundryVTT package registry via the Package Release API.
 
-    The manifest/download URLs are pinned to the new tag (immutable per release, per Foundry's
-    recommendation), so users always get exactly the code that shipped with that version.
+    TWO MANIFEST URLS, on purpose -- they answer different questions:
+
+      - the `manifest` written INSIDE module.json is the STABLE one (raw/main/.../module.json). An
+        installed copy re-reads that URL to ask "is there anything newer?", so it has to keep
+        answering after the next release;
+      - the manifest SUBMITTED TO THE FOUNDRY REGISTRY for this version, and the `download` inside
+        module.json, are pinned to the new tag (immutable per release), so installing a given
+        version always fetches exactly the code that shipped with it.
+
+    Until v2.6.0 the URL inside module.json was pinned to the tag as well. An installed 2.5.0 then
+    asked the v2.5.0 tag for news forever and was always told "2.5.0". Foundry only found the
+    update by falling back to the registry, and that path (a "track change") stops Update All on
+    a "Manifest Update" confirmation dialog every release -- declined once, it is never offered
+    again for that installed version (core setting `declinedManifestUpgrades`).
+
+    The price of the stable URL: module.json ON MAIN is what every installed copy reads. Its
+    version must only ever be bumped by this script, in the same push that publishes the tag its
+    `download` points at. tools/manifest.test.mjs holds the two URL shapes.
 
     Prerequisites (one-time), in a git-ignored .env next to this script:
       GITLAB_TOKEN=...            # api-scoped GitLab PAT (creates the GitLab Release)
@@ -55,7 +71,8 @@ $FoundryId      = 'pf1e-random-char-generator'
 $ProjPath       = 'pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator'
 $ProjId         = 'pathfinder_1e_randomized_character_generator%2FFoundryVTT_Random_Pf1e_Char_Generator'
 $RawBase        = "https://gitlab.com/$ProjPath/-/raw/v$Version"
-$PinnedManifest = "$RawBase/$ModName/module.json"
+$PinnedManifest = "$RawBase/$ModName/module.json"          # submitted to the Foundry registry
+$StableManifest = "https://gitlab.com/$ProjPath/-/raw/main/$ModName/module.json"   # written into module.json
 $PinnedDownload = "$RawBase/downloads/$ModName.zip"
 $FoundryApi     = 'https://foundryvtt.com/_api/packages/release_version/'
 $PkgUrl         = "https://foundryvtt.com/packages/$FoundryId"
@@ -124,7 +141,7 @@ if ($testExit -ne 0) { Fail "Test suite failed (exit $testExit). Nothing was cha
 Ok 'Test suite green.'
 
 # ---- 2. bump module.json (version, compat, pinned URLs) -------------------------------------------
-Step "Bumping $ManifestRel -> version $Version, pinned to tag v$Version"
+Step "Bumping $ManifestRel -> version $Version (stable manifest, download pinned to tag v$Version)"
 $mj  = [System.IO.File]::ReadAllText($ManifestPath)
 $nlM = if ($mj -match "`r`n") { "`r`n" } else { "`n" }
 $mj  = $mj -creplace '("version"\s*:\s*")[^"]*(")', ('${1}' + $Version + '${2}')
@@ -136,11 +153,13 @@ if ($Maximum) {
         $mj = $mj -creplace '("verified"\s*:\s*"[^"]*")', ('${1},' + $nlM + '    "maximum": "' + $Maximum + '"')
     }
 }
-$mj = $mj -creplace '("manifest"\s*:\s*")[^"]*(")', ('${1}' + $PinnedManifest + '${2}')
+$mj = $mj -creplace '("manifest"\s*:\s*")[^"]*(")', ('${1}' + $StableManifest + '${2}')
 $mj = $mj -creplace '("download"\s*:\s*")[^"]*(")', ('${1}' + $PinnedDownload + '${2}')
 
 try { $mjObj = $mj | ConvertFrom-Json } catch { Fail "module.json no longer parses after edit: $($_.Exception.Message)" }
 if ($mjObj.version -ne $Version) { Fail "version did not update as expected (got '$($mjObj.version)')." }
+if ($mjObj.manifest -ne $StableManifest) { Fail "manifest did not become the stable URL (got '$($mjObj.manifest)')." }
+if ($mjObj.download -ne $PinnedDownload) { Fail "download is not pinned to v$Version (got '$($mjObj.download)')." }
 Write-Utf8NoBom $ManifestPath $mj
 Ok "version=$($mjObj.version)  minimum=$($mjObj.compatibility.minimum)  verified=$($mjObj.compatibility.verified)"
 
@@ -345,12 +364,15 @@ if ($LASTEXITCODE -ne 0) { Fail 'git commit failed (nothing staged?).' }
 & git tag -a "v$Version" -m "Release v$Version"
 if ($LASTEXITCODE -ne 0) { Fail 'git tag failed.' }
 
-Step 'Pushing to GitLab (main + tag)'
-& git push origin HEAD:main
-if ($LASTEXITCODE -ne 0) { Fail "Push to main failed. Local commit+tag exist -- fix, then re-run: git push origin HEAD:main && git push origin v$Version" }
+# TAG FIRST, THEN MAIN. Once main moves, every installed copy that asks the stable manifest is told
+# "v$Version, download from the v$Version tag". Pushing the tag first means that zip already exists
+# by the time anything is told to fetch it; the other order leaves a window of 404s.
+Step 'Pushing to GitLab (tag, then main)'
 & git push origin "v$Version"
-if ($LASTEXITCODE -ne 0) { Fail "Tag push failed. Re-run: git push origin v$Version" }
-Ok 'Pushed main + tag.'
+if ($LASTEXITCODE -ne 0) { Fail "Tag push failed. Local commit+tag exist -- fix, then re-run: git push origin v$Version && git push origin HEAD:main" }
+& git push origin HEAD:main
+if ($LASTEXITCODE -ne 0) { Fail "Push to main failed (the tag IS pushed). Fix, then re-run: git push origin HEAD:main" }
+Ok 'Pushed tag + main.'
 
 # ---- 6. GitLab release ---------------------------------------------------------------------------
 Step 'Creating GitLab release'
@@ -378,7 +400,7 @@ if ($NoPublish) {
     Step 'NO-PUBLISH: stopping before Foundry submission'
     Note "Publish manually at $PkgUrl (Release Version), or re-run without -NoPublish:"
     Note "  version:  $Version"
-    Note "  manifest: $PinnedManifest"
+    Note "  manifest: $PinnedManifest   (the PINNED one -- not the stable URL inside module.json)"
     Note "  notes:    $GitLabReleaseUrl"
     Write-Host ''
     Ok 'Pushed + released on GitLab. Not submitted to Foundry.'
@@ -420,4 +442,5 @@ Write-Host ''
 Write-Host "Published $ModName v$Version" -ForegroundColor Green
 Write-Host "  Foundry:  $PkgUrl" -ForegroundColor Green
 Write-Host "  GitLab:   $GitLabReleaseUrl" -ForegroundColor Green
-Write-Host "  Manifest: $PinnedManifest" -ForegroundColor Green
+Write-Host "  Registry manifest (pinned): $PinnedManifest" -ForegroundColor Green
+Write-Host "  Update-check manifest:      $StableManifest" -ForegroundColor Green
