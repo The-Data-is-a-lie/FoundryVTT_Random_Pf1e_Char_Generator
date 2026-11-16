@@ -28,7 +28,7 @@ export const CONCEPTS_FLAG = 'buildConcepts';
 export const ACTIVE_FLAG = 'activeBuildConcept';
 
 /** The request keys a selection may carry -- the backend's `selection.REQUEST_KEYS`. */
-export const SELECTION_KEYS = ['classes', 'stat_priority', 'schools', 'spheres', 'path_of_war', 'feats'];
+export const SELECTION_KEYS = ['classes', 'stat_priority', 'schools', 'spheres', 'path_of_war', 'feats', 'build'];
 
 const ORDINALS = ['1st', '2nd', '3rd', '4th', '5th', '6th'];
 /** How many pinned feats the one-line summary names before it says "+N more". */
@@ -100,6 +100,8 @@ export function cleanSelection(raw) {
   }
   if (feats.length) out.feats = feats;
 
+  if (typeof raw.build === 'string' && text(raw.build)) out.build = text(raw.build);
+
   return Object.keys(out).length ? out : null;
 }
 
@@ -113,6 +115,7 @@ export function conceptSummary(selection) {
   const clean = cleanSelection(selection);
   if (!clean) return 'nothing pinned';
   const parts = [];
+  if (clean.build) parts.push(`build: ${clean.build}`);
   if (clean.classes) {
     parts.push(clean.classes.map((c) => (c.level ? `${c.name} ${c.level}` : c.name)).join(' / '));
   }
@@ -350,6 +353,47 @@ function checkboxes(key, values, chosen) {
     + '</div>';
 }
 
+/**
+ * What the editor says under the Build dropdown for the build named `name`: what the build is, and
+ * the classes it fits best (the ones a build with no class pinned is drawn from). '' for no build.
+ */
+export function buildHintText(options, name) {
+  const row = (options.builds ?? []).find((b) => b.name === name);
+  if (!row) return '';
+  const classes = (row.classes ?? []).map((c) => c.replace(/\b\w/g, (m) => m.toUpperCase()));
+  return text(row.definition) + (classes.length ? ` Fits best: ${classes.join(', ')}.` : '');
+}
+
+/**
+ * The Build section. A backend that does not offer builds (one from before the build pin) gets no
+ * dropdown -- only the stored build, carried as a hidden field so a save does not strip it.
+ */
+function buildFieldset(options, chosen) {
+  if (!Array.isArray(options.builds) || !options.builds.length) {
+    return chosen ? `<input type="hidden" data-rcg="build" value="${escapeHtml(chosen)}">` : '';
+  }
+  const families = new Map();
+  for (const row of options.builds) {
+    const family = row.family || 'Other';
+    if (!families.has(family)) families.set(family, []);
+    families.get(family).push(row);
+  }
+  const body = [...families.entries()].map(([family, rows]) =>
+    `<optgroup label="${escapeHtml(family)}">`
+      + rows.map((row) => option(row.name, row.name, row.name === chosen)).join('') + '</optgroup>').join('');
+  // A stored build the backend no longer offers stays selectable, so it is not dropped on save.
+  const stale = chosen && !options.builds.some((row) => row.name === chosen) ? option(chosen, chosen, true) : '';
+  return `<fieldset><legend>Build</legend>
+      <p class="notes">A build steers what is rolled: the class (when you have not pinned one), where the ability scores go, the weapon, armor and shield, the spells and the feats. The finished character is then measured, and if it comes out as a different build the unmet-pins dialog says so.</p>
+      <div class="rcg-concept-row">
+        <label>Build</label>
+        <select data-rcg="build">${option('', '— not pinned —', !chosen)}${stale}${body}</select>
+        <span></span>
+      </div>
+      <p class="notes" data-rcg="build-hint">${escapeHtml(buildHintText(options, chosen))}</p>
+    </fieldset>`;
+}
+
 /** One pinned feat in the editor: its name, the value the form reads back, and a remove link. */
 export function featChipHtml(name) {
   return `<span class="rcg-chip" data-rcg="feat-chip"><input type="hidden" data-rcg="feat" value="${escapeHtml(name)}">`
@@ -393,6 +437,11 @@ function featsFieldset(options, chosen) {
  * @returns {boolean} whether there was a feat picker to wire (false on a backend without feats).
  */
 export function wireConceptForm(root, options, notify = () => {}) {
+  const build = root.querySelector?.('[data-rcg="build"]');
+  const hint = root.querySelector?.('[data-rcg="build-hint"]');
+  if (build && hint) {
+    build.addEventListener('change', () => { hint.textContent = buildHintText(options, build.value); });
+  }
   const entry = root.querySelector?.('[data-rcg="feat-entry"]');
   const holder = root.querySelector?.('[data-rcg="feat-chips"]');
   if (!entry || !holder) return false;
@@ -457,6 +506,7 @@ export function conceptFormHtml(options, name, selection) {
       <input type="text" id="rcg-concept-name" data-rcg="name" value="${escapeHtml(name ?? '')}" placeholder="e.g. Shield warder">
       <span></span>
     </div>
+    ${buildFieldset(options, sel.build)}
     <fieldset><legend>Classes</legend>
       <p class="notes">The first class is the primary. Leave a level blank to let the level range decide it; pin every level and the range is ignored.</p>
       ${classRows}
@@ -517,6 +567,7 @@ export function readConceptForm(root) {
       paths: all('paths')[0]?.value,
     },
     feats: all('feat').map((n) => n.value),
+    build: all('build')[0]?.value,
   });
   return { name: text(all('name')[0]?.value), selection };
 }

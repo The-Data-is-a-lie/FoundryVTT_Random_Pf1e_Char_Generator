@@ -28,7 +28,7 @@ import {
   readConcepts, saveConcept, deleteConcept, readActiveConceptName, setActiveConcept, activeConcept,
   selectionOptionsUrl, fetchSelectionOptions, clearSelectionOptionsCache, applySelectionToRequest,
   unmetPins, unmetPinsHtml, conceptDropdownOptions, conceptFormHtml, readConceptForm,
-  featChipHtml, wireConceptForm,
+  featChipHtml, wireConceptForm, buildHintText,
 } from '../scripts/selection-concepts.js';
 
 /** The plan's own example request (backend docs: selection.py). */
@@ -39,6 +39,7 @@ const SAMPLE = {
   spheres: ['Destruction', 'Shield'],
   path_of_war: { disciplines: ['Primal Fury'], paths: 1 },
   feats: ['Power Attack', 'Cleave'],
+  build: 'Bruiser',
 };
 
 /** What GET /selection_options answers, cut down to a few rows of each list. */
@@ -62,6 +63,11 @@ const OPTIONS = {
     { name: 'Power Attack', type: 'Combat', homebrew: false },
     { name: "Titan's Grip", type: 'Combat', homebrew: true },
     { name: 'Toughness', type: 'General', homebrew: false },
+  ],
+  builds: [
+    { name: 'Bruiser', family: 'Bruiser', definition: 'Two-handed weapon and raw damage.', classes: ['fighter', 'barbarian (unchained)'] },
+    { name: 'AC Tank', family: 'Tank', definition: 'Shield and heavy armor.', classes: ['warder'] },
+    { name: 'HP Tank', family: 'Tank', definition: 'A wall of hit points.', classes: [] },
   ],
 };
 
@@ -134,7 +140,7 @@ test('conceptPinsClasses and conceptSummary describe the concept', () => {
   assert.equal(conceptPinsClasses(null), false);
   const summary = conceptSummary(SAMPLE);
   for (const fragment of ['warder 8 / wizard 3', 'str > con', 'evocation', 'no necromancy, enchantment',
-    'Destruction, Shield', 'Primal Fury', '1 path', 'feats: Power Attack, Cleave']) {
+    'Destruction, Shield', 'Primal Fury', '1 path', 'feats: Power Attack, Cleave', 'build: Bruiser']) {
     assert.ok(summary.includes(fragment), `${fragment} missing from: ${summary}`);
   }
   assert.equal(conceptSummary({}), 'nothing pinned');
@@ -345,6 +351,49 @@ test('the form offers every option the backend sent, and no others', () => {
   assert.equal((html.match(/data-rcg="class"/g) ?? []).length, OPTIONS.limits.max_classes);
   assert.equal((html.match(/data-rcg="stat"/g) ?? []).length, OPTIONS.abilities.length);
   assert.ok(!html.includes('value="barbarian"'), 'a class the backend did not send must not appear');
+});
+
+test('a build is one name, and blank is no build', () => {
+  assert.deepEqual(cleanSelection({ build: ' AC Tank ' }), { build: 'AC Tank' });
+  assert.equal(cleanSelection({ build: '' }), null);
+  assert.equal(cleanSelection({ build: ['AC Tank'] }), null, 'a list is not a build');
+});
+
+test('the build section offers the backend builds by family and explains the chosen one', () => {
+  const html = conceptFormHtml(OPTIONS, 'B', { build: 'AC Tank' });
+  for (const row of OPTIONS.builds) assert.ok(html.includes(`<option value="${row.name}"`), row.name);
+  assert.ok(html.includes('<optgroup label="Tank">') && html.includes('<optgroup label="Bruiser">'));
+  assert.deepEqual(readConceptForm(fakeRoot(html)).selection, { build: 'AC Tank' });
+  assert.ok(html.includes('Shield and heavy armor. Fits best: Warder.'));
+
+  assert.equal(buildHintText(OPTIONS, 'Bruiser'), 'Two-handed weapon and raw damage. Fits best: Fighter, Barbarian (Unchained).');
+  assert.equal(buildHintText(OPTIONS, 'HP Tank'), 'A wall of hit points.', 'no class hint when the backend names none');
+  assert.equal(buildHintText(OPTIONS, ''), '');
+  assert.equal(buildHintText(OPTIONS, 'Nope'), '');
+});
+
+test('a build the backend no longer offers, or a backend without builds, keeps the stored build', () => {
+  const gone = conceptFormHtml(OPTIONS, 'B', { build: 'Retired Build' });
+  assert.deepEqual(readConceptForm(fakeRoot(gone)).selection, { build: 'Retired Build' });
+  const { builds: _dropped, ...older } = OPTIONS;
+  const html = conceptFormHtml(older, 'B', { build: 'Bruiser' });
+  assert.ok(!html.includes('<legend>Build</legend>'));
+  assert.deepEqual(readConceptForm(fakeRoot(html)).selection, { build: 'Bruiser' });
+});
+
+test('changing the build rewrites its hint', () => {
+  const listeners = {};
+  const build = { value: 'AC Tank', addEventListener: (type, fn) => { listeners[type] = fn; } };
+  const hint = { textContent: '' };
+  const root = {
+    querySelector: (selector) => ({ '[data-rcg="build"]': build, '[data-rcg="build-hint"]': hint })[selector] ?? null,
+  };
+  assert.equal(wireConceptForm(root, OPTIONS), false, 'no feat picker here, but the build is still wired');
+  listeners.change();
+  assert.equal(hint.textContent, 'Shield and heavy armor. Fits best: Warder.');
+  build.value = '';
+  listeners.change();
+  assert.equal(hint.textContent, '');
 });
 
 test('the feats section lists what is pinned and offers what the backend sent', () => {
