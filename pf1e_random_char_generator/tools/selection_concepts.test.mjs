@@ -28,6 +28,7 @@ import {
   readConcepts, saveConcept, deleteConcept, readActiveConceptName, setActiveConcept, activeConcept,
   selectionOptionsUrl, fetchSelectionOptions, clearSelectionOptionsCache, applySelectionToRequest,
   unmetPins, unmetPinsHtml, conceptDropdownOptions, conceptFormHtml, readConceptForm,
+  featChipHtml, wireConceptForm,
 } from '../scripts/selection-concepts.js';
 
 /** The plan's own example request (backend docs: selection.py). */
@@ -37,6 +38,7 @@ const SAMPLE = {
   schools: { specialty: 'evocation', preferred: ['abjuration'], opposition: ['necromancy', 'enchantment'] },
   spheres: ['Destruction', 'Shield'],
   path_of_war: { disciplines: ['Primal Fury'], paths: 1 },
+  feats: ['Power Attack', 'Cleave'],
 };
 
 /** What GET /selection_options answers, cut down to a few rows of each list. */
@@ -55,6 +57,12 @@ const OPTIONS = {
   },
   spheres: { power: ['Destruction', 'Life'], might: ['Guardian', 'Shield'] },
   disciplines: ['Broken Blade', 'Primal Fury'],
+  feats: [
+    { name: 'Cleave', type: 'Combat', homebrew: false },
+    { name: 'Power Attack', type: 'Combat', homebrew: false },
+    { name: "Titan's Grip", type: 'Combat', homebrew: true },
+    { name: 'Toughness', type: 'General', homebrew: false },
+  ],
 };
 
 /** A User document, as far as flags go -- including Foundry's MERGE on setFlag of an object. */
@@ -126,10 +134,18 @@ test('conceptPinsClasses and conceptSummary describe the concept', () => {
   assert.equal(conceptPinsClasses(null), false);
   const summary = conceptSummary(SAMPLE);
   for (const fragment of ['warder 8 / wizard 3', 'str > con', 'evocation', 'no necromancy, enchantment',
-    'Destruction, Shield', 'Primal Fury', '1 path']) {
+    'Destruction, Shield', 'Primal Fury', '1 path', 'feats: Power Attack, Cleave']) {
     assert.ok(summary.includes(fragment), `${fragment} missing from: ${summary}`);
   }
   assert.equal(conceptSummary({}), 'nothing pinned');
+  assert.ok(conceptSummary({ feats: ['A', 'B', 'C', 'D', 'E', 'F'] }).endsWith('feats: A, B, C, D +2 more'));
+});
+
+test('pinned feats keep their order and lose case-insensitive repeats', () => {
+  assert.deepEqual(cleanSelection({ feats: ['Toughness', ' Cleave ', 'toughness', '', 'Dodge'] }),
+    { feats: ['Toughness', 'Cleave', 'Dodge'] });
+  assert.equal(cleanSelection({ feats: [] }), null);
+  assert.deepEqual(cleanSelection({ feats: 'Toughness' }), { feats: ['Toughness'] });
 });
 
 // ---------------------------------------------------------------------------------------------
@@ -329,6 +345,76 @@ test('the form offers every option the backend sent, and no others', () => {
   assert.equal((html.match(/data-rcg="class"/g) ?? []).length, OPTIONS.limits.max_classes);
   assert.equal((html.match(/data-rcg="stat"/g) ?? []).length, OPTIONS.abilities.length);
   assert.ok(!html.includes('value="barbarian"'), 'a class the backend did not send must not appear');
+});
+
+test('the feats section lists what is pinned and offers what the backend sent', () => {
+  const html = conceptFormHtml(OPTIONS, 'F', { feats: ['power attack', "Titan's Grip", 'Gone Feat'] });
+  // Stored spellings are redrawn in the backend's casing; a feat it no longer offers is kept.
+  assert.deepEqual(readConceptForm(fakeRoot(html)).selection, { feats: ['Power Attack', "Titan's Grip", 'Gone Feat'] });
+  for (const row of OPTIONS.feats) assert.ok(html.includes(`<option value="${row.name.replace("'", '&#39;')}">`), row.name);
+  assert.ok(html.includes('Combat (homebrew)'), 'a homebrew feat is labelled as one');
+  assert.equal(featChipHtml('<b>').includes('<b>'), false, 'a feat name is escaped');
+});
+
+test('a backend without feats gets no feats section, and stored feats survive a save', () => {
+  const { feats: _dropped, ...older } = OPTIONS;
+  const html = conceptFormHtml(older, 'F', { classes: [{ name: 'fighter' }], feats: ['Cleave'] });
+  assert.ok(!html.includes('data-rcg="feat-entry"'));
+  assert.deepEqual(readConceptForm(fakeRoot(html)).selection, { classes: [{ name: 'fighter' }], feats: ['Cleave'] });
+});
+
+/** Just enough DOM for wireConceptForm: an entry box, an Add button and a chip holder. */
+function fakeFeatPicker() {
+  const listeners = {};
+  const on = (name) => (type, fn) => { listeners[`${name}:${type}`] = fn; };
+  const chips = [];
+  const entry = { value: '', addEventListener: on('entry') };
+  const holder = {
+    addEventListener: on('holder'),
+    insertAdjacentHTML: (_where, html) => chips.push(/data-rcg="feat" value="([^"]*)"/.exec(html)[1]),
+    querySelectorAll: () => chips.map((value) => ({ value })),
+  };
+  const button = { addEventListener: on('button') };
+  const root = {
+    querySelector: (selector) => ({
+      '[data-rcg="feat-entry"]': entry, '[data-rcg="feat-chips"]': holder, '[data-rcg="feat-add"]': button,
+    })[selector] ?? null,
+  };
+  return { root, entry, chips, listeners };
+}
+
+test('the feat picker adds a known feat once, in the backend spelling, and refuses an unknown one', () => {
+  const { root, entry, chips, listeners } = fakeFeatPicker();
+  const warnings = [];
+  assert.equal(wireConceptForm(root, OPTIONS, (m) => warnings.push(m)), true);
+
+  entry.value = 'power attack';
+  listeners['button:click']();
+  assert.deepEqual(chips, ['Power Attack']);
+  assert.equal(entry.value, '', 'the box clears after an add');
+
+  entry.value = 'POWER ATTACK';
+  listeners['button:click']();
+  assert.deepEqual(chips, ['Power Attack'], 'a feat is pinned once');
+
+  entry.value = 'Not A Feat';
+  listeners['button:click']();
+  assert.deepEqual(chips, ['Power Attack']);
+  assert.equal(warnings.length, 1);
+  assert.equal(entry.value, 'Not A Feat', 'a refused name stays in the box to be corrected');
+
+  // Enter adds, and must not reach the Dialog (whose default button would save and close).
+  let prevented = 0; let stopped = 0;
+  entry.value = 'Cleave';
+  listeners['entry:keydown']({ key: 'Enter', preventDefault: () => { prevented += 1; }, stopPropagation: () => { stopped += 1; } });
+  assert.deepEqual(chips, ['Power Attack', 'Cleave']);
+  assert.deepEqual([prevented, stopped], [1, 1]);
+  listeners['entry:keydown']({ key: 'a', preventDefault: () => { prevented += 1; }, stopPropagation: () => { stopped += 1; } });
+  assert.deepEqual([prevented, stopped], [1, 1], 'other keys are left alone');
+});
+
+test('a form with no feat picker is left unwired', () => {
+  assert.equal(wireConceptForm({ querySelector: () => null }, OPTIONS), false);
 });
 
 test('a partial concept round-trips without inventing pins', () => {

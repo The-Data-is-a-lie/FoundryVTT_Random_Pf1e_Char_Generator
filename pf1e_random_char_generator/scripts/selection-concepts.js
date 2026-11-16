@@ -28,9 +28,11 @@ export const CONCEPTS_FLAG = 'buildConcepts';
 export const ACTIVE_FLAG = 'activeBuildConcept';
 
 /** The request keys a selection may carry -- the backend's `selection.REQUEST_KEYS`. */
-export const SELECTION_KEYS = ['classes', 'stat_priority', 'schools', 'spheres', 'path_of_war'];
+export const SELECTION_KEYS = ['classes', 'stat_priority', 'schools', 'spheres', 'path_of_war', 'feats'];
 
 const ORDINALS = ['1st', '2nd', '3rd', '4th', '5th', '6th'];
+/** How many pinned feats the one-line summary names before it says "+N more". */
+const SUMMARY_FEATS = 4;
 const SPECIALTY_TABLE_LABELS = {
   schools: 'Arcane schools',
   subschools: 'Focused subschools',
@@ -90,6 +92,14 @@ export function cleanSelection(raw) {
   if (Number.isInteger(paths) && paths >= 0 && text(martialRaw.paths) !== '') martial.paths = paths;
   if (Object.keys(martial).length) out.path_of_war = martial;
 
+  // Feats keep the order they were pinned in: the backend takes them in that order, so the first
+  // ones are the last to be squeezed out when the character has fewer slots than pins.
+  const feats = [];
+  for (const name of uniqueStrings(raw.feats)) {
+    if (!feats.some((f) => f.toLowerCase() === name.toLowerCase())) feats.push(name);
+  }
+  if (feats.length) out.feats = feats;
+
   return Object.keys(out).length ? out : null;
 }
 
@@ -122,6 +132,11 @@ export function conceptSummary(selection) {
     if (p.disciplines) bits.push(p.disciplines.join(', '));
     if (p.paths !== undefined) bits.push(`${p.paths} path${p.paths === 1 ? '' : 's'}`);
     parts.push(`Path of War: ${bits.join('; ')}`);
+  }
+  if (clean.feats) {
+    const shown = clean.feats.slice(0, SUMMARY_FEATS);
+    const more = clean.feats.length - shown.length;
+    parts.push(`feats: ${shown.join(', ')}${more > 0 ? ` +${more} more` : ''}`);
   }
   return parts.join(' · ');
 }
@@ -335,6 +350,80 @@ function checkboxes(key, values, chosen) {
     + '</div>';
 }
 
+/** One pinned feat in the editor: its name, the value the form reads back, and a remove link. */
+export function featChipHtml(name) {
+  return `<span class="rcg-chip" data-rcg="feat-chip"><input type="hidden" data-rcg="feat" value="${escapeHtml(name)}">`
+    + `${escapeHtml(name)} <a data-rcg="feat-remove" title="Remove this feat">&times;</a></span>`;
+}
+
+/**
+ * The Feats section. A backend that does not offer feats (one from before the feats pin) gets no
+ * picker -- only the stored feats, carried as hidden fields, so opening and saving a concept
+ * against an older backend does not quietly strip the feats out of it.
+ *
+ * Well over a thousand feats, so the picker is a text box with the browser's own type-ahead
+ * (`<datalist>`), not a list to scroll: type a few letters, pick, Add.
+ */
+function featsFieldset(options, chosen) {
+  if (!Array.isArray(options.feats) || !options.feats.length) {
+    return (chosen ?? []).map((name) => `<input type="hidden" data-rcg="feat" value="${escapeHtml(name)}">`).join('');
+  }
+  const known = new Map(options.feats.map((row) => [row.name.toLowerCase(), row.name]));
+  // A stored feat the backend no longer offers is still drawn, so it is not silently dropped on
+  // the next save -- the backend reports it, which is how the player learns it is gone.
+  const chips = (chosen ?? []).map((name) => featChipHtml(known.get(name.toLowerCase()) ?? name)).join('');
+  const choices = options.feats.map((row) =>
+    `<option value="${escapeHtml(row.name)}">${escapeHtml(row.homebrew ? `${row.type} (homebrew)` : row.type)}</option>`).join('');
+  return `<fieldset><legend>Feats</legend>
+      <p class="notes">Pinned feats are taken first and cost feat slots like any other feat. A feat's prerequisite feats are taken with it; one the character cannot qualify for (base attack bonus, an ability score, no slot left) is reported. Feats are pinned by base name &mdash; "Weapon Focus", not a weapon.</p>
+      <div class="rcg-concept-row">
+        <label for="rcg-feat-entry">Add a feat</label>
+        <input type="text" id="rcg-feat-entry" data-rcg="feat-entry" list="rcg-feat-list" placeholder="type to search ${options.feats.length} feats">
+        <button type="button" data-rcg="feat-add">Add</button>
+      </div>
+      <datalist id="rcg-feat-list">${choices}</datalist>
+      <div class="rcg-concept-chips" data-rcg="feat-chips">${chips}</div>
+    </fieldset>`;
+}
+
+/**
+ * Wire the parts of the form that are more than inputs: the feat picker's Add button, Enter in
+ * its text box, and the remove links. Call it whenever the form's HTML is (re)drawn.
+ *
+ * @returns {boolean} whether there was a feat picker to wire (false on a backend without feats).
+ */
+export function wireConceptForm(root, options, notify = () => {}) {
+  const entry = root.querySelector?.('[data-rcg="feat-entry"]');
+  const holder = root.querySelector?.('[data-rcg="feat-chips"]');
+  if (!entry || !holder) return false;
+  const known = new Map((options.feats ?? []).map((row) => [row.name.toLowerCase(), row.name]));
+  const add = () => {
+    const typed = text(entry.value);
+    if (!typed) return;
+    const name = known.get(typed.toLowerCase());
+    if (!name) {
+      notify(`"${typed}" is not a feat the generator knows. Pick one from the list.`);
+      return;
+    }
+    const held = [...holder.querySelectorAll('[data-rcg="feat"]')].map((node) => node.value.toLowerCase());
+    if (!held.includes(name.toLowerCase())) holder.insertAdjacentHTML('beforeend', featChipHtml(name));
+    entry.value = '';
+  };
+  root.querySelector('[data-rcg="feat-add"]')?.addEventListener('click', add);
+  entry.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter') return;
+    // Enter in a Dialog presses its default button (Save). Here it means "add this feat".
+    event.preventDefault();
+    event.stopPropagation();
+    add();
+  });
+  holder.addEventListener('click', (event) => {
+    const link = event.target?.closest?.('[data-rcg="feat-remove"]');
+    link?.closest('[data-rcg="feat-chip"]')?.remove();
+  });
+  return true;
+}
+
 /** The editor's whole form for one concept (a blank one when `selection` is null). */
 export function conceptFormHtml(options, name, selection) {
   const sel = cleanSelection(selection) ?? {};
@@ -359,6 +448,9 @@ export function conceptFormHtml(options, name, selection) {
       .rcg-concept-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
       .rcg-concept-form select[multiple] { width: 100%; }
       .rcg-concept-form .notes { font-size: 0.85em; opacity: 0.8; margin: 2px 0 6px; }
+      .rcg-concept-chips { display: flex; flex-wrap: wrap; gap: 4px; min-height: 1.6em; }
+      .rcg-chip { border: 1px solid currentColor; border-radius: 10px; padding: 0 8px; opacity: 0.9; }
+      .rcg-chip a { cursor: pointer; margin-left: 4px; font-weight: bold; }
     </style>
     <div class="rcg-concept-row">
       <label for="rcg-concept-name">Concept name</label>
@@ -398,6 +490,7 @@ export function conceptFormHtml(options, name, selection) {
           <input type="number" data-rcg="paths" min="0" max="6" placeholder="roll" value="${paths ?? ''}"></div>
       </div>
     </fieldset>
+    ${featsFieldset(options, sel.feats)}
   </form>`;
 }
 
@@ -423,6 +516,7 @@ export function readConceptForm(root) {
       disciplines: all('discipline').flatMap(selectedValues),
       paths: all('paths')[0]?.value,
     },
+    feats: all('feat').map((n) => n.value),
   });
   return { name: text(all('name')[0]?.value), selection };
 }
@@ -511,9 +605,14 @@ export async function openConceptEditor({ deliverUrl, name = '', onChange } = {}
     default: 'save',
     render: (html) => {
       const root = element(html);
+      const warn = (message) => ui.notifications?.warn(`Character Generator: ${message}`);
+      const wire = () => wireConceptForm(root.querySelector('#rcg-concept-body') ?? root, options, warn);
+      wire();
       root.querySelector('#rcg-concept-pick')?.addEventListener('change', (event) => {
         const holder = root.querySelector('#rcg-concept-body');
-        if (holder) holder.innerHTML = conceptFormHtml(options, event.target.value, concepts[event.target.value] ?? null);
+        if (!holder) return;
+        holder.innerHTML = conceptFormHtml(options, event.target.value, concepts[event.target.value] ?? null);
+        wire();                                   // the old form's listeners went with its nodes
       });
     },
   }, { width: 640, resizable: true }).render(true);
