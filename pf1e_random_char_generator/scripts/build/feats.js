@@ -112,6 +112,24 @@ async function processFeatTrait(ctx, templateName, dataListChooseFrom, dataType,
   }
 }
 
+/**
+ * How the position-numbered feat rows are tagged: "(Feat 1)", "(Feat 3)", "(Story Feat 5)",
+ * "(Flaw 2)", "(Flavor 1)". Each entry is the label and the count `addingReceivedLocationToName`
+ * walks -- a start and a step, or an explicit ladder of numbers.
+ *
+ * One table because two paths number these rows and must agree: `addFeats` below, for a generated
+ * character's feats, and build/slots.js, for a blank character's empty slots. A blank sheet is a
+ * generated one with the names rubbed out, so its "(Feat 5)" has to be the row a generated
+ * character's fifth-level feat would be in.
+ */
+export const FEAT_ROW_NUMBERING = Object.freeze({
+  flavor_feats: { label: 'Flavor', start: 1, step: 1, levels: null },
+  flaw_feats:   { label: 'Flaw', start: 1, step: 1, levels: null },
+  story_feats:  { label: 'Story Feat', start: 1, step: 5,
+                  levels: [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100] },
+  feats:        { label: 'Feat', start: 1, step: 2, levels: null },
+});
+
 // --- adding Feat separators --- //
 export async function addFeatSeparator(ctx, templateName, dataType, startingSort = 0) {
   try {
@@ -229,9 +247,10 @@ export async function addFeats(ctx) {
 
   // Feats section
   await addFeatSeparator(ctx, 'spaceBackground', 'space_function', 1);
-  await processFeatTrait(ctx, 'everyFeat', ctx.characterData.flavor_feats, 'feat', 200, "Flavor", true, 1, 1, null, null, ctx.characterData.flavor_feat_tax_dict);
-  await processFeatTrait(ctx, 'everyFeat', ctx.characterData.flaw_feats, 'feat', 250, "Flaw", true, 1, 1, null, null, ctx.characterData.flaw_feat_tax_dict);
-  await processFeatTrait(ctx, 'everyFeat', ctx.characterData.story_feats, 'feat', 500, "Story Feat", true, 1, 5, [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], null, ctx.characterData.story_feat_tax_dict);
+  const { flavor_feats: flavor, flaw_feats: flaw, story_feats: story, feats: general } = FEAT_ROW_NUMBERING;
+  await processFeatTrait(ctx, 'everyFeat', ctx.characterData.flavor_feats, 'feat', 200, flavor.label, true, flavor.start, flavor.step, flavor.levels, null, ctx.characterData.flavor_feat_tax_dict);
+  await processFeatTrait(ctx, 'everyFeat', ctx.characterData.flaw_feats, 'feat', 250, flaw.label, true, flaw.start, flaw.step, flaw.levels, null, ctx.characterData.flaw_feat_tax_dict);
+  await processFeatTrait(ctx, 'everyFeat', ctx.characterData.story_feats, 'feat', 500, story.label, true, story.start, story.step, story.levels, null, ctx.characterData.story_feat_tax_dict);
   await addFeatSeparator(ctx, 'spaceFeats', 'space_function', 1000);
   // ----- Luck: E-Kat Traits, and the feats negative luck paid for ----------------------------- //
   // Both live in the FEATS area (subType 'feat'), matching the hand-built reference sheet -- the
@@ -298,7 +317,7 @@ export async function addFeats(ctx) {
     log.debug(`Luck: added ${_negFeats.length} negative-luck feat row(s).`);
   }
 
-  await processFeatTrait(ctx, 'everyFeat', _ordinaryFeats, 'feat', 1500, "Feat", true, 1, 2, null, null, ctx.characterData.feats_feat_tax_dict);
+  await processFeatTrait(ctx, 'everyFeat', _ordinaryFeats, 'feat', 1500, general.label, true, general.start, general.step, general.levels, null, ctx.characterData.feats_feat_tax_dict);
   await addFeatSeparator(ctx, 'spaceClassBonusFeats', 'space_function', 2000);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.teamwork_feats, 'feat', 2500, "Class Bonus Feat", true, 3, 3, null, ctx.characterData.teamwork_feat_labels);
   await processFeatTrait(ctx, 'everyFeat', ctx.characterData.class_feats, 'feat', 3000, "Class Bonus Feat", true, 1, 2, null, ctx.characterData.class_feat_labels, ctx.characterData.class_feat_tax_dict);
